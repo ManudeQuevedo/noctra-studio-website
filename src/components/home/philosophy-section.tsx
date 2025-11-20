@@ -6,9 +6,9 @@ import { TechMarquee } from "@/components/tech-marquee";
 import { useEffect, useState } from "react";
 
 export function PhilosophySection() {
-  const t = useTranslations("About");
+  const t = useTranslations("About.philosophy_section");
   const [terminalText, setTerminalText] = useState("");
-  const fullText = "$ Loading system diagnostics...";
+  const fullText = t("system_monitor.terminal_text");
 
   useEffect(() => {
     let currentIndex = 0;
@@ -42,17 +42,15 @@ export function PhilosophySection() {
             transition={{ duration: 0.6 }}
             className="space-y-6">
             <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
-              // OUR DNA
+              {t("label")}
             </span>
             <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-none">
-              ENGINEERING
+              {t("title_line1")}
               <br />
-              CLARITY.
+              {t("title_line2")}
             </h2>
             <p className="text-lg text-neutral-400 leading-relaxed border-l-2 border-white/20 pl-6">
-              Chaos is the default state of the digital world. We exist to bring
-              order. Through rigorous architecture and precise execution, we
-              build systems that don't just work—they endure.
+              {t("description")}
             </p>
           </motion.div>
 
@@ -67,11 +65,13 @@ export function PhilosophySection() {
               {/* Header */}
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
                 <span className="text-neutral-400 text-xs uppercase tracking-wider">
-                  NOCTRA_SYSTEM_V1.0
+                  {t("system_monitor.header")}
                 </span>
                 <div className="flex items-center gap-1.5">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-green-400 text-xs">LIVE</span>
+                  <span className="text-green-400 text-xs">
+                    {t("system_monitor.live")}
+                  </span>
                 </div>
               </div>
 
@@ -79,18 +79,28 @@ export function PhilosophySection() {
               <div className="space-y-4 mb-6">
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-neutral-300">Core Architecture:</span>
-                  <span className="text-green-400 ml-auto">Online</span>
+                  <span className="text-neutral-300">
+                    {t("system_monitor.core_architecture")}
+                  </span>
+                  <span className="text-green-400 ml-auto">
+                    {t("system_monitor.online")}
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-neutral-300">Performance:</span>
+                  <span className="text-neutral-300">
+                    {t("system_monitor.performance")}
+                  </span>
                   <span className="text-white ml-auto">100/100</span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                  <span className="text-neutral-300">Security Protocols:</span>
-                  <span className="text-green-400 ml-auto">Active</span>
+                  <span className="text-neutral-300">
+                    {t("system_monitor.security_protocols")}
+                  </span>
+                  <span className="text-green-400 ml-auto">
+                    {t("system_monitor.active")}
+                  </span>
                 </div>
               </div>
 

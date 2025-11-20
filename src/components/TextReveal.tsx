@@ -70,8 +70,9 @@ export function TextReveal({ text, className }: TextRevealProps) {
 
 // Improved version that handles the bracketed phrases correctly
 export function ManifestoText() {
-  const text =
-    "We are a [digital architecture firm] dedicated to bringing [clarity to the chaos]. With a precision team of engineers and designers, we build [silent systems] that empower [visionary companies] to scale without friction.";
+  const { useTranslations } = require("next-intl");
+  const t = useTranslations("HomePage");
+  const text = t("manifesto.text");
 
   // Regex to split by brackets, capturing the content inside
   const parts = text.split(/(\[.*?\])/g);
@@ -108,7 +109,7 @@ export function ManifestoText() {
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
       className="text-2xl md:text-3xl font-light text-neutral-600 leading-relaxed max-w-3xl mx-auto">
-      {parts.map((part, index) => {
+      {parts.map((part: string, index: number) => {
         if (part.startsWith("[") && part.endsWith("]")) {
           // Remove brackets
           const content = part.slice(1, -1);
@@ -122,7 +123,7 @@ export function ManifestoText() {
           );
         }
         // Split regular text into words for smoother animation
-        return part.split(" ").map((word, wIndex) => {
+        return part.split(" ").map((word: string, wIndex: number) => {
           if (!word) return null;
           return (
             <motion.span

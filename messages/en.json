@@ -1,9 +1,71 @@
 {
   "HomePage": {
-    "title": "Clarity in the digital night",
-    "subtitle": "We illuminate your path with premium web development, branding, and SEO strategies.",
+    "hero": {
+      "title": "Clarity in the digital night.",
+      "subtitle": "We illuminate your path with premium web development, branding, and SEO strategies."
+    },
+    "manifesto": {
+      "text": "We are a [digital architecture agency] dedicated to bringing [clarity to the chaos]. With a precision team of engineers and designers, we build [silent systems] that empower [visionary companies] to scale without friction."
+    },
+    "services_section": {
+      "label": "// WHAT WE CRAFT",
+      "title": "Digital Solutions That Scale",
+      "subtitle": "From concept to deployment, we architect experiences that endure."
+    },
     "cta_start": "Book Strategy Call",
     "cta_services": "Our Services"
+  },
+  "Metadata": {
+    "home": {
+      "title": "Noctra Studio | Digital Architecture & Web Development",
+      "description": "Premium web development, branding, and SEO strategies. We bring clarity to the digital chaos with precision engineering.",
+      "keywords": "web development, digital architecture, branding, SEO, Next.js, React, AI integration",
+      "og_title": "Noctra Studio - Clarity in the Digital Night",
+      "og_description": "We illuminate your path with premium web development, branding, and SEO strategies.",
+      "og_image_alt": "Noctra Studio - Digital Architecture Firm",
+      "twitter_title": "Noctra Studio - Digital Architecture & Web Development",
+      "twitter_description": "Premium web development and branding solutions that scale."
+    },
+    "about": {
+      "title": "About Us | Noctra Studio",
+      "description": "Learn about Noctra Studio's mission to bring clarity to the digital world through rigorous architecture and precise execution.",
+      "keywords": "about noctra studio, digital architecture firm, web development team, design agency",
+      "og_title": "About Noctra Studio - Engineering Clarity",
+      "og_description": "We exist to bring order to the digital chaos through rigorous architecture.",
+      "og_image_alt": "Noctra Studio Team and Philosophy",
+      "twitter_title": "About Noctra Studio",
+      "twitter_description": "Engineering clarity in the digital world."
+    },
+    "services": {
+      "title": "Our Services | Noctra Studio",
+      "description": "Web development, branding, AI integration, and SEO services designed to scale your business. From concept to deployment.",
+      "keywords": "web development services, branding agency, AI integration, SEO optimization, digital solutions",
+      "og_title": "Noctra Studio Services - Digital Solutions That Scale",
+      "og_description": "From concept to deployment, we architect experiences that endure.",
+      "og_image_alt": "Noctra Studio Services Overview",
+      "twitter_title": "Our Services - Noctra Studio",
+      "twitter_description": "Web development, branding, AI, and SEO services."
+    },
+    "contact": {
+      "title": "Contact Us | Noctra Studio",
+      "description": "Get in touch with Noctra Studio. Let's discuss your project and bring clarity to your digital vision.",
+      "keywords": "contact noctra studio, web development inquiry, digital project consultation",
+      "og_title": "Contact Noctra Studio",
+      "og_description": "Let's discuss your project and bring clarity to your digital vision.",
+      "og_image_alt": "Contact Noctra Studio",
+      "twitter_title": "Contact Noctra Studio",
+      "twitter_description": "Get in touch to discuss your project."
+    },
+    "blog": {
+      "title": "Blog | Noctra Studio",
+      "description": "Insights on web development, digital architecture, and design from the Noctra Studio team.",
+      "keywords": "web development blog, digital architecture insights, design articles",
+      "og_title": "Noctra Studio Blog",
+      "og_description": "Insights on web development and digital architecture.",
+      "og_image_alt": "Noctra Studio Blog",
+      "twitter_title": "Noctra Studio Blog",
+      "twitter_description": "Web development and design insights."
+    }
   },
   "Navigation": {
     "home": "Home",
@@ -97,7 +159,23 @@
   },
   "About": {
     "title": "Our Philosophy",
-    "description": "Chaos is the default state of the web. We engineer clarity. We don't just build websites; we architect silent, scalable digital systems that cut through the noise. No bloat, just execution."
+    "description": "Chaos is the default state of the web. We engineer clarity. We don't just build websites; we architect silent, scalable digital systems that cut through the noise. No bloat, just execution.",
+    "philosophy_section": {
+      "label": "// OUR DNA",
+      "title_line1": "ENGINEERING",
+      "title_line2": "CLARITY.",
+      "description": "Chaos is the default state of the digital world. We exist to bring order. Through rigorous architecture and precise execution, we build systems that don't just work—they endure.",
+      "system_monitor": {
+        "header": "NOCTRA_SYSTEM_V1.0",
+        "live": "LIVE",
+        "core_architecture": "Core Architecture:",
+        "online": "Online",
+        "performance": "Performance:",
+        "security_protocols": "Security Protocols:",
+        "active": "Active",
+        "terminal_text": "$ Loading system diagnostics..."
+      }
+    }
   },
   "AboutPage": {
     "hero": {
@@ -182,14 +260,16 @@
       "email_placeholder": "john@example.com",
       "website_label": "Company Website",
       "website_placeholder": "example.com (Optional)",
-      "service_label": "Service Needed",
+      "service_label": "Service of Interest",
+      "service_placeholder": "Select a service...",
       "service_options": {
         "digital_architecture": "Digital Architecture",
         "visual_identity": "Visual Identity",
         "ai_automation": "AI & Automation",
         "growth": "Growth & Strategy"
       },
-      "budget_label": "Budget Range (MXN)",
+      "budget_label": "Budget Range",
+      "budget_placeholder": "Select a range...",
       "budget_options": {
         "under_50k": "< $50k",
         "50k_100k": "$50k - $100k",
@@ -197,8 +277,15 @@
       },
       "details_label": "Project Details",
       "details_placeholder": "Tell us about your project goals, timeline, and any specific requirements...",
-      "submit": "Send Inquiry"
-    }
+      "submit": "Send Inquiry",
+      "sending": "Sending..."
+    },
+    "success": {
+      "title": "Message Sent",
+      "message": "Thank you for reaching out. We've received your inquiry and will get back to you shortly to discuss your vision.",
+      "action": "Send another message"
+    },
+    "loading": "Loading..."
   },
   "TermsPage": {
     "title": "Terms of Service",

@@ -17,12 +17,11 @@ export function Hero() {
         transition={{ duration: 0.5 }}
         className="max-w-5xl space-y-8 w-full z-30 relative pointer-events-auto px-6">
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
-          Clarity in the digital night.
+          {t("hero.title")}
         </h1>
 
         <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
-          We illuminate your path with premium web development, branding, and
-          SEO strategies.
+          {t("hero.subtitle")}
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">

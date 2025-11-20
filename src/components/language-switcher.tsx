@@ -1,36 +1,51 @@
+"use client";
+
 import { useLocale } from "next-intl";
-import { usePathname, Link } from "@/i18n/routing";
+import { usePathname, useRouter } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import { useTransition } from "react";
 
 export function LanguageSwitcher({ className }: { className?: string }) {
   const locale = useLocale();
   const pathname = usePathname();
+  const router = useRouter();
+  const [isPending, startTransition] = useTransition();
+
+  const handleLocaleChange = (newLocale: "en" | "es") => {
+    if (newLocale === locale) return;
+
+    startTransition(() => {
+      router.push(pathname, { locale: newLocale, scroll: false });
+    });
+  };
 
   return (
     <div className={cn("flex items-center gap-1", className)}>
-      <Link
-        href={pathname}
-        locale="en"
+      <button
+        onClick={() => handleLocaleChange("en")}
+        disabled={isPending}
         className={cn(
           "text-sm font-medium transition-colors",
           locale === "en"
             ? "text-white dark:text-neutral-950"
-            : "text-neutral-500 hover:text-white dark:hover:text-neutral-950"
+            : "text-neutral-500 hover:text-white dark:hover:text-neutral-950",
+          isPending && "opacity-50 cursor-not-allowed"
         )}>
         EN
-      </Link>
+      </button>
       <span className="text-neutral-600 dark:text-neutral-400">/</span>
-      <Link
-        href={pathname}
-        locale="es"
+      <button
+        onClick={() => handleLocaleChange("es")}
+        disabled={isPending}
         className={cn(
           "text-sm font-medium transition-colors",
           locale === "es"
             ? "text-white dark:text-neutral-950"
-            : "text-neutral-500 hover:text-white dark:hover:text-neutral-950"
+            : "text-neutral-500 hover:text-white dark:hover:text-neutral-950",
+          isPending && "opacity-50 cursor-not-allowed"
         )}>
         ES
-      </Link>
+      </button>
     </div>
   );
 }

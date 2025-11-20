@@ -6,7 +6,11 @@ export const routing = defineRouting({
   locales: ['en', 'es'],
  
   // Used when no locale matches
-  defaultLocale: 'en'
+  defaultLocale: 'en',
+  
+  // Use 'as-needed' to hide default locale from URL
+  // This reduces navigation and keeps URLs cleaner
+  localePrefix: 'as-needed'
 });
  
 // Lightweight wrappers around Next.js' navigation APIs

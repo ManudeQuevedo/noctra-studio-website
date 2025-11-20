@@ -8,6 +8,7 @@ import { Cursor } from "@/components/ui/cursor";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
+import { OrganizationSchema, WebsiteSchema } from "@/components/seo/JsonLd";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -50,6 +51,8 @@ export default async function LocaleLayout({
             <Header />
             <main className="min-h-screen">{children}</main>
             <Footer />
+            <OrganizationSchema />
+            <WebsiteSchema />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>

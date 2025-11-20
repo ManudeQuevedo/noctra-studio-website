@@ -1,9 +1,71 @@
 {
   "HomePage": {
-    "title": "Claridad en la noche digital",
-    "subtitle": "Iluminamos tu camino con desarrollo web premium, branding y estrategias SEO.",
+    "hero": {
+      "title": "Claridad en la noche digital.",
+      "subtitle": "Iluminamos tu camino con desarrollo web premium, branding y estrategias SEO."
+    },
+    "manifesto": {
+      "text": "Somos una [agencia de arquitectura digital] dedicada a traer [claridad al caos]. Con un equipo de ingenieros y diseñadores de precisión, construimos [sistemas silenciosos] que empoderan a [empresas visionarias] para escalar sin fricción."
+    },
+    "services_section": {
+      "label": "// LO QUE CREAMOS",
+      "title": "Soluciones Digitales Que Escalan",
+      "subtitle": "Desde el concepto hasta el despliegue, arquitectamos experiencias que perduran."
+    },
     "cta_start": "Agendar Llamada",
     "cta_services": "Nuestros Servicios"
+  },
+  "Metadata": {
+    "home": {
+      "title": "Noctra Studio | Arquitectura Digital y Desarrollo Web",
+      "description": "Desarrollo web premium, branding y estrategias SEO. Traemos claridad al caos digital con ingeniería de precisión.",
+      "keywords": "desarrollo web, arquitectura digital, branding, SEO, Next.js, React, integración IA",
+      "og_title": "Noctra Studio - Claridad en la Noche Digital",
+      "og_description": "Iluminamos tu camino con desarrollo web premium, branding y estrategias SEO.",
+      "og_image_alt": "Noctra Studio - Empresa de Arquitectura Digital",
+      "twitter_title": "Noctra Studio - Arquitectura Digital y Desarrollo Web",
+      "twitter_description": "Soluciones premium de desarrollo web y branding que escalan."
+    },
+    "about": {
+      "title": "Sobre Nosotros | Noctra Studio",
+      "description": "Conoce la misión de Noctra Studio de traer claridad al mundo digital a través de arquitectura rigurosa y ejecución precisa.",
+      "keywords": "sobre noctra studio, empresa arquitectura digital, equipo desarrollo web, agencia diseño",
+      "og_title": "Sobre Noctra Studio - Ingeniería de Claridad",
+      "og_description": "Existimos para traer orden al caos digital a través de arquitectura rigurosa.",
+      "og_image_alt": "Equipo y Filosofía de Noctra Studio",
+      "twitter_title": "Sobre Noctra Studio",
+      "twitter_description": "Ingeniería de claridad en el mundo digital."
+    },
+    "services": {
+      "title": "Nuestros Servicios | Noctra Studio",
+      "description": "Desarrollo web, branding, integración de IA y servicios SEO diseñados para escalar tu negocio. Del concepto al despliegue.",
+      "keywords": "servicios desarrollo web, agencia branding, integración IA, optimización SEO, soluciones digitales",
+      "og_title": "Servicios de Noctra Studio - Soluciones Digitales Que Escalan",
+      "og_description": "Del concepto al despliegue, arquitectamos experiencias que perduran.",
+      "og_image_alt": "Descripción de Servicios de Noctra Studio",
+      "twitter_title": "Nuestros Servicios - Noctra Studio",
+      "twitter_description": "Servicios de desarrollo web, branding, IA y SEO."
+    },
+    "contact": {
+      "title": "Contáctanos | Noctra Studio",
+      "description": "Ponte en contacto con Noctra Studio. Hablemos de tu proyecto y traigamos claridad a tu visión digital.",
+      "keywords": "contactar noctra studio, consulta desarrollo web, consultoría proyecto digital",
+      "og_title": "Contacta a Noctra Studio",
+      "og_description": "Hablemos de tu proyecto y traigamos claridad a tu visión digital.",
+      "og_image_alt": "Contacta a Noctra Studio",
+      "twitter_title": "Contacta a Noctra Studio",
+      "twitter_description": "Ponte en contacto para hablar de tu proyecto."
+    },
+    "blog": {
+      "title": "Blog | Noctra Studio",
+      "description": "Perspectivas sobre desarrollo web, arquitectura digital y diseño del equipo de Noctra Studio.",
+      "keywords": "blog desarrollo web, perspectivas arquitectura digital, artículos diseño",
+      "og_title": "Blog de Noctra Studio",
+      "og_description": "Perspectivas sobre desarrollo web y arquitectura digital.",
+      "og_image_alt": "Blog de Noctra Studio",
+      "twitter_title": "Blog de Noctra Studio",
+      "twitter_description": "Perspectivas sobre desarrollo web y diseño."
+    }
   },
   "Navigation": {
     "home": "Inicio",
@@ -97,7 +159,23 @@
   },
   "About": {
     "title": "Nuestra Filosofía",
-    "description": "El caos es el estado por defecto de la web. Nosotros diseñamos claridad. No solo construimos sitios web; arquitectamos sistemas digitales silenciosos y escalables que atraviesan el ruido. Sin bloatware, solo ejecución."
+    "description": "El caos es el estado por defecto de la web. Nosotros diseñamos claridad. No solo construimos sitios web; arquitectamos sistemas digitales silenciosos y escalables que atraviesan el ruido. Sin bloatware, solo ejecución.",
+    "philosophy_section": {
+      "label": "// NUESTRO ADN",
+      "title_line1": "INGENIERÍA",
+      "title_line2": "DE CLARIDAD.",
+      "description": "El caos es el estado por defecto del mundo digital. Existimos para traer orden. A través de arquitectura rigurosa y ejecución precisa, construimos sistemas que no solo funcionan—perduran.",
+      "system_monitor": {
+        "header": "SISTEMA_NOCTRA_V1.0",
+        "live": "EN VIVO",
+        "core_architecture": "Arquitectura Central:",
+        "online": "En Línea",
+        "performance": "Rendimiento:",
+        "security_protocols": "Protocolos de Seguridad:",
+        "active": "Activo",
+        "terminal_text": "$ Cargando diagnósticos del sistema..."
+      }
+    }
   },
   "AboutPage": {
     "hero": {
@@ -182,14 +260,16 @@
       "email_placeholder": "juan@ejemplo.com",
       "website_label": "Sitio Web",
       "website_placeholder": "ejemplo.com (Opcional)",
-      "service_label": "Servicio Requerido",
+      "service_label": "Servicio de Interés",
+      "service_placeholder": "Selecciona un servicio...",
       "service_options": {
         "digital_architecture": "Arquitectura Digital",
         "visual_identity": "Identidad Visual",
         "ai_automation": "IA y Automatización",
         "growth": "Crecimiento y Estrategia"
       },
-      "budget_label": "Presupuesto (MXN)",
+      "budget_label": "Rango de Presupuesto",
+      "budget_placeholder": "Selecciona tu presupuesto...",
       "budget_options": {
         "under_50k": "< $50k",
         "50k_100k": "$50k - $100k",
@@ -197,8 +277,15 @@
       },
       "details_label": "Detalles del Proyecto",
       "details_placeholder": "Cuéntanos sobre los objetivos de tu proyecto, tiempos y requerimientos específicos...",
-      "submit": "Enviar Consulta"
-    }
+      "submit": "Enviar Consulta",
+      "sending": "Enviando..."
+    },
+    "success": {
+      "title": "Mensaje Enviado",
+      "message": "Gracias por ponerte en contacto. Hemos recibido tu consulta y nos comunicaremos contigo pronto para discutir tu visión.",
+      "action": "Enviar otro mensaje"
+    },
+    "loading": "Cargando..."
   },
   "TermsPage": {
     "title": "Términos de Servicio",

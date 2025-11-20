@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, useMotionValue, useTransform } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import {
@@ -29,8 +29,11 @@ function ContactForm() {
   const t = useTranslations("ContactPage");
   const [time, setTime] = useState<string>("");
   const [focusedField, setFocusedField] = useState<string | null>(null);
-
   const [isSuccess, setIsSuccess] = useState(false);
+
+  // Mouse tracking for spotlight effect
+  const mouseX = useMotionValue(0);
+  const mouseY = useMotionValue(0);
 
   const searchParams = useSearchParams();
   const interest = searchParams.get("interest");
@@ -52,6 +55,17 @@ function ContactForm() {
       details: "",
     },
   });
+
+  // Mouse tracking effect
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      mouseX.set(e.clientX);
+      mouseY.set(e.clientY);
+    };
+
+    window.addEventListener("mousemove", handleMouseMove);
+    return () => window.removeEventListener("mousemove", handleMouseMove);
+  }, [mouseX, mouseY]);
 
   // Auto-fill service based on URL param
   useEffect(() => {
@@ -112,34 +126,46 @@ function ContactForm() {
 
   const inputClasses = (fieldName: string) =>
     cn(
-      "w-full bg-transparent border-b py-4 text-lg outline-none transition-all duration-300 font-mono",
+      "w-full bg-transparent border-b py-4 text-lg outline-none transition-all duration-300 font-mono text-white placeholder:text-neutral-600",
       focusedField === fieldName
-        ? "border-neutral-900 dark:border-neutral-50 pl-4"
-        : "border-neutral-300 dark:border-neutral-700"
+        ? "border-white shadow-[0_1px_15px_rgba(255,255,255,0.15)] pl-4"
+        : "border-neutral-800"
     );
 
   const labelClasses =
-    "block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2";
+    "block text-xs font-mono uppercase tracking-widest text-neutral-500 mb-2";
 
   return (
-    <main className="min-h-screen bg-transparent text-neutral-900 dark:text-neutral-50 pt-48">
-      <div className="max-w-5xl mx-auto px-6 md:px-8">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
+    <main className="min-h-screen bg-[#050505] text-white pt-32 relative overflow-hidden">
+      {/* Ambient Spotlight Effect */}
+      <motion.div
+        className="fixed inset-0 pointer-events-none z-0"
+        style={{
+          background: useTransform(
+            [mouseX, mouseY],
+            ([x, y]) =>
+              `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.15), transparent 80%)`
+          ),
+        }}
+      />
+
+      <div className="max-w-5xl mx-auto px-6 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
           {/* Left Column: Context */}
-          <div className="flex flex-col justify-between h-full pb-12 lg:pb-24 lg:sticky lg:top-32 lg:h-[calc(100vh-8rem)]">
+          <div className="flex flex-col justify-start h-full pb-12 lg:pb-24 lg:sticky lg:top-32">
             <div>
               <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6 }}
-                className="text-5xl md:text-7xl font-bold tracking-tighter mb-8">
+                className="text-5xl md:text-7xl font-bold tracking-tighter mb-8 text-white">
                 {t("hero.title")}
               </motion.h1>
               <motion.p
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.1 }}
-                className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 max-w-md leading-relaxed">
+                className="text-xl md:text-2xl text-neutral-400 max-w-md leading-relaxed">
                 {t("hero.subtitle")}
               </motion.p>
             </div>
@@ -148,21 +174,21 @@ function ContactForm() {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
-              className="space-y-12 mt-16 lg:mt-0">
+              className="space-y-12 mt-16">
               {/* Details Block */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+                  <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
                     {t("details.email_label")}
                   </span>
                   <a
                     href="mailto:hello@noctra.studio"
-                    className="block text-xl font-medium hover:underline decoration-1 underline-offset-4">
+                    className="block text-xl font-medium hover:text-white transition-colors">
                     hello@noctra.studio
                   </a>
                 </div>
                 <div className="space-y-2">
-                  <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+                  <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
                     {t("details.location_label")}
                   </span>
                   <div className="flex items-center gap-2 text-xl font-medium">
@@ -171,7 +197,7 @@ function ContactForm() {
                   </div>
                 </div>
                 <div className="space-y-2">
-                  <span className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+                  <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
                     {t("details.time_label")}
                   </span>
                   <div className="flex items-center gap-2 text-xl font-medium tabular-nums">
@@ -187,7 +213,7 @@ function ContactForm() {
                   <a
                     key={i}
                     href="#"
-                    className="p-3 border border-neutral-200 dark:border-neutral-800 rounded-full hover:bg-neutral-900 hover:text-white dark:hover:bg-neutral-50 dark:hover:text-neutral-900 transition-colors duration-300">
+                    className="p-3 border border-neutral-800 rounded-full hover:bg-white hover:text-black transition-all duration-300">
                     <Icon className="w-6 h-6" />
                   </a>
                 ))}
@@ -205,19 +231,20 @@ function ContactForm() {
               <motion.div
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
-                className="h-full flex flex-col justify-center items-center text-center p-12 border border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900 rounded-sm">
-                <div className="w-16 h-16 bg-neutral-900 dark:bg-neutral-50 text-white dark:text-neutral-900 rounded-full flex items-center justify-center mb-6">
+                className="h-full flex flex-col justify-center items-center text-center p-12 border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm rounded-sm">
+                <div className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center mb-6">
                   <Mail className="w-8 h-8" />
                 </div>
-                <h2 className="text-3xl font-bold mb-4">Message Sent</h2>
-                <p className="text-neutral-600 dark:text-neutral-400 max-w-md">
-                  Thank you for reaching out. We've received your inquiry and
-                  will get back to you shortly to discuss your vision.
+                <h2 className="text-3xl font-bold mb-4">
+                  {t("success.title")}
+                </h2>
+                <p className="text-neutral-400 max-w-md">
+                  {t("success.message")}
                 </p>
                 <button
                   onClick={() => setIsSuccess(false)}
-                  className="mt-8 text-sm font-mono uppercase tracking-widest border-b border-neutral-900 dark:border-neutral-50 pb-1 hover:opacity-70 transition-opacity">
-                  Send another message
+                  className="mt-8 text-sm font-mono uppercase tracking-widest border-b border-white pb-1 hover:opacity-70 transition-opacity">
+                  {t("success.action")}
                 </button>
               </motion.div>
             ) : (
@@ -290,27 +317,27 @@ function ContactForm() {
                     <option
                       value=""
                       disabled
-                      className="bg-white dark:bg-neutral-900">
-                      Select a service...
+                      className="bg-neutral-900 text-white">
+                      {t("form.service_placeholder")}
                     </option>
                     <option
                       value="digital_architecture"
-                      className="bg-white dark:bg-neutral-900">
+                      className="bg-neutral-900 text-white">
                       {t("form.service_options.digital_architecture")}
                     </option>
                     <option
                       value="visual_identity"
-                      className="bg-white dark:bg-neutral-900">
+                      className="bg-neutral-900 text-white">
                       {t("form.service_options.visual_identity")}
                     </option>
                     <option
                       value="ai_automation"
-                      className="bg-white dark:bg-neutral-900">
+                      className="bg-neutral-900 text-white">
                       {t("form.service_options.ai_automation")}
                     </option>
                     <option
                       value="growth"
-                      className="bg-white dark:bg-neutral-900">
+                      className="bg-neutral-900 text-white">
                       {t("form.service_options.growth")}
                     </option>
                   </select>
@@ -333,22 +360,22 @@ function ContactForm() {
                     <option
                       value=""
                       disabled
-                      className="bg-white dark:bg-neutral-900">
-                      Select a range...
+                      className="bg-neutral-900 text-white">
+                      {t("form.budget_placeholder")}
                     </option>
                     <option
                       value="under_50k"
-                      className="bg-white dark:bg-neutral-900">
+                      className="bg-neutral-900 text-white">
                       {t("form.budget_options.under_50k")}
                     </option>
                     <option
                       value="50k_100k"
-                      className="bg-white dark:bg-neutral-900">
+                      className="bg-neutral-900 text-white">
                       {t("form.budget_options.50k_100k")}
                     </option>
                     <option
                       value="over_100k"
-                      className="bg-white dark:bg-neutral-900">
+                      className="bg-neutral-900 text-white">
                       {t("form.budget_options.over_100k")}
                     </option>
                   </select>
@@ -376,9 +403,9 @@ function ContactForm() {
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
                   type="submit"
-                  className="w-full bg-neutral-900 dark:bg-neutral-50 text-white dark:text-neutral-900 py-6 text-lg font-bold tracking-wide uppercase flex items-center justify-center gap-4 hover:bg-neutral-800 dark:hover:bg-neutral-200 transition-colors disabled:opacity-50 rounded-full">
+                  className="w-full bg-white text-black py-6 text-lg font-bold tracking-wide uppercase flex items-center justify-center gap-4 hover:bg-neutral-200 transition-colors disabled:opacity-50 rounded-full">
                   {isSubmitting ? (
-                    "Sending..."
+                    t("form.sending")
                   ) : (
                     <>
                       {t("form.submit")}
@@ -399,7 +426,9 @@ export default function ContactPage() {
   return (
     <Suspense
       fallback={
-        <div className="min-h-screen pt-48 text-center">Loading...</div>
+        <div className="min-h-screen pt-48 text-center bg-[#050505] text-white">
+          Loading...
+        </div>
       }>
       <ContactForm />
     </Suspense>
