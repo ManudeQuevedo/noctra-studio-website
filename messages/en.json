@@ -1,0 +1,285 @@
+{
+  "HomePage": {
+    "title": "Clarity in the digital night",
+    "subtitle": "We illuminate your path with premium web development, branding, and SEO strategies.",
+    "cta_start": "Start Project",
+    "cta_services": "Our Services"
+  },
+  "Navigation": {
+    "home": "Home",
+    "about": "About Us",
+    "services": "Services",
+    "contact": "Contact",
+    "start_project": "Start Project",
+    "menu_open": "Menu",
+    "menu_close": "Close",
+    "get_in_touch": "Get in Touch"
+  },
+  "Footer": {
+    "hook": "Ready to bring clarity to the chaos?",
+    "get_started": "Get Started",
+    "studio_label": "Studio",
+    "brand_tagline": "Clarity in the digital night.",
+    "nav_title": "Navigation",
+    "services_title": "Services",
+    "connect_title": "Connect",
+    "copyright": "Copyright © {year} Noctra Studio.",
+    "system_status": "System Status: Operational",
+    "location": "Querétaro, MX",
+    "terms_of_service": "Terms of Service",
+    "privacy_policy": "Privacy Policy"
+  },
+  "Services": {
+    "section_title": "Our Services",
+    "web_dev_title": "Digital Architecture",
+    "web_dev_desc": "High-performance Next.js systems. We build for speed, scale, and silence.",
+    "branding_title": "Visual Identity",
+    "branding_desc": "Logos and systems that cut through the noise. We define who you are in the dark.",
+    "seo_title": "Growth Strategy",
+    "seo_desc": "Visibility in the dark. Technical SEO.",
+    "ai_title": "Intelligent Systems",
+    "ai_desc": "Automating chaos with AI agents.",
+    "explore_capabilities": "Explore all capabilities",
+    "lets_talk": "Let's talk!"
+  },
+  "ServicesPage": {
+    "title": "Our Capabilities",
+    "subtitle": "A comprehensive toolkit to bring structure to the digital chaos.",
+    "web_dev": {
+      "title": "Digital Architecture",
+      "focus": "We don't just build websites; we engineer high-performance digital platforms. Our focus is on speed, scalability, and creating a seamless user experience that feels instantaneous.",
+      "process": [
+        "System Architecture Design",
+        "Next.js & React Implementation",
+        "Performance Optimization",
+        "Accessibility Compliance"
+      ]
+    },
+    "branding": {
+      "title": "Visual Identity",
+      "focus": "Signal over noise. We create distinct design systems that cut through the clutter. Your brand should be a beacon in the dark, instantly recognizable and impossible to ignore.",
+      "process": [
+        "Brand Strategy Workshop",
+        "Logo & Identity Design",
+        "Design System Development",
+        "Brand Guidelines"
+      ]
+    },
+    "ai": {
+      "title": "Intelligent Systems",
+      "focus": "Automating chaos. We integrate AI agents and automation workflows to streamline your operations. Let machines handle the repetitive, so you can focus on the creative.",
+      "process": [
+        "Workflow Audit",
+        "Model Selection & Tuning",
+        "API Integration",
+        "Training & Deployment"
+      ]
+    },
+    "seo": {
+      "title": "Growth Strategy",
+      "focus": "Visibility in the dark. We use technical SEO and data-driven strategies to ensure your message reaches the right audience. It's not about more traffic; it's about the right traffic.",
+      "process": [
+        "Technical SEO Audit",
+        "Keyword Strategy",
+        "Content Optimization",
+        "Performance Tracking"
+      ]
+    },
+    "start_project": "Start Project"
+  },
+  "TrustedBy": {
+    "title": "Trusted by innovative companies"
+  },
+  "About": {
+    "title": "Our Philosophy",
+    "description": "Noctra Studio was born from the idea of bringing light to the dark. The digital world can be overwhelming; we are here to provide clarity, direction, and execution. We believe in minimalist design, robust engineering, and transparent communication."
+  },
+  "AboutPage": {
+    "hero": {
+      "title": "We architect clarity.",
+      "subtitle": "A design and engineering studio bridging the gap between aesthetic and function."
+    },
+    "founder_note": {
+      "title": "A Note from the Founder",
+      "content_1": "The digital landscape is cluttered. Everywhere you look, there's noise—unnecessary complexity, bloated code, and design that screams for attention without saying anything.",
+      "content_2": "At Noctra, we believe in the power of silence. We strip away the inessential to reveal the core. We don't just build websites; we engineer digital architectures that stand the test of time.",
+      "signature": "Manu, Founder"
+    },
+    "tech_radar": {
+      "title": "Technical Specification",
+      "ui_ux": "01 — UI/UX & Strategy",
+      "frontend": "02 — Frontend",
+      "backend_db": "03 — Backend & Database",
+      "cms": "04 — CMS (Headless)",
+      "infrastructure": "05 — Infrastructure"
+    },
+    "process": {
+      "title": "The Methodology",
+      "steps": [
+        { 
+          "title": "Discovery", 
+          "desc": "We don't just take a ticket. We sit with you to unearth the business logic, the edge cases, and the long-term goals. We ensure we are solving the right problem before writing a single line of code.",
+          "checkpoint": "Output: Detailed Scope & Strategy Document"
+        },
+        { 
+          "title": "Architecture", 
+          "desc": "Code without a plan is technical debt. We blueprint your database schemas, API routes, and security protocols upfront. We measure twice so we only have to cut once.",
+          "checkpoint": "Output: Technical Blueprint & Stack Selection"
+        },
+        { 
+          "title": "Build", 
+          "desc": "No black boxes. We work in transparent sprints. You get access to a live staging environment so you can touch and feel the progress every single week. No surprises at the finish line.",
+          "checkpoint": "Output: Weekly Staging Deploys & Code Review"
+        },
+        { 
+          "title": "Launch", 
+          "desc": "Launch day shouldn't be stressful. We run rigorous performance audits, SEO checks, and stress tests. We don't just hand over the keys; we ensure the engine is purring.",
+          "checkpoint": "Output: 100/100 Lighthouse Score & Training"
+        }
+      ]
+    },
+    "manifesto": {
+      "title": "The Noctra Standard",
+      "cards": [
+        { "title": "No Templates", "desc": "Every line of code is written with purpose. We don't rely on bloat." },
+        { "title": "Speed First", "desc": "Performance is not an afterthought. It's the foundation." },
+        { "title": "Radical Clarity", "desc": "We communicate openly. No jargon, just results." }
+      ]
+    },
+    "cta": {
+      "title": "Ready to build?",
+      "button": "Start Project"
+    }
+  },
+  "Contact": {
+    "title": "Ready to start?",
+    "subtitle": "Let's discuss how we can elevate your brand. Reach out to us for a consultation.",
+    "name_placeholder": "Your Name",
+    "email_placeholder": "Your Email",
+    "message_placeholder": "Tell us about your project...",
+    "submit_button": "Send Message"
+  },
+  "ContactPage": {
+    "hero": {
+      "title": "Let's start the conversation.",
+      "subtitle": "Tell us about your vision. We'll help you structure it."
+    },
+    "details": {
+      "email_label": "Email",
+      "location_label": "Studio",
+      "location_value": "Querétaro, MX",
+      "time_label": "Local Time"
+    },
+    "form": {
+      "name_label": "Name",
+      "name_placeholder": "John Doe",
+      "email_label": "Email",
+      "email_placeholder": "john@example.com",
+      "website_label": "Company Website",
+      "website_placeholder": "example.com (Optional)",
+      "service_label": "Service Needed",
+      "service_options": {
+        "digital_architecture": "Digital Architecture",
+        "visual_identity": "Visual Identity",
+        "ai_automation": "AI & Automation",
+        "growth": "Growth & Strategy"
+      },
+      "budget_label": "Budget Range (MXN)",
+      "budget_options": {
+        "under_50k": "< $50k",
+        "50k_100k": "$50k - $100k",
+        "over_100k": "> $100k"
+      },
+      "details_label": "Project Details",
+      "details_placeholder": "Tell us about your project goals, timeline, and any specific requirements...",
+      "submit": "Send Inquiry"
+    }
+  },
+  "TermsPage": {
+    "title": "Terms of Service",
+    "last_updated": "Last Updated: {date}",
+    "sections": {
+      "acceptance": {
+        "title": "1. Acceptance of Terms",
+        "content": "By accessing and using the website of Noctra Studio (\"we,\" \"us,\" or \"our\"), you agree to comply with and be bound by these Terms of Service. If you do not agree to these terms, please do not use our website or services. These terms apply to all visitors, users, and others who access or use the Service."
+      },
+      "services": {
+        "title": "2. Services Description",
+        "content": "Noctra Studio provides digital design, development, and strategic consulting services. We reserve the right to modify, suspend, or discontinue any aspect of our services at any time without prior notice. We are not liable to you or any third party for any modification, suspension, or discontinuation of the service."
+      },
+      "ip": {
+        "title": "3. Intellectual Property",
+        "content": "The content, features, and functionality of this website, including but not limited to text, graphics, logos, and software, are the exclusive property of Noctra Studio and are protected by international copyright, trademark, patent, trade secret, and other intellectual property or proprietary rights laws."
+      },
+      "obligations": {
+        "title": "4. User Obligations",
+        "content": "You agree not to use the website for any unlawful purpose or in any way that could damage, disable, overburden, or impair the site. You further agree not to attempt to gain unauthorized access to any part of the website, other accounts, computer systems, or networks connected to the website."
+      },
+      "liability": {
+        "title": "5. Limitation of Liability",
+        "content": "In no event shall Noctra Studio, its directors, employees, partners, agents, suppliers, or affiliates, be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from your access to or use of or inability to access or use the Service."
+      },
+      "governing": {
+        "title": "6. Governing Law and Jurisdiction",
+        "content": "These Terms shall be governed and construed in accordance with the laws of Mexico, without regard to its conflict of law provisions. Any dispute arising from these Terms shall be subject to the exclusive jurisdiction of the courts located in Mexico City, Mexico."
+      },
+      "contact": {
+        "title": "7. Contact Us",
+        "content": "If you have any questions about these Terms, please contact us at:"
+      }
+    }
+  },
+  "PrivacyPage": {
+    "title": "Privacy Policy",
+    "last_updated": "Last Updated: {date}",
+    "sections": {
+      "intro": {
+        "title": "1. Introduction",
+        "content": "Noctra Studio (\"we,\" \"us,\" or \"our\") respects your privacy and is committed to protecting your personal data. This Privacy Policy explains how we collect, use, disclose, and safeguard your information when you visit our website, in compliance with the Federal Law on Protection of Personal Data Held by Private Parties (LFPDPPP) in Mexico and international standards."
+      },
+      "collection": {
+        "title": "2. Information We Collect",
+        "content": "We may collect personal information that you voluntarily provide to us when you contact us or use our services. This includes:",
+        "list": {
+          "identity": "Identity Data: Name, company name.",
+          "contact": "Contact Data: Email address, phone number.",
+          "project": "Project Data: Details about your project needs, budget, and timeline.",
+          "technical": "Technical Data: IP address, browser type, and usage data collected via cookies."
+        }
+      },
+      "purpose": {
+        "title": "3. Purpose of Processing",
+        "content": "We use your personal data for the following purposes:",
+        "list": {
+          "service": "To provide and maintain our services.",
+          "communication": "To communicate with you regarding your inquiries.",
+          "improvement": "To improve our website and user experience.",
+          "legal": "To comply with legal obligations."
+        }
+      },
+      "rights": {
+        "title": "4. Data Protection Rights (ARCO Rights)",
+        "content": "In accordance with the LFPDPPP, you have the right to Access, Rectify, Cancel, or Oppose (ARCO) the processing of your personal data.",
+        "list": {
+          "access": "Access: You have the right to know what personal data we hold about you.",
+          "rectification": "Rectification: You have the right to request correction of inaccurate or incomplete data.",
+          "cancellation": "Cancellation: You have the right to request the deletion of your data when it is no longer necessary.",
+          "opposition": "Opposition: You have the right to oppose the processing of your data for specific purposes."
+        },
+        "contact_text": "To exercise these rights, please contact us at"
+      },
+      "cookies": {
+        "title": "5. Cookies and Tracking Technologies",
+        "content": "We use cookies and similar tracking technologies to track the activity on our service and hold certain information. You can instruct your browser to refuse all cookies or to indicate when a cookie is being sent."
+      },
+      "changes": {
+        "title": "6. Changes to This Privacy Policy",
+        "content": "We may update our Privacy Policy from time to time. We will notify you of any changes by posting the new Privacy Policy on this page and updating the \"Last Updated\" date."
+      },
+      "contact": {
+        "title": "7. Contact Us",
+        "content": "If you have any questions about this Privacy Policy, please contact us at:"
+      }
+    }
+  }
+}

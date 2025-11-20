@@ -1,0 +1,135 @@
+"use client";
+
+import { useTranslations } from "next-intl";
+import {
+  Code2,
+  Database,
+  Globe,
+  Layers,
+  Zap,
+  Wind,
+  Cloud,
+  Server,
+  Box,
+  LayoutTemplate,
+  Container,
+} from "lucide-react";
+import {
+  SiPython,
+  SiRedis,
+  SiPrisma,
+  SiShopify,
+  SiPayloadcms,
+  SiCloudflare,
+  SiGithubactions,
+  SiTerraform,
+  SiFigma,
+  SiAdobe,
+  SiHotjar,
+} from "react-icons/si";
+import { FaUserFriends, FaFlask } from "react-icons/fa";
+
+export function TechStack() {
+  const t = useTranslations("AboutPage.tech_radar");
+
+  const categories = [
+    {
+      title: t("ui_ux"),
+      items: [
+        { label: "Figma", icon: SiFigma },
+        { label: "Adobe Creative Suite", icon: SiAdobe },
+        { label: "User Personas", icon: FaUserFriends },
+        { label: "A/B Testing", icon: FaFlask },
+        { label: "Heatmaps (Hotjar)", icon: SiHotjar },
+      ],
+    },
+    {
+      title: t("frontend"),
+      items: [
+        { label: "Next.js", icon: Globe },
+        { label: "React", icon: Code2 },
+        { label: "TypeScript", icon: Code2 },
+        { label: "Tailwind", icon: Wind },
+        { label: "GSAP", icon: Layers },
+      ],
+    },
+    {
+      title: t("backend_db"),
+      items: [
+        { label: "Node.js", icon: Server },
+        { label: "Python", icon: SiPython },
+        { label: "Supabase", icon: Database },
+        { label: "PostgreSQL", icon: Database },
+        { label: "Redis", icon: SiRedis },
+        { label: "Prisma", icon: SiPrisma },
+      ],
+    },
+    {
+      title: t("cms"),
+      items: [
+        { label: "Sanity", icon: LayoutTemplate },
+        { label: "Shopify (Hydrogen)", icon: SiShopify },
+        { label: "Payload CMS", icon: SiPayloadcms },
+        { label: "Strapi", icon: Box },
+        { label: "Contentful", icon: Box },
+      ],
+    },
+    {
+      title: t("infrastructure"),
+      items: [
+        { label: "Vercel", icon: Zap },
+        { label: "AWS", icon: Cloud },
+        { label: "Cloudflare", icon: SiCloudflare },
+        { label: "GitHub Actions", icon: SiGithubactions },
+        { label: "Terraform", icon: SiTerraform },
+        { label: "Docker", icon: Container },
+      ],
+    },
+  ];
+
+  const topRowItems = categories.slice(0, 3);
+  const bottomRowItems = categories.slice(3, 5);
+
+  const CategoryCard = ({ category }: { category: (typeof categories)[0] }) => (
+    <div className="flex flex-col h-full border-b border-r border-neutral-200 dark:border-neutral-800">
+      {/* Header */}
+      <div className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
+        <h3 className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+          {category.title}
+        </h3>
+      </div>
+
+      {/* List */}
+      <div className="flex-1 flex flex-col">
+        {category.items.map((item, itemIndex) => (
+          <div
+            key={itemIndex}
+            className="group flex items-center gap-4 px-6 py-4 border-b border-neutral-100 dark:border-neutral-800 last:border-b-0 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-200 cursor-default">
+            <item.icon className="w-5 h-5 text-neutral-900 dark:text-neutral-50" />
+            <span className="text-sm font-medium text-neutral-900 dark:text-neutral-50">
+              {item.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+
+  return (
+    <div className="w-full border-t border-l border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
+      {/* Top Row: 3 Columns */}
+      <div className="grid grid-cols-1 lg:grid-cols-3">
+        {topRowItems.map((category, index) => (
+          <CategoryCard key={index} category={category} />
+        ))}
+      </div>
+
+      {/* Bottom Row: 2 Columns */}
+      <div className="grid grid-cols-1 lg:grid-cols-2">
+        {bottomRowItems.map((category, index) => (
+          <CategoryCard key={index} category={category} />
+        ))}
+      </div>
+    </div>
+  );
+}
