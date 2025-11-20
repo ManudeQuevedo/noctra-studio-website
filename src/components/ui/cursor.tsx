@@ -45,7 +45,7 @@ export function Cursor() {
     <>
       {/* Spotlight Cursor */}
       <motion.div
-        className="fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference backdrop-grayscale backdrop-contrast-200"
+        className="hidden md:block fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference backdrop-grayscale backdrop-contrast-200"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -65,12 +65,14 @@ export function Cursor() {
         }}
       />
       <style jsx global>{`
-        body {
-          cursor: none;
-        }
-        a,
-        button {
-          cursor: none;
+        @media (min-width: 768px) {
+          body {
+            cursor: none;
+          }
+          a,
+          button {
+            cursor: none;
+          }
         }
       `}</style>
     </>
