@@ -38,6 +38,24 @@ export function ServicesGrid() {
 
   return (
     <section className="w-full max-w-5xl mx-auto px-6 md:px-8 py-24">
+      {/* Section Header */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.6 }}
+        className="text-center mb-16 space-y-4">
+        <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+          // WHAT WE CRAFT
+        </span>
+        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+          Digital Solutions That Scale
+        </h2>
+        <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+          From concept to deployment, we architect experiences that endure.
+        </p>
+      </motion.div>
+
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
         {services.map((service, index) => (
           <Link href="/services" key={service.id} className="block h-full">
@@ -59,10 +77,10 @@ export function ServicesGrid() {
                     className="w-10 h-10 text-neutral-900 dark:text-white transition-transform duration-300 group-hover:scale-110"
                   />
                 </div>
-                <h3 className="text-xl font-bold mb-2 text-neutral-900 dark:text-white">
+                <h3 className="text-xl font-semibold mb-2 text-neutral-900 dark:text-white">
                   {service.title}
                 </h3>
-                <p className="text-sm text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <p className="text-sm text-neutral-500 dark:text-neutral-400 mt-4 leading-relaxed">
                   {service.description}
                 </p>
               </div>

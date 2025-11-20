@@ -107,7 +107,7 @@ export function ManifestoText() {
       initial="hidden"
       whileInView="visible"
       viewport={{ once: true, margin: "-100px" }}
-      className="text-4xl md:text-6xl lg:text-7xl text-neutral-500 font-medium tracking-tighter leading-[1.1] max-w-5xl mx-auto">
+      className="text-2xl md:text-3xl font-light text-neutral-600 leading-relaxed max-w-3xl mx-auto">
       {parts.map((part, index) => {
         if (part.startsWith("[") && part.endsWith("]")) {
           // Remove brackets
