@@ -1,5 +1,4 @@
 import { useTranslations } from "next-intl";
-import { TechMarquee } from "@/components/tech-marquee";
 
 export function About() {
   const t = useTranslations("About");
@@ -15,9 +14,6 @@ export function About() {
             <p className="text-lg text-neutral-400 leading-relaxed">
               {t("description")}
             </p>
-          </div>
-          <div className="relative w-full overflow-hidden">
-            <TechMarquee />
           </div>
         </div>
       </div>

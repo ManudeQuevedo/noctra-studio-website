@@ -118,7 +118,7 @@ export default function ServicesPage() {
   ];
 
   return (
-    <main className="min-h-screen pt-48 pb-0 relative z-0">
+    <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0">
       {/* Header */}
       <section className="w-full max-w-5xl mx-auto px-6 md:px-8 mb-32">
         <motion.div

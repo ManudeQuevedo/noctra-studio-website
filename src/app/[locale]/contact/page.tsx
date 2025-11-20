@@ -122,7 +122,7 @@ function ContactForm() {
     "block text-xs font-mono uppercase tracking-widest text-neutral-500 dark:text-neutral-400 mb-2";
 
   return (
-    <main className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 pt-48">
+    <main className="min-h-screen bg-transparent text-neutral-900 dark:text-neutral-50 pt-48">
       <div className="max-w-5xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32">
           {/* Left Column: Context */}

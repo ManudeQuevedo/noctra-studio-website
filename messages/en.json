@@ -2,13 +2,14 @@
   "HomePage": {
     "title": "Clarity in the digital night",
     "subtitle": "We illuminate your path with premium web development, branding, and SEO strategies.",
-    "cta_start": "Start Project",
+    "cta_start": "Book Strategy Call",
     "cta_services": "Our Services"
   },
   "Navigation": {
     "home": "Home",
     "about": "About Us",
     "services": "Services",
+    "blog": "Blog",
     "contact": "Contact",
     "start_project": "Start Project",
     "menu_open": "Menu",
@@ -88,11 +89,15 @@
     "start_project": "Start Project"
   },
   "TrustedBy": {
-    "title": "Trusted by innovative companies"
+    "title": "Our Engineering Arsenal"
+  },
+  "BlogPage": {
+    "title": "Signal Incoming",
+    "description": "We are currently compiling our transmission. Check back soon."
   },
   "About": {
     "title": "Our Philosophy",
-    "description": "Noctra Studio was born from the idea of bringing light to the dark. The digital world can be overwhelming; we are here to provide clarity, direction, and execution. We believe in minimalist design, robust engineering, and transparent communication."
+    "description": "Chaos is the default state of the web. We engineer clarity. We don't just build websites; we architect silent, scalable digital systems that cut through the noise. No bloat, just execution."
   },
   "AboutPage": {
     "hero": {

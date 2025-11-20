@@ -1,17 +1,23 @@
-"use client";
-
 import { useTranslations } from "next-intl";
+import {
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiDocker,
+  SiAmazon,
+  SiPostgresql,
+} from "react-icons/si";
 
 export function TrustedBy() {
   const t = useTranslations("TrustedBy");
 
-  const companies = [
-    "Decagon",
-    "Windsurf",
-    "Terradot",
-    "Vercel",
-    "Linear",
-    "Raycast",
+  const stack = [
+    { name: "Next.js", icon: SiNextdotjs },
+    { name: "React", icon: SiReact },
+    { name: "TypeScript", icon: SiTypescript },
+    { name: "Docker", icon: SiDocker },
+    { name: "AWS", icon: SiAmazon },
+    { name: "PostgreSQL", icon: SiPostgresql },
   ];
 
   return (
@@ -19,10 +25,13 @@ export function TrustedBy() {
       <p className="text-sm text-muted-foreground font-medium mb-8 text-center uppercase tracking-wider">
         {t("title")}
       </p>
-      <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-70 grayscale hover:grayscale-0 transition-all duration-500">
-        {companies.map((company) => (
-          <div key={company} className="text-xl font-bold text-foreground/80">
-            {company}
+      <div className="flex flex-wrap justify-center items-center gap-x-12 gap-y-8 opacity-50 hover:opacity-100 transition-opacity duration-500">
+        {stack.map((tech) => (
+          <div
+            key={tech.name}
+            className="text-4xl text-foreground/80 hover:text-foreground transition-colors duration-300"
+            title={tech.name}>
+            <tech.icon />
           </div>
         ))}
       </div>

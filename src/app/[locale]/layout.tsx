@@ -7,6 +7,7 @@ import { getMessages } from "next-intl/server";
 import { Cursor } from "@/components/ui/cursor";
 import { Header } from "@/components/header";
 import { Footer } from "@/components/footer";
+import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -38,10 +39,12 @@ export default async function LocaleLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
+          <BackgroundManager />
           <ThemeProvider
             attribute="class"
-            defaultTheme="system"
-            enableSystem
+            defaultTheme="dark"
+            forcedTheme="dark"
+            enableSystem={false}
             disableTransitionOnChange>
             <Cursor />
             <Header />

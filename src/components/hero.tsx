@@ -2,49 +2,56 @@
 
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { BackgroundBeamsWithCollision } from "@/components/ui/background-beams-with-collision";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
+import { ChevronDown } from "lucide-react";
 
 export function Hero() {
   const t = useTranslations("HomePage");
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden bg-background pt-32 pb-16 text-center">
-      <BackgroundBeamsWithCollision className="absolute inset-0 h-full w-full">
-        {/* Empty children for the beams component itself, content sits on top or inside if designed that way. 
-            The user's demo puts content INSIDE. Let's put our content inside. */}
-        <div className="relative z-20 flex flex-col items-center justify-center px-6 md:px-8 w-full h-full pointer-events-none">
-          {/* We need pointer-events-auto for buttons */}
-        </div>
-      </BackgroundBeamsWithCollision>
-
+    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-32 pb-16 text-center z-10 bg-transparent">
       <motion.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
-        className="max-w-5xl space-y-8 w-full z-30 relative pointer-events-auto">
-        <h1 className="text-5xl font-bold tracking-tighter sm:text-6xl md:text-7xl lg:text-8xl leading-[1.1] text-balance">
-          {t("title")}
+        className="max-w-5xl space-y-8 w-full z-30 relative pointer-events-auto px-6">
+        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
+          Clarity in the digital night.
         </h1>
-        <p className="mx-auto max-w-[700px] text-muted-foreground text-xl md:text-2xl font-medium">
-          {t("subtitle")}
+
+        <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">
+          We illuminate your path with premium web development, branding, and
+          SEO strategies.
         </p>
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
+
+        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
           <Button
             asChild
             size="lg"
-            className="rounded-full h-12 px-8 text-base">
+            className="rounded-full h-12 px-8 text-base bg-white text-black hover:bg-neutral-200 transition-colors duration-300">
             <Link href="/contact">{t("cta_start")}</Link>
           </Button>
           <Button
             asChild
             variant="outline"
             size="lg"
-            className="rounded-full h-12 px-8 text-base">
+            className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
             <Link href="/services">{t("cta_services")}</Link>
           </Button>
         </div>
+      </motion.div>
+
+      {/* Scroll Indicator */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1, y: [0, 10, 0] }}
+        transition={{
+          opacity: { delay: 1, duration: 1 },
+          y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
+        }}
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-600">
+        <ChevronDown className="w-8 h-8" />
       </motion.div>
     </section>
   );

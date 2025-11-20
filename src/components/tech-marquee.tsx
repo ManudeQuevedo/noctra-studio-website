@@ -25,6 +25,7 @@ import {
   SiFigma,
   SiAdobe,
   SiHotjar,
+  SiTypescript,
 } from "react-icons/si";
 import { FaUserFriends, FaFlask } from "react-icons/fa";
 import { motion } from "framer-motion";
@@ -44,6 +45,14 @@ const icons = [
   { icon: SiRedis, label: "Redis" },
   { icon: Container, label: "Docker" },
   { icon: SiGithubactions, label: "GitHub Actions" },
+  { icon: SiAdobe, label: "Adobe" },
+  { icon: Layers, label: "GSAP" },
+  { icon: SiShopify, label: "Shopify" },
+  { icon: SiPayloadcms, label: "Payload" },
+  { icon: Box, label: "Strapi" },
+  { icon: Box, label: "Contentful" },
+  { icon: SiTerraform, label: "Terraform" },
+  { icon: SiTypescript, label: "TypeScript" },
 ];
 
 export function TechMarquee() {

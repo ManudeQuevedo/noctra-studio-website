@@ -11,7 +11,6 @@ import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { Link, usePathname } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
-import { ModeToggle } from "@/components/mode-toggle";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
 import { Instagram } from "lucide-react";
@@ -97,6 +96,7 @@ export function Header() {
     { label: t("home"), href: "/" },
     { label: t("about"), href: "/about" },
     { label: t("services"), href: "/services" },
+    { label: t("blog"), href: "/blog" },
     { label: t("contact"), href: "/contact" },
   ];
 
@@ -318,7 +318,6 @@ export function Header() {
 
                     <div className="flex items-center gap-4">
                       <LanguageSwitcher />
-                      <ModeToggle />
                     </div>
                   </div>
                 </motion.div>
