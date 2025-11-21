@@ -185,6 +185,24 @@
     },
     "start_project": "Start Project"
   },
+  "TargetAudience": {
+    "title": "Built for those who value excellence.",
+    "professional": {
+      "headline": "Practice & Reputation",
+      "target": "Doctors, Lawyers, Architects",
+      "copy": "Your digital presence should carry the same authority as your practice. We build portfolios that build trust instantly."
+    },
+    "business": {
+      "headline": "Growth & Scale",
+      "target": "Startups, Retail, Hospitality",
+      "copy": "Stop renting your audience. We engineer assets that convert traffic into revenue and scale with your ambition."
+    },
+    "enterprise": {
+      "headline": "Security & Infrastructure",
+      "target": "Corporate, FinTech, SaaS",
+      "copy": "Robust, type-safe architecture designed for security, uptime, and seamless team integration."
+    }
+  },
   "TrustedBy": {
     "title": "Our Engineering Arsenal"
   },
@@ -257,6 +275,24 @@
         }
       }
     },
+    "TargetAudience": {
+      "title": "Built for those who value excellence.",
+      "professional": {
+        "headline": "Practice & Reputation",
+        "target": "Doctors, Lawyers, Architects",
+        "copy": "Your digital presence should carry the same authority as your practice. We build portfolios that build trust instantly."
+      },
+      "business": {
+        "headline": "Growth & Scale",
+        "target": "Startups, Retail, Hospitality",
+        "copy": "Stop renting your audience. We engineer assets that convert traffic into revenue and scale with your ambition."
+      },
+      "enterprise": {
+        "headline": "Security & Infrastructure",
+        "target": "Corporate, FinTech, SaaS",
+        "copy": "Robust, type-safe architecture designed for security, uptime, and seamless team integration."
+      }
+    },
     "manifesto": {
       "title": "The Noctra Standard",
       "cards": [
@@ -268,17 +304,19 @@
     "impact": {
       "title": "The Noctra Ecosystem",
       "subtitle": "Building systems that extend beyond client work—supporting causes and forging talent.",
-      "beacon": {
-        "title": "Illuminating Causes.",
+      "volunteering": {
+        "title": "Technological Volunteering",
         "desc": "We believe digital clarity should be accessible to those changing the world. Each year, we select one non-profit organization to receive a complete digital transformation, pro bono.",
         "note_label": "Note:",
-        "note_text": "The grant covers 100% of strategy, design, and development fees. Organizations remain responsible for their own domain and infrastructure costs to ensure full asset ownership.",
-        "cta": "Apply for Beacon Grant"
+        "note_text": "The program covers 100% of strategy, design, and development fees. Organizations remain responsible for their own domain and infrastructure costs to ensure full asset ownership.",
+        "cta": "Apply for Volunteering"
       },
-      "residency": {
-        "title": "Forging Architects.",
+      "mentorship": {
+        "title": "Technical Mentorship",
         "desc": "We don't hire interns; we train architects. A rigorous mentorship program for developers with raw talent and relentless drive. You build real systems; we provide the blueprint.",
-        "cta": "Join the Residency"
+        "note_label": "Note:",
+        "note_text": "This is not a full-time role. It is a paid mentorship opportunity per completed project, designed to sharpen your engineering, logic, and problem-solving skills in real-world scenarios.",
+        "cta": "Join the Mentorship"
       }
     }
   },

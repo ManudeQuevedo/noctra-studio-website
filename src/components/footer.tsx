@@ -43,7 +43,7 @@ export function Footer() {
       {/* Row 1: The Hook - Hidden on Contact Page */}
       {!isContactPage && (
         <div className="border-b border-neutral-900">
-          <div className="max-w-5xl mx-auto px-6 md:px-8 py-12 md:py-16 pb-12 flex flex-col md:flex-row items-center justify-between gap-6">
+          <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16 pb-12 flex flex-col md:flex-row items-center justify-between gap-6">
             <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight max-w-2xl">
               {t("hook")}
             </h2>
@@ -60,7 +60,7 @@ export function Footer() {
 
       {/* Row 2: The Data Grid */}
       <div className="border-b border-neutral-900">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-7xl mx-auto">
           <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-neutral-900">
             {/* Col 1: Identity */}
             <div className="p-6 md:p-8 flex flex-col gap-4">
@@ -167,7 +167,7 @@ export function Footer() {
 
       {/* Row 3: The Metadata */}
       <div className="bg-[#050505]">
-        <div className="max-w-5xl mx-auto px-6 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 gap-4 md:gap-0">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 gap-4 md:gap-0">
           <div className="w-full md:w-auto text-center md:text-left">
             {t("copyright", { year })}
           </div>
@@ -188,7 +188,7 @@ export function Footer() {
         </div>
 
         {/* Designed In - Bottom Line */}
-        <div className="max-w-5xl mx-auto px-6 md:px-8 pb-8 text-center">
+        <div className="max-w-7xl mx-auto px-6 md:px-8 pb-8 text-center">
           <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-mono">
             {t("designed_in")}
           </p>

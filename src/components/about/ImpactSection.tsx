@@ -37,34 +37,34 @@ export function ImpactSection() {
         </FadeIn>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-0 border border-neutral-800">
-          {/* Card 1: Noctra Beacon */}
+          {/* Card 1: Technological Volunteering */}
           <FadeIn delay={0.1}>
             <div className="group border-r-0 md:border-r border-neutral-800 border-b md:border-b-0 p-8 md:p-12 transition-all duration-300 hover:bg-neutral-900 bg-neutral-950">
               <div className="flex flex-col h-full">
                 <Lightbulb className="w-10 h-10 text-white mb-6" />
 
                 <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
-                  {t("beacon.title")}
+                  {t("volunteering.title")}
                 </h3>
 
                 <p className="text-base text-neutral-400 leading-relaxed mb-6">
-                  {t("beacon.desc")}
+                  {t("volunteering.desc")}
                 </p>
 
                 <div className="mt-auto">
                   <div className="bg-neutral-900 border border-neutral-800 p-4 rounded-sm mb-6">
                     <p className="text-xs font-mono text-neutral-500 leading-relaxed">
                       <strong className="text-neutral-400">
-                        {t("beacon.note_label")}
+                        {t("volunteering.note_label")}
                       </strong>{" "}
-                      {t("beacon.note_text")}
+                      {t("volunteering.note_text")}
                     </p>
                   </div>
 
                   <Link
                     href="/contact"
                     className="inline-flex items-center text-sm font-medium text-white group-hover:text-neutral-400 transition-colors">
-                    {t("beacon.cta")}
+                    {t("volunteering.cta")}
                     <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>
@@ -72,25 +72,34 @@ export function ImpactSection() {
             </div>
           </FadeIn>
 
-          {/* Card 2: The Residency */}
+          {/* Card 2: Technical Mentorship */}
           <FadeIn delay={0.2}>
             <div className="group p-8 md:p-12 transition-all duration-300 hover:bg-neutral-900 bg-neutral-950">
               <div className="flex flex-col h-full">
                 <DraftingCompass className="w-10 h-10 text-white mb-6" />
 
                 <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
-                  {t("residency.title")}
+                  {t("mentorship.title")}
                 </h3>
 
                 <p className="text-base text-neutral-400 leading-relaxed mb-6">
-                  {t("residency.desc")}
+                  {t("mentorship.desc")}
                 </p>
 
                 <div className="mt-auto">
+                  <div className="bg-neutral-900 border border-neutral-800 p-4 rounded-sm mb-6">
+                    <p className="text-xs font-mono text-neutral-500 leading-relaxed">
+                      <strong className="text-neutral-400">
+                        {t("mentorship.note_label")}
+                      </strong>{" "}
+                      {t("mentorship.note_text")}
+                    </p>
+                  </div>
+
                   <Link
                     href="/contact"
                     className="inline-flex items-center text-sm font-medium text-white group-hover:text-neutral-400 transition-colors">
-                    {t("residency.cta")}
+                    {t("mentorship.cta")}
                     <ArrowRight className="ml-2 w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </Link>
                 </div>

@@ -19,6 +19,13 @@ const PhilosophySection = dynamic(
     })),
   { ssr: true }
 );
+const TargetAudienceSection = dynamic(
+  () =>
+    import("@/components/home/TargetAudienceSection").then((mod) => ({
+      default: mod.TargetAudienceSection,
+    })),
+  { ssr: true }
+);
 
 export async function generateMetadata({
   params,
@@ -50,6 +57,7 @@ export default async function HomePage() {
       <HeroTextSection />
 
       <ServicesGrid images={images} />
+      <TargetAudienceSection />
       <PhilosophySection />
     </>
   );

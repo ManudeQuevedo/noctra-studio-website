@@ -48,7 +48,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
   ];
 
   return (
-    <section className="w-full max-w-5xl mx-auto px-6 md:px-8 py-24">
+    <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24">
       {/* Section Header */}
       <motion.div
         initial={{ opacity: 0, y: 20 }}

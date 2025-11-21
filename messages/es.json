@@ -185,6 +185,24 @@
     },
     "start_project": "Iniciar Proyecto"
   },
+  "TargetAudience": {
+    "title": "Construido para quienes valoran la excelencia.",
+    "professional": {
+      "headline": "Práctica y Reputación",
+      "target": "Doctores, Abogados, Arquitectos",
+      "copy": "Tu presencia digital debe tener la misma autoridad que tu práctica. Construimos portafolios que generan confianza al instante."
+    },
+    "business": {
+      "headline": "Crecimiento y Escala",
+      "target": "Startups, Retail, Hospitalidad",
+      "copy": "Deja de alquilar tu audiencia. Diseñamos activos que convierten el tráfico en ingresos y escalan con tu ambición."
+    },
+    "enterprise": {
+      "headline": "Seguridad e Infraestructura",
+      "target": "Corporativo, FinTech, SaaS",
+      "copy": "Arquitectura robusta y segura, diseñada para el tiempo de actividad y la integración perfecta del equipo."
+    }
+  },
   "TrustedBy": {
     "title": "Nuestro Arsenal de Ingeniería"
   },
@@ -257,6 +275,7 @@
         }
       }
     },
+
     "manifesto": {
       "title": "El Estándar Noctra",
       "cards": [
@@ -268,18 +287,20 @@
     "impact": {
       "title": "El Ecosistema Noctra",
       "subtitle": "Construyendo sistemas que se extienden más allá del trabajo del cliente—apoyando causas y forjando talento.",
-      "beacon": {
-        "title": "Iluminando Causas.",
-        "desc": "Creemos que la claridad digital debe ser accesible para aquellos que están cambiando el mundo. Cada año, seleccionamos una organización sin fines de lucro para recibir una transformación digital completa, pro bono.",
-        "note_label": "Nota:",
-        "note_text": "La subvención cubre el 100% de las tarifas de estrategia, diseño y desarrollo. Las organizaciones siguen siendo responsables de sus propios costos de dominio e infraestructura para garantizar la propiedad total de los activos.",
-        "cta": "Solicitar la Subvención Beacon"
-      },
-      "residency": {
-        "title": "Forjando Arquitectos.",
-        "desc": "No contratamos pasantes; entrenamos arquitectos. Un riguroso programa de mentoría para desarrolladores con talento en bruto y impulso implacable. Construyes sistemas reales; nosotros proporcionamos el plano.",
-        "cta": "Unirse a la Residencia"
-      }
+        "volunteering": {
+          "title": "Voluntariado Tecnológico",
+          "desc": "Creemos que la claridad digital debe ser accesible para aquellos que están cambiando el mundo. Cada año, seleccionamos una organización sin fines de lucro para recibir una transformación digital completa, pro bono.",
+          "note_label": "Nota:",
+          "note_text": "El programa cubre el 100% de las tarifas de estrategia, diseño y desarrollo. Las organizaciones siguen siendo responsables de sus propios costos de dominio e infraestructura para garantizar la propiedad total de los activos.",
+          "cta": "Aplicar al Voluntariado"
+        },
+        "mentorship": {
+          "title": "Mentoría Técnica",
+          "desc": "No contratamos pasantes; entrenamos arquitectos. Un riguroso programa de mentoría para desarrolladores con talento en bruto e impulso implacable. Construyes sistemas reales; nosotros proporcionamos el plano.",
+          "note_label": "Nota:",
+          "note_text": "Nota: No es un puesto de tiempo completo. Es una oportunidad de mentoría remunerada por proyecto completado, diseñada para potenciar tus habilidades de ingeniería, lógica y resolución de problemas en escenarios reales.",
+          "cta": "Unirse a la Mentoría"
+        }
     }
   },
   "Contact": {

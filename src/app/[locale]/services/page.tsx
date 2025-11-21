@@ -29,7 +29,7 @@ const ServiceSection = ({
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
   return (
-    <section className="w-full max-w-5xl mx-auto px-6 md:px-8">
+    <section className="w-full max-w-7xl mx-auto px-6 md:px-8">
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
         {/* Left Column - Sticky Title & Visual Reveal */}
         <div className="md:col-span-5 relative">
@@ -148,7 +148,7 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0">
       {/* Header */}
-      <section className="w-full max-w-5xl mx-auto px-6 md:px-8 mb-32">
+      <section className="w-full max-w-7xl mx-auto px-6 md:px-8 mb-32">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}

@@ -109,7 +109,7 @@ export function Header() {
         initial={false}
         animate={isOpen ? "open" : "closed"}
         className={cn(
-          "relative overflow-hidden pointer-events-auto transition-all duration-500 w-full max-w-5xl",
+          "relative overflow-hidden pointer-events-auto transition-all duration-500 w-full max-w-7xl",
           isOpen
             ? "bg-neutral-950 dark:bg-white shadow-2xl" // Open: Inverted Theme
             : isScrolled
