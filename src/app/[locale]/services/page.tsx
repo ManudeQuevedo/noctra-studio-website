@@ -179,18 +179,27 @@ export default function ServicesPage() {
         <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-900 text-white py-24 border-y border-white/10">
           <div className="max-w-7xl mx-auto px-6 md:px-8">
             <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
-              <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter font-mono">
+              <div className="space-y-4">
+                <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                  STANDARD 01
+                </span>
+                <div className="text-3xl md:text-4xl font-bold tracking-tight">
                   {t("metrics.lighthouse")}
                 </div>
               </div>
-              <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter font-mono">
+              <div className="space-y-4">
+                <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                  STANDARD 02
+                </span>
+                <div className="text-3xl md:text-4xl font-bold tracking-tight">
                   {t("metrics.latency")}
                 </div>
               </div>
-              <div className="space-y-2">
-                <div className="text-4xl md:text-5xl font-bold tracking-tighter font-mono">
+              <div className="space-y-4">
+                <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                  STANDARD 03
+                </span>
+                <div className="text-3xl md:text-4xl font-bold tracking-tight">
                   {t("metrics.uptime")}
                 </div>
               </div>

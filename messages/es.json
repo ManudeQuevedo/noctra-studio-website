@@ -130,7 +130,7 @@
       "deliverables": [
         "Despliegue en Vercel en Vivo",
         "Repositorio GitHub Limpio",
-        "Puntuación Lighthouse 100/100"
+        "Optimización Core Web Vitals"
       ]
     },
     "branding": {
@@ -179,9 +179,9 @@
       ]
     },
     "metrics": {
-      "lighthouse": "100% Puntuación Lighthouse",
-      "latency": "0.1s Latencia API",
-      "uptime": "24/7 Tiempo de Actividad"
+      "lighthouse": "Arquitectura Primero",
+      "latency": "Despliegue Global",
+      "uptime": "Seguridad por Diseño"
     },
     "start_project": "Iniciar Proyecto"
   },
@@ -234,28 +234,28 @@
     },
     "process": {
       "title": "La Metodología",
-      "steps": [
-        { 
+      "steps": {
+        "0": { 
           "title": "Descubrimiento", 
           "desc": "No solo tomamos un ticket. Nos sentamos contigo para descubrir la lógica de negocio, los casos extremos y los objetivos a largo plazo. Nos aseguramos de resolver el problema correcto antes de escribir una sola línea de código.",
           "checkpoint": "Entregable: Documento Detallado de Alcance y Estrategia"
         },
-        { 
+        "1": { 
           "title": "Arquitectura", 
           "desc": "El código sin un plan es deuda técnica. Diseñamos tus esquemas de base de datos, rutas de API y protocolos de seguridad por adelantado. Medimos dos veces para cortar solo una vez.",
           "checkpoint": "Entregable: Plano Técnico y Selección de Stack"
         },
-        { 
+        "2": { 
           "title": "Construcción", 
           "desc": "Sin cajas negras. Trabajamos en sprints transparentes. Tienes acceso a un entorno de staging en vivo para que puedas ver y sentir el progreso cada semana. Sin sorpresas en la línea de meta.",
           "checkpoint": "Entregable: Despliegues Semanales y Revisión de Código"
         },
-        { 
+        "3": { 
           "title": "Lanzamiento", 
           "desc": "El día del lanzamiento no debería ser estresante. Ejecutamos rigurosas auditorías de rendimiento, comprobaciones de SEO y pruebas de estrés. No solo entregamos las llaves; nos aseguramos de que el motor esté ronroneando.",
           "checkpoint": "Entregable: Puntuación Lighthouse 100/100 y Capacitación"
         }
-      ]
+      }
     },
     "manifesto": {
       "title": "El Estándar Noctra",

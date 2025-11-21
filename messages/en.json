@@ -130,7 +130,7 @@
       "deliverables": [
         "Live Vercel Deployment",
         "Clean GitHub Repo",
-        "100/100 Lighthouse Score"
+        "Core Web Vitals Optimized"
       ]
     },
     "branding": {
@@ -179,9 +179,9 @@
       ]
     },
     "metrics": {
-      "lighthouse": "100% Lighthouse Scores",
-      "latency": "0.1s API Latency",
-      "uptime": "24/7 System Uptime"
+      "lighthouse": "Architecture First",
+      "latency": "Global Deployment",
+      "uptime": "Secure by Design"
     },
     "start_project": "Start Project"
   },
@@ -234,28 +234,28 @@
     },
     "process": {
       "title": "The Methodology",
-      "steps": [
-        { 
+      "steps": {
+        "0": { 
           "title": "Discovery", 
           "desc": "We don't just take a ticket. We sit with you to unearth the business logic, the edge cases, and the long-term goals. We ensure we are solving the right problem before writing a single line of code.",
           "checkpoint": "Output: Detailed Scope & Strategy Document"
         },
-        { 
+        "1": { 
           "title": "Architecture", 
           "desc": "Code without a plan is technical debt. We blueprint your database schemas, API routes, and security protocols upfront. We measure twice so we only have to cut once.",
           "checkpoint": "Output: Technical Blueprint & Stack Selection"
         },
-        { 
+        "2": { 
           "title": "Build", 
           "desc": "No black boxes. We work in transparent sprints. You get access to a live staging environment so you can touch and feel the progress every single week. No surprises at the finish line.",
           "checkpoint": "Output: Weekly Staging Deploys & Code Review"
         },
-        { 
+        "3": { 
           "title": "Launch", 
           "desc": "Launch day shouldn't be stressful. We run rigorous performance audits, SEO checks, and stress tests. We don't just hand over the keys; we ensure the engine is purring.",
           "checkpoint": "Output: 100/100 Lighthouse Score & Training"
         }
-      ]
+      }
     },
     "manifesto": {
       "title": "The Noctra Standard",

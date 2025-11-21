@@ -7,6 +7,7 @@ import { GridStructure } from "@/components/backgrounds/GridStructure";
 import { SignalBeacon } from "@/components/backgrounds/SignalBeacon";
 import { StaticNoise } from "@/components/backgrounds/StaticNoise";
 import { NetworkGrid } from "@/components/backgrounds/NetworkGrid";
+import { MeteorShower } from "@/components/ui/MeteorShower";
 
 export function BackgroundManager() {
   const pathname = usePathname();
@@ -33,7 +34,7 @@ export function BackgroundManager() {
       return <StaticNoise key="noise" />;
     }
     if (pathname.includes("/about")) {
-      return <NetworkGrid key="network" />;
+      return <MeteorShower key="meteors" />;
     }
 
     // Default fallback
