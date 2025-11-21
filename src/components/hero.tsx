@@ -19,7 +19,7 @@ export function Hero() {
         <div className="mb-6 inline-flex items-center justify-center border border-neutral-200 dark:border-neutral-800 rounded-full px-4 py-1 text-xs font-mono uppercase tracking-widest text-neutral-500">
           {t("hero.trust_badge")}
         </div>
-        <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
+        <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white">
           {t("hero.title")}
         </h1>
 

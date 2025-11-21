@@ -1,4 +1,10 @@
 {
+  "HeroTextSection": {
+    "part1": "No solo construimos sitios web. ",
+    "part2": "Arquitectamos los sistemas silenciosos y escalables que empoderan a ",
+    "part3": "empresas visionarias ",
+    "part4": "para crecer sin fricción."
+  },
   "HomePage": {
     "hero": {
       "title": "Claridad en la noche digital.",

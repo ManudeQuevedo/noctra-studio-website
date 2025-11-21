@@ -25,11 +25,39 @@ type FormData = {
   details: string;
 };
 
+const BUDGET_OPTIONS = {
+  MXN: [
+    {
+      label: "Identity (Landing / Portfolio) — $30k - $50k",
+      value: "Identity (30k-50k MXN)",
+    },
+    {
+      label: "Growth (Corporate / E-comm) — $60k - $120k",
+      value: "Growth (60k-120k MXN)",
+    },
+    { label: "System (Custom Software) — +$150k", value: "System (+150k MXN)" },
+    { label: "Retainer / Consulting", value: "Consulting" },
+  ],
+  USD: [
+    {
+      label: "Identity (Landing / Portfolio) — $1.5k - $3k",
+      value: "Identity (1.5k-3k USD)",
+    },
+    {
+      label: "Growth (Corporate / E-comm) — $3.5k - $7k",
+      value: "Growth (3.5k-7k USD)",
+    },
+    { label: "System (Custom Software) — +$9k", value: "System (+9k USD)" },
+    { label: "Retainer / Consulting", value: "Consulting" },
+  ],
+};
+
 function ContactForm() {
   const t = useTranslations("ContactPage");
   const [time, setTime] = useState<string>("");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [currency, setCurrency] = useState<"MXN" | "USD">("MXN");
 
   // Mouse tracking for spotlight effect
   const mouseX = useMotionValue(0);
@@ -400,9 +428,32 @@ function ContactForm() {
 
                 {/* Budget Selection */}
                 <div className="relative">
-                  <label htmlFor="budget" className={labelClasses}>
-                    {t("form.budget_label")}
-                  </label>
+                  <div className="flex items-center justify-between mb-2">
+                    <label
+                      htmlFor="budget"
+                      className={labelClasses.replace("mb-2", "mb-0")}>
+                      {t("form.budget_label")}
+                    </label>
+
+                    {/* Currency Toggle */}
+                    <div className="flex items-center gap-2 bg-neutral-900 rounded-full p-1 border border-neutral-800">
+                      {(["MXN", "USD"] as const).map((curr) => (
+                        <button
+                          key={curr}
+                          type="button"
+                          onClick={() => setCurrency(curr)}
+                          className={cn(
+                            "px-3 py-1 text-[10px] font-mono font-medium rounded-full transition-all duration-300",
+                            currency === curr
+                              ? "bg-white text-black shadow-sm"
+                              : "text-neutral-500 hover:text-neutral-300"
+                          )}>
+                          {curr}
+                        </button>
+                      ))}
+                    </div>
+                  </div>
+
                   <select
                     {...register("budget", { required: true })}
                     id="budget"
@@ -418,21 +469,14 @@ function ContactForm() {
                       className="bg-neutral-900 text-white">
                       {t("form.budget_placeholder")}
                     </option>
-                    <option
-                      value="under_50k"
-                      className="bg-neutral-900 text-white">
-                      {t("form.budget_options.under_50k")}
-                    </option>
-                    <option
-                      value="50k_100k"
-                      className="bg-neutral-900 text-white">
-                      {t("form.budget_options.50k_100k")}
-                    </option>
-                    <option
-                      value="over_100k"
-                      className="bg-neutral-900 text-white">
-                      {t("form.budget_options.over_100k")}
-                    </option>
+                    {BUDGET_OPTIONS[currency].map((option) => (
+                      <option
+                        key={option.value}
+                        value={option.value}
+                        className="bg-neutral-900 text-white">
+                        {option.label}
+                      </option>
+                    ))}
                   </select>
                 </div>
 

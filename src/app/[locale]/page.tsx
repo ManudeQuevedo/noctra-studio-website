@@ -1,5 +1,6 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
+import { HeroTextSection } from "@/components/home/HeroTextSection";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getTranslations } from "next-intl/server";
 
@@ -30,10 +31,10 @@ export async function generateMetadata({
 
 // Static images map
 const SERVICE_IMAGES = {
-  web: "/images/services/architecture.jpg",
-  branding: "/images/services/identity.jpg",
-  ai: "/images/services/ai.jpg",
-  seo: "/images/services/seo.jpg",
+  web: "/images/architecture.jpg",
+  branding: "/images/identity.jpg",
+  ai: "/images/ai.jpg",
+  seo: "/images/seo.jpg",
 };
 
 export default async function HomePage() {
@@ -46,11 +47,7 @@ export default async function HomePage() {
       <Hero />
 
       {/* SECTION 2: The Intro (Lead Statement) */}
-      <section className="max-w-4xl mx-auto px-6 text-center my-24">
-        <p className="text-2xl md:text-4xl font-light leading-tight text-neutral-800 dark:text-neutral-200">
-          {t("intro_text")}
-        </p>
-      </section>
+      <HeroTextSection />
 
       <ServicesGrid images={images} />
       <PhilosophySection />
