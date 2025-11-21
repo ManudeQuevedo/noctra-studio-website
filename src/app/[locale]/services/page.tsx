@@ -33,7 +33,7 @@ const ServiceSection = ({
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
         {/* Left Column - Sticky Title & Visual Reveal */}
         <div className="md:col-span-5 relative">
-          <div className="md:sticky md:top-48 h-fit">
+          <div className="md:sticky md:top-40 h-fit z-10">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}

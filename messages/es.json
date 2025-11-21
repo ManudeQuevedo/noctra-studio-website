@@ -339,6 +339,7 @@
     },
     "process": {
       "title": "La Metodología",
+      "description": "Un enfoque riguroso de ingeniería digital. No adivinamos; ejecutamos.",
       "steps": {
         "0": { 
           "title": "Descubrimiento", 
@@ -450,6 +451,13 @@
         "response_value": "< 24 Horas",
         "confirmation": "Hemos enviado un correo de confirmación a tu bandeja de entrada."
       }
+    },
+    "budget": {
+      "identity": "Identidad (Landing / Portafolio)",
+      "growth": "Crecimiento (Corporativo / E-comm)",
+      "system": "Sistema (Software a la medida)",
+      "retainer": "Retainer / Consultoría",
+      "unsure": "No estoy seguro / Hablemos de valor"
     },
     "loading": "Cargando..."
   },

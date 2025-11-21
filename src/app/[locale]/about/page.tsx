@@ -140,8 +140,7 @@ export default function AboutPage() {
                   {t("process.title")}
                 </h2>
                 <p className="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed text-balance">
-                  A rigorous approach to digital engineering. We don't guess; we
-                  execute.
+                  {t("process.description")}
                 </p>
               </FadeIn>
             </div>

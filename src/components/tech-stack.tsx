@@ -2,19 +2,6 @@
 
 import { useTranslations } from "next-intl";
 import {
-  Code2,
-  Database,
-  Globe,
-  Layers,
-  Zap,
-  Wind,
-  Cloud,
-  Server,
-  Box,
-  LayoutTemplate,
-  Container,
-} from "lucide-react";
-import {
   SiPython,
   SiMongodb,
   SiMysql,
@@ -28,6 +15,18 @@ import {
   SiFigma,
   SiAdobe,
   SiHotjar,
+  SiNextdotjs,
+  SiReact,
+  SiTypescript,
+  SiTailwindcss,
+  SiGreensock,
+  SiNodedotjs,
+  SiSanity,
+  SiStrapi,
+  SiContentful,
+  SiVercel,
+  SiAmazon,
+  SiDocker,
 } from "react-icons/si";
 import { FaUserFriends, FaFlask } from "react-icons/fa";
 
@@ -48,17 +47,17 @@ export function TechStack() {
     {
       title: t("frontend"),
       items: [
-        { label: "Next.js", icon: Globe },
-        { label: "React", icon: Code2 },
-        { label: "TypeScript", icon: Code2 },
-        { label: "Tailwind", icon: Wind },
-        { label: "GSAP", icon: Layers },
+        { label: "Next.js", icon: SiNextdotjs },
+        { label: "React", icon: SiReact },
+        { label: "TypeScript", icon: SiTypescript },
+        { label: "Tailwind", icon: SiTailwindcss },
+        { label: "GSAP", icon: SiGreensock },
       ],
     },
     {
       title: t("backend_db"),
       items: [
-        { label: "Node.js", icon: Server },
+        { label: "Node.js", icon: SiNodedotjs },
         { label: "Python", icon: SiPython },
         { label: "Supabase", icon: SiSupabase },
         { label: "PostgreSQL", icon: SiPostgresql },
@@ -69,22 +68,22 @@ export function TechStack() {
     {
       title: t("cms"),
       items: [
-        { label: "Sanity", icon: LayoutTemplate },
+        { label: "Sanity", icon: SiSanity },
         { label: "Shopify (Hydrogen)", icon: SiShopify },
         { label: "Payload CMS", icon: SiPayloadcms },
-        { label: "Strapi", icon: Box },
-        { label: "Contentful", icon: Box },
+        { label: "Strapi", icon: SiStrapi },
+        { label: "Contentful", icon: SiContentful },
       ],
     },
     {
       title: t("infrastructure"),
       items: [
-        { label: "Vercel", icon: Zap },
-        { label: "AWS", icon: Cloud },
+        { label: "Vercel", icon: SiVercel },
+        { label: "AWS", icon: SiAmazon },
         { label: "Cloudflare", icon: SiCloudflare },
         { label: "GitHub Actions", icon: SiGithubactions },
         { label: "Google Cloud Platform", icon: SiGooglecloud },
-        { label: "Docker", icon: Container },
+        { label: "Docker", icon: SiDocker },
       ],
     },
   ];

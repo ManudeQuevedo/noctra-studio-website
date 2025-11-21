@@ -339,6 +339,7 @@
     },
     "process": {
       "title": "The Methodology",
+      "description": "A rigorous approach to digital engineering. We don't guess; we execute.",
       "steps": {
         "0": { 
           "title": "Discovery", 

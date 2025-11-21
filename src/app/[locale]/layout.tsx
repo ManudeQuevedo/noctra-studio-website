@@ -48,6 +48,20 @@ export const metadata: Metadata = {
       es: "/es",
     },
   },
+  icons: [
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      url: "/favicon-dark.svg",
+      media: "(prefers-color-scheme: light)",
+    },
+    {
+      rel: "icon",
+      type: "image/svg+xml",
+      url: "/favicon-light.svg",
+      media: "(prefers-color-scheme: dark)",
+    },
+  ],
 };
 
 export default async function LocaleLayout({

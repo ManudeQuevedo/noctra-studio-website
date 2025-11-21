@@ -18,41 +18,44 @@ type FormData = {
   details: string;
 };
 
-const BUDGET_OPTIONS = {
-  MXN: [
-    {
-      label: "Identity (Landing / Portfolio) — $30k - $50k",
-      value: "Identity (30k-50k MXN)",
-    },
-    {
-      label: "Growth (Corporate / E-comm) — $60k - $120k",
-      value: "Growth (60k-120k MXN)",
-    },
-    { label: "System (Custom Software) — +$150k", value: "System (+150k MXN)" },
-    { label: "Retainer / Consulting", value: "Consulting" },
-    { label: "Not sure / Let's discuss value", value: "Undecided" },
-  ],
-  USD: [
-    {
-      label: "Identity (Landing / Portfolio) — $1.5k - $3k",
-      value: "Identity (1.5k-3k USD)",
-    },
-    {
-      label: "Growth (Corporate / E-comm) — $3.5k - $7k",
-      value: "Growth (3.5k-7k USD)",
-    },
-    { label: "System (Custom Software) — +$9k", value: "System (+9k USD)" },
-    { label: "Retainer / Consulting", value: "Consulting" },
-    { label: "Not sure / Let's discuss value", value: "Undecided" },
-  ],
-};
-
 function ContactForm() {
   const t = useTranslations("ContactPage");
   const [time, setTime] = useState<string>("");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
   const [currency, setCurrency] = useState<"MXN" | "USD">("MXN");
+
+  const BUDGET_OPTIONS = {
+    MXN: [
+      {
+        label: `${t("budget.identity")} — $30k - $50k`,
+        value: "Identity (30k-50k MXN)",
+      },
+      {
+        label: `${t("budget.growth")} — $60k - $120k`,
+        value: "Growth (60k-120k MXN)",
+      },
+      {
+        label: `${t("budget.system")} — +$150k`,
+        value: "System (+150k MXN)",
+      },
+      { label: t("budget.retainer"), value: "Consulting" },
+      { label: t("budget.unsure"), value: "Undecided" },
+    ],
+    USD: [
+      {
+        label: `${t("budget.identity")} — $1.5k - $3k`,
+        value: "Identity (1.5k-3k USD)",
+      },
+      {
+        label: `${t("budget.growth")} — $3.5k - $7k`,
+        value: "Growth (3.5k-7k USD)",
+      },
+      { label: `${t("budget.system")} — +$9k`, value: "System (+9k USD)" },
+      { label: t("budget.retainer"), value: "Consulting" },
+      { label: t("budget.unsure"), value: "Undecided" },
+    ],
+  };
 
   // Mouse tracking for spotlight effect
   const mouseX = useMotionValue(0);
