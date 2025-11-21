@@ -146,14 +146,44 @@ export default function ServicesPage() {
   const t = useTranslations("ServicesPage");
 
   const services = [
-    { id: "web_dev", key: "web_dev" },
-    { id: "branding", key: "branding" },
-    { id: "ai", key: "ai" },
-    { id: "seo", key: "seo" },
+    { id: "web_dev", key: "web_dev", label: "Architecture" },
+    { id: "branding", key: "branding", label: "Identity" },
+    { id: "ai", key: "ai", label: "Systems" },
+    { id: "seo", key: "seo", label: "Growth" },
   ];
+
+  const scrollToService = (id: string) => {
+    const element = document.getElementById(id);
+    if (element) {
+      const offset = 100; // Account for navbar height
+      const elementPosition = element.getBoundingClientRect().top;
+      const offsetPosition = elementPosition + window.pageYOffset - offset;
+
+      window.scrollTo({
+        top: offsetPosition,
+        behavior: "smooth",
+      });
+    }
+  };
 
   return (
     <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0">
+      {/* Mobile Quick Jump Bar */}
+      <div className="block md:hidden sticky top-20 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 mb-8">
+        <div className="overflow-x-auto">
+          <div className="flex gap-2 px-4 py-3 min-w-max">
+            {services.map((service) => (
+              <button
+                key={service.id}
+                onClick={() => scrollToService(service.id)}
+                className="px-4 py-2 text-sm font-medium text-neutral-600 dark:text-neutral-400 hover:text-neutral-900 dark:hover:text-white border border-neutral-200 dark:border-neutral-800 rounded-full hover:border-neutral-900 dark:hover:border-white transition-colors whitespace-nowrap">
+                {service.label}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
       {/* Header */}
       <section className="w-full max-w-7xl mx-auto px-6 md:px-8 mb-32">
         <motion.div
@@ -171,16 +201,20 @@ export default function ServicesPage() {
 
       {/* Services Sections */}
       <div className="flex flex-col gap-32 md:gap-48 mb-32">
-        <ServiceSection
-          service={services[0]}
-          index={0}
-          image={SERVICE_IMAGES.web_dev}
-        />
-        <ServiceSection
-          service={services[1]}
-          index={1}
-          image={SERVICE_IMAGES.branding}
-        />
+        <div id="web_dev">
+          <ServiceSection
+            service={services[0]}
+            index={0}
+            image={SERVICE_IMAGES.web_dev}
+          />
+        </div>
+        <div id="branding">
+          <ServiceSection
+            service={services[1]}
+            index={1}
+            image={SERVICE_IMAGES.branding}
+          />
+        </div>
 
         {/* Metrics Break */}
         <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-900 text-white py-24 border-y border-white/10">
@@ -214,17 +248,24 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        <ServiceSection
-          service={services[2]}
-          index={2}
-          image={SERVICE_IMAGES.ai}
-        />
-        <ServiceSection
-          service={services[3]}
-          index={3}
-          image={SERVICE_IMAGES.seo}
-        />
+        <div id="ai">
+          <ServiceSection
+            service={services[2]}
+            index={2}
+            image={SERVICE_IMAGES.ai}
+          />
+        </div>
+        <div id="seo">
+          <ServiceSection
+            service={services[3]}
+            index={3}
+            image={SERVICE_IMAGES.seo}
+          />
+        </div>
       </div>
+
+      {/* Bottom Divider */}
+      <div className="w-full border-t border-neutral-200 dark:border-neutral-800 mt-32" />
     </main>
   );
 }

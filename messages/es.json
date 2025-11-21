@@ -306,10 +306,28 @@
       "subtitle": "Un estudio de diseño e ingeniería que une la estética con la función."
     },
     "founder_note": {
-      "title": "Nota del Fundador",
-      "content_1": "El paisaje digital está saturado. Dondequiera que mires, hay ruido: complejidad innecesaria, código inflado y diseño que grita por atención sin decir nada.",
-      "content_2": "En Noctra, creemos en el poder del silencio. Eliminamos lo inesencial para revelar el núcleo. No solo construimos sitios web; diseñamos arquitecturas digitales que perduran.",
+      "title": "Una Nota del Fundador",
+      "content_1": "El paisaje digital está saturado. Por donde mires, hay ruido—complejidad innecesaria, código inflado y diseño que grita por atención sin decir nada.",
+      "content_2": "En Noctra, creemos en el poder del silencio. Eliminamos lo no esencial para revelar el núcleo. No solo construimos sitios web; diseñamos arquitecturas digitales que resisten la prueba del tiempo.",
       "signature": "Manu, Fundador"
+    },
+    "brand_anatomy": {
+      "section_label": "ANATOMÍA DE MARCA",
+      "etymology": {
+        "label": "01 // ETIMOLOGÍA",
+        "headline": "Navegación en la Oscuridad.",
+        "body": "Noctra viene de la noche. El espacio digital es oscuro, saturado y confuso. Nuestro papel es servir como sistema de navegación—aportando estructura y visibilidad a marcas perdidas en el ruido."
+      },
+      "symbology": {
+        "label": "02 // SIMBOLOGÍA",
+        "headline": "La Luna y El Cuadrado.",
+        "body": "Una luz guía. El Cuadrado representa estabilidad, lógica y confianza. La Luna simboliza transformación y visibilidad. Juntos, forman el balance entre ingeniería y arte."
+      },
+      "output": {
+        "label": "03 // RESULTADO",
+        "headline": "Claridad como Servicio.",
+        "body": "Más que un nombre, es nuestro método. Tomamos desafíos digitales complejos y ruidosos y los destilamos en estrategias que funcionan. En resumen: Noctra es claridad en la noche digital."
+      }
     },
     "tech_radar": {
       "title": "Especificación Técnica",
@@ -427,9 +445,10 @@
         "title": "SOLICITUD RECIBIDA",
         "id_label": "ID de Ticket",
         "status_label": "Estado",
-        "status_value": "En Cola de Revisión",
-        "response_label": "Resp. Estimada",
-        "response_value": "< 24 Horas"
+        "status_value": "Recibido. Revisión en < 24h",
+        "response_label": "Respuesta Est.",
+        "response_value": "< 24 Horas",
+        "confirmation": "Hemos enviado un correo de confirmación a tu bandeja de entrada."
       }
     },
     "loading": "Cargando..."

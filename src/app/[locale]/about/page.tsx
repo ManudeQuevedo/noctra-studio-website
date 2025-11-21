@@ -7,8 +7,8 @@ import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
+import { BrandAnatomy } from "@/components/about/BrandAnatomy";
 import { TechStack } from "@/components/tech-stack";
-// import { TeamGrid } from "@/components/about/TeamGrid";
 import { ImpactSection } from "@/components/about/ImpactSection";
 import NextImage from "next/image";
 
@@ -90,13 +90,30 @@ export default function AboutPage() {
                 <p>{t("founder_note.content_1")}</p>
                 <p>{t("founder_note.content_2")}</p>
               </div>
-              <div className="mt-12 font-handwriting text-3xl text-neutral-900 dark:text-neutral-50 opacity-80 rotate-[-2deg]">
-                {t("founder_note.signature")}
+              <div className="mt-12 space-y-4">
+                <div className="font-handwriting text-3xl text-neutral-900 dark:text-neutral-50 opacity-80 rotate-[-2deg]">
+                  {t("founder_note.signature")}
+                </div>
+                {/* Digital Signature Image */}
+                <div className="opacity-80">
+                  <img
+                    src="/images/signature.png"
+                    alt="Signature"
+                    className="h-16 w-auto dark:invert"
+                    onError={(e) => {
+                      // Hide if image doesn't exist
+                      (e.target as HTMLImageElement).style.display = "none";
+                    }}
+                  />
+                </div>
               </div>
             </FadeIn>
           </div>
         </div>
       </section>
+
+      {/* 2.5. Brand Anatomy - NEW SECTION */}
+      <BrandAnatomy />
 
       {/* 3. The Tech Engine (Spec Sheet) */}
       <section className="py-24 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/30 dark:bg-neutral-900/30 relative z-10">

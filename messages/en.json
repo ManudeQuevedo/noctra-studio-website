@@ -311,6 +311,24 @@
       "content_2": "At Noctra, we believe in the power of silence. We strip away the inessential to reveal the core. We don't just build websites; we engineer digital architectures that stand the test of time.",
       "signature": "Manu, Founder"
     },
+    "brand_anatomy": {
+      "section_label": "BRAND ANATOMY",
+      "etymology": {
+        "label": "01 // ETYMOLOGY",
+        "headline": "Navigation in the Dark.",
+        "body": "Noctra comes from the night. The digital space is dark, crowded, and confusing. Our role is to serve as the navigation system—bringing structure and visibility to brands lost in the noise."
+      },
+      "symbology": {
+        "label": "02 // SYMBOLOGY",
+        "headline": "The Moon & The Square.",
+        "body": "A guiding light. The Square represents stability, logic, and trust. The Moon symbolizes transformation and visibility. Together, they form the balance between engineering and art."
+      },
+      "output": {
+        "label": "03 // OUTPUT",
+        "headline": "Clarity as a Service.",
+        "body": "More than a name, it is our method. We take complex, noisy digital challenges and distill them into strategies that work. In short: Noctra is clarity in the digital night."
+      }
+    },
     "tech_radar": {
       "title": "Technical Specification",
       "ui_ux": "01 — UI/UX & Strategy",
@@ -444,9 +462,10 @@
         "title": "REQUEST RECEIVED",
         "id_label": "Ticket ID",
         "status_label": "Status",
-        "status_value": "Queued for Review",
+        "status_value": "Received. Review in < 24h",
         "response_label": "Est. Response",
-        "response_value": "< 24 Hours"
+        "response_value": "< 24 Hours",
+        "confirmation": "We have sent a confirmation email to your inbox."
       }
     },
     "loading": "Loading..."

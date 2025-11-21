@@ -320,7 +320,11 @@ function ContactForm() {
 
                     <div className="w-full h-px bg-neutral-200" />
 
-                    <div className="pt-2">
+                    <div className="pt-2 text-sm text-neutral-600">
+                      {t("success.ticket.confirmation")}
+                    </div>
+
+                    <div className="pt-4">
                       <button
                         onClick={() => setIsSuccess(false)}
                         className="text-xs font-mono uppercase tracking-widest hover:text-neutral-600 transition-colors">
