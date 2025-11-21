@@ -2,7 +2,13 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Code2, Palette, TrendingUp, ArrowRight } from "lucide-react";
+import {
+  Code2,
+  Palette,
+  TrendingUp,
+  ArrowRight,
+  ChevronRight,
+} from "lucide-react";
 
 const FadeIn = ({
   children,
@@ -101,57 +107,128 @@ export default function CareersPage() {
         </div>
       </section>
 
-      {/* Engagement Protocols */}
+      {/* The Vetting Protocol - 3 Horizontal Steps */}
       <section className="py-24 px-4 md:px-8 border-t border-neutral-800">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-12 text-center">
-              {t("protocols.title")}
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-16 text-center">
+              {t("vetting.title")}
             </h2>
           </FadeIn>
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {/* Protocol 1: Project-Based */}
+            {/* Step 1: Alignment */}
             <FadeIn delay={0.1}>
-              <div className="border-l-2 border-neutral-700 pl-6">
-                <div className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-3">
-                  01
+              <div className="relative h-full flex flex-col border border-neutral-800 p-8 bg-neutral-900/30">
+                <div className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">
+                  STEP 01
                 </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+                <h3 className="text-xl font-bold text-white mb-4">
+                  {t("vetting.steps.0.title")}
+                </h3>
+                <p className="text-neutral-300 leading-relaxed flex-1">
+                  {t("vetting.steps.0.desc")}
+                </p>
+
+                {/* Arrow indicator for desktop */}
+                <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2">
+                  <ChevronRight className="w-8 h-8 text-neutral-700" />
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Step 2: The Audit */}
+            <FadeIn delay={0.2}>
+              <div className="relative h-full flex flex-col border border-neutral-800 p-8 bg-neutral-900/30">
+                <div className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">
+                  STEP 02
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">
+                  {t("vetting.steps.1.title")}
+                </h3>
+                <p className="text-neutral-300 leading-relaxed flex-1">
+                  {t("vetting.steps.1.desc")}
+                </p>
+
+                {/* Arrow indicator for desktop */}
+                <div className="hidden md:block absolute -right-4 top-1/2 -translate-y-1/2">
+                  <ChevronRight className="w-8 h-8 text-neutral-700" />
+                </div>
+              </div>
+            </FadeIn>
+
+            {/* Step 3: Access */}
+            <FadeIn delay={0.3}>
+              <div className="h-full flex flex-col border border-neutral-800 p-8 bg-neutral-900/30">
+                <div className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">
+                  STEP 03
+                </div>
+                <h3 className="text-xl font-bold text-white mb-4">
+                  {t("vetting.steps.2.title")}
+                </h3>
+                <p className="text-neutral-300 leading-relaxed flex-1">
+                  {t("vetting.steps.2.desc")}
+                </p>
+              </div>
+            </FadeIn>
+          </div>
+        </div>
+      </section>
+
+      {/* Engagement Protocols - 2x2 Grid */}
+      <section className="py-24 px-4 md:px-8 border-t border-neutral-800">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn>
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-16 text-center">
+              {t("protocols.title")}
+            </h2>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {/* Protocol 1: IP Transfer */}
+            <FadeIn delay={0.1}>
+              <div className="border border-neutral-800 p-8 bg-neutral-900/30">
+                <h3 className="text-xl font-bold text-white mb-4">
                   {t("protocols.items.0.title")}
                 </h3>
-                <p className="text-neutral-400 leading-relaxed">
+                <p className="text-neutral-300 leading-relaxed">
                   {t("protocols.items.0.desc")}
                 </p>
               </div>
             </FadeIn>
 
-            {/* Protocol 2: The 50/50 Standard */}
+            {/* Protocol 2: Silence (NDA) */}
             <FadeIn delay={0.2}>
-              <div className="border-l-2 border-neutral-700 pl-6">
-                <div className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-3">
-                  02
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+              <div className="border border-neutral-800 p-8 bg-neutral-900/30">
+                <h3 className="text-xl font-bold text-white mb-4">
                   {t("protocols.items.1.title")}
                 </h3>
-                <p className="text-neutral-400 leading-relaxed">
+                <p className="text-neutral-300 leading-relaxed">
                   {t("protocols.items.1.desc")}
                 </p>
               </div>
             </FadeIn>
 
-            {/* Protocol 3: Zero Overhead */}
+            {/* Protocol 3: Non-Solicitation */}
             <FadeIn delay={0.3}>
-              <div className="border-l-2 border-neutral-700 pl-6">
-                <div className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-3">
-                  03
-                </div>
-                <h3 className="text-xl font-bold text-white mb-3">
+              <div className="border border-neutral-800 p-8 bg-neutral-900/30">
+                <h3 className="text-xl font-bold text-white mb-4">
                   {t("protocols.items.2.title")}
                 </h3>
-                <p className="text-neutral-400 leading-relaxed">
+                <p className="text-neutral-300 leading-relaxed">
                   {t("protocols.items.2.desc")}
+                </p>
+              </div>
+            </FadeIn>
+
+            {/* Protocol 4: Asynchronous */}
+            <FadeIn delay={0.4}>
+              <div className="border border-neutral-800 p-8 bg-neutral-900/30">
+                <h3 className="text-xl font-bold text-white mb-4">
+                  {t("protocols.items.3.title")}
+                </h3>
+                <p className="text-neutral-300 leading-relaxed">
+                  {t("protocols.items.3.desc")}
                 </p>
               </div>
             </FadeIn>

@@ -107,20 +107,41 @@
         "desc": "Data-driven. You build automations and growth loops using AI and Technical SEO."
       }
     },
-    "protocols": {
-      "title": "Engagement Protocols.",
-      "items": {
+    "vetting": {
+      "title": "Selection Process.",
+      "steps": {
         "0": {
-          "title": "Project-Based",
-          "desc": "Fixed-price contracts per sprint or project."
+          "title": "Alignment",
+          "desc": "Screening call. We test for communication clarity and cultural fit. No HR fluff."
         },
         "1": {
-          "title": "The 50/50 Standard",
-          "desc": "50% deposit to start. 50% on delivery."
+          "title": "The Audit",
+          "desc": "Technical proof. A micro-task or code review to validate execution standards. We don't trust CVs; we trust output."
         },
         "2": {
-          "title": "Zero Overhead",
-          "desc": "No meetings that could have been emails. We respect deep work."
+          "title": "Access",
+          "desc": "Integration. Access to our private Slack, Linear, and GitHub repositories."
+        }
+      }
+    },
+    "protocols": {
+      "title": "Standard Operating Procedures.",
+      "items": {
+        "0": {
+          "title": "IP Transfer.",
+          "desc": "Work-for-hire basis. All intellectual property rights transfer to Noctra Studio immediately upon final payment."
+        },
+        "1": {
+          "title": "Silence (NDA).",
+          "desc": "Strict non-disclosure. Client details and internal architectures remain confidential by default."
+        },
+        "2": {
+          "title": "Non-Solicitation.",
+          "desc": "Client relationships belong to the Studio. Circumvention results in immediate blacklisting and legal action."
+        },
+        "3": {
+          "title": "Asynchronous.",
+          "desc": "We respect deep work. No daily standups. Updates are pushed via Linear/GitHub, not meetings."
         }
       }
     },

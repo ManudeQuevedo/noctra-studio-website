@@ -107,20 +107,41 @@
         "desc": "Basado en datos. Construyes automatizaciones y bucles de crecimiento usando IA y SEO Técnico."
       }
     },
-    "protocols": {
-      "title": "Protocolos de Colaboración.",
-      "items": {
+    "vetting": {
+      "title": "Proceso de Selección.",
+      "steps": {
         "0": {
-          "title": "Basado en Proyectos",
-          "desc": "Contratos de precio fijo por sprint o proyecto."
+          "title": "Alineación",
+          "desc": "Llamada de evaluación. Probamos claridad de comunicación y ajuste cultural. Sin palabrería corporativa."
         },
         "1": {
-          "title": "El Estándar 50/50",
-          "desc": "50% de depósito para iniciar. 50% en la entrega."
+          "title": "La Auditoría",
+          "desc": "Prueba técnica. Una micro-tarea o revisión de código para validar estándares de ejecución. No confiamos en CVs; confiamos en resultados."
         },
         "2": {
-          "title": "Cero Sobrecarga",
-          "desc": "Sin reuniones que pudieron haber sido emails. Respetamos el trabajo profundo."
+          "title": "Acceso",
+          "desc": "Integración. Acceso a nuestros repositorios privados de Slack, Linear y GitHub."
+        }
+      }
+    },
+    "protocols": {
+      "title": "Procedimientos Operativos Estándar.",
+      "items": {
+        "0": {
+          "title": "Transferencia de PI.",
+          "desc": "Base de trabajo por contrato. Todos los derechos de propiedad intelectual se transfieren a Noctra Studio inmediatamente después del pago final."
+        },
+        "1": {
+          "title": "Silencio (NDA).",
+          "desc": "Estricta confidencialidad. Los detalles del cliente y las arquitecturas internas permanecen confidenciales por defecto."
+        },
+        "2": {
+          "title": "No Solicitación.",
+          "desc": "Las relaciones con clientes pertenecen al Estudio. La evasión resulta en exclusión inmediata y acción legal."
+        },
+        "3": {
+          "title": "Asíncrono.",
+          "desc": "Respetamos el trabajo profundo. Sin reuniones diarias. Las actualizaciones se envían vía Linear/GitHub, no reuniones."
         }
       }
     },
