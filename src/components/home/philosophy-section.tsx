@@ -61,7 +61,8 @@ export function PhilosophySection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="relative">
-            <div className="w-full max-w-md ml-auto bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-6 font-mono text-sm">
+            {/* System Monitor - Desktop */}
+            <div className="hidden md:block w-full max-w-md ml-auto bg-white/5 border border-white/10 backdrop-blur-md rounded-xl p-6 font-mono text-sm">
               {/* Header */}
               <div className="flex items-center justify-between mb-6 pb-4 border-b border-white/10">
                 <span className="text-neutral-400 text-xs uppercase tracking-wider">
@@ -111,6 +112,14 @@ export function PhilosophySection() {
                   <span className="animate-pulse">_</span>
                 </div>
               </div>
+            </div>
+
+            {/* System Monitor - Mobile */}
+            <div className="block md:hidden mt-12 w-full border-y border-neutral-200 dark:border-white/10 py-4 font-mono text-xs text-neutral-500 text-center">
+              <span className="flex items-center justify-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                {t("system_monitor.mobile_status")}
+              </span>
             </div>
 
             {/* Decorative Corner Elements */}

@@ -112,7 +112,7 @@ export function Header() {
           isOpen
             ? "bg-neutral-950 dark:bg-white shadow-2xl" // Open: Inverted Theme
             : isScrolled
-            ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl border border-neutral-200/50 dark:border-white/10 shadow-lg" // Closed & Scrolled: High Visibility
+            ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60 border border-neutral-200/50 dark:border-white/10 shadow-lg" // Closed & Scrolled: High Visibility
             : "bg-transparent border-transparent shadow-none backdrop-blur-none" // Closed & Top: Transparent
         )}
         variants={{

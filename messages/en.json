@@ -169,6 +169,11 @@
         "Keyword Ranking Dashboard"
       ]
     },
+    "metrics": {
+      "lighthouse": "100% Lighthouse Scores",
+      "latency": "0.1s API Latency",
+      "uptime": "24/7 System Uptime"
+    },
     "start_project": "Start Project"
   },
   "TrustedBy": {
@@ -194,7 +199,8 @@
         "performance": "Performance:",
         "security_protocols": "Security Protocols:",
         "active": "Active",
-        "terminal_text": "$ Loading system diagnostics..."
+        "terminal_text": "$ Loading system diagnostics...",
+        "mobile_status": "System Operational | V1.0"
       }
     }
   },
@@ -305,7 +311,15 @@
     "success": {
       "title": "Message Sent",
       "message": "Thank you for reaching out. We've received your inquiry and will get back to you shortly to discuss your vision.",
-      "action": "Send another message"
+      "action": "Send another message",
+      "ticket": {
+        "title": "REQUEST RECEIVED",
+        "id_label": "Ticket ID",
+        "status_label": "Status",
+        "status_value": "Queued for Review",
+        "response_label": "Est. Response",
+        "response_value": "< 24 Hours"
+      }
     },
     "loading": "Loading..."
   },

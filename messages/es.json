@@ -169,6 +169,11 @@
         "Panel de Ranking de Keywords"
       ]
     },
+    "metrics": {
+      "lighthouse": "100% Puntuación Lighthouse",
+      "latency": "0.1s Latencia API",
+      "uptime": "24/7 Tiempo de Actividad"
+    },
     "start_project": "Iniciar Proyecto"
   },
   "TrustedBy": {
@@ -194,7 +199,8 @@
         "performance": "Rendimiento:",
         "security_protocols": "Protocolos de Seguridad:",
         "active": "Activo",
-        "terminal_text": "$ Cargando diagnósticos del sistema..."
+        "terminal_text": "$ Cargando diagnósticos del sistema...",
+        "mobile_status": "Sistema Operativo | V1.0"
       }
     }
   },
@@ -304,8 +310,16 @@
     },
     "success": {
       "title": "Mensaje Enviado",
-      "message": "Gracias por ponerte en contacto. Hemos recibido tu consulta y nos comunicaremos contigo pronto para discutir tu visión.",
-      "action": "Enviar otro mensaje"
+      "message": "Gracias por contactarnos. Hemos recibido tu consulta y nos pondremos en contacto contigo en breve para discutir tu visión.",
+      "action": "Enviar otro mensaje",
+      "ticket": {
+        "title": "SOLICITUD RECIBIDA",
+        "id_label": "ID de Ticket",
+        "status_label": "Estado",
+        "status_value": "En Cola de Revisión",
+        "response_label": "Resp. Estimada",
+        "response_value": "< 24 Horas"
+      }
     },
     "loading": "Cargando..."
   },

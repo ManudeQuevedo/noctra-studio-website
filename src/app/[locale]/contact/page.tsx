@@ -241,23 +241,57 @@ function ContactForm() {
             className="pb-24">
             {isSuccess ? (
               <motion.div
-                initial={{ opacity: 0, scale: 0.95 }}
-                animate={{ opacity: 1, scale: 1 }}
-                className="h-full flex flex-col justify-center items-center text-center p-12 border border-neutral-800 bg-neutral-900/50 backdrop-blur-sm rounded-sm">
-                <div className="w-16 h-16 bg-white text-black rounded-full flex items-center justify-center mb-6">
-                  <Mail className="w-8 h-8" />
+                initial={{ y: 100, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ type: "spring", bounce: 0.4 }}
+                className="relative w-full max-w-md mx-auto">
+                {/* Ticket Card */}
+                <div className="bg-white text-black p-8 border-2 border-dashed border-neutral-300 relative overflow-hidden">
+                  {/* Decorative Cutouts */}
+                  <div className="absolute top-1/2 -left-3 w-6 h-6 bg-[#050505] rounded-full" />
+                  <div className="absolute top-1/2 -right-3 w-6 h-6 bg-[#050505] rounded-full" />
+
+                  <div className="text-center space-y-6">
+                    <div className="space-y-2">
+                      <div className="text-xs font-mono uppercase tracking-widest text-neutral-500">
+                        {t("success.ticket.title")}
+                      </div>
+                      <div className="text-4xl font-bold tracking-tighter">
+                        #NOC-{Math.floor(Math.random() * 9000) + 1000}
+                      </div>
+                    </div>
+
+                    <div className="w-full h-px bg-neutral-200" />
+
+                    <div className="grid grid-cols-2 gap-4 text-left text-sm font-mono">
+                      <div>
+                        <div className="text-neutral-500 text-[10px] uppercase tracking-wider mb-1">
+                          {t("success.ticket.status_label")}
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <div className="w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                          {t("success.ticket.status_value")}
+                        </div>
+                      </div>
+                      <div>
+                        <div className="text-neutral-500 text-[10px] uppercase tracking-wider mb-1">
+                          {t("success.ticket.response_label")}
+                        </div>
+                        <div>{t("success.ticket.response_value")}</div>
+                      </div>
+                    </div>
+
+                    <div className="w-full h-px bg-neutral-200" />
+
+                    <div className="pt-2">
+                      <button
+                        onClick={() => setIsSuccess(false)}
+                        className="text-xs font-mono uppercase tracking-widest hover:text-neutral-600 transition-colors">
+                        {t("success.action")}
+                      </button>
+                    </div>
+                  </div>
                 </div>
-                <h2 className="text-3xl font-bold mb-4">
-                  {t("success.title")}
-                </h2>
-                <p className="text-neutral-400 max-w-md">
-                  {t("success.message")}
-                </p>
-                <button
-                  onClick={() => setIsSuccess(false)}
-                  className="mt-8 text-sm font-mono uppercase tracking-widest border-b border-white pb-1 hover:opacity-70 transition-opacity">
-                  {t("success.action")}
-                </button>
               </motion.div>
             ) : (
               <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">

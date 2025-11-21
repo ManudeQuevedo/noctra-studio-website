@@ -162,9 +162,34 @@ export default function ServicesPage() {
 
       {/* Services Sections */}
       <div className="flex flex-col gap-32 md:gap-48 mb-32">
-        {services.map((service, index) => (
-          <ServiceSection key={service.id} service={service} index={index} />
-        ))}
+        <ServiceSection service={services[0]} index={0} />
+        <ServiceSection service={services[1]} index={1} />
+
+        {/* Metrics Break */}
+        <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-900 text-white py-24 border-y border-white/10">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
+              <div className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold tracking-tighter font-mono">
+                  {t("metrics.lighthouse")}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold tracking-tighter font-mono">
+                  {t("metrics.latency")}
+                </div>
+              </div>
+              <div className="space-y-2">
+                <div className="text-4xl md:text-5xl font-bold tracking-tighter font-mono">
+                  {t("metrics.uptime")}
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <ServiceSection service={services[2]} index={2} />
+        <ServiceSection service={services[3]} index={3} />
       </div>
     </main>
   );
