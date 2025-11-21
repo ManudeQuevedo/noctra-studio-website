@@ -1,9 +1,23 @@
+import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
-import { ServicesGrid } from "@/components/home/services-grid";
-import { PhilosophySection } from "@/components/home/philosophy-section";
-
 import { ManifestoText } from "@/components/TextReveal";
 import { generatePageMetadata } from "@/lib/metadata";
+
+// Lazy load heavy components below the fold
+const ServicesGrid = dynamic(
+  () =>
+    import("@/components/home/services-grid").then((mod) => ({
+      default: mod.ServicesGrid,
+    })),
+  { ssr: true }
+);
+const PhilosophySection = dynamic(
+  () =>
+    import("@/components/home/philosophy-section").then((mod) => ({
+      default: mod.PhilosophySection,
+    })),
+  { ssr: true }
+);
 
 export async function generateMetadata({
   params,

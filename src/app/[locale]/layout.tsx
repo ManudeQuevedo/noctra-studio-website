@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
+import localFont from "next/font/local";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NextIntlClientProvider } from "next-intl";
@@ -12,6 +13,19 @@ import { OrganizationSchema, WebsiteSchema } from "@/components/seo/JsonLd";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 
+// Satoshi - Brand primary font
+const satoshi = localFont({
+  src: [
+    {
+      path: "../../fonts/Satoshi-Variable.woff2",
+      weight: "300 900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-satoshi",
+  display: "swap",
+});
+
 const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
@@ -23,8 +37,17 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Noctra Studio",
-  description: "Clarity in the digital night.",
+  metadataBase: new URL("https://noctra-studio.vercel.app"),
+  title: "Noctra Studio | Digital Architecture & Web Development",
+  description:
+    "Clarity in the digital night. Modern web development and digital architecture studio.",
+  alternates: {
+    canonical: "/",
+    languages: {
+      en: "/en",
+      es: "/es",
+    },
+  },
 };
 
 export default async function LocaleLayout({
@@ -40,7 +63,7 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        className={`${satoshi.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
           <BackgroundManager />
           <ThemeProvider

@@ -95,6 +95,7 @@
   },
   "Services": {
     "section_title": "Our Services",
+    "learn_more": "Learn more",
     "web_dev_title": "Digital Architecture",
     "web_dev_desc": "High-performance Next.js systems. We build for speed, scale, and silence.",
     "branding_title": "Visual Identity",
