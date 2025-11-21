@@ -256,9 +256,21 @@
         { "title": "Radical Clarity", "desc": "We communicate openly. No jargon, just results." }
       ]
     },
-    "cta": {
-      "title": "Ready to build?",
-      "button": "Start Project"
+    "impact": {
+      "title": "The Noctra Ecosystem",
+      "subtitle": "Building systems that extend beyond client work—supporting causes and forging talent.",
+      "beacon": {
+        "title": "Illuminating Causes.",
+        "desc": "We believe digital clarity should be accessible to those changing the world. Each year, we select one non-profit organization to receive a complete digital transformation, pro bono.",
+        "note_label": "Note:",
+        "note_text": "The grant covers 100% of strategy, design, and development fees. Organizations remain responsible for their own domain and infrastructure costs to ensure full asset ownership.",
+        "cta": "Apply for Beacon Grant"
+      },
+      "residency": {
+        "title": "Forging Architects.",
+        "desc": "We don't hire interns; we train architects. A rigorous mentorship program for developers with raw talent and relentless drive. You build real systems; we provide the blueprint.",
+        "cta": "Join the Residency"
+      }
     }
   },
   "Contact": {

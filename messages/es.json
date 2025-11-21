@@ -104,7 +104,8 @@
     "ai_title": "Sistemas Inteligentes",
     "ai_desc": "Automatizando el caos con agentes de IA.",
     "explore_capabilities": "Explorar todas las capacidades",
-    "lets_talk": "Hablemos"
+    "lets_talk": "Hablemos",
+    "learn_more": "Más información"
   },
   "ServicesPage": {
     "title": "Nuestras Capacidades",
@@ -256,9 +257,21 @@
         { "title": "Claridad Radical", "desc": "Nos comunicamos abiertamente. Sin jerga, solo resultados." }
       ]
     },
-    "cta": {
-      "title": "¿Listo para construir?",
-      "button": "Iniciar Proyecto"
+    "impact": {
+      "title": "El Ecosistema Noctra",
+      "subtitle": "Construyendo sistemas que se extienden más allá del trabajo del cliente—apoyando causas y forjando talento.",
+      "beacon": {
+        "title": "Iluminando Causas.",
+        "desc": "Creemos que la claridad digital debe ser accesible para aquellos que están cambiando el mundo. Cada año, seleccionamos una organización sin fines de lucro para recibir una transformación digital completa, pro bono.",
+        "note_label": "Nota:",
+        "note_text": "La subvención cubre el 100% de las tarifas de estrategia, diseño y desarrollo. Las organizaciones siguen siendo responsables de sus propios costos de dominio e infraestructura para garantizar la propiedad total de los activos.",
+        "cta": "Solicitar la Subvención Beacon"
+      },
+      "residency": {
+        "title": "Forjando Arquitectos.",
+        "desc": "No contratamos pasantes; entrenamos arquitectos. Un riguroso programa de mentoría para desarrolladores con talento en bruto y impulso implacable. Construyes sistemas reales; nosotros proporcionamos el plano.",
+        "cta": "Unirse a la Residencia"
+      }
     }
   },
   "Contact": {

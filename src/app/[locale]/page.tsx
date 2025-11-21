@@ -14,24 +14,16 @@ export async function generateMetadata({
   return generatePageMetadata(locale, "home");
 }
 
-import { getServiceImage, SERVICE_QUERIES } from "@/lib/unsplash";
+// Static images map
+const SERVICE_IMAGES = {
+  web: "/images/services/architecture.jpg",
+  branding: "/images/services/identity.jpg",
+  ai: "/images/services/ai.jpg",
+  seo: "/images/services/seo.jpg",
+};
 
-export default async function HomePage() {
-  // Fetch service images server-side
-  // We use Promise.allSettled to ensure the page renders even if some images fail
-  const results = await Promise.allSettled([
-    getServiceImage(SERVICE_QUERIES.web),
-    getServiceImage(SERVICE_QUERIES.branding),
-    getServiceImage(SERVICE_QUERIES.ai),
-    getServiceImage(SERVICE_QUERIES.seo),
-  ]);
-
-  const images = {
-    web: results[0].status === "fulfilled" ? results[0].value : null,
-    branding: results[1].status === "fulfilled" ? results[1].value : null,
-    ai: results[2].status === "fulfilled" ? results[2].value : null,
-    seo: results[3].status === "fulfilled" ? results[3].value : null,
-  };
+export default function HomePage() {
+  const images = SERVICE_IMAGES;
 
   return (
     <>

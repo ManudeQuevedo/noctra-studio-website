@@ -2,25 +2,28 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import NextImage from "next/image";
 
-// Placeholder images for the reveal effect (using distinct colors/gradients for now)
-const PLACEHOLDER_IMAGES = [
-  "linear-gradient(to bottom right, #1a1a1a, #2a2a2a)",
-  "linear-gradient(to bottom right, #2a2a2a, #3a3a3a)",
-  "linear-gradient(to bottom right, #3a3a3a, #4a4a4a)",
-  "linear-gradient(to bottom right, #4a4a4a, #5a5a5a)",
-];
+// Static images map
+const SERVICE_IMAGES = {
+  web_dev: "/images/architecture.jpg",
+  branding: "/images/identity.jpg",
+  ai: "/images/ai.jpg",
+  seo: "/images/seo.jpg",
+};
 
 const ServiceSection = ({
   service,
   index,
+  image,
 }: {
   service: { id: string; key: string };
   index: number;
+  image: string;
 }) => {
   const t = useTranslations("ServicesPage");
   const [hoveredStep, setHoveredStep] = useState<number | null>(null);
@@ -48,26 +51,22 @@ const ServiceSection = ({
               </p>
             </motion.div>
 
-            {/* Visual Reveal Container - Absolute in Sticky Column */}
-            <div className="absolute top-0 left-0 w-full aspect-square mt-48 -z-10 pointer-events-none opacity-50 mix-blend-multiply dark:mix-blend-screen">
-              <AnimatePresence mode="wait">
-                {hoveredStep !== null && (
-                  <motion.div
-                    key={hoveredStep}
-                    initial={{ opacity: 0, scale: 0.95 }}
-                    animate={{ opacity: 1, scale: 1 }}
-                    exit={{ opacity: 0, scale: 0.95 }}
-                    transition={{ duration: 0.4 }}
-                    className="w-full h-full rounded-2xl overflow-hidden shadow-2xl"
-                    style={{ background: PLACEHOLDER_IMAGES[hoveredStep] }}>
-                    {/* In a real app, use <Image /> here */}
-                    <div className="w-full h-full flex items-center justify-center text-white/20 font-mono text-4xl font-bold">
-                      0{hoveredStep + 1}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
+            {/* Phase Anchor Image - Static */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="mt-12 relative w-full overflow-hidden border border-neutral-200 dark:border-neutral-800">
+              <NextImage
+                src={image}
+                alt={t(`${service.key}.title`)}
+                width={800}
+                height={1000}
+                className="object-cover grayscale contrast-125 w-full h-auto"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
           </div>
         </div>
 
@@ -90,13 +89,16 @@ const ServiceSection = ({
                     key={stepIndex}
                     onMouseEnter={() => setHoveredStep(stepIndex)}
                     onMouseLeave={() => setHoveredStep(null)}
-                    className="relative flex items-baseline gap-6 group/item transition-all duration-500 group-hover/list:opacity-40 hover:!opacity-100 cursor-default py-2">
-                    {/* Active Indicator Line */}
-                    <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-0 h-px bg-neutral-900 dark:bg-white transition-all duration-300 group-hover/item:w-4" />
-
-                    <span className="font-mono text-sm text-neutral-400 shrink-0 transition-colors group-hover/item:text-neutral-900 dark:group-hover/item:text-white">
-                      0{stepIndex + 1}
-                    </span>
+                    className="relative flex items-baseline gap-4 group/item transition-all duration-500 group-hover/list:opacity-40 hover:!opacity-100 cursor-default py-2">
+                    <div className="flex items-center gap-2 shrink-0">
+                      <span className="font-mono text-sm text-neutral-500 transition-colors group-hover/item:text-neutral-900 dark:group-hover/item:text-white">
+                        0{stepIndex + 1}
+                      </span>
+                      {/* Arrow Indicator */}
+                      <span className="text-neutral-400 opacity-0 -translate-x-2 transition-all duration-300 group-hover/item:opacity-100 group-hover/item:translate-x-0">
+                        →
+                      </span>
+                    </div>
                     <div>
                       <p className="text-xl md:text-2xl font-medium text-neutral-900 dark:text-white leading-tight transition-transform duration-300 group-hover/item:translate-x-2">
                         {t(`${service.key}.process.${stepIndex}`)}
@@ -162,8 +164,16 @@ export default function ServicesPage() {
 
       {/* Services Sections */}
       <div className="flex flex-col gap-32 md:gap-48 mb-32">
-        <ServiceSection service={services[0]} index={0} />
-        <ServiceSection service={services[1]} index={1} />
+        <ServiceSection
+          service={services[0]}
+          index={0}
+          image={SERVICE_IMAGES.web_dev}
+        />
+        <ServiceSection
+          service={services[1]}
+          index={1}
+          image={SERVICE_IMAGES.branding}
+        />
 
         {/* Metrics Break */}
         <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-900 text-white py-24 border-y border-white/10">
@@ -188,8 +198,16 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        <ServiceSection service={services[2]} index={2} />
-        <ServiceSection service={services[3]} index={3} />
+        <ServiceSection
+          service={services[2]}
+          index={2}
+          image={SERVICE_IMAGES.ai}
+        />
+        <ServiceSection
+          service={services[3]}
+          index={3}
+          image={SERVICE_IMAGES.seo}
+        />
       </div>
     </main>
   );

@@ -14,6 +14,7 @@ import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
 import { Instagram } from "lucide-react";
+import NextImage from "next/image";
 
 // Custom X Icon
 const XIcon = ({ className }: { className?: string }) => (
@@ -144,24 +145,30 @@ export function Header() {
               {mounted ? (
                 <>
                   {/* Desktop Logo */}
-                  <img
+                  <NextImage
                     src={
                       effectiveTheme === "dark"
                         ? "/noctra-navbar-dark.svg"
                         : "/noctra-navbar-light.svg"
                     }
                     alt="Noctra Studio"
+                    width={120}
+                    height={32}
                     className="hidden md:block h-8 w-auto object-contain"
+                    priority
                   />
                   {/* Mobile Logo */}
-                  <img
+                  <NextImage
                     src={
                       effectiveTheme === "dark"
                         ? "/noctra-studio-icon-dark-theme.svg"
                         : "/noctra-studio-icon-light-theme.svg"
                     }
                     alt="Noctra Studio"
+                    width={32}
+                    height={32}
                     className="block md:hidden h-8 w-auto object-contain"
+                    priority
                   />
                 </>
               ) : (

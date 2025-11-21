@@ -8,9 +8,11 @@ import { cn } from "@/lib/utils";
 import { useRef } from "react";
 
 import { TechStack } from "@/components/tech-stack";
-import { TeamGrid } from "@/components/about/TeamGrid";
+// import { TeamGrid } from "@/components/about/TeamGrid";
 import { NoctraStandard } from "@/components/about/NoctraStandard";
 import { JoinNetwork } from "@/components/about/join-network";
+import { ImpactSection } from "@/components/about/ImpactSection";
+import NextImage from "next/image";
 
 const FadeIn = ({
   children,
@@ -62,10 +64,12 @@ export default function AboutPage() {
           {/* Image Placeholder - Asymmetric Layout */}
           <FadeIn>
             <div className="relative aspect-[3/4] md:aspect-square bg-neutral-100 dark:bg-neutral-900 rounded-sm overflow-hidden group grayscale">
-              <img
+              <NextImage
                 src="/images/founder.jpg"
                 alt="Manu, Founder of Noctra Studio"
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-700 group-hover:scale-105"
+                fill
+                className="object-cover transition-transform duration-700 group-hover:scale-105"
+                sizes="(max-width: 768px) 100vw, 50vw"
               />
               <div className="absolute inset-0 bg-gradient-to-br from-neutral-200/20 to-neutral-100/20 opacity-50 group-hover:opacity-0 transition-opacity duration-500" />
               {/* Noise Texture */}
@@ -172,10 +176,13 @@ export default function AboutPage() {
       </section> 
       */}
 
-      {/* 5. Join the Network */}
+      {/* 5. The Noctra Ecosystem */}
+      <ImpactSection />
+
+      {/* 6. Join the Network */}
       <JoinNetwork />
 
-      {/* 6. The Manifesto */}
+      {/* 7. The Manifesto */}
       <NoctraStandard />
     </main>
   );

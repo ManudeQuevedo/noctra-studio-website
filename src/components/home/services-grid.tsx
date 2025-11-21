@@ -6,11 +6,10 @@ import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
 
-import { UnsplashImage } from "@/lib/unsplash";
 import Image from "next/image";
 
 interface ServicesGridProps {
-  images?: Record<string, UnsplashImage | null>;
+  images?: Record<string, string | null>;
 }
 
 export function ServicesGrid({ images }: ServicesGridProps) {
@@ -83,8 +82,8 @@ export function ServicesGrid({ images }: ServicesGridProps) {
                 <>
                   <div className="absolute inset-0 opacity-0 group-hover:opacity-20 transition-opacity duration-700">
                     <Image
-                      src={service.image.url}
-                      alt={service.image.alt}
+                      src={service.image}
+                      alt={service.title}
                       fill
                       className="object-cover grayscale"
                       sizes="(max-width: 768px) 100vw, 50vw"

@@ -6,6 +6,7 @@ import { ArrowRight, Github, Instagram, Linkedin, Twitter } from "lucide-react";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
+import NextImage from "next/image";
 
 export function Footer() {
   const t = useTranslations("Footer");
@@ -66,9 +67,11 @@ export function Footer() {
                 {t("studio_label")}
               </h3>
               <div>
-                <img
+                <NextImage
                   src="/noctra-navbar-dark.svg"
                   alt="Noctra Studio"
+                  width={120}
+                  height={32}
                   className="h-6 w-auto mb-4 object-contain"
                 />
                 <p className="text-neutral-400 text-sm">{t("brand_tagline")}</p>
