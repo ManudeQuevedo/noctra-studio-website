@@ -312,12 +312,16 @@ export function Header() {
                   <div className="flex items-center justify-between w-full px-4">
                     <div className="flex items-center gap-4">
                       <a
-                        href="#"
+                        href="https://instagram.com/noctra_studio"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="transition-colors hover:scale-110 duration-300 text-neutral-500 hover:text-white dark:hover:text-neutral-950">
                         <Instagram className="w-5 h-5" />
                       </a>
                       <a
-                        href="#"
+                        href="https://x.com/NoctraStudio"
+                        target="_blank"
+                        rel="noopener noreferrer"
                         className="transition-colors hover:scale-110 duration-300 text-neutral-500 hover:text-white dark:hover:text-neutral-950">
                         <XIcon className="w-4 h-4" />
                       </a>

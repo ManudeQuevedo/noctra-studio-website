@@ -16,6 +16,9 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="max-w-5xl space-y-8 w-full z-30 relative pointer-events-auto px-6">
+        <div className="mb-6 inline-flex items-center justify-center border border-neutral-200 dark:border-neutral-800 rounded-full px-4 py-1 text-xs font-mono uppercase tracking-widest text-neutral-500">
+          {t("hero.trust_badge")}
+        </div>
         <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-white">
           {t("hero.title")}
         </h1>

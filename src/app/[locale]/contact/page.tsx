@@ -9,11 +9,11 @@ import {
   ArrowRight,
   Instagram,
   Linkedin,
-  Twitter,
   Mail,
   MapPin,
   Clock,
 } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 
 type FormData = {
@@ -221,10 +221,19 @@ function ContactForm() {
 
               {/* Socials */}
               <div className="flex gap-6">
-                {[Linkedin, Instagram, Twitter].map((Icon, i) => (
+                {[
+                  { Icon: Linkedin, href: "#" },
+                  {
+                    Icon: Instagram,
+                    href: "https://instagram.com/noctra_studio",
+                  },
+                  { Icon: FaXTwitter, href: "https://x.com/NoctraStudio" },
+                ].map(({ Icon, href }, i) => (
                   <a
                     key={i}
-                    href="#"
+                    href={href}
+                    target={href !== "#" ? "_blank" : undefined}
+                    rel={href !== "#" ? "noopener noreferrer" : undefined}
                     className="p-3 border border-neutral-800 rounded-full hover:bg-white hover:text-black transition-all duration-300">
                     <Icon className="w-6 h-6" />
                   </a>

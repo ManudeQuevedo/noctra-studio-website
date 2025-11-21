@@ -2,7 +2,8 @@
 
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { ArrowRight, Github, Instagram, Linkedin, Twitter } from "lucide-react";
+import { ArrowRight, Instagram } from "lucide-react";
+import { FaXTwitter } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
 import { motion } from "framer-motion";
@@ -50,7 +51,7 @@ export function Footer() {
               href="/contact"
               onClick={scrollToTop}
               className="group flex items-center gap-2 text-lg font-medium hover:text-neutral-300 transition-colors">
-              {t("get_started")}
+              {t("book_discovery")}
               <ArrowRight className="w-6 h-6 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -130,28 +131,20 @@ export function Footer() {
               <div className="flex flex-col gap-4 pt-1">
                 <div className="flex gap-4">
                   <Link
-                    href="#"
+                    href="https://instagram.com/noctra_studio"
+                    target="_blank"
+                    rel="noopener noreferrer"
                     aria-label="Visit our Instagram page"
                     className="text-neutral-400 hover:text-white transition-colors">
                     <Instagram className="w-6 h-6" />
                   </Link>
                   <Link
-                    href="#"
-                    aria-label="Visit our LinkedIn page"
+                    href="https://x.com/NoctraStudio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label="Visit our X profile"
                     className="text-neutral-400 hover:text-white transition-colors">
-                    <Linkedin className="w-6 h-6" />
-                  </Link>
-                  <Link
-                    href="#"
-                    aria-label="Visit our GitHub profile"
-                    className="text-neutral-400 hover:text-white transition-colors">
-                    <Github className="w-6 h-6" />
-                  </Link>
-                  <Link
-                    href="#"
-                    aria-label="Visit our Twitter profile"
-                    className="text-neutral-400 hover:text-white transition-colors">
-                    <Twitter className="w-6 h-6" />
+                    <FaXTwitter className="w-6 h-6" />
                   </Link>
                 </div>
                 <div className="flex flex-col gap-2 mt-2">

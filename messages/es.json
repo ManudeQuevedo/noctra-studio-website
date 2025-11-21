@@ -2,8 +2,10 @@
   "HomePage": {
     "hero": {
       "title": "Claridad en la noche digital.",
-      "subtitle": "Iluminamos tu camino con desarrollo web premium, branding y estrategias SEO."
+      "subtitle": "Iluminamos tu camino con desarrollo web premium, branding y estrategias SEO.",
+      "trust_badge": "Estándares Globales. Basado en Querétaro."
     },
+    "intro_text": "No solo construimos sitios web. Arquitectamos los sistemas silenciosos y escalables que empoderan a las empresas visionarias para crecer sin fricción.",
     "manifesto": {
       "text": "Somos una [agencia de arquitectura digital] dedicada a traer [claridad al caos]. Con un equipo de ingenieros y diseñadores de precisión, construimos [sistemas silenciosos] que empoderan a [empresas visionarias] para escalar sin fricción."
     },
@@ -80,7 +82,7 @@
   },
   "Footer": {
     "hook": "¿Listo para traer claridad al caos?",
-    "get_started": "Comenzar",
+    "book_discovery": "Agendar Llamada de Descubrimiento",
     "studio_label": "Estudio",
     "brand_tagline": "Claridad en la noche digital.",
     "nav_title": "Navegación",

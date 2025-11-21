@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
-import { ManifestoText } from "@/components/TextReveal";
 import { generatePageMetadata } from "@/lib/metadata";
+import { getTranslations } from "next-intl/server";
 
 // Lazy load heavy components below the fold
 const ServicesGrid = dynamic(
@@ -36,7 +36,8 @@ const SERVICE_IMAGES = {
   seo: "/images/services/seo.jpg",
 };
 
-export default function HomePage() {
+export default async function HomePage() {
+  const t = await getTranslations("HomePage");
   const images = SERVICE_IMAGES;
 
   return (
@@ -44,9 +45,11 @@ export default function HomePage() {
       {/* SECTION 1: The Hero */}
       <Hero />
 
-      {/* SECTION 2: The Manifesto */}
-      <section className="relative z-10 py-24 my-24 px-6 text-center">
-        <ManifestoText />
+      {/* SECTION 2: The Intro (Lead Statement) */}
+      <section className="max-w-4xl mx-auto px-6 text-center my-24">
+        <p className="text-2xl md:text-4xl font-light leading-tight text-neutral-800 dark:text-neutral-200">
+          {t("intro_text")}
+        </p>
       </section>
 
       <ServicesGrid images={images} />

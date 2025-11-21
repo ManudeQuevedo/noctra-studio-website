@@ -76,7 +76,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl bg-neutral-900/50 border border-white/10 p-8 hover:border-white/20 transition-colors">
+              className="group relative overflow-hidden rounded-2xl bg-neutral-900/50 border border-white/10 p-8 transition-all duration-500 hover:border-neutral-900 dark:hover:border-white/40 hover:shadow-[0_0_30px_-5px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)]">
               {/* Background Image */}
               {service.image && (
                 <>

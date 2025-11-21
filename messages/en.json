@@ -2,8 +2,10 @@
   "HomePage": {
     "hero": {
       "title": "Clarity in the digital night.",
-      "subtitle": "We illuminate your path with premium web development, branding, and SEO strategies."
+      "subtitle": "We illuminate your path with premium web development, branding, and SEO strategies.",
+      "trust_badge": "Global Standards. Based in Querétaro."
     },
+    "intro_text": "We don't just build websites. We architect the silent, scalable systems that empower visionary companies to grow without friction.",
     "manifesto": {
       "text": "We are a [digital architecture agency] dedicated to bringing [clarity to the chaos]. With a precision team of engineers and designers, we build [silent systems] that empower [visionary companies] to scale without friction."
     },
@@ -80,7 +82,7 @@
   },
   "Footer": {
     "hook": "Ready to bring clarity to the chaos?",
-    "get_started": "Get Started",
+    "book_discovery": "Book a Free Discovery Call",
     "studio_label": "Studio",
     "brand_tagline": "Clarity in the digital night.",
     "nav_title": "Navigation",
