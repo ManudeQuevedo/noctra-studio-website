@@ -1,8 +1,13 @@
 "use client";
 
-import { motion, useMotionTemplate, useMotionValue } from "framer-motion";
+import {
+  motion,
+  useMotionTemplate,
+  useMotionValue,
+  animate,
+} from "framer-motion";
 import { useTranslations } from "next-intl";
-import { MouseEvent } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 
 const FadeIn = ({
   children,
@@ -22,10 +27,44 @@ const FadeIn = ({
 
 export function BrandAnatomy() {
   const t = useTranslations("AboutPage.brand_anatomy");
+  const [isMobile, setIsMobile] = useState(false);
 
   // Mouse position tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+
+  // Detect mobile devices
+  useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window);
+    };
+
+    checkMobile();
+    window.addEventListener("resize", checkMobile);
+    return () => window.removeEventListener("resize", checkMobile);
+  }, []);
+
+  // Auto-scan animation for mobile (gentle drift effect)
+  useEffect(() => {
+    if (isMobile) {
+      // Gentle circular drift animation
+      const centerX = 400; // Approximate center of logo
+      const centerY = 300;
+      const radius = 150; // Drift radius
+
+      const animation = animate(0, Math.PI * 2, {
+        duration: 8,
+        repeat: Infinity,
+        ease: "linear",
+        onUpdate: (angle) => {
+          mouseX.set(centerX + Math.cos(angle) * radius);
+          mouseY.set(centerY + Math.sin(angle) * radius);
+        },
+      });
+
+      return () => animation.stop();
+    }
+  }, [isMobile, mouseX, mouseY]);
 
   // Create radial gradient that follows mouse
   const background = useMotionTemplate`
@@ -37,9 +76,11 @@ export function BrandAnatomy() {
   `;
 
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    const { left, top } = currentTarget.getBoundingClientRect();
-    mouseX.set(clientX - left);
-    mouseY.set(clientY - top);
+    if (!isMobile) {
+      const { left, top } = currentTarget.getBoundingClientRect();
+      mouseX.set(clientX - left);
+      mouseY.set(clientY - top);
+    }
   }
 
   return (
@@ -84,7 +125,7 @@ export function BrandAnatomy() {
       {/* Content Layer */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <FadeIn>
-          <h2 className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-16 text-center">
+          <h2 className="text-xs font-mono text-zinc-500 uppercase tracking-widest mb-16 text-center drop-shadow-md">
             {t("section_label")}
           </h2>
         </FadeIn>
@@ -93,13 +134,13 @@ export function BrandAnatomy() {
           {/* Column 1: Etymology */}
           <FadeIn delay={0.1}>
             <div className="md:border-r border-dashed border-zinc-800 md:pr-8">
-              <div className="mb-4 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+              <div className="mb-4 text-xs font-mono text-zinc-500 uppercase tracking-widest drop-shadow-md">
                 {t("etymology.label")}
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
                 {t("etymology.headline")}
               </h3>
-              <p className="text-base text-zinc-400 leading-relaxed">
+              <p className="text-base text-zinc-400 leading-relaxed drop-shadow-md">
                 {t("etymology.body")}
               </p>
             </div>
@@ -108,13 +149,13 @@ export function BrandAnatomy() {
           {/* Column 2: Symbology */}
           <FadeIn delay={0.2}>
             <div className="md:border-x border-dashed border-zinc-800 md:px-8">
-              <div className="mb-4 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+              <div className="mb-4 text-xs font-mono text-zinc-500 uppercase tracking-widest drop-shadow-md">
                 {t("symbology.label")}
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
                 {t("symbology.headline")}
               </h3>
-              <p className="text-base text-zinc-400 leading-relaxed">
+              <p className="text-base text-zinc-400 leading-relaxed drop-shadow-md">
                 {t("symbology.body")}
               </p>
             </div>
@@ -123,13 +164,13 @@ export function BrandAnatomy() {
           {/* Column 3: Output */}
           <FadeIn delay={0.3}>
             <div className="md:pl-8">
-              <div className="mb-4 text-xs font-mono text-zinc-500 uppercase tracking-widest">
+              <div className="mb-4 text-xs font-mono text-zinc-500 uppercase tracking-widest drop-shadow-md">
                 {t("output.label")}
               </div>
-              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight">
+              <h3 className="text-2xl font-bold text-white mb-4 tracking-tight drop-shadow-lg">
                 {t("output.headline")}
               </h3>
-              <p className="text-base text-zinc-400 leading-relaxed">
+              <p className="text-base text-zinc-400 leading-relaxed drop-shadow-md">
                 {t("output.body")}
               </p>
             </div>
