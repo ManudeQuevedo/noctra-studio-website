@@ -63,7 +63,7 @@ export function Footer() {
           <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-neutral-900">
             {/* Col 1: Identity */}
             <div className="p-6 md:p-8 flex flex-col gap-4">
-              <h3 className="text-neutral-500 text-xs uppercase tracking-wider font-semibold">
+              <h3 className="text-neutral-400 text-xs uppercase tracking-wider font-semibold">
                 {t("studio_label")}
               </h3>
               <div>
@@ -80,7 +80,7 @@ export function Footer() {
 
             {/* Col 2: Navigation */}
             <div className="p-6 md:p-8 flex flex-col gap-4">
-              <h3 className="text-neutral-500 text-xs uppercase tracking-wider font-semibold">
+              <h3 className="text-neutral-400 text-xs uppercase tracking-wider font-semibold">
                 {t("nav_title")}
               </h3>
               <nav className="flex flex-col gap-3 pt-1">
@@ -102,7 +102,7 @@ export function Footer() {
 
             {/* Col 3: Services */}
             <div className="p-6 md:p-8 flex flex-col gap-4">
-              <h3 className="text-neutral-500 text-xs uppercase tracking-wider font-semibold">
+              <h3 className="text-neutral-400 text-xs uppercase tracking-wider font-semibold">
                 {t("services_title")}
               </h3>
               <nav className="flex flex-col gap-3 pt-1">
@@ -124,28 +124,32 @@ export function Footer() {
 
             {/* Col 4: Socials */}
             <div className="p-6 md:p-8 flex flex-col gap-4">
-              <h3 className="text-neutral-500 text-xs uppercase tracking-wider font-semibold">
+              <h3 className="text-neutral-400 text-xs uppercase tracking-wider font-semibold">
                 {t("connect_title")}
               </h3>
               <div className="flex flex-col gap-4 pt-1">
                 <div className="flex gap-4">
                   <Link
                     href="#"
+                    aria-label="Visit our Instagram page"
                     className="text-neutral-400 hover:text-white transition-colors">
                     <Instagram className="w-6 h-6" />
                   </Link>
                   <Link
                     href="#"
+                    aria-label="Visit our LinkedIn page"
                     className="text-neutral-400 hover:text-white transition-colors">
                     <Linkedin className="w-6 h-6" />
                   </Link>
                   <Link
                     href="#"
+                    aria-label="Visit our GitHub profile"
                     className="text-neutral-400 hover:text-white transition-colors">
                     <Github className="w-6 h-6" />
                   </Link>
                   <Link
                     href="#"
+                    aria-label="Visit our Twitter profile"
                     className="text-neutral-400 hover:text-white transition-colors">
                     <Twitter className="w-6 h-6" />
                   </Link>
@@ -192,7 +196,7 @@ export function Footer() {
 
         {/* Designed In - Bottom Line */}
         <div className="max-w-5xl mx-auto px-6 md:px-8 pb-8 text-center">
-          <p className="text-[10px] text-neutral-600 uppercase tracking-widest font-mono">
+          <p className="text-[10px] text-neutral-500 uppercase tracking-widest font-mono">
             {t("designed_in")}
           </p>
         </div>
