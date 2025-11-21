@@ -7,7 +7,7 @@ export function HeroTextSection() {
   const t = useTranslations("HeroTextSection");
 
   return (
-    <section className="relative min-h-[60vh] flex items-center justify-center overflow-hidden py-32">
+    <section className="relative min-h-[50vh] flex items-center justify-center bg-transparent overflow-hidden py-32">
       <div className="max-w-4xl mx-auto px-6 relative z-10">
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
