@@ -10,6 +10,7 @@ import { Footer } from "@/components/footer";
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/JsonLd";
 import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from "@vercel/analytics/react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -55,6 +56,7 @@ export default async function LocaleLayout({
             <OrganizationSchema />
             <WebsiteSchema />
             <SpeedInsights />
+            <Analytics />
           </ThemeProvider>
         </NextIntlClientProvider>
       </body>
