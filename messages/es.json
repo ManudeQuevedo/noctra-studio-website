@@ -86,11 +86,12 @@
     "nav_title": "Navegación",
     "services_title": "Servicios",
     "connect_title": "Conectar",
-    "copyright": "Copyright © {year} Noctra Studio.",
-    "system_status": "Estado del Sistema: Operativo",
+    "copyright": "© {year} Noctra Studio. Todos los derechos reservados.",
+    "system_status": "Todos los Sistemas Operativos",
     "location": "Querétaro, MX",
     "terms_of_service": "Términos de Servicio",
-    "privacy_policy": "Política de Privacidad"
+    "privacy_policy": "Política de Privacidad",
+    "designed_in": "Diseñado e Ingeniado en Querétaro, MX. Operativo Mundialmente."
   },
   "Services": {
     "section_title": "Nuestros Servicios",
@@ -112,40 +113,60 @@
       "title": "Arquitectura Digital",
       "focus": "No solo construimos sitios web; diseñamos plataformas digitales de alto rendimiento. Nuestro enfoque está en la velocidad, la escalabilidad y la creación de una experiencia de usuario fluida que se siente instantánea.",
       "process": [
-        "Diseño de Arquitectura de Sistemas",
-        "Implementación en Next.js y React",
+        "Diseño de Arquitectura de Sistema",
+        "Implementación Next.js y React",
         "Optimización de Rendimiento",
         "Cumplimiento de Accesibilidad"
+      ],
+      "deliverables": [
+        "Despliegue en Vercel en Vivo",
+        "Repositorio GitHub Limpio",
+        "Puntuación Lighthouse 100/100"
       ]
     },
     "branding": {
       "title": "Identidad Visual",
-      "focus": "Señal sobre ruido. Creamos sistemas de diseño distintos que atraviesan el desorden. Tu marca debe ser un faro en la oscuridad, instantáneamente reconocible e imposible de ignorar.",
+      "focus": "Creamos sistemas visuales que comunican tu esencia sin decir una palabra. Minimalista, impactante y atemporal.",
       "process": [
         "Taller de Estrategia de Marca",
-        "Diseño de Logotipo e Identidad",
-        "Desarrollo de Sistema de Diseño",
+        "Desarrollo de Lenguaje Visual",
+        "Sistema de Diseño UI/UX",
         "Guías de Marca"
+      ],
+      "deliverables": [
+        "Guía de Marca PDF",
+        "Biblioteca de Activos (SVG/PNG)",
+        "Archivos Fuente Figma"
       ]
     },
     "ai": {
       "title": "Sistemas Inteligentes",
-      "focus": "Automatizando el caos. Integramos agentes de IA y flujos de trabajo de automatización para optimizar tus operaciones. Deja que las máquinas manejen lo repetitivo, para que puedas concentrarte en lo creativo.",
+      "focus": "Integramos agentes de IA que automatizan tus flujos de trabajo y mejoran la participación del usuario. Inteligente, eficiente e invisible.",
       "process": [
-        "Auditoría de Flujos de Trabajo",
-        "Selección y Ajuste de Modelos",
-        "Integración de API",
-        "Entrenamiento y Despliegue"
+        "Análisis de Flujo de Trabajo",
+        "Selección de Modelo IA",
+        "Entrenamiento de Agente Personalizado",
+        "Integración y Pruebas"
+      ],
+      "deliverables": [
+        "Agente IA Personalizado",
+        "Documentación API",
+        "Video Guía de Integración"
       ]
     },
     "seo": {
-      "title": "Estrategia de Crecimiento",
-      "focus": "Visibilidad en la oscuridad. Utilizamos SEO técnico y estrategias basadas en datos para asegurar que tu mensaje llegue a la audiencia correcta. No se trata de más tráfico; se trata del tráfico correcto.",
+      "title": "Crecimiento",
+      "focus": "Construimos motores que impulsan el tráfico orgánico. Estrategias basadas en datos que ponen tu marca frente a la audiencia correcta.",
       "process": [
-        "Auditoría de SEO Técnico",
-        "Estrategia de Palabras Clave",
-        "Optimización de Contenido",
-        "Seguimiento de Rendimiento"
+        "Análisis de Mercado",
+        "Auditoría SEO Técnica",
+        "Estrategia de Contenido",
+        "Configuración de Analíticas"
+      ],
+      "deliverables": [
+        "Reporte Mensual de Analíticas",
+        "Doc. de Estrategia de Contenido",
+        "Panel de Ranking de Keywords"
       ]
     },
     "start_project": "Iniciar Proyecto"
@@ -244,9 +265,10 @@
   },
   "ContactPage": {
     "hero": {
-      "title": "Iniciemos la conversación.",
-      "subtitle": "Cuéntanos tu visión. Nosotros te ayudamos a estructurarla."
+      "title": "Construyamos algo significativo.",
+      "subtitle": "Somos selectivos con nuestros socios. Cuéntanos tu visión y si somos compatibles, la construiremos."
     },
+    "commitment_badge": "Sin rellenos. Acceso directo a ingeniería. Respuesta en 24 horas.",
     "details": {
       "email_label": "Correo",
       "location_label": "Estudio",
@@ -256,29 +278,29 @@
     "form": {
       "name_label": "Nombre",
       "name_placeholder": "Juan Pérez",
-      "email_label": "Correo",
+      "email_label": "Email",
       "email_placeholder": "juan@ejemplo.com",
-      "website_label": "Sitio Web",
-      "website_placeholder": "ejemplo.com (Opcional)",
-      "service_label": "Servicio de Interés",
+      "website_label": "Sitio Web (Opcional)",
+      "website_placeholder": "https://ejemplo.com",
+      "service_label": "Interés de Servicio",
       "service_placeholder": "Selecciona un servicio...",
       "service_options": {
         "digital_architecture": "Arquitectura Digital",
         "visual_identity": "Identidad Visual",
-        "ai_automation": "IA y Automatización",
-        "growth": "Crecimiento y Estrategia"
+        "ai_automation": "Sistemas Inteligentes",
+        "growth": "Crecimiento"
       },
-      "budget_label": "Rango de Presupuesto",
-      "budget_placeholder": "Selecciona tu presupuesto...",
+      "budget_label": "Presupuesto Estimado",
+      "budget_placeholder": "Selecciona un rango...",
       "budget_options": {
-        "under_50k": "< $50k",
-        "50k_100k": "$50k - $100k",
-        "over_100k": "> $100k"
+        "under_50k": "Menos de $5k",
+        "50k_100k": "$5k - $10k",
+        "over_100k": "Más de $10k"
       },
       "details_label": "Detalles del Proyecto",
-      "details_placeholder": "Cuéntanos sobre los objetivos de tu proyecto, tiempos y requerimientos específicos...",
-      "submit": "Enviar Consulta",
-      "sending": "Enviando..."
+      "details_placeholder": "Cuéntanos sobre tus objetivos, cronograma y visión...",
+      "submit": "Enviar Señal",
+      "sending": "Transmitiendo..."
     },
     "success": {
       "title": "Mensaje Enviado",
@@ -373,5 +395,58 @@
         "content": "Si tienes alguna pregunta sobre esta Política de Privacidad, contáctanos en:"
       }
     }
+  },
+  "JoinNetwork": {
+    "title": "Únete a la Red",
+    "subtitle": "Un colectivo curado de arquitectos, diseñadores y estrategas independientes.",
+    "manifesto": {
+      "title": "El Estándar Noctra",
+      "items": [
+        {
+          "title": "Ejecución Autónoma",
+          "desc": "No microgestionamos. Eres un experto. Defines el camino y ejecutas con precisión."
+        },
+        {
+          "title": "Inteligencia Colectiva",
+          "desc": "El aislamiento no es el objetivo. Confiamos en la red para auditar código, desafiar decisiones de diseño y elevar el resultado final."
+        },
+        {
+          "title": "Maestría Requerida",
+          "desc": "Entregamos calidad de primer nivel. Este no es un entorno de aprendizaje; es un entorno de rendimiento."
+        }
+      ]
+    },
+    "roles": {
+      "frontend": "Ingeniero Frontend",
+      "design": "Diseñador de Producto",
+      "growth": "Estratega de Crecimiento",
+      "apply": "Solicitar Acceso"
+    },
+    "cta": {
+      "button": "Iniciar Proceso de Evaluación",
+      "disclaimer": "Revisión de portafolio y auditoría de código requeridos para el ingreso."
+    }
+  },
+  "OperationalDirectives": {
+    "title": "Protocolos de Compromiso [SOLO LECTURA]",
+    "protocols": {
+      "ip_transfer": {
+        "title": "TRANSFERENCIA DE PI",
+        "desc": "Todos los activos creados son propiedad exclusiva de Noctra Studio. Los derechos se transfieren con el pago."
+      },
+      "exclusivity": {
+        "title": "EXCLUSIVIDAD",
+        "desc": "La caza furtiva de clientes o la elusión resulta en lista negra inmediata y acciones legales."
+      },
+      "output_first": {
+        "title": "PRIMERO EL RESULTADO",
+        "desc": "La compensación está vinculada a entregables aprobados, no a horas registradas."
+      },
+      "silence": {
+        "title": "SILENCIO",
+        "desc": "Cumplimiento estricto de NDA. Los detalles del proyecto permanecen confidenciales."
+      }
+    },
+    "disclaimer": "Documentación legal completa proporcionada tras una evaluación exitosa."
   }
 }

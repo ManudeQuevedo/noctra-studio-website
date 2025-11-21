@@ -10,6 +10,7 @@ import { useRef } from "react";
 import { TechStack } from "@/components/tech-stack";
 import { TeamGrid } from "@/components/about/TeamGrid";
 import { NoctraStandard } from "@/components/about/NoctraStandard";
+import { JoinNetwork } from "@/components/about/join-network";
 
 const FadeIn = ({
   children,
@@ -171,7 +172,10 @@ export default function AboutPage() {
       </section> 
       */}
 
-      {/* 5. The Manifesto */}
+      {/* 5. Join the Network */}
+      <JoinNetwork />
+
+      {/* 6. The Manifesto */}
       <NoctraStandard />
     </main>
   );

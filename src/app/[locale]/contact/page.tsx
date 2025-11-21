@@ -168,6 +168,18 @@ function ContactForm() {
                 className="text-xl md:text-2xl text-neutral-400 max-w-md leading-relaxed">
                 {t("hero.subtitle")}
               </motion.p>
+
+              {/* Commitment Badge */}
+              <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.6, delay: 0.2 }}
+                className="mt-8 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
+                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
+                <span className="text-sm font-mono text-neutral-300 tracking-tight">
+                  {t("commitment_badge")}
+                </span>
+              </motion.div>
             </div>
 
             <motion.div

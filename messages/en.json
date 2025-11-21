@@ -86,11 +86,12 @@
     "nav_title": "Navigation",
     "services_title": "Services",
     "connect_title": "Connect",
-    "copyright": "Copyright © {year} Noctra Studio.",
-    "system_status": "System Status: Operational",
-    "location": "Querétaro, MX",
     "terms_of_service": "Terms of Service",
-    "privacy_policy": "Privacy Policy"
+    "privacy_policy": "Privacy Policy",
+    "copyright": "© {year} Noctra Studio. All rights reserved.",
+    "system_status": "All Systems Operational",
+    "location": "Querétaro, MX",
+    "designed_in": "Designed & Engineered in Querétaro, MX. Operational Worldwide."
   },
   "Services": {
     "section_title": "Our Services",
@@ -116,36 +117,56 @@
         "Next.js & React Implementation",
         "Performance Optimization",
         "Accessibility Compliance"
+      ],
+      "deliverables": [
+        "Live Vercel Deployment",
+        "Clean GitHub Repo",
+        "100/100 Lighthouse Score"
       ]
     },
     "branding": {
       "title": "Visual Identity",
-      "focus": "Signal over noise. We create distinct design systems that cut through the clutter. Your brand should be a beacon in the dark, instantly recognizable and impossible to ignore.",
+      "focus": "We craft visual systems that communicate your essence without saying a word. Minimalist, impactful, and timeless.",
       "process": [
         "Brand Strategy Workshop",
-        "Logo & Identity Design",
-        "Design System Development",
+        "Visual Language Development",
+        "UI/UX Design System",
         "Brand Guidelines"
+      ],
+      "deliverables": [
+        "Brand Guidelines PDF",
+        "Asset Library (SVG/PNG)",
+        "Figma Source Files"
       ]
     },
     "ai": {
       "title": "Intelligent Systems",
-      "focus": "Automating chaos. We integrate AI agents and automation workflows to streamline your operations. Let machines handle the repetitive, so you can focus on the creative.",
+      "focus": "We integrate AI agents that automate your workflows and enhance user engagement. Smart, efficient, and invisible.",
       "process": [
-        "Workflow Audit",
-        "Model Selection & Tuning",
-        "API Integration",
-        "Training & Deployment"
+        "Workflow Analysis",
+        "AI Model Selection",
+        "Custom Agent Training",
+        "Integration & Testing"
+      ],
+      "deliverables": [
+        "Custom AI Agent",
+        "API Documentation",
+        "Integration Video Guide"
       ]
     },
     "seo": {
-      "title": "Growth Strategy",
-      "focus": "Visibility in the dark. We use technical SEO and data-driven strategies to ensure your message reaches the right audience. It's not about more traffic; it's about the right traffic.",
+      "title": "Growth",
+      "focus": "We build engines that drive organic traffic. Data-driven strategies that put your brand in front of the right audience.",
       "process": [
+        "Market Analysis",
         "Technical SEO Audit",
-        "Keyword Strategy",
-        "Content Optimization",
-        "Performance Tracking"
+        "Content Strategy",
+        "Analytics Setup"
+      ],
+      "deliverables": [
+        "Monthly Analytics Report",
+        "Content Strategy Doc",
+        "Keyword Ranking Dashboard"
       ]
     },
     "start_project": "Start Project"
@@ -244,9 +265,10 @@
   },
   "ContactPage": {
     "hero": {
-      "title": "Let's start the conversation.",
-      "subtitle": "Tell us about your vision. We'll help you structure it."
+      "title": "Let's build something meaningful.",
+      "subtitle": "We are selective with our partners. Tell us about your vision, and if we are a match, we will build it."
     },
+    "commitment_badge": "Zero fluff. Direct access to engineering. Response within 24 hours.",
     "details": {
       "email_label": "Email",
       "location_label": "Studio",
@@ -258,27 +280,27 @@
       "name_placeholder": "John Doe",
       "email_label": "Email",
       "email_placeholder": "john@example.com",
-      "website_label": "Company Website",
-      "website_placeholder": "example.com (Optional)",
-      "service_label": "Service of Interest",
+      "website_label": "Website (Optional)",
+      "website_placeholder": "https://example.com",
+      "service_label": "Service Interest",
       "service_placeholder": "Select a service...",
       "service_options": {
         "digital_architecture": "Digital Architecture",
         "visual_identity": "Visual Identity",
-        "ai_automation": "AI & Automation",
-        "growth": "Growth & Strategy"
+        "ai_automation": "Intelligent Systems",
+        "growth": "Growth"
       },
-      "budget_label": "Budget Range",
+      "budget_label": "Estimated Budget",
       "budget_placeholder": "Select a range...",
       "budget_options": {
-        "under_50k": "< $50k",
-        "50k_100k": "$50k - $100k",
-        "over_100k": "> $100k"
+        "under_50k": "Under $5k",
+        "50k_100k": "$5k - $10k",
+        "over_100k": "Over $10k"
       },
       "details_label": "Project Details",
-      "details_placeholder": "Tell us about your project goals, timeline, and any specific requirements...",
-      "submit": "Send Inquiry",
-      "sending": "Sending..."
+      "details_placeholder": "Tell us about your goals, timeline, and vision...",
+      "submit": "Send Signal",
+      "sending": "Transmitting..."
     },
     "success": {
       "title": "Message Sent",
@@ -373,5 +395,58 @@
         "content": "If you have any questions about this Privacy Policy, please contact us at:"
       }
     }
+  },
+  "JoinNetwork": {
+    "title": "Join the Network",
+    "subtitle": "A curated collective of independent architects, designers, and strategists.",
+    "manifesto": {
+      "title": "The Noctra Standard",
+      "items": [
+        {
+          "title": "Autonomous Execution",
+          "desc": "We don't micromanage. You are an expert. You define the path and execute with precision."
+        },
+        {
+          "title": "Collective Intelligence",
+          "desc": "Isolation is not the goal. We rely on the network to audit code, challenge design decisions, and elevate the final output."
+        },
+        {
+          "title": "Mastery Required",
+          "desc": "We deliver top-tier quality. This is not a learning environment; it is a performance environment."
+        }
+      ]
+    },
+    "roles": {
+      "frontend": "Frontend Engineer",
+      "design": "Product Designer",
+      "growth": "Growth Strategist",
+      "apply": "Apply for Access"
+    },
+    "cta": {
+      "button": "Initiate Vetting Process",
+      "disclaimer": "Portfolio review and code audit required for entry."
+    }
+  },
+  "OperationalDirectives": {
+    "title": "Engagement Protocols [READ-ONLY]",
+    "protocols": {
+      "ip_transfer": {
+        "title": "IP TRANSFER",
+        "desc": "All created assets are the exclusive property of Noctra Studio. Rights transfer upon payment."
+      },
+      "exclusivity": {
+        "title": "EXCLUSIVITY",
+        "desc": "Client poaching or circumvention results in immediate blacklisting and legal action."
+      },
+      "output_first": {
+        "title": "OUTPUT-FIRST",
+        "desc": "Compensation is tied to approved deliverables, not hours logged."
+      },
+      "silence": {
+        "title": "SILENCE",
+        "desc": "Strict NDA enforcement. Project details remain confidential."
+      }
+    },
+    "disclaimer": "Full legal documentation provided upon successful vetting."
   }
 }

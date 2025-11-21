@@ -79,26 +79,52 @@ const ServiceSection = ({
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}>
             <div className="flex flex-col gap-6 group/list">
-              {/* @ts-ignore: next-intl types for arrays can be tricky */}
-              {[0, 1, 2, 3].map((stepIndex) => (
-                <div
-                  key={stepIndex}
-                  onMouseEnter={() => setHoveredStep(stepIndex)}
-                  onMouseLeave={() => setHoveredStep(null)}
-                  className="relative flex items-baseline gap-6 group/item transition-all duration-500 group-hover/list:opacity-40 hover:!opacity-100 cursor-default py-2">
-                  {/* Active Indicator Line */}
-                  <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-0 h-px bg-neutral-900 dark:bg-white transition-all duration-300 group-hover/item:w-4" />
+              {/* Process Steps */}
+              <div className="space-y-6 mb-12">
+                <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-6">
+                  Process
+                </h4>
+                {/* @ts-ignore: next-intl types for arrays can be tricky */}
+                {[0, 1, 2, 3].map((stepIndex) => (
+                  <div
+                    key={stepIndex}
+                    onMouseEnter={() => setHoveredStep(stepIndex)}
+                    onMouseLeave={() => setHoveredStep(null)}
+                    className="relative flex items-baseline gap-6 group/item transition-all duration-500 group-hover/list:opacity-40 hover:!opacity-100 cursor-default py-2">
+                    {/* Active Indicator Line */}
+                    <div className="absolute -left-6 top-1/2 -translate-y-1/2 w-0 h-px bg-neutral-900 dark:bg-white transition-all duration-300 group-hover/item:w-4" />
 
-                  <span className="font-mono text-sm text-neutral-400 shrink-0 transition-colors group-hover/item:text-neutral-900 dark:group-hover/item:text-white">
-                    0{stepIndex + 1}
-                  </span>
-                  <div>
-                    <p className="text-xl md:text-2xl font-medium text-neutral-900 dark:text-white leading-tight transition-transform duration-300 group-hover/item:translate-x-2">
-                      {t(`${service.key}.process.${stepIndex}`)}
-                    </p>
+                    <span className="font-mono text-sm text-neutral-400 shrink-0 transition-colors group-hover/item:text-neutral-900 dark:group-hover/item:text-white">
+                      0{stepIndex + 1}
+                    </span>
+                    <div>
+                      <p className="text-xl md:text-2xl font-medium text-neutral-900 dark:text-white leading-tight transition-transform duration-300 group-hover/item:translate-x-2">
+                        {t(`${service.key}.process.${stepIndex}`)}
+                      </p>
+                    </div>
                   </div>
+                ))}
+              </div>
+
+              {/* Deliverables */}
+              <div className="pt-8 border-t border-neutral-200 dark:border-neutral-800">
+                <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-6">
+                  Deliverables
+                </h4>
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                  {/* @ts-ignore: next-intl types */}
+                  {[0, 1, 2].map((i) => (
+                    <div
+                      key={i}
+                      className="flex items-center gap-3 text-neutral-400">
+                      <div className="w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0" />
+                      <span className="text-sm font-medium">
+                        {t(`${service.key}.deliverables.${i}`)}
+                      </span>
+                    </div>
+                  ))}
                 </div>
-              ))}
+              </div>
             </div>
           </motion.div>
         </div>

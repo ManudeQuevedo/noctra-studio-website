@@ -186,6 +186,13 @@ export function Footer() {
             {t("location")} [{time}]
           </div>
         </div>
+
+        {/* Designed In - Bottom Line */}
+        <div className="max-w-5xl mx-auto px-6 md:px-8 pb-8 text-center">
+          <p className="text-[10px] text-neutral-600 uppercase tracking-widest font-mono">
+            {t("designed_in")}
+          </p>
+        </div>
       </div>
     </footer>
   );
