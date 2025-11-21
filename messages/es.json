@@ -92,6 +92,11 @@
       "title": "Únete a la Red.",
       "subtitle": "Un colectivo curado de arquitectos, diseñadores y estrategas independientes construyendo la próxima generación de sistemas digitales."
     },
+    "culture": {
+      "headline": "Construye los sistemas que desearías que existieran.",
+      "paragraph1": "Estamos cansados de la 'rutina de agencia'—reuniones interminables, retroalimentación subjetiva y código espagueti. Noctra es el antídoto.",
+      "paragraph2": "Aquí, no solo cierras tickets. Arquitecturas soluciones. Trabajas con autonomía, envías a producción y te pagan por resultados, no por horas."
+    },
     "roster": {
       "label": "El Roster",
       "engineer": {

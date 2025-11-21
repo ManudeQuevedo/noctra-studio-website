@@ -14,7 +14,7 @@ export function HeroTextSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
-          className="text-3xl md:text-5xl lg:text-6xl font-bold tracking-tighter text-center leading-tight max-w-3xl mx-auto">
+          className="text-3xl md:text-5xl lg:text-6xl font-light tracking-tighter text-center leading-loose max-w-3xl mx-auto">
           <span className="text-white">{t("part1")}</span>
           <span className="text-neutral-600">{t("part2")}</span>
           <span className="text-white">{t("part3")}</span>

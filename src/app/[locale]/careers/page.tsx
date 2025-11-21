@@ -55,6 +55,30 @@ export default function CareersPage() {
         </div>
       </section>
 
+      {/* Culture Hook Section */}
+      <section className="py-24 px-4 md:px-8">
+        <div className="max-w-4xl mx-auto text-center">
+          <motion.h2
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold tracking-tight text-white mb-8">
+            {t("culture.headline")}
+          </motion.h2>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, delay: 0.2 }}
+            className="space-y-6 text-lg md:text-xl text-neutral-300 leading-relaxed">
+            <p>{t("culture.paragraph1")}</p>
+            <p>{t("culture.paragraph2")}</p>
+          </motion.div>
+        </div>
+      </section>
+
       {/* The Roster - 3 Column Grid */}
       <section className="py-24 px-4 md:px-8 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto">

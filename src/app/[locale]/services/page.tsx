@@ -46,9 +46,16 @@ const ServiceSection = ({
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
                 {t(`${service.key}.title`)}
               </h2>
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm">
+              <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm mb-6">
                 {t(`${service.key}.focus`)}
               </p>
+
+              {/* Deep Link CTA */}
+              <Link
+                href={`/contact?interest=${service.id}`}
+                className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
+                Explore {t(`${service.key}.title`)} →
+              </Link>
             </motion.div>
 
             {/* Phase Anchor Image - Static */}

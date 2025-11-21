@@ -92,6 +92,11 @@
       "title": "Join the Network.",
       "subtitle": "A curated collective of independent architects, designers, and strategists building the next generation of digital systems."
     },
+    "culture": {
+      "headline": "Build the systems you wish existed.",
+      "paragraph1": "We are tired of the 'agency grind'—endless meetings, subjective feedback, and spaghetti code. Noctra is the antidote.",
+      "paragraph2": "Here, you don't just close tickets. You architect solutions. You work with autonomy, you ship to production, and you get paid for output, not hours."
+    },
     "roster": {
       "label": "The Roster",
       "engineer": {
