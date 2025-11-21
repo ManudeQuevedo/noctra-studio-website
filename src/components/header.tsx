@@ -102,6 +102,7 @@ export function Header() {
     { label: t("about"), href: "/about" },
     { label: t("services"), href: "/services" },
     // { label: t("blog"), href: "/blog" },
+    { label: t("careers"), href: "/careers" },
     { label: t("contact"), href: "/contact" },
   ];
 

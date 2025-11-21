@@ -80,11 +80,54 @@
     "about": "About Us",
     "services": "Services",
     "blog": "Blog",
+    "careers": "Careers",
     "contact": "Contact",
     "start_project": "Start Project",
     "menu_open": "Menu",
     "menu_close": "Close",
     "get_in_touch": "Get in Touch"
+  },
+  "CareersPage": {
+    "hero": {
+      "title": "Join the Network.",
+      "subtitle": "A curated collective of independent architects, designers, and strategists building the next generation of digital systems."
+    },
+    "roster": {
+      "label": "The Roster",
+      "engineer": {
+        "title": "The Engineer.",
+        "desc": "Mastery of Next.js, TypeScript, and Serverless infrastructure. You build silent, robust systems."
+      },
+      "visualist": {
+        "title": "The Visualist.",
+        "desc": "Systems thinker. You design interfaces that feel inevitable. Figma expert."
+      },
+      "strategist": {
+        "title": "The Strategist.",
+        "desc": "Data-driven. You build automations and growth loops using AI and Technical SEO."
+      }
+    },
+    "protocols": {
+      "title": "Engagement Protocols.",
+      "items": {
+        "0": {
+          "title": "Project-Based",
+          "desc": "Fixed-price contracts per sprint or project."
+        },
+        "1": {
+          "title": "The 50/50 Standard",
+          "desc": "50% deposit to start. 50% on delivery."
+        },
+        "2": {
+          "title": "Zero Overhead",
+          "desc": "No meetings that could have been emails. We respect deep work."
+        }
+      }
+    },
+    "cta": {
+      "button": "Initiate Vetting Process",
+      "subtext": "Send your portfolio and GitHub. No cover letters."
+    }
   },
   "Footer": {
     "hook": "Ready to bring clarity to the chaos?",

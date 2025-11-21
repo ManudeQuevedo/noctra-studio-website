@@ -150,7 +150,7 @@ function ContactForm() {
 
   const inputClasses = (fieldName: string) =>
     cn(
-      "w-full bg-transparent border-b py-4 text-lg outline-none transition-all duration-300 font-mono text-white placeholder:text-neutral-600",
+      "w-full bg-transparent border-b py-3 text-lg outline-none transition-all duration-300 font-mono text-white placeholder:text-neutral-600",
       focusedField === fieldName
         ? "border-white shadow-[0_1px_15px_rgba(255,255,255,0.15)] pl-4"
         : "border-neutral-800"

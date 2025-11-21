@@ -16,6 +16,8 @@ export function Footer() {
   const [time, setTime] = useState("");
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith("/contact");
+  const isCareersPage = pathname?.includes("/careers");
+  const hideCtaRow = isContactPage || isCareersPage;
 
   useEffect(() => {
     const updateTime = () => {
@@ -40,11 +42,11 @@ export function Footer() {
 
   return (
     <footer className="bg-[#050505] border-t border-neutral-800 text-white font-sans">
-      {/* Row 1: The Hook - Hidden on Contact Page */}
-      {!isContactPage && (
+      {/* Row 1: The Hook - Hidden on Contact and Careers Pages */}
+      {!hideCtaRow && (
         <div className="border-b border-neutral-900">
           <div className="max-w-7xl mx-auto px-6 md:px-8 py-12 md:py-16 pb-12 flex flex-col md:flex-row items-center justify-between gap-6">
-            <h2 className="text-3xl md:text-4xl lg:text-5xl font-medium tracking-tight max-w-2xl">
+            <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold tracking-tight max-w-2xl">
               {t("hook")}
             </h2>
             <Link
@@ -89,6 +91,7 @@ export function Footer() {
                   { label: tNav("home"), href: "/" },
                   { label: tNav("about"), href: "/about" },
                   { label: tNav("services"), href: "/services" },
+                  { label: tNav("careers"), href: "/careers" },
                   { label: tNav("contact"), href: "/contact" },
                 ].map((item) => {
                   const isActive = pathname?.endsWith(item.href);

@@ -9,8 +9,6 @@ import { useRef } from "react";
 
 import { TechStack } from "@/components/tech-stack";
 // import { TeamGrid } from "@/components/about/TeamGrid";
-import { NoctraStandard } from "@/components/about/NoctraStandard";
-import { JoinNetwork } from "@/components/about/join-network";
 import { ImpactSection } from "@/components/about/ImpactSection";
 import NextImage from "next/image";
 
@@ -156,35 +154,8 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 
-        TODO: Uncomment this section when the team grows.
-        Currently hidden as Noctra is a one-person studio.
-      */}
-      {/* 
-      <section className="py-24 border-b border-neutral-200">
-        <div className="max-w-7xl mx-auto px-4 md:px-8 mb-12">
-          <FadeIn>
-            <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
-              {t("team.title")}
-            </h2>
-          </FadeIn>
-        </div>
-        <TeamGrid />
-      </section> 
-      */}
-
       {/* 5. The Noctra Ecosystem */}
       <ImpactSection />
-
-      {/* 6. Join the Network */}
-      <div className="relative z-10">
-        <JoinNetwork />
-      </div>
-
-      {/* 7. The Manifesto */}
-      <div className="relative z-10">
-        <NoctraStandard />
-      </div>
     </main>
   );
 }

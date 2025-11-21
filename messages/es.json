@@ -80,11 +80,54 @@
     "about": "Nosotros",
     "services": "Servicios",
     "blog": "Blog",
+    "careers": "Carreras",
     "contact": "Contacto",
     "start_project": "Iniciar Proyecto",
     "menu_open": "Menú",
     "menu_close": "Cerrar",
     "get_in_touch": "Ponte en contacto"
+  },
+  "CareersPage": {
+    "hero": {
+      "title": "Únete a la Red.",
+      "subtitle": "Un colectivo curado de arquitectos, diseñadores y estrategas independientes construyendo la próxima generación de sistemas digitales."
+    },
+    "roster": {
+      "label": "El Roster",
+      "engineer": {
+        "title": "El Ingeniero.",
+        "desc": "Dominio de Next.js, TypeScript e infraestructura Serverless. Construyes sistemas silenciosos y robustos."
+      },
+      "visualist": {
+        "title": "El Visualista.",
+        "desc": "Pensador de sistemas. Diseñas interfaces que se sienten inevitables. Experto en Figma."
+      },
+      "strategist": {
+        "title": "El Estratega.",
+        "desc": "Basado en datos. Construyes automatizaciones y bucles de crecimiento usando IA y SEO Técnico."
+      }
+    },
+    "protocols": {
+      "title": "Protocolos de Colaboración.",
+      "items": {
+        "0": {
+          "title": "Basado en Proyectos",
+          "desc": "Contratos de precio fijo por sprint o proyecto."
+        },
+        "1": {
+          "title": "El Estándar 50/50",
+          "desc": "50% de depósito para iniciar. 50% en la entrega."
+        },
+        "2": {
+          "title": "Cero Sobrecarga",
+          "desc": "Sin reuniones que pudieron haber sido emails. Respetamos el trabajo profundo."
+        }
+      }
+    },
+    "cta": {
+      "button": "Iniciar Proceso de Evaluación",
+      "subtext": "Envía tu portafolio y GitHub. Sin cartas de presentación."
+    }
   },
   "Footer": {
     "hook": "¿Listo para traer claridad al caos?",
