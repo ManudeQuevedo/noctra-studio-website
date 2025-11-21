@@ -2,17 +2,10 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import {
-  ArrowRight,
-  Instagram,
-  Linkedin,
-  Mail,
-  MapPin,
-  Clock,
-} from "lucide-react";
+import { ArrowRight, Instagram, Mail, MapPin, Clock } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 
@@ -37,6 +30,7 @@ const BUDGET_OPTIONS = {
     },
     { label: "System (Custom Software) — +$150k", value: "System (+150k MXN)" },
     { label: "Retainer / Consulting", value: "Consulting" },
+    { label: "Not sure / Let's discuss value", value: "Undecided" },
   ],
   USD: [
     {
@@ -49,6 +43,7 @@ const BUDGET_OPTIONS = {
     },
     { label: "System (Custom Software) — +$9k", value: "System (+9k USD)" },
     { label: "Retainer / Consulting", value: "Consulting" },
+    { label: "Not sure / Let's discuss value", value: "Undecided" },
   ],
 };
 
@@ -62,6 +57,7 @@ function ContactForm() {
   // Mouse tracking for spotlight effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
+  const { scrollY } = useScroll();
 
   const searchParams = useSearchParams();
   const interest = searchParams.get("interest");
@@ -167,12 +163,17 @@ function ContactForm() {
     <main className="min-h-screen bg-[#050505] text-white pt-32 relative overflow-hidden">
       {/* Ambient Spotlight Effect */}
       <motion.div
-        className="fixed inset-0 pointer-events-none z-0"
+        className="absolute inset-0 pointer-events-none z-0"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
         style={{
           background: useTransform(
-            [mouseX, mouseY],
-            ([x, y]) =>
-              `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.15), transparent 80%)`
+            [mouseX, mouseY, scrollY],
+            ([x, y, s]: any[]) =>
+              `radial-gradient(600px circle at ${x}px ${
+                y + s
+              }px, rgba(99, 102, 241, 0.15), transparent 80%)`
           ),
         }}
       />
@@ -250,7 +251,6 @@ function ContactForm() {
               {/* Socials */}
               <div className="flex gap-6">
                 {[
-                  { Icon: Linkedin, href: "#" },
                   {
                     Icon: Instagram,
                     href: "https://instagram.com/noctra_studio",

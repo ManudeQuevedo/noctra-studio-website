@@ -90,14 +90,24 @@ export function Footer() {
                   { label: tNav("about"), href: "/about" },
                   { label: tNav("services"), href: "/services" },
                   { label: tNav("contact"), href: "/contact" },
-                ].map((item) => (
-                  <Link
-                    key={item.label}
-                    href={item.href}
-                    className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
-                    {item.label}
-                  </Link>
-                ))}
+                ].map((item) => {
+                  const isActive = pathname?.endsWith(item.href);
+
+                  return isActive ? (
+                    <span
+                      key={item.label}
+                      className="text-white font-medium cursor-default w-fit">
+                      {item.label}
+                    </span>
+                  ) : (
+                    <Link
+                      key={item.label}
+                      href={item.href}
+                      className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
+                      {item.label}
+                    </Link>
+                  );
+                })}
               </nav>
             </div>
 

@@ -85,6 +85,9 @@ export function PhilosophySection() {
                   </span>
                   <span className="text-green-400 ml-auto">
                     {t("system_monitor.online")}
+                    <span className="text-[10px] italic text-neutral-500 ml-2">
+                      (Your business never sleeps)
+                    </span>
                   </span>
                 </div>
                 <div className="flex items-center gap-3">
@@ -92,7 +95,12 @@ export function PhilosophySection() {
                   <span className="text-neutral-300">
                     {t("system_monitor.performance")}
                   </span>
-                  <span className="text-white ml-auto">100/100</span>
+                  <span className="text-white ml-auto">
+                    100/100
+                    <span className="text-[10px] italic text-neutral-500 ml-2">
+                      (Speed converts)
+                    </span>
+                  </span>
                 </div>
                 <div className="flex items-center gap-3">
                   <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
@@ -101,6 +109,9 @@ export function PhilosophySection() {
                   </span>
                   <span className="text-green-400 ml-auto">
                     {t("system_monitor.active")}
+                    <span className="text-[10px] italic text-neutral-500 ml-2">
+                      (Asset protection)
+                    </span>
                   </span>
                 </div>
               </div>

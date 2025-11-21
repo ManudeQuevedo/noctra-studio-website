@@ -15,6 +15,7 @@ import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
 import { Instagram } from "lucide-react";
 import NextImage from "next/image";
+import { usePathname as useNextPathname } from "next/navigation";
 
 // Custom X Icon
 const XIcon = ({ className }: { className?: string }) => (
@@ -33,7 +34,10 @@ export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const { scrollY } = useScroll();
   const pathname = usePathname();
+  const nextPathname = useNextPathname();
   const headerRef = React.useRef<HTMLDivElement>(null);
+
+  const isContactPage = nextPathname?.includes("/contact");
 
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
@@ -97,7 +101,7 @@ export function Header() {
     { label: t("home"), href: "/" },
     { label: t("about"), href: "/about" },
     { label: t("services"), href: "/services" },
-    { label: t("blog"), href: "/blog" },
+    // { label: t("blog"), href: "/blog" },
     { label: t("contact"), href: "/contact" },
   ];
 
@@ -177,17 +181,19 @@ export function Header() {
             </Link>
 
             <div className="flex items-center gap-4">
-              {/* Start Project CTA - Desktop Only */}
-              <Link
-                href="/contact"
-                className={cn(
-                  "hidden md:block rounded-full px-5 py-2 text-xs font-medium transition-transform hover:scale-105",
-                  isOpen
-                    ? "bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white"
-                    : "bg-neutral-900 text-white dark:bg-neutral-50 dark:text-neutral-900"
-                )}>
-                {t("start_project")}
-              </Link>
+              {/* Start Project CTA - Desktop Only - Hidden on Contact Page */}
+              {!isContactPage && (
+                <Link
+                  href="/contact"
+                  className={cn(
+                    "hidden md:block rounded-full px-5 py-2 text-xs font-medium transition-transform hover:scale-105",
+                    isOpen
+                      ? "bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white"
+                      : "bg-neutral-900 text-white dark:bg-neutral-50 dark:text-neutral-900"
+                  )}>
+                  {t("start_project")}
+                </Link>
+              )}
 
               <button
                 onClick={() => setIsOpen(!isOpen)}
