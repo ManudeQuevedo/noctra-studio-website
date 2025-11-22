@@ -431,11 +431,11 @@
     },
     "form": {
       "name_label": "Name",
-      "name_placeholder": "John Doe",
+      "name_placeholder": "Elena Vance",
       "email_label": "Email",
-      "email_placeholder": "john@example.com",
+      "email_placeholder": "founder@visionary.com",
       "website_label": "Website (Optional)",
-      "website_placeholder": "https://example.com",
+      "website_placeholder": "visionary.com",
       "service_label": "Service Interest",
       "service_placeholder": "Select a service...",
       "service_options": {
@@ -452,7 +452,7 @@
         "over_100k": "Over $10k"
       },
       "details_label": "Project Details",
-      "details_placeholder": "Tell us about your goals, timeline, and vision...",
+      "details_placeholder": "We are looking to re-architect our digital presence...",
       "submit": "Send Signal",
       "sending": "Transmitting..."
     },

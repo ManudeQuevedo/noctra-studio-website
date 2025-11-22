@@ -171,7 +171,7 @@ export default function ServicesPage() {
   return (
     <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0">
       {/* Mobile Quick Jump Bar */}
-      <div className="block md:hidden sticky top-20 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 mb-8">
+      <div className="block md:hidden sticky top-28 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-xl border-b border-neutral-200 dark:border-neutral-800 mb-8">
         <div className="overflow-x-auto">
           <div className="flex gap-2 px-4 py-3 min-w-max">
             {services.map((service) => (

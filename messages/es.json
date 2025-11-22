@@ -414,11 +414,11 @@
     },
     "form": {
       "name_label": "Nombre",
-      "name_placeholder": "Juan Pérez",
+      "name_placeholder": "Alejandro Vega",
       "email_label": "Email",
-      "email_placeholder": "juan@ejemplo.com",
+      "email_placeholder": "director@tuempresa.com",
       "website_label": "Sitio Web (Opcional)",
-      "website_placeholder": "https://ejemplo.com",
+      "website_placeholder": "tuempresa.com",
       "service_label": "Interés de Servicio",
       "service_placeholder": "Selecciona un servicio...",
       "service_options": {
@@ -435,7 +435,7 @@
         "over_100k": "Más de $10k"
       },
       "details_label": "Detalles del Proyecto",
-      "details_placeholder": "Cuéntanos sobre tus objetivos, cronograma y visión...",
+      "details_placeholder": "Buscamos redefinir nuestra arquitectura digital...",
       "submit": "Enviar Señal",
       "sending": "Transmitiendo..."
     },
