@@ -70,11 +70,11 @@ export default function AboutPage() {
               {/* Noise Texture */}
               <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat bg-[length:100px_100px] mix-blend-multiply" />
               <div className="absolute bottom-6 left-6">
-                <div className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-2">
-                  Founder
-                </div>
-                <div className="text-2xl font-bold text-white drop-shadow-md">
-                  Manu
+                <div className="flex items-baseline gap-3 text-white drop-shadow-md">
+                  <span className="text-2xl font-bold">Manu,</span>
+                  <span className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
+                    Founder
+                  </span>
                 </div>
               </div>
             </div>
@@ -90,22 +90,17 @@ export default function AboutPage() {
                 <p>{t("founder_note.content_1")}</p>
                 <p>{t("founder_note.content_2")}</p>
               </div>
-              <div className="mt-12 space-y-4">
-                <div className="font-handwriting text-3xl text-neutral-900 dark:text-neutral-50 opacity-80 rotate-[-2deg]">
-                  {t("founder_note.signature")}
-                </div>
+              <div className="mt-12">
                 {/* Digital Signature Image */}
-                <div className="opacity-80">
-                  <img
-                    src="/images/signature.png"
-                    alt="Signature"
-                    className="h-16 w-auto dark:invert"
-                    onError={(e) => {
-                      // Hide if image doesn't exist
-                      (e.target as HTMLImageElement).style.display = "none";
-                    }}
-                  />
-                </div>
+                <img
+                  src="/images/signature.png"
+                  alt="Signature"
+                  className="dark:invert opacity-80 w-32 md:w-40 mt-8"
+                  onError={(e) => {
+                    // Hide if image doesn't exist
+                    (e.target as HTMLImageElement).style.display = "none";
+                  }}
+                />
               </div>
             </FadeIn>
           </div>
