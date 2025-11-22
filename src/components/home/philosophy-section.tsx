@@ -102,8 +102,8 @@ export function PhilosophySection() {
                   <span className="text-neutral-300">
                     {t("system_monitor.performance")}
                   </span>
-                  <span className="text-white ml-auto">
-                    100/100
+                  <span className="text-green-400 ml-auto">
+                    {t("system_monitor.optimized")}
                     <span className="text-[10px] italic text-neutral-500 ml-2">
                       (Speed converts)
                     </span>

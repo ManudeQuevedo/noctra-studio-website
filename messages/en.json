@@ -295,6 +295,7 @@
         "performance": "Performance:",
         "security_protocols": "Security Protocols:",
         "active": "Active",
+        "optimized": "Optimized",
         "terminal_text": "$ Loading system diagnostics...",
         "mobile_status": "System Operational | V1.0"
       }

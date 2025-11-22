@@ -295,6 +295,7 @@
         "performance": "Rendimiento:",
         "security_protocols": "Protocolos de Seguridad:",
         "active": "Activo",
+        "optimized": "Optimizada",
         "terminal_text": "$ Cargando diagnósticos del sistema...",
         "mobile_status": "Sistema Operativo | V1.0"
       }
