@@ -3,7 +3,7 @@
 import { useState, useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useTranslations, useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, Instagram, MapPin, Clock } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
@@ -26,35 +26,78 @@ function ContactForm() {
   const [isSuccess, setIsSuccess] = useState(false);
   const [currency, setCurrency] = useState<"MXN" | "USD">("MXN");
 
+  const locale = useLocale();
+
   const BUDGET_OPTIONS = {
     MXN: [
       {
-        label: `${t("budget.identity")} — $30k - $50k`,
+        label:
+          locale === "es"
+            ? "Identidad (Landing / Portafolio) — $30k - $50k"
+            : "Identity (Landing / Portfolio) — $30k - $50k",
         value: "Identity (30k-50k MXN)",
       },
       {
-        label: `${t("budget.growth")} — $60k - $120k`,
+        label:
+          locale === "es"
+            ? "Crecimiento (Corporativo / E-comm) — $60k - $120k"
+            : "Growth (Corporate / E-comm) — $60k - $120k",
         value: "Growth (60k-120k MXN)",
       },
       {
-        label: `${t("budget.system")} — +$150k`,
+        label:
+          locale === "es"
+            ? "Sistema (Software a la medida) — +$150k"
+            : "System (Custom Software) — +$150k",
         value: "System (+150k MXN)",
       },
-      { label: t("budget.retainer"), value: "Consulting" },
-      { label: t("budget.unsure"), value: "Undecided" },
+      {
+        label:
+          locale === "es" ? "Retainer / Consultoría" : "Consulting / Retainer",
+        value: "Consulting",
+      },
+      {
+        label:
+          locale === "es"
+            ? "No estoy seguro / Hablemos de valor"
+            : "Not sure / Let's discuss value",
+        value: "Undecided",
+      },
     ],
     USD: [
       {
-        label: `${t("budget.identity")} — $1.5k - $3k`,
+        label:
+          locale === "es"
+            ? "Identidad (Landing / Portafolio) — $1.5k - $3k"
+            : "Identity (Landing / Portfolio) — $1.5k - $3k",
         value: "Identity (1.5k-3k USD)",
       },
       {
-        label: `${t("budget.growth")} — $3.5k - $7k`,
+        label:
+          locale === "es"
+            ? "Crecimiento (Corporativo / E-comm) — $3.5k - $7k"
+            : "Growth (Corporate / E-comm) — $3.5k - $7k",
         value: "Growth (3.5k-7k USD)",
       },
-      { label: `${t("budget.system")} — +$9k`, value: "System (+9k USD)" },
-      { label: t("budget.retainer"), value: "Consulting" },
-      { label: t("budget.unsure"), value: "Undecided" },
+      {
+        label:
+          locale === "es"
+            ? "Sistema (Software a la medida) — +$9k"
+            : "System (Custom Software) — +$9k",
+        value: "System (+9k USD)",
+      },
+      {
+        label:
+          locale === "es" ? "Retainer / Consultoría" : "Consulting / Retainer",
+        value: "Consulting",
+      },
+      {
+        label:
+          locale === "es"
+            ? "No estoy seguro / Hablemos de valor"
+            : "Not sure / Let's discuss value",
+        value: "Undecided",
+      },
     ],
   };
 

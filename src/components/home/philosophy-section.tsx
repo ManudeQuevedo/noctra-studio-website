@@ -92,7 +92,7 @@ export function PhilosophySection() {
                   </span>
                   <span className="text-green-400 ml-auto">
                     {t("system_monitor.online")}
-                    <span className="text-[10px] italic text-neutral-500 ml-2">
+                    <span className="text-[10px] italic text-neutral-400 ml-2">
                       (Your business never sleeps)
                     </span>
                   </span>
@@ -104,7 +104,7 @@ export function PhilosophySection() {
                   </span>
                   <span className="text-green-400 ml-auto">
                     {t("system_monitor.optimized")}
-                    <span className="text-[10px] italic text-neutral-500 ml-2">
+                    <span className="text-[10px] italic text-neutral-400 ml-2">
                       (Speed converts)
                     </span>
                   </span>
@@ -116,7 +116,7 @@ export function PhilosophySection() {
                   </span>
                   <span className="text-green-400 ml-auto">
                     {t("system_monitor.active")}
-                    <span className="text-[10px] italic text-neutral-500 ml-2">
+                    <span className="text-[10px] italic text-neutral-400 ml-2">
                       (Asset protection)
                     </span>
                   </span>

@@ -226,7 +226,7 @@ export default function ServicesPage() {
                 <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
                   STANDARD 01
                 </span>
-                <div className="text-3xl md:text-4xl font-bold tracking-tight">
+                <div className="text-2xl md:text-4xl font-bold tracking-tight">
                   {t("metrics.lighthouse")}
                 </div>
               </div>
@@ -234,7 +234,7 @@ export default function ServicesPage() {
                 <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
                   STANDARD 02
                 </span>
-                <div className="text-3xl md:text-4xl font-bold tracking-tight">
+                <div className="text-2xl md:text-4xl font-bold tracking-tight">
                   {t("metrics.latency")}
                 </div>
               </div>
@@ -242,7 +242,7 @@ export default function ServicesPage() {
                 <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
                   STANDARD 03
                 </span>
-                <div className="text-3xl md:text-4xl font-bold tracking-tight">
+                <div className="text-2xl md:text-4xl font-bold tracking-tight">
                   {t("metrics.uptime")}
                 </div>
               </div>
