@@ -1,11 +1,8 @@
 "use client";
 
-import { useState } from "react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { ArrowRight } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import { cn } from "@/lib/utils";
 import NextImage from "next/image";
 
 // Static images map
@@ -26,7 +23,6 @@ const ServiceSection = ({
   image: string;
 }) => {
   const t = useTranslations("ServicesPage");
-  const [hoveredStep, setHoveredStep] = useState<number | null>(null);
 
   return (
     <section className="w-full max-w-7xl mx-auto px-6 md:px-8">
@@ -90,12 +86,9 @@ const ServiceSection = ({
                 <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-6">
                   Process
                 </h4>
-                {/* @ts-ignore: next-intl types for arrays can be tricky */}
                 {[0, 1, 2, 3].map((stepIndex) => (
                   <div
                     key={stepIndex}
-                    onMouseEnter={() => setHoveredStep(stepIndex)}
-                    onMouseLeave={() => setHoveredStep(null)}
                     className="relative flex items-baseline gap-4 group/item transition-all duration-500 group-hover/list:opacity-40 hover:!opacity-100 cursor-default py-2">
                     <div className="flex items-center gap-2 shrink-0">
                       <span className="font-mono text-sm text-neutral-500 transition-colors group-hover/item:text-neutral-900 dark:group-hover/item:text-white">
@@ -121,7 +114,6 @@ const ServiceSection = ({
                   Deliverables
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                  {/* @ts-ignore: next-intl types */}
                   {[0, 1, 2].map((i) => (
                     <div
                       key={i}

@@ -12,6 +12,14 @@ interface ServicesGridProps {
   images?: Record<string, string | null>;
 }
 
+/**
+ * ServicesGrid
+ * Purpose: Showcases the main service offerings in a grid layout.
+ * Key Features:
+ * - Hover effects on service cards
+ * - Responsive grid (1 col mobile, 2 col desktop)
+ * - Linking to detailed service pages
+ */
 export function ServicesGrid({ images }: ServicesGridProps) {
   const t = useTranslations("Services");
   const tHome = useTranslations("HomePage");

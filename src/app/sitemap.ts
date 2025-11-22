@@ -4,7 +4,7 @@ export default function sitemap(): MetadataRoute.Sitemap {
   const baseUrl = 'https://noctra.studio';
   const lastModified = new Date();
   
-  const pages = ['', 'about', 'services', 'contact', 'blog', 'privacy', 'terms'];
+  const pages = ['', 'about', 'services', 'contact', 'privacy', 'terms'];
   
   return pages.map(page => ({
     url: `${baseUrl}/${page}`,

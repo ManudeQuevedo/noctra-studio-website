@@ -5,9 +5,10 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Grid } from "@react-three/drei";
 
 function MovingGrid() {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const gridRef = useRef<any>(null);
 
-  useFrame((state, delta) => {
+  useFrame((state) => {
     if (gridRef.current) {
       // Move the grid slowly to create a sense of forward motion
       gridRef.current.position.z = (state.clock.getElapsedTime() * 0.5) % 1;

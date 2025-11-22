@@ -2,12 +2,13 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
-import { motion, useMotionValue, useTransform, useScroll } from "framer-motion";
+import { motion, useMotionValue } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Instagram, Mail, MapPin, Clock } from "lucide-react";
+import { ArrowRight, Instagram, MapPin, Clock } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
+import { ContactSpotlight } from "@/components/ContactSpotlight";
 
 type FormData = {
   name: string;
@@ -60,7 +61,6 @@ function ContactForm() {
   // Mouse tracking for spotlight effect
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
-  const { scrollY } = useScroll();
 
   const searchParams = useSearchParams();
   const interest = searchParams.get("interest");
@@ -68,8 +68,7 @@ function ContactForm() {
   const {
     register,
     handleSubmit,
-    formState: { errors, isSubmitting },
-    watch,
+    formState: { isSubmitting },
     reset,
     setValue,
   } = useForm<FormData>({
@@ -164,23 +163,8 @@ function ContactForm() {
 
   return (
     <main className="min-h-screen bg-[#050505] text-white pt-32 relative overflow-hidden">
-      {/* Ambient Spotlight Effect */}
-      <motion.div
-        className="absolute inset-0 pointer-events-none z-0"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: 1 }}
-        exit={{ opacity: 0 }}
-        style={{
-          background: useTransform(
-            [mouseX, mouseY, scrollY],
-            ([x, y, s]: any[]) =>
-              `radial-gradient(600px circle at ${x}px ${
-                y + s
-              }px, rgba(99, 102, 241, 0.15), transparent 80%)`
-          ),
-        }}
-      />
-
+      {/* Contact Page Spotlight */}
+      <ContactSpotlight />
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
           {/* Left Column: Context */}

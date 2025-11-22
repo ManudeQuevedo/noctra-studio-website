@@ -1,11 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Cloud } from "lucide-react";
-import { Link } from "@/i18n/routing";
-import { cn } from "@/lib/utils";
-import { useRef } from "react";
+import { motion } from "framer-motion";
 
 import { BrandAnatomy } from "@/components/about/BrandAnatomy";
 import { TechStack } from "@/components/tech-stack";
@@ -28,6 +24,16 @@ const FadeIn = ({
   </motion.div>
 );
 
+/**
+ * AboutPage
+ * Purpose: Tells the story of Noctra Studio, its founder, and its methodology.
+ * Key Features:
+ * - Founder's Note with signature
+ * - Brand Anatomy (interactive breakdown)
+ * - Tech Stack grid
+ * - Methodology (Sticky scroll layout)
+ * - Impact/Ecosystem section
+ */
 export default function AboutPage() {
   const t = useTranslations("AboutPage");
 
@@ -92,14 +98,12 @@ export default function AboutPage() {
               </div>
               <div className="mt-12">
                 {/* Digital Signature Image */}
-                <img
+                <NextImage
                   src="/images/signature.png"
                   alt="Signature"
+                  width={160}
+                  height={64}
                   className="dark:invert opacity-80 w-32 md:w-40 mt-8"
-                  onError={(e) => {
-                    // Hide if image doesn't exist
-                    (e.target as HTMLImageElement).style.display = "none";
-                  }}
                 />
               </div>
             </FadeIn>

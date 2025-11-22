@@ -11,6 +11,7 @@ export async function POST(request: Request) {
     const { name, email, website, service, budget, details } = body;
 
     // Generate ticket ID
+    // eslint-disable-next-line react-hooks/purity
     const ticketId = `#NOC-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
     // Send two emails in parallel

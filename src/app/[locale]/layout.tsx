@@ -12,6 +12,7 @@ import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/JsonLd";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { SmoothScroll } from "@/components/SmoothScroll";
 
 // Satoshi - Brand primary font
 const satoshi = localFont({
@@ -79,6 +80,8 @@ export default async function LocaleLayout({
       <body
         className={`${satoshi.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
         <NextIntlClientProvider messages={messages} locale={locale}>
+          <Cursor />
+          <SmoothScroll />
           <BackgroundManager />
           <ThemeProvider
             attribute="class"
@@ -86,9 +89,8 @@ export default async function LocaleLayout({
             forcedTheme="dark"
             enableSystem={false}
             disableTransitionOnChange>
-            <Cursor />
             <Header />
-            <main className="min-h-screen">{children}</main>
+            {children}
             <Footer />
             <OrganizationSchema />
             <WebsiteSchema />

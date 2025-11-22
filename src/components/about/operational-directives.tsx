@@ -60,7 +60,7 @@ export function OperationalDirectives() {
             <div className="space-y-1">
               <div className="flex items-center gap-2">
                 <span className="text-xs font-mono text-neutral-600">
-                  0{index + 1} //
+                  0{index + 1} {"//"}
                 </span>
                 <h4 className="text-sm font-bold text-neutral-300 group-hover:text-white transition-colors">
                   {protocol.title}

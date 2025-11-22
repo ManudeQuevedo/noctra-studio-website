@@ -21,6 +21,7 @@ export function MeteorShower({ className = "", count = 6 }: MeteorShowerProps) {
     let meteors: Meteor[] = [];
 
     // Meteor Class
+    // eslint-disable-next-line react-hooks/unsupported-syntax
     class Meteor {
       x: number;
       y: number;

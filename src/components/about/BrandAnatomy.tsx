@@ -8,6 +8,7 @@ import {
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { MouseEvent, useEffect, useState } from "react";
+import NextImage from "next/image";
 
 const FadeIn = ({
   children,
@@ -25,6 +26,14 @@ const FadeIn = ({
   </motion.div>
 );
 
+/**
+ * BrandAnatomy
+ * Purpose: Deconstructs the Noctra brand identity (Etymology, Symbology, Output).
+ * Key Features:
+ * - Interactive spotlight effect on hover
+ * - Mobile auto-scan animation
+ * - Deep dive into the brand's meaning
+ */
 export function BrandAnatomy() {
   const t = useTranslations("AboutPage.brand_anatomy");
   const [isMobile, setIsMobile] = useState(false);
@@ -101,9 +110,11 @@ export function BrandAnatomy() {
 
       {/* MASSIVE WATERMARK LOGO - Base Layer (Always Faint) */}
       <div className="absolute inset-0 flex items-center justify-center pointer-events-none z-0">
-        <img
+        <NextImage
           src="/noctra-studio-icon-light-theme.svg"
           alt=""
+          width={600}
+          height={600}
           className="w-[600px] h-[600px] opacity-5"
         />
       </div>
@@ -114,9 +125,11 @@ export function BrandAnatomy() {
         style={{
           background,
         }}>
-        <img
+        <NextImage
           src="/noctra-studio-icon-light-theme.svg"
           alt=""
+          width={600}
+          height={600}
           className="w-[600px] h-[600px] opacity-40"
           style={{ mixBlendMode: "lighten" }}
         />

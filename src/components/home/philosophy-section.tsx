@@ -5,6 +5,13 @@ import { motion } from "framer-motion";
 import { TechMarquee } from "@/components/tech-marquee";
 import { useEffect, useState } from "react";
 
+/**
+ * PhilosophySection
+ * Purpose: Explains the studio's core values and technical approach.
+ * Key Features:
+ * - "TechMarquee" integration showing the stack
+ * - Grid layout with "Philosophy" text
+ */
 export function PhilosophySection() {
   const t = useTranslations("About.philosophy_section");
   const [terminalText, setTerminalText] = useState("");
@@ -22,7 +29,7 @@ export function PhilosophySection() {
     }, 100);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [fullText]);
 
   return (
     <section className="w-full bg-neutral-950 py-32 relative overflow-hidden border-t border-neutral-800">

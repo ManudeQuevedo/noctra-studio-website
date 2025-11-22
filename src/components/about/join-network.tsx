@@ -6,7 +6,6 @@ import {
   ArrowRight,
   ShieldAlert,
   Terminal,
-  Cpu,
   Palette,
   TrendingUp,
 } from "lucide-react";
@@ -88,7 +87,7 @@ export function JoinNetwork() {
                     <div key={index} className="group">
                       <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-3">
                         <span className="text-xs font-mono text-amber-500/50">
-                          0{index + 1} //
+                          0{index + 1} {"//"}
                         </span>
                         {t(`manifesto.items.${index}.title`)}
                       </h3>

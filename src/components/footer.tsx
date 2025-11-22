@@ -6,7 +6,6 @@ import { ArrowRight, Instagram } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { useEffect, useState } from "react";
 import { usePathname } from "next/navigation";
-import { motion } from "framer-motion";
 import NextImage from "next/image";
 
 export function Footer() {

@@ -10,7 +10,6 @@ import {
 import { useTranslations } from "next-intl";
 import { useTheme } from "next-themes";
 import { Link, usePathname } from "@/i18n/routing";
-import { Button } from "@/components/ui/button";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
 import { Instagram } from "lucide-react";

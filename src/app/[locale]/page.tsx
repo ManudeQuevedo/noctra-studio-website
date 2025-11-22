@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
 import { HeroTextSection } from "@/components/home/HeroTextSection";
 import { generatePageMetadata } from "@/lib/metadata";
-import { getTranslations } from "next-intl/server";
 
 // Lazy load heavy components below the fold
 const ServicesGrid = dynamic(
@@ -44,8 +43,17 @@ const SERVICE_IMAGES = {
   seo: "/images/seo.jpg",
 };
 
+/**
+ * HomePage
+ * Purpose: The main landing page of the website.
+ * Key Features:
+ * - Hero section with 3D starfield
+ * - Manifesto text (HeroTextSection)
+ * - Services grid
+ * - Target audience breakdown
+ * - Philosophy section with tech marquee
+ */
 export default async function HomePage() {
-  const t = await getTranslations("HomePage");
   const images = SERVICE_IMAGES;
 
   return (

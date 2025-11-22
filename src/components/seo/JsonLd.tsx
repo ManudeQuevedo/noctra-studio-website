@@ -6,7 +6,7 @@ export function OrganizationSchema() {
     "@type": "Organization",
     name: "Noctra Studio",
     url: "https://noctra.studio",
-    logo: "https://noctra.studio/logo.png",
+    logo: "https://noctra.studio/noctra-studio-icon-dark-theme.svg",
     description:
       "Digital architecture and web development firm specializing in premium web solutions, branding, and SEO strategies.",
     address: {
@@ -14,9 +14,8 @@ export function OrganizationSchema() {
       addressCountry: "MX",
     },
     sameAs: [
-      // Add your social media URLs here
-      // "https://twitter.com/noctrastudio",
-      // "https://linkedin.com/company/noctrastudio"
+      "https://instagram.com/noctra_studio",
+      "https://x.com/NoctraStudio",
     ],
     contactPoint: {
       "@type": "ContactPoint",

@@ -8,7 +8,7 @@ import * as THREE from "three";
 function Beacon() {
   const meshRef = useRef<THREE.Mesh>(null);
 
-  useFrame((state) => {
+  useFrame(() => {
     if (meshRef.current) {
       meshRef.current.rotation.y += 0.005;
       meshRef.current.rotation.z += 0.002;

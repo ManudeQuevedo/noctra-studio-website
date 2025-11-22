@@ -5,7 +5,9 @@ import { Canvas, useFrame } from "@react-three/fiber";
 import { Points, PointMaterial } from "@react-three/drei";
 import { inSphere } from "maath/random";
 
+// eslint-disable-next-line @typescript-eslint/no-explicit-any
 function Stars(props: any) {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
   const ref = useRef<any>(null);
   const [sphere] = useState(() =>
     inSphere(new Float32Array(5000 * 3), { radius: 1.5 })

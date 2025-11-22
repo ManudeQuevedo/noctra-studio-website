@@ -20,6 +20,13 @@ const FadeIn = ({
   </motion.div>
 );
 
+/**
+ * TargetAudienceSection
+ * Purpose: Identifies the ideal client profile (The "Visionary").
+ * Key Features:
+ * - Two-column layout with sticky image
+ * - Bullet points describing client characteristics
+ */
 export function TargetAudienceSection() {
   const t = useTranslations("TargetAudience");
 

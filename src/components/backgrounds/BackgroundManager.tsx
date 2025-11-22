@@ -6,7 +6,6 @@ import { StarField } from "./StarField";
 import { GridStructure } from "@/components/backgrounds/GridStructure";
 import { SignalBeacon } from "@/components/backgrounds/SignalBeacon";
 import { StaticNoise } from "@/components/backgrounds/StaticNoise";
-import { NetworkGrid } from "@/components/backgrounds/NetworkGrid";
 import { MeteorShower } from "@/components/ui/MeteorShower";
 
 export function BackgroundManager() {

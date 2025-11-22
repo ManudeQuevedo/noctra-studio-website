@@ -30,6 +30,14 @@ import {
 } from "react-icons/si";
 import { FaUserFriends, FaFlask } from "react-icons/fa";
 
+/**
+ * TechStack
+ * Purpose: Displays the "Technical Specification" grid of technologies used.
+ * Key Features:
+ * - Categorized tech list (Frontend, Backend, CMS, Infrastructure)
+ * - Uses official brand icons (Simple Icons)
+ * - "Blueprint" aesthetic styling
+ */
 export function TechStack() {
   const t = useTranslations("AboutPage.tech_radar");
 

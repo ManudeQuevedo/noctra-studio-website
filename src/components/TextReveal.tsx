@@ -1,6 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { useTranslations } from "next-intl";
 
 interface TextRevealProps {
   text: string;
@@ -41,8 +42,6 @@ export function TextReveal({ text, className }: TextRevealProps) {
     },
   };
 
-  const bracketRegex = /\[(.*?)\]/g;
-
   return (
     <motion.div
       style={{ overflow: "hidden", display: "flex", flexWrap: "wrap" }}
@@ -51,7 +50,6 @@ export function TextReveal({ text, className }: TextRevealProps) {
       animate="visible"
       className={className}>
       {words.map((word, index) => {
-        const isBracketed = word.startsWith("[") || word.endsWith("]");
         // This simple check might fail for multi-word bracketed phrases if we split by space.
         // A better approach for the specific requirement "We are a [digital architecture firm]"
         // is to parse the full string first.
@@ -70,7 +68,6 @@ export function TextReveal({ text, className }: TextRevealProps) {
 
 // Improved version that handles the bracketed phrases correctly
 export function ManifestoText() {
-  const { useTranslations } = require("next-intl");
   const t = useTranslations("HomePage");
   const text = t("manifesto.text");
 

@@ -21,6 +21,14 @@ const FadeIn = ({
   </motion.div>
 );
 
+/**
+ * ImpactSection
+ * Purpose: Highlights the "Noctra Ecosystem" (Social Impact & Talent).
+ * Key Features:
+ * - "Noctra Beacon" (Non-profit) card
+ * - "The Residency" (Talent) card
+ * - Hover interactions with arrow movement
+ */
 export function ImpactSection() {
   const t = useTranslations("AboutPage.impact");
 

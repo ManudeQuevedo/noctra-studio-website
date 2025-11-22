@@ -3,6 +3,14 @@
 import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 
+/**
+ * HeroTextSection
+ * Purpose: Displays the main manifesto/mission statement on the homepage.
+ * Key Features:
+ * - Scroll-triggered fade-in animation
+ * - Alternating font weights for visual emphasis
+ * - Responsive typography
+ */
 export function HeroTextSection() {
   const t = useTranslations("HeroTextSection");
 

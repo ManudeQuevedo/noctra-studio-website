@@ -359,7 +359,7 @@
         "3": { 
           "title": "Launch", 
           "desc": "Launch day shouldn't be stressful. We run rigorous performance audits, SEO checks, and stress tests. We don't just hand over the keys; we ensure the engine is purring.",
-          "checkpoint": "Output: Core Web Vitals Optimized & Training"
+          "checkpoint": "Output: Performance Certification"
         }
       }
     },
