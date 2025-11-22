@@ -40,7 +40,7 @@ export function Footer() {
   };
 
   return (
-    <footer className="bg-[#050505] border-t border-neutral-800 text-white font-sans">
+    <footer className="bg-[#050505] border-t border-neutral-900 text-white font-sans">
       {/* Row 1: The Hook - Hidden on Contact and Careers Pages */}
       {!hideCtaRow && (
         <div className="border-b border-neutral-900">

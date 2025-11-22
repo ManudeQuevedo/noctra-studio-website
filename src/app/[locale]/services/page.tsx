@@ -29,19 +29,46 @@ const ServiceSection = ({
       <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
         {/* Left Column - Sticky Title & Visual Reveal */}
         <div className="md:col-span-5 relative">
-          <div className="md:sticky md:top-40 h-fit z-10">
+          <div className="md:sticky md:top-40 h-fit z-10 flex flex-col">
+            {/* Title - Order 1 on Mobile */}
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5 }}
-              className="relative z-10">
+              className="relative z-10 order-1 md:order-none">
               <span className="text-xs font-mono text-neutral-400 mb-6 block tracking-widest uppercase">
                 0{index + 1} — Phase
               </span>
               <h2 className="text-3xl md:text-4xl font-bold mb-6 tracking-tight">
                 {t(`${service.key}.title`)}
               </h2>
+            </motion.div>
+
+            {/* Phase Anchor Image - Order 2 on Mobile */}
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: 0.2 }}
+              className="relative w-full overflow-hidden border border-neutral-200 dark:border-neutral-800 mt-6 mb-6 md:mt-12 md:mb-0 order-2 md:order-none">
+              <NextImage
+                src={image}
+                alt={t(`${service.key}.title`)}
+                width={800}
+                height={1000}
+                className="object-cover grayscale contrast-125 w-full h-auto"
+                sizes="(max-width: 768px) 100vw, 50vw"
+              />
+            </motion.div>
+
+            {/* Description & Link - Order 3 on Mobile */}
+            <motion.div
+              initial={{ opacity: 0, x: -20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.5, delay: 0.1 }}
+              className="relative z-10 order-3 md:order-none">
               <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm mb-6">
                 {t(`${service.key}.focus`)}
               </p>
@@ -52,23 +79,6 @@ const ServiceSection = ({
                 className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
                 Explore {t(`${service.key}.title`)} →
               </Link>
-            </motion.div>
-
-            {/* Phase Anchor Image - Static */}
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: 0.2 }}
-              className="mt-12 relative w-full overflow-hidden border border-neutral-200 dark:border-neutral-800">
-              <NextImage
-                src={image}
-                alt={t(`${service.key}.title`)}
-                width={800}
-                height={1000}
-                className="object-cover grayscale contrast-125 w-full h-auto"
-                sizes="(max-width: 768px) 100vw, 50vw"
-              />
             </motion.div>
           </div>
         </div>

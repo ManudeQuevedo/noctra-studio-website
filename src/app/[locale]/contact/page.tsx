@@ -2,13 +2,13 @@
 
 import { useState, useEffect, Suspense } from "react";
 import { useForm } from "react-hook-form";
-import { motion, useMotionValue } from "framer-motion";
+import { motion } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import { ArrowRight, Instagram, MapPin, Clock } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
-import { ContactSpotlight } from "@/components/ContactSpotlight";
+import { RouteScopedBackground } from "@/components/ui/RouteScopedBackground";
 
 type FormData = {
   name: string;
@@ -58,10 +58,6 @@ function ContactForm() {
     ],
   };
 
-  // Mouse tracking for spotlight effect
-  const mouseX = useMotionValue(0);
-  const mouseY = useMotionValue(0);
-
   const searchParams = useSearchParams();
   const interest = searchParams.get("interest");
 
@@ -81,17 +77,6 @@ function ContactForm() {
       details: "",
     },
   });
-
-  // Mouse tracking effect
-  useEffect(() => {
-    const handleMouseMove = (e: MouseEvent) => {
-      mouseX.set(e.clientX);
-      mouseY.set(e.clientY);
-    };
-
-    window.addEventListener("mousemove", handleMouseMove);
-    return () => window.removeEventListener("mousemove", handleMouseMove);
-  }, [mouseX, mouseY]);
 
   // Auto-fill service based on URL param
   useEffect(() => {
@@ -162,9 +147,9 @@ function ContactForm() {
     "block text-xs font-mono uppercase tracking-widest text-neutral-500 mb-2";
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white pt-32 relative overflow-hidden">
+    <main className="min-h-screen text-white pt-32 relative overflow-hidden">
       {/* Contact Page Spotlight */}
-      <ContactSpotlight />
+      <RouteScopedBackground />
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 lg:gap-32 items-start">
           {/* Left Column: Context */}

@@ -4,7 +4,7 @@ import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
 import { motion, useMotionValue, useTransform } from "framer-motion";
 
-export function ContactSpotlight() {
+export function RouteScopedBackground() {
   const pathname = usePathname();
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
@@ -33,15 +33,12 @@ export function ContactSpotlight() {
       `radial-gradient(600px circle at ${x}px ${y}px, rgba(99, 102, 241, 0.15), transparent 80%)`
   );
 
-  // Kill switch: If we are not on the contact page, do not render the spotlight.
-  // This prevents the spotlight from lingering during page transitions.
-  if (pathname && !pathname.includes("/contact")) {
-    return null;
-  }
+  // STRICT check. If we are not exactly on /contact (or /es/contact), KILL the component.
+  if (!pathname?.includes("/contact")) return null;
 
   return (
     <motion.div
-      className="fixed inset-0 pointer-events-none z-0"
+      className="fixed inset-0 pointer-events-none z-[-1]"
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       exit={{ opacity: 0 }}

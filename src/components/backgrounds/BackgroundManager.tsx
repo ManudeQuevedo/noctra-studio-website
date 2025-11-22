@@ -27,7 +27,7 @@ export function BackgroundManager() {
       return <GridStructure key="grid" />;
     }
     if (pathname.includes("/contact")) {
-      return <SignalBeacon key="signal" />;
+      return null;
     }
     if (pathname.includes("/blog")) {
       return <StaticNoise key="noise" />;
