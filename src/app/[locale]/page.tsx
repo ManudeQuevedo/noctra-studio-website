@@ -57,7 +57,7 @@ export default async function HomePage() {
   const images = SERVICE_IMAGES;
 
   return (
-    <>
+    <main className="min-h-screen">
       {/* SECTION 1: The Hero */}
       <Hero />
 
@@ -67,6 +67,6 @@ export default async function HomePage() {
       <ServicesGrid images={images} />
       <TargetAudienceSection />
       <PhilosophySection />
-    </>
+    </main>
   );
 }
