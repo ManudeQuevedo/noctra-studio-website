@@ -17,7 +17,7 @@
     "@radix-ui/react-slot": "^1.2.4",
     "@react-three/drei": "^10.7.7",
     "@react-three/fiber": "^9.4.0",
-    "@sentry/nextjs": "^10.26.0",
+    "@sentry/nextjs": "^10.27.0",
     "@supabase/ssr": "^0.7.0",
     "@supabase/supabase-js": "^2.84.0",
     "@types/three": "^0.181.0",
