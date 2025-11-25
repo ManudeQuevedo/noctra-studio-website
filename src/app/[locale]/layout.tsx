@@ -7,12 +7,13 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 import { Cursor } from "@/components/ui/cursor";
 import { Header } from "@/components/header";
-import { Footer } from "@/components/footer";
+import { FooterWrapper } from "@/components/FooterWrapper";
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/JsonLd";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { SmoothScroll } from "@/components/SmoothScroll";
+import Script from "next/script";
 
 // Satoshi - Brand primary font
 const satoshi = localFont({
@@ -75,30 +76,35 @@ export default async function LocaleLayout({
   const { locale } = await params;
   const messages = await getMessages();
 
+  const fontClasses = `${satoshi.variable} ${geistSans.variable} ${geistMono.variable} antialiased`;
+
   return (
-    <html lang={locale} suppressHydrationWarning>
-      <body
-        className={`${satoshi.variable} ${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <NextIntlClientProvider messages={messages} locale={locale}>
-          <Cursor />
-          <SmoothScroll />
-          <BackgroundManager />
-          <ThemeProvider
-            attribute="class"
-            defaultTheme="dark"
-            forcedTheme="dark"
-            enableSystem={false}
-            disableTransitionOnChange>
-            <Header />
-            {children}
-            <Footer />
-            <OrganizationSchema />
-            <WebsiteSchema />
-            <SpeedInsights />
-            <Analytics />
-          </ThemeProvider>
-        </NextIntlClientProvider>
-      </body>
-    </html>
+    <>
+      <Script id="apply-attributes" strategy="beforeInteractive">
+        {`
+          document.documentElement.lang = '${locale}';
+          document.body.className = '${fontClasses}';
+        `}
+      </Script>
+      <NextIntlClientProvider messages={messages} locale={locale}>
+        <Cursor />
+        <SmoothScroll />
+        <BackgroundManager />
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="dark"
+          forcedTheme="dark"
+          enableSystem={false}
+          disableTransitionOnChange>
+          <Header />
+          {children}
+          <FooterWrapper />
+          <OrganizationSchema />
+          <WebsiteSchema />
+          <SpeedInsights />
+          <Analytics />
+        </ThemeProvider>
+      </NextIntlClientProvider>
+    </>
   );
 }

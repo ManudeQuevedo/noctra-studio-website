@@ -61,25 +61,6 @@ const ServiceSection = ({
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
             </motion.div>
-
-            {/* Description & Link - Order 3 on Mobile */}
-            <motion.div
-              initial={{ opacity: 0, x: -20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: 0.1 }}
-              className="relative z-10 order-3 md:order-none">
-              <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-sm mb-6">
-                {t(`${service.key}.focus`)}
-              </p>
-
-              {/* Deep Link CTA */}
-              <Link
-                href={`/contact?interest=${service.id}`}
-                className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
-                Explore {t(`${service.key}.title`)} →
-              </Link>
-            </motion.div>
           </div>
         </div>
 
@@ -116,6 +97,20 @@ const ServiceSection = ({
                     </div>
                   </div>
                 ))}
+              </div>
+
+              {/* Description & Link - Moved Here */}
+              <div className="mb-12">
+                <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl mb-6">
+                  {t(`${service.key}.focus`)}
+                </p>
+
+                {/* Deep Link CTA */}
+                <Link
+                  href={`/contact?interest=${service.id}`}
+                  className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
+                  Explore {t(`${service.key}.title`)} →
+                </Link>
               </div>
 
               {/* Deliverables */}

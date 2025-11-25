@@ -7,8 +7,8 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Claridad en la noche digital.",
-      "subtitle": "Iluminamos tu camino con desarrollo web premium, branding y estrategias SEO.",
+      "title": "Construyendo la Infraestructura Digital para Negocios Modernos.",
+      "subtitle": "Construimos sistemas digitales — marcas, sitios web y automatización inteligente. Velocidad, Precisión y Autonomía.",
       "trust_badge": "Estándares Globales. Basado en Querétaro."
     },
     "intro_text": "No solo construimos sitios web. Arquitectamos los sistemas silenciosos y escalables que empoderan a las empresas visionarias para crecer sin fricción.",
@@ -16,12 +16,12 @@
       "text": "Somos una [agencia de arquitectura digital] dedicada a traer [claridad al caos]. Con un equipo de ingenieros y diseñadores de precisión, construimos [sistemas silenciosos] que empoderan a [empresas visionarias] para escalar sin fricción."
     },
     "services_section": {
-      "label": "// LO QUE CREAMOS",
+      "label": "// LO QUE INGENIAMOS",
       "title": "Soluciones Digitales Que Escalan",
       "subtitle": "Desde el concepto hasta el despliegue, arquitectamos experiencias que perduran."
     },
-    "cta_start": "Agendar Llamada",
-    "cta_services": "Nuestros Servicios"
+    "cta_start": "Iniciar Proyecto",
+    "cta_services": "Ver Planos"
   },
   "Metadata": {
     "home": {
@@ -172,17 +172,74 @@
   },
   "Services": {
     "section_title": "Nuestros Servicios",
+    "learn_more": "Más información",
     "web_dev_title": "Arquitectura Digital",
-    "web_dev_desc": "Sistemas Next.js de alto rendimiento. Construimos para velocidad, escala y silencio.",
+    "web_dev_desc": "Ecosistemas Next.js de alto rendimiento. Plataformas Corporativas, Sistemas E-commerce, Portales de Clientes, Integración API, Seguridad Bancaria.",
     "branding_title": "Identidad Visual",
-    "branding_desc": "Logotipos y sistemas que cortan el ruido. Definimos quién eres en la oscuridad.",
+    "branding_desc": "Sistemas que escalan. Branding Estratégico, Sistemas de Diseño, UI Kits, Activos para Redes Sociales, Estándares Tipográficos.",
     "seo_title": "Estrategia de Crecimiento",
-    "seo_desc": "Visibilidad en la oscuridad. SEO Técnico.",
+    "seo_desc": "Visibilidad a largo plazo. Auditorías SEO Técnicas, CRO, Optimización de Velocidad, Paneles de Analíticas.",
     "ai_title": "Sistemas Inteligentes",
-    "ai_desc": "Automatizando el caos con agentes de IA.",
+    "ai_desc": "Reduciendo la labor humana. Agentes de IA Personalizados, Automatización CRM, Bots de Calificación de Leads, Herramientas Internas.",
     "explore_capabilities": "Explorar todas las capacidades",
-    "lets_talk": "Hablemos",
-    "learn_more": "Más información"
+    "lets_talk": "Hablemos"
+  },
+  "Pricing": {
+    "title": "Modelos de Compromiso",
+    "subtitle": "Estructuras transparentes para cada etapa de crecimiento.",
+    "tier1": {
+      "name": "Fundación",
+      "price": "La Plataforma de Lanzamiento",
+      "description": "Infraestructura esencial para nuevas empresas.",
+      "features": [
+        "Identidad de Marca Central",
+        "Landing Page de Alta Conversión",
+        "Configuración Básica de SEO"
+      ]
+    },
+    "tier2": {
+      "name": "Sistemas",
+      "price": "El Estándar",
+      "description": "Eficiencia operativa para empresas en crecimiento.",
+      "features": [
+        "Sitio Web Multi-página Completo (CMS)",
+        "Automatización de IA Personalizada",
+        "Integración CRM"
+      ]
+    },
+    "tier3": {
+      "name": "Escala",
+      "price": "La Alianza",
+      "description": "Dominio total del mercado para líderes.",
+      "features": [
+        "Desarrollo de Web App Personalizada",
+        "Suite Completa de Operaciones de IA",
+        "Retainer Mensual de Crecimiento/SEO"
+      ]
+    },
+    "cta": "Iniciar Compromiso"
+  },
+  "Process": {
+    "title": "La Metodología",
+    "subtitle": "Un enfoque riguroso de ingeniería digital.",
+    "steps": {
+      "0": {
+        "title": "Plano",
+        "description": "Descubrimiento y Arquitectura."
+      },
+      "1": {
+        "title": "Construcción",
+        "description": "Desarrollo y Diseño."
+      },
+      "2": {
+        "title": "Integración",
+        "description": "Conexión de IA y Automatización."
+      },
+      "3": {
+        "title": "Despliegue",
+        "description": "Lanzamiento y Crecimiento."
+      }
+    }
   },
   "ServicesPage": {
     "title": "Nuestras Capacidades",
@@ -601,5 +658,42 @@
       }
     },
     "disclaimer": "Documentación legal completa proporcionada tras una evaluación exitosa."
+  },
+  "SiteAudit": {
+    "status_ready": "SISTEMA LISTO",
+    "title": "Analiza tu arquitectura.",
+    "description": "Ingresa la URL de tu sitio web actual. Escanearemos cuellos de botella de rendimiento, brechas de SEO y deuda arquitectónica.",
+    "placeholder_url": "tu-sitio.com",
+    "button_scan": "Ejecutar Diagnóstico",
+    "scanning_step1": "Haciendo ping a nodos edge...",
+    "scanning_step2": "Analizando complejidad del DOM...",
+    "scanning_step3": "Calculando puntuación Lighthouse...",
+    "result_title": "Optimización Requerida",
+    "result_desc": "Detectamos 3 problemas críticos en tu stack actual que afectan las Core Web Vitals y tasas de conversión.",
+    "email_label": "Enviar reporte técnico completo a:",
+    "placeholder_email": "ingeniero@empresa.com",
+    "button_send": "Enviar Reporte",
+    "success_title": "TRANSMISIÓN COMPLETA",
+    "success_desc": "Tu arquitectura está en cola para revisión manual. Revisa tu bandeja de entrada para la confirmación del ticket.",
+    "button_reset": "Volver a la Base"
+  },
+  "Admin": {
+    "title": "Centro de Comando Noctra",
+    "subtitle": "Desplegar Infraestructura de Cliente",
+    "form": {
+      "client_email": "Correo del Cliente",
+      "client_name": "Nombre del Cliente",
+      "company_name": "Nombre de la Empresa",
+      "project_name": "Nombre del Proyecto",
+      "total_budget": "Presupuesto Total ($)",
+      "deploy_button": "Desplegar Entorno ->"
+    },
+    "placeholders": {
+      "client_email": "cliente@empresa.com",
+      "client_name": "Juan CEO",
+      "company_name": "Capital Puente",
+      "project_name": "Rediseño Web V2",
+      "total_budget": "15000"
+    }
   }
 }

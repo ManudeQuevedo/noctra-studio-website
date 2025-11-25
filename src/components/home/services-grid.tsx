@@ -84,7 +84,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl bg-neutral-900/50 border border-white/10 p-8 transition-all duration-500 hover:border-neutral-900 dark:hover:border-white/40 hover:shadow-[0_0_30px_-5px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)]">
+              className="group relative overflow-hidden rounded-2xl bg-neutral-900/50 border border-white/10 p-8 transition-all duration-500 hover:border-neutral-900 dark:hover:border-white/40 hover:shadow-[0_0_30px_-5px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] h-full flex flex-col">
               {/* Background Image */}
               {service.image && (
                 <>
@@ -101,8 +101,8 @@ export function ServicesGrid({ images }: ServicesGridProps) {
                 </>
               )}
 
-              <div className="relative z-10">
-                <div className="mb-6 inline-flex p-3 rounded-lg bg-white/5 text-white group-hover:bg-white/10 transition-colors">
+              <div className="relative z-10 h-full flex flex-col">
+                <div className="mb-6 inline-flex text-white transition-colors">
                   <service.icon className="w-6 h-6" />
                 </div>
 
@@ -110,7 +110,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
                   {service.title}
                 </h3>
 
-                <p className="text-neutral-400 leading-relaxed mb-6 group-hover:text-neutral-300 transition-colors">
+                <p className="text-neutral-400 leading-relaxed mb-6 group-hover:text-neutral-300 transition-colors flex-1">
                   {service.description}
                 </p>
                 <div className="flex items-center text-sm font-medium text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">

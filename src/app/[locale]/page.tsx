@@ -1,6 +1,7 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
 import { HeroTextSection } from "@/components/home/HeroTextSection";
+import { SiteAuditTool } from "@/components/home/SiteAuditTool";
 import { generatePageMetadata } from "@/lib/metadata";
 
 // Lazy load heavy components below the fold
@@ -8,6 +9,20 @@ const ServicesGrid = dynamic(
   () =>
     import("@/components/home/services-grid").then((mod) => ({
       default: mod.ServicesGrid,
+    })),
+  { ssr: true }
+);
+const ProcessSection = dynamic(
+  () =>
+    import("@/components/home/process-section").then((mod) => ({
+      default: mod.ProcessSection,
+    })),
+  { ssr: true }
+);
+const PricingSection = dynamic(
+  () =>
+    import("@/components/home/pricing-section").then((mod) => ({
+      default: mod.PricingSection,
     })),
   { ssr: true }
 );
@@ -50,6 +65,7 @@ const SERVICE_IMAGES = {
  * - Hero section with 3D starfield
  * - Manifesto text (HeroTextSection)
  * - Services grid
+ * - Process & Pricing sections
  * - Target audience breakdown
  * - Philosophy section with tech marquee
  */
@@ -64,7 +80,14 @@ export default async function HomePage() {
       {/* SECTION 2: The Intro (Lead Statement) */}
       <HeroTextSection />
 
+      {/* SECTION 3: Site Audit Tool (Lead Magnet) */}
+      <section className="w-full px-6 md:px-8 py-24 bg-neutral-950/50 border-y border-neutral-900">
+        <SiteAuditTool />
+      </section>
+
       <ServicesGrid images={images} />
+      <ProcessSection />
+      <PricingSection />
       <TargetAudienceSection />
       <PhilosophySection />
     </main>

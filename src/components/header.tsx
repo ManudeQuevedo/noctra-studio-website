@@ -37,6 +37,9 @@ export function Header() {
   const headerRef = React.useRef<HTMLDivElement>(null);
 
   const isContactPage = nextPathname?.includes("/contact");
+  const isAdminPage = nextPathname?.includes("/admin");
+  const isStudioPage = nextPathname?.includes("/studio");
+  const isDashboardPage = nextPathname?.includes("/dashboard");
 
   const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
@@ -44,6 +47,8 @@ export function Header() {
   React.useEffect(() => {
     setMounted(true);
   }, []);
+
+  if (isAdminPage || isStudioPage || isDashboardPage) return null;
 
   // Determine effective theme for logo selection
   // If isOpen is true, colors are inverted (Light System -> Dark Header Bg -> Need Dark Theme Logo)

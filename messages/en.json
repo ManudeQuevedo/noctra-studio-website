@@ -7,21 +7,21 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Clarity in the digital night.",
-      "subtitle": "We illuminate your path with premium web development, branding, and SEO strategies.",
+      "title": "Constructing the Digital Infrastructure for Modern Business.",
+      "subtitle": "We engineer digital systems — brands, platforms, and intelligent automation. Speed, Precision, and Autonomy.",
       "trust_badge": "Global Standards. Based in Querétaro."
     },
-    "intro_text": "We don't just build websites. We architect the silent, scalable systems that empower visionary companies to grow without friction.",
+    "intro_text": "We don't just make websites. We architect the silent, scalable systems that empower visionary companies to grow without friction.",
     "manifesto": {
       "text": "We are a [digital architecture agency] dedicated to bringing [clarity to the chaos]. With a precision team of engineers and designers, we build [silent systems] that empower [visionary companies] to scale without friction."
     },
     "services_section": {
-      "label": "// WHAT WE CRAFT",
+      "label": "// WHAT WE ENGINEER",
       "title": "Digital Solutions That Scale",
       "subtitle": "From concept to deployment, we architect experiences that endure."
     },
-    "cta_start": "Book Strategy Call",
-    "cta_services": "Our Services"
+    "cta_start": "Start Project",
+    "cta_services": "View Blueprints"
   },
   "Metadata": {
     "home": {
@@ -85,7 +85,7 @@
     "start_project": "Start Project",
     "menu_open": "Menu",
     "menu_close": "Close",
-    "get_in_touch": "Get in Touch"
+    "get_in_touch": "Initiate Communication"
   },
   "CareersPage": {
     "hero": {
@@ -157,7 +157,7 @@
   },
   "Footer": {
     "hook": "Ready to bring clarity to the chaos?",
-    "book_discovery": "Book a Free Discovery Call",
+    "book_discovery": "Schedule Technical Discovery",
     "studio_label": "Studio",
     "brand_tagline": "Clarity in the digital night.",
     "nav_title": "Navigation",
@@ -174,22 +174,79 @@
     "section_title": "Our Services",
     "learn_more": "Learn more",
     "web_dev_title": "Digital Architecture",
-    "web_dev_desc": "High-performance Next.js systems. We build for speed, scale, and silence.",
+    "web_dev_desc": "High-performance Next.js ecosystems. Corporate Platforms, E-commerce Systems, Client Portals, API Integration, Bank-Grade Security.",
     "branding_title": "Visual Identity",
-    "branding_desc": "Logos and systems that cut through the noise. We define who you are in the dark.",
+    "branding_desc": "Systems that scale. Strategic Branding, Design Systems, UI Kits, Social Media Assets, Typography Standards.",
     "seo_title": "Growth Strategy",
-    "seo_desc": "Visibility in the dark. Technical SEO.",
+    "seo_desc": "Long-term visibility. Technical SEO Audits, Conversion Rate Optimization (CRO), Speed Optimization, Analytics Dashboards.",
     "ai_title": "Intelligent Systems",
-    "ai_desc": "Automating chaos with AI agents.",
+    "ai_desc": "Reducing human labor. Custom AI Agents, CRM Automation (n8n/Make), Lead Qualification Bots, Internal Tooling.",
     "explore_capabilities": "Explore all capabilities",
     "lets_talk": "Let's talk!"
+  },
+  "Pricing": {
+    "title": "Engagement Models",
+    "subtitle": "Transparent structures for every stage of growth.",
+    "tier1": {
+      "name": "Foundation",
+      "price": "The Launchpad",
+      "description": "Essential infrastructure for new ventures.",
+      "features": [
+        "Core Brand Identity",
+        "High-Conversion Landing Page",
+        "Basic SEO Setup"
+      ]
+    },
+    "tier2": {
+      "name": "Systems",
+      "price": "The Standard",
+      "description": "Operational efficiency for growing companies.",
+      "features": [
+        "Full Multi-page Website (CMS)",
+        "Custom AI Automation",
+        "CRM Integration"
+      ]
+    },
+    "tier3": {
+      "name": "Scale",
+      "price": "The Partnership",
+      "description": "Total market dominance for leaders.",
+      "features": [
+        "Custom Web App Development",
+        "Full AI Operations Suite",
+        "Monthly Growth/SEO Retainer"
+      ]
+    },
+    "cta": "Initiate Engagement"
+  },
+  "Process": {
+    "title": "The Methodology",
+    "subtitle": "A rigorous approach to digital engineering.",
+    "steps": {
+      "0": {
+        "title": "Blueprint",
+        "description": "Discovery & System Architecture."
+      },
+      "1": {
+        "title": "Construct",
+        "description": "Engineering & Design Implementation."
+      },
+      "2": {
+        "title": "Integrate",
+        "description": "AI & Automation Orchestration."
+      },
+      "3": {
+        "title": "Deploy",
+        "description": "Launch & Growth Scaling."
+      }
+    }
   },
   "ServicesPage": {
     "title": "Our Capabilities",
     "subtitle": "A comprehensive toolkit to bring structure to the digital chaos.",
     "web_dev": {
       "title": "Digital Architecture",
-      "focus": "We don't just build websites; we engineer high-performance digital platforms. Our focus is on speed, scalability, and creating a seamless user experience that feels instantaneous.",
+      "focus": "We don't just make websites; we engineer high-performance digital infrastructure. Our focus is on speed, scalability, and creating a seamless user experience that feels instantaneous.",
       "process": [
         "System Architecture Design",
         "Next.js & React Implementation",
@@ -219,7 +276,7 @@
     },
     "ai": {
       "title": "Intelligent Systems",
-      "focus": "We integrate AI agents that automate your workflows and enhance user engagement. Smart, efficient, and invisible.",
+      "focus": "We orchestrate autonomous client interaction agents that automate your workflows and enhance user engagement. Smart, efficient, and invisible.",
       "process": [
         "Workflow Analysis",
         "AI Model Selection",
@@ -234,7 +291,7 @@
     },
     "seo": {
       "title": "Growth",
-      "focus": "We build engines that drive organic traffic. Data-driven strategies that put your brand in front of the right audience.",
+      "focus": "Maximize search visibility and organic traffic capture. Data-driven strategies that put your brand in front of the right audience.",
       "process": [
         "Market Analysis",
         "Technical SEO Audit",
@@ -618,5 +675,42 @@
       }
     },
     "disclaimer": "Full legal documentation provided upon successful vetting."
+  },
+  "SiteAudit": {
+    "status_ready": "SYSTEM READY",
+    "title": "Analyze your architecture.",
+    "description": "Enter your current website URL. We will scan for performance bottlenecks, SEO gaps, and architectural debt.",
+    "placeholder_url": "your-site.com",
+    "button_scan": "Run Diagnostics",
+    "scanning_step1": "Pinging edge nodes...",
+    "scanning_step2": "Analyzing DOM complexity...",
+    "scanning_step3": "Calculating Lighthouse score...",
+    "result_title": "Optimization Required",
+    "result_desc": "We detected 3 critical issues in your current stack affecting Core Web Vitals and conversion rates.",
+    "email_label": "Send full technical report to:",
+    "placeholder_email": "engineer@company.com",
+    "button_send": "Send Report",
+    "success_title": "TRANSMISSION COMPLETE",
+    "success_desc": "Your architecture is queued for manual review. Check your inbox for the ticket confirmation.",
+    "button_reset": "Return to Base"
+  },
+  "Admin": {
+    "title": "Noctra Command Center",
+    "subtitle": "Deploy Client Infrastructure",
+    "form": {
+      "client_email": "Client Email",
+      "client_name": "Client Name",
+      "company_name": "Company Name",
+      "project_name": "Project Name",
+      "total_budget": "Total Budget ($)",
+      "deploy_button": "Deploy Environment ->"
+    },
+    "placeholders": {
+      "client_email": "client@company.com",
+      "client_name": "John CEO",
+      "company_name": "Bridge Capital",
+      "project_name": "Website Redesign V2",
+      "total_budget": "15000"
+    }
   }
 }
