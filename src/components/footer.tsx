@@ -89,7 +89,6 @@ export function Footer() {
                 {[
                   { label: tNav("home"), href: "/" },
                   { label: tNav("about"), href: "/about" },
-                  { label: tNav("services"), href: "/services" },
                   { label: tNav("careers"), href: "/careers" },
                   { label: tNav("contact"), href: "/contact" },
                 ].map((item) => {
@@ -120,16 +119,20 @@ export function Footer() {
               </h3>
               <nav className="flex flex-col gap-3 pt-1">
                 {[
-                  "Digital Architecture",
-                  "Visual Identity",
-                  "Intelligent Systems",
-                  "Growth",
+                  { label: t("service_work"), href: "/work" },
+                  { label: t("service_digital_arch"), href: "/services" },
+                  { label: t("service_visual_identity"), href: "/services" },
+                  {
+                    label: t("service_intelligent_systems"),
+                    href: "/services",
+                  },
+                  { label: t("service_growth"), href: "/services" },
                 ].map((item) => (
                   <Link
-                    key={item}
-                    href="/services"
+                    key={item.label}
+                    href={item.href}
                     className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
-                    {item}
+                    {item.label}
                   </Link>
                 ))}
               </nav>

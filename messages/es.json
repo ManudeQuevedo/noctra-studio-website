@@ -159,18 +159,23 @@
   },
   "Footer": {
     "hook": "¿Listo para traer claridad al caos?",
-    "book_discovery": "Agendar Llamada de Descubrimiento",
+    "book_discovery": "Agendar Descubrimiento Técnico",
     "studio_label": "Estudio",
     "brand_tagline": "Claridad en la noche digital.",
     "nav_title": "Navegación",
-    "services_title": "Servicios",
+    "services_title": "Capacidades",
+    "service_work": "Trabajo",
+    "service_digital_arch": "Arquitectura Digital",
+    "service_visual_identity": "Identidad Visual",
+    "service_intelligent_systems": "Sistemas Inteligentes",
+    "service_growth": "Crecimiento",
     "connect_title": "Conectar",
     "copyright": "© {year} Noctra Studio. Todos los derechos reservados.",
     "system_status": "Todos los Sistemas Operativos",
     "location": "Querétaro, MX",
     "terms_of_service": "Términos de Servicio",
     "privacy_policy": "Política de Privacidad",
-    "designed_in": "Diseñado e Ingeniado en Querétaro, MX. Operativo Mundialmente."
+    "designed_in": "Diseñado e Ingenierizado en Querétaro, MX. Operacional en Todo el Mundo."
   },
   "Services": {
     "section_title": "Nuestros Servicios",
