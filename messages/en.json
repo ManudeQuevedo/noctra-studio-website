@@ -541,6 +541,7 @@
       "150k+": "AI automation, workflow systems, dashboards, and scalable infrastructure."
     },
     "message_label": "Project Details",
+      "details_label": "Project Details",
       "details_placeholder": "We are looking to re-architect our digital presence...",
       "submit": "Send Signal",
       "sending": "Transmitting..."

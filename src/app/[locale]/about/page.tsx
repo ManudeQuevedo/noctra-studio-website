@@ -40,7 +40,7 @@ export default function AboutPage() {
   return (
     <main className="min-h-screen bg-transparent text-neutral-900 dark:text-neutral-50 selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black relative">
       {/* 1. Hero Section */}
-      <section className="min-h-[80vh] flex flex-col justify-center px-4 md:px-8 pt-32 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
+      <section className="min-h-[80vh] flex flex-col justify-center px-6 md:px-8 pt-32 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
         <div className="max-w-7xl mx-auto w-full">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
@@ -60,7 +60,7 @@ export default function AboutPage() {
       </section>
 
       {/* 2. The Founder's Note */}
-      <section className="py-24 md:py-32 px-4 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
+      <section className="py-24 md:py-32 px-6 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
           {/* Image Placeholder - Asymmetric Layout */}
           <FadeIn>
@@ -116,7 +116,7 @@ export default function AboutPage() {
 
       {/* 3. The Tech Engine (Spec Sheet) */}
       <section className="py-24 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/30 dark:bg-neutral-900/30 relative z-10">
-        <div className="max-w-7xl mx-auto px-4 md:px-8">
+        <div className="max-w-7xl mx-auto px-6 md:px-8">
           <FadeIn>
             <div className="mb-12">
               <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
@@ -129,7 +129,7 @@ export default function AboutPage() {
       </section>
 
       {/* 4. The Methodology (Sticky Layout) */}
-      <section className="py-24 md:py-32 px-4 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
+      <section className="py-24 md:py-32 px-6 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
         <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
           {/* Left Column - Sticky */}
           <div className="md:col-span-4 relative">

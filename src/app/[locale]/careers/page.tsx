@@ -35,8 +35,8 @@ export default function CareersPage() {
   return (
     <main className="min-h-screen bg-neutral-950 text-white relative">
       {/* Hero Section */}
-      <section className="min-h-[85vh] flex flex-col justify-center px-4 md:px-8 pt-32 pb-16">
-        <div className="max-w-5xl mx-auto w-full text-center">
+      <section className="min-h-[85vh] flex flex-col justify-center px-6 md:px-8 pt-32 pb-16">
+        <div className="max-w-7xl mx-auto w-full text-center">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
@@ -56,8 +56,8 @@ export default function CareersPage() {
       </section>
 
       {/* Culture Hook Section */}
-      <section className="py-24 px-4 md:px-8">
-        <div className="max-w-4xl mx-auto text-center">
+      <section className="py-24 px-6 md:px-8">
+        <div className="max-w-7xl mx-auto text-center">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -80,7 +80,7 @@ export default function CareersPage() {
       </section>
 
       {/* The Roster - 3 Column Grid */}
-      <section className="py-24 px-4 md:px-8 border-t border-neutral-800">
+      <section className="py-24 px-6 md:px-8 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto">
           <FadeIn>
             <h2 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-12 text-center">
@@ -132,8 +132,8 @@ export default function CareersPage() {
       </section>
 
       {/* The Vetting Protocol - 3 Horizontal Steps */}
-      <section className="py-24 px-4 md:px-8 border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 px-6 md:px-8 border-t border-neutral-800">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-16 text-center">
               {t("vetting.title")}
@@ -200,8 +200,8 @@ export default function CareersPage() {
       </section>
 
       {/* Engagement Protocols - 2x2 Grid */}
-      <section className="py-24 px-4 md:px-8 border-t border-neutral-800">
-        <div className="max-w-6xl mx-auto">
+      <section className="py-24 px-6 md:px-8 border-t border-neutral-800">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-16 text-center">
               {t("protocols.title")}
@@ -261,8 +261,8 @@ export default function CareersPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-24 px-4 md:px-8 border-t border-neutral-800">
-        <div className="max-w-3xl mx-auto text-center">
+      <section className="py-24 px-6 md:px-8 border-t border-neutral-800">
+        <div className="max-w-7xl mx-auto text-center">
           <FadeIn>
             <a
               href={mailtoLink}
