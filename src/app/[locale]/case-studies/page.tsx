@@ -73,7 +73,7 @@ export default async function CaseStudiesPage({
       {/* Hero Section */}
       <section className="relative min-h-[60vh] flex items-center justify-center px-6 py-32">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tight text-balance">
             {t("hero.title")}
           </h1>
           <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto">

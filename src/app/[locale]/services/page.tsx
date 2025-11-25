@@ -120,15 +120,30 @@ const ServiceSection = ({
                 </h4>
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[0, 1, 2].map((i) => (
-                    <div
-                      key={i}
-                      className="flex items-center gap-3 text-neutral-400">
-                      <div className="w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0" />
-                      <span className="text-sm font-medium">
-                        {t(`${service.key}.deliverables.${i}`)}
-                      </span>
+                    <div key={i} className="flex flex-col gap-1">
+                      <div className="flex items-center gap-3 text-neutral-400">
+                        <div className="w-1.5 h-1.5 rounded-full bg-neutral-500 shrink-0" />
+                        <span className="text-sm font-medium">
+                          {t(`${service.key}.deliverables.${i}`)}
+                        </span>
+                      </div>
+                      <p className="text-xs text-neutral-500 pl-4.5">
+                        {t(`${service.key}.deliverables_subtext.${i}`)}
+                      </p>
                     </div>
                   ))}
+                </div>
+
+                {/* See Examples Link */}
+                <div className="mt-8">
+                  <Link
+                    href="/case-studies"
+                    className="text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors flex items-center gap-2 group/link">
+                    See examples
+                    <span className="group-hover/link:translate-x-1 transition-transform">
+                      →
+                    </span>
+                  </Link>
                 </div>
               </div>
             </div>

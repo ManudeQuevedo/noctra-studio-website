@@ -8,7 +8,7 @@
   "HomePage": {
     "hero": {
       "title": "Construyendo la Infraestructura Digital para Negocios Modernos.",
-      "subtitle": "Construimos sistemas digitales — marcas, sitios web y automatización inteligente. Velocidad, Precisión y Autonomía.",
+      "subtitle": "Diseñamos sistemas de marca, construimos sitios web rápidos en Next.js y automatizamos flujos de trabajo con IA — para empresas que necesitan claridad y escala.",
       "trust_badge": "Estándares Globales. Basado en Querétaro."
     },
     "intro_text": "No solo construimos sitios web. Arquitectamos los sistemas silenciosos y escalables que empoderan a las empresas visionarias para crecer sin fricción.",
@@ -21,7 +21,8 @@
       "subtitle": "Desde el concepto hasta el despliegue, arquitectamos experiencias que perduran."
     },
     "cta_start": "Iniciar Proyecto",
-    "cta_services": "Ver Planos"
+    "cta_services": "Ver Planos",
+    "cta_work": "Ver Trabajo"
   },
   "Metadata": {
     "home": {
@@ -79,7 +80,7 @@
     "home": "Inicio",
     "about": "Nosotros",
     "services": "Servicios",
-    "case_studies": "Casos de Estudio",
+    "case_studies": "Trabajo",
     "blog": "Blog",
     "careers": "Carreras",
     "contact": "Contacto",
@@ -258,6 +259,11 @@
         "Despliegue en Vercel en Vivo",
         "Repositorio GitHub Limpio",
         "Optimización Core Web Vitals"
+      ],
+      "deliverables_subtext": [
+        "Red global en el borde para carga instantánea mundial.",
+        "Propiedad total del código y control de versiones profesional.",
+        "Mejora la velocidad de carga y la experiencia de usuario para retener visitantes."
       ]
     },
     "branding": {
@@ -273,6 +279,11 @@
         "Guía de Marca PDF",
         "Biblioteca de Activos (SVG/PNG)",
         "Archivos Fuente Figma"
+      ],
+      "deliverables_subtext": [
+        "Un conjunto completo de reglas para consistencia visual.",
+        "Logotipos e iconos en alta resolución listos para cualquier plataforma.",
+        "Archivos de diseño editables para tu equipo interno."
       ]
     },
     "ai": {
@@ -287,7 +298,12 @@
       "deliverables": [
         "Agente IA Personalizado",
         "Documentación API",
-        "Video Guía de Integración"
+        "Guía de Video de Integración"
+      ],
+      "deliverables_subtext": [
+        "Soporte al cliente automatizado y calificación de leads 24/7.",
+        "Facilita integraciones futuras y asegura escalabilidad.",
+        "Instrucciones paso a paso para tu equipo."
       ]
     },
     "seo": {
@@ -302,7 +318,12 @@
       "deliverables": [
         "Reporte Mensual de Analíticas",
         "Doc. de Estrategia de Contenido",
-        "Panel de Ranking de Keywords"
+        "Dashboard de Ranking de Palabras Clave"
+      ],
+      "deliverables_subtext": [
+        "Insights claros sobre qué funciona y qué mejorar.",
+        "Hoja de ruta de temas para capturar a tu audiencia.",
+        "Rastrea tu visibilidad en Google en tiempo real."
       ]
     },
     "metrics": {
@@ -339,7 +360,7 @@
   },
   "About": {
     "title": "Nuestra Filosofía",
-    "description": "El caos es el estado por defecto de la web. Nosotros diseñamos claridad. No solo construimos sitios web; arquitectamos sistemas digitales silenciosos y escalables que atraviesan el ruido. Sin bloatware, solo ejecución.",
+    "description": "Liderado por un desarrollador y diseñador con más de 10 años de experiencia combinada en desarrollo UI, branding y sistemas web modernos. El caos es el estado por defecto de la web. Nosotros diseñamos claridad. No solo construimos sitios web; arquitectamos sistemas digitales silenciosos y escalables que cortan a través del ruido. Sin relleno, solo ejecución.",
     "philosophy_section": {
       "label": "// NUESTRO ADN",
       "title_line1": "INGENIERÍA",
@@ -362,7 +383,7 @@
   "AboutPage": {
     "hero": {
       "title": "Arquitectamos claridad.",
-      "subtitle": "Un estudio de diseño e ingeniería que une la estética con la función."
+      "subtitle": "Nacido del impulso de un desarrollador por dominar la calidad total del producto, Noctra une la ingeniería robusta con la intuición del diseño. Somos un equipo de talento de alto rendimiento, impulsado por una mentalidad de crecimiento y una atención radical al detalle. No solo entregamos proyectos; creamos resultados excepcionales que elevan tanto la visión de nuestros clientes como nuestros propios estándares de excelencia."
     },
     "founder_note": {
       "title": "Una Nota del Fundador",
@@ -400,29 +421,28 @@
       "title": "La Metodología",
       "description": "Un enfoque riguroso de ingeniería digital. No adivinamos; ejecutamos.",
       "steps": {
-        "0": { 
-          "title": "Descubrimiento", 
+        "0": {
+          "title": "Descubrimiento",
           "desc": "No solo tomamos un ticket. Nos sentamos contigo para descubrir la lógica de negocio, los casos extremos y los objetivos a largo plazo. Nos aseguramos de resolver el problema correcto antes de escribir una sola línea de código.",
           "checkpoint": "Entregable: Documento Detallado de Alcance y Estrategia"
         },
-        "1": { 
-          "title": "Arquitectura", 
+        "1": {
+          "title": "Arquitectura",
           "desc": "El código sin un plan es deuda técnica. Diseñamos tus esquemas de base de datos, rutas de API y protocolos de seguridad por adelantado. Medimos dos veces para cortar solo una vez.",
           "checkpoint": "Entregable: Plano Técnico y Selección de Stack"
         },
-        "2": { 
-          "title": "Construcción", 
+        "2": {
+          "title": "Construcción",
           "desc": "Sin cajas negras. Trabajamos en sprints transparentes. Tienes acceso a un entorno de staging en vivo para que puedas ver y sentir el progreso cada semana. Sin sorpresas en la línea de meta.",
           "checkpoint": "Entregable: Despliegues Semanales y Revisión de Código"
         },
-        "3": { 
-          "title": "Lanzamiento", 
+        "3": {
+          "title": "Lanzamiento",
           "desc": "El día del lanzamiento no debería ser estresante. Ejecutamos rigurosas auditorías de rendimiento, comprobaciones de SEO y pruebas de estrés. No solo entregamos las llaves; nos aseguramos de que el motor esté ronroneando.",
           "checkpoint": "Entregable: Certificación de Rendimiento"
         }
       }
     },
-
     "manifesto": {
       "title": "El Estándar Noctra",
       "cards": [
@@ -485,12 +505,17 @@
         "ai_automation": "Sistemas Inteligentes",
         "growth": "Crecimiento"
       },
-      "budget_label": "Presupuesto Estimado",
+      "budget_label": "Presupuesto del Proyecto (MXN)",
       "budget_placeholder": "Selecciona un rango...",
       "budget_options": {
-        "under_50k": "Menos de $5k",
-        "50k_100k": "$5k - $10k",
-        "over_100k": "Más de $10k"
+      "30-50k": "Foundation ($30k - $60k)",
+      "60-120k": "Architecture ($70k - $150k)",
+      "150k+": "Intelligence (Personalizado / $150k+)"
+    },
+      "budget_helpers": {
+        "30-50k": "Kit de marca completo y sitio web de 2-3 páginas en Next.js.",
+        "60-120k": "Sitio web o plataforma personalizada, animaciones, integraciones y base SEO.",
+        "150k+": "Automatización con IA, sistemas de flujo de trabajo, dashboards e infraestructura escalable."
       },
       "details_label": "Detalles del Proyecto",
       "details_placeholder": "Buscamos redefinir nuestra arquitectura digital...",
@@ -699,7 +724,7 @@
   },
   "CaseStudies": {
     "hero": {
-      "title": "Casos de Estudio — Cómo Resolvemos Problemas Reales a través de Diseño y Código",
+      "title": "Casos de Estudio — Resolución de Problemas Reales a través de Diseño y Código",
       "subtitle": "Aunque aún no tengamos proyectos de clientes, estos ejemplos muestran cómo en Noctra abordamos los desafíos empresariales reales con desarrollo web moderno, UI/UX y pensamiento estratégico."
     },
     "projects": {

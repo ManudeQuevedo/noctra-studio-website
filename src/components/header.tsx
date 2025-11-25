@@ -306,7 +306,7 @@ export function Header() {
                   transition={{ delay: 0.2 }}
                   className="flex flex-col items-center mt-auto w-full">
                   {/* Contact */}
-                  <div className="flex flex-col items-center gap-1 mb-6">
+                  <div className="flex flex-col items-center gap-1 mt-7 mb-6">
                     <span className="text-[10px] uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
                       {t("get_in_touch")}
                     </span>

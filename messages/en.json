@@ -8,7 +8,7 @@
   "HomePage": {
     "hero": {
       "title": "Constructing the Digital Infrastructure for Modern Business.",
-      "subtitle": "We engineer digital systems — brands, platforms, and intelligent automation. Speed, Precision, and Autonomy.",
+      "subtitle": "We design brand systems, build fast Next.js websites, and automate workflows with AI — for businesses that need clarity and scale.",
       "trust_badge": "Global Standards. Based in Querétaro."
     },
     "intro_text": "We don't just make websites. We architect the silent, scalable systems that empower visionary companies to grow without friction.",
@@ -21,7 +21,8 @@
       "subtitle": "From concept to deployment, we architect experiences that endure."
     },
     "cta_start": "Start Project",
-    "cta_services": "View Blueprints"
+    "cta_services": "View Blueprints",
+    "cta_work": "View Work"
   },
   "Metadata": {
     "home": {
@@ -79,7 +80,7 @@
     "home": "Home",
     "about": "About Us",
     "services": "Services",
-    "case_studies": "Case Studies",
+    "case_studies": "Work",
     "blog": "Blog",
     "careers": "Careers",
     "contact": "Contact",
@@ -258,6 +259,11 @@
         "Live Vercel Deployment",
         "Clean GitHub Repo",
         "Core Web Vitals Optimized"
+      ],
+      "deliverables_subtext": [
+        "Global edge network for instant loading worldwide.",
+        "Full code ownership and professional version control.",
+        "Improves loading speed and user experience so visitors stay longer."
       ]
     },
     "branding": {
@@ -273,6 +279,11 @@
         "Brand Guidelines PDF",
         "Asset Library (SVG/PNG)",
         "Figma Source Files"
+      ],
+      "deliverables_subtext": [
+        "A complete set of rules so your visuals stay consistent everywhere.",
+        "High-resolution logos and icons ready for any platform.",
+        "Full editable design files for your internal team."
       ]
     },
     "ai": {
@@ -288,6 +299,11 @@
         "Custom AI Agent",
         "API Documentation",
         "Integration Video Guide"
+      ],
+      "deliverables_subtext": [
+        "Automated customer support and lead qualification 24/7.",
+        "Makes integrations easier for future developers and ensures scalability.",
+        "Step-by-step instructions for your team."
       ]
     },
     "seo": {
@@ -303,6 +319,11 @@
         "Monthly Analytics Report",
         "Content Strategy Doc",
         "Keyword Ranking Dashboard"
+      ],
+      "deliverables_subtext": [
+        "Gives you clear insights on what’s working and what needs improvement.",
+        "A roadmap of topics to capture your target audience.",
+        "Track your visibility on Google in real-time."
       ]
     },
     "metrics": {
@@ -339,7 +360,7 @@
   },
   "About": {
     "title": "Our Philosophy",
-    "description": "Chaos is the default state of the web. We engineer clarity. We don't just build websites; we architect silent, scalable digital systems that cut through the noise. No bloat, just execution.",
+    "description": "Led by a developer & designer with 10+ years of combined experience in UI development, branding, and modern web systems. Chaos is the default state of the web. We engineer clarity. We don't just build websites; we architect silent, scalable digital systems that cut through the noise. No bloat, just execution.",
     "philosophy_section": {
       "label": "// OUR DNA",
       "title_line1": "ENGINEERING",
@@ -362,7 +383,7 @@
   "AboutPage": {
     "hero": {
       "title": "We architect clarity.",
-      "subtitle": "A design and engineering studio bridging the gap between aesthetic and function."
+      "subtitle": "Born from a developer’s drive to master total product quality, Noctra bridges the gap between robust engineering and design intuition. We are a high-performance team fueled by a growth mindset and radical attention to detail. We don’t just deliver projects; we craft outstanding results that elevate both our clients' vision and our own standards of excellence."
     },
     "founder_note": {
       "title": "A Note from the Founder",
@@ -502,14 +523,19 @@
         "ai_automation": "Intelligent Systems",
         "growth": "Growth"
       },
-      "budget_label": "Estimated Budget",
+      "budget_label": "Project Budget (MXN)",
       "budget_placeholder": "Select a range...",
-      "budget_options": {
-        "under_50k": "Under $5k",
-        "50k_100k": "$5k - $10k",
-        "over_100k": "Over $10k"
-      },
-      "details_label": "Project Details",
+    "budget_options": {
+      "30-50k": "Foundation ($30k - $60k)",
+      "60-120k": "Architecture ($70k - $150k)",
+      "150k+": "Intelligence (Custom / $150k+)"
+    },
+    "budget_helpers": {
+      "30-50k": "A complete brand kit and a 2–3 page website built in Next.js.",
+      "60-120k": "Custom website or platform, animations, integrations, and SEO foundation.",
+      "150k+": "AI automation, workflow systems, dashboards, and scalable infrastructure."
+    },
+    "message_label": "Project Details",
       "details_placeholder": "We are looking to re-architect our digital presence...",
       "submit": "Send Signal",
       "sending": "Transmitting..."
@@ -716,7 +742,7 @@
   },
   "CaseStudies": {
     "hero": {
-      "title": "Case Studies — How I Solve Real Problems Through Design & Code",
+      "title": "Case Studies — Real Problem Solving Through Design and Code",
       "subtitle": "Even without client projects yet, these examples show how I approach real business challenges with modern web development, UI/UX, and strategic thinking."
     },
     "projects": {

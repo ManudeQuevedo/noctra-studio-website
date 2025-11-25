@@ -31,71 +31,45 @@ function ContactForm() {
   const BUDGET_OPTIONS = {
     MXN: [
       {
-        label:
-          locale === "es"
-            ? "Identidad (Landing / Portafolio) — $30k - $50k"
-            : "Identity (Landing / Portfolio) — $30k - $50k",
-        value: "Identity (30k-50k MXN)",
+        label: t("form.budget_options.30-50k"),
+        value: "Foundation",
       },
       {
-        label:
-          locale === "es"
-            ? "Crecimiento (Corporativo / E-comm) — $60k - $120k"
-            : "Growth (Corporate / E-comm) — $60k - $120k",
-        value: "Growth (60k-120k MXN)",
+        label: t("form.budget_options.60-120k"),
+        value: "Architecture",
       },
       {
-        label:
-          locale === "es"
-            ? "Sistema (Software a la medida) — +$150k"
-            : "System (Custom Software) — +$150k",
-        value: "System (+150k MXN)",
+        label: t("form.budget_options.150k+"),
+        value: "Intelligence",
       },
       {
-        label:
-          locale === "es" ? "Retainer / Consultoría" : "Consulting / Retainer",
+        label: t("budget.retainer"),
         value: "Consulting",
       },
       {
-        label:
-          locale === "es"
-            ? "No estoy seguro / Hablemos de valor"
-            : "Not sure / Let's discuss value",
+        label: t("budget.unsure"),
         value: "Undecided",
       },
     ],
     USD: [
       {
-        label:
-          locale === "es"
-            ? "Identidad (Landing / Portafolio) — $1.5k - $3k"
-            : "Identity (Landing / Portfolio) — $1.5k - $3k",
-        value: "Identity (1.5k-3k USD)",
+        label: "Foundation ($1.5k - $3k)",
+        value: "Foundation (USD)",
       },
       {
-        label:
-          locale === "es"
-            ? "Crecimiento (Corporativo / E-comm) — $3.5k - $7k"
-            : "Growth (Corporate / E-comm) — $3.5k - $7k",
-        value: "Growth (3.5k-7k USD)",
+        label: "Architecture ($3.5k - $8k)",
+        value: "Architecture (USD)",
       },
       {
-        label:
-          locale === "es"
-            ? "Sistema (Software a la medida) — +$9k"
-            : "System (Custom Software) — +$9k",
-        value: "System (+9k USD)",
+        label: "Intelligence (Custom / $8k+)",
+        value: "Intelligence (USD)",
       },
       {
-        label:
-          locale === "es" ? "Retainer / Consultoría" : "Consulting / Retainer",
+        label: "Consulting / Retainer",
         value: "Consulting",
       },
       {
-        label:
-          locale === "es"
-            ? "No estoy seguro / Hablemos de valor"
-            : "Not sure / Let's discuss value",
+        label: "Not sure / Let's discuss value",
         value: "Undecided",
       },
     ],
@@ -109,6 +83,7 @@ function ContactForm() {
     handleSubmit,
     formState: { isSubmitting },
     reset,
+    watch,
     setValue,
   } = useForm<FormData>({
     defaultValues: {
@@ -120,6 +95,19 @@ function ContactForm() {
       details: "",
     },
   });
+
+  const selectedBudget = watch("budget");
+
+  const getBudgetHelper = (budget: string) => {
+    if (!budget) return null;
+    if (budget.includes("Foundation") || budget.includes("Identity"))
+      return t("budget_helpers.30-50k");
+    if (budget.includes("Architecture") || budget.includes("Growth"))
+      return t("budget_helpers.60-120k");
+    if (budget.includes("Intelligence") || budget.includes("System"))
+      return t("budget_helpers.150k+");
+    return null;
+  };
 
   // Auto-fill service based on URL param
   useEffect(() => {
@@ -497,6 +485,18 @@ function ContactForm() {
                       </option>
                     ))}
                   </select>
+
+                  {/* Budget Helper Text */}
+                  {selectedBudget && (
+                    <motion.div
+                      initial={{ opacity: 0, y: -10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="absolute top-full left-0 w-full mt-2 p-3 bg-neutral-900/90 border border-neutral-800 rounded-lg z-20 pointer-events-none">
+                      <p className="text-xs text-neutral-400">
+                        {getBudgetHelper(selectedBudget)}
+                      </p>
+                    </motion.div>
+                  )}
                 </div>
 
                 {/* Project Details */}
