@@ -46,7 +46,7 @@ export function TargetAudienceSection() {
   ];
 
   return (
-    <section className="py-24 md:py-32 px-4 md:px-8 bg-transparent">
+    <section className="py-24 md:py-32 px-6 md:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
           <h2 className="text-2xl md:text-3xl font-bold text-center mb-16 text-neutral-900 dark:text-neutral-50 tracking-tight">
