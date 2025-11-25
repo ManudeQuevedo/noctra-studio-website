@@ -2,7 +2,8 @@
 
 import { useState } from "react";
 import { useCompletion } from "@ai-sdk/react";
-import { useLocale } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
+import { useRouter } from "@/i18n/routing";
 import { handleSignOut } from "./actions";
 import {
   Terminal,
@@ -13,6 +14,7 @@ import {
   Loader2,
   Cpu,
   LogOut,
+  Globe,
 } from "lucide-react";
 import { motion } from "framer-motion";
 
@@ -20,42 +22,46 @@ type AgentType = "social" | "lead" | "scope";
 
 export default function CommandCenter() {
   const locale = useLocale();
+  const t = useTranslations("Studio");
+  const router = useRouter();
   const [activeTab, setActiveTab] = useState<AgentType>("social");
+
+  const toggleLanguage = () => {
+    const newLocale = locale === "en" ? "es" : "en";
+    router.replace("/studio", { locale: newLocale });
+  };
 
   const tabs = [
     {
       id: "social",
-      label: "Social Architect",
+      label: t("tabs.social.label"),
       icon: MessageSquare,
       color: "text-blue-400",
       borderColor: "border-blue-400/20",
       bg: "bg-blue-400/10",
-      system:
-        "You are the Lead Editor for Noctra. Tone: Precise, Architectural. Output: X Thread & IG Caption.",
+      system: t("tabs.social.system"),
     },
     {
       id: "lead",
-      label: "Lead Analyzer",
+      label: t("tabs.lead.label"),
       icon: Users,
       color: "text-green-400",
       borderColor: "border-green-400/20",
       bg: "bg-green-400/10",
-      system:
-        "You are the Sales Director. Analyze this email for budget/fit and draft a high-status reply.",
+      system: t("tabs.lead.system"),
     },
     {
       id: "scope",
-      label: "Scope Generator",
+      label: t("tabs.scope.label"),
       icon: Layers,
       color: "text-purple-400",
       borderColor: "border-purple-400/20",
       bg: "bg-purple-400/10",
-      system:
-        "You are the Solution Architect. Create a project scope and tech stack recommendation based on this request.",
+      system: t("tabs.scope.system"),
     },
   ];
 
-  const activeTabData = tabs.find((t) => t.id === activeTab);
+  const activeTabData = tabs.find((tab) => tab.id === activeTab);
 
   const { completion, input, handleInputChange, handleSubmit, isLoading } =
     useCompletion({
@@ -76,21 +82,30 @@ export default function CommandCenter() {
             </div>
             <div>
               <h1 className="text-xl font-bold text-white tracking-tight">
-                NOCTRA_COMMAND_CENTER
+                {t("title")}
               </h1>
-              <p className="text-xs text-neutral-500">v2.0.0 | SYSTEM_ONLINE</p>
+              <p className="text-xs text-neutral-500">{t("subtitle")}</p>
             </div>
           </div>
           <div className="flex items-center gap-4">
             <div className="flex items-center gap-2 text-xs text-neutral-500">
               <Cpu className="w-4 h-4" />
-              <span>GEMINI_1.5_FLASH_ACTIVE</span>
+              <span>{t("ai_model")}</span>
             </div>
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-neutral-400 hover:text-white bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 rounded-lg transition-all"
+              title={
+                locale === "en" ? "Cambiar a Español" : "Switch to English"
+              }>
+              <Globe className="w-3 h-3" />
+              {locale === "en" ? "ES" : "EN"}
+            </button>
             <button
               onClick={() => handleSignOut(locale)}
               className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-neutral-400 hover:text-white bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 rounded-lg transition-all">
               <LogOut className="w-3 h-3" />
-              LOGOUT
+              {t("logout")}
             </button>
           </div>
         </div>
@@ -134,7 +149,7 @@ export default function CommandCenter() {
           {/* Input Area */}
           <div className="bg-neutral-900/30 border border-neutral-800 rounded-xl p-6 flex flex-col">
             <h2 className="text-sm font-bold text-neutral-400 mb-4 uppercase tracking-wider">
-              Input Stream
+              {t("input_stream")}
             </h2>
             <form
               onSubmit={handleSubmit}
@@ -142,13 +157,7 @@ export default function CommandCenter() {
               <textarea
                 value={input}
                 onChange={handleInputChange}
-                placeholder={
-                  activeTab === "social"
-                    ? "Enter raw thoughts or topic..."
-                    : activeTab === "lead"
-                    ? "Paste client email or inquiry..."
-                    : "Describe project requirements..."
-                }
+                placeholder={t(`placeholders.${activeTab}`)}
                 className="flex-1 bg-black/50 border border-neutral-800 rounded-lg p-4 text-sm focus:ring-1 focus:ring-white focus:border-white outline-none resize-none placeholder:text-neutral-700"
               />
               <button
@@ -161,11 +170,12 @@ export default function CommandCenter() {
                 }`}>
                 {isLoading ? (
                   <>
-                    <Loader2 className="w-4 h-4 animate-spin" /> Processing...
+                    <Loader2 className="w-4 h-4 animate-spin" />{" "}
+                    {t("processing")}
                   </>
                 ) : (
                   <>
-                    <Send className="w-4 h-4" /> Execute Agent
+                    <Send className="w-4 h-4" /> {t("execute_agent")}
                   </>
                 )}
               </button>
@@ -176,11 +186,11 @@ export default function CommandCenter() {
           <div className="bg-black border border-neutral-800 rounded-xl p-6 overflow-hidden flex flex-col relative">
             <div className="flex items-center justify-between mb-4">
               <h2 className="text-sm font-bold text-neutral-400 uppercase tracking-wider">
-                System Output
+                {t("system_output")}
               </h2>
               {isLoading && (
                 <span className="text-xs text-green-500 animate-pulse">
-                  ● STREAMING_DATA
+                  {t("streaming_data")}
                 </span>
               )}
             </div>

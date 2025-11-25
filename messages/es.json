@@ -703,6 +703,36 @@
     "success_desc": "Tu arquitectura está en cola para revisión manual. Revisa tu bandeja de entrada para la confirmación del ticket.",
     "button_reset": "Volver a la Base"
   },
+  "Studio": {
+    "title": "CENTRO_DE_COMANDO_NOCTRA",
+    "subtitle": "v2.0.0 | SISTEMA_EN_LÍNEA",
+    "ai_model": "GEMINI_1.5_FLASH_ACTIVO",
+    "logout": "CERRAR SESIÓN",
+    "tabs": {
+      "social": {
+        "label": "Arquitecto Social",
+        "system": "Eres el Editor Principal de Noctra. Tono: Preciso, Arquitectónico. Salida: Hilo de X y Caption de IG."
+      },
+      "lead": {
+        "label": "Analizador de Leads",
+        "system": "Eres el Director de Ventas. Analiza este correo para presupuesto/ajuste y redacta una respuesta de alto estatus."
+      },
+      "scope": {
+        "label": "Generador de Alcance",
+        "system": "Eres el Arquitecto de Soluciones. Crea un alcance de proyecto y recomendación de stack tecnológico basado en esta solicitud."
+      }
+    },
+    "input_stream": "Flujo de Entrada",
+    "system_output": "Salida del Sistema",
+    "streaming_data": "● TRANSMITIENDO_DATOS",
+    "execute_agent": "Ejecutar Agente",
+    "processing": "Procesando...",
+    "placeholders": {
+      "social": "Ingresa pensamientos o tema...",
+      "lead": "Pega correo o consulta del cliente...",
+      "scope": "Describe los requisitos del proyecto..."
+    }
+  },
   "Admin": {
     "title": "Centro de Comando Noctra",
     "subtitle": "Desplegar Infraestructura de Cliente",

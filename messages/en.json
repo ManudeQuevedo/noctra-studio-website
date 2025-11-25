@@ -721,6 +721,36 @@
     "success_desc": "Your architecture is queued for manual review. Check your inbox for the ticket confirmation.",
     "button_reset": "Return to Base"
   },
+  "Studio": {
+    "title": "NOCTRA_COMMAND_CENTER",
+    "subtitle": "v2.0.0 | SYSTEM_ONLINE",
+    "ai_model": "GEMINI_1.5_FLASH_ACTIVE",
+    "logout": "LOGOUT",
+    "tabs": {
+      "social": {
+        "label": "Social Architect",
+        "system": "You are the Lead Editor for Noctra. Tone: Precise, Architectural. Output: X Thread & IG Caption."
+      },
+      "lead": {
+        "label": "Lead Analyzer",
+        "system": "You are the Sales Director. Analyze this email for budget/fit and draft a high-status reply."
+      },
+      "scope": {
+        "label": "Scope Generator",
+        "system": "You are the Solution Architect. Create a project scope and tech stack recommendation based on this request."
+      }
+    },
+    "input_stream": "Input Stream",
+    "system_output": "System Output",
+    "streaming_data": "● STREAMING_DATA",
+    "execute_agent": "Execute Agent",
+    "processing": "Processing...",
+    "placeholders": {
+      "social": "Enter raw thoughts or topic...",
+      "lead": "Paste client email or inquiry...",
+      "scope": "Describe project requirements..."
+    }
+  },
   "Admin": {
     "title": "Noctra Command Center",
     "subtitle": "Deploy Client Infrastructure",
