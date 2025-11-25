@@ -82,8 +82,23 @@
   * {
     @apply border-border outline-ring/50;
   }
-  
+
   body {
-    @apply bg-background text-foreground;
+    @apply bg-background text-foreground select-none;
+  }
+
+  /* Re-enable selection for content */
+  p,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6,
+  article,
+  blockquote,
+  input,
+  textarea {
+    @apply select-text;
   }
 }

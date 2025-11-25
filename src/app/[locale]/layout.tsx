@@ -76,7 +76,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
   const messages = await getMessages();
 
-  const fontClasses = `${satoshi.variable} ${geistSans.variable} ${geistMono.variable} antialiased`;
+  const fontClasses = `${satoshi.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-white selection:text-black`;
 
   return (
     <>
