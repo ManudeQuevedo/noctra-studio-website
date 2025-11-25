@@ -133,6 +133,7 @@
     },
     "protocols": {
       "title": "Standard Operating Procedures.",
+      "context": "These protocols protect our clients' confidentiality and maintain enterprise-grade security standards.",
       "items": {
         "0": {
           "title": "IP Transfer.",
@@ -151,6 +152,11 @@
           "desc": "We respect deep work. No daily standups. Updates are pushed via Linear/GitHub, not meetings."
         }
       }
+    },
+    "compensation": {
+      "title": "Compensation",
+      "full_time": "Full-Time: MX$25k-45k/month depending on role and experience",
+      "contract": "Contract: MX$400-800/hour for project-based work"
     },
     "cta": {
       "button": "Initiate Vetting Process",
@@ -394,7 +400,7 @@
       "title": "A Note from the Founder",
       "content_1": "The digital landscape is cluttered. Everywhere you look, there's noise—unnecessary complexity, bloated code, and design that screams for attention without saying anything.",
       "content_2": "At Noctra, we believe in the power of silence. We strip away the inessential to reveal the core. We don't just build websites; we engineer digital architectures that stand the test of time.",
-      "signature": "Manu, Founder"
+      "signature": "Manu, Founder — 5+ years building production web platforms and design systems"
     },
     "brand_anatomy": {
       "section_label": "BRAND ANATOMY",
@@ -416,6 +422,7 @@
     },
     "tech_radar": {
       "title": "Technical Specification",
+      "intro": "These are the tools we use to build fast, reliable websites and digital platforms.",
       "ui_ux": "01 — UI/UX & Strategy",
       "frontend": "02 — Frontend",
       "backend_db": "03 — Backend & Database",
@@ -536,13 +543,17 @@
       "150k+": "Intelligence (Custom / $150k+)"
     },
     "budget_helpers": {
-      "30-50k": "A complete brand kit and a 2–3 page website built in Next.js.",
-      "60-120k": "Custom website or platform, animations, integrations, and SEO foundation.",
-      "150k+": "AI automation, workflow systems, dashboards, and scalable infrastructure."
+      "30-50k": "Foundation (MX$29,900): Complete brand kit + 1-3 page Next.js website + Figma source files + basic SEO setup + 2 rounds of revisions.",
+      "60-120k": "Architecture (MX$70k-150k): Custom website or platform + animations + API integrations + comprehensive SEO foundation + analytics dashboards + 4 rounds of revisions.",
+      "150k+": "Intelligence (MX$150k+): AI automation + workflow systems + custom dashboards + scalable cloud infrastructure + ongoing optimization + unlimited revisions."
     },
     "message_label": "Project Details",
       "details_label": "Project Details",
       "details_placeholder": "We are looking to re-architect our digital presence...",
+      "timeline_label": "How soon do you need this?",
+      "timeline_placeholder": "e.g., Within 2-3 months",
+      "success_criteria_label": "What would success look like?",
+      "success_criteria_placeholder": "e.g., 3x more qualified leads, faster page load times, or streamlined booking process",
       "submit": "Send Signal",
       "sending": "Transmitting..."
     },

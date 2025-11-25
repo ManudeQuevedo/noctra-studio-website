@@ -203,12 +203,15 @@ export default function CareersPage() {
       <section className="py-24 px-6 md:px-8 border-t border-neutral-800">
         <div className="max-w-7xl mx-auto">
           <FadeIn>
-            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-16 text-center">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-4 text-center">
               {t("protocols.title")}
             </h2>
+            <p className="text-neutral-400 text-center max-w-2xl mx-auto mb-16">
+              {t("protocols.context")}
+            </p>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-16">
             {/* Protocol 1: IP Transfer */}
             <FadeIn delay={0.1}>
               <div className="border border-neutral-800 p-8 bg-neutral-900/30">
@@ -257,6 +260,19 @@ export default function CareersPage() {
               </div>
             </FadeIn>
           </div>
+
+          {/* Compensation Section */}
+          <FadeIn delay={0.5}>
+            <div className="border border-neutral-700 p-8 bg-neutral-900/50">
+              <h3 className="text-2xl font-bold text-white mb-6">
+                {t("compensation.title")}
+              </h3>
+              <div className="space-y-3 text-neutral-300">
+                <p>{t("compensation.full_time")}</p>
+                <p>{t("compensation.contract")}</p>
+              </div>
+            </div>
+          </FadeIn>
         </div>
       </section>
 

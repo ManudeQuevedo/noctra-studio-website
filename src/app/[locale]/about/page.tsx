@@ -122,6 +122,9 @@ export default function AboutPage() {
               <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
                 {t("tech_radar.title")}
               </h2>
+              <p className="text-neutral-600 dark:text-neutral-400 mt-4 text-lg">
+                {t("tech_radar.intro")}
+              </p>
             </div>
             <TechStack />
           </FadeIn>

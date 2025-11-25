@@ -16,6 +16,8 @@ type FormData = {
   website?: string;
   service: string;
   budget: string;
+  timeline?: string;
+  success_criteria?: string;
   details: string;
 };
 
@@ -92,6 +94,8 @@ function ContactForm() {
       website: "",
       service: "",
       budget: "",
+      timeline: "",
+      success_criteria: "",
       details: "",
     },
   });
@@ -486,7 +490,6 @@ function ContactForm() {
                     ))}
                   </select>
 
-                  {/* Budget Helper Text */}
                   {selectedBudget && (
                     <motion.div
                       initial={{ opacity: 0, y: -10 }}
@@ -497,6 +500,38 @@ function ContactForm() {
                       </p>
                     </motion.div>
                   )}
+                </div>
+
+                {/* Timeline */}
+                <div className="relative">
+                  <label htmlFor="timeline" className={labelClasses}>
+                    {t("form.timeline_label")}
+                  </label>
+                  <input
+                    {...register("timeline")}
+                    id="timeline"
+                    type="text"
+                    placeholder={t("form.timeline_placeholder")}
+                    className={inputClasses("timeline")}
+                    onFocus={() => setFocusedField("timeline")}
+                    onBlur={() => setFocusedField(null)}
+                  />
+                </div>
+
+                {/* Success Criteria */}
+                <div className="relative">
+                  <label htmlFor="success_criteria" className={labelClasses}>
+                    {t("form.success_criteria_label")}
+                  </label>
+                  <input
+                    {...register("success_criteria")}
+                    id="success_criteria"
+                    type="text"
+                    placeholder={t("form.success_criteria_placeholder")}
+                    className={inputClasses("success_criteria")}
+                    onFocus={() => setFocusedField("success_criteria")}
+                    onBlur={() => setFocusedField(null)}
+                  />
                 </div>
 
                 {/* Project Details */}

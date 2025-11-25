@@ -133,6 +133,7 @@
     },
     "protocols": {
       "title": "Procedimientos Operativos Estándar.",
+      "context": "Estos protocolos protegen la confidencialidad de nuestros clientes y mantienen estándares de seguridad de nivel empresarial.",
       "items": {
         "0": {
           "title": "Transferencia de PI.",
@@ -151,6 +152,11 @@
           "desc": "Respetamos el trabajo profundo. Sin reuniones diarias. Las actualizaciones se envían vía Linear/GitHub, no reuniones."
         }
       }
+    },
+    "compensation": {
+      "title": "Compensación",
+      "full_time": "Tiempo Completo: MX$25k-45k/mes dependiendo del rol y experiencia",
+      "contract": "Contrato: MX$400-800/hora para trabajo basado en proyectos"
     },
     "cta": {
       "button": "Iniciar Proceso de Evaluación",
@@ -394,7 +400,7 @@
       "title": "Una Nota del Fundador",
       "content_1": "El paisaje digital está saturado. Por donde mires, hay ruido—complejidad innecesaria, código inflado y diseño que grita por atención sin decir nada.",
       "content_2": "En Noctra, creemos en el poder del silencio. Eliminamos lo no esencial para revelar el núcleo. No solo construimos sitios web; diseñamos arquitecturas digitales que resisten la prueba del tiempo.",
-      "signature": "Manu, Fundador"
+      "signature": "Manu, Fundador — 5+ años construyendo plataformas web de producción y sistemas de diseño"
     },
     "brand_anatomy": {
       "section_label": "ANATOMÍA DE MARCA",
@@ -416,9 +422,10 @@
     },
     "tech_radar": {
       "title": "Especificación Técnica",
-      "ui_ux": "01 — UI/UX & Estrategia",
+      "intro": "Estas son las herramientas que usamos para construir sitios web y plataformas digitales rápidas y confiables.",
+      "ui_ux": "01 — UI/UX y Estrategia",
       "frontend": "02 — Frontend",
-      "backend_db": "03 — Backend & Base de Datos",
+      "backend_db": "03 — Backend y Base de Datos",
       "cms": "04 — CMS (Headless)",
       "infrastructure": "05 — Infraestructura"
     },
@@ -518,12 +525,16 @@
       "150k+": "Intelligence (Personalizado / $150k+)"
     },
       "budget_helpers": {
-        "30-50k": "Kit de marca completo y sitio web de 2-3 páginas en Next.js.",
-        "60-120k": "Sitio web o plataforma personalizada, animaciones, integraciones y base SEO.",
-        "150k+": "Automatización con IA, sistemas de flujo de trabajo, dashboards e infraestructura escalable."
+        "30-50k": "Foundation (MX$29,900): Kit de marca completo + sitio web Next.js de 1-3 páginas + archivos fuente Figma + configuración SEO básica + 2 rondas de revisiones.",
+        "60-120k": "Architecture (MX$70k-150k): Sitio web o plataforma personalizada + animaciones + integraciones API + base SEO integral + dashboards de analíticas + 4 rondas de revisiones.",
+        "150k+": "Intelligence (MX$150k+): Automatización con IA + sistemas de flujo de trabajo + dashboards personalizados + infraestructura cloud escalable + optimización continua + revisiones ilimitadas."
       },
       "details_label": "Detalles del Proyecto",
       "details_placeholder": "Buscamos redefinir nuestra arquitectura digital...",
+      "timeline_label": "¿Qué tan pronto lo necesitas?",
+      "timeline_placeholder": "ej., Dentro de 2-3 meses",
+      "success_criteria_label": "¿Cómo luciría el éxito?",
+      "success_criteria_placeholder": "ej., 3x más leads calificados, tiempos de carga más rápidos, o proceso de reservas optimizado",
       "submit": "Enviar Señal",
       "sending": "Transmitiendo..."
     },
