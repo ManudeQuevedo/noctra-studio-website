@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
 import { HeroTextSection } from "@/components/home/HeroTextSection";
 import { SiteAuditTool } from "@/components/home/SiteAuditTool";
-import { EngagementModels } from "@/components/sections/EngagementModels";
 import { generatePageMetadata } from "@/lib/metadata";
 
 // Lazy load heavy components below the fold
@@ -65,6 +64,7 @@ const SERVICE_IMAGES = {
  * Key Features:
  * - Hero section with 3D starfield
  * - Manifesto text (HeroTextSection)
+ * - Site Audit Tool (lead magnet)
  * - Services grid
  * - Process & Pricing sections
  * - Target audience breakdown
@@ -87,11 +87,10 @@ export default async function HomePage() {
       </section>
 
       <ServicesGrid images={images} />
-      <EngagementModels />
-      <ProcessSection />
-      <PricingSection />
       <TargetAudienceSection />
       <PhilosophySection />
+      <ProcessSection />
+      <PricingSection />
     </main>
   );
 }

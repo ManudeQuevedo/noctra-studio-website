@@ -200,11 +200,11 @@ export const SiteAuditTool = () => {
             <div className="w-3 h-3 rounded-full bg-green-500/20 border border-green-500/50" />
           </div>
           <span className="text-[10px] text-neutral-600">
-            NOCTRA_DIAGNOSTIC_TOOL_V2.0 // POWERED_BY_LIGHTHOUSE
+            NOCTRA_DIAGNOSTIC_TOOL_V1.0
           </span>
         </div>
 
-        <div className="p-8 min-h-[300px] flex flex-col justify-center">
+        <div className="p-4 md:p-8 min-h-[300px] flex flex-col justify-center">
           <AnimatePresence mode="wait">
             {status === "idle" && (
               <motion.div
@@ -313,7 +313,7 @@ export const SiteAuditTool = () => {
                 {/* Headline */}
                 <div className="text-center">
                   <h4
-                    className={`text-xl font-bold font-mono ${
+                    className={`text-lg md:text-xl font-bold font-mono ${
                       getHeadline(auditResult.performance).color
                     }`}>
                     {getHeadline(auditResult.performance).text}
@@ -321,20 +321,20 @@ export const SiteAuditTool = () => {
                 </div>
 
                 {/* Scores Grid */}
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-2 gap-3">
                   {/* Performance */}
-                  <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-xs text-neutral-500 mb-1">
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
                       PERFORMANCE
                     </div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-bold text-white">
+                      <span className="text-2xl md:text-3xl font-bold text-white">
                         {auditResult.performance}
                       </span>
-                      <span className="text-neutral-500">/100</span>
+                      <span className="text-neutral-500 text-sm">/100</span>
                     </div>
                     <div
-                      className={`mt-2 inline-block px-2 py-0.5 rounded text-xs font-bold ${
+                      className={`mt-2 inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
                         getScoreBadge(auditResult.performance).color
                       } ${getScoreBadge(auditResult.performance).bg} ${
                         getScoreBadge(auditResult.performance).border
@@ -344,16 +344,18 @@ export const SiteAuditTool = () => {
                   </div>
 
                   {/* SEO */}
-                  <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-xs text-neutral-500 mb-1">SEO</div>
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
+                      SEO
+                    </div>
                     <div className="flex items-baseline gap-2">
-                      <span className="text-3xl font-bold text-white">
+                      <span className="text-2xl md:text-3xl font-bold text-white">
                         {auditResult.seo}
                       </span>
-                      <span className="text-neutral-500">/100</span>
+                      <span className="text-neutral-500 text-sm">/100</span>
                     </div>
                     <div
-                      className={`mt-2 inline-block px-2 py-0.5 rounded text-xs font-bold ${
+                      className={`mt-2 inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
                         getScoreBadge(auditResult.seo).color
                       } ${getScoreBadge(auditResult.seo).bg} ${
                         getScoreBadge(auditResult.seo).border
@@ -363,17 +365,21 @@ export const SiteAuditTool = () => {
                   </div>
 
                   {/* LCP */}
-                  <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-xs text-neutral-500 mb-1">LCP</div>
-                    <div className="text-2xl font-bold text-white">
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
+                      LCP
+                    </div>
+                    <div className="text-xl md:text-2xl font-bold text-white">
                       {auditResult.lcp}
                     </div>
                   </div>
 
                   {/* Issues */}
-                  <div className="p-4 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-xs text-neutral-500 mb-1">ISSUES</div>
-                    <div className="text-2xl font-bold text-white">
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
+                      ISSUES
+                    </div>
+                    <div className="text-xl md:text-2xl font-bold text-white">
                       {auditResult.issues}
                     </div>
                   </div>
@@ -400,18 +406,18 @@ export const SiteAuditTool = () => {
                   <label className="block text-xs text-neutral-500 font-mono uppercase tracking-wider">
                     {t("email_label")}
                   </label>
-                  <div className="flex gap-2">
+                  <div className="flex flex-col sm:flex-row gap-3">
                     <input
                       type="email"
                       placeholder={t("placeholder_email")}
                       value={email}
                       onChange={(e) => setEmail(e.target.value)}
-                      className="flex-1 bg-neutral-900 border border-neutral-700 text-white px-4 py-3 rounded-lg focus:ring-1 focus:ring-white outline-none"
+                      className="w-full flex-1 bg-neutral-900 border border-neutral-700 text-white px-4 py-3 rounded-lg focus:ring-1 focus:ring-white outline-none"
                       required
                     />
                     <button
                       type="submit"
-                      className="bg-white text-black px-6 py-3 rounded-lg font-bold hover:bg-neutral-200 transition-colors flex items-center gap-2">
+                      className="w-full sm:w-auto bg-white text-black px-6 py-3 rounded-lg font-bold hover:bg-neutral-200 transition-colors flex items-center justify-center gap-2">
                       {t("button_send")} <ArrowRight className="w-4 h-4" />
                     </button>
                   </div>
