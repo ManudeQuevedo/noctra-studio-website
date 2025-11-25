@@ -318,7 +318,7 @@ export function Header() {
                   </div>
 
                   {/* Divider */}
-                  <div className="w-full border-t my-4 border-neutral-800 dark:border-neutral-200" />
+                  <div className="w-full border-t mb-4 border-neutral-800 dark:border-neutral-200" />
 
                   {/* Socials & System */}
                   <div className="flex items-center justify-between w-full px-4">
