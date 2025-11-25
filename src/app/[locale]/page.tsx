@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
 import { HeroTextSection } from "@/components/home/HeroTextSection";
 import { SiteAuditTool } from "@/components/home/SiteAuditTool";
+import { EngagementModels } from "@/components/sections/EngagementModels";
 import { generatePageMetadata } from "@/lib/metadata";
 
 // Lazy load heavy components below the fold
@@ -16,13 +17,6 @@ const ProcessSection = dynamic(
   () =>
     import("@/components/home/process-section").then((mod) => ({
       default: mod.ProcessSection,
-    })),
-  { ssr: true }
-);
-const PricingSection = dynamic(
-  () =>
-    import("@/components/home/pricing-section").then((mod) => ({
-      default: mod.PricingSection,
     })),
   { ssr: true }
 );
@@ -66,7 +60,7 @@ const SERVICE_IMAGES = {
  * - Manifesto text (HeroTextSection)
  * - Site Audit Tool (lead magnet)
  * - Services grid
- * - Process & Pricing sections
+ * - Engagement Models (pricing with USD/MXN toggle)
  * - Target audience breakdown
  * - Philosophy section with tech marquee
  */
@@ -87,10 +81,10 @@ export default async function HomePage() {
       </section>
 
       <ServicesGrid images={images} />
+      <EngagementModels />
       <TargetAudienceSection />
       <PhilosophySection />
       <ProcessSection />
-      <PricingSection />
     </main>
   );
 }

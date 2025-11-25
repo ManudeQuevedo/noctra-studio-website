@@ -8,6 +8,8 @@ import { useCompletion } from "@ai-sdk/react";
 interface AuditResult {
   performance: number;
   seo: number;
+  accessibility: number;
+  bestPractices: number;
   lcp: string;
   issues: number;
   url: string;
@@ -320,7 +322,7 @@ export const SiteAuditTool = () => {
                   </h4>
                 </div>
 
-                {/* Scores Grid */}
+                {/* Scores Grid - 2x2 Layout */}
                 <div className="grid grid-cols-2 gap-3">
                   {/* Performance */}
                   <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
@@ -343,6 +345,48 @@ export const SiteAuditTool = () => {
                     </div>
                   </div>
 
+                  {/* Accessibility */}
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
+                      ACCESSIBILITY
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl md:text-3xl font-bold text-white">
+                        {auditResult.accessibility}
+                      </span>
+                      <span className="text-neutral-500 text-sm">/100</span>
+                    </div>
+                    <div
+                      className={`mt-2 inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
+                        getScoreBadge(auditResult.accessibility).color
+                      } ${getScoreBadge(auditResult.accessibility).bg} ${
+                        getScoreBadge(auditResult.accessibility).border
+                      } border`}>
+                      {getScoreBadge(auditResult.accessibility).label}
+                    </div>
+                  </div>
+
+                  {/* Best Practices */}
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
+                      BEST PRACTICES
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl md:text-3xl font-bold text-white">
+                        {auditResult.bestPractices}
+                      </span>
+                      <span className="text-neutral-500 text-sm">/100</span>
+                    </div>
+                    <div
+                      className={`mt-2 inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
+                        getScoreBadge(auditResult.bestPractices).color
+                      } ${getScoreBadge(auditResult.bestPractices).bg} ${
+                        getScoreBadge(auditResult.bestPractices).border
+                      } border`}>
+                      {getScoreBadge(auditResult.bestPractices).label}
+                    </div>
+                  </div>
+
                   {/* SEO */}
                   <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
                     <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
@@ -361,26 +405,6 @@ export const SiteAuditTool = () => {
                         getScoreBadge(auditResult.seo).border
                       } border`}>
                       {getScoreBadge(auditResult.seo).label}
-                    </div>
-                  </div>
-
-                  {/* LCP */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
-                      LCP
-                    </div>
-                    <div className="text-xl md:text-2xl font-bold text-white">
-                      {auditResult.lcp}
-                    </div>
-                  </div>
-
-                  {/* Issues */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
-                      ISSUES
-                    </div>
-                    <div className="text-xl md:text-2xl font-bold text-white">
-                      {auditResult.issues}
                     </div>
                   </div>
                 </div>

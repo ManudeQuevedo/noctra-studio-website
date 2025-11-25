@@ -33,9 +33,9 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Call Google PageSpeed Insights API
+    // Call Google PageSpeed Insights API with all categories
     const response = await fetch(
-      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&key=${apiKey}&strategy=mobile`,
+      `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&key=${apiKey}&strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices`,
       {
         method: "GET",
         headers: {
@@ -75,9 +75,11 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Calculate performance and SEO scores (0-100)
+    // Calculate all 4 core scores (0-100) with safety checks
     const performance = Math.round((categories.performance?.score ?? 0) * 100);
     const seo = Math.round((categories.seo?.score ?? 0) * 100);
+    const accessibility = Math.round((categories.accessibility?.score ?? 0) * 100);
+    const bestPractices = Math.round((categories["best-practices"]?.score ?? 0) * 100);
 
     // Get LCP value
     const lcp = audits["largest-contentful-paint"]?.displayValue ?? "N/A";
@@ -97,6 +99,8 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({
       performance,
       seo,
+      accessibility,
+      bestPractices,
       lcp,
       issues,
       url: validatedUrl,
