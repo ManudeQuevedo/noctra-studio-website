@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
 import { HeroTextSection } from "@/components/home/HeroTextSection";
 import { SiteAuditTool } from "@/components/home/SiteAuditTool";
+import { EngagementModels } from "@/components/sections/EngagementModels";
 import { generatePageMetadata } from "@/lib/metadata";
 
 // Lazy load heavy components below the fold
@@ -86,6 +87,7 @@ export default async function HomePage() {
       </section>
 
       <ServicesGrid images={images} />
+      <EngagementModels />
       <ProcessSection />
       <PricingSection />
       <TargetAudienceSection />

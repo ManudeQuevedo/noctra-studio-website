@@ -3,6 +3,7 @@
 import { usePathname } from "next/navigation";
 import { AnimatePresence, motion } from "framer-motion";
 import { StarField } from "./StarField";
+import { CaseStudiesBackground } from "./CaseStudiesBackground";
 import { GridStructure } from "@/components/backgrounds/GridStructure";
 import { StaticNoise } from "@/components/backgrounds/StaticNoise";
 import { MeteorShower } from "@/components/ui/MeteorShower";
@@ -24,6 +25,9 @@ export function BackgroundManager() {
     }
     if (pathname.includes("/services")) {
       return <GridStructure key="grid" />;
+    }
+    if (pathname.includes("/case-studies")) {
+      return <CaseStudiesBackground key="terrain" />;
     }
     if (pathname.includes("/contact")) {
       return null;

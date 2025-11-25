@@ -79,6 +79,7 @@
     "home": "Inicio",
     "about": "Nosotros",
     "services": "Servicios",
+    "case_studies": "Casos de Estudio",
     "blog": "Blog",
     "careers": "Carreras",
     "contact": "Contacto",
@@ -695,5 +696,95 @@
       "project_name": "Rediseño Web V2",
       "total_budget": "15000"
     }
+  },
+  "CaseStudies": {
+    "hero": {
+      "title": "Casos de Estudio — Cómo Resolvemos Problemas Reales a través de Diseño y Código",
+      "subtitle": "Aunque aún no tengamos proyectos de clientes, estos ejemplos muestran cómo en Noctra abordamos los desafíos empresariales reales con desarrollo web moderno, UI/UX y pensamiento estratégico."
+    },
+    "projects": {
+      "cafe_aurora": {
+        "name": "Café Aurora",
+        "concept": "Rediseño de Sitio Web para Cafetería Local",
+        "challenge": "Poca visibilidad en línea y un diseño web obsoleto que no reflejaba el posicionamiento premium de la marca.",
+        "solution": "Renovación completa con Next.js con animaciones GSAP, diseño mobile-first y un sistema de menú interactivo que aumentó el engagement en un 300%.",
+        "tech_stack": ["Next.js", "Tailwind CSS", "GSAP", "Vercel"]
+      },
+      "strongfit": {
+        "name": "StrongFit",
+        "concept": "Página de Destino de Alta Conversión para Coach de Fitness",
+        "challenge": "Bajas tasas de conversión y falta de señales de confianza en la página de destino existente.",
+        "solution": "Diseño estratégico en Figma convertido a componentes React con estrategia de CTA enfocada A/B testing e integración de prueba social.",
+        "tech_stack": ["Figma", "React", "Optimización de Conversión", "Análitica"]
+      },
+      "fintrack": {
+        "name": "FinTrack",
+        "concept": "Dashboard UI/UX de Análisis Financiero",
+        "challenge": "Necesidades complejas de visualización de datos e interfaz abrumadora para profesionales financieros.",
+        "solution": "UI de dashboard limpia con integración de Chart.js, soporte de modo oscuro y arquitectura de componentes escalable para futura expansión.",
+        "tech_stack": ["Arquitectura SaaS", "Visualización de Datos", "Librería de Componentes", "TypeScript"]
+      }
+    },
+    "labels": {
+      "challenge": "El Desafío",
+      "solution": "La Solución",
+      "tech_stack": "Stack Tecnológico"
+    },
+    "cta": {
+      "headline": "¿No estás seguro dónde está fallando tu infraestructura digital actual?",
+      "subtext": "Ofrecemos una auditoría técnica de alto nivel gratuita para marcas calificadas. Ve exactamente cómo abordaríamos tu proyecto.",
+      "button": "Solicitar Auditoría de Arquitectura"
+    }
+  },
+  "EngagementModels": {
+    "label": "// Modelos de Compromiso",
+    "title_line1": "Construido para Escalar",
+    "title_line2": "No para Expirar.",
+    "subtitle": "Precios transparentes para cada etapa de crecimiento.",
+    "currency_toggle": "Moneda",
+    "tiers": {
+      "foundation": {
+        "name": "Fundación",
+        "price_mxn": 29900,
+        "price_usd": 1500,
+        "price_prefix": "Desde",
+        "description": "Branding & MVP",
+        "features": [
+          "Identidad de Marca Central",
+          "Landing Page de Alta Conversión",
+          "Diseño Mobile-First",
+          "Configuración Básica de SEO"
+        ]
+      },
+      "architecture": {
+        "name": "Arquitectura",
+        "price_mxn": 69900,
+        "price_usd": 3500,
+        "price_prefix": "Desde",
+        "description": "Plataformas Corporativas",
+        "popular_badge": "Más Popular",
+        "features": [
+          "Sitio Web Multi-Página Completo",
+          "Integración CMS Personalizada",
+          "Optimización de Rendimiento",
+          "Estrategia SEO Avanzada"
+        ]
+      },
+      "intelligence": {
+        "name": "Inteligencia",
+        "price_mxn": "Personalizado",
+        "price_usd": "Personalizado",
+        "price_prefix": "Generalmente desde $2,000 USD",
+        "description": "IA & Automatización",
+        "features": [
+          "Integración de IA Personalizada",
+          "Automatización de Flujos de Trabajo",
+          "Desarrollo de API",
+          "Infraestructura Escalable"
+        ]
+      }
+    },
+    "cta": "Iniciar Compromiso",
+    "footer_note": "Todos los proyectos incluyen: Propiedad del código, soporte de despliegue y mantenimiento post-lanzamiento de 30 días."
   }
 }
