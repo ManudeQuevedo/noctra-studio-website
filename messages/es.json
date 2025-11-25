@@ -769,47 +769,49 @@
     "currency_toggle": "Moneda",
     "tiers": {
       "foundation": {
-        "name": "Fundación",
-        "price_mxn": 29900,
-        "price_usd": 1500,
+        "name": "Foundation",
+        "price_mxn": 34900,
+        "price_usd": 1750,
         "price_prefix": "Desde",
         "description": "Branding & MVP",
         "features": [
-          "Identidad de Marca Central",
-          "Landing Page de Alta Conversión",
-          "Diseño Mobile-First",
-          "Configuración Básica de SEO"
+          "Arquitectura Estratégica de Una Página",
+          "Kit de Identidad Visual (Logo, Tipografía, Paleta)",
+          "Sistema de Animación Mobile-First",
+          "Soporte Post-Lanzamiento de 30 Días"
         ]
       },
       "architecture": {
         "name": "Arquitectura",
-        "price_mxn": 69900,
-        "price_usd": 3500,
+        "price_mxn": 89900,
+        "price_usd": 4500,
         "price_prefix": "Desde",
         "description": "Plataformas Corporativas",
         "popular_badge": "Más Popular",
         "features": [
-          "Sitio Web Multi-Página Completo",
-          "Integración CMS Personalizada",
-          "Optimización de Rendimiento",
-          "Estrategia SEO Avanzada"
+          "Hasta 5 Páginas con Ingeniería Personalizada",
+          "Integración CMS (Gestiona tu contenido)",
+          "Configuración Avanzada de SEO y Analítica",
+          "Elementos Interactivos 3D/GSAP"
         ]
       },
       "intelligence": {
         "name": "Inteligencia",
-        "price_mxn": "Personalizado",
-        "price_usd": "Personalizado",
-        "price_prefix": "Generalmente desde $2,000 USD",
+        "price_mxn": "A la medida",
+        "price_usd": "A la medida",
+        "price_prefix": "Comienza en",
+        "price_prefix_mxn": "Generalmente desde $39,900 MXN",
+        "price_prefix_usd": "Generalmente desde $2,000 USD",
         "description": "IA & Automatización",
         "features": [
-          "Integración de IA Personalizada",
-          "Automatización de Flujos de Trabajo",
-          "Desarrollo de API",
-          "Infraestructura Escalable"
+          "Desarrollo de Agentes de IA Personalizados",
+          "Automatización de CRM y Flujos de Trabajo",
+          "Integración de Recepcionista Digital 24/7"
         ]
       }
     },
     "cta": "Iniciar Compromiso",
-    "footer_note": "Todos los proyectos incluyen: Propiedad del código, soporte de despliegue y mantenimiento post-lanzamiento de 30 días."
+    "footer_note": "Todos los proyectos incluyen: Propiedad del código, soporte de despliegue y mantenimiento post-lanzamiento de 30 días.",
+    "recurring_revenue": "¿Necesitas tranquilidad continua? Pregunta por nuestros planes de mantenimiento y evolución desde MX$3,500/mes."
   }
 }

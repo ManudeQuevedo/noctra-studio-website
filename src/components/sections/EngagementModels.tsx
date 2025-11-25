@@ -96,13 +96,29 @@ export function EngagementModels() {
           const features = t.raw(`${tierKey}.features`) as string[];
           const priceMXN = t.raw(`${tierKey}.price_mxn`) as number | string;
           const priceUSD = t.raw(`${tierKey}.price_usd`) as number | string;
-          const pricePrefix = t(`${tierKey}.price_prefix`);
+
+          // Get the price prefix - try currency-specific first, fall back to default
+          const hasSpecificPrefixes = tier.id === "intelligence";
+          let displayPrefix = "";
+
+          if (hasSpecificPrefixes) {
+            displayPrefix =
+              currency === "MXN"
+                ? (t.raw(`${tierKey}.price_prefix_mxn`) as string)
+                : (t.raw(`${tierKey}.price_prefix_usd`) as string);
+          } else {
+            displayPrefix = t(`${tierKey}.price_prefix`) as string;
+          }
 
           // Format the price based on selected currency
           const displayPrice =
             currency === "MXN"
               ? formatPrice(priceMXN, "MXN")
               : formatPrice(priceUSD, "USD");
+
+          // Check if price is "Custom" by checking if raw values are strings (not numbers)
+          const isCustom =
+            typeof priceMXN === "string" && typeof priceUSD === "string";
 
           return (
             <motion.div
@@ -111,11 +127,13 @@ export function EngagementModels() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.5, delay: index * 0.1 }}
-              className={`relative flex flex-col p-8 rounded-2xl border bg-zinc-900/50 border-white/5 hover:border-white/10 transition-all duration-300 ${
-                tier.popular ? "ring-1 ring-white/20" : ""
+              className={`relative flex flex-col p-8 rounded-2xl border bg-zinc-900/50 transition-all duration-300 ${
+                tier.popular
+                  ? "border-white/20 ring-1 ring-white/20 shadow-[0_0_30px_-10px_rgba(255,255,255,0.15)]"
+                  : "border-white/5 hover:border-white/10"
               }`}>
               {tier.popular && (
-                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-full">
+                <div className="absolute -top-3 left-1/2 -translate-x-1/2 px-4 py-1 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-full shadow-lg">
                   {t(`${tierKey}.popular_badge`)}
                 </div>
               )}
@@ -125,18 +143,20 @@ export function EngagementModels() {
                   {t(`${tierKey}.name`)}
                 </h3>
                 <div className="space-y-1">
-                  {pricePrefix && (
+                  {displayPrefix && (
                     <p className="text-xs text-neutral-500 font-mono">
-                      {pricePrefix}
+                      {displayPrefix}
                     </p>
                   )}
                   <div className="flex items-baseline gap-2">
                     <span className="text-3xl font-mono font-bold text-white">
                       {displayPrice}
                     </span>
-                    <span className="text-sm font-mono text-neutral-500 uppercase">
-                      {currency}
-                    </span>
+                    {!isCustom && (
+                      <span className="text-sm font-mono text-neutral-500 uppercase">
+                        {currency}
+                      </span>
+                    )}
                   </div>
                 </div>
                 <p className="text-neutral-400 text-sm mt-2">
@@ -157,7 +177,11 @@ export function EngagementModels() {
 
               <Link
                 href="/contact"
-                className="w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-medium bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20 transition-all duration-300">
+                className={`w-full flex items-center justify-center gap-2 py-3 px-4 rounded-lg font-medium transition-all duration-300 ${
+                  tier.popular
+                    ? "bg-white text-black hover:bg-neutral-200"
+                    : "bg-white/5 hover:bg-white/10 text-white border border-white/10 hover:border-white/20"
+                }`}>
                 {t("cta")}
                 <ArrowRight className="w-4 h-4" />
               </Link>
@@ -171,8 +195,11 @@ export function EngagementModels() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mt-12 text-center">
-        <p className="text-sm text-neutral-500">{t("footer_note")}</p>
+        className="mt-12 text-center space-y-4">
+        <p className="text-sm text-neutral-400 font-medium">
+          {t("recurring_revenue")}
+        </p>
+        <p className="text-xs text-neutral-600">{t("footer_note")}</p>
       </motion.div>
     </section>
   );

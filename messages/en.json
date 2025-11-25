@@ -788,46 +788,48 @@
     "tiers": {
       "foundation": {
         "name": "Foundation",
-        "price_mxn": 29900,
-        "price_usd": 1500,
+        "price_mxn": 34900,
+        "price_usd": 1750,
         "price_prefix": "Starting at",
         "description": "Branding & MVP",
         "features": [
-          "Core Brand Identity",
-          "High-Converting Landing Page",
-          "Mobile-First Design",
-          "Basic SEO Setup"
+          "Strategic One-Page Architecture",
+          "Visual Identity Kit (Logo, Typography, Palette)",
+          "Mobile-First Animation System",
+          "30-Day Post-Launch Support"
         ]
       },
       "architecture": {
         "name": "Architecture",
-        "price_mxn": 69900,
-        "price_usd": 3500,
+        "price_mxn": 89900,
+        "price_usd": 4500,
         "price_prefix": "Starting at",
         "description": "Corporate Platforms",
         "popular_badge": "Most Popular",
         "features": [
-          "Full Multi-Page Website",
-          "Custom CMS Integration",
-          "Performance Optimization",
-          "Advanced SEO Strategy"
+          "Up to 5 Custom-Engineered Pages",
+          "CMS Integration (Manage your own content)",
+          "Advanced SEO & Analytics Setup",
+          "Interactive 3D/GSAP Elements"
         ]
       },
       "intelligence": {
         "name": "Intelligence",
         "price_mxn": "Custom",
         "price_usd": "Custom",
-        "price_prefix": "Typically starts at $2,000 USD",
+        "price_prefix": "Starts at",
+        "price_prefix_mxn": "Typically starts at $39,900 MXN",
+        "price_prefix_usd": "Typically starts at $2,000 USD",
         "description": "AI & Automation",
         "features": [
-          "Custom AI Integration",
-          "Workflow Automation",
-          "API Development",
-          "Scalable Infrastructure"
+          "Custom AI Agent Development",
+          "CRM & Workflow Automation",
+          "24/7 Digital Receptionist Integration"
         ]
       }
     },
     "cta": "Initiate Engagement",
-    "footer_note": "All projects include: Code ownership, deployment support, and 30-day post-launch maintenance."
+    "footer_note": "All projects include: Code ownership, deployment support, and 30-day post-launch maintenance.",
+    "recurring_revenue": "Need ongoing peace of mind? Ask about our maintenance & evolution retainers starting at MX$3,500/mo."
   }
 }
