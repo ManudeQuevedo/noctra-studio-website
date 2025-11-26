@@ -1,6 +1,6 @@
 "use client";
 
-import { User, TrendingUp, Building2 } from "lucide-react";
+import { Zap, TrendingUp, ShieldCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 
@@ -33,7 +33,7 @@ export function TargetAudienceSection() {
   const audiences = [
     {
       key: "professional",
-      icon: User,
+      icon: Zap,
     },
     {
       key: "business",
@@ -41,7 +41,7 @@ export function TargetAudienceSection() {
     },
     {
       key: "enterprise",
-      icon: Building2,
+      icon: ShieldCheck,
     },
   ];
 

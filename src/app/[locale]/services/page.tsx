@@ -72,6 +72,26 @@ const ServiceSection = ({
             viewport={{ once: true }}
             transition={{ duration: 0.5, delay: 0.2 }}>
             <div className="flex flex-col gap-6 group/list">
+              {/* Problem & Solution */}
+              <div className="mb-12 space-y-6">
+                <div className="p-6 bg-red-500/5 border border-red-500/10 rounded-lg">
+                  <h4 className="text-xs font-mono text-red-500 uppercase tracking-widest mb-2">
+                    The Problem
+                  </h4>
+                  <p className="text-lg text-neutral-700 dark:text-neutral-300">
+                    {t(`${service.key}.problem`)}
+                  </p>
+                </div>
+                <div className="p-6 bg-emerald-500/5 border border-emerald-500/10 rounded-lg">
+                  <h4 className="text-xs font-mono text-emerald-500 uppercase tracking-widest mb-2">
+                    The Solution
+                  </h4>
+                  <p className="text-lg text-neutral-700 dark:text-neutral-300">
+                    {t(`${service.key}.solution`)}
+                  </p>
+                </div>
+              </div>
+
               {/* Process Steps */}
               <div className="space-y-6 mb-12">
                 <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-6">
@@ -104,6 +124,12 @@ const ServiceSection = ({
                 <p className="text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-xl mb-6">
                   {t(`${service.key}.focus`)}
                 </p>
+
+                <div className="mb-8 pl-4 border-l-2 border-neutral-900 dark:border-white">
+                  <p className="text-sm font-medium text-neutral-900 dark:text-white italic">
+                    "{t(`${service.key}.why`)}"
+                  </p>
+                </div>
 
                 {/* Deep Link CTA */}
                 <Link

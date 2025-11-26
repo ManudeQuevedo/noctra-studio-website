@@ -34,6 +34,20 @@ const TargetAudienceSection = dynamic(
     })),
   { ssr: true }
 );
+const BusinessImpactSection = dynamic(
+  () =>
+    import("@/components/home/BusinessImpactSection").then((mod) => ({
+      default: mod.BusinessImpactSection,
+    })),
+  { ssr: true }
+);
+const ModernStackSection = dynamic(
+  () =>
+    import("@/components/home/ModernStackSection").then((mod) => ({
+      default: mod.ModernStackSection,
+    })),
+  { ssr: true }
+);
 
 export async function generateMetadata({
   params,
@@ -81,8 +95,10 @@ export default async function HomePage() {
       </section>
 
       <ServicesGrid images={images} />
+      <BusinessImpactSection />
       <EngagementModels />
       <TargetAudienceSection />
+      <ModernStackSection />
       <PhilosophySection />
       <ProcessSection />
     </main>

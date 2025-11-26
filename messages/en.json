@@ -8,7 +8,7 @@
   "HomePage": {
     "hero": {
       "title": "Constructing the Digital Infrastructure for Modern Business.",
-      "subtitle": "We design brand systems, build fast Next.js websites, and automate workflows with AI — for businesses that need clarity and scale.",
+      "subtitle": "We build the digital infrastructure that high-growth companies run on. Fast, scalable, and engineered for revenue.",
       "trust_badge": "Global Standards. Based in Querétaro."
     },
     "intro_text": "We don't just make websites. We architect the silent, scalable systems that empower visionary companies to grow without friction.",
@@ -20,8 +20,8 @@
       "title": "Digital Solutions That Scale",
       "subtitle": "From concept to deployment, we architect experiences that endure."
     },
-    "cta_start": "Start Project",
-    "cta_services": "View Blueprints",
+    "cta_start": "Request Technical Audit",
+    "cta_services": "Discuss Your Architecture",
     "cta_work": "View Work"
   },
   "Metadata": {
@@ -259,7 +259,10 @@
     "subtitle": "A comprehensive toolkit to bring structure to the digital chaos.",
     "web_dev": {
       "title": "Digital Architecture",
-      "focus": "We don't just make websites; we engineer high-performance digital infrastructure. Our focus is on speed, scalability, and creating a seamless user experience that feels instantaneous.",
+      "problem": "Your website slows down as traffic spikes, hurting conversion and SEO.",
+      "solution": "We migrate you to a modern, scalable architecture deployed on global infrastructure.",
+      "focus": "Your website shouldn't just be a brochure; it should be a high-performance engine. We build sites that load instantly and convert visitors into customers.",
+      "why": "Faster load times = Higher SEO ranking and better user retention.",
       "process": [
         "System Architecture Design",
         "Next.js & React Implementation",
@@ -267,7 +270,7 @@
         "Accessibility Compliance"
       ],
       "deliverables": [
-        "Live Vercel Deployment",
+        "Production Cloud Deployment",
         "Clean GitHub Repo",
         "Core Web Vitals Optimized"
       ],
@@ -278,8 +281,11 @@
       ]
     },
     "branding": {
-      "title": "Visual Identity",
-      "focus": "We craft visual systems that communicate your essence without saying a word. Minimalist, impactful, and timeless.",
+      "title": "Product Design",
+      "problem": "Inconsistent design across platforms erodes brand trust.",
+      "solution": "We build a centralized Design System with reusable components.",
+      "focus": "Inconsistent design kills trust. We create Design Systems—a set of reusable rules and components—so your brand looks perfect on every screen, forever.",
+      "why": "Consistency at scale reduces design debt and speeds up development.",
       "process": [
         "Brand Strategy Workshop",
         "Visual Language Development",
@@ -299,7 +305,10 @@
     },
     "ai": {
       "title": "Intelligent Systems",
+      "problem": "Manual workflows and support tickets are bottling necking growth.",
+      "solution": "We deploy autonomous AI agents to handle repetitive tasks.",
       "focus": "We orchestrate autonomous client interaction agents that automate your workflows and enhance user engagement. Smart, efficient, and invisible.",
+      "why": "Automation frees your team to focus on high-value strategy.",
       "process": [
         "Workflow Analysis",
         "AI Model Selection",
@@ -318,8 +327,11 @@
       ]
     },
     "seo": {
-      "title": "Growth",
-      "focus": "Maximize search visibility and organic traffic capture. Data-driven strategies that put your brand in front of the right audience.",
+      "title": "Revenue Operations",
+      "problem": "You are guessing where leads come from and wasting ad spend.",
+      "solution": "We implement end-to-end analytics and attribution tracking.",
+      "focus": "Stop guessing where your leads come from. We connect your site to your CRM and Analytics so you can see exactly how your business is growing.",
+      "why": "Data-driven decisions lead to predictable revenue growth.",
       "process": [
         "Market Analysis",
         "Technical SEO Audit",
@@ -344,22 +356,41 @@
     },
     "start_project": "Start Project"
   },
+  "BusinessImpact": {
+    "title": "We don't just write code. We drive results.",
+    "subtitle": "Our systems are engineered to reduce operational costs, increase conversion rates, and provide total data ownership."
+  },
+  "ModernStack": {
+    "title": "Why Modern Stack?",
+    "nextjs": {
+      "title": "Why Next.js?",
+      "desc": "Server-side rendering means your site loads instantly. Google loves speed, and so do your customers."
+    },
+    "typescript": {
+      "title": "Why TypeScript?",
+      "desc": "Type safety prevents bugs before they happen. It's the difference between a fragile prototype and enterprise software."
+    },
+    "headless": {
+      "title": "Why Headless?",
+      "desc": "Decouple your content from your code. Scale your marketing without breaking your infrastructure."
+    }
+  },
   "TargetAudience": {
     "title": "Built for those who value excellence.",
     "professional": {
-      "headline": "Practice & Reputation",
-      "target": "Doctors, Lawyers, Architects",
-      "copy": "Your digital presence should carry the same authority as your practice. We build portfolios that build trust instantly."
+      "headline": "Velocity for Founders",
+      "target": "Startups & MVPs",
+      "copy": "You need to ship fast without breaking things. We build robust MVPs that investors trust and users love."
     },
     "business": {
-      "headline": "Growth & Scale",
-      "target": "Startups, Retail, Hospitality",
-      "copy": "Stop renting your audience. We engineer assets that convert traffic into revenue and scale with your ambition."
+      "headline": "Migration & Scale",
+      "target": "Scale-Ups & Growth",
+      "copy": "Outgrowing your WordPress site? We migrate you to a modern stack that handles millions of visitors without slowing down."
     },
     "enterprise": {
-      "headline": "Security & Infrastructure",
-      "target": "Corporate, FinTech, SaaS",
-      "copy": "Robust, type-safe architecture designed for security, uptime, and seamless team integration."
+      "headline": "Security & Systems",
+      "target": "Enterprise & FinTech",
+      "copy": "Protect your data and your brand. We build compliant, type-safe architecture that your IT team will approve."
     }
   },
   "TrustedBy": {
@@ -397,9 +428,9 @@
       "subtitle": "Born from a developer’s drive to master total product quality, Noctra bridges the gap between robust engineering and design intuition. We are a high-performance team fueled by a growth mindset and radical attention to detail. We don’t just deliver projects; we craft outstanding results that elevate both our clients' vision and our own standards of excellence."
     },
     "founder_note": {
-      "title": "A Note from the Founder",
+      "title": "Engineering as a Growth Lever",
       "content_1": "The digital landscape is cluttered. Everywhere you look, there's noise—unnecessary complexity, bloated code, and design that screams for attention without saying anything.",
-      "content_2": "At Noctra, we believe in the power of silence. We strip away the inessential to reveal the core. We don't just build websites; we engineer digital architectures that stand the test of time.",
+      "content_2": "We don't just design interfaces; we architect the engines that power your business. In a world of slow templates, speed and reliability are your competitive advantage.",
       "signature": "Manu, Founder — 5+ years building production web platforms and design systems"
     },
     "brand_anatomy": {
@@ -416,13 +447,13 @@
       },
       "output": {
         "label": "03 // OUTPUT",
-        "headline": "Clarity as a Service.",
-        "body": "More than a name, it is our method. We take complex, noisy digital challenges and distill them into strategies that work. In short: Noctra is clarity in the digital night."
+        "headline": "Infrastructure as a Service.",
+        "body": "We take complex business requirements and translate them into scalable, type-safe digital systems."
       }
     },
     "tech_radar": {
       "title": "Technical Specification",
-      "intro": "These are the tools we use to build fast, reliable websites and digital platforms.",
+      "intro": "The enterprise-grade stack we deploy to engineer scalable, secure, and high-performance digital infrastructure.",
       "ui_ux": "01 — UI/UX & Strategy",
       "frontend": "02 — Frontend",
       "backend_db": "03 — Backend & Database",
@@ -434,12 +465,12 @@
       "description": "A rigorous approach to digital engineering. We don't guess; we execute.",
       "steps": {
         "0": { 
-          "title": "Discovery", 
+          "title": "Technical Discovery", 
           "desc": "We don't just take a ticket. We sit with you to unearth the business logic, the edge cases, and the long-term goals. We ensure we are solving the right problem before writing a single line of code.",
           "checkpoint": "Output: Detailed Scope & Strategy Document"
         },
         "1": { 
-          "title": "Architecture", 
+          "title": "System Architecture", 
           "desc": "Code without a plan is technical debt. We blueprint your database schemas, API routes, and security protocols upfront. We measure twice so we only have to cut once.",
           "checkpoint": "Output: Technical Blueprint & Stack Selection"
         },
@@ -449,7 +480,7 @@
           "checkpoint": "Output: Weekly Staging Deploys & Code Review"
         },
         "3": { 
-          "title": "Launch", 
+          "title": "Production Release", 
           "desc": "Launch day shouldn't be stressful. We run rigorous performance audits, SEO checks, and stress tests. We don't just hand over the keys; we ensure the engine is purring.",
           "checkpoint": "Output: Performance Certification"
         }
@@ -476,8 +507,8 @@
     "manifesto": {
       "title": "The Noctra Standard",
       "cards": [
-        { "title": "No Templates", "desc": "Every line of code is written with purpose. We don't rely on bloat." },
-        { "title": "Speed First", "desc": "Performance is not an afterthought. It's the foundation." },
+        { "title": "No Templates", "desc": "Custom code for maximum security and full IP ownership. No bloated dependencies." },
+        { "title": "Speed First", "desc": "Performance drives conversion rates and SEO rankings. It is not negotiable." },
         { "title": "Radical Clarity", "desc": "We communicate openly. No jargon, just results." }
       ]
     },
@@ -538,9 +569,9 @@
       "budget_label": "Project Budget (MXN)",
       "budget_placeholder": "Select a range...",
     "budget_options": {
-      "30-50k": "Foundation ($30k - $60k)",
-      "60-120k": "Architecture ($70k - $150k)",
-      "150k+": "Intelligence (Custom / $150k+)"
+      "30-50k": "$30k - $50k (MVP / Launch)",
+      "60-120k": "$60k - $120k (Growth / Migration)",
+      "150k+": "+$150k (Enterprise Platform)"
     },
     "budget_helpers": {
       "30-50k": "Foundation (MX$29,900): Complete brand kit + 1-3 page Next.js website + Figma source files + basic SEO setup + 2 rounds of revisions.",

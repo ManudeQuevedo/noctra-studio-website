@@ -8,7 +8,7 @@
   "HomePage": {
     "hero": {
       "title": "Construyendo la Infraestructura Digital para Negocios Modernos.",
-      "subtitle": "Diseñamos sistemas de marca, construimos sitios web rápidos en Next.js y automatizamos flujos de trabajo con IA — para empresas que necesitan claridad y escala.",
+      "subtitle": "Construimos la infraestructura digital sobre la que corren las empresas de alto crecimiento. Rápido, escalable y diseñado para generar ingresos.",
       "trust_badge": "Estándares Globales. Basado en Querétaro."
     },
     "intro_text": "No solo construimos sitios web. Arquitectamos los sistemas silenciosos y escalables que empoderan a las empresas visionarias para crecer sin fricción.",
@@ -20,8 +20,8 @@
       "title": "Soluciones Digitales Que Escalan",
       "subtitle": "Desde el concepto hasta el despliegue, arquitectamos experiencias que perduran."
     },
-    "cta_start": "Iniciar Proyecto",
-    "cta_services": "Ver Planos",
+    "cta_start": "Solicitar Auditoría Técnica",
+    "cta_services": "Discutir Tu Arquitectura",
     "cta_work": "Ver Trabajo"
   },
   "Metadata": {
@@ -259,7 +259,10 @@
     "subtitle": "Un conjunto de herramientas integral para dar estructura al caos digital.",
     "web_dev": {
       "title": "Arquitectura Digital",
-      "focus": "No solo construimos sitios web; diseñamos plataformas digitales de alto rendimiento. Nuestro enfoque está en la velocidad, la escalabilidad y la creación de una experiencia de usuario fluida que se siente instantánea.",
+      "problem": "Tu sitio web se ralentiza con picos de tráfico, afectando la conversión y el SEO.",
+      "solution": "Te migramos a una arquitectura moderna y escalable desplegada en infraestructura global.",
+      "focus": "Tu sitio web no debería ser solo un folleto; debe ser un motor de alto rendimiento. Construimos sitios que cargan al instante y convierten visitantes en clientes.",
+      "why": "Carga más rápida = Mejor ranking SEO y retención de usuarios.",
       "process": [
         "Diseño de Arquitectura de Sistema",
         "Implementación Next.js y React",
@@ -267,19 +270,22 @@
         "Cumplimiento de Accesibilidad"
       ],
       "deliverables": [
-        "Despliegue en Vercel en Vivo",
-        "Repositorio GitHub Limpio",
-        "Optimización Core Web Vitals"
+        "Despliegue en Nube de Producción",
+        "Repo de GitHub Limpio",
+        "Core Web Vitals Optimizados"
       ],
       "deliverables_subtext": [
-        "Red global en el borde para carga instantánea mundial.",
+        "Red global edge para carga instantánea en todo el mundo.",
         "Propiedad total del código y control de versiones profesional.",
-        "Mejora la velocidad de carga y la experiencia de usuario para retener visitantes."
+        "Mejora la velocidad de carga y la experiencia del usuario para que los visitantes se queden más tiempo."
       ]
     },
     "branding": {
-      "title": "Identidad Visual",
-      "focus": "Creamos sistemas visuales que comunican tu esencia sin decir una palabra. Minimalista, impactante y atemporal.",
+      "title": "Diseño de Producto",
+      "problem": "El diseño inconsistente erosiona la confianza en la marca.",
+      "solution": "Construimos un Sistema de Diseño centralizado con componentes reutilizables.",
+      "focus": "El diseño inconsistente mata la confianza. Creamos Sistemas de Diseño—un conjunto de reglas y componentes reutilizables—para que tu marca se vea perfecta en cada pantalla, siempre.",
+      "why": "La consistencia a escala reduce la deuda de diseño y acelera el desarrollo.",
       "process": [
         "Taller de Estrategia de Marca",
         "Desarrollo de Lenguaje Visual",
@@ -287,19 +293,22 @@
         "Guías de Marca"
       ],
       "deliverables": [
-        "Guía de Marca PDF",
+        "PDF de Guías de Marca",
         "Biblioteca de Activos (SVG/PNG)",
         "Archivos Fuente Figma"
       ],
       "deliverables_subtext": [
-        "Un conjunto completo de reglas para consistencia visual.",
-        "Logotipos e iconos en alta resolución listos para cualquier plataforma.",
-        "Archivos de diseño editables para tu equipo interno."
+        "Un conjunto completo de reglas para que tus visuales se mantengan consistentes en todas partes.",
+        "Logotipos e iconos de alta resolución listos para cualquier plataforma.",
+        "Archivos de diseño editables completos para tu equipo interno."
       ]
     },
     "ai": {
       "title": "Sistemas Inteligentes",
+      "problem": "Los flujos manuales y tickets de soporte están frenando el crecimiento.",
+      "solution": "Desplegamos agentes de IA autónomos para tareas repetitivas.",
       "focus": "Integramos agentes de IA que automatizan tus flujos de trabajo y mejoran la participación del usuario. Inteligente, eficiente e invisible.",
+      "why": "La automatización libera a tu equipo para enfocarse en estrategia de alto valor.",
       "process": [
         "Análisis de Flujo de Trabajo",
         "Selección de Modelo IA",
@@ -318,22 +327,25 @@
       ]
     },
     "seo": {
-      "title": "Crecimiento",
-      "focus": "Construimos motores que impulsan el tráfico orgánico. Estrategias basadas en datos que ponen tu marca frente a la audiencia correcta.",
+      "title": "Operaciones de Ingresos",
+      "problem": "Estás adivinando de dónde vienen los leads y desperdiciando presupuesto.",
+      "solution": "Implementamos analíticas end-to-end y rastreo de atribución.",
+      "focus": "Deja de adivinar de dónde vienen tus leads. Conectamos tu sitio a tu CRM y Analíticas para que veas exactamente cómo crece tu negocio.",
+      "why": "Las decisiones basadas en datos llevan a un crecimiento de ingresos predecible.",
       "process": [
         "Análisis de Mercado",
-        "Auditoría SEO Técnica",
+        "Auditoría Técnica SEO",
         "Estrategia de Contenido",
         "Configuración de Analíticas"
       ],
       "deliverables": [
         "Reporte Mensual de Analíticas",
-        "Doc. de Estrategia de Contenido",
+        "Doc de Estrategia de Contenido",
         "Dashboard de Ranking de Palabras Clave"
       ],
       "deliverables_subtext": [
-        "Insights claros sobre qué funciona y qué mejorar.",
-        "Hoja de ruta de temas para capturar a tu audiencia.",
+        "Te da insights claros sobre qué funciona y qué necesita mejorar.",
+        "Una hoja de ruta de temas para capturar a tu audiencia objetivo.",
         "Rastrea tu visibilidad en Google en tiempo real."
       ]
     },
@@ -344,22 +356,41 @@
     },
     "start_project": "Iniciar Proyecto"
   },
+  "BusinessImpact": {
+    "title": "No solo escribimos código. Generamos resultados.",
+    "subtitle": "Nuestros sistemas están diseñados para reducir costos operativos, aumentar tasas de conversión y proporcionar propiedad total de datos."
+  },
+  "ModernStack": {
+    "title": "¿Por qué un Stack Moderno?",
+    "nextjs": {
+      "title": "¿Por qué Next.js?",
+      "desc": "El renderizado del lado del servidor significa que tu sitio carga al instante. Google ama la velocidad, y tus clientes también."
+    },
+    "typescript": {
+      "title": "¿Por qué TypeScript?",
+      "desc": "La seguridad de tipos previene errores antes de que sucedan. Es la diferencia entre un prototipo frágil y software empresarial."
+    },
+    "headless": {
+      "title": "¿Por qué Headless?",
+      "desc": "Desacopla tu contenido de tu código. Escala tu marketing sin romper tu infraestructura."
+    }
+  },
   "TargetAudience": {
     "title": "Construido para quienes valoran la excelencia.",
     "professional": {
-      "headline": "Práctica y Reputación",
-      "target": "Doctores, Abogados, Arquitectos",
-      "copy": "Tu presencia digital debe tener la misma autoridad que tu práctica. Construimos portafolios que generan confianza al instante."
+      "headline": "Velocidad para Fundadores",
+      "target": "Startups y MVPs",
+      "copy": "Necesitas lanzar rápido sin romper nada. Construimos MVPs robustos en los que los inversores confían y los usuarios aman."
     },
     "business": {
-      "headline": "Crecimiento y Escala",
-      "target": "Startups, Retail, Hospitalidad",
-      "copy": "Deja de alquilar tu audiencia. Diseñamos activos que convierten el tráfico en ingresos y escalan con tu ambición."
+      "headline": "Migración y Escala",
+      "target": "Scale-Ups y Crecimiento",
+      "copy": "¿Tu sitio en WordPress se quedó pequeño? Te migramos a un stack moderno que maneja millones de visitas sin ralentizarse."
     },
     "enterprise": {
-      "headline": "Seguridad e Infraestructura",
-      "target": "Corporativo, FinTech, SaaS",
-      "copy": "Arquitectura robusta y segura, diseñada para el tiempo de actividad y la integración perfecta del equipo."
+      "headline": "Seguridad y Sistemas",
+      "target": "Empresarial y FinTech",
+      "copy": "Protege tus datos y tu marca. Construimos arquitectura compatible y tipada que tu equipo de TI aprobará."
     }
   },
   "TrustedBy": {
@@ -397,9 +428,9 @@
       "subtitle": "Nacido del impulso de un desarrollador por dominar la calidad total del producto, Noctra une la ingeniería robusta con la intuición del diseño. Somos un equipo de talento de alto rendimiento, impulsado por una mentalidad de crecimiento y una atención radical al detalle. No solo entregamos proyectos; creamos resultados excepcionales que elevan tanto la visión de nuestros clientes como nuestros propios estándares de excelencia."
     },
     "founder_note": {
-      "title": "Una Nota del Fundador",
+      "title": "La Ingeniería como Palanca de Crecimiento",
       "content_1": "El paisaje digital está saturado. Por donde mires, hay ruido—complejidad innecesaria, código inflado y diseño que grita por atención sin decir nada.",
-      "content_2": "En Noctra, creemos en el poder del silencio. Eliminamos lo no esencial para revelar el núcleo. No solo construimos sitios web; diseñamos arquitecturas digitales que resisten la prueba del tiempo.",
+      "content_2": "No solo diseñamos interfaces; arquitectamos los motores que impulsan tu negocio. En un mundo de plantillas lentas, la velocidad y la fiabilidad son tu ventaja competitiva.",
       "signature": "Manu, Fundador — 5+ años construyendo plataformas web de producción y sistemas de diseño"
     },
     "brand_anatomy": {
@@ -416,13 +447,13 @@
       },
       "output": {
         "label": "03 // RESULTADO",
-        "headline": "Claridad como Servicio.",
-        "body": "Más que un nombre, es nuestro método. Tomamos desafíos digitales complejos y ruidosos y los destilamos en estrategias que funcionan. En resumen: Noctra es claridad en la noche digital."
+        "headline": "Infraestructura como Servicio.",
+        "body": "Tomamos requerimientos de negocio complejos y los traducimos en sistemas digitales escalables y de tipo seguro."
       }
     },
     "tech_radar": {
       "title": "Especificación Técnica",
-      "intro": "Estas son las herramientas que usamos para construir sitios web y plataformas digitales rápidas y confiables.",
+      "intro": "El stack de nivel empresarial que desplegamos para diseñar infraestructura digital escalable, segura y de alto rendimiento.",
       "ui_ux": "01 — UI/UX y Estrategia",
       "frontend": "02 — Frontend",
       "backend_db": "03 — Backend y Base de Datos",
@@ -434,12 +465,12 @@
       "description": "Un enfoque riguroso de ingeniería digital. No adivinamos; ejecutamos.",
       "steps": {
         "0": {
-          "title": "Descubrimiento",
+          "title": "Descubrimiento Técnico",
           "desc": "No solo tomamos un ticket. Nos sentamos contigo para descubrir la lógica de negocio, los casos extremos y los objetivos a largo plazo. Nos aseguramos de resolver el problema correcto antes de escribir una sola línea de código.",
           "checkpoint": "Entregable: Documento Detallado de Alcance y Estrategia"
         },
         "1": {
-          "title": "Arquitectura",
+          "title": "Arquitectura de Sistema",
           "desc": "El código sin un plan es deuda técnica. Diseñamos tus esquemas de base de datos, rutas de API y protocolos de seguridad por adelantado. Medimos dos veces para cortar solo una vez.",
           "checkpoint": "Entregable: Plano Técnico y Selección de Stack"
         },
@@ -449,7 +480,7 @@
           "checkpoint": "Entregable: Despliegues Semanales y Revisión de Código"
         },
         "3": {
-          "title": "Lanzamiento",
+          "title": "Lanzamiento a Producción",
           "desc": "El día del lanzamiento no debería ser estresante. Ejecutamos rigurosas auditorías de rendimiento, comprobaciones de SEO y pruebas de estrés. No solo entregamos las llaves; nos aseguramos de que el motor esté ronroneando.",
           "checkpoint": "Entregable: Certificación de Rendimiento"
         }
@@ -458,8 +489,8 @@
     "manifesto": {
       "title": "El Estándar Noctra",
       "cards": [
-        { "title": "Sin Plantillas", "desc": "Cada línea de código se escribe con propósito. No dependemos de bloatware." },
-        { "title": "Velocidad Primero", "desc": "El rendimiento no es una ocurrencia tardía. Es la base." },
+        { "title": "Sin Plantillas", "desc": "Código personalizado para máxima seguridad y propiedad total de la PI. Sin dependencias infladas." },
+        { "title": "Velocidad Primero", "desc": "El rendimiento impulsa las tasas de conversión y los rankings SEO. No es negociable." },
         { "title": "Claridad Radical", "desc": "Nos comunicamos abiertamente. Sin jerga, solo resultados." }
       ]
     },
@@ -520,9 +551,9 @@
       "budget_label": "Presupuesto del Proyecto (MXN)",
       "budget_placeholder": "Selecciona un rango...",
       "budget_options": {
-      "30-50k": "Foundation ($30k - $60k)",
-      "60-120k": "Architecture ($70k - $150k)",
-      "150k+": "Intelligence (Personalizado / $150k+)"
+      "30-50k": "$30k - $50k (MVP / Lanzamiento)",
+      "60-120k": "$60k - $120k (Crecimiento / Migración)",
+      "150k+": "+$150k (Plataforma Empresarial)"
     },
       "budget_helpers": {
         "30-50k": "Foundation (MX$29,900): Kit de marca completo + sitio web Next.js de 1-3 páginas + archivos fuente Figma + configuración SEO básica + 2 rondas de revisiones.",
