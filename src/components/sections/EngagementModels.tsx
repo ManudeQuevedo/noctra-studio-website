@@ -93,7 +93,10 @@ export function EngagementModels() {
       <div className="grid gap-6 md:grid-cols-3">
         {tiers.map((tier, index) => {
           const tierKey = `tiers.${tier.id}`;
-          const features = t.raw(`${tierKey}.features`) as string[];
+          const rawFeatures = t.raw(`${tierKey}.features`);
+          const features = Array.isArray(rawFeatures)
+            ? (rawFeatures as string[])
+            : [];
           const priceMXN = t.raw(`${tierKey}.price_mxn`) as number | string;
           const priceUSD = t.raw(`${tierKey}.price_usd`) as number | string;
 

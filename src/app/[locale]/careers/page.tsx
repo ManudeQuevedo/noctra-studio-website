@@ -264,12 +264,39 @@ export default function CareersPage() {
           {/* Compensation Section */}
           <FadeIn delay={0.5}>
             <div className="border border-neutral-700 p-8 bg-neutral-900/50">
-              <h3 className="text-2xl font-bold text-white mb-6">
+              <h3 className="text-2xl font-bold text-white mb-2">
                 {t("compensation.title")}
               </h3>
-              <div className="space-y-3 text-neutral-300">
-                <p>{t("compensation.full_time")}</p>
-                <p>{t("compensation.contract")}</p>
+              <p className="text-neutral-400 mb-6">
+                {t("compensation.subtitle")}
+              </p>
+
+              <div className="space-y-4">
+                <div>
+                  <div className="text-emerald-500 font-mono text-sm uppercase tracking-wider mb-1">
+                    {t("compensation.metric")}
+                  </div>
+                  <p className="text-neutral-300">
+                    {t("compensation.description")}
+                  </p>
+                </div>
+
+                <div className="border-t border-neutral-800 pt-4 mt-4">
+                  <ul className="space-y-2">
+                    <li className="flex items-center gap-2 text-sm text-neutral-400 font-mono">
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                      {t("compensation.terms.deposit")}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-neutral-400 font-mono">
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                      {t("compensation.terms.completion")}
+                    </li>
+                    <li className="flex items-center gap-2 text-sm text-neutral-400 font-mono">
+                      <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full" />
+                      {t("compensation.terms.net0")}
+                    </li>
+                  </ul>
+                </div>
               </div>
             </div>
           </FadeIn>

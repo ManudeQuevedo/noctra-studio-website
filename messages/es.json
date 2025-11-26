@@ -77,17 +77,23 @@
     }
   },
   "Navigation": {
-    "home": "Inicio",
-    "about": "Nosotros",
-    "services": "Servicios",
-    "case_studies": "Trabajo",
+    "home": "Índice",
+    "about": "Estudio",
+    "services": "Capacidades",
+    "case_studies": "Despliegues",
     "blog": "Blog",
     "careers": "Carreras",
-    "contact": "Contacto",
+    "contact": "Iniciar",
     "start_project": "Iniciar Proyecto",
     "menu_open": "Menú",
     "menu_close": "Cerrar",
-    "get_in_touch": "Ponte en contacto"
+    "get_in_touch": "Ponte en contacto",
+    "tags": {
+      "cloud": "Arquitectura Cloud",
+      "ai": "Integración IA",
+      "devops": "Seguridad DevOps",
+      "headless": "Sistemas Headless"
+    }
   },
   "CareersPage": {
     "hero": {
@@ -154,9 +160,15 @@
       }
     },
     "compensation": {
-      "title": "Compensación",
-      "full_time": "Tiempo Completo: MX$25k-45k/mes dependiendo del rol y experiencia",
-      "contract": "Contrato: MX$400-800/hora para trabajo basado en proyectos"
+      "title": "Modelo de Compensación",
+      "subtitle": "Valoramos el resultado, no las horas. Sin regateos, sin perseguir facturas.",
+      "metric": "Tarifas Basadas en Proyecto",
+      "description": "La compensación se define y acuerda antes de escribir una sola línea de código. Las tarifas se determinan por complejidad e impacto, no por tiempo.",
+      "terms": {
+        "deposit": "50% Depósito de Inicio",
+        "completion": "50% Pago al Finalizar",
+        "net0": "Términos de Pago Net-0 (Inmediato tras aprobación)"
+      }
     },
     "cta": {
       "button": "Iniciar Proceso de Evaluación",
@@ -272,7 +284,7 @@
       "deliverables": [
         "Despliegue en Nube de Producción",
         "Repo de GitHub Limpio",
-        "Core Web Vitals Optimizados"
+        "Core Web Vitals Optimizados (Asegura mejor ranking en Google)"
       ],
       "deliverables_subtext": [
         "Red global edge para carga instantánea en todo el mundo.",
@@ -295,7 +307,7 @@
       "deliverables": [
         "PDF de Guías de Marca",
         "Biblioteca de Activos (SVG/PNG)",
-        "Archivos Fuente Figma"
+        "Archivos Fuente Figma (Archivos editables completos)"
       ],
       "deliverables_subtext": [
         "Un conjunto completo de reglas para que tus visuales se mantengan consistentes en todas partes.",
@@ -341,7 +353,7 @@
       "deliverables": [
         "Reporte Mensual de Analíticas",
         "Doc de Estrategia de Contenido",
-        "Dashboard de Ranking de Palabras Clave"
+        "Dashboard de Ranking de Palabras Clave (Rastrea visibilidad en tiempo real)"
       ],
       "deliverables_subtext": [
         "Te da insights claros sobre qué funciona y qué necesita mejorar.",
@@ -356,23 +368,55 @@
     },
     "start_project": "Iniciar Proyecto"
   },
+  "FeaturedWork": {
+    "title": "Ingeniería Selecta.",
+    "view_all": "Ver Todo el Trabajo",
+    "projects": {
+      "cafe_aurora": {
+        "title": "Café Aurora"
+      },
+      "strongfit": {
+        "title": "StrongFit Systems"
+      }
+    }
+  },
+  "WorkPage": {
+    "title": "Nuestro Trabajo",
+    "subtitle": "Casos de estudio en transformación digital. Problemas reales, soluciones de ingeniería y resultados medibles.",
+    "projects": {
+      "cafe_aurora": {
+        "title": "Café Aurora",
+        "problem": "El sitio legado en WordPress colapsaba durante el tráfico pico de la mañana, perdiendo 15% de ingresos.",
+        "solution": "Migración a arquitectura Headless Next.js con integración de Shopify para checkout instantáneo.",
+        "metric_value": "300%",
+        "metric_label": "Carga Más Rápida"
+      },
+      "strongfit": {
+        "title": "StrongFit Systems",
+        "problem": "La gestión manual de membresías vía hojas de cálculo costaba al fundador 20 horas/semana.",
+        "solution": "Construcción de dashboard personalizado con integración Stripe para facturación automatizada.",
+        "metric_value": "20h+",
+        "metric_label": "Ahorradas Semanalmente"
+      }
+    }
+  },
   "BusinessImpact": {
     "title": "No solo escribimos código. Generamos resultados.",
     "subtitle": "Nuestros sistemas están diseñados para reducir costos operativos, aumentar tasas de conversión y proporcionar propiedad total de datos."
   },
   "ModernStack": {
-    "title": "¿Por qué un Stack Moderno?",
+    "title": "Infraestructura Empresarial",
     "nextjs": {
-      "title": "¿Por qué Next.js?",
-      "desc": "El renderizado del lado del servidor significa que tu sitio carga al instante. Google ama la velocidad, y tus clientes también."
+      "title": "Red Global Edge",
+      "desc": "Desplegamos en el borde. Tu aplicación vive cerca de tus usuarios, asegurando latencia sub-100ms en todo el mundo."
     },
     "typescript": {
-      "title": "¿Por qué TypeScript?",
-      "desc": "La seguridad de tipos previene errores antes de que sucedan. Es la diferencia entre un prototipo frágil y software empresarial."
+      "title": "Arquitectura de Tipado Seguro",
+      "desc": "No enviamos errores. Nuestros estrictos sistemas de tipos aseguran que tu lógica de negocio esté matemáticamente verificada antes del despliegue."
     },
     "headless": {
-      "title": "¿Por qué Headless?",
-      "desc": "Desacopla tu contenido de tu código. Escala tu marketing sin romper tu infraestructura."
+      "title": "Sistemas Desacoplados",
+      "desc": "A prueba de futuro por diseño. Separamos tu contenido de tu código, permitiendo que marketing se mueva rápido sin romper la ingeniería."
     }
   },
   "TargetAudience": {
@@ -431,7 +475,7 @@
       "title": "La Ingeniería como Palanca de Crecimiento",
       "content_1": "El paisaje digital está saturado. Por donde mires, hay ruido—complejidad innecesaria, código inflado y diseño que grita por atención sin decir nada.",
       "content_2": "No solo diseñamos interfaces; arquitectamos los motores que impulsan tu negocio. En un mundo de plantillas lentas, la velocidad y la fiabilidad son tu ventaja competitiva.",
-      "signature": "Manu, Fundador — 5+ años construyendo plataformas web de producción y sistemas de diseño"
+      "signature": "Manu, Fundador — Ingeniero Senior y Arquitecto | 6+ Años Desplegando Sistemas en Producción"
     },
     "brand_anatomy": {
       "section_label": "ANATOMÍA DE MARCA",
@@ -453,7 +497,7 @@
     },
     "tech_radar": {
       "title": "Especificación Técnica",
-      "intro": "El stack de nivel empresarial que desplegamos para diseñar infraestructura digital escalable, segura y de alto rendimiento.",
+      "intro": "Elegimos este stack porque garantiza velocidad, seguridad y mantenibilidad a largo plazo—no porque esté de moda.",
       "ui_ux": "01 — UI/UX y Estrategia",
       "frontend": "02 — Frontend",
       "backend_db": "03 — Backend y Base de Datos",
@@ -461,8 +505,9 @@
       "infrastructure": "05 — Infraestructura"
     },
     "process": {
-      "title": "La Metodología",
-      "description": "Un enfoque riguroso de ingeniería digital. No adivinamos; ejecutamos.",
+      "title": "Cómo Trabajamos",
+      "description": "Un enfoque riguroso para la ingeniería digital. No adivinamos; ejecutamos.",
+      "nda_note": "Trabajamos con PI empresarial sensible. Estos protocolos protegen a nuestros clientes y tu reputación profesional.",
       "steps": {
         "0": {
           "title": "Descubrimiento Técnico",
@@ -563,9 +608,14 @@
       "details_label": "Detalles del Proyecto",
       "details_placeholder": "Buscamos redefinir nuestra arquitectura digital...",
       "timeline_label": "¿Qué tan pronto lo necesitas?",
-      "timeline_placeholder": "ej., Dentro de 2-3 meses",
-      "success_criteria_label": "¿Cómo luciría el éxito?",
-      "success_criteria_placeholder": "ej., 3x más leads calificados, tiempos de carga más rápidos, o proceso de reservas optimizado",
+      "timeline_placeholder": "Selecciona un tiempo...",
+      "timeline_options": {
+        "asap": "ASAP (Urgente)",
+        "1_month": "En 1 Mes",
+        "3_months": "En 3 Meses"
+      },
+      "success_criteria_label": "Métrica de Éxito (Meta #1)",
+      "success_criteria_placeholder": "ej., 3x más leads calificados",
       "submit": "Enviar Señal",
       "sending": "Transmitiendo..."
     },
@@ -732,6 +782,7 @@
     },
     "disclaimer": "Documentación legal completa proporcionada tras una evaluación exitosa."
   },
+
   "SiteAudit": {
     "status_ready": "SISTEMA LISTO",
     "title": "Analiza tu arquitectura.",
@@ -846,11 +897,11 @@
     "currency_toggle": "Moneda",
     "tiers": {
       "foundation": {
-        "name": "Foundation",
+        "name": "Fundación",
         "price_mxn": 34900,
         "price_usd": 1750,
         "price_prefix": "Desde",
-        "description": "Branding & MVP",
+        "description": "Branding y MVP",
         "features": [
           "Arquitectura Estratégica de Una Página",
           "Kit de Identidad Visual (Logo, Tipografía, Paleta)",

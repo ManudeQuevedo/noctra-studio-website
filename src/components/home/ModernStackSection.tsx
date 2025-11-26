@@ -9,18 +9,18 @@ export function ModernStackSection() {
   const stack = [
     {
       key: "nextjs",
-      title: "Why Next.js?",
-      desc: "Server-side rendering means your site loads instantly. Google loves speed, and so do your customers.",
+      title: t("nextjs.title"),
+      desc: t("nextjs.desc"),
     },
     {
       key: "typescript",
-      title: "Why TypeScript?",
-      desc: "Type safety prevents bugs before they happen. It's the difference between a fragile prototype and enterprise software.",
+      title: t("typescript.title"),
+      desc: t("typescript.desc"),
     },
     {
       key: "headless",
-      title: "Why Headless?",
-      desc: "Decouple your content from your code. Scale your marketing without breaking your infrastructure.",
+      title: t("headless.title"),
+      desc: t("headless.desc"),
     },
   ];
 

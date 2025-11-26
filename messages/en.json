@@ -77,17 +77,23 @@
     }
   },
   "Navigation": {
-    "home": "Home",
-    "about": "About Us",
-    "services": "Services",
-    "case_studies": "Work",
+    "home": "Index",
+    "about": "Studio",
+    "services": "Capabilities",
+    "case_studies": "Deployments",
     "blog": "Blog",
     "careers": "Careers",
-    "contact": "Contact",
+    "contact": "Initiate",
     "start_project": "Start Project",
     "menu_open": "Menu",
     "menu_close": "Close",
-    "get_in_touch": "Initiate Communication"
+    "get_in_touch": "Initiate Communication",
+    "tags": {
+      "cloud": "Cloud Architecture",
+      "ai": "AI Integration",
+      "devops": "DevOps Security",
+      "headless": "Headless Systems"
+    }
   },
   "CareersPage": {
     "hero": {
@@ -154,9 +160,15 @@
       }
     },
     "compensation": {
-      "title": "Compensation",
-      "full_time": "Full-Time: MX$25k-45k/month depending on role and experience",
-      "contract": "Contract: MX$400-800/hour for project-based work"
+      "title": "Compensation Model",
+      "subtitle": "We value output, not hours. No haggling, no chasing invoices.",
+      "metric": "Project-Based Rates",
+      "description": "Compensation is scoped and agreed upon before a single line of code is written. Rates are determined by complexity and impact, not time.",
+      "terms": {
+        "deposit": "50% Commencement Deposit",
+        "completion": "50% Completion Payment",
+        "net0": "Net-0 Payment Terms (Immediate upon approval)"
+      }
     },
     "cta": {
       "button": "Initiate Vetting Process",
@@ -272,7 +284,7 @@
       "deliverables": [
         "Production Cloud Deployment",
         "Clean GitHub Repo",
-        "Core Web Vitals Optimized"
+        "Core Web Vitals Optimized (Ensures Google ranks you higher)"
       ],
       "deliverables_subtext": [
         "Global edge network for instant loading worldwide.",
@@ -295,7 +307,7 @@
       "deliverables": [
         "Brand Guidelines PDF",
         "Asset Library (SVG/PNG)",
-        "Figma Source Files"
+        "Figma Source Files (Full editable design files)"
       ],
       "deliverables_subtext": [
         "A complete set of rules so your visuals stay consistent everywhere.",
@@ -341,7 +353,7 @@
       "deliverables": [
         "Monthly Analytics Report",
         "Content Strategy Doc",
-        "Keyword Ranking Dashboard"
+        "Keyword Ranking Dashboard (Track visibility in real-time)"
       ],
       "deliverables_subtext": [
         "Gives you clear insights on what’s working and what needs improvement.",
@@ -356,23 +368,55 @@
     },
     "start_project": "Start Project"
   },
+  "FeaturedWork": {
+    "title": "Selected Engineering.",
+    "view_all": "View All Work",
+    "projects": {
+      "cafe_aurora": {
+        "title": "Café Aurora"
+      },
+      "strongfit": {
+        "title": "StrongFit Systems"
+      }
+    }
+  },
+  "WorkPage": {
+    "title": "Our Work",
+    "subtitle": "Case studies in digital transformation. Real problems, engineered solutions, and measurable results.",
+    "projects": {
+      "cafe_aurora": {
+        "title": "Café Aurora",
+        "problem": "Legacy WordPress site was crashing during peak morning traffic, leading to 15% lost revenue.",
+        "solution": "Migrated to a Headless Next.js architecture with Shopify integration for instant checkout.",
+        "metric_value": "300%",
+        "metric_label": "Faster Load Time"
+      },
+      "strongfit": {
+        "title": "StrongFit Systems",
+        "problem": "Manual membership management via spreadsheets was costing the founder 20 hours/week.",
+        "solution": "Built a custom dashboard with Stripe integration for automated billing and class scheduling.",
+        "metric_value": "20h+",
+        "metric_label": "Saved Weekly"
+      }
+    }
+  },
   "BusinessImpact": {
     "title": "We don't just write code. We drive results.",
     "subtitle": "Our systems are engineered to reduce operational costs, increase conversion rates, and provide total data ownership."
   },
   "ModernStack": {
-    "title": "Why Modern Stack?",
+    "title": "Enterprise Infrastructure",
     "nextjs": {
-      "title": "Why Next.js?",
-      "desc": "Server-side rendering means your site loads instantly. Google loves speed, and so do your customers."
+      "title": "Global Edge Network",
+      "desc": "We deploy to the edge. Your application lives close to your users, ensuring sub-100ms latency worldwide."
     },
     "typescript": {
-      "title": "Why TypeScript?",
-      "desc": "Type safety prevents bugs before they happen. It's the difference between a fragile prototype and enterprise software."
+      "title": "Type-Safe Architecture",
+      "desc": "We don't ship bugs. Our strict type systems ensure that your business logic is mathematically verified before deployment."
     },
     "headless": {
-      "title": "Why Headless?",
-      "desc": "Decouple your content from your code. Scale your marketing without breaking your infrastructure."
+      "title": "Decoupled Systems",
+      "desc": "Future-proof by design. We separate your content from your code, allowing marketing to move fast without breaking engineering."
     }
   },
   "TargetAudience": {
@@ -385,7 +429,7 @@
     "business": {
       "headline": "Migration & Scale",
       "target": "Scale-Ups & Growth",
-      "copy": "Outgrowing your WordPress site? We migrate you to a modern stack that handles millions of visitors without slowing down."
+      "copy": "Outgrowing your WordPress site? We migrate you to a modern stack that handles millions of millions of visitors without slowing down."
     },
     "enterprise": {
       "headline": "Security & Systems",
@@ -431,7 +475,7 @@
       "title": "Engineering as a Growth Lever",
       "content_1": "The digital landscape is cluttered. Everywhere you look, there's noise—unnecessary complexity, bloated code, and design that screams for attention without saying anything.",
       "content_2": "We don't just design interfaces; we architect the engines that power your business. In a world of slow templates, speed and reliability are your competitive advantage.",
-      "signature": "Manu, Founder — 5+ years building production web platforms and design systems"
+      "signature": "Manu, Founder — Senior Engineer & Architect | 6+ Years Shipping Production Systems"
     },
     "brand_anatomy": {
       "section_label": "BRAND ANATOMY",
@@ -453,7 +497,7 @@
     },
     "tech_radar": {
       "title": "Technical Specification",
-      "intro": "The enterprise-grade stack we deploy to engineer scalable, secure, and high-performance digital infrastructure.",
+      "intro": "We choose this stack because it guarantees speed, security, and long-term maintainability—not because it's trendy.",
       "ui_ux": "01 — UI/UX & Strategy",
       "frontend": "02 — Frontend",
       "backend_db": "03 — Backend & Database",
@@ -461,11 +505,12 @@
       "infrastructure": "05 — Infrastructure"
     },
     "process": {
-      "title": "The Methodology",
+      "title": "How We Work",
       "description": "A rigorous approach to digital engineering. We don't guess; we execute.",
+      "nda_note": "We work with sensitive enterprise IP. These protocols protect our clients and your professional reputation.",
       "steps": {
-        "0": { 
-          "title": "Technical Discovery", 
+        "0": {
+          "title": "Technical Discovery",
           "desc": "We don't just take a ticket. We sit with you to unearth the business logic, the edge cases, and the long-term goals. We ensure we are solving the right problem before writing a single line of code.",
           "checkpoint": "Output: Detailed Scope & Strategy Document"
         },
@@ -582,9 +627,14 @@
       "details_label": "Project Details",
       "details_placeholder": "We are looking to re-architect our digital presence...",
       "timeline_label": "How soon do you need this?",
-      "timeline_placeholder": "e.g., Within 2-3 months",
-      "success_criteria_label": "What would success look like?",
-      "success_criteria_placeholder": "e.g., 3x more qualified leads, faster page load times, or streamlined booking process",
+      "timeline_placeholder": "Select a timeline...",
+      "timeline_options": {
+        "asap": "ASAP (Rush)",
+        "1_month": "Within 1 Month",
+        "3_months": "Within 3 Months"
+      },
+      "success_criteria_label": "Success Metric (#1 Goal)",
+      "success_criteria_placeholder": "e.g., 3x more qualified leads",
       "submit": "Send Signal",
       "sending": "Transmitting..."
     },

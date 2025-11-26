@@ -507,15 +507,35 @@ function ContactForm() {
                   <label htmlFor="timeline" className={labelClasses}>
                     {t("form.timeline_label")}
                   </label>
-                  <input
-                    {...register("timeline")}
+                  <select
+                    {...register("timeline", { required: true })}
                     id="timeline"
-                    type="text"
-                    placeholder={t("form.timeline_placeholder")}
-                    className={inputClasses("timeline")}
+                    className={cn(
+                      inputClasses("timeline"),
+                      "appearance-none bg-transparent"
+                    )}
                     onFocus={() => setFocusedField("timeline")}
-                    onBlur={() => setFocusedField(null)}
-                  />
+                    onBlur={() => setFocusedField(null)}>
+                    <option
+                      value=""
+                      disabled
+                      className="bg-neutral-900 text-white">
+                      {t("form.timeline_placeholder")}
+                    </option>
+                    <option value="asap" className="bg-neutral-900 text-white">
+                      {t("form.timeline_options.asap")}
+                    </option>
+                    <option
+                      value="1_month"
+                      className="bg-neutral-900 text-white">
+                      {t("form.timeline_options.1_month")}
+                    </option>
+                    <option
+                      value="3_months"
+                      className="bg-neutral-900 text-white">
+                      {t("form.timeline_options.3_months")}
+                    </option>
+                  </select>
                 </div>
 
                 {/* Success Criteria */}

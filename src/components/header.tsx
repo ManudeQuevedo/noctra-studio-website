@@ -103,12 +103,17 @@ export function Header() {
 
   const navItems = [
     { label: t("home"), href: "/" },
-    { label: t("about"), href: "/about" },
     { label: t("services"), href: "/services" },
     { label: t("case_studies"), href: "/case-studies" },
-    // { label: t("blog"), href: "/blog" },
-    { label: t("careers"), href: "/careers" },
+    { label: t("about"), href: "/about" },
     { label: t("contact"), href: "/contact" },
+  ];
+
+  const infraTags = [
+    t("tags.cloud"),
+    t("tags.ai"),
+    t("tags.devops"),
+    t("tags.headless"),
   ];
 
   return (
@@ -121,19 +126,19 @@ export function Header() {
         className={cn(
           "relative overflow-hidden pointer-events-auto transition-all duration-500 w-full max-w-7xl",
           isOpen
-            ? "bg-neutral-950 dark:bg-white shadow-2xl" // Open: Inverted Theme
+            ? "bg-neutral-950 dark:bg-black shadow-2xl border border-neutral-800" // Open: Dark Command Center
             : isScrolled
-            ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60 border border-neutral-200/50 dark:border-white/10 shadow-lg" // Closed & Scrolled: High Visibility
-            : "bg-transparent border-transparent shadow-none backdrop-blur-none" // Closed & Top: Transparent
+            ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60 border border-neutral-200/50 dark:border-white/10 shadow-lg" // Closed & Scrolled
+            : "bg-transparent border-transparent shadow-none backdrop-blur-none" // Closed & Top
         )}
         variants={{
           open: {
-            height: "600px", // Fixed height for open state to ensure stability
-            borderRadius: "2rem",
+            height: "600px",
+            borderRadius: "1rem", // Sharper corners for "engineered" look
           },
           closed: {
             height: "80px",
-            borderRadius: "2rem", // Consistent border radius
+            borderRadius: "2rem",
           },
         }}
         transition={{
@@ -147,7 +152,7 @@ export function Header() {
           <div
             className={cn(
               "flex items-center justify-between px-8 shrink-0 z-50 transition-all duration-500",
-              "h-[80px]" // Fixed height for the header row to match closed state
+              "h-[80px]"
             )}>
             <Link
               href="/"
@@ -157,7 +162,7 @@ export function Header() {
                   {/* Desktop Logo */}
                   <NextImage
                     src={
-                      effectiveTheme === "dark"
+                      isOpen || effectiveTheme === "dark"
                         ? "/noctra-navbar-dark.svg"
                         : "/noctra-navbar-light.svg"
                     }
@@ -170,7 +175,7 @@ export function Header() {
                   {/* Mobile Logo */}
                   <NextImage
                     src={
-                      effectiveTheme === "dark"
+                      isOpen || effectiveTheme === "dark"
                         ? "/noctra-studio-icon-dark-theme.svg"
                         : "/noctra-studio-icon-light-theme.svg"
                     }
@@ -194,8 +199,8 @@ export function Header() {
                   className={cn(
                     "hidden md:block rounded-full px-5 py-2 text-xs font-medium transition-transform hover:scale-105",
                     isOpen
-                      ? "bg-white text-neutral-950 dark:bg-neutral-950 dark:text-white"
-                      : "bg-neutral-900 text-white dark:bg-neutral-50 dark:text-neutral-900"
+                      ? "bg-white text-black"
+                      : "bg-neutral-900 text-white dark:bg-white dark:text-black"
                   )}>
                   {t("start_project")}
                 </Link>
@@ -206,10 +211,8 @@ export function Header() {
                 className="flex items-center gap-4 group cursor-pointer">
                 <span
                   className={cn(
-                    "text-xs font-medium uppercase tracking-wider hidden sm:block transition-colors duration-300",
-                    isOpen
-                      ? "text-white dark:text-neutral-950"
-                      : "text-foreground"
+                    "text-xs font-mono uppercase tracking-wider hidden sm:block transition-colors duration-300",
+                    isOpen ? "text-neutral-400" : "text-foreground"
                   )}>
                   {isOpen ? t("menu_close") : t("menu_open")}
                 </span>
@@ -217,8 +220,8 @@ export function Header() {
                   className={cn(
                     "relative flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300",
                     isOpen
-                      ? "bg-white/10 hover:bg-white/20 dark:bg-black/5 dark:hover:bg-black/10" // Open: Inverted bg
-                      : "bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/20" // Closed: Standard bg
+                      ? "bg-white/10 hover:bg-white/20"
+                      : "bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/20"
                   )}>
                   <div
                     className={cn(
@@ -229,16 +232,16 @@ export function Header() {
                       className={cn(
                         "w-5 h-[1.5px] transition-all duration-300",
                         isOpen
-                          ? "bg-white dark:bg-neutral-950 rotate-45 translate-y-[0.5px]" // Open: Inverted
-                          : "bg-foreground" // Closed: Standard
+                          ? "bg-white rotate-45 translate-y-[0.5px]"
+                          : "bg-foreground"
                       )}
                     />
                     <span
                       className={cn(
                         "w-5 h-[1.5px] transition-all duration-300",
                         isOpen
-                          ? "bg-white dark:bg-neutral-950 -rotate-45 -translate-y-[0.5px]" // Open: Inverted
-                          : "bg-foreground" // Closed: Standard
+                          ? "bg-white -rotate-45 -translate-y-[0.5px]"
+                          : "bg-foreground"
                       )}
                     />
                   </div>
@@ -255,41 +258,36 @@ export function Header() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
-                className="flex flex-col px-6 pb-10 h-full">
-                {/* Navigation Links - Centered vertically in the remaining space */}
-                <div className="flex-1 flex flex-col justify-center items-center">
-                  <div className="flex flex-col items-start gap-4 w-fit mx-auto">
+                className="flex flex-col md:flex-row px-8 pb-8 h-full gap-12 pt-8">
+                {/* Left Column: Navigation Links */}
+                <div className="flex-1 flex flex-col justify-center">
+                  <div className="flex flex-col items-start gap-6">
                     {navItems.map((item, index) => {
                       const isActive = pathname === item.href;
                       return (
                         <motion.div
                           key={item.href}
-                          initial={{ opacity: 0, y: 10 }}
-                          animate={{ opacity: 1, y: 0 }}
+                          initial={{ opacity: 0, x: -20 }}
+                          animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.1 + index * 0.05 }}>
                           <Link
                             href={item.href}
-                            className="group flex items-center gap-6 text-5xl font-semibold transition-colors duration-300 whitespace-nowrap text-neutral-500 hover:text-white dark:hover:text-neutral-950">
-                            <span className="text-sm font-mono text-neutral-600 dark:text-neutral-400 pt-2">
+                            className="group flex items-center gap-4 text-4xl md:text-6xl font-bold transition-colors duration-300 whitespace-nowrap text-neutral-500 hover:text-white">
+                            <span className="text-xs font-mono text-neutral-700 pt-2">
                               0{index + 1}
                             </span>
 
-                            {/* Active Indicator Dot */}
-                            {isActive && (
-                              <motion.div
-                                layoutId="active-dot"
-                                className="w-2 h-2 rounded-full shadow-[0_0_8px_rgba(255,255,255,0.8)] bg-white dark:bg-neutral-950 dark:shadow-[0_0_8px_rgba(0,0,0,0.2)]"
-                              />
-                            )}
-
                             <motion.span
                               className={cn(
-                                "transition-transform duration-300",
-                                isActive
-                                  ? "text-white dark:text-neutral-950"
-                                  : ""
+                                "transition-transform duration-300 flex items-center gap-3",
+                                isActive ? "text-white" : ""
                               )}
                               whileHover={{ x: 10 }}>
+                              {isActive && (
+                                <span className="text-emerald-500 text-2xl md:text-4xl">
+                                  {">_"}
+                                </span>
+                              )}
                               {item.label}
                             </motion.span>
                           </Link>
@@ -299,51 +297,74 @@ export function Header() {
                   </div>
                 </div>
 
-                {/* Footer Section - Pinned to Bottom */}
-                <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  transition={{ delay: 0.2 }}
-                  className="flex flex-col items-center mt-auto w-full">
-                  {/* Contact */}
-                  <div className="flex flex-col items-center gap-1 mt-7 mb-6">
-                    <span className="text-[10px] uppercase tracking-widest text-neutral-600 dark:text-neutral-400">
-                      {t("get_in_touch")}
-                    </span>
-                    <a
-                      href="mailto:hello@noctra.studio"
-                      className="text-lg font-medium transition-colors text-neutral-300 hover:text-white dark:text-neutral-600 dark:hover:text-neutral-950">
-                      hello@noctra.studio
-                    </a>
+                {/* Right Column: Infrastructure Tags & Info */}
+                <div className="hidden md:flex flex-col justify-between w-64 border-l border-neutral-800 pl-12 py-4">
+                  {/* Infrastructure Tags */}
+                  <div className="space-y-6">
+                    <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                      System Capabilities
+                    </h4>
+                    <ul className="space-y-3">
+                      {infraTags.map((tag, i) => (
+                        <motion.li
+                          key={tag}
+                          initial={{ opacity: 0, x: 20 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.3 + i * 0.05 }}
+                          className="text-sm font-mono text-neutral-400 flex items-center gap-2">
+                          <div className="w-1 h-1 bg-emerald-500/50 rounded-full" />
+                          {tag}
+                        </motion.li>
+                      ))}
+                    </ul>
                   </div>
 
-                  {/* Divider */}
-                  <div className="w-full border-t mb-4 border-neutral-800 dark:border-neutral-200" />
-
-                  {/* Socials & System */}
-                  <div className="flex items-center justify-between w-full px-4">
-                    <div className="flex items-center gap-4">
-                      <a
-                        href="https://instagram.com/noctra_studio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:scale-110 duration-300 text-neutral-500 hover:text-white dark:hover:text-neutral-950">
-                        <Instagram className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://x.com/NoctraStudio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        className="transition-colors hover:scale-110 duration-300 text-neutral-500 hover:text-white dark:hover:text-neutral-950">
-                        <XIcon className="w-4 h-4" />
-                      </a>
+                  {/* Footer Info */}
+                  <div className="space-y-6">
+                    <div className="space-y-2">
+                      <div className="flex items-center gap-2">
+                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
+                        <span className="text-xs font-mono text-neutral-300">
+                          All Systems Operational
+                        </span>
+                      </div>
+                      <div className="text-xs font-mono text-neutral-500">
+                        Querétaro, MX
+                      </div>
                     </div>
 
-                    <div className="flex items-center gap-4">
+                    <div className="flex items-center justify-between">
+                      <div className="flex items-center gap-4">
+                        <a
+                          href="https://instagram.com/noctra_studio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neutral-500 hover:text-white transition-colors">
+                          <Instagram className="w-4 h-4" />
+                        </a>
+                        <a
+                          href="https://x.com/NoctraStudio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          className="text-neutral-500 hover:text-white transition-colors">
+                          <XIcon className="w-4 h-4" />
+                        </a>
+                      </div>
                       <LanguageSwitcher />
                     </div>
                   </div>
-                </motion.div>
+                </div>
+
+                {/* Mobile Footer (Visible only on mobile) */}
+                <div className="md:hidden mt-auto pt-8 border-t border-neutral-800 w-full flex justify-between items-center">
+                  <div className="flex items-center gap-2">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                    <span className="text-xs font-mono text-neutral-400">
+                      Online
+                    </span>
+                  </div>
+                  <LanguageSwitcher />
+                </div>
               </motion.div>
             )}
           </AnimatePresence>

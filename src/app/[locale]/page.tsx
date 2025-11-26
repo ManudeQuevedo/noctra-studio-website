@@ -49,6 +49,14 @@ const ModernStackSection = dynamic(
   { ssr: true }
 );
 
+const FeaturedWorkSection = dynamic(
+  () =>
+    import("@/components/home/FeaturedWorkSection").then((mod) => ({
+      default: mod.FeaturedWorkSection,
+    })),
+  { ssr: true }
+);
+
 export async function generateMetadata({
   params,
 }: {
@@ -98,6 +106,7 @@ export default async function HomePage() {
       <BusinessImpactSection />
       <EngagementModels />
       <TargetAudienceSection />
+      <FeaturedWorkSection />
       <ModernStackSection />
       <PhilosophySection />
       <ProcessSection />
