@@ -1,32 +1,21 @@
-import OpenAI from 'openai';
-import { OpenAIStream, StreamingTextResponse } from 'ai';
+import { openai } from '@ai-sdk/openai';
+import { streamText } from 'ai';
 
 export const maxDuration = 30;
-
-const openai = new OpenAI({
-  apiKey: process.env.OPENAI_API_KEY || 'dummy-key',
-});
 
 export async function POST(req: Request) {
   try {
     const { prompt } = await req.json();
 
-    const response = await openai.chat.completions.create({
-      model: 'gpt-4o',
-      stream: true,
-      messages: [
-        {
-          role: 'system',
-          content: `Generate a project scope outline based on these requirements: [Client Inputs].
+    const result = await streamText({
+      model: openai('gpt-4o'),
+      system: `Generate a project scope outline based on these requirements: [Client Inputs].
     Structure it into Noctra's 4 Phases: Discovery, Architecture, Build, Launch.
     Include a 'Technical Stack' recommendation based on their needs (e.g., if E-comm -> Recommend Shopify Headless).`,
-        },
-        { role: 'user', content: prompt },
-      ],
+      prompt,
     });
 
-    const stream = OpenAIStream(response as any);
-    return new StreamingTextResponse(stream);
+    return result.toDataStreamResponse();
   } catch (error) {
     console.error('AI Error:', error);
     return new Response(JSON.stringify({ error: 'Failed to process request' }), { status: 500 });

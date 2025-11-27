@@ -1,10 +1,7 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
+import { google } from '@ai-sdk/google';
+import { streamText } from 'ai';
 
 export const maxDuration = 30;
-
-// Initialize Google Generative AI
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '');
 
 export async function POST(
   req: Request,
@@ -33,16 +30,13 @@ export async function POST(
         systemPrompt = "You are a helpful AI assistant for Noctra Studio.";
     }
 
-    // Use Gemini 1.5 Pro as requested in original file
-    const model = genAI.getGenerativeModel({ 
-      model: 'gemini-2.0-flash',
-      systemInstruction: systemPrompt
+    const result = await streamText({
+      model: google('gemini-2.0-flash'),
+      system: systemPrompt,
+      prompt,
     });
 
-    const result = await model.generateContentStream(prompt);
-    const stream = GoogleGenerativeAIStream(result);
-
-    return new StreamingTextResponse(stream);
+    return result.toDataStreamResponse();
 
   } catch (error) {
     console.error('AI Agent Error:', error);

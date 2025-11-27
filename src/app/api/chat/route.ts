@@ -1,20 +1,15 @@
-import { GoogleGenerativeAI } from '@google/generative-ai';
-import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
-import { NextResponse } from 'next/server';
+import { google } from '@ai-sdk/google';
+import { streamText } from 'ai';
 
-// Initialize Google Generative AI
-const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '');
+export const maxDuration = 30;
 
 export async function POST(req: Request) {
   try {
-    // Log API key presence for debugging
-    console.log('CHAT API - Key present:', !!process.env.GOOGLE_GENERATIVE_AI_API_KEY);
-    
     const { messages } = await req.json();
-    console.log('CHAT API - Received messages count:', messages?.length);
 
-    // System prompt
-    const systemPrompt = `IDENTITY:
+    const result = await streamText({
+      model: google('gemini-2.0-flash'),
+      system: `IDENTITY:
 You are the Senior Strategy Director at Noctra Studio. You are NOT a support bot. You are a high-level consultant.
 Your goal is to diagnose the user's business pain points first, then prescribe the correct Noctra architecture as the solution.
 
@@ -48,44 +43,13 @@ PRICING & CTA:
 - Identity Tier: ~$30k MXN (MVP/Landing).
 - Growth Tier: ~$60k-$120k MXN (Corporate).
 - Enterprise: Custom.
-- *Closing:* Always guide them to "Book a Discovery Call" if they seem interested.`;
-
-    // Use the Gemini 2.0 Flash model
-    const model = genAI.getGenerativeModel({ 
-      model: 'gemini-2.0-flash',
-      systemInstruction: systemPrompt,
+- *Closing:* Always guide them to "Book a Discovery Call" if they seem interested.`,
+      messages,
     });
 
-    // Build the conversation as a single prompt
-    let conversationText = '';
-    for (const message of messages) {
-      const role = message.role === 'user' ? 'User' : 'Assistant';
-      conversationText += `${role}: ${message.content}\n\n`;
-    }
-    
-    // Add the prompt for the assistant to respond
-    conversationText += 'Assistant:';
-
-    console.log('CHAT API - Sending message to Gemini...');
-    
-    const result = await model.generateContentStream(conversationText);
-
-    const stream = GoogleGenerativeAIStream(result);
-    console.log('CHAT API - Stream created successfully');
-
-    return new StreamingTextResponse(stream);
-
+    return result.toDataStreamResponse();
   } catch (error: any) {
     console.error('CHAT API ERROR:', error);
-    console.error('CHAT API ERROR - Stack:', error?.stack);
-    console.error('CHAT API ERROR - Message:', error?.message);
-    
-    return NextResponse.json(
-      { 
-        error: error?.message || 'Failed to process request',
-        details: error?.toString() 
-      }, 
-      { status: 500 }
-    );
+    return new Response(JSON.stringify({ error: error?.message || 'Failed to process request' }), { status: 500 });
   }
 }
