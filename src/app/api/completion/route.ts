@@ -1,16 +1,25 @@
-import { google } from '@ai-sdk/google';
-import { streamText } from 'ai';
+import { GoogleGenerativeAI } from '@google/generative-ai';
+import { GoogleGenerativeAIStream, StreamingTextResponse } from 'ai';
 
 export const maxDuration = 30;
 
+const genAI = new GoogleGenerativeAI(process.env.GOOGLE_GENERATIVE_AI_API_KEY || '');
+
 export async function POST(req: Request) {
-  const { prompt, system } = await req.json();
+  try {
+    const { prompt, system } = await req.json();
 
-  const result = await streamText({
-    model: google('models/gemini-1.5-flash'),
-    system: system || "You are a helpful assistant.",
-    prompt: prompt,
-  });
+    const model = genAI.getGenerativeModel({ 
+      model: 'gemini-2.0-flash',
+      systemInstruction: system || "You are a helpful assistant."
+    });
 
-  return result.toTextStreamResponse();
+    const result = await model.generateContentStream(prompt);
+    const stream = GoogleGenerativeAIStream(result);
+
+    return new StreamingTextResponse(stream);
+  } catch (error) {
+    console.error('AI Error:', error);
+    return new Response(JSON.stringify({ error: 'Failed to process request' }), { status: 500 });
+  }
 }

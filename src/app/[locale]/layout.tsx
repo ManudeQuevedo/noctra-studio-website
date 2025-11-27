@@ -5,7 +5,7 @@ import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
-import { Cursor } from "@/components/ui/cursor";
+
 import { Header } from "@/components/header";
 import { FooterWrapper } from "@/components/FooterWrapper";
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
@@ -14,6 +14,8 @@ import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
+import { Cursor } from "@/components/ui/cursor";
+import { ChatWidget } from "@/components/ui/ChatWidget";
 
 // Satoshi - Brand primary font
 const satoshi = localFont({
@@ -103,6 +105,7 @@ export default async function LocaleLayout({
           <WebsiteSchema />
           <SpeedInsights />
           <Analytics />
+          <ChatWidget />
         </ThemeProvider>
       </NextIntlClientProvider>
     </>

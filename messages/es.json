@@ -941,5 +941,10 @@
     "cta": "Iniciar Compromiso",
     "footer_note": "Todos los proyectos incluyen: Propiedad del código, soporte de despliegue y mantenimiento post-lanzamiento de 30 días.",
     "recurring_revenue": "¿Necesitas tranquilidad continua? Pregunta por nuestros planes de mantenimiento y evolución desde MX$3,500/mes."
+  },
+  "Auth": {
+    "title": "Error de Autenticación",
+    "description": "Hubo un problema al verificar tu enlace de inicio de sesión. Es posible que haya expirado o ya se haya utilizado.",
+    "button": "Intentar de Nuevo"
   }
 }

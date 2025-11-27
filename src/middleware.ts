@@ -11,9 +11,17 @@ export default async function middleware(request: NextRequest) {
 
   // 2. Run Supabase middleware to refresh session, passing the intl response
   // This ensures cookies are set on the correct response object
-  const { response: finalResponse } = await updateSession(request, response);
+  const { response: finalResponse, user } = await updateSession(request, response);
 
-  // 3. Add Security Headers
+  // 3. Admin Access Control
+  const ADMIN_EMAILS = ['hello@noctra.studio', 'contact@manudequevedo.com'];
+  if (request.nextUrl.pathname.startsWith('/studio')) {
+    if (!user || !user.email || !ADMIN_EMAILS.includes(user.email)) {
+      return NextResponse.redirect(new URL('/', request.url));
+    }
+  }
+
+  // 4. Add Security Headers
   const securityHeaders = {
     'X-DNS-Prefetch-Control': 'on',
     'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',

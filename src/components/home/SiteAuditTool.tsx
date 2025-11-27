@@ -13,6 +13,10 @@ interface AuditResult {
   lcp: string;
   issues: number;
   url: string;
+  security: {
+    grade: string;
+    score: number;
+  };
 }
 
 export const SiteAuditTool = () => {
@@ -30,6 +34,7 @@ export const SiteAuditTool = () => {
   const loadingMessages = [
     "Connecting to Lighthouse servers...",
     "Analyzing Core Web Vitals...",
+    "Probing Security Headers...",
     "Measuring LCP...",
     "Evaluating performance metrics...",
     "Finalizing diagnostic report...",
@@ -65,7 +70,7 @@ export const SiteAuditTool = () => {
         }
         return prev;
       });
-    }, 3000);
+    }, 2500);
 
     return () => clearInterval(interval);
   }, [status, loadingMessages.length]);
@@ -99,7 +104,7 @@ export const SiteAuditTool = () => {
         setStatus("complete");
 
         // Generate AI diagnosis
-        const prompt = `The user's site has a Performance score of ${result.performance}/100 and SEO score of ${result.seo}/100. Write a 1-sentence brutal but professional assessment of how this hurts their business.`;
+        const prompt = `The user's site has a Performance score of ${result.performance}/100, SEO score of ${result.seo}/100, and a Security Grade of ${result.security.grade}. Write a 1-sentence brutal but professional assessment of how this hurts their business.`;
         complete(prompt, {
           body: {
             system:
@@ -168,6 +173,39 @@ export const SiteAuditTool = () => {
         bg: "bg-red-500/10",
         border: "border-red-500/20",
         label: "CRITICAL",
+      };
+    }
+  };
+
+  const getSecurityBadge = (grade: string) => {
+    const g = grade.toUpperCase();
+    if (g === "A" || g === "A+") {
+      return {
+        color: "text-green-500",
+        bg: "bg-green-500/10",
+        border: "border-green-500/20",
+        label: "SECURE",
+      };
+    } else if (g === "B" || g === "C") {
+      return {
+        color: "text-yellow-500",
+        bg: "bg-yellow-500/10",
+        border: "border-yellow-500/20",
+        label: "WARNING",
+      };
+    } else if (g === "SCANNING..." || g === "PENDING") {
+      return {
+        color: "text-yellow-500",
+        bg: "bg-yellow-500/10",
+        border: "border-yellow-500/20",
+        label: "PROCESSING",
+      };
+    } else {
+      return {
+        color: "text-red-500",
+        bg: "bg-red-500/10",
+        border: "border-red-500/20",
+        label: "VULNERABLE",
       };
     }
   };
@@ -322,7 +360,7 @@ export const SiteAuditTool = () => {
                   </h4>
                 </div>
 
-                {/* Scores Grid - 2x2 Layout */}
+                {/* Scores Grid - 2x3 Layout */}
                 <div className="grid grid-cols-2 gap-3">
                   {/* Performance */}
                   <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
@@ -343,6 +381,32 @@ export const SiteAuditTool = () => {
                       } border`}>
                       {getScoreBadge(auditResult.performance).label}
                     </div>
+                  </div>
+
+                  {/* Security Posture */}
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
+                      SECURITY POSTURE
+                    </div>
+                    <div className="flex items-baseline gap-2">
+                      <span className="text-2xl md:text-3xl font-bold text-white">
+                        {auditResult.security.grade}
+                      </span>
+                    </div>
+                    <div
+                      className={`mt-2 inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
+                        getSecurityBadge(auditResult.security.grade).color
+                      } ${getSecurityBadge(auditResult.security.grade).bg} ${
+                        getSecurityBadge(auditResult.security.grade).border
+                      } border`}>
+                      {getSecurityBadge(auditResult.security.grade).label}
+                    </div>
+                    {(auditResult.security.grade === "Scanning..." ||
+                      auditResult.security.grade === "PENDING") && (
+                      <div className="text-[10px] text-neutral-500 mt-1 italic">
+                        Deep scan initiated. Results will be emailed.
+                      </div>
+                    )}
                   </div>
 
                   {/* Accessibility */}
@@ -388,7 +452,7 @@ export const SiteAuditTool = () => {
                   </div>
 
                   {/* SEO */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
+                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg col-span-2">
                     <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
                       SEO
                     </div>
@@ -413,7 +477,7 @@ export const SiteAuditTool = () => {
                 {(completion || aiLoading) && (
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg">
                     <div className="text-xs text-blue-500 font-mono mb-2 uppercase">
-                      AI Diagnosis
+                      Noctra Diagnosis
                     </div>
                     <p className="text-sm text-neutral-300">
                       {aiLoading ? (

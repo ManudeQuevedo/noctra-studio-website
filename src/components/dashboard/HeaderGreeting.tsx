@@ -1,5 +1,7 @@
 "use client";
 
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
+
 interface HeaderGreetingProps {
   companyName: string;
   fullName: string;
@@ -36,11 +38,14 @@ export default function HeaderGreeting({
   const date = getFormattedDate();
 
   return (
-    <div className="mb-8">
-      <h1 className="text-3xl font-bold text-white mb-1">
-        {greeting}, {name}
-      </h1>
-      <p className="text-sm text-neutral-500">{date}</p>
+    <div className="mb-8 flex items-start justify-between">
+      <div>
+        <h1 className="text-3xl font-bold text-white mb-1">
+          {greeting}, {name}
+        </h1>
+        <p className="text-sm text-neutral-500">{date}</p>
+      </div>
+      <LanguageSwitcher />
     </div>
   );
 }

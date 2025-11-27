@@ -15,7 +15,7 @@ import Image from "next/image";
 import { DashboardData } from "@/types/dashboard";
 
 interface ApprovalCardProps {
-  deliverable: DashboardData["deliverable"];
+  deliverable?: DashboardData["deliverable"] | null;
 }
 
 export default function ApprovalCard({ deliverable }: ApprovalCardProps) {
@@ -47,6 +47,20 @@ export default function ApprovalCard({ deliverable }: ApprovalCardProps) {
   const handleRequestChanges = () => {
     setStatus("changes");
   };
+
+  if (!deliverable) {
+    return (
+      <div className="group bg-gradient-to-b from-zinc-900 to-black border border-white/5 rounded-lg overflow-hidden h-full flex flex-col items-center justify-center p-6 text-center">
+        <div className="w-16 h-16 rounded-full bg-zinc-800 flex items-center justify-center mb-4">
+          <CheckIcon className="w-8 h-8 text-zinc-500" />
+        </div>
+        <h3 className="text-lg font-medium text-white mb-2">All Caught Up</h3>
+        <p className="text-sm text-zinc-400 max-w-xs">
+          No pending deliverables requiring your approval at this time.
+        </p>
+      </div>
+    );
+  }
 
   return (
     <div className="group bg-gradient-to-b from-zinc-900 to-black border border-white/5 hover:border-white/20 rounded-lg overflow-hidden h-full flex flex-col transition-colors duration-500">

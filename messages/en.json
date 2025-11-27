@@ -958,6 +958,11 @@
     },
     "cta": "Initiate Engagement",
     "footer_note": "All projects include: Code ownership, deployment support, and 30-day post-launch maintenance.",
-    "recurring_revenue": "Need ongoing peace of mind? Ask about our maintenance & evolution retainers starting at MX$3,500/mo."
+    "recurring_revenue": "Need ongoing peace of mind? Ask about our maintenance and evolution plans starting at $250/mo."
+  },
+  "Auth": {
+    "title": "Authentication Error",
+    "description": "There was a problem verifying your login link. It may have expired or already been used.",
+    "button": "Try Again"
   }
 }

@@ -5,7 +5,7 @@ import { Calendar, Circle } from "lucide-react";
 import { DashboardData } from "@/types/dashboard";
 
 interface ActiveWorkerProps {
-  worker: DashboardData["activeWorker"];
+  worker?: DashboardData["activeWorker"] | null;
 }
 
 export default function ActiveWorker({ worker }: ActiveWorkerProps) {
@@ -16,11 +16,14 @@ export default function ActiveWorker({ worker }: ActiveWorkerProps) {
     offline: { emoji: "⚫", label: "Offline", color: "text-zinc-500" },
   };
 
-  const currentStatus =
-    statusConfig[worker.current_status] || statusConfig.offline;
+  // Default to offline if no worker data is present
+  const currentStatus = worker
+    ? statusConfig[worker.current_status] || statusConfig.offline
+    : statusConfig.offline;
 
   // Contextual button text based on status
   const getButtonText = () => {
+    if (!worker) return "Request Call / Sync";
     if (worker.current_status === "coding") return "Schedule Sync";
     if (worker.current_status === "meeting") return "Join Huddle";
     return "Request Call / Sync";
@@ -50,17 +53,24 @@ export default function ActiveWorker({ worker }: ActiveWorkerProps) {
         <div className="flex items-center gap-4 mb-6">
           <div className="w-16 h-16 rounded-full bg-gradient-to-br from-purple-500 to-blue-600 flex items-center justify-center shrink-0">
             <span className="text-xl font-bold text-white">
-              {worker.worker_name
-                .split(" ")
-                .map((n) => n[0])
-                .join("")}
+              {worker?.worker_name
+                ? worker.worker_name
+                    .split(" ")
+                    .map((n) => n[0])
+                    .join("")
+                : "?"}
             </span>
           </div>
           <div className="flex-1">
-            <p className="font-medium text-white mb-2">{worker.worker_name}</p>
+            <p className="font-medium text-white mb-2">
+              {worker?.worker_name || "No Active Worker"}
+            </p>
             <div className="inline-flex items-center gap-2 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20">
               <div className="relative flex items-center">
-                <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse"></span>
+                <span
+                  className={`w-1.5 h-1.5 rounded-full ${
+                    worker ? "bg-emerald-500 animate-pulse" : "bg-zinc-500"
+                  }`}></span>
               </div>
               <span className="text-xs font-medium text-emerald-400 uppercase tracking-wide">
                 {currentStatus.label}
@@ -75,7 +85,7 @@ export default function ActiveWorker({ worker }: ActiveWorkerProps) {
             Currently working on:
           </p>
           <p className="text-sm text-white font-medium">
-            {worker.current_task}
+            {worker?.current_task || "No active tasks"}
           </p>
         </div>
 

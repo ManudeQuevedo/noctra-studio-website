@@ -7,15 +7,18 @@ import { motion } from "framer-motion";
 const FadeIn = ({
   children,
   delay = 0,
+  className = "",
 }: {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
 }) => (
   <motion.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
-    transition={{ duration: 0.6, delay }}>
+    transition={{ duration: 0.6, delay }}
+    className={className}>
     {children}
   </motion.div>
 );
@@ -56,7 +59,7 @@ export function TargetAudienceSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
           {audiences.map((audience, index) => (
-            <FadeIn key={audience.key} delay={index * 0.1}>
+            <FadeIn key={audience.key} delay={index * 0.1} className="h-full">
               <div className="group h-full p-8 border border-neutral-200 dark:border-neutral-800 hover:border-neutral-900 dark:hover:border-neutral-100 transition-colors duration-300 flex flex-col">
                 <div className="mb-6">
                   <audience.icon
@@ -73,7 +76,7 @@ export function TargetAudienceSection() {
                   {t(`${audience.key}.target`)}
                 </div>
 
-                <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed">
+                <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed flex-1">
                   {t(`${audience.key}.copy`)}
                 </p>
               </div>
