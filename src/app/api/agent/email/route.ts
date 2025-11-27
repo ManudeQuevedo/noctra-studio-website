@@ -18,7 +18,7 @@ export async function POST(req: Request) {
       prompt,
     });
 
-    return result.toDataStreamResponse();
+    return result.toTextStreamResponse();
   } catch (error) {
     console.error('AI Error:', error);
     return new Response(JSON.stringify({ error: 'Failed to process request' }), { status: 500 });

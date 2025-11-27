@@ -36,7 +36,7 @@ export async function POST(
       prompt,
     });
 
-    return result.toDataStreamResponse();
+    return result.toTextStreamResponse();
 
   } catch (error) {
     console.error('AI Agent Error:', error);

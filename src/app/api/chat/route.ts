@@ -47,7 +47,7 @@ PRICING & CTA:
       messages,
     });
 
-    return result.toDataStreamResponse();
+    return result.toTextStreamResponse();
   } catch (error: any) {
     console.error('CHAT API ERROR:', error);
     return new Response(JSON.stringify({ error: error?.message || 'Failed to process request' }), { status: 500 });
