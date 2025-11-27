@@ -8,7 +8,7 @@ import ReactMarkdown from "react-markdown";
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, append, isLoading } = useChat({ id: "noctra-chat" });
+  const { messages, append, isLoading } = useChat({ id: "noctra-chat" }) as any;
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
