@@ -16,7 +16,8 @@ export function Footer() {
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith("/contact");
   const isCareersPage = pathname?.includes("/careers");
-  const hideCtaRow = isContactPage || isCareersPage;
+  const isWorkPage = pathname?.endsWith("/work");
+  const hideCtaRow = isContactPage || isCareersPage || isWorkPage;
 
   useEffect(() => {
     const updateTime = () => {

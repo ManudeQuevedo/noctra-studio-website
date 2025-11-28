@@ -381,11 +381,26 @@
     }
   },
   "WorkPage": {
-    "title": "Nuestro Trabajo",
-    "subtitle": "Casos de estudio en transformación digital. Problemas reales, soluciones de ingeniería y resultados medibles.",
+    "title": "Casos de Estudio — Cómo Pensamos, Diseñamos y Desplegamos",
+    "subtitle": "Estos son casos de estudio conceptuales basados en escenarios de negocio comunes. Demuestran cómo Noctra Studio aborda desafíos del mundo real con arquitectura moderna.",
+    "cta_title": "¿No estás seguro dónde está fallando tu infraestructura?",
+    "cta_button": "Solicitar Auditoría de Arquitectura",
+    "see_full_case_study": "Ver Caso de Estudio Completo",
+    "labels": {
+      "context": "CONTEXTO",
+      "challenge": "DESAFÍO",
+      "approach": "ENFOQUE",
+      "stack": "STACK"
+    },
     "projects": {
       "cafe_aurora": {
         "title": "Café Aurora",
+        "tag1": "Rediseño Web",
+        "tag2": "Negocio Local",
+        "tag3": "Concepto",
+        "context": "Cafetería especializada necesitando presencia digital premium.",
+        "challenge": "Baja visibilidad, plantilla desactualizada.",
+        "approach": "Reconstrucción mobile-first, menú interactivo, SEO local.",
         "problem": "El sitio legado en WordPress colapsaba durante el tráfico pico de la mañana, perdiendo 15% de ingresos.",
         "solution": "Migración a arquitectura Headless Next.js con integración de Shopify para checkout instantáneo.",
         "metric_value": "300%",
@@ -393,10 +408,87 @@
       },
       "strongfit": {
         "title": "StrongFit Systems",
+        "tag1": "Landing Page",
+        "tag2": "Estrategia de Conversión",
+        "tag3": "Concepto",
+        "context": "Entrenador fitness individual ofreciendo programas de alto valor.",
+        "challenge": "Baja conversión, señales de confianza débiles.",
+        "approach": "UX priorizando Figma, integración de prueba social, listo para A/B testing.",
         "problem": "La gestión manual de membresías vía hojas de cálculo costaba al fundador 20 horas/semana.",
         "solution": "Construcción de dashboard personalizado con integración Stripe para facturación automatizada.",
         "metric_value": "20h+",
         "metric_label": "Ahorradas Semanalmente"
+      },
+      "fintrack": {
+        "title": "Fintrack",
+        "tag1": "Dashboard SaaS",
+        "tag2": "Visualización de Datos",
+        "tag3": "Concepto",
+        "context": "Plataforma SaaS para profesionales financieros.",
+        "challenge": "Datos complejos, UI saturada, carga cognitiva.",
+        "approach": "Reestructuración de arquitectura de información, librería de componentes, Chart.js."
+      }
+    },
+    "modal": {
+      "cafe-aurora": {
+        "title": "Café Aurora",
+        "subtitle": "Presencia Digital Premium para Café Especializado",
+        "challenge": "Baja visibilidad online con una plantilla Wix desactualizada que no reflejaba la experiencia premium en tienda. Los clientes no podían navegar el menú ni hacer pedidos digitalmente.",
+        "context": "Café Aurora es una cafetería local especializada con una base de clientes leales y baristas galardonados, pero su presencia digital frenaba su crecimiento.",
+        "solution": "Construimos un sitio web Next.js mobile-first con menú interactivo, actualizaciones de inventario en tiempo real y optimización SEO local. El diseño refleja la estética minimalista de su espacio físico.",
+        "stack": ["Next.js 14", "Tailwind CSS", "GSAP", "Stripe", "Google Maps API", "Headless CMS"],
+        "process": [
+          {"step": "Descubrimiento", "description": "Análisis de competencia, entrevistas a clientes, auditoría de marca"},
+          {"step": "Estrategia", "description": "Enfoque mobile-first, foco en SEO local, optimización de conversión"},
+          {"step": "UX", "description": "Flujos de usuario, wireframes, prototipo de menú interactivo"},
+          {"step": "Diseño", "description": "Librería de componentes, modo oscuro, estándares de accesibilidad"},
+          {"step": "Construcción", "description": "Implementación Next.js, integración Stripe, configuración CMS"}
+        ],
+        "results": [
+          {"metric": "0.8s", "label": "Tiempo de Carga Promedio"},
+          {"metric": "100%", "label": "Puntuación Lighthouse"},
+          {"metric": "+240%", "label": "Tráfico Móvil"}
+        ]
+      },
+      "strongfit": {
+        "title": "StrongFit",
+        "subtitle": "Landing Page de Alta Conversión para Coaching Fitness",
+        "challenge": "Entrenador fitness individual tenía excelentes testimonios pero una landing page genérica con señales de confianza débiles, resultando en bajas tasas de conversión para programas de alto valor.",
+        "context": "StrongFit ofrece programas premium de coaching 1-a-1 ($2k-$5k). El fundador necesitaba una página que igualara el valor del servicio.",
+        "solution": "Diseño UX priorizando Figma con integración de prueba social, video testimonios e infraestructura para A/B testing. Construido con React y optimizado para seguimiento de conversión.",
+        "stack": ["React", "Figma", "Google Analytics", "Hotjar", "ConvertKit", "Testimonial.to"],
+        "process": [
+          {"step": "Descubrimiento", "description": "Mapeo del recorrido del cliente, análisis de competencia"},
+          {"step": "Estrategia", "description": "Elementos de construcción de confianza, diseño de embudo de conversión"},
+          {"step": "UX", "description": "Prototipo Figma de alta fidelidad, planificación de pruebas A/B"},
+          {"step": "Diseño", "description": "Integración de video, layout de prueba social, optimización de CTA"},
+          {"step": "Construcción", "description": "Implementación React, configuración de analíticas, validación de formularios"}
+        ],
+        "results": [
+          {"metric": "3.2x", "label": "Tasa de Conversión"},
+          {"metric": "47%", "label": "Reducción de Rebote"},
+          {"metric": "$8.4k", "label": "Ingresos Mensuales Promedio"}
+        ]
+      },
+      "fintrack": {
+        "title": "FinTrack",
+        "subtitle": "Rediseño de Dashboard SaaS para Profesionales Financieros",
+        "challenge": "Datos financieros complejos presentados en una UI saturada causaban carga cognitiva y abandono de usuarios. Usuarios avanzados necesitaban insights más rápidos sin abrumar a usuarios nuevos.",
+        "context": "FinTrack es una plataforma SaaS sirviendo a más de 2,000 profesionales financieros rastreando portafolios, cripto y obligaciones fiscales.",
+        "solution": "Reestructuración completa de arquitectura de información con librería de componentes, integración de Chart.js y patrones de divulgación progresiva para reducir carga cognitiva.",
+        "stack": ["TypeScript", "React", "Chart.js", "Tailwind", "Zustand", "React Query"],
+        "process": [
+          {"step": "Descubrimiento", "description": "Mapas de calor, entrevistas a usuarios, auditoría de arquitectura de datos"},
+          {"step": "Estrategia", "description": "Divulgación progresiva, prioridad modo oscuro, atajos para usuarios avanzados"},
+          {"step": "UX", "description": "Diseño de librería de componentes, iteraciones de layout de dashboard"},
+          {"step": "Diseño", "description": "Estándares de visualización de datos, paleta de modo oscuro"},
+          {"step": "Construcción", "description": "Migración a TypeScript, configuración Chart.js, gestión de estado"}
+        ],
+        "results": [
+          {"metric": "-65%", "label": "Tickets de Soporte"},
+          {"metric": "4.8/5", "label": "Satisfacción de Usuario"},
+          {"metric": "32%", "label": "Adopción de Funciones"}
+        ]
       }
     }
   },

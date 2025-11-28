@@ -381,11 +381,26 @@
     }
   },
   "WorkPage": {
-    "title": "Our Work",
-    "subtitle": "Case studies in digital transformation. Real problems, engineered solutions, and measurable results.",
+    "title": "Case Studies — How We Think, Design, and Ship",
+    "subtitle": "These are concept case studies based on common business scenarios. They demonstrate how Noctra Studio approaches real-world challenges with modern architecture.",
+    "cta_title": "Not sure where your infrastructure is failing?",
+    "cta_button": "Request Architecture Audit",
+    "see_full_case_study": "See full Case Study",
+    "labels": {
+      "context": "CONTEXT",
+      "challenge": "CHALLENGE",
+      "approach": "APPROACH",
+      "stack": "STACK"
+    },
     "projects": {
       "cafe_aurora": {
         "title": "Café Aurora",
+        "tag1": "Website Redesign",
+        "tag2": "Local Business",
+        "tag3": "Concept",
+        "context": "Specialty coffee shop needing premium digital presence.",
+        "challenge": "Low visibility, outdated template.",
+        "approach": "Mobile-first rebuild, interactive menu, local SEO.",
         "problem": "Legacy WordPress site was crashing during peak morning traffic, leading to 15% lost revenue.",
         "solution": "Migrated to a Headless Next.js architecture with Shopify integration for instant checkout.",
         "metric_value": "300%",
@@ -393,10 +408,86 @@
       },
       "strongfit": {
         "title": "StrongFit Systems",
+        "tag1": "Landing Page",
+        "tag2": "Conversion Strategy",
+        "tag3": "Concept",
+        "context": "Solo fitness coach offering high-ticket programs.",
+        "challenge": "Low conversion, weak trust signals.",
+        "approach": "Figma-first UX, social proof integration, A/B testing ready.",
         "problem": "Manual membership management via spreadsheets was costing the founder 20 hours/week.",
         "solution": "Built a custom dashboard with Stripe integration for automated billing and class scheduling.",
         "metric_value": "20h+",
         "metric_label": "Saved Weekly"
+      },
+      "fintrack": {
+        "tag1": "SaaS Dashboard",
+        "tag2": "Data Viz",
+        "tag3": "Concept",
+        "context": "SaaS platform for finance professionals.",
+        "challenge": "Complex data, cluttered UI, cognitive load.",
+        "approach": "Information architecture restructuring, component library, Chart.js."
+      }
+    },
+    "modal": {
+      "cafe-aurora": {
+        "title": "Café Aurora",
+        "subtitle": "Premium Digital Presence for Specialty Coffee",
+        "challenge": "Low online visibility with an outdated Wix template that didn't reflect the premium in-store experience. Customers couldn't browse the menu or place orders digitally.",
+        "context": "Café Aurora is a local specialty coffee shop with a loyal customer base and award-winning baristas, but their digital presence was holding back growth.",
+        "solution": "We built a mobile-first Next.js website with an interactive menu, real-time inventory updates, and local SEO optimization. The design mirrors the minimalist aesthetic of their physical space.",
+        "stack": ["Next.js 14", "Tailwind CSS", "GSAP", "Stripe", "Google Maps API", "Headless CMS"],
+        "process": [
+          {"step": "Discovery", "description": "Competitor analysis, customer interviews, brand audit"},
+          {"step": "Strategy", "description": "Mobile-first approach, local SEO focus, conversion optimization"},
+          {"step": "UX", "description": "User flows, wireframes, interactive menu prototype"},
+          {"step": "Design", "description": "Component library, dark mode, accessibility standards"},
+          {"step": "Build", "description": "Next.js implementation, Stripe integration, CMS setup"}
+        ],
+        "results": [
+          {"metric": "0.8s", "label": "Average Load Time"},
+          {"metric": "100%", "label": "Lighthouse Score"},
+          {"metric": "+240%", "label": "Mobile Traffic"}
+        ]
+      },
+      "strongfit": {
+        "title": "StrongFit",
+        "subtitle": "High-Converting Landing Page for Fitness Coaching",
+        "challenge": "Solo fitness coach had great testimonials but a generic landing page with weak trust signals, resulting in low conversion rates for high-ticket programs.",
+        "context": "StrongFit offers premium 1-on-1 coaching programs ($2k-$5k). The founder needed a page that matched the value of the service.",
+        "solution": "Figma-first UX design with social proof integration, video testimonials, and A/B testing infrastructure. Built with React and optimized for conversion tracking.",
+        "stack": ["React", "Figma", "Google Analytics", "Hotjar", "ConvertKit", "Testimonial.to"],
+        "process": [
+          {"step": "Discovery", "description": "Customer journey mapping, competitor teardowns"},
+          {"step": "Strategy", "description": "Trust-building elements, conversion funnel design"},
+          {"step": "UX", "description": "High-fidelity Figma prototype, A/B test planning"},
+          {"step": "Design", "description": "Video integration, social proof layout, CTA optimization"},
+          {"step": "Build", "description": "React implementation, analytics setup, form validation"}
+        ],
+        "results": [
+          {"metric": "3.2x", "label": "Conversion Rate"},
+          {"metric": "47%", "label": "Bounce Reduction"},
+          {"metric": "$8.4k", "label": "Avg. Monthly Revenue"}
+        ]
+      },
+      "fintrack": {
+        "title": "FinTrack",
+        "subtitle": "SaaS Dashboard Redesign for Finance Professionals",
+        "challenge": "Complex financial data presented in a cluttered UI caused cognitive load and user churn. Power users needed faster insights without overwhelming new users.",
+        "context": "FinTrack is a SaaS platform serving 2,000+ finance professionals tracking portfolios, crypto, and tax obligations.",
+        "solution": "Complete information architecture restructuring with a component library, Chart.js integration, and progressive disclosure patterns to reduce cognitive load.",
+        "stack": ["TypeScript", "React", "Chart.js", "Tailwind", "Zustand", "React Query"],
+        "process": [
+          {"step": "Discovery", "description": "Heat mapping, user interviews, data architecture audit"},
+          {"step": "Strategy", "description": "Progressive disclosure, dark mode priority, power user shortcuts"},
+          {"step": "UX", "description": "Component library design, dashboard layout iterations"},
+          {"step": "Design", "description": "Data visualization standards, dark mode palette"},
+          {"step": "Build", "description": "TypeScript migration, Chart.js setup, state management"}
+        ],
+        "results": [
+          {"metric": "-65%", "label": "Support Tickets"},
+          {"metric": "4.8/5", "label": "User Satisfaction"},
+          {"metric": "32%", "label": "Feature Adoption"}
+        ]
       }
     }
   },
