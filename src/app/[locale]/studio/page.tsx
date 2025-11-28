@@ -14,9 +14,9 @@ import {
   Loader2,
   Cpu,
   LogOut,
-  Globe,
 } from "lucide-react";
 import { motion } from "framer-motion";
+import LanguageSwitcher from "@/components/ui/LanguageSwitcher";
 
 type AgentType = "social" | "lead" | "scope";
 
@@ -25,11 +25,6 @@ export default function CommandCenter() {
   const t = useTranslations("Studio");
   const router = useRouter();
   const [activeTab, setActiveTab] = useState<AgentType>("social");
-
-  const toggleLanguage = () => {
-    const newLocale = locale === "en" ? "es" : "en";
-    router.replace("/studio", { locale: newLocale });
-  };
 
   const tabs = [
     {
@@ -92,15 +87,7 @@ export default function CommandCenter() {
               <Cpu className="w-4 h-4" />
               <span>{t("ai_model")}</span>
             </div>
-            <button
-              onClick={toggleLanguage}
-              className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-neutral-400 hover:text-white bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 rounded-lg transition-all"
-              title={
-                locale === "en" ? "Cambiar a Español" : "Switch to English"
-              }>
-              <Globe className="w-3 h-3" />
-              {locale === "en" ? "ES" : "EN"}
-            </button>
+            <LanguageSwitcher />
             <button
               onClick={() => handleSignOut(locale)}
               className="flex items-center gap-2 px-4 py-2 text-xs font-bold text-neutral-400 hover:text-white bg-neutral-900 hover:bg-neutral-800 border border-neutral-800 hover:border-neutral-700 rounded-lg transition-all">

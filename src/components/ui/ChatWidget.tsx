@@ -8,7 +8,10 @@ import ReactMarkdown from "react-markdown";
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
-  const { messages, append, isLoading } = useChat({ id: "noctra-chat" }) as any;
+  const [messages, setMessages] = useState<
+    Array<{ id: string; role: string; content: string }>
+  >([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [input, setInput] = useState("");
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
@@ -19,8 +22,78 @@ export function ChatWidget() {
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     if (!input?.trim()) return;
-    await append({ role: "user", content: input });
+
+    // Add user message
+    const userMessage = {
+      id: Date.now().toString(),
+      role: "user",
+      content: input,
+    };
+    setMessages((prev) => [...prev, userMessage]);
     setInput("");
+    setIsLoading(true);
+
+    try {
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messages: [...messages, userMessage].map((m) => ({
+            role: m.role,
+            content: m.content,
+          })),
+        }),
+      });
+
+      if (!response.ok) throw new Error("API request failed");
+
+      // Read the stream
+      const reader = response.body?.getReader();
+      const decoder = new TextDecoder();
+      let aiResponse = "";
+
+      const aiMessage = {
+        id: (Date.now() + 1).toString(),
+        role: "assistant",
+        content: "",
+      };
+      setMessages((prev) => [...prev, aiMessage]);
+
+      if (reader) {
+        while (true) {
+          const { done, value } = await reader.read();
+          if (done) break;
+
+          const chunk = decoder.decode(value);
+          const lines = chunk.split("\n");
+
+          for (const line of lines) {
+            if (line.startsWith('0:"')) {
+              // Extract text from data stream format: 0:"text"\n
+              const match = line.match(/^0:"(.*)"\s*$/);
+              if (match) {
+                const text = match[1]
+                  .replace(/\\n/g, "\n")
+                  .replace(/\\r/g, "\r")
+                  .replace(/\\t/g, "\t")
+                  .replace(/\\"/g, '"')
+                  .replace(/\\\\/g, "\\");
+                aiResponse += text;
+                setMessages((prev) =>
+                  prev.map((m) =>
+                    m.id === aiMessage.id ? { ...m, content: aiResponse } : m
+                  )
+                );
+              }
+            }
+          }
+        }
+      }
+    } catch (error) {
+      console.error("Error:", error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const scrollToBottom = () => {
