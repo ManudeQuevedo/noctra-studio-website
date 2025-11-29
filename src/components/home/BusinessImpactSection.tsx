@@ -12,25 +12,25 @@ export function BusinessImpactSection() {
       key: "hosting",
       icon: Layers,
       value: "40%",
-      label: "Reduction in Hosting Costs",
+      label: t("metrics.hosting"),
     },
     {
       key: "conversion",
       icon: TrendingUp,
       value: "2.5x",
-      label: "Increase in Conversion",
+      label: t("metrics.conversion"),
     },
     {
       key: "ops",
       icon: Clock,
       value: "20h+",
-      label: "Saved Weekly on Ops",
+      label: t("metrics.ops"),
     },
     {
       key: "tools",
       icon: Shield,
       value: "100%",
-      label: "Data Ownership",
+      label: t("metrics.tools"),
     },
   ];
 

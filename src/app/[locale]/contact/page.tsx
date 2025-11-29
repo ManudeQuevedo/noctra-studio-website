@@ -34,15 +34,15 @@ function ContactForm() {
     MXN: [
       {
         label: t("form.budget_options.30-50k"),
-        value: "Foundation",
+        value: "Foundation ($30k - $50k)",
       },
       {
         label: t("form.budget_options.60-120k"),
-        value: "Architecture",
+        value: "Architecture ($60k - $120k)",
       },
       {
         label: t("form.budget_options.150k+"),
-        value: "Intelligence",
+        value: "Intelligence (+$150k)",
       },
       {
         label: t("budget.retainer"),
@@ -101,17 +101,6 @@ function ContactForm() {
   });
 
   const selectedBudget = watch("budget");
-
-  const getBudgetHelper = (budget: string) => {
-    if (!budget) return null;
-    if (budget.includes("Foundation") || budget.includes("Identity"))
-      return t("budget_helpers.30-50k");
-    if (budget.includes("Architecture") || budget.includes("Growth"))
-      return t("budget_helpers.60-120k");
-    if (budget.includes("Intelligence") || budget.includes("System"))
-      return t("budget_helpers.150k+");
-    return null;
-  };
 
   // Auto-fill service based on URL param
   useEffect(() => {
@@ -218,10 +207,46 @@ function ContactForm() {
               </motion.div>
             </div>
 
+            {/* Pricing Philosophy & Process Outline */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.6, delay: 0.3 }}
+              className="space-y-12 mt-16 border-l border-neutral-800 pl-8">
+              {/* Pricing Philosophy */}
+              <div className="space-y-4">
+                <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
+                  {t("pricing_philosophy.title")}
+                </h3>
+                <p className="text-neutral-300 leading-relaxed max-w-sm">
+                  {t("pricing_philosophy.content")}
+                </p>
+              </div>
+
+              {/* Process Outline */}
+              <div className="space-y-4">
+                <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
+                  {t("process_outline.title")}
+                </h3>
+                <ul className="space-y-2">
+                  {[0, 1, 2, 3].map((i) => (
+                    <li
+                      key={i}
+                      className="flex items-center gap-3 text-neutral-300">
+                      <span className="text-xs font-mono text-neutral-600">
+                        0{i + 1}
+                      </span>
+                      {t(`process_outline.steps.${i}`)}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            </motion.div>
+
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ duration: 0.6, delay: 0.4 }}
               className="space-y-12 mt-16">
               {/* Details Block */}
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -489,17 +514,6 @@ function ContactForm() {
                       </option>
                     ))}
                   </select>
-
-                  {selectedBudget && (
-                    <motion.div
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      className="absolute top-full left-0 w-full mt-2 p-3 bg-neutral-900/90 border border-neutral-800 rounded-lg z-20 pointer-events-none">
-                      <p className="text-xs text-neutral-400">
-                        {getBudgetHelper(selectedBudget)}
-                      </p>
-                    </motion.div>
-                  )}
                 </div>
 
                 {/* Timeline */}

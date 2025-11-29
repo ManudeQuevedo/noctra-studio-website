@@ -302,8 +302,33 @@ export default function ServicesPage() {
         </div>
       </div>
 
+      {/* How We Work Section */}
+      <section className="w-full max-w-7xl mx-auto px-6 md:px-8 mb-32">
+        <div className="bg-neutral-100 dark:bg-neutral-900 rounded-2xl p-8 md:p-12 border border-neutral-200 dark:border-neutral-800">
+          <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
+            <div>
+              <h3 className="text-2xl font-bold mb-2">
+                {t("how_we_work.title")}
+              </h3>
+              <p className="text-neutral-500 dark:text-neutral-400">
+                {t("subtitle")}
+              </p>
+            </div>
+            <div className="flex flex-wrap gap-4">
+              {[0, 1, 2, 3].map((i) => (
+                <div
+                  key={i}
+                  className="px-4 py-2 bg-white dark:bg-neutral-950 border border-neutral-200 dark:border-neutral-800 rounded-full text-sm font-medium">
+                  {t(`how_we_work.steps.${i}`)}
+                </div>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Bottom Divider */}
-      <div className="w-full border-t border-neutral-200 dark:border-neutral-800 mt-32" />
+      <div className="w-full border-t border-neutral-200 dark:border-neutral-800" />
     </main>
   );
 }

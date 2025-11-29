@@ -1,5 +1,17 @@
 {
+  "PedigreeMarquee": {
+    "label": "// ENGINEERING DNA",
+    "headline": "7+ Years Shipping Critical Infrastructure.",
+    "terms": [
+      "ENTERPRISE SAAS",
+      "GLOBAL FINTECH",
+      "HIGH-SCALE E-COMMERCE",
+      "REAL-TIME DATA",
+      "SECURE ARCHITECTURE"
+    ]
+  },
   "HeroTextSection": {
+    "banner": "LED BY ENGINEERING TALENT WITH OVER 7 YEARS OF SHIPPING PRODUCTION SYSTEMS FOR LARGE-SCALE BRANDS.",
     "part1": "We don't just build websites. ",
     "part2": "We architect the silent, scalable systems that empower ",
     "part3": "visionary brands ",
@@ -7,10 +19,11 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Constructing the Digital Infrastructure for Modern Business.",
-      "subtitle": "We build the digital infrastructure that high-growth companies run on. Fast, scalable, and engineered for revenue.",
+      "title": "Clarity, craftsmanship, and modern engineering — for businesses that want to stand out.",
+      "subtitle": "We design and build clean, fast, and refined digital experiences using modern technologies. Built for growth, engineered for speed.",
       "trust_badge": "Global Standards. Based in Querétaro."
     },
+    "credibility": "Led by engineering talent with 7+ years shipping production systems for high-scale brands.",
     "intro_text": "We don't just make websites. We architect the silent, scalable systems that empower visionary companies to grow without friction.",
     "manifesto": {
       "text": "We are a [digital architecture agency] dedicated to bringing [clarity to the chaos]. With a precision team of engineers and designers, we build [silent systems] that empower [visionary companies] to scale without friction."
@@ -175,6 +188,78 @@
       "subtext": "Send your portfolio and GitHub. No cover letters."
     }
   },
+  "AboutPage": {
+    "hero": {
+      "title": "Engineering Clarity.",
+      "subtitle": "We exist to bring order to the digital chaos through rigorous architecture and precise execution."
+    },
+    "founder_note": {
+      "title": "A Note from the Founder.",
+      "content_1": "The digital landscape is cluttered. Everywhere you look, there's noise—unnecessary complexity, bloated code, and design that screams for attention without saying anything.",
+      "content_2": "At Noctra, we believe in the power of silence. We strip away the inessential to reveal the core. We don't just build websites; we engineer digital architectures that stand the test of time."
+    },
+    "team_narrative": {
+      "title": "A Collective of Engineering & Design.",
+      "content": "Noctra is a boutique studio by design. We scale our team to fit the project, bringing in specialized partners only when the architecture demands it. You pay for talent, not overhead."
+    },
+    "brand_anatomy": {
+      "title": "Brand Anatomy",
+      "subtitle": "The core elements that define our approach.",
+      "precision": {
+        "title": "Precision",
+        "desc": "Every pixel and line of code has a purpose."
+      },
+      "clarity": {
+        "title": "Clarity",
+        "desc": "Removing the inessential to reveal the core."
+      },
+      "scale": {
+        "title": "Scale",
+        "desc": "Systems designed to grow with your business."
+      }
+    },
+    "tech_radar": {
+      "title": "Tech Radar",
+      "intro": "We choose this stack because it guarantees speed, security, and long-term maintainability—not because it's trendy."
+    },
+    "process": {
+      "title": "The Methodology.",
+      "description": "A rigorous, four-step process designed to eliminate risk and guarantee results.",
+      "steps": [
+        {
+          "title": "Risk Assessment & Blueprinting",
+          "desc": "We audit your current state and define the architectural requirements before a single line of code is written.",
+          "checkpoint": "Deliverable: Technical Roadmap"
+        },
+        {
+          "title": "System Design",
+          "desc": "We engineer the core logic and data flows, ensuring the foundation is solid enough to support scale.",
+          "checkpoint": "Deliverable: Interactive Prototype"
+        },
+        {
+          "title": "Precision Execution",
+          "desc": "We build with strict coding standards and automated testing, ensuring every component is performant and bug-free.",
+          "checkpoint": "Deliverable: Staging Deployment"
+        },
+        {
+          "title": "Deployment & Handover",
+          "desc": "We manage the infrastructure setup and provide you with a turnkey system that is ready for growth.",
+          "checkpoint": "Deliverable: Production Launch"
+        }
+      ]
+    },
+    "compensation": {
+      "title": "Compensation Model",
+      "subtitle": "We value output, not hours. No haggling, no chasing invoices.",
+      "metric": "Project-Based Rates",
+      "description": "Compensation is scoped and agreed upon before a single line of code is written. Rates are determined by complexity and impact, not time.",
+      "terms": {
+        "deposit": "50% Commencement Deposit",
+        "completion": "50% Completion Payment",
+        "net0": "Net-0 Payment Terms (Immediate upon approval)"
+      }
+    }
+  },
   "Footer": {
     "hook": "Ready to bring clarity to the chaos?",
     "book_discovery": "Schedule Technical Discovery",
@@ -196,18 +281,18 @@
     "designed_in": "Designed & Engineered in Querétaro, MX. Operational Worldwide."
   },
   "Services": {
-    "section_title": "Our Services",
-    "learn_more": "Learn more",
-    "web_dev_title": "Digital Architecture",
-    "web_dev_desc": "High-performance Next.js ecosystems. Corporate Platforms, E-commerce Systems, Client Portals, API Integration, Bank-Grade Security.",
-    "branding_title": "Visual Identity",
-    "branding_desc": "Systems that scale. Strategic Branding, Design Systems, UI Kits, Social Media Assets, Typography Standards.",
-    "seo_title": "Growth Strategy",
-    "seo_desc": "Long-term visibility. Technical SEO Audits, Conversion Rate Optimization (CRO), Speed Optimization, Analytics Dashboards.",
-    "ai_title": "Intelligent Systems",
-    "ai_desc": "Reducing human labor. Custom AI Agents, CRM Automation (n8n/Make), Lead Qualification Bots, Internal Tooling.",
-    "explore_capabilities": "Explore all capabilities",
-    "lets_talk": "Let's talk!"
+    "title": "Our Capabilities",
+    "subtitle": "Comprehensive digital solutions engineered for growth.",
+    "learn_more": "Learn More",
+    "explore_capabilities": "Explore Capabilities",
+    "web_dev_title": "Web Development",
+    "web_dev_desc": "Digital Architecture: We don't just build websites; we engineer high-performance digital platforms. Our focus is on speed, scalability, and creating a seamless user experience that feels instantaneous.",
+    "branding_title": "Branding & Identity",
+    "branding_desc": "Strategic Identity: We strip away the noise to reveal your brand's core. We build visual systems that command authority and trust, designed to scale across every touchpoint.",
+    "ai_title": "AI Integration",
+    "ai_desc": "Intelligent Integration: We implement AI not as a gimmick, but as a force multiplier. We automate workflows and enhance user interactions with precision-engineered models.",
+    "seo_title": "SEO & Performance",
+    "seo_desc": "Technical Visibility: We engineer your site to be understood by machines. Clean code, semantic structure, and performance optimization that guarantees search engines prioritize your content."
   },
   "Pricing": {
     "title": "Engagement Models",
@@ -267,16 +352,24 @@
     }
   },
   "ServicesPage": {
-    "title": "Our Capabilities",
-    "subtitle": "A comprehensive toolkit to bring structure to the digital chaos.",
-    "web_dev": {
+    "title": "Our Expertise",
+    "subtitle": "Engineering-grade solutions for digital growth.",
+    "how_we_work": {
+      "title": "Our Process",
+      "steps": [
+        "Short Sprints",
+        "Modular Development",
+        "Figma-First",
+        "Direct Communication"
+      ]
+    },
+    "architecture": {
       "title": "Digital Architecture",
-      "problem": "Your website slows down as traffic spikes, hurting conversion and SEO.",
-      "solution": "We migrate you to a modern, scalable architecture deployed on global infrastructure.",
-      "focus": "Your website shouldn't just be a brochure; it should be a high-performance engine. We build sites that load instantly and convert visitors into customers.",
-      "why": "Faster load times = Higher SEO ranking and better user retention.",
+      "problem": "Slow, unscalable websites are costing you customers.",
+      "solution": "We build high-performance, scalable web applications.",
+      "focus": "Your website is your most important asset. We build it right.",
+      "why": "Speed and reliability are non-negotiable.",
       "process": [
-        "System Architecture Design",
         "Next.js & React Implementation",
         "Performance Optimization",
         "Accessibility Compliance"
@@ -383,6 +476,7 @@
   "WorkPage": {
     "title": "Case Studies — How We Think, Design, and Ship",
     "subtitle": "These are concept case studies based on common business scenarios. They demonstrate how Noctra Studio approaches real-world challenges with modern architecture.",
+    "disclaimer": "These case studies are conceptual explorations designed to demonstrate Noctra Studio's methodology, problem-solving, and approach to digital transformation.",
     "cta_title": "Not sure where your infrastructure is failing?",
     "cta_button": "Request Architecture Audit",
     "see_full_case_study": "See full Case Study",
@@ -521,7 +615,13 @@
   },
   "BusinessImpact": {
     "title": "We don't just write code. We drive results.",
-    "subtitle": "Our systems are engineered to reduce operational costs, increase conversion rates, and provide total data ownership."
+    "subtitle": "Our systems are engineered to reduce operational costs, increase conversion rates, and provide total data ownership.",
+    "metrics": {
+      "hosting": "Hosting Cost Reduction",
+      "conversion": "Conversion Increase",
+      "ops": "Weekly Ops Savings",
+      "tools": "Data Ownership"
+    }
   },
   "ModernStack": {
     "title": "Enterprise Infrastructure",
@@ -570,7 +670,7 @@
       "label": "// OUR DNA",
       "title_line1": "ENGINEERING",
       "title_line2": "CLARITY.",
-      "description": "Chaos is the default state of the digital world. We exist to bring order. Through rigorous architecture and precise execution, we build systems that don't just work—they endure.",
+      "description": "Led by engineering talent with over 7 years of shipping production systems for large-scale brands.",
       "system_monitor": {
         "header": "NOCTRA_SYSTEM_V1.0",
         "live": "LIVE",
@@ -585,116 +685,7 @@
       }
     }
   },
-  "AboutPage": {
-    "hero": {
-      "title": "We architect clarity.",
-      "subtitle": "Born from a developer’s drive to master total product quality, Noctra bridges the gap between robust engineering and design intuition. We are a high-performance team fueled by a growth mindset and radical attention to detail. We don’t just deliver projects; we craft outstanding results that elevate both our clients' vision and our own standards of excellence."
-    },
-    "founder_note": {
-      "title": "Engineering as a Growth Lever",
-      "content_1": "The digital landscape is cluttered. Everywhere you look, there's noise—unnecessary complexity, bloated code, and design that screams for attention without saying anything.",
-      "content_2": "We don't just design interfaces; we architect the engines that power your business. In a world of slow templates, speed and reliability are your competitive advantage.",
-      "signature": "Manu, Founder — Senior Engineer & Architect | 6+ Years Shipping Production Systems"
-    },
-    "brand_anatomy": {
-      "section_label": "BRAND ANATOMY",
-      "etymology": {
-        "label": "01 // ETYMOLOGY",
-        "headline": "Navigation in the Dark.",
-        "body": "Noctra comes from the night. The digital space is dark, crowded, and confusing. Our role is to serve as the navigation system—bringing structure and visibility to brands lost in the noise."
-      },
-      "symbology": {
-        "label": "02 // SYMBOLOGY",
-        "headline": "The Moon & The Square.",
-        "body": "A guiding light. The Square represents stability, logic, and trust. The Moon symbolizes transformation and visibility. Together, they form the balance between engineering and art."
-      },
-      "output": {
-        "label": "03 // OUTPUT",
-        "headline": "Infrastructure as a Service.",
-        "body": "We take complex business requirements and translate them into scalable, type-safe digital systems."
-      }
-    },
-    "tech_radar": {
-      "title": "Technical Specification",
-      "intro": "We choose this stack because it guarantees speed, security, and long-term maintainability—not because it's trendy.",
-      "ui_ux": "01 — UI/UX & Strategy",
-      "frontend": "02 — Frontend",
-      "backend_db": "03 — Backend & Database",
-      "cms": "04 — CMS (Headless)",
-      "infrastructure": "05 — Infrastructure"
-    },
-    "process": {
-      "title": "How We Work",
-      "description": "A rigorous approach to digital engineering. We don't guess; we execute.",
-      "nda_note": "We work with sensitive enterprise IP. These protocols protect our clients and your professional reputation.",
-      "steps": {
-        "0": {
-          "title": "Technical Discovery",
-          "desc": "We don't just take a ticket. We sit with you to unearth the business logic, the edge cases, and the long-term goals. We ensure we are solving the right problem before writing a single line of code.",
-          "checkpoint": "Output: Detailed Scope & Strategy Document"
-        },
-        "1": { 
-          "title": "System Architecture", 
-          "desc": "Code without a plan is technical debt. We blueprint your database schemas, API routes, and security protocols upfront. We measure twice so we only have to cut once.",
-          "checkpoint": "Output: Technical Blueprint & Stack Selection"
-        },
-        "2": { 
-          "title": "Build", 
-          "desc": "No black boxes. We work in transparent sprints. You get access to a live staging environment so you can touch and feel the progress every single week. No surprises at the finish line.",
-          "checkpoint": "Output: Weekly Staging Deploys & Code Review"
-        },
-        "3": { 
-          "title": "Production Release", 
-          "desc": "Launch day shouldn't be stressful. We run rigorous performance audits, SEO checks, and stress tests. We don't just hand over the keys; we ensure the engine is purring.",
-          "checkpoint": "Output: Performance Certification"
-        }
-      }
-    },
-    "TargetAudience": {
-      "title": "Built for those who value excellence.",
-      "professional": {
-        "headline": "Practice & Reputation",
-        "target": "Doctors, Lawyers, Architects",
-        "copy": "Your digital presence should carry the same authority as your practice. We build portfolios that build trust instantly."
-      },
-      "business": {
-        "headline": "Growth & Scale",
-        "target": "Startups, Retail, Hospitality",
-        "copy": "Stop renting your audience. We engineer assets that convert traffic into revenue and scale with your ambition."
-      },
-      "enterprise": {
-        "headline": "Security & Infrastructure",
-        "target": "Corporate, FinTech, SaaS",
-        "copy": "Robust, type-safe architecture designed for security, uptime, and seamless team integration."
-      }
-    },
-    "manifesto": {
-      "title": "The Noctra Standard",
-      "cards": [
-        { "title": "No Templates", "desc": "Custom code for maximum security and full IP ownership. No bloated dependencies." },
-        { "title": "Speed First", "desc": "Performance drives conversion rates and SEO rankings. It is not negotiable." },
-        { "title": "Radical Clarity", "desc": "We communicate openly. No jargon, just results." }
-      ]
-    },
-    "impact": {
-      "title": "The Noctra Ecosystem",
-      "subtitle": "Building systems that extend beyond client work—supporting causes and forging talent.",
-      "volunteering": {
-        "title": "Technological Volunteering",
-        "desc": "We believe digital clarity should be accessible to those changing the world. Each year, we select one non-profit organization to receive a complete digital transformation, pro bono.",
-        "note_label": "Note:",
-        "note_text": "The program covers 100% of strategy, design, and development fees. Organizations remain responsible for their own domain and infrastructure costs to ensure full asset ownership.",
-        "cta": "Apply for Volunteering"
-      },
-      "mentorship": {
-        "title": "Technical Mentorship",
-        "desc": "We don't hire interns; we train architects. A rigorous mentorship program for developers with raw talent and relentless drive. You build real systems; we provide the blueprint.",
-        "note_label": "Note:",
-        "note_text": "This is not a full-time role. It is a paid mentorship opportunity per completed project, designed to sharpen your engineering, logic, and problem-solving skills in real-world scenarios.",
-        "cta": "Join the Mentorship"
-      }
-    }
-  },
+
   "Contact": {
     "title": "Ready to start?",
     "subtitle": "Let's discuss how we can elevate your brand. Reach out to us for a consultation.",
@@ -706,53 +697,57 @@
   "ContactPage": {
     "hero": {
       "title": "Let's build something meaningful.",
-      "subtitle": "We are selective with our partners. Tell us about your vision, and if we are a match, we will build it."
+      "subtitle": "We are selective with our partners. Tell us your vision, and if we are a match, we will build it."
     },
-    "commitment_badge": "Zero fluff. Direct access to engineering. Response within 24 hours.",
+    "commitment_badge": "No fluff. Direct engineering access. 24h Response.",
+    "pricing_philosophy": {
+      "title": "How We Price",
+      "content": "We price based on Scope, Complexity, and Value. No hidden hourly billing. Fixed-price contracts for predictable budgets."
+    },
+    "process_outline": {
+      "title": "What happens next?",
+      "steps": [
+        "Discovery Call (20 mins)",
+        "Technical Proposal (48 hours)",
+        "Sprint & Build",
+        "Launch & Handover"
+      ]
+    },
     "details": {
-      "email_label": "Email",
+      "email_label": "Mail",
       "location_label": "Studio",
       "location_value": "Querétaro, MX",
       "time_label": "Local Time"
     },
     "form": {
       "name_label": "Name",
-      "name_placeholder": "Elena Vance",
+      "name_placeholder": "Alejandro Vega",
       "email_label": "Email",
-      "email_placeholder": "founder@visionary.com",
+      "email_placeholder": "director@yourcompany.com",
       "website_label": "Website (Optional)",
-      "website_placeholder": "visionary.com",
-      "service_label": "Service Interest",
+      "website_placeholder": "yourcompany.com",
+      "service_label": "Service",
       "service_placeholder": "Select a service...",
       "service_options": {
         "digital_architecture": "Digital Architecture",
         "visual_identity": "Visual Identity",
-        "ai_automation": "Intelligent Systems",
-        "growth": "Growth"
+        "ai_automation": "AI Automation",
+        "growth": "Growth & SEO"
       },
-      "budget_label": "Project Budget (MXN)",
+      "budget_label": "Budget Range",
       "budget_placeholder": "Select a range...",
-    "budget_options": {
-      "30-50k": "$30k - $50k (MVP / Launch)",
-      "60-120k": "$60k - $120k (Growth / Migration)",
-      "150k+": "+$150k (Enterprise Platform)"
-    },
-    "budget_helpers": {
-      "30-50k": "Foundation (MX$29,900): Complete brand kit + 1-3 page Next.js website + Figma source files + basic SEO setup + 2 rounds of revisions.",
-      "60-120k": "Architecture (MX$70k-150k): Custom website or platform + animations + API integrations + comprehensive SEO foundation + analytics dashboards + 4 rounds of revisions.",
-      "150k+": "Intelligence (MX$150k+): AI automation + workflow systems + custom dashboards + scalable cloud infrastructure + ongoing optimization + unlimited revisions."
-    },
-    "message_label": "Project Details",
-      "details_label": "Project Details",
-      "details_placeholder": "We are looking to re-architect our digital presence...",
-      "timeline_label": "How soon do you need this?",
+      "budget_options": {
+        "30-50k": "$30k - $50k (MVP / Launch)",
+        "60-120k": "$60k - $120k (Growth / Migration)",
+        "150k+": "+$150k (Enterprise Platform)"
+      },
+      "timeline_label": "Timeline",
       "timeline_placeholder": "Select a timeline...",
       "timeline_options": {
-        "asap": "ASAP (Rush)",
-        "1_month": "Within 1 Month",
-        "3_months": "Within 3 Months"
+        "asap": "ASAP",
+        "1_month": "1 Month",
+        "3_months": "3+ Months"
       },
-      "success_criteria_label": "Success Metric (#1 Goal)",
       "success_criteria_placeholder": "e.g., 3x more qualified leads",
       "submit": "Send Signal",
       "sending": "Transmitting..."
@@ -936,7 +931,49 @@
     "button_send": "Send Report",
     "success_title": "TRANSMISSION COMPLETE",
     "success_desc": "Your architecture is queued for manual review. Check your inbox for the ticket confirmation.",
-    "button_reset": "Return to Base"
+    "button_reset": "Return to Base",
+    "metric_explanations": {
+      "performance": "Measures how fast your site loads. Google ranks fast sites higher, and users buy more from them.",
+      "seo": "Determines if Google can read your site. Low scores mean you are invisible to potential customers.",
+      "accessibility": "Ensures all users can access your content. Crucial for legal compliance and reaching wider audiences.",
+      "bestPractices": "Code health and security. Poor scores here indicate a fragile site prone to bugs.",
+      "security": "Protects your users and data. A secure site builds trust and prevents malicious attacks."
+    },
+    "scan_steps": {
+      "step1": "Initializing secure handshake...",
+      "step2": "Querying global DNS propagation...",
+      "step3": "Validating SSL Certificate chain (Qualys)...",
+      "step4": "Analyzing domain reputation vectors...",
+      "step5": "Cross-referencing spam blacklists...",
+      "step6": "Finalizing security scorecard..."
+    },
+    "headlines": {
+      "critical": "CRITICAL PERFORMANCE ISSUES DETECTED",
+      "optimization": "OPTIMIZATION REQUIRED",
+      "nominal": "SYSTEM NOMINAL // READY FOR SCALE"
+    },
+    "badges": {
+      "excellent": "EXCELLENT",
+      "needs_work": "NEEDS WORK",
+      "critical": "CRITICAL",
+      "secure": "SECURE",
+      "warning": "WARNING",
+      "vulnerable": "VULNERABLE",
+      "analyzing": "ANALYZING...",
+      "processing": "PROCESSING"
+    },
+    "labels": {
+      "performance": "PERFORMANCE",
+      "security": "SECURITY POSTURE",
+      "accessibility": "ACCESSIBILITY",
+      "best_practices": "BEST PRACTICES",
+      "seo": "SEO"
+    },
+    "messages": {
+      "deep_scan": "Deep scan initiated. Results will be emailed.",
+      "diagnosis_label": "NOCTRA DIAGNOSIS",
+      "analyzing": "Analyzing..."
+    }
   },
   "Studio": {
     "title": "NOCTRA_COMMAND_CENTER",
@@ -992,27 +1029,135 @@
       "title": "Case Studies — Real Problem Solving Through Design and Code",
       "subtitle": "Even without client projects yet, these examples show how we approach real business challenges with modern web development, UI/UX, and strategic thinking."
     },
+    "disclaimer": "These case studies are conceptual explorations designed to demonstrate Noctra Studio's methodology, problem-solving, and approach to digital transformation.",
     "projects": {
       "cafe_aurora": {
         "name": "Café Aurora",
         "concept": "Website Redesign for a Local Coffee Shop",
         "challenge": "Poor online visibility and an outdated website design that didn't reflect the brand's premium positioning.",
         "solution": "Complete Next.js overhaul with GSAP animations, mobile-first design, and an interactive menu system that increased engagement by 300%.",
-        "tech_stack": ["Next.js", "Tailwind CSS", "GSAP", "Vercel"]
+        "tech_stack": ["Next.js", "Tailwind CSS", "GSAP", "Vercel"],
+        "results": [
+          {
+            "metric": "300%",
+            "label": "Engagement",
+            "context": "Menu Interaction",
+            "action": "Target"
+          },
+          {
+            "metric": "100",
+            "label": "Performance",
+            "context": "Lighthouse Score",
+            "action": "Achieved"
+          },
+          {
+            "metric": "<1s",
+            "label": "Load Time",
+            "context": "First Contentful Paint",
+            "action": "Optimized"
+          }
+        ],
+        "process": [
+          { "step": "Discovery", "description": "Analyzed local competitors and user behavior." },
+          { "step": "Strategy", "description": "Defined a mobile-first approach for on-the-go customers." },
+          { "step": "Build", "description": "Implemented Next.js for speed and SEO." }
+        ]
       },
       "strongfit": {
         "name": "StrongFit",
         "concept": "High-Conversion Landing Page for Fitness Coach",
         "challenge": "Low conversion rates and lack of trust signals on the existing landing page.",
         "solution": "Strategic Figma design converted to React components with focused CTA strategy, A/B testing, and social proof integration.",
-        "tech_stack": ["Figma", "React", "Conversion Optimization", "Analytics"]
+        "tech_stack": ["Figma", "React", "Conversion Optimization", "Analytics"],
+        "results": [
+          {
+            "metric": "0.00",
+            "label": "CLS",
+            "context": "Zero Layout Shift",
+            "action": "Achieved"
+          },
+          {
+            "metric": "+40%",
+            "label": "Conversion",
+            "context": "Lead Gen Form",
+            "action": "Projected"
+          },
+          {
+            "metric": "A",
+            "label": "Accessibility",
+            "context": "WCAG 2.1",
+            "action": "Compliant"
+          }
+        ],
+        "process": [
+          { "step": "Audit", "description": "Identified friction points in the user journey." },
+          { "step": "Design", "description": "Created high-fidelity prototypes in Figma." },
+          { "step": "Dev", "description": "Pixel-perfect implementation in React." }
+        ]
       },
       "fintrack": {
         "name": "FinTrack",
         "concept": "Finance Analytics UI/UX Dashboard",
         "challenge": "Complex data visualization needs and overwhelming interface for finance professionals.",
         "solution": "Clean dashboard UI with Chart.js integration, dark mode support, and scalable component architecture for future expansion.",
-        "tech_stack": ["SaaS Architecture", "Data Visualization", "Component Library", "TypeScript"]
+        "tech_stack": ["SaaS Architecture", "Data Visualization", "Component Library", "TypeScript"],
+        "results": [
+          {
+            "metric": "Real-time",
+            "label": "Sync",
+            "context": "WebSocket Data",
+            "action": "Enabled"
+          },
+          {
+            "metric": "60fps",
+            "label": "Rendering",
+            "context": "Complex Charts",
+            "action": "Optimized"
+          },
+          {
+            "metric": "100%",
+            "label": "Type Safety",
+            "context": "TypeScript Coverage",
+            "action": "Enforced"
+          }
+        ],
+        "process": [
+          { "step": "Architecture", "description": "Defined data models and API interfaces." },
+          { "step": "UI Design", "description": "Designed a dark-mode first interface for data density." },
+          { "step": "Engineering", "description": "Built reusable visualization components." }
+        ]
+      },
+      "vaultra": {
+        "name": "Vaultra",
+        "concept": "Cybersecurity Interface",
+        "challenge": "Visualizing complex security threats without overwhelming the user.",
+        "solution": "A minimalist, high-contrast interface that prioritizes critical alerts and actionable intelligence.",
+        "tech_stack": ["Next.js", "Vercel", "Auth0"],
+        "results": [
+          {
+            "metric": "A+",
+            "label": "Security",
+            "context": "Security Headers",
+            "action": "Hardened"
+          },
+          {
+            "metric": "0ms",
+            "label": "Leaks",
+            "context": "Data Exposure",
+            "action": "Prevented"
+          },
+          {
+            "metric": "2FA",
+            "label": "Auth",
+            "context": "Multi-Factor",
+            "action": "Integrated"
+          }
+        ],
+        "process": [
+          { "step": "Threat Model", "description": "Analyzed potential attack vectors." },
+          { "step": "UX Strategy", "description": "Prioritized alert visibility and response time." },
+          { "step": "Implementation", "description": "Secure coding practices and headers." }
+        ]
       }
     },
     "labels": {

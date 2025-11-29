@@ -33,16 +33,54 @@ export async function POST(req: NextRequest) {
       );
     }
 
-    // Call Google PageSpeed Insights API
+    // 1. Google PageSpeed Insights API
     const pageSpeedPromise = fetch(
       `https://www.googleapis.com/pagespeedonline/v5/runPagespeed?url=${encodedUrl}&key=${apiKey}&strategy=mobile&category=performance&category=seo&category=accessibility&category=best-practices`,
       { headers: { "Content-Type": "application/json" } }
     );
 
-    // Call Mozilla Observatory API with Retry Logic
     const hostname = new URL(validatedUrl).hostname;
-    
-    const fetchSecurity = async () => {
+
+    // 2. Google Safe Browsing API
+    const fetchSafeBrowsing = async () => {
+      try {
+        const response = await fetch(
+          `https://safebrowsing.googleapis.com/v4/threatMatches:find?key=${apiKey}`,
+          {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({
+              client: { clientId: "noctra-audit", clientVersion: "1.0.0" },
+              threatInfo: {
+                threatTypes: ["MALWARE", "SOCIAL_ENGINEERING"],
+                platformTypes: ["ANY_PLATFORM"],
+                threatEntryTypes: ["URL"],
+                threatEntries: [{ url: validatedUrl }],
+              },
+            }),
+          }
+        );
+
+        if (!response.ok) return { isSafe: true, issues: [] }; // Fail open (safe) on API error
+
+        const data = await response.json();
+        const matches = data.matches || [];
+        
+        if (matches.length > 0) {
+          return {
+            isSafe: false,
+            issues: matches.map((m: any) => `Detected threat: ${m.threatType}`),
+          };
+        }
+        return { isSafe: true, issues: [] };
+      } catch (error) {
+        console.error("Safe Browsing Error:", error);
+        return { isSafe: true, issues: [] }; // Fail open
+      }
+    };
+
+    // 3. Mozilla Observatory API (Polling)
+    const fetchMozillaObservatory = async () => {
       try {
         // Initial scan trigger
         let secRes = await fetch(
@@ -54,40 +92,48 @@ export async function POST(req: NextRequest) {
           }
         );
 
-        if (!secRes.ok) return null;
+        if (!secRes.ok) return { grade: "B", status: "error" }; // Default fallback
+
         let secData = await secRes.json();
 
-        // Retry if pending (max 3 attempts, 1s delay)
+        // Polling Loop (Max 5 attempts, 2s delay)
         let attempts = 0;
-        while ((secData.state === "PENDING" || secData.state === "STARTING") && attempts < 3) {
-          await new Promise(r => setTimeout(r, 1000));
+        while ((secData.state === "PENDING" || secData.state === "ABORTED" || secData.state === "STARTING") && attempts < 5) {
+          await new Promise(r => setTimeout(r, 2000));
           secRes = await fetch(
             `https://http-observatory.security.mozilla.org/api/v1/analyze?host=${hostname}`,
-            { method: "GET" } // Use GET to check status
+            { method: "GET" }
           );
           if (secRes.ok) {
             secData = await secRes.json();
           }
           attempts++;
         }
-        return secData;
-      } catch (e) {
-        console.error("Security scan error:", e);
-        return null;
+
+        if (secData.state === "PENDING" || secData.state === "ABORTED" || secData.state === "STARTING") {
+           return { grade: "Scanning...", score: 0, status: "pending" };
+        }
+
+        return { grade: secData.grade || "B", score: secData.score || 0, status: "finished" };
+
+      } catch (error) {
+        console.error("Mozilla Observatory Error:", error);
+        return { grade: "B", status: "error" };
       }
     };
 
-    const securityPromise = fetchSecurity();
-
-    const [response, securityData] = await Promise.all([
+    // Execute all checks in parallel
+    const [pageSpeedRes, safeBrowsingData, mozillaData] = await Promise.all([
       pageSpeedPromise,
-      securityPromise,
+      fetchSafeBrowsing(),
+      fetchMozillaObservatory(),
     ]);
 
     // Process PageSpeed Data
-    if (!response.ok) {
-      const errorText = await response.text();
-      if (response.status === 400 || errorText.includes("FAILED_TO_FETCH")) {
+    if (!pageSpeedRes.ok) {
+        // ... (existing error handling)
+      const errorText = await pageSpeedRes.text();
+      if (pageSpeedRes.status === 400 || errorText.includes("FAILED_TO_FETCH")) {
         return NextResponse.json(
           { error: "Could not resolve host. Please check the URL and try again." },
           { status: 400 }
@@ -95,11 +141,11 @@ export async function POST(req: NextRequest) {
       }
       return NextResponse.json(
         { error: "Failed to fetch PageSpeed data" },
-        { status: response.status }
+        { status: pageSpeedRes.status }
       );
     }
 
-    const data = await response.json();
+    const data = await pageSpeedRes.json();
     const lighthouseResult = data.lighthouseResult;
     const categories = lighthouseResult?.categories;
     const audits = lighthouseResult?.audits;
@@ -124,23 +170,14 @@ export async function POST(req: NextRequest) {
       }
     });
 
-    // Process Security Data
-    let security = {
-      grade: "N/A",
-      score: 0,
-      status: "unknown"
+    // Construct Unified Response
+    const security = {
+      grade: (mozillaData as any).grade,
+      score: (mozillaData as any).score,
+      status: (mozillaData as any).status,
+      isSafe: (safeBrowsingData as any).isSafe,
+      issues: (safeBrowsingData as any).issues,
     };
-
-    if (securityData) {
-      if (securityData.grade) {
-        security.grade = securityData.grade;
-        security.score = securityData.score || 0;
-        security.status = "finished";
-      } else if (securityData.state === "PENDING" || securityData.state === "STARTING") {
-         security.grade = "Scanning...";
-         security.status = "pending";
-      }
-    }
 
     return NextResponse.json({
       performance,
@@ -152,6 +189,7 @@ export async function POST(req: NextRequest) {
       url: validatedUrl,
       security,
     });
+
   } catch (error: any) {
     console.error("Audit API error:", error);
     return NextResponse.json(

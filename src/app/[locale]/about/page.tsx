@@ -111,7 +111,21 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 2.5. Brand Anatomy - NEW SECTION */}
+      {/* 2.5. Team Narrative */}
+      <section className="py-24 px-6 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10 bg-neutral-50 dark:bg-neutral-900/50">
+        <div className="max-w-3xl mx-auto text-center">
+          <FadeIn>
+            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-neutral-50">
+              {t("team_narrative.title")}
+            </h2>
+            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed text-balance">
+              {t("team_narrative.content")}
+            </p>
+          </FadeIn>
+        </div>
+      </section>
+
+      {/* 3. Brand Anatomy */}
       <BrandAnatomy />
 
       {/* 3. The Tech Engine (Spec Sheet) */}

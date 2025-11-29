@@ -1,9 +1,11 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
 import { HeroTextSection } from "@/components/home/HeroTextSection";
+import { PedigreeMarquee } from "@/components/home/PedigreeMarquee";
 import { SiteAuditTool } from "@/components/home/SiteAuditTool";
 import { EngagementModels } from "@/components/sections/EngagementModels";
 import { generatePageMetadata } from "@/lib/metadata";
+import { getTranslations } from "next-intl/server";
 
 // Lazy load heavy components below the fold
 const ServicesGrid = dynamic(
@@ -86,7 +88,12 @@ const SERVICE_IMAGES = {
  * - Target audience breakdown
  * - Philosophy section with tech marquee
  */
-export default async function HomePage() {
+export default async function HomePage({
+  params: { locale },
+}: {
+  params: { locale: string };
+}) {
+  const t = await getTranslations({ locale, namespace: "HomePage" });
   const images = SERVICE_IMAGES;
 
   return (
@@ -95,6 +102,7 @@ export default async function HomePage() {
       <Hero />
 
       {/* SECTION 2: The Intro (Lead Statement) */}
+      <PedigreeMarquee />
       <HeroTextSection />
 
       {/* SECTION 3: Site Audit Tool (Lead Magnet) */}
