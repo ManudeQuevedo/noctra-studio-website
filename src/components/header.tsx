@@ -104,7 +104,7 @@ export function Header() {
   const navItems = [
     { label: t("home"), href: "/" },
     { label: t("services"), href: "/services" },
-    { label: t("case_studies"), href: "/case-studies" },
+    { label: t("case_studies"), href: "/work" },
     { label: t("about"), href: "/about" },
     { label: t("contact"), href: "/contact" },
   ];

@@ -427,6 +427,14 @@
         "context": "Plataforma SaaS para profesionales financieros.",
         "challenge": "Datos complejos, UI saturada, carga cognitiva.",
         "approach": "Reestructuración de arquitectura de información, librería de componentes, Chart.js."
+      },
+      "vaultra": {
+        "tag1": "Ciberseguridad",
+        "tag2": "FinTech",
+        "tag3": "Concepto",
+        "context": "Infraestructura de pagos de próxima generación que requiere seguridad de grado bancario.",
+        "challenge": "El escalado rápido expuso vulnerabilidades. Las revisiones de seguridad manuales ralentizaban la velocidad de despliegue y el stack heredado fallaba en las comprobaciones de cumplimiento modernas.",
+        "approach": "Diseñamos una arquitectura frontend Zero-Trust. Al implementar escaneo de seguridad CI/CD automatizado y migrar a la red Edge de Vercel con encabezados CSP estrictos, eliminamos la superficie de ataque."
       }
     },
     "modal": {
@@ -445,9 +453,9 @@
           {"step": "Construcción", "description": "Implementación Next.js, integración Stripe, configuración CMS"}
         ],
         "results": [
-          {"metric": "0.8s", "label": "Tiempo de Carga Promedio"},
-          {"metric": "100%", "label": "Puntuación Lighthouse"},
-          {"metric": "+240%", "label": "Tráfico Móvil"}
+          {"metric": "300%", "label": "Interacción Menú", "context": "Medido por profundidad de clics en ítems del menú.", "action": "Filtrado interactivo reemplazó el scroll de PDF estático."},
+          {"metric": "<100ms", "label": "Tiempo de Carga", "context": "LCP en redes 4G.", "action": "Generación estática (SSG) + Optimización de imágenes."},
+          {"metric": "+40%", "label": "Búsqueda Local", "context": "Aumento en descubrimiento en Google Maps.", "action": "Implementación de Datos Estructurados (Schema.org)."}
         ]
       },
       "strongfit": {
@@ -465,9 +473,9 @@
           {"step": "Construcción", "description": "Implementación React, configuración de analíticas, validación de formularios"}
         ],
         "results": [
-          {"metric": "3.2x", "label": "Tasa de Conversión"},
-          {"metric": "47%", "label": "Reducción de Rebote"},
-          {"metric": "$8.4k", "label": "Ingresos Mensuales Promedio"}
+          {"metric": "2x", "label": "Tasa de Conversión", "context": "Ratio Visitante-a-Reserva.", "action": "Lógica de CTA sticky + Posicionamiento de Prueba Social."},
+          {"metric": "0.00", "label": "Cambio de Diseño", "context": "Puntuación CLS de 0.00.", "action": "Relaciones de aspecto definidas para todos los assets."},
+          {"metric": "Instant", "label": "Velocidad Test A/B", "context": "Tiempo para desplegar nuevas variantes de títulos.", "action": "Integración CMS Headless para ediciones instantáneas."}
         ]
       },
       "fintrack": {
@@ -485,9 +493,29 @@
           {"step": "Construcción", "description": "Migración a TypeScript, configuración Chart.js, gestión de estado"}
         ],
         "results": [
-          {"metric": "-65%", "label": "Tickets de Soporte"},
-          {"metric": "4.8/5", "label": "Satisfacción de Usuario"},
-          {"metric": "32%", "label": "Adopción de Funciones"}
+          {"metric": "-40%", "label": "Tickets Soporte", "context": "Reducción en consultas 'Cómo hago...'.", "action": "Arquitectura de Información Intuitiva + Tooltips."},
+          {"metric": "<50ms", "label": "Sincronización Datos", "context": "Latencia entre base de datos y UI.", "action": "Actualizaciones UI optimistas + Caché Edge."},
+          {"metric": "70%", "label": "Adopción Modo Oscuro", "context": "70% de usuarios cambiaron en semana 1.", "action": "Detección preferencia sistema + Toggle."}
+        ]
+      },
+      "vaultra": {
+        "title": "Vaultra",
+        "subtitle": "Infraestructura Fintech Zero-Trust",
+        "challenge": "El escalado rápido expuso vulnerabilidades. Las revisiones de seguridad manuales ralentizaban la velocidad de despliegue y el stack heredado fallaba en las comprobaciones de cumplimiento modernas.",
+        "context": "Vaultra es un proveedor de infraestructura de pagos de próxima generación que maneja datos financieros confidenciales para clientes empresariales.",
+        "solution": "Diseñamos una arquitectura frontend Zero-Trust. Al implementar escaneo de seguridad CI/CD automatizado y migrar a la red Edge de Vercel con encabezados CSP estrictos, eliminamos la superficie de ataque.",
+        "stack": ["Next.js 14", "Vercel Edge", "Auth0", "Snyk", "TypeScript", "Redis"],
+        "process": [
+          {"step": "Auditoría", "description": "Auditoría de seguridad integral y pruebas de penetración"},
+          {"step": "Arquitectura", "description": "Diseño zero-trust y planificación de red edge"},
+          {"step": "Endurecimiento", "description": "Implementación de CSP estricto y encabezados de seguridad"},
+          {"step": "Automatización", "description": "Integración de pipeline de escaneo de seguridad CI/CD"},
+          {"step": "Cumplimiento", "description": "Verificación de preparación SOC2 y documentación"}
+        ],
+        "results": [
+          {"metric": "A+", "label": "Grado de Seguridad", "context": "Puntuación Mozilla Observatory.", "action": "Headers CSP estrictos + Implementación HSTS."},
+          {"metric": "Listo", "label": "Cumplimiento SOC2", "context": "Preparación auditoría cumplimiento.", "action": "Escaneo vulnerabilidades CI/CD automatizado."},
+          {"metric": "0s", "label": "Inactividad Despliegues", "context": "Tiempo actividad durante lanzamientos.", "action": "Despliegues atómicos vía Vercel Edge."}
         ]
       }
     }

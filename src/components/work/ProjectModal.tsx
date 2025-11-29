@@ -4,6 +4,31 @@ import { motion, AnimatePresence } from "framer-motion";
 import { X } from "lucide-react";
 import { useEffect } from "react";
 import { useTranslations } from "next-intl";
+import {
+  SiNextdotjs,
+  SiTailwindcss,
+  SiGreensock,
+  SiReact,
+  SiFigma,
+  SiGoogleanalytics,
+  SiTypescript,
+  SiChartdotjs,
+  SiVercel,
+  SiAuth0,
+} from "react-icons/si";
+
+const techIcons: Record<string, any> = {
+  "Next.js": SiNextdotjs,
+  Tailwind: SiTailwindcss,
+  GSAP: SiGreensock,
+  React: SiReact,
+  Figma: SiFigma,
+  Analytics: SiGoogleanalytics,
+  TypeScript: SiTypescript,
+  "Chart.js": SiChartdotjs,
+  Vercel: SiVercel,
+  Auth0: SiAuth0,
+};
 
 interface ProjectModalProps {
   projectId: string | null;
@@ -23,14 +48,20 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   }, [onClose]);
 
   // Prevent body scroll when modal is open
+  // Prevent body scroll when modal is open
   useEffect(() => {
     if (projectId) {
+      const scrollbarWidth =
+        window.innerWidth - document.documentElement.clientWidth;
       document.body.style.overflow = "hidden";
+      document.body.style.paddingRight = `${scrollbarWidth}px`;
     } else {
       document.body.style.overflow = "unset";
+      document.body.style.paddingRight = "0px";
     }
     return () => {
       document.body.style.overflow = "unset";
+      document.body.style.paddingRight = "0px";
     };
   }, [projectId]);
 
@@ -53,6 +84,8 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
       (t.raw(`${projectId}.results`) as Array<{
         metric: string;
         label: string;
+        context: string;
+        action: string;
       }>) || [],
   };
 
@@ -66,14 +99,14 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
-          transition={{ duration: 0.2 }}
+          transition={{ duration: 0.3 }}
           className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[100] flex items-center justify-center p-4 overscroll-none"
           onClick={onClose}>
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
-            transition={{ duration: 0.3 }}
+            transition={{ type: "spring", duration: 0.5, bounce: 0 }}
             onClick={(e) => e.stopPropagation()}
             className="max-w-5xl w-full max-h-[90dvh] min-h-0 bg-neutral-950 border border-neutral-800 rounded-xl overflow-hidden flex flex-col shadow-2xl shadow-black/50">
             {/* Header */}
@@ -141,14 +174,22 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                     <h3 className="text-sm font-mono text-purple-400 uppercase tracking-wider mb-3">
                       The Stack
                     </h3>
-                    <div className="flex flex-wrap gap-2">
-                      {project.stack.map((tech: string) => (
-                        <span
-                          key={tech}
-                          className="px-3 py-1 text-xs border border-neutral-700 rounded-full text-neutral-300 bg-neutral-900">
-                          {tech}
-                        </span>
-                      ))}
+                    <div className="flex flex-wrap gap-3">
+                      {project.stack.map((tech: string) => {
+                        const Icon = techIcons[tech];
+                        if (!Icon) return null;
+                        return (
+                          <div key={tech} className="group relative">
+                            <div className="p-2 rounded-full bg-neutral-900 border border-neutral-800 text-neutral-400 group-hover:text-white group-hover:border-neutral-600 transition-colors">
+                              <Icon className="w-5 h-5" />
+                            </div>
+                            {/* Tooltip */}
+                            <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-2 py-1 bg-black border border-neutral-700 rounded text-xs text-white whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none">
+                              {tech}
+                            </div>
+                          </div>
+                        );
+                      })}
                     </div>
                   </div>
                 </div>
@@ -179,16 +220,28 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
               {/* The Results (KPIs) */}
               <div className="border-t border-neutral-800 pt-12">
                 <h3 className="text-2xl font-bold mb-8">The Results</h3>
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   {project.results.map((result: any) => (
                     <div
                       key={result.label}
-                      className="text-center p-6 border border-neutral-800 rounded-lg bg-neutral-900/50">
-                      <div className="text-4xl font-bold text-white mb-2">
-                        {result.metric}
+                      className="bg-neutral-900/50 border border-neutral-800 p-6 rounded-lg flex flex-col gap-3 text-left">
+                      <div>
+                        <div className="text-xs font-mono text-neutral-500 uppercase tracking-wider mb-1">
+                          {result.label}
+                        </div>
+                        <div className="text-3xl font-bold text-white">
+                          {result.metric}
+                        </div>
                       </div>
-                      <div className="text-sm font-mono text-neutral-500 uppercase tracking-wider">
-                        {result.label}
+
+                      <div className="space-y-2 pt-2 border-t border-neutral-800/50">
+                        <p className="text-sm text-neutral-300 leading-snug">
+                          {result.context}
+                        </p>
+                        <p className="text-xs text-neutral-500 leading-snug">
+                          <span className="text-emerald-500/80">Action:</span>{" "}
+                          {result.action}
+                        </p>
                       </div>
                     </div>
                   ))}

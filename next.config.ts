@@ -48,6 +48,16 @@ const nextConfig: NextConfig = {
         destination: '/work',
         permanent: true,
       },
+      {
+        source: '/:locale/case-study',
+        destination: '/:locale/work',
+        permanent: true,
+      },
+      {
+        source: '/:locale/case-studies',
+        destination: '/:locale/work',
+        permanent: true,
+      },
     ];
   },
 };

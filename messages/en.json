@@ -426,6 +426,14 @@
         "context": "SaaS platform for finance professionals.",
         "challenge": "Complex data, cluttered UI, cognitive load.",
         "approach": "Information architecture restructuring, component library, Chart.js."
+      },
+      "vaultra": {
+        "tag1": "Cybersecurity",
+        "tag2": "FinTech",
+        "tag3": "Concept",
+        "context": "Next-gen payment infrastructure requiring bank-grade security.",
+        "challenge": "Rapid scaling exposed vulnerabilities. Manual security reviews were slowing down deployment velocity, and the legacy stack failed modern compliance checks.",
+        "approach": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface."
       }
     },
     "modal": {
@@ -444,9 +452,9 @@
           {"step": "Build", "description": "Next.js implementation, Stripe integration, CMS setup"}
         ],
         "results": [
-          {"metric": "0.8s", "label": "Average Load Time"},
-          {"metric": "100%", "label": "Lighthouse Score"},
-          {"metric": "+240%", "label": "Mobile Traffic"}
+          {"metric": "300%", "label": "Menu Engagement", "context": "Measured by click-depth on menu items.", "action": "Interactive filtering replaced static PDF scrolling."},
+          {"metric": "<100ms", "label": "Load Time", "context": "LCP (Largest Contentful Paint) on 4G networks.", "action": "Static generation (SSG) + Image optimization."},
+          {"metric": "+40%", "label": "Local Search", "context": "Increase in Google Maps discovery.", "action": "Structured Data (Schema.org) implementation."}
         ]
       },
       "strongfit": {
@@ -464,9 +472,9 @@
           {"step": "Build", "description": "React implementation, analytics setup, form validation"}
         ],
         "results": [
-          {"metric": "3.2x", "label": "Conversion Rate"},
-          {"metric": "47%", "label": "Bounce Reduction"},
-          {"metric": "$8.4k", "label": "Avg. Monthly Revenue"}
+          {"metric": "2x", "label": "Conversion Rate", "context": "Visitor-to-Booking ratio.", "action": "Sticky CTA logic + Social Proof positioning."},
+          {"metric": "0.00", "label": "Layout Shift", "context": "CLS Score of 0.00.", "action": "Defined aspect ratios for all media assets."},
+          {"metric": "Instant", "label": "A/B Test Velocity", "context": "Time to deploy new headline variants.", "action": "Headless CMS integration for instant edits."}
         ]
       },
       "fintrack": {
@@ -484,9 +492,29 @@
           {"step": "Build", "description": "TypeScript migration, Chart.js setup, state management"}
         ],
         "results": [
-          {"metric": "-65%", "label": "Support Tickets"},
-          {"metric": "4.8/5", "label": "User Satisfaction"},
-          {"metric": "32%", "label": "Feature Adoption"}
+          {"metric": "-40%", "label": "Support Tickets", "context": "Reduction in 'How do I...' queries.", "action": "Intuitive Information Architecture + Tooltips."},
+          {"metric": "<50ms", "label": "Data Sync", "context": "Latency between database and UI.", "action": "Optimistic UI updates + Edge caching."},
+          {"metric": "70%", "label": "Dark Mode Adoption", "context": "70% of users switched within week 1.", "action": "System-preference detection + Toggle."}
+        ]
+      },
+      "vaultra": {
+        "title": "Vaultra",
+        "subtitle": "Zero-Trust Fintech Infrastructure",
+        "challenge": "Rapid scaling exposed vulnerabilities. Manual security reviews were slowing down deployment velocity, and the legacy stack failed modern compliance checks.",
+        "context": "Vaultra is a next-gen payment infrastructure provider handling sensitive financial data for enterprise clients.",
+        "solution": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface.",
+        "stack": ["Next.js 14", "Vercel Edge", "Auth0", "Snyk", "TypeScript", "Redis"],
+        "process": [
+          {"step": "Audit", "description": "Comprehensive security audit and penetration testing"},
+          {"step": "Architecture", "description": "Zero-trust design and edge network planning"},
+          {"step": "Hardening", "description": "Implementation of strict CSP and security headers"},
+          {"step": "Automation", "description": "CI/CD security scanning pipeline integration"},
+          {"step": "Compliance", "description": "SOC2 readiness verification and documentation"}
+        ],
+        "results": [
+          {"metric": "A+", "label": "Security Grade", "context": "Mozilla Observatory Score.", "action": "Strict CSP Headers + HSTS Implementation."},
+          {"metric": "Ready", "label": "SOC2 Compliance", "context": "Compliance audit preparation.", "action": "Automated CI/CD vulnerability scanning."},
+          {"metric": "0s", "label": "Downtime Deploys", "context": "Uptime during feature releases.", "action": "Atomic deployments via Vercel Edge."}
         ]
       }
     }

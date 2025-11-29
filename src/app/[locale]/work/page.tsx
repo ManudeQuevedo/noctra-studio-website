@@ -15,6 +15,8 @@ import {
   SiGoogleanalytics,
   SiTypescript,
   SiChartdotjs,
+  SiVercel,
+  SiAuth0,
 } from "react-icons/si";
 import { useTranslations } from "next-intl";
 
@@ -93,6 +95,25 @@ export default function WorkPage() {
       ],
       image: "/images/fintrack.jpg",
       imageAlt: "FinTrack dark mode dashboard mockup",
+    },
+    {
+      id: "vaultra",
+      title: "Vaultra",
+      tags: [
+        t("projects.vaultra.tag1"),
+        t("projects.vaultra.tag2"),
+        t("projects.vaultra.tag3"),
+      ],
+      context: t("projects.vaultra.context"),
+      challenge: t("projects.vaultra.challenge"),
+      approach: t("projects.vaultra.approach"),
+      stack: [
+        { name: "Next.js", icon: SiNextdotjs },
+        { name: "Vercel", icon: SiVercel },
+        { name: "Auth0", icon: SiAuth0 },
+      ],
+      image: "/images/vaultra.jpg",
+      imageAlt: "Vaultra cybersecurity interface concept",
     },
   ];
 
