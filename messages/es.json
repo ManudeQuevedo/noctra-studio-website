@@ -919,7 +919,49 @@
     "button_send": "Enviar Reporte",
     "success_title": "TRANSMISIÓN COMPLETA",
     "success_desc": "Tu arquitectura está en cola para revisión manual. Revisa tu bandeja de entrada para la confirmación del ticket.",
-    "button_reset": "Volver a la Base"
+    "button_reset": "Volver a la Base",
+    "metric_explanations": {
+      "performance": "Mide qué tan rápido carga tu sitio. Google posiciona mejor los sitios rápidos y los usuarios compran más en ellos.",
+      "seo": "Determina si Google puede leer tu sitio. Puntuaciones bajas significan que eres invisible para clientes potenciales.",
+      "accessibility": "Asegura que todos los usuarios puedan acceder a tu contenido. Crucial para cumplimiento legal y alcanzar audiencias más amplias.",
+      "bestPractices": "Salud del código y seguridad. Puntuaciones pobres indican un sitio frágil propenso a errores.",
+      "security": "Protege a tus usuarios y datos. Un sitio seguro construye confianza y previene ataques maliciosos."
+    },
+    "scan_steps": {
+      "step1": "Inicializando apretón de manos seguro...",
+      "step2": "Consultando propagación DNS global...",
+      "step3": "Validando cadena de certificados SSL (Qualys)...",
+      "step4": "Analizando vectores de reputación de dominio...",
+      "step5": "Cruzando referencias con listas negras de spam...",
+      "step6": "Finalizando tarjeta de puntuación de seguridad..."
+    },
+    "headlines": {
+      "critical": "PROBLEMAS CRÍTICOS DE RENDIMIENTO DETECTADOS",
+      "optimization": "OPTIMIZACIÓN REQUERIDA",
+      "nominal": "SISTEMA NOMINAL // LISTO PARA ESCALAR"
+    },
+    "badges": {
+      "excellent": "EXCELENTE",
+      "needs_work": "NECESITA TRABAJO",
+      "critical": "CRÍTICO",
+      "secure": "SEGURO",
+      "warning": "ADVERTENCIA",
+      "vulnerable": "VULNERABLE",
+      "analyzing": "ANALIZANDO...",
+      "processing": "PROCESANDO"
+    },
+    "labels": {
+      "performance": "RENDIMIENTO",
+      "security": "POSTURA DE SEGURIDAD",
+      "accessibility": "ACCESIBILIDAD",
+      "best_practices": "MEJORES PRÁCTICAS",
+      "seo": "SEO"
+    },
+    "messages": {
+      "deep_scan": "Escaneo profundo iniciado. Los resultados serán enviados por correo.",
+      "diagnosis_label": "DIAGNÓSTICO NOCTRA",
+      "analyzing": "Analizando..."
+    }
   },
   "Studio": {
     "title": "CENTRO_DE_COMANDO_NOCTRA",

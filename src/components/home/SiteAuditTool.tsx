@@ -1,7 +1,13 @@
 "use client";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { Scan, ArrowRight, AlertCircle, CheckCircle2 } from "lucide-react";
+import {
+  Scan,
+  ArrowRight,
+  AlertCircle,
+  CheckCircle2,
+  Info,
+} from "lucide-react";
 import { useTranslations } from "next-intl";
 import { useCompletion } from "@ai-sdk/react";
 
@@ -16,6 +22,9 @@ interface AuditResult {
   security: {
     grade: string;
     score: number;
+    status: string;
+    isSafe: boolean;
+    issues: string[];
   };
 }
 
@@ -29,15 +38,24 @@ export const SiteAuditTool = () => {
   const [auditResult, setAuditResult] = useState<AuditResult | null>(null);
   const [errorMessage, setErrorMessage] = useState("");
   const [loadingStep, setLoadingStep] = useState(0);
+  const [activePopover, setActivePopover] = useState<string | null>(null);
   const isMounted = useRef(false);
 
-  const loadingMessages = [
-    "Connecting to Lighthouse servers...",
-    "Analyzing Core Web Vitals...",
-    "Probing Security Headers...",
-    "Measuring LCP...",
-    "Evaluating performance metrics...",
-    "Finalizing diagnostic report...",
+  const METRIC_EXPLANATIONS = {
+    performance: t("metric_explanations.performance"),
+    seo: t("metric_explanations.seo"),
+    accessibility: t("metric_explanations.accessibility"),
+    bestPractices: t("metric_explanations.bestPractices"),
+    security: t("metric_explanations.security"),
+  };
+
+  const SCAN_STEPS = [
+    t("scan_steps.step1"),
+    t("scan_steps.step2"),
+    t("scan_steps.step3"),
+    t("scan_steps.step4"),
+    t("scan_steps.step5"),
+    t("scan_steps.step6"),
   ];
 
   // AI Diagnosis
@@ -65,15 +83,15 @@ export const SiteAuditTool = () => {
 
     const interval = setInterval(() => {
       setLoadingStep((prev) => {
-        if (prev < loadingMessages.length - 1) {
+        if (prev < SCAN_STEPS.length - 1) {
           return prev + 1;
         }
         return prev;
       });
-    }, 2500);
+    }, 4000);
 
     return () => clearInterval(interval);
-  }, [status, loadingMessages.length]);
+  }, [status, SCAN_STEPS.length]);
 
   const handleScan = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -103,6 +121,7 @@ export const SiteAuditTool = () => {
         setAuditResult(result);
         setStatus("complete");
 
+        // Generate AI diagnosis
         // Generate AI diagnosis
         const prompt = `The user's site has a Performance score of ${result.performance}/100, SEO score of ${result.seo}/100, and a Security Grade of ${result.security.grade}. Write a 1-sentence brutal but professional assessment of how this hurts their business.`;
         complete(prompt, {
@@ -158,54 +177,56 @@ export const SiteAuditTool = () => {
         color: "text-green-500",
         bg: "bg-green-500/10",
         border: "border-green-500/20",
-        label: "EXCELLENT",
+        label: t("badges.excellent"),
       };
     } else if (score >= 50) {
       return {
         color: "text-yellow-500",
         bg: "bg-yellow-500/10",
         border: "border-yellow-500/20",
-        label: "NEEDS WORK",
+        label: t("badges.needs_work"),
       };
     } else {
       return {
         color: "text-red-500",
         bg: "bg-red-500/10",
         border: "border-red-500/20",
-        label: "CRITICAL",
+        label: t("badges.critical"),
       };
     }
   };
 
-  const getSecurityBadge = (grade: string) => {
+  const getSecurityBadge = (grade: string, status?: string) => {
+    if (status === "pending" || grade === "Scanning...") {
+      return {
+        color: "text-yellow-500",
+        bg: "bg-yellow-500/10",
+        border: "border-yellow-500/20",
+        label: t("badges.analyzing"),
+      };
+    }
+
     const g = grade.toUpperCase();
     if (g === "A" || g === "A+") {
       return {
         color: "text-green-500",
         bg: "bg-green-500/10",
         border: "border-green-500/20",
-        label: "SECURE",
+        label: t("badges.secure"),
       };
     } else if (g === "B" || g === "C") {
       return {
         color: "text-yellow-500",
         bg: "bg-yellow-500/10",
         border: "border-yellow-500/20",
-        label: "WARNING",
-      };
-    } else if (g === "SCANNING..." || g === "PENDING") {
-      return {
-        color: "text-yellow-500",
-        bg: "bg-yellow-500/10",
-        border: "border-yellow-500/20",
-        label: "PROCESSING",
+        label: t("badges.warning"),
       };
     } else {
       return {
         color: "text-red-500",
         bg: "bg-red-500/10",
         border: "border-red-500/20",
-        label: "VULNERABLE",
+        label: t("badges.vulnerable"),
       };
     }
   };
@@ -213,17 +234,17 @@ export const SiteAuditTool = () => {
   const getHeadline = (score: number) => {
     if (score < 50) {
       return {
-        text: "CRITICAL PERFORMANCE ISSUES DETECTED",
+        text: t("headlines.critical"),
         color: "text-red-500",
       };
     } else if (score < 90) {
       return {
-        text: "OPTIMIZATION REQUIRED",
+        text: t("headlines.optimization"),
         color: "text-yellow-500",
       };
     } else {
       return {
-        text: "SYSTEM NOMINAL // READY FOR SCALE",
+        text: t("headlines.nominal"),
         color: "text-green-500",
       };
     }
@@ -302,22 +323,24 @@ export const SiteAuditTool = () => {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                className="flex flex-col items-center justify-center space-y-6">
-                <div className="relative w-16 h-16">
-                  <div className="absolute inset-0 border-4 border-neutral-800 rounded-full"></div>
-                  <div className="absolute inset-0 border-4 border-white border-t-transparent rounded-full animate-spin"></div>
-                </div>
-                <div className="font-mono text-sm text-green-500 text-left space-y-2">
-                  {loadingMessages.slice(0, loadingStep + 1).map((msg, i) => (
-                    <motion.p
-                      key={i}
-                      initial={{ opacity: 0, x: -20 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      className="animate-pulse">
-                      &gt; {msg}
-                    </motion.p>
-                  ))}
-                </div>
+                className="flex flex-col items-start justify-center space-y-4 font-mono text-sm w-full max-w-md mx-auto">
+                {SCAN_STEPS.slice(0, loadingStep + 1).map((msg, i) => (
+                  <motion.div
+                    key={i}
+                    initial={{ opacity: 0, x: -10 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    className="flex items-center gap-2 text-green-500">
+                    <span className="opacity-50">&gt;</span>
+                    <span>{msg}</span>
+                    {i === loadingStep && (
+                      <motion.span
+                        animate={{ opacity: [0, 1, 0] }}
+                        transition={{ repeat: Infinity, duration: 0.8 }}
+                        className="inline-block w-2 h-4 bg-green-500 ml-1 align-middle"
+                      />
+                    )}
+                  </motion.div>
+                ))}
               </motion.div>
             )}
 
@@ -363,9 +386,20 @@ export const SiteAuditTool = () => {
                 {/* Scores Grid - 2x3 Layout */}
                 <div className="grid grid-cols-2 gap-3">
                   {/* Performance */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
-                      PERFORMANCE
+                  <div
+                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                    onMouseEnter={() => setActivePopover("performance")}
+                    onMouseLeave={() => setActivePopover(null)}
+                    onClick={() =>
+                      setActivePopover(
+                        activePopover === "performance" ? null : "performance"
+                      )
+                    }>
+                    <div className="flex justify-between items-start mb-1">
+                      <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
+                        {t("labels.performance")}
+                      </div>
+                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -381,12 +415,36 @@ export const SiteAuditTool = () => {
                       } border`}>
                       {getScoreBadge(auditResult.performance).label}
                     </div>
+                    <AnimatePresence>
+                      {activePopover === "performance" && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          <p className="text-xs text-neutral-300 leading-relaxed">
+                            {METRIC_EXPLANATIONS.performance}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   {/* Security Posture */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
-                      SECURITY POSTURE
+                  <div
+                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                    onMouseEnter={() => setActivePopover("security")}
+                    onMouseLeave={() => setActivePopover(null)}
+                    onClick={() =>
+                      setActivePopover(
+                        activePopover === "security" ? null : "security"
+                      )
+                    }>
+                    <div className="flex justify-between items-start mb-1">
+                      <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
+                        {t("labels.security")}
+                      </div>
+                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -395,24 +453,66 @@ export const SiteAuditTool = () => {
                     </div>
                     <div
                       className={`mt-2 inline-block px-2 py-0.5 rounded text-[10px] font-bold ${
-                        getSecurityBadge(auditResult.security.grade).color
-                      } ${getSecurityBadge(auditResult.security.grade).bg} ${
-                        getSecurityBadge(auditResult.security.grade).border
+                        getSecurityBadge(
+                          auditResult.security.grade,
+                          auditResult.security.status
+                        ).color
+                      } ${
+                        getSecurityBadge(
+                          auditResult.security.grade,
+                          auditResult.security.status
+                        ).bg
+                      } ${
+                        getSecurityBadge(
+                          auditResult.security.grade,
+                          auditResult.security.status
+                        ).border
                       } border`}>
-                      {getSecurityBadge(auditResult.security.grade).label}
+                      {
+                        getSecurityBadge(
+                          auditResult.security.grade,
+                          auditResult.security.status
+                        ).label
+                      }
                     </div>
-                    {(auditResult.security.grade === "Scanning..." ||
-                      auditResult.security.grade === "PENDING") && (
+                    {(auditResult.security.status === "pending" ||
+                      auditResult.security.grade === "Scanning...") && (
                       <div className="text-[10px] text-neutral-500 mt-1 italic">
-                        Deep scan initiated. Results will be emailed.
+                        {t("messages.deep_scan")}
                       </div>
                     )}
+                    <AnimatePresence>
+                      {activePopover === "security" && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          <p className="text-xs text-neutral-300 leading-relaxed">
+                            {METRIC_EXPLANATIONS.security}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   {/* Accessibility */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
-                      ACCESSIBILITY
+                  <div
+                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                    onMouseEnter={() => setActivePopover("accessibility")}
+                    onMouseLeave={() => setActivePopover(null)}
+                    onClick={() =>
+                      setActivePopover(
+                        activePopover === "accessibility"
+                          ? null
+                          : "accessibility"
+                      )
+                    }>
+                    <div className="flex justify-between items-start mb-1">
+                      <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
+                        {t("labels.accessibility")}
+                      </div>
+                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -428,12 +528,38 @@ export const SiteAuditTool = () => {
                       } border`}>
                       {getScoreBadge(auditResult.accessibility).label}
                     </div>
+                    <AnimatePresence>
+                      {activePopover === "accessibility" && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          <p className="text-xs text-neutral-300 leading-relaxed">
+                            {METRIC_EXPLANATIONS.accessibility}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   {/* Best Practices */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg">
-                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
-                      BEST PRACTICES
+                  <div
+                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                    onMouseEnter={() => setActivePopover("bestPractices")}
+                    onMouseLeave={() => setActivePopover(null)}
+                    onClick={() =>
+                      setActivePopover(
+                        activePopover === "bestPractices"
+                          ? null
+                          : "bestPractices"
+                      )
+                    }>
+                    <div className="flex justify-between items-start mb-1">
+                      <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
+                        {t("labels.best_practices")}
+                      </div>
+                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -449,12 +575,34 @@ export const SiteAuditTool = () => {
                       } border`}>
                       {getScoreBadge(auditResult.bestPractices).label}
                     </div>
+                    <AnimatePresence>
+                      {activePopover === "bestPractices" && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          <p className="text-xs text-neutral-300 leading-relaxed">
+                            {METRIC_EXPLANATIONS.bestPractices}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
 
                   {/* SEO */}
-                  <div className="p-3 bg-neutral-900 border border-neutral-800 rounded-lg col-span-2">
-                    <div className="text-[10px] text-neutral-500 mb-1 uppercase tracking-wider">
-                      SEO
+                  <div
+                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg col-span-2 group cursor-help"
+                    onMouseEnter={() => setActivePopover("seo")}
+                    onMouseLeave={() => setActivePopover(null)}
+                    onClick={() =>
+                      setActivePopover(activePopover === "seo" ? null : "seo")
+                    }>
+                    <div className="flex justify-between items-start mb-1">
+                      <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
+                        {t("labels.seo")}
+                      </div>
+                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -470,6 +618,19 @@ export const SiteAuditTool = () => {
                       } border`}>
                       {getScoreBadge(auditResult.seo).label}
                     </div>
+                    <AnimatePresence>
+                      {activePopover === "seo" && (
+                        <motion.div
+                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
+                          animate={{ opacity: 1, scale: 1, y: 0 }}
+                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          <p className="text-xs text-neutral-300 leading-relaxed">
+                            {METRIC_EXPLANATIONS.seo}
+                          </p>
+                        </motion.div>
+                      )}
+                    </AnimatePresence>
                   </div>
                 </div>
 
@@ -477,11 +638,13 @@ export const SiteAuditTool = () => {
                 {(completion || aiLoading) && (
                   <div className="p-4 bg-blue-500/5 border border-blue-500/20 rounded-lg">
                     <div className="text-xs text-blue-500 font-mono mb-2 uppercase">
-                      Noctra Diagnosis
+                      {t("messages.diagnosis_label")}
                     </div>
                     <p className="text-sm text-neutral-300">
                       {aiLoading ? (
-                        <span className="animate-pulse">Analyzing...</span>
+                        <span className="animate-pulse">
+                          {t("messages.analyzing")}
+                        </span>
                       ) : (
                         completion
                       )}

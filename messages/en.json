@@ -936,7 +936,49 @@
     "button_send": "Send Report",
     "success_title": "TRANSMISSION COMPLETE",
     "success_desc": "Your architecture is queued for manual review. Check your inbox for the ticket confirmation.",
-    "button_reset": "Return to Base"
+    "button_reset": "Return to Base",
+    "metric_explanations": {
+      "performance": "Measures how fast your site loads. Google ranks fast sites higher, and users buy more from them.",
+      "seo": "Determines if Google can read your site. Low scores mean you are invisible to potential customers.",
+      "accessibility": "Ensures all users can access your content. Crucial for legal compliance and reaching wider audiences.",
+      "bestPractices": "Code health and security. Poor scores here indicate a fragile site prone to bugs.",
+      "security": "Protects your users and data. A secure site builds trust and prevents malicious attacks."
+    },
+    "scan_steps": {
+      "step1": "Initializing secure handshake...",
+      "step2": "Querying global DNS propagation...",
+      "step3": "Validating SSL Certificate chain (Qualys)...",
+      "step4": "Analyzing domain reputation vectors...",
+      "step5": "Cross-referencing spam blacklists...",
+      "step6": "Finalizing security scorecard..."
+    },
+    "headlines": {
+      "critical": "CRITICAL PERFORMANCE ISSUES DETECTED",
+      "optimization": "OPTIMIZATION REQUIRED",
+      "nominal": "SYSTEM NOMINAL // READY FOR SCALE"
+    },
+    "badges": {
+      "excellent": "EXCELLENT",
+      "needs_work": "NEEDS WORK",
+      "critical": "CRITICAL",
+      "secure": "SECURE",
+      "warning": "WARNING",
+      "vulnerable": "VULNERABLE",
+      "analyzing": "ANALYZING...",
+      "processing": "PROCESSING"
+    },
+    "labels": {
+      "performance": "PERFORMANCE",
+      "security": "SECURITY POSTURE",
+      "accessibility": "ACCESSIBILITY",
+      "best_practices": "BEST PRACTICES",
+      "seo": "SEO"
+    },
+    "messages": {
+      "deep_scan": "Deep scan initiated. Results will be emailed.",
+      "diagnosis_label": "NOCTRA DIAGNOSIS",
+      "analyzing": "Analyzing..."
+    }
   },
   "Studio": {
     "title": "NOCTRA_COMMAND_CENTER",
