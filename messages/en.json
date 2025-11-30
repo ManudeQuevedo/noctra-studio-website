@@ -203,24 +203,31 @@
       "content": "Noctra is a boutique studio by design. We scale our team to fit the project, bringing in specialized partners only when the architecture demands it. You pay for talent, not overhead."
     },
     "brand_anatomy": {
-      "title": "Brand Anatomy",
-      "subtitle": "The core elements that define our approach.",
-      "precision": {
-        "title": "Precision",
-        "desc": "Every pixel and line of code has a purpose."
+      "section_label": "// BRAND ANATOMY",
+      "etymology": {
+        "label": "Etymology",
+        "headline": "Noctra (Latin)",
+        "body": "Derived from 'Nocturnal' (Night) and 'Intra' (Within). We operate in the depths of the code, where the real work happens."
       },
-      "clarity": {
-        "title": "Clarity",
-        "desc": "Removing the inessential to reveal the core."
+      "symbology": {
+        "label": "Symbology",
+        "headline": "The Signal",
+        "body": "Our logo represents a beacon in the dark. A single point of clarity in a chaotic digital landscape."
       },
-      "scale": {
-        "title": "Scale",
-        "desc": "Systems designed to grow with your business."
+      "output": {
+        "label": "Output",
+        "headline": "Silent Systems",
+        "body": "We don't shout. We build systems that work so well, they feel invisible. Performance is our only marketing."
       }
     },
     "tech_radar": {
       "title": "Tech Radar",
-      "intro": "We choose this stack because it guarantees speed, security, and long-term maintainability—not because it's trendy."
+      "intro": "We choose this stack because it guarantees speed, security, and long-term maintainability—not because it's trendy.",
+      "ui_ux": "UI/UX Design",
+      "frontend": "Frontend Architecture",
+      "backend_db": "Backend & Database",
+      "cms": "Headless CMS",
+      "infrastructure": "Infrastructure & DevOps"
     },
     "process": {
       "title": "The Methodology.",
@@ -257,6 +264,24 @@
         "deposit": "50% Commencement Deposit",
         "completion": "50% Completion Payment",
         "net0": "Net-0 Payment Terms (Immediate upon approval)"
+      }
+    },
+    "impact": {
+      "title": "The Noctra Ecosystem",
+      "subtitle": "We believe in open source, open knowledge, and open doors. Our impact goes beyond the code we ship.",
+      "volunteering": {
+        "title": "Technological Volunteering",
+        "desc": "We dedicate 10% of our studio time to building digital infrastructure for non-profits and educational institutions.",
+        "note_label": "Current Project:",
+        "note_text": "Open-source literacy platform for rural schools.",
+        "cta": "Join the Initiative"
+      },
+      "mentorship": {
+        "title": "Technical Mentorship",
+        "desc": "The 'Noctra Residency' is a 3-month intensive program where we train the next generation of systems architects.",
+        "note_label": "Next Cohort:",
+        "note_text": "Applications open Q3 2025.",
+        "cta": "Apply for Residency"
       }
     }
   },
@@ -363,16 +388,17 @@
         "Direct Communication"
       ]
     },
-    "architecture": {
+    "web_dev": {
       "title": "Digital Architecture",
       "problem": "Slow, unscalable websites are costing you customers.",
       "solution": "We build high-performance, scalable web applications.",
       "focus": "Your website is your most important asset. We build it right.",
       "why": "Speed and reliability are non-negotiable.",
       "process": [
-        "Next.js & React Implementation",
-        "Performance Optimization",
-        "Accessibility Compliance"
+        "Audit & Profiling",
+        "Architecture Blueprint",
+        "Component Migration",
+        "Edge Deployment"
       ],
       "deliverables": [
         "Production Cloud Deployment",

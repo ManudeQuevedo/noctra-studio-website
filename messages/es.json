@@ -203,24 +203,31 @@
       "content": "Noctra es un estudio boutique por diseño. Escalamos nuestro equipo para adaptarse al proyecto, trayendo socios especializados solo cuando la arquitectura lo exige. Pagas por talento, no por gastos generales."
     },
     "brand_anatomy": {
-      "title": "Anatomía de Marca",
-      "subtitle": "Los elementos centrales que definen nuestro enfoque.",
-      "precision": {
-        "title": "Precisión",
-        "desc": "Cada píxel y línea de código tiene un propósito."
+      "section_label": "// ANATOMÍA DE MARCA",
+      "etymology": {
+        "label": "Etimología",
+        "headline": "Noctra (Latín)",
+        "body": "Derivado de 'Nocturnal' (Noche) e 'Intra' (Dentro). Operamos en las profundidades del código, donde ocurre el trabajo real."
       },
-      "clarity": {
-        "title": "Claridad",
-        "desc": "Eliminando lo inesencial para revelar el núcleo."
+      "symbology": {
+        "label": "Simbología",
+        "headline": "La Señal",
+        "body": "Nuestro logo representa un faro en la oscuridad. Un único punto de claridad en un paisaje digital caótico."
       },
-      "scale": {
-        "title": "Escala",
-        "desc": "Sistemas diseñados para crecer con tu negocio."
+      "output": {
+        "label": "Resultado",
+        "headline": "Sistemas Silenciosos",
+        "body": "No gritamos. Construimos sistemas que funcionan tan bien que se sienten invisibles. El rendimiento es nuestro único marketing."
       }
     },
     "tech_radar": {
       "title": "Radar Tecnológico",
-      "intro": "Elegimos este stack porque garantiza velocidad, seguridad y mantenibilidad a largo plazo, no porque esté de moda."
+      "intro": "Elegimos este stack porque garantiza velocidad, seguridad y mantenibilidad a largo plazo, no porque esté de moda.",
+      "ui_ux": "Diseño UI/UX",
+      "frontend": "Arquitectura Frontend",
+      "backend_db": "Backend y Base de Datos",
+      "cms": "CMS Headless",
+      "infrastructure": "Infraestructura y DevOps"
     },
     "process": {
       "title": "La Metodología.",
@@ -257,6 +264,24 @@
         "deposit": "50% Depósito de Inicio",
         "completion": "50% Pago al Finalizar",
         "net0": "Términos de Pago Net-0 (Inmediato tras aprobación)"
+      }
+    },
+    "impact": {
+      "title": "El Ecosistema Noctra",
+      "subtitle": "Creemos en el código abierto, el conocimiento abierto y las puertas abiertas. Nuestro impacto va más allá del código que enviamos.",
+      "volunteering": {
+        "title": "Voluntariado Tecnológico",
+        "desc": "Dedicamos el 10% de nuestro tiempo de estudio a construir infraestructura digital para organizaciones sin fines de lucro e instituciones educativas.",
+        "note_label": "Proyecto Actual:",
+        "note_text": "Plataforma de alfabetización de código abierto para escuelas rurales.",
+        "cta": "Únete a la Iniciativa"
+      },
+      "mentorship": {
+        "title": "Mentoría Técnica",
+        "desc": "La 'Residencia Noctra' es un programa intensivo de 3 meses donde formamos a la próxima generación de arquitectos de sistemas.",
+        "note_label": "Próxima Cohorte:",
+        "note_text": "Aplicaciones abren Q3 2025.",
+        "cta": "Aplicar a la Residencia"
       }
     }
   },
