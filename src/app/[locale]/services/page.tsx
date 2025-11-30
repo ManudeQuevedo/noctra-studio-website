@@ -133,7 +133,10 @@ const ServiceSection = ({
 
                 {/* Deep Link CTA */}
                 <Link
-                  href={`/contact?interest=${service.id}`}
+                  href={{
+                    pathname: "/contact",
+                    query: { interest: service.id },
+                  }}
                   className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
                   Explore {t(`${service.key}.title`)} →
                 </Link>
@@ -163,7 +166,7 @@ const ServiceSection = ({
                 {/* See Examples Link */}
                 <div className="mt-8">
                   <Link
-                    href="/case-studies"
+                    href="/work"
                     className="text-sm font-medium text-neutral-500 hover:text-neutral-900 dark:hover:text-white transition-colors flex items-center gap-2 group/link">
                     See examples
                     <span className="group-hover/link:translate-x-1 transition-transform">
