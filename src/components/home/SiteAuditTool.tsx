@@ -42,10 +42,13 @@ export const SiteAuditTool = () => {
   const isMounted = useRef(false);
 
   const METRIC_EXPLANATIONS = {
-    performance: t("metric_explanations.performance"),
-    seo: t("metric_explanations.seo"),
-    accessibility: t("metric_explanations.accessibility"),
-    bestPractices: t("metric_explanations.bestPractices"),
+    performance:
+      "Speed converts. Google ranks fast sites higher, and users bounce from slow ones.",
+    seo: "Visibility is revenue. Low scores mean your site is invisible to potential customers.",
+    accessibility:
+      "Inclusivity and Law. Ensures all users can access your content and protects you from lawsuits.",
+    bestPractices:
+      "Code hygiene. Poor scores indicate a fragile codebase prone to security leaks.",
     security: t("metric_explanations.security"),
   };
 
@@ -386,20 +389,23 @@ export const SiteAuditTool = () => {
                 {/* Scores Grid - 2x3 Layout */}
                 <div className="grid grid-cols-2 gap-3">
                   {/* Performance */}
-                  <div
-                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                  <button
+                    type="button"
+                    className="relative w-full text-left p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                     onMouseEnter={() => setActivePopover("performance")}
                     onMouseLeave={() => setActivePopover(null)}
                     onClick={() =>
                       setActivePopover(
                         activePopover === "performance" ? null : "performance"
                       )
-                    }>
+                    }
+                    aria-expanded={activePopover === "performance"}
+                    aria-haspopup="dialog">
                     <div className="flex justify-between items-start mb-1">
                       <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
                         {t("labels.performance")}
                       </div>
-                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
+                      <Info className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -418,33 +424,36 @@ export const SiteAuditTool = () => {
                     <AnimatePresence>
                       {activePopover === "performance" && (
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-lg shadow-2xl shadow-black/50 w-64 pointer-events-none">
                           <p className="text-xs text-neutral-300 leading-relaxed">
                             {METRIC_EXPLANATIONS.performance}
                           </p>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+                  </button>
 
                   {/* Security Posture */}
-                  <div
-                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                  <button
+                    type="button"
+                    className="relative w-full text-left p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                     onMouseEnter={() => setActivePopover("security")}
                     onMouseLeave={() => setActivePopover(null)}
                     onClick={() =>
                       setActivePopover(
                         activePopover === "security" ? null : "security"
                       )
-                    }>
+                    }
+                    aria-expanded={activePopover === "security"}
+                    aria-haspopup="dialog">
                     <div className="flex justify-between items-start mb-1">
                       <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
                         {t("labels.security")}
                       </div>
-                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
+                      <Info className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -484,21 +493,22 @@ export const SiteAuditTool = () => {
                     <AnimatePresence>
                       {activePopover === "security" && (
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-lg shadow-2xl shadow-black/50 w-64 pointer-events-none">
                           <p className="text-xs text-neutral-300 leading-relaxed">
                             {METRIC_EXPLANATIONS.security}
                           </p>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+                  </button>
 
                   {/* Accessibility */}
-                  <div
-                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                  <button
+                    type="button"
+                    className="relative w-full text-left p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                     onMouseEnter={() => setActivePopover("accessibility")}
                     onMouseLeave={() => setActivePopover(null)}
                     onClick={() =>
@@ -507,12 +517,14 @@ export const SiteAuditTool = () => {
                           ? null
                           : "accessibility"
                       )
-                    }>
+                    }
+                    aria-expanded={activePopover === "accessibility"}
+                    aria-haspopup="dialog">
                     <div className="flex justify-between items-start mb-1">
                       <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
                         {t("labels.accessibility")}
                       </div>
-                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
+                      <Info className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -531,21 +543,22 @@ export const SiteAuditTool = () => {
                     <AnimatePresence>
                       {activePopover === "accessibility" && (
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-lg shadow-2xl shadow-black/50 w-64 pointer-events-none">
                           <p className="text-xs text-neutral-300 leading-relaxed">
                             {METRIC_EXPLANATIONS.accessibility}
                           </p>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+                  </button>
 
                   {/* Best Practices */}
-                  <div
-                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help"
+                  <button
+                    type="button"
+                    className="relative w-full text-left p-3 bg-neutral-900 border border-neutral-800 rounded-lg group cursor-help focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                     onMouseEnter={() => setActivePopover("bestPractices")}
                     onMouseLeave={() => setActivePopover(null)}
                     onClick={() =>
@@ -554,12 +567,14 @@ export const SiteAuditTool = () => {
                           ? null
                           : "bestPractices"
                       )
-                    }>
+                    }
+                    aria-expanded={activePopover === "bestPractices"}
+                    aria-haspopup="dialog">
                     <div className="flex justify-between items-start mb-1">
                       <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
                         {t("labels.best_practices")}
                       </div>
-                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
+                      <Info className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -578,31 +593,34 @@ export const SiteAuditTool = () => {
                     <AnimatePresence>
                       {activePopover === "bestPractices" && (
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-lg shadow-2xl shadow-black/50 w-64 pointer-events-none">
                           <p className="text-xs text-neutral-300 leading-relaxed">
                             {METRIC_EXPLANATIONS.bestPractices}
                           </p>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+                  </button>
 
                   {/* SEO */}
-                  <div
-                    className="relative p-3 bg-neutral-900 border border-neutral-800 rounded-lg col-span-2 group cursor-help"
+                  <button
+                    type="button"
+                    className="relative w-full text-left p-3 bg-neutral-900 border border-neutral-800 rounded-lg col-span-2 group cursor-help focus:outline-none focus:ring-2 focus:ring-white/20 transition-all"
                     onMouseEnter={() => setActivePopover("seo")}
                     onMouseLeave={() => setActivePopover(null)}
                     onClick={() =>
                       setActivePopover(activePopover === "seo" ? null : "seo")
-                    }>
+                    }
+                    aria-expanded={activePopover === "seo"}
+                    aria-haspopup="dialog">
                     <div className="flex justify-between items-start mb-1">
                       <div className="text-[10px] text-neutral-500 uppercase tracking-wider">
                         {t("labels.seo")}
                       </div>
-                      <Info className="w-3 h-3 text-neutral-600 group-hover:text-neutral-400 transition-colors" />
+                      <Info className="w-4 h-4 text-neutral-500 group-hover:text-neutral-300 transition-colors" />
                     </div>
                     <div className="flex items-baseline gap-2">
                       <span className="text-2xl md:text-3xl font-bold text-white">
@@ -621,17 +639,17 @@ export const SiteAuditTool = () => {
                     <AnimatePresence>
                       {activePopover === "seo" && (
                         <motion.div
-                          initial={{ opacity: 0, scale: 0.9, y: 10 }}
-                          animate={{ opacity: 1, scale: 1, y: 0 }}
-                          exit={{ opacity: 0, scale: 0.9, y: 10 }}
-                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900 border border-neutral-700 p-4 rounded-lg shadow-xl w-64 pointer-events-none">
+                          initial={{ opacity: 0, y: 10 }}
+                          animate={{ opacity: 1, y: 0 }}
+                          exit={{ opacity: 0, y: 10 }}
+                          className="absolute z-50 bottom-full left-0 mb-2 bg-neutral-900/90 backdrop-blur-xl border border-white/10 p-4 rounded-lg shadow-2xl shadow-black/50 w-64 pointer-events-none">
                           <p className="text-xs text-neutral-300 leading-relaxed">
                             {METRIC_EXPLANATIONS.seo}
                           </p>
                         </motion.div>
                       )}
                     </AnimatePresence>
-                  </div>
+                  </button>
                 </div>
 
                 {/* AI Diagnosis */}

@@ -10,7 +10,22 @@ export const routing = defineRouting({
   
   // Use 'as-needed' to hide default locale from URL
   // This reduces navigation and keeps URLs cleaner
-  localePrefix: 'as-needed'
+  localePrefix: 'as-needed',
+  pathnames: {
+    '/': '/',
+    '/about': '/about',
+    '/services': '/services',
+    '/work': '/work',
+    '/contact': '/contact',
+    '/careers': '/careers',
+    '/blog': '/blog',
+    '/privacy': '/privacy',
+    '/terms': '/terms',
+    '/studio': '/studio',
+    '/dashboard': '/dashboard',
+    '/admin': '/admin',
+    '/login': '/login'
+  }
 });
  
 // Lightweight wrappers around Next.js' navigation APIs

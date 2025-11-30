@@ -776,6 +776,9 @@
         "1_month": "1 Mes",
         "3_months": "3+ Meses"
       },
+      "success_criteria_label": "Criterios de Éxito (Opcional)",
+      "details_label": "Detalles del Proyecto",
+      "details_placeholder": "Cuéntanos más sobre los objetivos, desafíos y tiempos de tu proyecto...",
       "sending": "Transmitiendo...",
       "submit": "Iniciar Secuencia"
     },

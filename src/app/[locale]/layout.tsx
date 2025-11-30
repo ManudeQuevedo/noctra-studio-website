@@ -8,6 +8,7 @@ import { getMessages } from "next-intl/server";
 
 import { Header } from "@/components/header";
 import { FooterWrapper } from "@/components/FooterWrapper";
+import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
 import { OrganizationSchema, WebsiteSchema } from "@/components/seo/JsonLd";
 import { SpeedInsights } from "@vercel/speed-insights/next";
@@ -101,6 +102,7 @@ export default async function LocaleLayout({
           <Header />
           {children}
           <FooterWrapper />
+          <ScrollToTop />
           <OrganizationSchema />
           <WebsiteSchema />
           <SpeedInsights />

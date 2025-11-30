@@ -774,6 +774,9 @@
         "1_month": "1 Month",
         "3_months": "3+ Months"
       },
+      "success_criteria_label": "Success Criteria (Optional)",
+      "details_label": "Project Details",
+      "details_placeholder": "Tell us more about your project goals, challenges, and timeline...",
       "success_criteria_placeholder": "e.g., 3x more qualified leads",
       "submit": "Send Signal",
       "sending": "Transmitting..."
