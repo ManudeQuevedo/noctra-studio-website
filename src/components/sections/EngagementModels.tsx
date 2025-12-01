@@ -198,11 +198,27 @@ export function EngagementModels() {
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
         transition={{ duration: 0.6, delay: 0.4 }}
-        className="mt-12 text-center space-y-4">
-        <p className="text-sm text-neutral-400 font-medium">
-          {t("recurring_revenue")}
+        className="mt-12 max-w-3xl mx-auto">
+        <div className="p-6 rounded-xl border border-white/5 bg-neutral-900/50 text-left relative overflow-hidden">
+          <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4 mb-3">
+            <h4 className="text-lg font-bold text-white tracking-tight">
+              {t("recurring_revenue.headline")}
+            </h4>
+            <span className="self-start sm:self-auto px-3 py-1 rounded-full bg-white/5 text-xs font-medium text-neutral-300 border border-white/5 whitespace-nowrap">
+              {t("recurring_revenue.badge")}
+            </span>
+          </div>
+          <p className="text-sm text-neutral-400 leading-relaxed">
+            {t.rich("recurring_revenue.body", {
+              bold: (chunks) => (
+                <strong className="text-white font-medium">{chunks}</strong>
+              ),
+            })}
+          </p>
+        </div>
+        <p className="text-xs text-neutral-600 mt-6 text-center">
+          {t("footer_note")}
         </p>
-        <p className="text-xs text-neutral-600">{t("footer_note")}</p>
       </motion.div>
     </section>
   );

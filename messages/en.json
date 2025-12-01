@@ -1255,7 +1255,11 @@
     },
     "cta": "Initiate Engagement",
     "footer_note": "All projects include: Code ownership, deployment support, and 30-day post-launch maintenance.",
-    "recurring_revenue": "Need ongoing peace of mind? Ask about our maintenance and evolution plans starting at $250/mo."
+    "recurring_revenue": {
+      "headline": "Beyond the Launch.",
+      "body": "Digital products are never finished. We offer <bold>Continuous Engineering</bold> retainers to ensure your infrastructure scales, secures, and evolves with your business goals.",
+      "badge": "Priority Support Available"
+    }
   },
   "Auth": {
     "title": "Authentication Error",

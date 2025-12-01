@@ -1,7 +1,7 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
 import { HeroTextSection } from "@/components/home/HeroTextSection";
-import { PedigreeMarquee } from "@/components/home/PedigreeMarquee";
+
 import { SiteAuditTool } from "@/components/home/SiteAuditTool";
 import { EngagementModels } from "@/components/sections/EngagementModels";
 import { generatePageMetadata } from "@/lib/metadata";
@@ -101,9 +101,10 @@ export default async function HomePage({
     <main className="min-h-screen">
       {/* SECTION 1: The Hero */}
       <Hero />
+      <PhilosophySection />
 
       {/* SECTION 2: The Intro (Lead Statement) */}
-      <PedigreeMarquee />
+
       <HeroTextSection />
 
       {/* SECTION 3: Site Audit Tool (Lead Magnet) */}
@@ -117,7 +118,6 @@ export default async function HomePage({
       <TargetAudienceSection />
       <FeaturedWorkSection />
       <ModernStackSection />
-      <PhilosophySection />
       <ProcessSection />
     </main>
   );

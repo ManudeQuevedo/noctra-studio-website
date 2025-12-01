@@ -121,13 +121,19 @@ export function Footer() {
               <nav className="flex flex-col gap-3 pt-1">
                 {[
                   { label: t("service_work"), href: "/work" },
-                  { label: t("service_digital_arch"), href: "/services" },
-                  { label: t("service_visual_identity"), href: "/services" },
+                  {
+                    label: t("service_digital_arch"),
+                    href: "/services#digital-architecture",
+                  },
+                  {
+                    label: t("service_visual_identity"),
+                    href: "/services#visual-identity",
+                  },
                   {
                     label: t("service_intelligent_systems"),
-                    href: "/services",
+                    href: "/services#intelligent-systems",
                   },
-                  { label: t("service_growth"), href: "/services" },
+                  { label: t("service_growth"), href: "/services#growth" },
                 ].map((item) => (
                   <Link
                     key={item.label}
@@ -185,7 +191,7 @@ export function Footer() {
       <div className="bg-[#050505]">
         <div className="max-w-7xl mx-auto px-6 md:px-8 py-4 flex flex-col md:flex-row justify-between items-center text-xs text-neutral-500 gap-4 md:gap-0">
           <div className="w-full md:w-auto text-center md:text-left">
-            {t("copyright", { year })}
+            {t("copyright", { year: year.toString() })}
           </div>
 
           <div className="flex items-center gap-2">

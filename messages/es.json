@@ -1257,7 +1257,11 @@
     },
     "cta": "Iniciar Compromiso",
     "footer_note": "Todos los proyectos incluyen: Propiedad del código, soporte de despliegue y mantenimiento post-lanzamiento de 30 días.",
-    "recurring_revenue": "¿Necesitas tranquilidad continua? Pregunta por nuestros planes de mantenimiento y evolución desde MX$3,500/mes."
+    "recurring_revenue": {
+      "headline": "Más allá del Lanzamiento.",
+      "body": "Los productos digitales nunca terminan. Ofrecemos retenedores de <bold>Ingeniería Continua</bold> para asegurar que tu infraestructura escale, se asegure y evolucione con tus objetivos de negocio.",
+      "badge": "Soporte Prioritario Disponible"
+    }
   },
   "Auth": {
     "title": "Error de Autenticación",

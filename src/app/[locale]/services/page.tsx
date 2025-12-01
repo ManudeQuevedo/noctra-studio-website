@@ -189,10 +189,10 @@ export default function ServicesPage() {
   const t = useTranslations("ServicesPage");
 
   const services = [
-    { id: "web_dev", key: "web_dev", label: "Architecture" },
-    { id: "branding", key: "branding", label: "Identity" },
-    { id: "ai", key: "ai", label: "Systems" },
-    { id: "seo", key: "seo", label: "Growth" },
+    { id: "digital-architecture", key: "web_dev", label: "Architecture" },
+    { id: "visual-identity", key: "branding", label: "Identity" },
+    { id: "intelligent-systems", key: "ai", label: "Systems" },
+    { id: "growth", key: "seo", label: "Growth" },
   ];
 
   const scrollToService = (id: string) => {
@@ -244,14 +244,14 @@ export default function ServicesPage() {
 
       {/* Services Sections */}
       <div className="flex flex-col gap-32 md:gap-48 mb-32">
-        <div id="web_dev">
+        <div id="digital-architecture">
           <ServiceSection
             service={services[0]}
             index={0}
             image={SERVICE_IMAGES.web_dev}
           />
         </div>
-        <div id="branding">
+        <div id="visual-identity">
           <ServiceSection
             service={services[1]}
             index={1}
@@ -291,14 +291,14 @@ export default function ServicesPage() {
           </div>
         </div>
 
-        <div id="ai">
+        <div id="intelligent-systems">
           <ServiceSection
             service={services[2]}
             index={2}
             image={SERVICE_IMAGES.ai}
           />
         </div>
-        <div id="seo">
+        <div id="growth">
           <ServiceSection
             service={services[3]}
             index={3}
