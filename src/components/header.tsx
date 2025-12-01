@@ -195,7 +195,7 @@ export function Header() {
               {/* Start Project CTA - Desktop Only - Hidden on Contact Page */}
               {!isContactPage && (
                 <Link
-                  href="/contact"
+                  href={{ pathname: "/contact", query: { intent: "strategy" } }}
                   className={cn(
                     "hidden md:block rounded-full px-5 py-2 text-xs font-medium transition-transform hover:scale-105",
                     isOpen

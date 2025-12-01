@@ -34,7 +34,7 @@
       "subtitle": "Desde el concepto hasta el despliegue, arquitectamos experiencias que perduran."
     },
     "cta_start": "Solicitar Auditoría Técnica",
-    "cta_services": "Discutir Tu Arquitectura",
+    "cta_services": "Ver Capacidades",
     "cta_work": "Ver Trabajo"
   },
   "Metadata": {
@@ -97,7 +97,7 @@
     "blog": "Blog",
     "careers": "Carreras",
     "contact": "Iniciar",
-    "start_project": "Iniciar Proyecto",
+    "start_project": "Agendar Llamada Estratégica",
     "menu_open": "Menú",
     "menu_close": "Cerrar",
     "get_in_touch": "Ponte en contacto",
@@ -287,7 +287,7 @@
   },
   "Footer": {
     "hook": "¿Listo para traer claridad al caos?",
-    "book_discovery": "Agendar Descubrimiento Técnico",
+    "book_discovery": "Asegura Tu Espacio",
     "studio_label": "Estudio",
     "brand_tagline": "Claridad en la noche digital.",
     "nav_title": "Navegación",
@@ -358,7 +358,8 @@
         "React/Next.js",
         "REST/GraphQL",
         "GitHub Actions"
-      ]
+      ],
+      "cta": "Discutir Tu Arquitectura "
     },
     "branding": {
       "title": "Diseño de Producto",
@@ -381,7 +382,8 @@
         "Listo para Auto-Layout",
         "Variables y Modos",
         "Flujos Clicables"
-      ]
+      ],
+      "cta": "Discutir Tu Identidad"
     },
     "ai": {
       "title": "Operaciones de Ingresos",
@@ -404,7 +406,8 @@
         "HubSpot/Salesforce",
         "Looker/PostHog",
         "Eventos del Servidor"
-      ]
+      ],
+      "cta": "Discutir Tu Automatización "
     },
     "seo": {
       "title": "Inteligencia",
@@ -427,7 +430,8 @@
         "OpenAI/Anthropic",
         "n8n/Zapier",
         "Base de Datos Vectorial"
-      ]
+      ],
+      "cta": "Discutir Tu Crecimiento "
     }
   },
   "BusinessImpact": {
@@ -514,8 +518,8 @@
     "title": "Casos de Estudio — Cómo Pensamos, Diseñamos y Desplegamos",
     "subtitle": "Estos son casos de estudio conceptuales basados en escenarios de negocio comunes. Demuestran cómo Noctra Studio aborda desafíos del mundo real con arquitectura moderna.",
     "disclaimer": "Estos estudios de caso son exploraciones conceptuales diseñadas para demostrar la metodología, resolución de problemas y enfoque de transformación digital de Noctra Studio.",
-    "cta_title": "¿No estás seguro dónde está fallando tu infraestructura?",
-    "cta_button": "Solicitar Auditoría de Arquitectura",
+    "cta_title": "¿Necesitas resultados como estos?",
+    "cta_button": "Obtener Estimación de Proyecto ",
     "see_full_case_study": "Ver Caso de Estudio Completo",
     "labels": {
       "context": "CONTEXTO",
@@ -780,7 +784,7 @@
       "details_label": "Detalles del Proyecto",
       "details_placeholder": "Cuéntanos más sobre los objetivos, desafíos y tiempos de tu proyecto...",
       "sending": "Transmitiendo...",
-      "submit": "Iniciar Secuencia"
+      "submit": "Iniciar Compromiso "
     },
     "success": {
       "title": "Mensaje Enviado",
@@ -1045,7 +1049,7 @@
       "company_name": "Nombre de la Empresa",
       "project_name": "Nombre del Proyecto",
       "total_budget": "Presupuesto Total ($)",
-      "deploy_button": "Desplegar Entorno ->"
+      "deploy_button": "Desplegar Entorno "
     },
     "placeholders": {
       "client_email": "cliente@empresa.com",

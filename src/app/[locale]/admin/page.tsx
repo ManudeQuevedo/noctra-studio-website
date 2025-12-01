@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { deployClientInfrastructure, type ActionResponse } from "./actions";
 import { useTranslations } from "next-intl";
+import { ArrowRight } from "lucide-react";
 
 const initialState: ActionResponse = {
   success: false,
@@ -109,8 +110,9 @@ export default function AdminDashboard() {
 
           <button
             type="submit"
-            className="w-full bg-white text-black font-bold py-3 rounded hover:bg-zinc-200 transition-colors mt-4">
+            className="w-full bg-white text-black font-bold py-3 rounded hover:bg-zinc-200 transition-colors mt-4 flex items-center justify-center gap-2">
             {t("form.deploy_button")}
+            <ArrowRight className="w-4 h-4" />
           </button>
         </form>
       </div>

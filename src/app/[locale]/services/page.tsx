@@ -4,6 +4,7 @@ import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import NextImage from "next/image";
+import { ArrowRight } from "lucide-react";
 
 // Static images map
 const SERVICE_IMAGES = {
@@ -138,7 +139,8 @@ const ServiceSection = ({
                     query: { interest: service.id },
                   }}
                   className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
-                  Explore {t(`${service.key}.title`)} →
+                  {t(`${service.key}.cta`)}
+                  <ArrowRight className="w-4 h-4" />
                 </Link>
               </div>
 

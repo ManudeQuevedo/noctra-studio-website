@@ -260,7 +260,7 @@ export default function WorkPage() {
             {t("cta_title")}
           </h2>
           <Link
-            href="/contact"
+            href={{ pathname: "/contact", query: { intent: "estimate" } }}
             className="inline-flex items-center gap-2 text-lg text-white hover:text-neutral-300 transition-colors group">
             {t("cta_button")}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

@@ -34,7 +34,7 @@
       "subtitle": "From concept to deployment, we architect experiences that endure."
     },
     "cta_start": "Request Technical Audit",
-    "cta_services": "Discuss Your Architecture",
+    "cta_services": "View Capabilities",
     "cta_work": "View Work"
   },
   "Metadata": {
@@ -97,7 +97,7 @@
     "blog": "Blog",
     "careers": "Careers",
     "contact": "Initiate",
-    "start_project": "Start Project",
+    "start_project": "Book Strategy Call",
     "menu_open": "Menu",
     "menu_close": "Close",
     "get_in_touch": "Initiate Communication",
@@ -287,7 +287,7 @@
   },
   "Footer": {
     "hook": "Ready to bring clarity to the chaos?",
-    "book_discovery": "Schedule Technical Discovery",
+    "book_discovery": "Secure Your Slot",
     "studio_label": "Studio",
     "brand_tagline": "Clarity in the digital night.",
     "nav_title": "Navigation",
@@ -409,7 +409,8 @@
         "Global edge network for instant loading worldwide.",
         "Full code ownership and professional version control.",
         "Improves loading speed and user experience so visitors stay longer."
-      ]
+      ],
+      "cta": "Discuss Your Architecture"
     },
     "branding": {
       "title": "Product Design",
@@ -432,7 +433,8 @@
         "A complete set of rules so your visuals stay consistent everywhere.",
         "High-resolution logos and icons ready for any platform.",
         "Full editable design files for your internal team."
-      ]
+      ],
+      "cta": "Discuss Your Identity "
     },
     "ai": {
       "title": "Intelligent Systems",
@@ -455,7 +457,8 @@
         "Automated customer support and lead qualification 24/7.",
         "Makes integrations easier for future developers and ensures scalability.",
         "Step-by-step instructions for your team."
-      ]
+      ],
+      "cta": "Discuss Your Automation "
     },
     "seo": {
       "title": "Revenue Operations",
@@ -478,7 +481,8 @@
         "Gives you clear insights on what’s working and what needs improvement.",
         "A roadmap of topics to capture your target audience.",
         "Track your visibility on Google in real-time."
-      ]
+      ],
+      "cta": "Discuss Your Growth "
     },
     "metrics": {
       "lighthouse": "Architecture First",
@@ -503,8 +507,8 @@
     "title": "Case Studies — How We Think, Design, and Ship",
     "subtitle": "These are concept case studies based on common business scenarios. They demonstrate how Noctra Studio approaches real-world challenges with modern architecture.",
     "disclaimer": "These case studies are conceptual explorations designed to demonstrate Noctra Studio's methodology, problem-solving, and approach to digital transformation.",
-    "cta_title": "Not sure where your infrastructure is failing?",
-    "cta_button": "Request Architecture Audit",
+    "cta_title": "Need results like this?",
+    "cta_button": "Get a Project Estimate ",
     "see_full_case_study": "See full Case Study",
     "labels": {
       "context": "CONTEXT",
@@ -778,7 +782,7 @@
       "details_label": "Project Details",
       "details_placeholder": "Tell us more about your project goals, challenges, and timeline...",
       "success_criteria_placeholder": "e.g., 3x more qualified leads",
-      "submit": "Send Signal",
+      "submit": "Initiate Engagement ",
       "sending": "Transmitting..."
     },
     "success": {
@@ -1043,7 +1047,7 @@
       "company_name": "Company Name",
       "project_name": "Project Name",
       "total_budget": "Total Budget ($)",
-      "deploy_button": "Deploy Environment ->"
+      "deploy_button": "Deploy Environment "
     },
     "placeholders": {
       "client_email": "client@company.com",

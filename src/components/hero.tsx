@@ -32,7 +32,9 @@ export function Hero() {
             asChild
             size="lg"
             className="rounded-full h-12 px-8 text-base bg-white text-black hover:bg-neutral-200 transition-colors duration-300">
-            <Link href="/contact">{t("cta_start")}</Link>
+            <Link href={{ pathname: "/contact", query: { intent: "audit" } }}>
+              {t("cta_start")}
+            </Link>
           </Button>
           <Button
             asChild

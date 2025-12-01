@@ -89,10 +89,11 @@ const SERVICE_IMAGES = {
  * - Philosophy section with tech marquee
  */
 export default async function HomePage({
-  params: { locale },
+  params,
 }: {
-  params: { locale: string };
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
   const t = await getTranslations({ locale, namespace: "HomePage" });
   const images = SERVICE_IMAGES;
 

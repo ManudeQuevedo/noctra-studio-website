@@ -50,7 +50,7 @@ export function Footer() {
               {t("hook")}
             </h2>
             <Link
-              href="/contact"
+              href={{ pathname: "/contact", query: { intent: "discovery" } }}
               onClick={scrollToTop}
               className="group flex items-center gap-2 text-lg font-medium hover:text-neutral-300 transition-colors">
               {t("book_discovery")}
