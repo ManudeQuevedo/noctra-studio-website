@@ -76,7 +76,9 @@ export function FeaturedWorkSection() {
                 </p>
               </div>
 
-              <Link href={project.href} className="absolute inset-0 z-10">
+              <Link
+                href={project.href as any}
+                className="absolute inset-0 z-10">
                 <span className="sr-only">
                   View {t(`projects.${project.key}.title`)}
                 </span>

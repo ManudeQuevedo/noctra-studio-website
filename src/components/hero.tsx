@@ -46,7 +46,7 @@ export function Hero() {
             variant="ghost"
             size="lg"
             className="rounded-full h-12 px-8 text-base text-neutral-500 hover:text-white hover:bg-white/5 transition-all duration-300">
-            <Link href="/case-studies">{t("cta_work")}</Link>
+            <Link href="/work">{t("cta_work")}</Link>
           </Button>
         </div>
       </motion.div>

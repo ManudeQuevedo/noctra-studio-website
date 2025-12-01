@@ -271,7 +271,7 @@ export function Header() {
                           animate={{ opacity: 1, x: 0 }}
                           transition={{ delay: 0.1 + index * 0.05 }}>
                           <Link
-                            href={item.href}
+                            href={item.href as any}
                             className="group flex items-center gap-4 text-4xl md:text-6xl font-bold transition-colors duration-300 whitespace-nowrap text-neutral-500 hover:text-white">
                             <span className="text-xs font-mono text-neutral-700 pt-2">
                               0{index + 1}

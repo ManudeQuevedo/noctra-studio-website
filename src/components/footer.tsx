@@ -104,7 +104,7 @@ export function Footer() {
                   ) : (
                     <Link
                       key={item.label}
-                      href={item.href}
+                      href={item.href as any}
                       className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
                       {item.label}
                     </Link>
@@ -131,7 +131,7 @@ export function Footer() {
                 ].map((item) => (
                   <Link
                     key={item.label}
-                    href={item.href}
+                    href={item.href as any}
                     className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
                     {item.label}
                   </Link>
@@ -147,7 +147,7 @@ export function Footer() {
               <div className="flex flex-col gap-4 pt-1">
                 <div className="flex gap-4">
                   <Link
-                    href="https://instagram.com/noctra_studio"
+                    href={"https://instagram.com/noctra_studio" as any}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Visit our Instagram page"
@@ -155,7 +155,7 @@ export function Footer() {
                     <Instagram className="w-6 h-6" />
                   </Link>
                   <Link
-                    href="https://x.com/NoctraStudio"
+                    href={"https://x.com/NoctraStudio" as any}
                     target="_blank"
                     rel="noopener noreferrer"
                     aria-label="Visit our X profile"
