@@ -90,7 +90,7 @@ export function Footer() {
             <span className="uppercase tracking-wider">CONNECT:</span>
             <div className="flex items-center gap-3">
               <a
-                href="https://instagram.com/noctrastudio"
+                href="https://instagram.com/noctra_studio"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="text-zinc-500 hover:text-white transition-colors"

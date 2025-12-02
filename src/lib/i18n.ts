@@ -3,17 +3,17 @@ export type Language = 'en' | 'es';
 export const translations = {
   en: {
     hero: {
-      title: "Coming Soon",
-      subtitle: "We are crafting a new digital experience.",
-      description: "Noctra Studio is a premium digital product studio. We build scalable, secure, and evolving infrastructure for your business."
+      title: "System Initialization Imminent.",
+      subtitle: "We are architecting the next generation of digital infrastructure. A studio led by senior engineers with 7+ years of production experience at scale.",
+      description: ""
     },
     form: {
-      placeholder: "Enter your email for early access",
+      placeholder: "Request Early Access Protocol",
       button: "Notify Me",
       success: "Thank you! We'll keep you posted.",
       error: "Something went wrong. Please try again.",
       sending: "Sending...",
-      microcopy: "No spam. Just value."
+      microcopy: "Join the waitlist for priority architecture audits and engineering insights. No spam."
     },
     footer: {
       copyright: "© 2025 Engineered by Noctra Studio"
@@ -21,17 +21,17 @@ export const translations = {
   },
   es: {
     hero: {
-      title: "Una nueva experiencia digital está por llegar.",
-      subtitle: "Estamos construyendo soluciones rápidas, seguras y diseñadas para marcas que quieren crecer.",
-      description: "Infraestructura premium, diseño impecable y tecnología de alto rendimiento."
+      title: "Inicialización del Sistema Inminente.",
+      subtitle: "Estamos arquitectando la próxima generación de infraestructura digital. Un estudio liderado por ingenieros senior con más de 7 años de experiencia en producción a escala.",
+      description: ""
     },
     form: {
-      placeholder: "Ingresa tu correo para obtener acceso anticipado",
+      placeholder: "Solicitar Protocolo de Acceso Anticipado",
       button: "Notificarme",
       success: "¡Gracias! Te mantendremos informado.",
       error: "Algo salió mal. Por favor intenta de nuevo.",
       sending: "Enviando...",
-      microcopy: "No spam. Solo valor."
+      microcopy: "Únete a la lista de espera para auditorías de arquitectura prioritarias e insights de ingeniería. Sin spam."
     },
     footer: {
       copyright: "© 2025 Engineered by Noctra Studio"

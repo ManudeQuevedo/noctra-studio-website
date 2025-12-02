@@ -57,6 +57,20 @@ export function Background() {
         className="absolute left-0 right-0 top-0 -z-10 m-auto h-[310px] w-[310px] rounded-full bg-primary/20 opacity-20 blur-[100px]"
       />
 
+      {/* Breathing Glow */}
+      <motion.div
+        animate={{
+          scale: [1, 1.2, 1],
+          opacity: [0.3, 0.5, 0.3],
+        }}
+        transition={{
+          duration: 8,
+          repeat: Infinity,
+          ease: "easeInOut",
+        }}
+        className="absolute inset-0 m-auto w-[600px] h-[600px] bg-white/5 rounded-full blur-3xl -z-20 pointer-events-none"
+      />
+
       <motion.div
         style={{ x: x2, y: y2 }}
         initial={{ opacity: 0 }}
