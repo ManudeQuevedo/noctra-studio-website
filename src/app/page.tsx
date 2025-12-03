@@ -11,7 +11,9 @@ export default function Home() {
       <Background />
 
       {/* Header / Nav */}
-      <Navbar />
+      <div className="relative z-50 w-full">
+        <Navbar />
+      </div>
 
       {/* Main Content */}
       <div className="flex-1 flex items-center justify-center container mx-auto px-4">
