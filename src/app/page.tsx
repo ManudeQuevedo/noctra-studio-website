@@ -7,7 +7,7 @@ import { Navbar } from "@/components/coming-soon/navbar";
 
 export default function Home() {
   return (
-    <main className="relative h-screen w-full overflow-hidden flex flex-col">
+    <main className="relative min-h-screen w-full flex flex-col overflow-x-hidden bg-black text-white selection:bg-white selection:text-black">
       <Background />
 
       {/* Header / Nav */}
@@ -16,7 +16,7 @@ export default function Home() {
       </div>
 
       {/* Main Content */}
-      <div className="flex-1 flex items-center justify-center container mx-auto px-4">
+      <div className="flex-1 flex items-center justify-center container mx-auto px-4 pt-24 md:pt-0">
         <Hero />
       </div>
 
