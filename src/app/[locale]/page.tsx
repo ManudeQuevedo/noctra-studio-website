@@ -7,6 +7,8 @@ import { EngagementModels } from "@/components/sections/EngagementModels";
 import { generatePageMetadata } from "@/lib/metadata";
 import { getTranslations } from "next-intl/server";
 
+import { HomeContentWrapper } from "@/components/home/HomeContentWrapper";
+
 // Lazy load heavy components below the fold
 const ServicesGrid = dynamic(
   () =>
@@ -99,26 +101,28 @@ export default async function HomePage({
 
   return (
     <main className="min-h-screen">
-      {/* SECTION 1: The Hero */}
-      <Hero />
-      <PhilosophySection />
+      <HomeContentWrapper>
+        {/* SECTION 1: The Hero */}
+        <Hero />
+        <PhilosophySection />
 
-      {/* SECTION 2: The Intro (Lead Statement) */}
+        {/* SECTION 2: The Intro (Lead Statement) */}
 
-      <HeroTextSection />
+        <HeroTextSection />
 
-      {/* SECTION 3: Site Audit Tool (Lead Magnet) */}
-      <section className="w-full px-6 md:px-8 py-24 bg-neutral-950/50 border-y border-neutral-900">
-        <SiteAuditTool />
-      </section>
+        {/* SECTION 3: Site Audit Tool (Lead Magnet) */}
+        <section className="w-full px-6 md:px-8 py-24 bg-neutral-950/50 border-y border-neutral-900">
+          <SiteAuditTool />
+        </section>
 
-      <ServicesGrid images={images} />
-      <BusinessImpactSection />
-      <EngagementModels />
-      <TargetAudienceSection />
-      <FeaturedWorkSection />
-      <ModernStackSection />
-      <ProcessSection />
+        <ServicesGrid images={images} />
+        <BusinessImpactSection />
+        <EngagementModels />
+        <TargetAudienceSection />
+        <FeaturedWorkSection />
+        <ModernStackSection />
+        <ProcessSection />
+      </HomeContentWrapper>
     </main>
   );
 }

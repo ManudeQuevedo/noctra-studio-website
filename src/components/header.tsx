@@ -15,6 +15,8 @@ import { cn } from "@/lib/utils";
 import { Instagram } from "lucide-react";
 import NextImage from "next/image";
 import { usePathname as useNextPathname } from "next/navigation";
+import { useIntro } from "@/context/IntroContext";
+import { BrandLogo } from "@/components/ui/BrandLogo";
 
 // Custom X Icon
 const XIcon = ({ className }: { className?: string }) => (
@@ -28,12 +30,17 @@ const XIcon = ({ className }: { className?: string }) => (
 );
 
 export function Header() {
+  const { isIntroComplete, showIntro, initialized } = useIntro();
+  const pathname = usePathname();
+  const nextPathname = useNextPathname();
+
+  // Prevent flash of navbar on homepage before intro check
+  // Must be done before other hooks if possible, but hooks must be unconditional.
+  // Actually, we cannot return null before hooks. We must return null at the end.
   const t = useTranslations("Navigation");
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const { scrollY } = useScroll();
-  const pathname = usePathname();
-  const nextPathname = useNextPathname();
   const headerRef = React.useRef<HTMLDivElement>(null);
 
   const isContactPage = nextPathname?.includes("/contact");
@@ -48,7 +55,10 @@ export function Header() {
     setMounted(true);
   }, []);
 
-  if (isAdminPage || isStudioPage || isDashboardPage) return null;
+  // Prevent flash of navbar on homepage before intro check
+  const isHomePage =
+    pathname === "/" || pathname === "/en" || pathname === "/es";
+  const shouldHide = isHomePage && !initialized;
 
   // Determine effective theme for logo selection
   // If isOpen is true, colors are inverted (Light System -> Dark Header Bg -> Need Dark Theme Logo)
@@ -116,13 +126,24 @@ export function Header() {
     t("tags.headless"),
   ];
 
+  if (isAdminPage || isStudioPage || isDashboardPage) return null;
+  if (shouldHide) return null;
+
   return (
     <header className="fixed top-6 left-0 z-50 w-full flex justify-center pointer-events-none px-6 md:px-0">
       <motion.div
         ref={headerRef}
         layout
-        initial={false}
-        animate={isOpen ? "open" : "closed"}
+        initial={{ y: -20, opacity: 0 }}
+        animate={
+          isOpen
+            ? "open"
+            : {
+                y: 0,
+                opacity: 1,
+                transition: { delay: showIntro ? 7.5 : 0, duration: 0.8 },
+              }
+        }
         className={cn(
           "relative overflow-hidden pointer-events-auto transition-all duration-500 w-full max-w-7xl",
           isOpen
@@ -156,42 +177,26 @@ export function Header() {
             )}>
             <Link
               href="/"
-              className="relative z-50 transition-opacity duration-300 hover:opacity-80">
-              {mounted ? (
-                <>
-                  {/* Desktop Logo */}
-                  <NextImage
-                    src={
-                      isOpen || effectiveTheme === "dark"
-                        ? "/noctra-navbar-dark.svg"
-                        : "/noctra-navbar-light.svg"
-                    }
-                    alt="Noctra Studio"
-                    width={120}
-                    height={32}
-                    className="hidden md:block h-8 w-auto object-contain"
-                    priority
-                  />
-                  {/* Mobile Logo */}
-                  <NextImage
-                    src={
-                      isOpen || effectiveTheme === "dark"
-                        ? "/noctra-studio-icon-dark-theme.svg"
-                        : "/noctra-studio-icon-light-theme.svg"
-                    }
-                    alt="Noctra Studio"
-                    width={32}
-                    height={32}
-                    className="block md:hidden h-8 w-auto object-contain"
-                    priority
-                  />
-                </>
-              ) : (
-                <span className="text-xl font-bold tracking-tight">NOCTRA</span>
-              )}
+              className="relative z-50 transition-opacity duration-300 hover:opacity-80 flex items-center">
+              {/* Desktop Logo */}
+              <div className="hidden md:block relative h-8">
+                <BrandLogo className="h-8 text-foreground" />
+              </div>
+
+              {/* Mobile Logo */}
+              <div className="block md:hidden relative h-8 w-8">
+                <BrandLogo
+                  className="w-8 h-8 text-foreground"
+                  showText={false}
+                />
+              </div>
             </Link>
 
-            <div className="flex items-center gap-4">
+            <motion.div
+              className="flex items-center gap-4"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: showIntro ? 2.5 : 0, duration: 1 }}>
               {/* Start Project CTA - Desktop Only - Hidden on Contact Page */}
               {!isContactPage && (
                 <Link
@@ -247,7 +252,7 @@ export function Header() {
                   </div>
                 </div>
               </button>
-            </div>
+            </motion.div>
           </div>
 
           {/* Collapsible Content */}

@@ -17,6 +17,8 @@ import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
 import { Cursor } from "@/components/ui/cursor";
 import { ChatWidget } from "@/components/ui/ChatWidget";
+import { IntroProvider } from "@/context/IntroContext";
+import { IntroLoader } from "@/components/ui/IntroLoader";
 
 // Satoshi - Brand primary font
 const satoshi = localFont({
@@ -99,15 +101,18 @@ export default async function LocaleLayout({
           forcedTheme="dark"
           enableSystem={false}
           disableTransitionOnChange>
-          <Header />
-          {children}
-          <FooterWrapper />
-          <ScrollToTop />
-          <OrganizationSchema />
-          <WebsiteSchema />
-          <SpeedInsights />
-          <Analytics />
-          <ChatWidget />
+          <IntroProvider>
+            <IntroLoader />
+            <Header />
+            {children}
+            <FooterWrapper />
+            <ScrollToTop />
+            <OrganizationSchema />
+            <WebsiteSchema />
+            <SpeedInsights />
+            <Analytics />
+            <ChatWidget />
+          </IntroProvider>
         </ThemeProvider>
       </NextIntlClientProvider>
     </>
