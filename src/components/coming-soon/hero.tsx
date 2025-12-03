@@ -39,7 +39,7 @@ export function Hero() {
           transition={{ duration: 0.6, delay: 0.1 }}
           className="mb-6 flex justify-center">
           <span className="px-3 py-1 rounded-full border border-white/10 bg-white/5 text-[10px] md:text-xs font-mono text-neutral-400 tracking-widest uppercase">
-            EST. 2025 // LED BY SENIOR ENGINEERING TALENT
+            {t.hero.badge}
           </span>
         </motion.div>
 

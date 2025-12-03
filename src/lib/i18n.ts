@@ -5,7 +5,8 @@ export const translations = {
     hero: {
       title: "System Initialization Imminent.",
       subtitle: "We are architecting the next generation of digital infrastructure. A studio led by senior engineers with 7+ years of production experience at scale.",
-      description: ""
+      description: "",
+      badge: "EST. 2025 || LED BY SENIOR ENGINEERING TALENT"
     },
     form: {
       placeholder: "Request Early Access Protocol",
@@ -34,7 +35,8 @@ export const translations = {
     hero: {
       title: "Inicialización del Sistema Inminente.",
       subtitle: "Estamos arquitectando la próxima generación de infraestructura digital. Un estudio liderado por ingenieros senior con más de 7 años de experiencia en producción a escala.",
-      description: ""
+      description: "",
+      badge: "EST. 2025 || LIDERADO POR TALENTO DE INGENIERÍA SENIOR"
     },
     form: {
       placeholder: "Solicitar Protocolo de Acceso Anticipado",
