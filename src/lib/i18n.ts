@@ -16,7 +16,18 @@ export const translations = {
       microcopy: "Join the waitlist for priority architecture audits and engineering insights. No spam."
     },
     footer: {
-      copyright: "© 2025 Engineered by Noctra Studio"
+      copyright: "© 2025 Engineered by Noctra Studio",
+      rights: "All rights reserved.",
+      status: "ALL SYSTEMS OPERATIONAL",
+      connect: "CONNECT:",
+      location: "DESIGNED & ENGINEERED IN QUERÉTARO, MX. OPERATIONAL WORLDWIDE."
+    },
+    countdown: {
+      title: "Estimated Deployment",
+      days: "Days",
+      hours: "Hrs",
+      minutes: "Min",
+      seconds: "Sec"
     }
   },
   es: {
@@ -34,7 +45,18 @@ export const translations = {
       microcopy: "Únete a la lista de espera para auditorías de arquitectura prioritarias e insights de ingeniería. Sin spam."
     },
     footer: {
-      copyright: "© 2025 Engineered by Noctra Studio"
+      copyright: "© 2025 Engineered by Noctra Studio",
+      rights: "Todos los derechos reservados.",
+      status: "TODOS LOS SISTEMAS OPERATIVOS",
+      connect: "CONECTAR:",
+      location: "DISEÑADO E INGENIADO EN QUERÉTARO, MX. OPERACIONAL EN TODO EL MUNDO."
+    },
+    countdown: {
+      title: "Despliegue Estimado",
+      days: "Días",
+      hours: "Hrs",
+      minutes: "Min",
+      seconds: "Seg"
     }
   }
 };

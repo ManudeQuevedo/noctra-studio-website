@@ -3,6 +3,7 @@
 import { motion } from "framer-motion";
 import { useEffect, useState } from "react";
 import { cn } from "@/lib/utils";
+import { useLanguage } from "@/lib/i18n";
 
 // --- Icons ---
 
@@ -55,6 +56,7 @@ const FooterLink = ({
 
 export function Footer() {
   const [mounted, setMounted] = useState(false);
+  const { t } = useLanguage();
 
   useEffect(() => {
     setMounted(true);
@@ -67,13 +69,13 @@ export function Footer() {
         <div className="flex flex-col md:flex-row justify-between items-center gap-4 text-xs font-mono text-zinc-500">
           {/* Copyright with Logo */}
           <div className="flex items-center gap-2 order-2 md:order-1 text-sm">
-            <span>© 2025</span>
+            <span>{t.footer.copyright.split("Engineered")[0]}</span>
             <img
               src="/noctra-navbar-dark.svg"
               alt="Noctra Studio"
               className="h-4 w-auto opacity-80"
             />
-            <span>All rights reserved.</span>
+            <span>{t.footer.rights}</span>
           </div>
 
           {/* System Status */}
@@ -82,12 +84,12 @@ export function Footer() {
               <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-500 opacity-75"></span>
               <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
             </span>
-            <span className="tracking-wider">ALL SYSTEMS OPERATIONAL</span>
+            <span className="tracking-wider">{t.footer.status}</span>
           </div>
 
           {/* Connect Icons */}
           <div className="flex items-center gap-4 order-3">
-            <span className="uppercase tracking-wider">CONNECT:</span>
+            <span className="uppercase tracking-wider">{t.footer.connect}</span>
             <div className="flex items-center gap-3">
               <a
                 href="https://instagram.com/noctra_studio"
@@ -111,7 +113,7 @@ export function Footer() {
 
         <div className="w-full text-center border-t border-white/5 pt-6">
           <p className="text-[10px] md:text-xs font-mono text-zinc-600 tracking-widest uppercase">
-            DESIGNED & ENGINEERED IN QUERÉTARO, MX. OPERATIONAL WORLDWIDE.
+            {t.footer.location}
           </p>
         </div>
       </div>
