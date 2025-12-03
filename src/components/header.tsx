@@ -57,7 +57,9 @@ export function Header() {
 
   // Prevent flash of navbar on homepage before intro check
   const isHomePage =
-    pathname === "/" || pathname === "/en" || pathname === "/es";
+    pathname === "/" ||
+    (pathname as string) === "/en" ||
+    (pathname as string) === "/es";
   const shouldHide = isHomePage && !initialized;
 
   // Determine effective theme for logo selection
