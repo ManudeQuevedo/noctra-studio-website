@@ -17,6 +17,7 @@ import NextImage from "next/image";
 import { usePathname as useNextPathname } from "next/navigation";
 import { useIntro } from "@/context/IntroContext";
 import { BrandLogo } from "@/components/ui/BrandLogo";
+import { useMediaQuery } from "@/hooks/use-media-query";
 
 // Custom X Icon
 const XIcon = ({ className }: { className?: string }) => (
@@ -42,6 +43,7 @@ export function Header() {
   const [isScrolled, setIsScrolled] = React.useState(false);
   const { scrollY } = useScroll();
   const headerRef = React.useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isContactPage = nextPathname?.includes("/contact");
   const isAdminPage = nextPathname?.includes("/admin");
@@ -132,7 +134,7 @@ export function Header() {
   if (shouldHide) return null;
 
   return (
-    <header className="fixed top-6 left-0 z-50 w-full flex justify-center pointer-events-none px-6 md:px-0">
+    <header className="fixed top-6 left-0 z-[100] w-full flex justify-center pointer-events-none px-4 md:px-0">
       <motion.div
         ref={headerRef}
         layout
@@ -149,19 +151,23 @@ export function Header() {
         className={cn(
           "relative overflow-hidden pointer-events-auto transition-all duration-500 w-full max-w-7xl",
           isOpen
-            ? "bg-neutral-950 dark:bg-black shadow-2xl border border-neutral-800" // Open: Dark Command Center
+            ? "bg-[#050505] dark:bg-[#050505] shadow-2xl border border-neutral-800" // Open: Dark Command Center
             : isScrolled
             ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60 border border-neutral-200/50 dark:border-white/10 shadow-lg" // Closed & Scrolled
             : "bg-transparent border-transparent shadow-none backdrop-blur-none" // Closed & Top
         )}
         variants={{
           open: {
-            height: "600px",
+            height: isMobile ? "calc(100dvh - 3rem)" : "600px",
             borderRadius: "1rem", // Sharper corners for "engineered" look
+            opacity: 1,
+            y: 0,
           },
           closed: {
             height: "80px",
             borderRadius: "2rem",
+            opacity: 1,
+            y: 0,
           },
         }}
         transition={{
@@ -265,7 +271,7 @@ export function Header() {
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
                 transition={{ duration: 0.3, delay: 0.1 }}
-                className="flex flex-col md:flex-row px-8 pb-8 h-full gap-12 pt-8">
+                className="flex flex-col md:flex-row px-8 pb-8 h-full gap-12 pt-8 overflow-y-auto">
                 {/* Left Column: Navigation Links */}
                 <div className="flex-1 flex flex-col justify-center">
                   <div className="flex flex-col items-start gap-6">
