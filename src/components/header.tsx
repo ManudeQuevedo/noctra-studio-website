@@ -80,6 +80,7 @@ export function Header() {
   // ... (rest of effects)
 
   // Handle Escape key and Click Outside
+  // Handle Escape key, Click Outside, and Scroll Lock
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -99,11 +100,17 @@ export function Header() {
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);
       document.addEventListener("mousedown", handleClickOutside);
+      // Lock scroll
+      document.body.style.overflow = "hidden";
+    } else {
+      // Unlock scroll
+      document.body.style.overflow = "unset";
     }
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClickOutside);
+      document.body.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -151,17 +158,18 @@ export function Header() {
               }
         }
         className={cn(
-          "relative overflow-hidden pointer-events-auto transition-all duration-500 w-full max-w-7xl",
+          "relative overflow-hidden pointer-events-auto transition-all duration-500",
           isOpen
-            ? "bg-[#050505] dark:bg-[#050505] shadow-2xl border border-neutral-800" // Open: Dark Command Center
-            : isScrolled
-            ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60 border border-neutral-200/50 dark:border-white/10 shadow-lg" // Closed & Scrolled
-            : "bg-transparent border-transparent shadow-none backdrop-blur-none" // Closed & Top
+            ? "fixed inset-0 w-full h-full rounded-none z-[999] bg-[#050505] dark:bg-[#050505] md:fixed md:top-4 md:right-4 md:bottom-4 md:left-auto md:w-[450px] md:h-auto md:rounded-[2rem] shadow-2xl border border-neutral-800" // Mobile: Full Screen, Desktop: Floating Card
+            : cn(
+                "w-full max-w-7xl",
+                isScrolled
+                  ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60 border border-neutral-200/50 dark:border-white/10 shadow-lg rounded-[2rem]"
+                  : "bg-transparent border-transparent shadow-none backdrop-blur-none"
+              )
         )}
         variants={{
           open: {
-            height: isMobile ? "calc(100dvh - 3rem)" : "600px",
-            borderRadius: "1rem", // Sharper corners for "engineered" look
             opacity: 1,
             y: 0,
           },
@@ -174,9 +182,8 @@ export function Header() {
         }}
         transition={{
           type: "spring",
-          stiffness: 200,
+          stiffness: 300,
           damping: 25,
-          mass: 1,
         }}>
         <div className="flex flex-col w-full h-full">
           {/* Header Row: Logo & Toggle */}
