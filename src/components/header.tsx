@@ -134,7 +134,7 @@ export function Header() {
   if (shouldHide) return null;
 
   return (
-    <header className="fixed top-6 left-0 z-[100] w-full flex justify-center pointer-events-none px-4 md:px-0">
+    <header className="fixed top-6 left-0 z-[999] w-full flex justify-center pointer-events-none px-4 md:px-0">
       <motion.div
         ref={headerRef}
         layout
@@ -145,6 +145,8 @@ export function Header() {
             : {
                 y: 0,
                 opacity: 1,
+                // Removed delay on intro to prevent potential vanishing if context is not ready?
+                // Keeping original logic for now but being cautious.
                 transition: { delay: showIntro ? 7.5 : 0, duration: 0.8 },
               }
         }
