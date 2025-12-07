@@ -273,7 +273,8 @@ export function Header() {
                 <div className="flex flex-col md:flex-row w-full h-full px-6 md:px-8 pb-8 pt-8 md:pt-8 gap-8 md:gap-12 overflow-y-auto items-center md:items-stretch justify-center md:justify-start">
                   {/* Left Column: Navigation Links */}
                   <div className="w-full md:flex-1 flex flex-col justify-center items-center md:items-start z-[101]">
-                    <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-auto">
+                    {/* Content Wrapper - Enforce Center Mobile */}
+                    <div className="flex flex-col items-center justify-center w-full md:w-auto md:items-start gap-6">
                       {navItems.map((item, index) => {
                         const isActive = pathname === item.href;
                         return (
