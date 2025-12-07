@@ -185,16 +185,19 @@ export function Header() {
 
   return (
     // Z-Index wrapper for safety
-    // Removed `flex justify-center` and padding from wrapper as variants handle positioning now
-    <header className="fixed z-[100] top-0 left-0 w-full pointer-events-none">
+    // Added slide-down entrance animation
+    <motion.header
+      className="fixed z-[100] top-0 left-0 w-full pointer-events-none"
+      initial={{ y: -100, opacity: 0 }}
+      animate={{ y: 0, opacity: 1 }}
+      transition={{ duration: 0.8, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}>
       <motion.div
         ref={headerRef}
         initial="closed"
         animate={isOpen ? (isMobile ? "openMobile" : "openDesktop") : "closed"}
         variants={variants as any}
         transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        // Hide during intro, show after.
-        style={{ opacity: showIntro && !isIntroComplete ? 0 : 1 }}
+        // Removed local opacity control to rely on parent header entrance
         className={cn(
           "pointer-events-auto overflow-hidden shadow-2xl transition-all duration-500",
           isOpen
@@ -265,11 +268,13 @@ export function Header() {
           <AnimatePresence>
             {isOpen && (
               <motion.div
+                key="content"
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }} // Content Fade-In Delay
-                className="flex flex-col h-full overflow-y-auto">
+                transition={{ duration: 0.3, delay: 0.2 }} // Wait for bg to expand
+                // Refactored Wrapper: Force Center, Z-Index, Relative
+                className="relative z-[102] flex flex-col items-center justify-center w-full h-full overflow-y-auto">
                 <div className="flex flex-col md:flex-row w-full h-full px-6 md:px-8 pb-8 pt-8 md:pt-8 gap-8 md:gap-12 overflow-y-auto items-center md:items-stretch justify-center md:justify-start">
                   {/* Left Column: Navigation Links */}
                   <div className="w-full md:flex-1 flex flex-col justify-center items-center md:items-start z-[101]">
@@ -280,9 +285,10 @@ export function Header() {
                         return (
                           <motion.div
                             key={item.href}
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.1 + index * 0.05 }}
+                            // Simplified Child Animation for Stability
+                            initial={{ opacity: 0, y: 10 }}
+                            animate={{ opacity: 1, y: 0 }}
+                            transition={{ delay: 0.3 + index * 0.05 }}
                             className="w-full text-center md:text-left">
                             <Link
                               href={item.href as any}
@@ -368,6 +374,6 @@ export function Header() {
           </AnimatePresence>
         </div>
       </motion.div>
-    </header>
+    </motion.header>
   );
 }
