@@ -8,12 +8,10 @@ import {
   useMotionValueEvent,
 } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { useTheme } from "next-themes";
 import { Link, usePathname } from "@/i18n/routing";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
 import { Instagram } from "lucide-react";
-import NextImage from "next/image";
 import { usePathname as useNextPathname } from "next/navigation";
 import { useIntro } from "@/context/IntroContext";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -128,104 +126,86 @@ export function Header() {
   if (isAdminPage || isStudioPage || isDashboardPage) return null;
   if (shouldHide) return null;
 
-  // Explicit Variants
-  const variants = {
+  // --- ANTIGRAVITY PROTOCOL: Strict Separation of Concerns ---
+
+  // 1. Desktop Variants (Floating Card)
+  const desktopVariants = {
     closed: {
-      position: "fixed" as any,
-      top: "1.5rem", // top-6
-      left: "50%",
-      x: "-50%",
-      y: 0,
-      right: "auto",
-      bottom: "auto",
-      width: "calc(100% - 2rem)", // px-4 equivalent
-      maxWidth: "80rem", // max-w-7xl
+      width: "100%",
+      maxWidth: "1280px", // max-w-7xl
       height: "80px",
       borderRadius: "2rem",
       backgroundColor: isScrolled ? "rgba(5, 5, 5, 0.6)" : "transparent",
       backdropFilter: isScrolled ? "blur(12px)" : "none",
-      zIndex: 50,
       border: isScrolled
         ? "1px solid rgba(255, 255, 255, 0.1)"
         : "1px solid transparent",
-    },
-    openDesktop: {
-      position: "fixed" as any,
-      top: "1.5rem", // top-6
+      top: "1.5rem",
+      right: "auto",
       left: "50%",
       x: "-50%",
-      y: 0,
-      right: "auto",
-      bottom: "auto",
-      width: "calc(100% - 2rem)", // Maintain same width
-      maxWidth: "80rem", // Maintain same max-width
-      height: "600px", // Fixed large height for dropdown feel
+    },
+    open: {
+      width: "450px",
+      maxWidth: "100%",
+      height: "600px",
       borderRadius: "2rem",
       backgroundColor: "#050505",
-      zIndex: 100,
       border: "1px solid rgba(255, 255, 255, 0.1)",
+      top: "1.5rem",
+      right: "1.5rem",
+      left: "auto", // Release center lock
+      x: "0%", // Reset center transform
     },
-    openMobile: {
-      position: "fixed" as any,
-      top: 0,
-      left: 0,
-      x: 0, // Reset transform
+  };
+
+  // 2. Mobile Variants (Full Screen Overlay)
+  const mobileVariants = {
+    closed: {
+      opacity: 0,
+      y: -20,
+      pointerEvents: "none" as const,
+    },
+    open: {
+      opacity: 1,
       y: 0,
-      right: 0,
-      bottom: 0,
-      width: "100%",
-      height: "100dvh",
-      maxWidth: "none",
-      borderRadius: "0px",
-      backgroundColor: "#050505",
-      zIndex: 100,
-      border: "none",
+      pointerEvents: "auto" as const,
+      transition: { duration: 0.3 },
     },
   };
 
   return (
-    // Z-Index wrapper for safety
-    // Added slide-down entrance animation
-    <motion.header
-      className="fixed z-[100] top-0 left-0 w-full pointer-events-none"
-      initial={{ y: -100, opacity: 0 }}
-      animate={{ y: 0, opacity: 1 }}
-      transition={{ duration: 0.8, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}>
-      <motion.div
-        ref={headerRef}
-        initial="closed"
-        animate={isOpen ? (isMobile ? "openMobile" : "openDesktop") : "closed"}
-        variants={variants as any}
-        transition={{ type: "spring", stiffness: 300, damping: 30 }}
-        // Removed local opacity control to rely on parent header entrance
-        className={cn(
-          "pointer-events-auto overflow-hidden shadow-2xl transition-all duration-500",
-          isOpen
-            ? "border border-neutral-800"
-            : "border-transparent shadow-none"
-        )}>
-        {" "}
-        <div className="flex flex-col w-full h-full relative">
-          {/* Header Row: Logo & Toggle */}
-          <div className="flex items-center justify-between px-8 h-[80px] shrink-0 z-50">
-            {/* Logo - Hide text on desktop closed if needed, but keeping simple for now */}
-            <Link
-              href="/"
-              className="relative z-50 transition-opacity duration-300 hover:opacity-80 flex items-center">
-              <BrandLogo
-                className="h-8 w-auto text-foreground"
-                showText={isOpen || !isMobile || true}
-              />
-            </Link>
-
-            <motion.div className="flex items-center gap-4">
-              {/* CTA - visible only when open or huge screens? Keeping it simpler as per requested refactor */}
+    <>
+      {/* --- DESKTOP HEADER (MD+) --- */}
+      <motion.header
+        className="fixed z-[100] top-0 left-0 w-full pointer-events-none hidden md:block" // Hidden on mobile
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}>
+        <motion.div
+          ref={headerRef}
+          initial="closed"
+          animate={isOpen ? "open" : "closed"}
+          variants={desktopVariants}
+          transition={{ type: "spring", stiffness: 300, damping: 30 }}
+          className="fixed z-50 overflow-hidden shadow-2xl pointer-events-auto">
+          <div className="flex flex-col w-full h-full relative">
+            {/* Desktop Header Row */}
+            <div className="flex items-center justify-between px-8 h-[80px] shrink-0 z-50">
+              <Link
+                href="/"
+                className="relative z-50 hover:opacity-80 transition-opacity">
+                <BrandLogo
+                  className="h-8 w-auto text-foreground"
+                  showText={true}
+                />
+              </Link>
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center gap-4 group cursor-pointer">
                 <span
                   className={cn(
-                    "text-xs font-mono uppercase tracking-wider hidden sm:block transition-colors duration-300",
+                    "text-xs font-mono uppercase tracking-wider transition-colors duration-300",
                     isOpen ? "text-neutral-400" : "text-foreground"
                   )}>
                   {isOpen ? t("menu_close") : t("menu_open")}
@@ -233,10 +213,9 @@ export function Header() {
                 <div
                   className={cn(
                     "relative flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300",
-                    isOpen
-                      ? "bg-white/10 hover:bg-white/20"
-                      : "bg-black/5 hover:bg-black/10 dark:bg-white/10 dark:hover:bg-white/20"
+                    isOpen ? "bg-white/10" : "bg-black/5 dark:bg-white/10"
                   )}>
+                  {/* Hamburger Icon Logic */}
                   <div
                     className={cn(
                       "w-full h-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300",
@@ -261,119 +240,172 @@ export function Header() {
                   </div>
                 </div>
               </button>
-            </motion.div>
-          </div>
+            </div>
 
-          {/* Collapsible Content */}
-          <AnimatePresence>
-            {isOpen && (
-              <motion.div
-                key="content"
-                initial={{ opacity: 0 }}
-                animate={{ opacity: 1 }}
-                exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.2 }} // Wait for bg to expand
-                // Refactored Wrapper: Force Center, Z-Index, Relative
-                className="relative z-[102] flex flex-col items-center justify-center w-full h-full overflow-y-auto">
-                <div className="flex flex-col md:flex-row w-full h-full px-6 md:px-8 pb-8 pt-8 md:pt-8 gap-8 md:gap-12 overflow-y-auto items-center md:items-stretch justify-center md:justify-start">
-                  {/* Left Column: Navigation Links */}
-                  <div className="w-full md:flex-1 flex flex-col justify-center items-center md:items-start z-[101]">
-                    {/* Content Wrapper - Enforce Center Mobile */}
-                    <div className="flex flex-col items-center justify-center w-full md:w-auto md:items-start gap-6">
-                      {navItems.map((item, index) => {
-                        const isActive = pathname === item.href;
-                        return (
-                          <motion.div
-                            key={item.href}
-                            // Simplified Child Animation for Stability
-                            initial={{ opacity: 0, y: 10 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ delay: 0.3 + index * 0.05 }}
-                            className="w-full text-center md:text-left">
-                            <Link
-                              href={item.href as any}
-                              className="group inline-flex items-center gap-4 text-4xl md:text-6xl font-bold transition-colors duration-300 whitespace-nowrap text-neutral-500 hover:text-white justify-center md:justify-start"
-                              onClick={() => setIsOpen(false)}>
-                              <span className="text-xs font-mono text-neutral-700 pt-2 hidden md:block">
-                                0{index + 1}
-                              </span>
-
-                              <motion.span
-                                className={cn(
-                                  "transition-transform duration-300 flex items-center gap-3",
-                                  isActive ? "text-white" : ""
-                                )}
-                                whileHover={{ x: 10 }}>
-                                {isActive && (
-                                  <span className="text-emerald-500 text-2xl md:text-3xl">
-                                    {">_"}
-                                  </span>
-                                )}
-                                {item.label}
-                              </motion.span>
-                            </Link>
-                          </motion.div>
-                        );
-                      })}
-                    </div>
+            {/* Desktop Content */}
+            <AnimatePresence>
+              {isOpen && (
+                <motion.div
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  exit={{ opacity: 0 }}
+                  transition={{ duration: 0.2 }}
+                  className="flex flex-row h-full w-full pt-4 px-8 pb-8 gap-8">
+                  {/* Nav Links */}
+                  <div className="flex-1 flex flex-col justify-center items-start gap-4">
+                    {navItems.map((item, index) => {
+                      const isActive = pathname === item.href;
+                      return (
+                        <motion.div
+                          key={item.href}
+                          initial={{ opacity: 0, x: -10 }}
+                          animate={{ opacity: 1, x: 0 }}
+                          transition={{ delay: 0.1 + index * 0.05 }}>
+                          <Link
+                            href={item.href as any}
+                            className="text-4xl font-bold text-neutral-500 hover:text-white transition-colors duration-300 flex items-center gap-2"
+                            onClick={() => setIsOpen(false)}>
+                            <span className="text-xs font-mono text-neutral-700">
+                              0{index + 1}
+                            </span>
+                            <span className={isActive ? "text-white" : ""}>
+                              {item.label}
+                            </span>
+                          </Link>
+                        </motion.div>
+                      );
+                    })}
                   </div>
-
-                  {/* Right Column: Infrastructure Tags & Info - Hidden on mobile if needed, or displayed at bottom */}
-                  <div className="hidden md:flex flex-col justify-between w-64 border-l border-neutral-800 pl-8 py-4">
-                    <div className="space-y-6">
-                      <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
-                        System Capabilities
+                  {/* Desktop Sidebar */}
+                  <div className="w-48 border-l border-neutral-800 pl-6 py-2 flex flex-col justify-between">
+                    <div className="space-y-4">
+                      <h4 className="text-[10px] font-mono uppercase text-neutral-600 tracking-widest">
+                        System
                       </h4>
-                      <ul className="space-y-3">
-                        {infraTags.map((tag, i) => (
-                          <motion.li
+                      <ul className="space-y-2">
+                        {infraTags.map((tag) => (
+                          <li
                             key={tag}
-                            initial={{ opacity: 0, x: 20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ delay: 0.4 + i * 0.05 }}
-                            className="text-sm font-mono text-neutral-400 flex items-center gap-2">
-                            <div className="w-1 h-1 bg-emerald-500/50 rounded-full" />
+                            className="text-xs font-mono text-neutral-500 flex items-center gap-2">
+                            <div className="w-1 h-1 bg-emerald-500 rounded-full" />{" "}
                             {tag}
-                          </motion.li>
+                          </li>
                         ))}
                       </ul>
                     </div>
-
-                    <div className="space-y-6">
-                      <div className="flex items-center gap-4">
-                        <a
-                          href="https://instagram.com/noctra_studio"
-                          target="_blank"
-                          className="text-neutral-500 hover:text-white">
-                          <Instagram className="w-4 h-4" />
-                        </a>
-                        <a
-                          href="https://x.com/NoctraStudio"
-                          target="_blank"
-                          className="text-neutral-500 hover:text-white">
-                          <XIcon className="w-4 h-4" />
-                        </a>
-                      </div>
+                    <div className="flex gap-4">
+                      <a
+                        href="https://instagram.com/noctra_studio"
+                        target="_blank"
+                        className="text-neutral-500 hover:text-white">
+                        <Instagram className="w-4 h-4" />
+                      </a>
                       <LanguageSwitcher />
                     </div>
                   </div>
+                </motion.div>
+              )}
+            </AnimatePresence>
+          </div>
+        </motion.div>
+      </motion.header>
 
-                  {/* Mobile Footer */}
-                  <div className="md:hidden mt-auto pt-8 border-t border-neutral-800 w-full flex justify-between items-center pb-8">
-                    <div className="flex items-center gap-2">
-                      <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                      <span className="text-xs font-mono text-neutral-400">
-                        Online
-                      </span>
-                    </div>
-                    <LanguageSwitcher />
-                  </div>
-                </div>
-              </motion.div>
-            )}
-          </AnimatePresence>
+      {/* --- MOBILE HEADER (MD Hidden) --- */}
+      {/* Why separate? To guarantee 100% z-index safety and layout purity without "bleeding" styles. */}
+      <motion.header
+        className="fixed z-[100] top-0 left-0 w-full md:hidden pointer-events-none"
+        initial={{ y: -100, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.8, delay: 4.5, ease: [0.16, 1, 0.3, 1] }}>
+        {/* Mobile Top Bar (Always Visible) */}
+        <div
+          className={cn(
+            "fixed top-0 left-0 w-full h-[80px] px-6 flex items-center justify-between z-[10001] pointer-events-auto transition-all duration-300",
+            isScrolled && !isOpen
+              ? "bg-black/60 backdrop-blur-md border-b border-neutral-800/50"
+              : "bg-transparent"
+          )}>
+          <Link href="/" className="hover:opacity-80 transition-opacity">
+            <BrandLogo className="h-6 w-auto text-foreground" showText={true} />
+          </Link>
+          <button
+            onClick={() => setIsOpen(!isOpen)}
+            className="flex items-center justify-center w-10 h-10 bg-white/5 rounded-full backdrop-blur-sm border border-white/5">
+            <div
+              className={cn(
+                "w-5 h-[14px] flex flex-col justify-between transition-all duration-300",
+                isOpen && "h-5 relative"
+              )}>
+              <span
+                className={cn(
+                  "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
+                  isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45"
+                )}
+              />
+              <span
+                className={cn(
+                  "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
+                  isOpen &&
+                    "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45"
+                )}
+              />
+              <span
+                className={cn(
+                  "w-full h-[2px] bg-white rounded-full transition-all duration-300",
+                  isOpen && "opacity-0"
+                )}
+              />
+            </div>
+          </button>
         </div>
-      </motion.div>
-    </motion.header>
+
+        {/* Mobile Full Screen Overlay */}
+        <AnimatePresence>
+          {isOpen && (
+            <motion.div
+              className="fixed inset-0 z-[10000] bg-black w-screen h-[100dvh] flex flex-col pointer-events-auto"
+              initial={{ opacity: 0, y: "100%" }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: "100%" }} // Slide down exit
+              transition={{ type: "spring", damping: 25, stiffness: 200 }}>
+              {/* Mobile Content Container - Strict Center */}
+              <div className="flex-1 flex flex-col items-center justify-center w-full px-6 gap-8">
+                {navItems.map((item, index) => {
+                  const isActive = pathname === item.href;
+                  return (
+                    <motion.div
+                      key={item.href}
+                      initial={{ opacity: 0, y: 20 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.1 + index * 0.05 }}
+                      className="w-full text-center">
+                      <Link
+                        href={item.href as any}
+                        className={cn(
+                          "text-4xl font-bold tracking-tight transition-colors duration-300",
+                          isActive
+                            ? "text-white"
+                            : "text-neutral-500 hover:text-white"
+                        )}
+                        onClick={() => setIsOpen(false)}>
+                        {item.label}
+                      </Link>
+                    </motion.div>
+                  );
+                })}
+              </div>
+
+              {/* Mobile Footer Area */}
+              <div className="w-full px-8 pb-12 flex justify-between items-center border-t border-neutral-800 pt-6">
+                <span className="text-xs font-mono text-neutral-500">
+                  System Online
+                </span>
+                <LanguageSwitcher />
+              </div>
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </motion.header>
+    </>
   );
 }
