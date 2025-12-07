@@ -78,6 +78,10 @@ export function Header() {
     };
 
     const handleClickOutside = (event: MouseEvent) => {
+      // Mobile menu is full screen, so "outside" logic doesn't apply.
+      // Also, headerRef points to Desktop Header, causing false positives on mobile.
+      if (isMobile) return;
+
       if (
         headerRef.current &&
         !headerRef.current.contains(event.target as Node)
@@ -395,7 +399,7 @@ export function Header() {
         {/* Mobile Top Bar */}
         <div
           className={cn(
-            "fixed top-0 left-0 w-full h-[80px] px-6 flex items-center justify-between z-[50] transition-all duration-300 pointer-events-auto",
+            "fixed top-0 left-0 w-full h-[80px] px-6 flex items-center justify-between z-[10001] transition-all duration-300 pointer-events-auto",
             isScrolled && !isOpen
               ? "bg-black/60 backdrop-blur-md border-b border-neutral-800/50"
               : "bg-transparent"
@@ -443,7 +447,7 @@ export function Header() {
               animate="open"
               exit="exit"
               variants={mobileOverlayVariants}
-              className="fixed inset-0 z-[10000] bg-black w-screen h-[100vh] h-[100dvh] min-h-screen flex flex-col pointer-events-auto overflow-hidden touch-none"
+              className="fixed inset-2 z-[10000] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-[32px] w-[calc(100vw-1rem)] h-[calc(100dvh-1rem)] flex flex-col pointer-events-auto overflow-hidden touch-none"
               style={{ overscrollBehavior: "none" }}>
               <div className="flex-1 flex flex-col items-center justify-center w-full px-6 gap-8">
                 {navItems.map((item, index) => {
