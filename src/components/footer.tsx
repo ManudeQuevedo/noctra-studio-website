@@ -88,10 +88,10 @@ export function Footer() {
               </h3>
               <nav className="flex flex-col gap-3 pt-1">
                 {[
-                  { label: tNav("home"), href: "/" },
-                  { label: tNav("about"), href: "/about" },
+                  { label: tNav("index"), href: "/" },
+                  { label: tNav("studio"), href: "/about" },
                   { label: tNav("careers"), href: "/careers" },
-                  { label: tNav("contact"), href: "/contact" },
+                  { label: tNav("initiate"), href: "/contact" },
                 ].map((item) => {
                   const isActive = pathname?.endsWith(item.href);
 

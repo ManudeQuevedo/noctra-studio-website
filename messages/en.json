@@ -1,15 +1,4 @@
 {
-  "PedigreeMarquee": {
-    "label": "// ENGINEERING DNA",
-    "headline": "7+ Years Shipping Critical Infrastructure.",
-    "terms": [
-      "ENTERPRISE SAAS",
-      "GLOBAL FINTECH",
-      "HIGH-SCALE E-COMMERCE",
-      "REAL-TIME DATA",
-      "SECURE ARCHITECTURE"
-    ]
-  },
   "HeroTextSection": {
     "banner": "LED BY ENGINEERING TALENT WITH OVER 7 YEARS OF SHIPPING PRODUCTION SYSTEMS FOR LARGE-SCALE BRANDS.",
     "part1": "We don't just build websites. ",
@@ -90,17 +79,18 @@
     }
   },
   "Navigation": {
-    "home": "Index",
-    "about": "Studio",
-    "services": "Capabilities",
-    "case_studies": "Deployments",
-    "blog": "Blog",
-    "careers": "Careers",
-    "contact": "Initiate",
-    "start_project": "Book Strategy Call",
+    "index": "Index",
+    "studio": "Studio",
+    "capabilities": "Capabilities",
+    "deployments": "Deployments",
+    "initiate": "Initiate",
+    "system_capabilities": "System Capabilities",
+    "all_systems_operational": "All Systems Operational",
     "menu_open": "Menu",
     "menu_close": "Close",
-    "get_in_touch": "Initiate Communication",
+    "book_strategy_call": "Book Strategy Call",
+    "careers": "Careers",
+    "location": "Querétaro, MX",
     "tags": {
       "cloud": "Cloud Architecture",
       "ai": "AI Integration",
@@ -686,9 +676,7 @@
       "copy": "Protect your data and your brand. We build compliant, type-safe architecture that your IT team will approve."
     }
   },
-  "TrustedBy": {
-    "title": "Our Engineering Arsenal"
-  },
+
   "BlogPage": {
     "title": "Signal Incoming",
     "description": "We are currently compiling our transmission. Check back soon."
@@ -1057,153 +1045,7 @@
       "total_budget": "15000"
     }
   },
-  "CaseStudies": {
-    "hero": {
-      "title": "Case Studies — Real Problem Solving Through Design and Code",
-      "subtitle": "Even without client projects yet, these examples show how we approach real business challenges with modern web development, UI/UX, and strategic thinking."
-    },
-    "disclaimer": "These case studies are conceptual explorations designed to demonstrate Noctra Studio's methodology, problem-solving, and approach to digital transformation.",
-    "projects": {
-      "cafe_aurora": {
-        "name": "Café Aurora",
-        "concept": "Website Redesign for a Local Coffee Shop",
-        "challenge": "Poor online visibility and an outdated website design that didn't reflect the brand's premium positioning.",
-        "solution": "Complete Next.js overhaul with GSAP animations, mobile-first design, and an interactive menu system that increased engagement by 300%.",
-        "tech_stack": ["Next.js", "Tailwind CSS", "GSAP", "Vercel"],
-        "results": [
-          {
-            "metric": "300%",
-            "label": "Engagement",
-            "context": "Menu Interaction",
-            "action": "Target"
-          },
-          {
-            "metric": "100",
-            "label": "Performance",
-            "context": "Lighthouse Score",
-            "action": "Achieved"
-          },
-          {
-            "metric": "<1s",
-            "label": "Load Time",
-            "context": "First Contentful Paint",
-            "action": "Optimized"
-          }
-        ],
-        "process": [
-          { "step": "Discovery", "description": "Analyzed local competitors and user behavior." },
-          { "step": "Strategy", "description": "Defined a mobile-first approach for on-the-go customers." },
-          { "step": "Build", "description": "Implemented Next.js for speed and SEO." }
-        ]
-      },
-      "strongfit": {
-        "name": "StrongFit",
-        "concept": "High-Conversion Landing Page for Fitness Coach",
-        "challenge": "Low conversion rates and lack of trust signals on the existing landing page.",
-        "solution": "Strategic Figma design converted to React components with focused CTA strategy, A/B testing, and social proof integration.",
-        "tech_stack": ["Figma", "React", "Conversion Optimization", "Analytics"],
-        "results": [
-          {
-            "metric": "0.00",
-            "label": "CLS",
-            "context": "Zero Layout Shift",
-            "action": "Achieved"
-          },
-          {
-            "metric": "+40%",
-            "label": "Conversion",
-            "context": "Lead Gen Form",
-            "action": "Projected"
-          },
-          {
-            "metric": "A",
-            "label": "Accessibility",
-            "context": "WCAG 2.1",
-            "action": "Compliant"
-          }
-        ],
-        "process": [
-          { "step": "Audit", "description": "Identified friction points in the user journey." },
-          { "step": "Design", "description": "Created high-fidelity prototypes in Figma." },
-          { "step": "Dev", "description": "Pixel-perfect implementation in React." }
-        ]
-      },
-      "fintrack": {
-        "name": "FinTrack",
-        "concept": "Finance Analytics UI/UX Dashboard",
-        "challenge": "Complex data visualization needs and overwhelming interface for finance professionals.",
-        "solution": "Clean dashboard UI with Chart.js integration, dark mode support, and scalable component architecture for future expansion.",
-        "tech_stack": ["SaaS Architecture", "Data Visualization", "Component Library", "TypeScript"],
-        "results": [
-          {
-            "metric": "Real-time",
-            "label": "Sync",
-            "context": "WebSocket Data",
-            "action": "Enabled"
-          },
-          {
-            "metric": "60fps",
-            "label": "Rendering",
-            "context": "Complex Charts",
-            "action": "Optimized"
-          },
-          {
-            "metric": "100%",
-            "label": "Type Safety",
-            "context": "TypeScript Coverage",
-            "action": "Enforced"
-          }
-        ],
-        "process": [
-          { "step": "Architecture", "description": "Defined data models and API interfaces." },
-          { "step": "UI Design", "description": "Designed a dark-mode first interface for data density." },
-          { "step": "Engineering", "description": "Built reusable visualization components." }
-        ]
-      },
-      "vaultra": {
-        "name": "Vaultra",
-        "concept": "Cybersecurity Interface",
-        "challenge": "Visualizing complex security threats without overwhelming the user.",
-        "solution": "A minimalist, high-contrast interface that prioritizes critical alerts and actionable intelligence.",
-        "tech_stack": ["Next.js", "Vercel", "Auth0"],
-        "results": [
-          {
-            "metric": "A+",
-            "label": "Security",
-            "context": "Security Headers",
-            "action": "Hardened"
-          },
-          {
-            "metric": "0ms",
-            "label": "Leaks",
-            "context": "Data Exposure",
-            "action": "Prevented"
-          },
-          {
-            "metric": "2FA",
-            "label": "Auth",
-            "context": "Multi-Factor",
-            "action": "Integrated"
-          }
-        ],
-        "process": [
-          { "step": "Threat Model", "description": "Analyzed potential attack vectors." },
-          { "step": "UX Strategy", "description": "Prioritized alert visibility and response time." },
-          { "step": "Implementation", "description": "Secure coding practices and headers." }
-        ]
-      }
-    },
-    "labels": {
-      "challenge": "The Challenge",
-      "solution": "The Solution",
-      "tech_stack": "Tech Stack"
-    },
-    "cta": {
-      "headline": "Unsure where your current digital infrastructure is failing?",
-      "subtext": "We offer a complimentary high-level technical audit for qualified brands. See exactly how we would approach your project.",
-      "button": "Request Architecture Audit"
-    }
-  },
+
   "EngagementModels": {
     "label": "// Engagement Models",
     "title_line1": "Built to Scale",

@@ -1,15 +1,4 @@
 {
-  "PedigreeMarquee": {
-    "label": "// ADN DE INGENIERÍA",
-    "headline": "Más de 7 años enviando infraestructura crítica.",
-    "terms": [
-      "SAAS EMPRESARIAL",
-      "FINTECH GLOBAL",
-      "E-COMMERCE A ESCALA",
-      "DATOS EN TIEMPO REAL",
-      "ARQUITECTURA SEGURA"
-    ]
-  },
   "HeroTextSection": {
     "banner": "LIDERADO POR TALENTO DE INGENIERÍA CON MÁS DE 7 AÑOS ENVIANDO SISTEMAS DE PRODUCCIÓN PARA MARCAS DE GRAN ESCALA.",
     "part1": "No solo construimos sitios web. ",
@@ -90,17 +79,18 @@
     }
   },
   "Navigation": {
-    "home": "Índice",
-    "about": "Estudio",
-    "services": "Capacidades",
-    "case_studies": "Despliegues",
-    "blog": "Blog",
-    "careers": "Carreras",
-    "contact": "Iniciar",
-    "start_project": "Agendar Llamada Estratégica",
+    "index": "Inicio",
+    "studio": "Estudio",
+    "capabilities": "Capacidades",
+    "deployments": "Despliegues",
+    "initiate": "Iniciar",
+    "system_capabilities": "Capacidades del Sistema",
+    "all_systems_operational": "Todos los Sistemas Operativos",
     "menu_open": "Menú",
     "menu_close": "Cerrar",
-    "get_in_touch": "Ponte en contacto",
+    "book_strategy_call": "Agendar Llamada Estratégica",
+    "careers": "Carreras",
+    "location": "Querétaro, MX",
     "tags": {
       "cloud": "Arquitectura Cloud",
       "ai": "Integración IA",
