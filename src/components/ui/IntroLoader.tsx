@@ -38,7 +38,9 @@ export function IntroLoader() {
   if (!showIntro) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] flex items-center justify-center pointer-events-none">
+    <motion.div
+      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black overflow-hidden"
+      initial="initial">
       {/* Background Curtain */}
       <motion.div
         className="absolute inset-0 bg-[#050505] z-0 pointer-events-auto"
@@ -80,7 +82,7 @@ export function IntroLoader() {
           </motion.div>
         )}
       </AnimatePresence>
-    </div>
+    </motion.div>
   );
 }
 

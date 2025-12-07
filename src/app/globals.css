@@ -108,4 +108,29 @@
   textarea {
     @apply select-text;
   }
+  /* Custom Scrollbar - "Noctra Glass" */
+  ::-webkit-scrollbar {
+    width: 6px; /* Slim width */
+    height: 6px; /* Slim height for horizontal */
+  }
+
+  ::-webkit-scrollbar-track {
+    background: transparent; /* Totally transparent track */
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2); /* Glassy White */
+    border-radius: 99px;
+    backdrop-filter: blur(4px);
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.4); /* Brighter on hover */
+  }
+
+  /* Firefox Support */
+  html {
+    scrollbar-width: thin;
+    scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+  }
 }

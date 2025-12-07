@@ -43,7 +43,7 @@ export function Header() {
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isContactPage = nextPathname?.includes("/contact");
-  const isCareersPage = nextPathname?.includes("/careers"); // Added logic
+  const isCareersPage = nextPathname?.includes("/careers");
   const isAdminPage = nextPathname?.includes("/admin");
   const isStudioPage = nextPathname?.includes("/studio");
   const isDashboardPage = nextPathname?.includes("/dashboard");
@@ -69,7 +69,7 @@ export function Header() {
     setIsOpen(false);
   }, [pathname]);
 
-  // Handle Escape key, Click Outside, and Scroll Lock
+  // Handle Escape key, Click Outside
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
       if (event.key === "Escape") {
@@ -86,21 +86,16 @@ export function Header() {
       }
     };
 
+    // Scroll Lock REMOVED by user request to keep scrollbar visible.
+    // The "Noctra Style" scrollbar now overlays or persists without shifting layout.
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);
       document.addEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "hidden";
-      document.documentElement.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-      document.documentElement.style.overflow = "unset";
     }
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClickOutside);
-      document.body.style.overflow = "unset";
-      document.documentElement.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -120,23 +115,12 @@ export function Header() {
     { label: t("initiate"), href: "/contact" },
   ];
 
-  const infraTags = [
-    t("tags.cloud"),
-    t("tags.ai"),
-    t("tags.devops"),
-    t("tags.headless"),
-  ];
-
   if (isAdminPage || isStudioPage || isDashboardPage) return null;
   if (shouldHide) return null;
 
-  // --- ANTIGRAVITY PROTOCOL: Strict Separation of Concerns ---
-
-  // 1. Desktop Variants (Floating Card)
+  // --- DESKTOP VARIANTS (Full Width - Footer Match) ---
   const desktopVariants = {
     closed: {
-      width: "100%",
-      maxWidth: "1280px", // max-w-7xl matches Footer
       height: "80px",
       borderRadius: "2rem",
       backgroundColor: isScrolled ? "rgba(5, 5, 5, 0.6)" : "rgba(5, 5, 5, 0)",
@@ -144,49 +128,64 @@ export function Header() {
       border: isScrolled
         ? "1px solid rgba(255, 255, 255, 0.1)"
         : "1px solid transparent",
-      top: "1.5rem",
-      right: "auto",
-      left: "50%",
-      x: "-50%",
-      opacity: 1, // Explicitly set opacity
+      opacity: 1,
     },
     open: {
-      width: "100%",
-      maxWidth: "1280px", // Keep same max-width as closed
-      height: "650px", // Approximate height from image
+      height: "650px", // Expanded height
       borderRadius: "2rem",
-      backgroundColor: "#050505",
+      backgroundColor: "rgba(5, 5, 5, 0.9)",
+      backdropFilter: "blur(24px)",
       border: "1px solid rgba(255, 255, 255, 0.1)",
-      top: "1.5rem",
-      right: "auto",
-      left: "50%", // Keep centered
-      x: "-50%", // Keep centered
       opacity: 1,
     },
   };
 
-  // 2. Mobile Variants (Full Screen Overlay)
-  const mobileVariants = {
-    closed: {
-      opacity: 0,
-      y: -20,
-      pointerEvents: "none" as const,
-    },
+  const navContentVariants = {
+    hidden: { opacity: 0, transition: { duration: 0.1 } },
+    visible: { opacity: 1, transition: { delay: 0.2, duration: 0.3 } },
+  };
+
+  // --- MOBILE VARIANTS (Split Mode Overlay) ---
+  const mobileOverlayVariants = {
+    closed: { opacity: 0, y: 20 },
     open: {
       opacity: 1,
       y: 0,
-      pointerEvents: "auto" as const,
-      transition: { duration: 0.3 },
+      transition: {
+        duration: 0.3,
+        ease: "easeInOut",
+        type: "tween",
+      } as const,
+    },
+    exit: {
+      opacity: 0,
+      transition: {
+        duration: 0.2,
+        ease: "easeInOut",
+        type: "tween",
+      } as const,
     },
   };
+
+  // Intro Visibility Control
+  const showNavbar = isIntroComplete;
 
   return (
     <>
       {/* --- DESKTOP HEADER (MD+) --- */}
       <motion.header
-        className="fixed z-[100] top-0 left-0 w-full pointer-events-none hidden md:block" // Hidden on mobile
-        initial={{ y: 0, opacity: 1 }} // Remove entrance animation for now to guarantee visibility
-        animate={{ y: 0, opacity: 1 }}>
+        className="fixed z-[50] top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
+        initial={{ y: -20, opacity: 0 }}
+        animate={{
+          y: showNavbar ? 0 : -20,
+          opacity: showNavbar ? 1 : 0,
+        }}
+        transition={{ duration: 0.8, ease: "easeOut" }}>
+        {/* 
+            MAIN CONTAINER 
+            - CSS controls Width & Position (max-w-[1280px], centered).
+            - Framer controls Height & Background.
+        */}
         <motion.div
           ref={headerRef}
           initial="closed"
@@ -197,11 +196,12 @@ export function Header() {
             stiffness: 100,
             damping: 20,
             mass: 1.2,
-          }} // Slower, heavier feel
-          className="fixed z-50 overflow-hidden shadow-2xl pointer-events-auto">
+          }}
+          className="relative z-50 overflow-hidden shadow-2xl pointer-events-auto mx-auto mt-6 w-full max-w-[1280px]">
           <div className="flex flex-col w-full h-full relative">
-            {/* Desktop Header Row */}
-            <div className="flex items-center justify-between px-8 h-[80px] shrink-0 z-50">
+            {/* Desktop Header Row (Logo + CTA + Menu) */}
+            <div className="flex items-center justify-between px-8 h-[80px] shrink-0 z-50 relative">
+              {/* Left: Logo */}
               <Link
                 href="/"
                 className="relative z-50 hover:opacity-80 transition-opacity">
@@ -211,8 +211,8 @@ export function Header() {
                 />
               </Link>
 
-              <div className="flex items-center gap-6">
-                {/* CTA Button - Hidden on Contact/Careers */}
+              {/* Right: CTA + Menu */}
+              <div className="flex items-center gap-6 z-50">
                 {showStrategyButton && (
                   <Link
                     href="/contact"
@@ -221,14 +221,13 @@ export function Header() {
                   </Link>
                 )}
 
-                {/* Close Button Group */}
                 <button
                   onClick={() => setIsOpen(!isOpen)}
                   className="flex items-center gap-4 group cursor-pointer">
                   <span
                     className={cn(
                       "text-[10px] font-mono uppercase tracking-widest transition-colors duration-300",
-                      isOpen ? "text-neutral-500" : "text-foreground"
+                      isOpen ? "text-neutral-500" : "text-white"
                     )}>
                     {isOpen ? "CLOSE" : "MENU"}
                   </span>
@@ -237,7 +236,6 @@ export function Header() {
                       "relative flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300",
                       isOpen ? "bg-white/10" : "bg-black/5 dark:bg-white/10"
                     )}>
-                    {/* Hamburger Icon Logic */}
                     <div
                       className={cn(
                         "w-full h-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300",
@@ -248,7 +246,7 @@ export function Header() {
                           "w-5 h-[1.5px] transition-all duration-300",
                           isOpen
                             ? "bg-white rotate-45 translate-y-[0.5px]"
-                            : "bg-foreground"
+                            : "bg-white"
                         )}
                       />
                       <span
@@ -256,7 +254,7 @@ export function Header() {
                           "w-5 h-[1.5px] transition-all duration-300",
                           isOpen
                             ? "bg-white -rotate-45 -translate-y-[0.5px]"
-                            : "bg-foreground"
+                            : "bg-white"
                         )}
                       />
                     </div>
@@ -265,24 +263,18 @@ export function Header() {
               </div>
             </div>
 
-            {/* Desktop Content */}
+            {/* Expanded Desktop Content */}
             <AnimatePresence>
               {isOpen && (
                 <motion.div
-                  initial={{ opacity: 0 }}
-                  animate={{ opacity: 1 }}
-                  exit={{ opacity: 0 }}
-                  transition={{ duration: 0.4, delay: 0.1 }}
-                  className="flex flex-row h-full w-full pt-4 px-12 pb-12 gap-12">
+                  initial="hidden"
+                  animate="visible"
+                  exit="hidden"
+                  variants={navContentVariants}
+                  className="flex flex-row h-full w-full pt-4 px-12 pb-25 gap-12 absolute inset-0 top-[80px]">
                   {/* Nav Links */}
                   <div className="flex-1 flex flex-col justify-center items-start gap-4 pl-12">
-                    {[
-                      { label: t("index"), href: "/" },
-                      { label: t("capabilities"), href: "/services" },
-                      { label: t("deployments"), href: "/work" },
-                      { label: t("studio"), href: "/about" },
-                      { label: t("initiate"), href: "/contact" },
-                    ].map((item, index) => {
+                    {navItems.map((item, index) => {
                       const isActive = pathname === item.href;
                       return (
                         <motion.div
@@ -395,15 +387,15 @@ export function Header() {
       </motion.header>
 
       {/* --- MOBILE HEADER (MD Hidden) --- */}
-      {/* Why separate? To guarantee 100% z-index safety and layout purity without "bleeding" styles. */}
-      <motion.header
-        className="fixed z-[100] top-0 left-0 w-full md:hidden pointer-events-none"
-        initial={{ y: 0, opacity: 1 }}
-        animate={{ y: 0, opacity: 1 }}>
-        {/* Mobile Top Bar (Always Visible) */}
+      <motion.div
+        className="md:hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: showNavbar ? 1 : 0 }}
+        transition={{ duration: 0.8 }}>
+        {/* Mobile Top Bar */}
         <div
           className={cn(
-            "fixed top-0 left-0 w-full h-[80px] px-6 flex items-center justify-between z-[10001] pointer-events-auto transition-all duration-300",
+            "fixed top-0 left-0 w-full h-[80px] px-6 flex items-center justify-between z-[50] transition-all duration-300 pointer-events-auto",
             isScrolled && !isOpen
               ? "bg-black/60 backdrop-blur-md border-b border-neutral-800/50"
               : "bg-transparent"
@@ -413,7 +405,8 @@ export function Header() {
           </Link>
           <button
             onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-center w-10 h-10 bg-white/5 rounded-full backdrop-blur-sm border border-white/5">
+            className="flex items-center justify-center w-10 h-10 bg-white/5 rounded-full backdrop-blur-sm border border-white/5 z-[10002]">
+            {/* Mobile Hamburger */}
             <div
               className={cn(
                 "w-5 h-[14px] flex flex-col justify-between transition-all duration-300",
@@ -442,23 +435,23 @@ export function Header() {
           </button>
         </div>
 
-        {/* Mobile Full Screen Overlay */}
+        {/* Mobile Overlay */}
         <AnimatePresence>
           {isOpen && (
             <motion.div
-              className="fixed inset-0 z-[10000] bg-black w-screen h-[100dvh] flex flex-col pointer-events-auto"
-              initial={{ opacity: 0, y: "100%" }}
-              animate={{ opacity: 1, y: 0 }}
-              exit={{ opacity: 0, y: "100%" }} // Slide down exit
-              transition={{ type: "spring", damping: 25, stiffness: 200 }}>
-              {/* Mobile Content Container - Strict Center */}
+              initial="closed"
+              animate="open"
+              exit="exit"
+              variants={mobileOverlayVariants}
+              className="fixed inset-0 z-[10000] bg-black w-screen h-[100vh] h-[100dvh] min-h-screen flex flex-col pointer-events-auto overflow-hidden touch-none"
+              style={{ overscrollBehavior: "none" }}>
               <div className="flex-1 flex flex-col items-center justify-center w-full px-6 gap-8">
                 {navItems.map((item, index) => {
                   const isActive = pathname === item.href;
                   return (
                     <motion.div
                       key={item.href}
-                      initial={{ opacity: 0, y: 20 }}
+                      initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
                       transition={{ delay: 0.1 + index * 0.05 }}
                       className="w-full text-center">
@@ -478,17 +471,16 @@ export function Header() {
                 })}
               </div>
 
-              {/* Mobile Footer Area */}
               <div className="w-full px-8 pb-12 flex justify-between items-center border-t border-neutral-800 pt-6">
                 <span className="text-xs font-mono text-neutral-500">
-                  System Online
+                  {t("all_systems_operational")}
                 </span>
                 <LanguageSwitcher />
               </div>
             </motion.div>
           )}
         </AnimatePresence>
-      </motion.header>
+      </motion.div>
     </>
   );
 }
