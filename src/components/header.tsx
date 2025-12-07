@@ -34,15 +34,14 @@ export function Header() {
   const { isIntroComplete, showIntro, initialized } = useIntro();
   const pathname = usePathname();
   const nextPathname = useNextPathname();
-
-  // Prevent flash of navbar on homepage before intro check
-  // Must be done before other hooks if possible, but hooks must be unconditional.
-  // Actually, we cannot return null before hooks. We must return null at the end.
   const t = useTranslations("Navigation");
+
   const [isOpen, setIsOpen] = React.useState(false);
   const [isScrolled, setIsScrolled] = React.useState(false);
   const { scrollY } = useScroll();
   const headerRef = React.useRef<HTMLDivElement>(null);
+
+  // Use the hook for JS-side media query
   const isMobile = useMediaQuery("(max-width: 768px)");
 
   const isContactPage = nextPathname?.includes("/contact");
@@ -50,7 +49,6 @@ export function Header() {
   const isStudioPage = nextPathname?.includes("/studio");
   const isDashboardPage = nextPathname?.includes("/dashboard");
 
-  const { resolvedTheme } = useTheme();
   const [mounted, setMounted] = React.useState(false);
 
   React.useEffect(() => {
@@ -64,22 +62,11 @@ export function Header() {
     (pathname as string) === "/es";
   const shouldHide = isHomePage && !initialized;
 
-  // Determine effective theme for logo selection
-  // If isOpen is true, colors are inverted (Light System -> Dark Header Bg -> Need Dark Theme Logo)
-  const effectiveTheme = isOpen
-    ? resolvedTheme === "dark"
-      ? "light"
-      : "dark"
-    : resolvedTheme;
-
   // Close menu on route change
   React.useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  // ... (rest of effects)
-
-  // Handle Escape key and Click Outside
   // Handle Escape key, Click Outside, and Scroll Lock
   React.useEffect(() => {
     const handleKeyDown = (event: KeyboardEvent) => {
@@ -100,17 +87,18 @@ export function Header() {
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);
       document.addEventListener("mousedown", handleClickOutside);
-      // Lock scroll
       document.body.style.overflow = "hidden";
+      document.documentElement.style.overflow = "hidden";
     } else {
-      // Unlock scroll
       document.body.style.overflow = "unset";
+      document.documentElement.style.overflow = "unset";
     }
 
     return () => {
       document.removeEventListener("keydown", handleKeyDown);
       document.removeEventListener("mousedown", handleClickOutside);
       document.body.style.overflow = "unset";
+      document.documentElement.style.overflow = "unset";
     };
   }, [isOpen]);
 
@@ -140,94 +128,95 @@ export function Header() {
   if (isAdminPage || isStudioPage || isDashboardPage) return null;
   if (shouldHide) return null;
 
+  // Explicit Variants
+  const variants = {
+    closed: {
+      position: "fixed" as any,
+      top: "1.5rem", // top-6
+      left: "50%",
+      x: "-50%",
+      y: 0,
+      right: "auto",
+      bottom: "auto",
+      width: "calc(100% - 2rem)", // px-4 equivalent
+      maxWidth: "80rem", // max-w-7xl
+      height: "80px",
+      borderRadius: "2rem",
+      backgroundColor: isScrolled ? "rgba(5, 5, 5, 0.6)" : "transparent",
+      backdropFilter: isScrolled ? "blur(12px)" : "none",
+      zIndex: 50,
+      border: isScrolled
+        ? "1px solid rgba(255, 255, 255, 0.1)"
+        : "1px solid transparent",
+    },
+    openDesktop: {
+      position: "fixed" as any,
+      top: "1.5rem", // top-6
+      left: "50%",
+      x: "-50%",
+      y: 0,
+      right: "auto",
+      bottom: "auto",
+      width: "calc(100% - 2rem)", // Maintain same width
+      maxWidth: "80rem", // Maintain same max-width
+      height: "600px", // Fixed large height for dropdown feel
+      borderRadius: "2rem",
+      backgroundColor: "#050505",
+      zIndex: 100,
+      border: "1px solid rgba(255, 255, 255, 0.1)",
+    },
+    openMobile: {
+      position: "fixed" as any,
+      top: 0,
+      left: 0,
+      x: 0, // Reset transform
+      y: 0,
+      right: 0,
+      bottom: 0,
+      width: "100%",
+      height: "100dvh",
+      maxWidth: "none",
+      borderRadius: "0px",
+      backgroundColor: "#050505",
+      zIndex: 100,
+      border: "none",
+    },
+  };
+
   return (
-    <header className="fixed top-6 left-0 z-[999] w-full flex justify-center pointer-events-none px-4 md:px-0">
+    // Z-Index wrapper for safety
+    // Removed `flex justify-center` and padding from wrapper as variants handle positioning now
+    <header className="fixed z-[100] top-0 left-0 w-full pointer-events-none">
       <motion.div
         ref={headerRef}
-        layout
-        initial={{ y: -20, opacity: 0 }}
-        animate={
-          isOpen
-            ? "open"
-            : {
-                y: 0,
-                opacity: 1,
-                // Removed delay on intro to prevent potential vanishing if context is not ready?
-                // Keeping original logic for now but being cautious.
-                transition: { delay: showIntro ? 7.5 : 0, duration: 0.8 },
-              }
-        }
+        initial="closed"
+        animate={isOpen ? (isMobile ? "openMobile" : "openDesktop") : "closed"}
+        variants={variants as any}
+        transition={{ type: "spring", stiffness: 300, damping: 30 }}
+        // Hide during intro, show after.
+        style={{ opacity: showIntro && !isIntroComplete ? 0 : 1 }}
         className={cn(
-          "relative overflow-hidden pointer-events-auto transition-all duration-500",
+          "pointer-events-auto overflow-hidden shadow-2xl transition-all duration-500",
           isOpen
-            ? "fixed inset-0 w-full h-full rounded-none z-[999] bg-[#050505] dark:bg-[#050505] md:fixed md:top-4 md:right-4 md:bottom-4 md:left-auto md:w-[450px] md:h-auto md:rounded-[2rem] shadow-2xl border border-neutral-800" // Mobile: Full Screen, Desktop: Floating Card
-            : cn(
-                "w-full max-w-7xl",
-                isScrolled
-                  ? "bg-white/80 dark:bg-neutral-950/90 backdrop-blur-xl supports-[backdrop-filter]:bg-white/60 dark:supports-[backdrop-filter]:bg-neutral-950/60 border border-neutral-200/50 dark:border-white/10 shadow-lg rounded-[2rem]"
-                  : "bg-transparent border-transparent shadow-none backdrop-blur-none"
-              )
-        )}
-        variants={{
-          open: {
-            opacity: 1,
-            y: 0,
-          },
-          closed: {
-            height: "80px",
-            borderRadius: "2rem",
-            opacity: 1,
-            y: 0,
-          },
-        }}
-        transition={{
-          type: "spring",
-          stiffness: 300,
-          damping: 25,
-        }}>
-        <div className="flex flex-col w-full h-full">
+            ? "border border-neutral-800"
+            : "border-transparent shadow-none"
+        )}>
+        {" "}
+        <div className="flex flex-col w-full h-full relative">
           {/* Header Row: Logo & Toggle */}
-          <div
-            className={cn(
-              "flex items-center justify-between px-8 shrink-0 z-50 transition-all duration-500",
-              "h-[80px]"
-            )}>
+          <div className="flex items-center justify-between px-8 h-[80px] shrink-0 z-50">
+            {/* Logo - Hide text on desktop closed if needed, but keeping simple for now */}
             <Link
               href="/"
               className="relative z-50 transition-opacity duration-300 hover:opacity-80 flex items-center">
-              {/* Desktop Logo */}
-              <div className="hidden md:block relative h-8">
-                <BrandLogo className="h-8 text-foreground" />
-              </div>
-
-              {/* Mobile Logo */}
-              <div className="block md:hidden relative h-8 w-8">
-                <BrandLogo
-                  className="w-8 h-8 text-foreground"
-                  showText={false}
-                />
-              </div>
+              <BrandLogo
+                className="h-8 w-auto text-foreground"
+                showText={isOpen || !isMobile || true}
+              />
             </Link>
 
-            <motion.div
-              className="flex items-center gap-4"
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ delay: showIntro ? 2.5 : 0, duration: 1 }}>
-              {/* Start Project CTA - Desktop Only - Hidden on Contact Page */}
-              {!isContactPage && (
-                <Link
-                  href={{ pathname: "/contact", query: { intent: "strategy" } }}
-                  className={cn(
-                    "hidden md:block rounded-full px-5 py-2 text-xs font-medium transition-transform hover:scale-105",
-                    isOpen
-                      ? "bg-white text-black"
-                      : "bg-neutral-900 text-white dark:bg-white dark:text-black"
-                  )}>
-                  {t("start_project")}
-                </Link>
-              )}
-
+            <motion.div className="flex items-center gap-4">
+              {/* CTA - visible only when open or huge screens? Keeping it simpler as per requested refactor */}
               <button
                 onClick={() => setIsOpen(!isOpen)}
                 className="flex items-center gap-4 group cursor-pointer">
@@ -279,113 +268,99 @@ export function Header() {
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 exit={{ opacity: 0 }}
-                transition={{ duration: 0.3, delay: 0.1 }}
-                className="flex flex-col md:flex-row px-8 pb-8 h-full gap-12 pt-8 overflow-y-auto">
-                {/* Left Column: Navigation Links */}
-                <div className="flex-1 flex flex-col justify-center">
-                  <div className="flex flex-col items-start gap-6">
-                    {navItems.map((item, index) => {
-                      const isActive = pathname === item.href;
-                      return (
-                        <motion.div
-                          key={item.href}
-                          initial={{ opacity: 0, x: -20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.1 + index * 0.05 }}>
-                          <Link
-                            href={item.href as any}
-                            className="group flex items-center gap-4 text-4xl md:text-6xl font-bold transition-colors duration-300 whitespace-nowrap text-neutral-500 hover:text-white">
-                            <span className="text-xs font-mono text-neutral-700 pt-2">
-                              0{index + 1}
-                            </span>
+                transition={{ duration: 0.3, delay: 0.2 }} // Content Fade-In Delay
+                className="flex flex-col h-full overflow-y-auto">
+                <div className="flex flex-col md:flex-row w-full h-full px-6 md:px-8 pb-8 pt-8 md:pt-8 gap-8 md:gap-12 overflow-y-auto items-center md:items-stretch justify-center md:justify-start">
+                  {/* Left Column: Navigation Links */}
+                  <div className="w-full md:flex-1 flex flex-col justify-center items-center md:items-start z-[101]">
+                    <div className="flex flex-col items-center md:items-start gap-6 w-full md:w-auto">
+                      {navItems.map((item, index) => {
+                        const isActive = pathname === item.href;
+                        return (
+                          <motion.div
+                            key={item.href}
+                            initial={{ opacity: 0, x: -20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.1 + index * 0.05 }}
+                            className="w-full text-center md:text-left">
+                            <Link
+                              href={item.href as any}
+                              className="group inline-flex items-center gap-4 text-4xl md:text-6xl font-bold transition-colors duration-300 whitespace-nowrap text-neutral-500 hover:text-white justify-center md:justify-start"
+                              onClick={() => setIsOpen(false)}>
+                              <span className="text-xs font-mono text-neutral-700 pt-2 hidden md:block">
+                                0{index + 1}
+                              </span>
 
-                            <motion.span
-                              className={cn(
-                                "transition-transform duration-300 flex items-center gap-3",
-                                isActive ? "text-white" : ""
-                              )}
-                              whileHover={{ x: 10 }}>
-                              {isActive && (
-                                <span className="text-emerald-500 text-2xl md:text-4xl">
-                                  {">_"}
-                                </span>
-                              )}
-                              {item.label}
-                            </motion.span>
-                          </Link>
-                        </motion.div>
-                      );
-                    })}
-                  </div>
-                </div>
-
-                {/* Right Column: Infrastructure Tags & Info */}
-                <div className="hidden md:flex flex-col justify-between w-64 border-l border-neutral-800 pl-12 py-4">
-                  {/* Infrastructure Tags */}
-                  <div className="space-y-6">
-                    <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
-                      System Capabilities
-                    </h4>
-                    <ul className="space-y-3">
-                      {infraTags.map((tag, i) => (
-                        <motion.li
-                          key={tag}
-                          initial={{ opacity: 0, x: 20 }}
-                          animate={{ opacity: 1, x: 0 }}
-                          transition={{ delay: 0.3 + i * 0.05 }}
-                          className="text-sm font-mono text-neutral-400 flex items-center gap-2">
-                          <div className="w-1 h-1 bg-emerald-500/50 rounded-full" />
-                          {tag}
-                        </motion.li>
-                      ))}
-                    </ul>
+                              <motion.span
+                                className={cn(
+                                  "transition-transform duration-300 flex items-center gap-3",
+                                  isActive ? "text-white" : ""
+                                )}
+                                whileHover={{ x: 10 }}>
+                                {isActive && (
+                                  <span className="text-emerald-500 text-2xl md:text-3xl">
+                                    {">_"}
+                                  </span>
+                                )}
+                                {item.label}
+                              </motion.span>
+                            </Link>
+                          </motion.div>
+                        );
+                      })}
+                    </div>
                   </div>
 
-                  {/* Footer Info */}
-                  <div className="space-y-6">
-                    <div className="space-y-2">
-                      <div className="flex items-center gap-2">
-                        <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                        <span className="text-xs font-mono text-neutral-300">
-                          All Systems Operational
-                        </span>
-                      </div>
-                      <div className="text-xs font-mono text-neutral-500">
-                        Querétaro, MX
-                      </div>
+                  {/* Right Column: Infrastructure Tags & Info - Hidden on mobile if needed, or displayed at bottom */}
+                  <div className="hidden md:flex flex-col justify-between w-64 border-l border-neutral-800 pl-8 py-4">
+                    <div className="space-y-6">
+                      <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                        System Capabilities
+                      </h4>
+                      <ul className="space-y-3">
+                        {infraTags.map((tag, i) => (
+                          <motion.li
+                            key={tag}
+                            initial={{ opacity: 0, x: 20 }}
+                            animate={{ opacity: 1, x: 0 }}
+                            transition={{ delay: 0.4 + i * 0.05 }}
+                            className="text-sm font-mono text-neutral-400 flex items-center gap-2">
+                            <div className="w-1 h-1 bg-emerald-500/50 rounded-full" />
+                            {tag}
+                          </motion.li>
+                        ))}
+                      </ul>
                     </div>
 
-                    <div className="flex items-center justify-between">
+                    <div className="space-y-6">
                       <div className="flex items-center gap-4">
                         <a
                           href="https://instagram.com/noctra_studio"
                           target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-500 hover:text-white transition-colors">
+                          className="text-neutral-500 hover:text-white">
                           <Instagram className="w-4 h-4" />
                         </a>
                         <a
                           href="https://x.com/NoctraStudio"
                           target="_blank"
-                          rel="noopener noreferrer"
-                          className="text-neutral-500 hover:text-white transition-colors">
+                          className="text-neutral-500 hover:text-white">
                           <XIcon className="w-4 h-4" />
                         </a>
                       </div>
                       <LanguageSwitcher />
                     </div>
                   </div>
-                </div>
 
-                {/* Mobile Footer (Visible only on mobile) */}
-                <div className="md:hidden mt-auto pt-8 border-t border-neutral-800 w-full flex justify-between items-center">
-                  <div className="flex items-center gap-2">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full" />
-                    <span className="text-xs font-mono text-neutral-400">
-                      Online
-                    </span>
+                  {/* Mobile Footer */}
+                  <div className="md:hidden mt-auto pt-8 border-t border-neutral-800 w-full flex justify-between items-center pb-8">
+                    <div className="flex items-center gap-2">
+                      <div className="w-2 h-2 bg-emerald-500 rounded-full" />
+                      <span className="text-xs font-mono text-neutral-400">
+                        Online
+                      </span>
+                    </div>
+                    <LanguageSwitcher />
                   </div>
-                  <LanguageSwitcher />
                 </div>
               </motion.div>
             )}
