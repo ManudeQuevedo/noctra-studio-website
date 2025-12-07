@@ -447,7 +447,7 @@ export function Header() {
               animate="open"
               exit="exit"
               variants={mobileOverlayVariants}
-              className="fixed inset-2 z-[10000] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-[32px] w-[calc(100vw-1rem)] h-[calc(100dvh-1rem)] flex flex-col pointer-events-auto overflow-hidden touch-none"
+              className="fixed inset-4 z-[10000] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-[32px] flex flex-col pointer-events-auto overflow-hidden touch-none"
               style={{ overscrollBehavior: "none" }}>
               <div className="flex-1 flex flex-col items-center justify-center w-full px-6 gap-8">
                 {navItems.map((item, index) => {
@@ -462,12 +462,17 @@ export function Header() {
                       <Link
                         href={item.href as any}
                         className={cn(
-                          "text-4xl font-bold tracking-tight transition-colors duration-300",
+                          "flex items-center justify-center gap-3 text-4xl font-bold tracking-tight transition-colors duration-300",
                           isActive
                             ? "text-white"
                             : "text-neutral-500 hover:text-white"
                         )}
                         onClick={() => setIsOpen(false)}>
+                        {isActive && (
+                          <span className="text-emerald-500 text-2xl font-bold tracking-tight">
+                            {">_"}
+                          </span>
+                        )}
                         {item.label}
                       </Link>
                     </motion.div>
