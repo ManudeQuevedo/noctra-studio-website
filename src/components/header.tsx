@@ -177,10 +177,10 @@ export function Header() {
   return (
     <>
       {/* --- MOBILE ONLY LOGO: Fixed Top-Left --- */}
-      {/* This ensures the logo is always on the left for mobile, separate from the centered/animated menu logic */}
-      <div className="fixed top-6 left-6 z-40 md:hidden mix-blend-difference">
+      <div className="fixed top-6 left-4 z-50 md:hidden mix-blend-difference flex justify-start items-center">
         <Link href="/" className="block">
-          <BrandLogo className="w-auto h-8 text-white" />
+          {/* Force width to auto to prevent 'w-full' centering issues */}
+          <BrandLogo className="w-[120px] h-auto text-white object-left" />
         </Link>
       </div>
 
@@ -412,7 +412,7 @@ export function Header() {
               ? "bg-black/60 backdrop-blur-md border-b border-neutral-800/50"
               : "bg-transparent"
           )}>
-          <Link href="/" className="hover:opacity-80 transition-opacity">
+          <Link href="/" className="hover:opacity-80 transition-opacity hidden">
             <BrandLogo className="h-6 w-auto text-foreground" showText={true} />
           </Link>
           <button
