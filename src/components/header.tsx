@@ -176,18 +176,28 @@ export function Header() {
 
   return (
     <>
+      {/* --- MOBILE GHOST HEADER (Background Blur on Scroll) --- */}
+      <motion.div
+        className="fixed top-0 left-0 w-full h-24 z-40 pointer-events-none md:hidden"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: isScrolled ? 1 : 0 }}
+        transition={{ duration: 0.3 }}>
+        <div className="absolute inset-0 bg-black/80 backdrop-blur-md border-b border-white/5" />
+      </motion.div>
+
       {/* --- MOBILE CONTROLS (Fixed Layer / Z-[60]) --- */}
       {/* Always visible, outside animations, mix-blend-difference for visibility on all backgrounds */}
-      <div className="fixed top-6 left-6 z-[60] md:hidden mix-blend-difference">
+      {/* Pixel Perfect Alignment: h-12 flex items-center guarantees vertical center sharing */}
+      <div className="fixed top-6 left-6 z-[60] h-12 flex items-center md:hidden mix-blend-difference">
         <Link href="/" className="block">
           <BrandLogo className="w-[120px] h-auto text-white" />
         </Link>
       </div>
 
-      <div className="fixed top-6 right-6 z-[60] md:hidden mix-blend-difference">
+      <div className="fixed top-6 right-6 z-[60] h-12 flex items-center md:hidden mix-blend-difference">
         <button
           onClick={() => setIsOpen(!isOpen)}
-          className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-full backdrop-blur-md border border-white/10">
+          className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-full backdrop-blur-md border border-white/10 transition-transform active:scale-95">
           <div
             className={cn(
               "w-6 h-[14px] flex flex-col justify-between transition-all duration-300",
@@ -436,7 +446,7 @@ export function Header() {
           Features:
           - Inset Card Design (inset-4 rounded-[32px])
           - Glassmorphism
-          - Full Content Injection (Capabilities + Status)
+          - Zero Scroll Layout (No Capabilities clutter)
       */}
       <AnimatePresence>
         {isOpen && isMobile && (
@@ -447,10 +457,10 @@ export function Header() {
             variants={mobileOverlayVariants}
             className="fixed inset-4 z-[50] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-[32px] flex flex-col pointer-events-auto overflow-hidden touch-none"
             style={{ overscrollBehavior: "none" }}>
-            {/* Scrollable Content Container */}
-            <div className="flex-1 flex flex-col w-full px-6 pt-24 pb-8 overflow-y-auto no-scrollbar">
-              {/* 1. Main Navigation Links */}
-              <div className="flex flex-col items-center justify-center gap-8 mb-12">
+            {/* Zero Scroll Layout: Column spanning full height, pushed by padding */}
+            <div className="flex-1 flex flex-col justify-between w-full px-6 pb-10 pt-28">
+              {/* 1. Main Navigation Links (Centered in available space) */}
+              <div className="flex-1 flex flex-col items-center justify-center gap-8">
                 {navItems.map((item, index) => {
                   const isActive = pathname === item.href;
                   return (
@@ -481,60 +491,35 @@ export function Header() {
                 })}
               </div>
 
-              {/* 2. System Capabilities (Injected from Desktop) */}
-              <div className="w-full border-t border-neutral-800/50 pt-8 mb-8">
-                <h4 className="text-[10px] font-mono uppercase text-neutral-600 tracking-[0.2em] text-center mb-6">
-                  {t("system_capabilities")}
-                </h4>
-                <div className="flex flex-wrap justify-center gap-3">
-                  {[
-                    t("tags.cloud"),
-                    t("tags.ai"),
-                    t("tags.devops"),
-                    t("tags.headless"),
-                  ].map((tag, i) => (
-                    <motion.div
-                      key={tag}
-                      initial={{ opacity: 0, scale: 0.9 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3 + i * 0.05 }}
-                      className="text-xs font-mono text-neutral-400 bg-white/5 border border-white/5 rounded-full px-3 py-1 flex items-center gap-2">
-                      <div className="w-1 h-1 bg-emerald-500 rounded-full" />
-                      {tag}
-                    </motion.div>
-                  ))}
-                </div>
-              </div>
-            </div>
-
-            {/* 3. Footer (Status + Socials) */}
-            <div className="w-full px-6 pb-6 pt-4 bg-gradient-to-t from-black/50 to-transparent shrink-0">
-              <div className="flex flex-col gap-6">
-                {/* Status Indicator */}
-                <div className="flex items-center justify-center gap-2">
-                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                  <span className="text-xs font-mono text-neutral-400">
-                    {t("all_systems_operational")}
-                  </span>
-                </div>
-
-                {/* Socials & Lang */}
-                <div className="flex items-center justify-between border-t border-neutral-800/50 pt-4">
-                  <div className="flex gap-4">
-                    <a
-                      href="https://instagram.com/noctra_studio"
-                      target="_blank"
-                      className="text-neutral-500 hover:text-white transition-colors p-2">
-                      <Instagram className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="https://x.com/NoctraStudio"
-                      target="_blank"
-                      className="text-neutral-500 hover:text-white transition-colors p-2">
-                      <XIcon className="w-5 h-5" />
-                    </a>
+              {/* 2. Footer (Status + Socials + Lang) - Pinned Bottom */}
+              <div className="w-full pt-8 border-t border-neutral-800/50">
+                <div className="flex flex-col gap-6">
+                  {/* Status Indicator */}
+                  <div className="flex items-center justify-center gap-2">
+                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                    <span className="text-xs font-mono text-neutral-400">
+                      {t("all_systems_operational")}
+                    </span>
                   </div>
-                  <LanguageSwitcher />
+
+                  {/* Socials & Lang */}
+                  <div className="flex items-center justify-between">
+                    <div className="flex gap-4">
+                      <a
+                        href="https://instagram.com/noctra_studio"
+                        target="_blank"
+                        className="text-neutral-500 hover:text-white transition-colors p-2">
+                        <Instagram className="w-5 h-5" />
+                      </a>
+                      <a
+                        href="https://x.com/NoctraStudio"
+                        target="_blank"
+                        className="text-neutral-500 hover:text-white transition-colors p-2">
+                        <XIcon className="w-5 h-5" />
+                      </a>
+                    </div>
+                    <LanguageSwitcher />
+                  </div>
                 </div>
               </div>
             </div>
