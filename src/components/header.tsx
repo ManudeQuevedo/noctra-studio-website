@@ -6,6 +6,7 @@ import {
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
+  Variants,
 } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
@@ -123,7 +124,7 @@ export function Header() {
   if (shouldHide) return null;
 
   // --- DESKTOP VARIANTS (Full Width - Footer Match) ---
-  const desktopVariants = {
+  const desktopVariants: Variants = {
     closed: {
       height: "80px",
       borderRadius: "2rem",
@@ -144,30 +145,27 @@ export function Header() {
     },
   };
 
-  const navContentVariants = {
+  const navContentVariants: Variants = {
     hidden: { opacity: 0, transition: { duration: 0.1 } },
     visible: { opacity: 1, transition: { delay: 0.2, duration: 0.3 } },
   };
 
   // --- MOBILE VARIANTS (Split Mode Overlay) ---
-  const mobileOverlayVariants = {
-    closed: { opacity: 0, y: 20 },
+  const mobileOverlayVariants: Variants = {
+    closed: { y: "-100%" },
     open: {
-      opacity: 1,
-      y: 0,
+      y: "0%",
       transition: {
-        duration: 0.3,
-        ease: "easeInOut",
-        type: "tween",
-      } as const,
+        duration: 0.5,
+        ease: [0.22, 1, 0.36, 1] as const, // Smooth custom bezier
+      },
     },
     exit: {
-      opacity: 0,
+      y: "-100%",
       transition: {
-        duration: 0.2,
+        duration: 0.4,
         ease: "easeInOut",
-        type: "tween",
-      } as const,
+      },
     },
   };
 
@@ -455,10 +453,11 @@ export function Header() {
             animate="open"
             exit="exit"
             variants={mobileOverlayVariants}
-            className="fixed inset-4 z-[50] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-[32px] flex flex-col pointer-events-auto overflow-hidden touch-none"
+            className="fixed inset-0 z-[50] bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 flex flex-col pointer-events-auto overflow-hidden touch-none"
             style={{ overscrollBehavior: "none" }}>
             {/* Zero Scroll Layout: Column spanning full height, pushed by padding */}
-            <div className="flex-1 flex flex-col justify-between w-full px-6 pb-10 pt-28">
+            {/* Adjusted Spacing: Reduced top padding (pt-20) and Increased bottom padding (pb-24) to lift footer clear of Chatbot */}
+            <div className="flex-1 flex flex-col justify-between w-full px-6 pb-24 pt-24">
               {/* 1. Main Navigation Links (Centered in available space) */}
               <div className="flex-1 flex flex-col items-center justify-center gap-8">
                 {navItems.map((item, index) => {
