@@ -176,6 +176,14 @@ export function Header() {
 
   return (
     <>
+      {/* --- MOBILE ONLY LOGO: Fixed Top-Left --- */}
+      {/* This ensures the logo is always on the left for mobile, separate from the centered/animated menu logic */}
+      <div className="fixed top-6 left-6 z-40 md:hidden mix-blend-difference">
+        <Link href="/" className="block">
+          <BrandLogo className="w-auto h-8 text-white" />
+        </Link>
+      </div>
+
       {/* --- DESKTOP HEADER (MD+) --- */}
       <motion.header
         className="fixed z-[50] top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
@@ -184,7 +192,7 @@ export function Header() {
           y: showNavbar ? 0 : -20,
           opacity: showNavbar ? 1 : 0,
         }}
-        transition={{ duration: 0.8, ease: "easeOut" }}>
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
         {/* 
             MAIN CONTAINER 
             - CSS controls Width & Position (max-w-[1280px], centered).

@@ -8,8 +8,11 @@ import { GridStructure } from "@/components/backgrounds/GridStructure";
 import { StaticNoise } from "@/components/backgrounds/StaticNoise";
 import { MeteorShower } from "@/components/ui/MeteorShower";
 
+import { useIntro } from "@/context/IntroContext";
+
 export function BackgroundManager() {
   const pathname = usePathname();
+  const { isIntroComplete } = useIntro();
 
   // Determine which background to show based on the current path
   const getBackground = () => {

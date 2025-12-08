@@ -94,7 +94,6 @@ export default async function LocaleLayout({
       <NextIntlClientProvider messages={messages} locale={locale}>
         <Cursor />
         <SmoothScroll />
-        <BackgroundManager />
         <ThemeProvider
           attribute="class"
           defaultTheme="dark"
@@ -103,6 +102,7 @@ export default async function LocaleLayout({
           disableTransitionOnChange>
           <IntroProvider>
             <IntroLoader />
+            <BackgroundManager />
             <Header />
             {children}
             <FooterWrapper />

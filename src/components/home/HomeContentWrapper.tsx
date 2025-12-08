@@ -20,7 +20,7 @@ export function HomeContentWrapper({
     <motion.div
       initial={{ opacity: 0, y: 20 }}
       animate={isIntroComplete ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-      transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}>
+      transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
       {children}
     </motion.div>
   );

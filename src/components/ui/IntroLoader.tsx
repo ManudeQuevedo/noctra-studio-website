@@ -39,7 +39,7 @@ export function IntroLoader() {
 
   return (
     <motion.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center bg-black overflow-hidden"
+      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none"
       initial="initial">
       {/* Background Curtain */}
       <motion.div
