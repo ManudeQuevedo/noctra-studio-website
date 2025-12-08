@@ -176,12 +176,43 @@ export function Header() {
 
   return (
     <>
-      {/* --- MOBILE ONLY LOGO: Fixed Top-Left --- */}
-      <div className="fixed top-6 left-4 z-50 md:hidden mix-blend-difference flex justify-start items-center">
+      {/* --- MOBILE CONTROLS (Fixed Layer / Z-[60]) --- */}
+      {/* Always visible, outside animations, mix-blend-difference for visibility on all backgrounds */}
+      <div className="fixed top-6 left-6 z-[60] md:hidden mix-blend-difference">
         <Link href="/" className="block">
-          {/* Force width to auto to prevent 'w-full' centering issues */}
-          <BrandLogo className="w-[120px] h-auto text-white object-left" />
+          <BrandLogo className="w-[120px] h-auto text-white" />
         </Link>
+      </div>
+
+      <div className="fixed top-6 right-6 z-[60] md:hidden mix-blend-difference">
+        <button
+          onClick={() => setIsOpen(!isOpen)}
+          className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-full backdrop-blur-md border border-white/10">
+          <div
+            className={cn(
+              "w-6 h-[14px] flex flex-col justify-between transition-all duration-300",
+              isOpen && "h-6 relative"
+            )}>
+            <span
+              className={cn(
+                "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
+                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45"
+              )}
+            />
+            <span
+              className={cn(
+                "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
+                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45"
+              )}
+            />
+            <span
+              className={cn(
+                "w-full h-[2px] bg-white rounded-full transition-all duration-300",
+                isOpen && "opacity-0"
+              )}
+            />
+          </div>
+        </button>
       </div>
 
       {/* --- DESKTOP HEADER (MD+) --- */}
@@ -398,66 +429,28 @@ export function Header() {
         </motion.div>
       </motion.header>
 
-      {/* --- MOBILE HEADER (MD Hidden) --- */}
-      <motion.div
-        className="md:hidden"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showNavbar ? 1 : 0 }}
-        transition={{ duration: 0.8 }}>
-        {/* Mobile Top Bar */}
-        <div
-          className={cn(
-            "fixed top-0 left-0 w-full h-[80px] px-6 flex items-center justify-between z-[10001] transition-all duration-300 pointer-events-auto",
-            isScrolled && !isOpen
-              ? "bg-black/60 backdrop-blur-md border-b border-neutral-800/50"
-              : "bg-transparent"
-          )}>
-          <Link href="/" className="hover:opacity-80 transition-opacity hidden">
-            <BrandLogo className="h-6 w-auto text-foreground" showText={true} />
-          </Link>
-          <button
-            onClick={() => setIsOpen(!isOpen)}
-            className="flex items-center justify-center w-10 h-10 bg-white/5 rounded-full backdrop-blur-sm border border-white/5 z-[10002]">
-            {/* Mobile Hamburger */}
-            <div
-              className={cn(
-                "w-5 h-[14px] flex flex-col justify-between transition-all duration-300",
-                isOpen && "h-5 relative"
-              )}>
-              <span
-                className={cn(
-                  "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                  isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45"
-                )}
-              />
-              <span
-                className={cn(
-                  "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                  isOpen &&
-                    "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45"
-                )}
-              />
-              <span
-                className={cn(
-                  "w-full h-[2px] bg-white rounded-full transition-all duration-300",
-                  isOpen && "opacity-0"
-                )}
-              />
-            </div>
-          </button>
-        </div>
-
-        {/* Mobile Overlay */}
-        <AnimatePresence>
-          {isOpen && (
-            <motion.div
-              initial="closed"
-              animate="open"
-              exit="exit"
-              variants={mobileOverlayVariants}
-              className="fixed inset-4 z-[10000] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-[32px] flex flex-col pointer-events-auto overflow-hidden touch-none"
-              style={{ overscrollBehavior: "none" }}>
-              <div className="flex-1 flex flex-col items-center justify-center w-full px-6 gap-8">
+      {/* --- MOBILE CONTENT OVERLAY (Z-[50]) --- */}
+      {/* 
+          This is the "View" Layer. 
+          Controls are handled by the fixed buttons above.
+          Features:
+          - Inset Card Design (inset-4 rounded-[32px])
+          - Glassmorphism
+          - Full Content Injection (Capabilities + Status)
+      */}
+      <AnimatePresence>
+        {isOpen && isMobile && (
+          <motion.div
+            initial="closed"
+            animate="open"
+            exit="exit"
+            variants={mobileOverlayVariants}
+            className="fixed inset-4 z-[50] bg-[#050505]/95 backdrop-blur-2xl border border-white/10 rounded-[32px] flex flex-col pointer-events-auto overflow-hidden touch-none"
+            style={{ overscrollBehavior: "none" }}>
+            {/* Scrollable Content Container */}
+            <div className="flex-1 flex flex-col w-full px-6 pt-24 pb-8 overflow-y-auto no-scrollbar">
+              {/* 1. Main Navigation Links */}
+              <div className="flex flex-col items-center justify-center gap-8 mb-12">
                 {navItems.map((item, index) => {
                   const isActive = pathname === item.href;
                   return (
@@ -470,14 +463,14 @@ export function Header() {
                       <Link
                         href={item.href as any}
                         className={cn(
-                          "flex items-center justify-center gap-3 text-4xl font-bold tracking-tight transition-colors duration-300",
+                          "flex items-center justify-center gap-3 text-3xl font-bold tracking-tight transition-colors duration-300",
                           isActive
                             ? "text-white"
                             : "text-neutral-500 hover:text-white"
                         )}
                         onClick={() => setIsOpen(false)}>
                         {isActive && (
-                          <span className="text-emerald-500 text-2xl font-bold tracking-tight">
+                          <span className="text-emerald-500 text-xl font-bold tracking-tight">
                             {">_"}
                           </span>
                         )}
@@ -488,16 +481,66 @@ export function Header() {
                 })}
               </div>
 
-              <div className="w-full px-8 pb-12 flex justify-between items-center border-t border-neutral-800 pt-6">
-                <span className="text-xs font-mono text-neutral-500">
-                  {t("all_systems_operational")}
-                </span>
-                <LanguageSwitcher />
+              {/* 2. System Capabilities (Injected from Desktop) */}
+              <div className="w-full border-t border-neutral-800/50 pt-8 mb-8">
+                <h4 className="text-[10px] font-mono uppercase text-neutral-600 tracking-[0.2em] text-center mb-6">
+                  {t("system_capabilities")}
+                </h4>
+                <div className="flex flex-wrap justify-center gap-3">
+                  {[
+                    t("tags.cloud"),
+                    t("tags.ai"),
+                    t("tags.devops"),
+                    t("tags.headless"),
+                  ].map((tag, i) => (
+                    <motion.div
+                      key={tag}
+                      initial={{ opacity: 0, scale: 0.9 }}
+                      animate={{ opacity: 1, scale: 1 }}
+                      transition={{ delay: 0.3 + i * 0.05 }}
+                      className="text-xs font-mono text-neutral-400 bg-white/5 border border-white/5 rounded-full px-3 py-1 flex items-center gap-2">
+                      <div className="w-1 h-1 bg-emerald-500 rounded-full" />
+                      {tag}
+                    </motion.div>
+                  ))}
+                </div>
               </div>
-            </motion.div>
-          )}
-        </AnimatePresence>
-      </motion.div>
+            </div>
+
+            {/* 3. Footer (Status + Socials) */}
+            <div className="w-full px-6 pb-6 pt-4 bg-gradient-to-t from-black/50 to-transparent shrink-0">
+              <div className="flex flex-col gap-6">
+                {/* Status Indicator */}
+                <div className="flex items-center justify-center gap-2">
+                  <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                  <span className="text-xs font-mono text-neutral-400">
+                    {t("all_systems_operational")}
+                  </span>
+                </div>
+
+                {/* Socials & Lang */}
+                <div className="flex items-center justify-between border-t border-neutral-800/50 pt-4">
+                  <div className="flex gap-4">
+                    <a
+                      href="https://instagram.com/noctra_studio"
+                      target="_blank"
+                      className="text-neutral-500 hover:text-white transition-colors p-2">
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://x.com/NoctraStudio"
+                      target="_blank"
+                      className="text-neutral-500 hover:text-white transition-colors p-2">
+                      <XIcon className="w-5 h-5" />
+                    </a>
+                  </div>
+                  <LanguageSwitcher />
+                </div>
+              </div>
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
     </>
   );
 }
