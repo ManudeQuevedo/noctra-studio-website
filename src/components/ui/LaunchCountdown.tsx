@@ -68,16 +68,26 @@ export function LaunchCountdown({ targetDate }: LaunchCountdownProps) {
       transition={{ duration: 0.8, delay: 0.4 }}
       className="flex flex-col items-center mb-10">
       <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em] mb-4">
-        {t.countdown.title}
+        {/* {t.countdown.title} */}
       </p>
-      <div className="flex items-center justify-center p-4 rounded-xl bg-neutral-900/30 border border-white/5 backdrop-blur-sm">
-        <TimeUnit value={timeLeft.days} label={t.countdown.days} />
-        <Separator />
-        <TimeUnit value={timeLeft.hours} label={t.countdown.hours} />
-        <Separator />
-        <TimeUnit value={timeLeft.minutes} label={t.countdown.minutes} />
-        <Separator />
-        <TimeUnit value={timeLeft.seconds} label={t.countdown.seconds} />
+      <div className="flex flex-col items-center justify-center p-6 rounded-xl bg-neutral-900/30 border border-white/5 backdrop-blur-sm text-center">
+        <h3 className="text-xl md:text-2xl font-mono font-bold text-white tracking-tighter mb-2">
+          {t.countdown.deploymentWindow}
+        </h3>
+        <p className="text-xs md:text-sm text-neutral-400 font-mono tracking-widest">
+          {t.countdown.systemStatus}
+        </p>
+        {/* Hidden Countdown Logic
+        <div className="hidden">
+          <TimeUnit value={timeLeft.days} label={t.countdown.days} />
+          <Separator />
+          <TimeUnit value={timeLeft.hours} label={t.countdown.hours} />
+          <Separator />
+          <TimeUnit value={timeLeft.minutes} label={t.countdown.minutes} />
+          <Separator />
+          <TimeUnit value={timeLeft.seconds} label={t.countdown.seconds} />
+        </div>
+        */}
       </div>
     </motion.div>
   );

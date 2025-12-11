@@ -3,7 +3,7 @@ export type Language = 'en' | 'es';
 export const translations = {
   en: {
     hero: {
-      title: "System Initialization Imminent.",
+      title: "Noctra Is Coming Online.",
       subtitle: "We are architecting the next generation of digital infrastructure. A studio led by senior engineers with 7+ years of production experience at scale.",
       description: "",
       badge: "EST. 2025 || LED BY SENIOR ENGINEERING TALENT"
@@ -28,12 +28,14 @@ export const translations = {
       days: "Days",
       hours: "Hrs",
       minutes: "Min",
-      seconds: "Sec"
+      seconds: "Sec",
+      deploymentWindow: "Deployment Window: Q1 2026",
+      systemStatus: "System Architecture Protocols Under Finalization."
     }
   },
   es: {
     hero: {
-      title: "Inicialización del Sistema Inminente.",
+      title: "Noctra Está Entrando en Línea.",
       subtitle: "Estamos arquitectando la próxima generación de infraestructura digital. Un estudio liderado por ingenieros senior con más de 7 años de experiencia en producción a escala.",
       description: "",
       badge: "EST. 2025 || LIDERADO POR TALENTO DE INGENIERÍA SENIOR"
@@ -58,7 +60,9 @@ export const translations = {
       days: "Días",
       hours: "Hrs",
       minutes: "Min",
-      seconds: "Seg"
+      seconds: "Seg",
+      deploymentWindow: "Ventana de Despliegue: T1 2026",
+      systemStatus: "Protocolos de Arquitectura del Sistema Bajo Finalización."
     }
   }
 };
