@@ -1,5 +1,6 @@
 import { NextResponse } from 'next/server';
 import { Resend } from 'resend';
+import { WelcomeEmail } from '@/emails/WelcomeEmail';
 
 export const dynamic = 'force-dynamic';
 
@@ -29,42 +30,78 @@ export async function POST(request: Request) {
     if (!resendApiKey) {
       console.warn('DEV MODE: Simulating email send (RESEND_API_KEY missing)');
       console.log(`[SIMULATION] New subscriber: ${email} -> Admin: ${adminEmail}`);
+      console.log(`[SIMULATION] Welcome email -> User: ${email}`);
       return NextResponse.json({ 
         success: true, 
-        message: 'Simulated email sent',
+        message: 'Simulated dual-dispatch emails sent',
         devMode: true 
       });
     }
 
-    // Attempt to send email
-    try {
-      const data = await resend.emails.send({
-        from: fromEmail,
-        to: [adminEmail],
-        subject: 'New Coming Soon Subscription',
-        html: `
-          <div style="font-family: sans-serif; padding: 20px;">
-            <h2>New Subscriber!</h2>
-            <p>A new user has subscribed to the coming soon list:</p>
-            <p style="font-size: 18px; font-weight: bold; background: #f4f4f4; padding: 10px; border-radius: 4px;">
-              ${email}
-            </p>
-            <p style="color: #666; font-size: 12px; margin-top: 20px;">
-              Sent from Noctra Studio Website
-            </p>
+    // Prepare email payloads
+    const adminEmailPayload = {
+      from: fromEmail,
+      to: [adminEmail],
+      subject: `New Lead: ${email}`,
+      html: `
+        <div style="font-family: monospace; padding: 20px; background: #000; color: #fff;">
+          <h2 style="border-bottom: 1px solid #333; padding-bottom: 10px;">PROTOCOL: INBOUND_LEAD</h2>
+          <p>STATUS: NEW_SUBSCRIBER</p>
+          <div style="background: #111; padding: 15px; border: 1px solid #333; margin: 20px 0;">
+            <p style="margin: 0; color: #888;">EMAIL_ADDRESS:</p>
+            <p style="margin: 5px 0 0 0; font-size: 16px; font-weight: bold; color: #fff;">${email}</p>
           </div>
-        `
-      });
+          <p style="color: #666; font-size: 12px; margin-top: 30px;">
+            TIMESTAMP: ${new Date().toISOString()}
+          </p>
+        </div>
+      `
+    };
 
-      console.log(`Email sent successfully to ${adminEmail}`, data);
-      return NextResponse.json(data);
-    } catch (sendError) {
-      console.error('RESEND API ERROR:', sendError);
+    const userEmailPayload = {
+      from: 'Noctra Studio <info@noctra.studio>', // As requested: info@noctra.studio
+      to: [email],
+      subject: 'Noctra / Protocol Initiated',
+      react: WelcomeEmail({}),
+    };
+
+    // Execute Dual-Dispatch in Parallel
+    const results = await Promise.allSettled([
+      resend.emails.send(adminEmailPayload),
+      resend.emails.send(userEmailPayload)
+    ]);
+
+    const [adminResult, userResult] = results;
+
+    // Logging results
+    if (adminResult.status === 'fulfilled') {
+      console.log(`Admin notification sent to ${adminEmail}`, adminResult.value);
+    } else {
+      console.error('FAILED: Admin notification', adminResult.reason);
+    }
+
+    if (userResult.status === 'fulfilled') {
+      console.log(`Welcome email sent to ${email}`, userResult.value);
+    } else {
+      console.error('FAILED: Welcome email', userResult.reason);
+    }
+
+    // Check for critical failure (both failed)
+    if (adminResult.status === 'rejected' && userResult.status === 'rejected') {
       return NextResponse.json(
-        { error: 'Failed to send email via Resend provider', details: sendError },
+        { error: 'Failed to dispatch emails', details: { admin: adminResult.reason, user: userResult.reason } },
         { status: 500 }
       );
     }
+
+    // Return success if at least one succeeded (optimistic)
+    return NextResponse.json({
+      success: true,
+      results: {
+        admin: adminResult.status === 'fulfilled' ? adminResult.value : { error: adminResult.reason },
+        user: userResult.status === 'fulfilled' ? userResult.value : { error: userResult.reason }
+      }
+    });
 
   } catch (error) {
     console.error('UNEXPECTED ERROR:', error);
