@@ -10,12 +10,7 @@ import {
   Section,
   Text,
 } from "@react-email/components";
-import { Tailwind } from "@react-email/tailwind";
 import * as React from "react";
-
-const baseUrl = process.env.VERCEL_URL
-  ? `https://${process.env.VERCEL_URL}`
-  : "";
 
 interface WelcomeEmailProps {}
 
@@ -26,87 +21,103 @@ export const WelcomeEmail = ({}: WelcomeEmailProps) => {
     <Html style={{ backgroundColor: "#050505" }}>
       <Head />
       <Preview>{previewText}</Preview>
-      <Tailwind
-        config={{
-          theme: {
-            extend: {
-              colors: {
-                brand: "#000000",
-                offwhite: "#fafafa",
-              },
-            },
-          },
+
+      <Body
+        style={{
+          backgroundColor: "#050505",
+          color: "#ffffff",
+          margin: "0",
+          padding: "0",
+          fontFamily: "sans-serif",
         }}>
-        <Body
+        {/* Full Bleed Wrapper */}
+        <Section
           style={{
             backgroundColor: "#050505",
-            color: "#ffffff",
-            margin: "0",
-            padding: "0",
-          }}
-          className="bg-[#050505] font-sans antialiased text-white m-0 p-0">
-          {/* Triple-Layer Background Enforcement: Full-Width Section Wrapper */}
-          <Section
-            style={{ backgroundColor: "#050505", padding: "40px 0" }}
-            className="w-full h-full bg-[#050505] p-0 m-0">
-            <Container className="mx-auto p-10 max-w-xl">
-              {/* Logo Section */}
-              <Section className="mb-8">
-                <Img
-                  src={`${baseUrl}/noctra-navbar-dark.svg`}
-                  alt="Noctra Studio"
-                  width="auto"
-                  height="32"
-                  className="block"
-                />
-              </Section>
+            width: "100%",
+            height: "100%",
+            padding: "40px 0",
+          }}>
+          <Container
+            style={{ margin: "0 auto", maxWidth: "560px", padding: "20px" }}>
+            {/* Logo */}
+            <Section style={{ marginBottom: "32px" }}>
+              <Img
+                src="https://noctra.studio/static/noctra-logo-white.png"
+                alt="Noctra Studio"
+                width="auto"
+                height="32"
+                style={{ display: "block" }}
+              />
+            </Section>
 
-              {/* Headline */}
-              <Heading
-                style={{ color: "#ffffff" }}
-                className="text-4xl font-bold tracking-tight text-white mb-6">
-                Protocol Initiated.
-              </Heading>
+            {/* Headline */}
+            <Heading
+              style={{
+                color: "#ffffff",
+                fontSize: "36px",
+                fontWeight: "bold",
+                margin: "0 0 24px 0",
+                letterSpacing: "-0.025em",
+              }}>
+              Protocol Initiated.
+            </Heading>
 
-              {/* Body Copy */}
-              <Text
-                style={{ color: "#ffffff" }}
-                className="text-gray-300 text-base leading-relaxed mb-6">
-                We have received your details. Our studio is active and
-                accepting select inquiries for 2025.
+            {/* Body Text */}
+            <Text
+              style={{
+                color: "#ffffff",
+                fontSize: "16px",
+                lineHeight: "24px",
+                margin: "0 0 24px 0",
+                opacity: 0.9,
+              }}>
+              We have received your details. Our studio is active and accepting
+              select inquiries for 2025.
+            </Text>
+
+            {/* Secondary Text */}
+            <Text
+              style={{
+                color: "#ffffff",
+                fontSize: "16px",
+                lineHeight: "24px",
+                margin: "0 0 32px 0",
+                opacity: 0.9,
+              }}>
+              Have a project in mind? We specialize in high-performance
+              architecture. Let&apos;s talk.
+            </Text>
+
+            {/* CTA Button */}
+            <Section style={{ marginBottom: "40px" }}>
+              <Button
+                href="https://cal.com/noctra/strategy"
+                style={{
+                  backgroundColor: "#ffffff",
+                  color: "#000000",
+                  padding: "16px 32px",
+                  fontWeight: "bold",
+                  fontSize: "14px",
+                  textDecoration: "none",
+                  textTransform: "uppercase",
+                  letterSpacing: "0.05em",
+                  borderRadius: "0",
+                }}>
+                Book Strategy Call
+              </Button>
+            </Section>
+
+            {/* Footer */}
+            <Section
+              style={{ borderTop: "1px solid #333333", paddingTop: "24px" }}>
+              <Text style={{ color: "#9ca3af", fontSize: "12px", margin: "0" }}>
+                © {new Date().getFullYear()} Noctra Studio. All rights reserved.
               </Text>
-
-              {/* Pivot to Sales */}
-              <Text
-                style={{ color: "#ffffff" }}
-                className="text-gray-300 text-base leading-relaxed mb-8">
-                Have a project in mind? We specialize in high-performance
-                architecture. Let&apos;s talk.
-              </Text>
-
-              {/* CTA Button */}
-              <Section className="mb-10">
-                <Button
-                  style={{ backgroundColor: "#ffffff", color: "#000000" }}
-                  className="bg-white text-black px-8 py-4 rounded-none font-bold text-sm tracking-wider uppercase hover:bg-gray-200 transition-colors"
-                  href="https://cal.com/noctra/strategy">
-                  Book Strategy Call
-                </Button>
-              </Section>
-
-              {/* Footer */}
-              <Section className="border-t border-gray-800 pt-6">
-                <Text
-                  style={{ color: "#9ca3af" }}
-                  className="text-gray-400 text-xs">
-                  © {new Date().getFullYear()} Noctra Studio. All rights
-                  reserved.
-                </Text>
-              </Section>
-            </Container>
-          </Section>
-        </Body>
-      </Tailwind>
+            </Section>
+          </Container>
+        </Section>
+      </Body>
     </Html>
   );
 };
