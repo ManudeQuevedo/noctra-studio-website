@@ -6,34 +6,36 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { email, message } = await request.json();
+    const { name, email, message } = await request.json();
 
-    console.log('[API/Send] Payload received:', { email, message });
+    console.log('[API/Send] Payload received:', { name, email, message });
 
     // 1. Send Confirmation to User
     const userTask = resend.emails.send({
-      from: 'Noctra Studio <hello@noctra.studio>',
+      from: 'Noctra System <system@noctra.studio>',
       to: email,
       subject: 'Noctra / Protocol Initiated',
-      react: WelcomeEmail({}),
+      react: WelcomeEmail({ name }),
     });
 
-    // 2. Send Notification to Admin (YOU)
+    // 2. Send Notification to Admin
     const adminTask = resend.emails.send({
-      from: 'Noctra System <hello@noctra.studio>',
+      from: 'Noctra System <system@noctra.studio>',
       to: ['hello@noctra.studio', 'contact@manudequevedo.com'],
-      replyTo: email, 
-      subject: `New Lead: ${email}`,
+      replyTo: name ? `${name} <${email}>` : email,
+      subject: `Noctra / Signal Acquired: ${name || 'Unknown'}`,
       text: `
         New inquiry received via Noctra Studio.
         
-        From: ${email}
+        Name: ${name || 'Not provided'}
+        Email: ${email}
+        
         Message:
         ${message || '(No message provided)'}
       `,
     });
 
-    console.log(`[API/Send] Dispatching emails to: User(${email}), Admin(hello@noctra.studio)`);
+    console.log(`[API/Send] Dispatching emails to: User(${email}) and Admins.`);
 
     // Wait for both
     const [userResult, adminResult] = await Promise.all([userTask, adminTask]);

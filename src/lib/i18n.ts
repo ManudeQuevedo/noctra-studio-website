@@ -9,6 +9,7 @@ export const translations = {
       badge: "EST. 2025 || LED BY SENIOR ENGINEERING TALENT"
     },
     form: {
+      name_placeholder: "Enter your name...",
       placeholder: "Request Early Access Protocol",
       button: "Notify Me",
       success: "Thank you! We'll keep you posted.",
@@ -41,6 +42,7 @@ export const translations = {
       badge: "EST. 2025 || LIDERADO POR TALENTO DE INGENIERÍA SENIOR"
     },
     form: {
+      name_placeholder: "Ingresa tu nombre...",
       placeholder: "Solicitar Protocolo de Acceso Anticipado",
       button: "Notificarme",
       success: "¡Gracias! Te mantendremos informado.",

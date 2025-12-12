@@ -12,10 +12,13 @@ import {
 } from "@react-email/components";
 import * as React from "react";
 
-interface WelcomeEmailProps {}
+interface WelcomeEmailProps {
+  name?: string;
+}
 
-export const WelcomeEmail = ({}: WelcomeEmailProps) => {
-  const previewText = "Protocol Initiated.";
+export const WelcomeEmail = ({ name }: WelcomeEmailProps) => {
+  const greetingName = name || "Traveller";
+  const previewText = `Protocol Initiated, ${greetingName}.`;
 
   return (
     <Html style={{ backgroundColor: "#050505" }}>
@@ -60,7 +63,7 @@ export const WelcomeEmail = ({}: WelcomeEmailProps) => {
                 margin: "0 0 24px 0",
                 letterSpacing: "-0.025em",
               }}>
-              Protocol Initiated.
+              Protocol Initiated, {greetingName}.
             </Heading>
 
             {/* Body Text */}
