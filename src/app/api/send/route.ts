@@ -6,18 +6,34 @@ import { createClient } from '@supabase/supabase-js';
 const resend = new Resend(process.env.RESEND_API_KEY);
 
 // Initialize Supabase Client (Service Role for Admin Access)
+// Note: We check for key existence inside the handler for better error reporting
 const supabase = createClient(
   process.env.NEXT_PUBLIC_SUPABASE_URL!,
   process.env.SUPABASE_SERVICE_ROLE_KEY!
 );
 
 export async function POST(request: Request) {
+  // CRITICAL: RLS Security Check
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    console.error("CRITICAL: Service Role Key missing. RLS bypass failed.");
+    return NextResponse.json({ error: "Config Error" }, { status: 500 });
+  }
+
   try {
-    const { name, email, lang } = await request.json();
+    const { name, email, lang, role_title } = await request.json();
 
-    console.log('[API/Send] Payload received:', { name, email, lang });
+    console.log('[API/Send] Payload received:', { name, email, lang, role_title: role_title ? 'DETECTED' : 'CLEAN' });
 
-    // 0. The Gatekeeper: Check for duplicates
+    // 0. The Bot Trap (Honeypot)
+    // If the hidden 'role_title' field is filled, it's a bot.
+    // Return success immediately to fool them (Shadow Ban).
+    if (role_title) {
+       console.warn(`[API/Send] Bot Detected (Honeypot Triggered). Email: ${email}`);
+       return NextResponse.json({ success: true, message: 'Protocol Initiated' }); 
+       // DO NOT PROCEED. RETURN EARLY.
+    }
+
+    // 0.5 The Gatekeeper: Check for duplicates
     // Using simple select to check existence
     const { data: existingLeads, error: searchError } = await supabase
       .from('leads')
@@ -38,7 +54,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 0.5 Insert into DB
+    // 1. Insert into DB
     const { error: insertError } = await supabase
       .from('leads')
       .insert({ name, email, language: lang });
@@ -48,7 +64,7 @@ export async function POST(request: Request) {
        return NextResponse.json({ error: 'Failed to record signal' }, { status: 500 });
     }
 
-    // 1. Send Confirmation to User
+    // 2. Send Confirmation to User
     const userTask = resend.emails.send({
       from: 'Noctra System <system@noctra.studio>',
       to: email,
@@ -56,7 +72,7 @@ export async function POST(request: Request) {
       react: WelcomeEmail({ name, lang }),
     });
 
-    // 2. Send Notification to Admin
+    // 3. Send Notification to Admin
     const adminTask = resend.emails.send({
       from: 'Noctra System <system@noctra.studio>',
       to: 'hello@noctra.studio',
