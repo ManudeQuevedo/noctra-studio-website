@@ -7,7 +7,6 @@ import {
   Html,
   Img,
   Preview,
-  Section,
   Text,
   Font,
 } from "@react-email/components";
@@ -61,168 +60,110 @@ export const WelcomeEmail = ({ name, lang = "en" }: WelcomeEmailProps) => {
           fontWeight={400}
           fontStyle="normal"
         />
-        <style>
-          {`
-            /* Base Styles (Light Mode Default) */
-            .dark-mode-only { display: none !important; }
-            .light-mode-only { display: block !important; }
-            
-            /* Dark Mode Override */
-            @media (prefers-color-scheme: dark) {
-              .dark-mode-only { display: block !important; }
-              .light-mode-only { display: none !important; }
-              
-              /* Invert text colors for Dark Mode */
-              .body-text { color: #a1a1aa !important; }
-              .heading-text { color: #ffffff !important; }
-              .container-bg { background-color: #000000 !important; }
-              .card-bg { background-color: #050505 !important; border-color: #333333 !important; }
-            }
-          `}
-        </style>
       </Head>
       <Preview>{t.headline}</Preview>
 
-      {/* 
-        Container - Default is White (Light Mode) 
-        Dark Mode clients will see CSS overrides or auto-inversion
-      */}
+      {/* Immutable Dark Mode: Force Black Background */}
       <Body
         style={{
           margin: 0,
           padding: 0,
-          backgroundColor: "#ffffff",
+          backgroundColor: "#000000",
           fontFamily: "Roboto, Verdana, sans-serif",
-        }}
-        className="container-bg">
+        }}>
+        {/* Table Wrapper Hack - Forces background on Gmail/Outlook */}
         <table
           width="100%"
           border={0}
           cellSpacing={0}
           cellPadding={0}
-          role="presentation">
+          role="presentation"
+          style={{ backgroundColor: "#000000" }}>
           <tr>
-            <td align="center" style={{ padding: "40px 0" }}>
+            <td align="center" style={{ padding: "40px 20px" }}>
+              {/* Card Container */}
               <Container
                 style={{
                   maxWidth: "480px",
                   width: "100%",
-                  backgroundColor: "#ffffff",
+                  backgroundColor: "#050505",
                   borderRadius: "24px",
                   padding: "40px",
-                  border: "1px solid #e5e5e5",
-                }}
-                className="card-bg">
-                {/* Logo Section - Double Asset Strategy */}
+                  border: "1px solid #222222",
+                }}>
+                {/* White Logo - Immutable */}
                 <div style={{ marginBottom: "32px" }}>
-                  {/* Light Logic: Show Black Logo */}
-                  <div className="light-mode-only">
-                    <Img
-                      src="https://noctra.studio/static/noctra-logo-black.png"
-                      alt="Noctra Studio"
-                      width="auto"
-                      height="32"
-                      style={{ display: "block" }}
-                    />
-                  </div>
-                  {/* Dark Logic: Show White Logo */}
-                  <div className="dark-mode-only">
-                    <Img
-                      src="https://noctra.studio/static/noctra-logo-white.png"
-                      alt="Noctra Studio"
-                      width="auto"
-                      height="32"
-                      style={{ display: "block" }}
-                    />
-                  </div>
+                  <Img
+                    src="https://noctra.studio/static/noctra-logo-white.png"
+                    alt="Noctra Studio"
+                    width="auto"
+                    height="32"
+                    style={{ display: "block" }}
+                  />
                 </div>
 
-                {/* Headline */}
+                {/* Headline - White Text */}
                 <Heading
                   style={{
-                    color: "#000000",
+                    color: "#ffffff",
                     fontSize: "32px",
                     fontWeight: "bold",
                     margin: "0 0 24px 0",
                     letterSpacing: "-0.025em",
-                  }}
-                  className="heading-text">
+                  }}>
                   {t.headline}
                 </Heading>
 
-                {/* Body Text */}
+                {/* Body Text - Light Gray */}
                 <Text
                   style={{
-                    color: "#52525b",
+                    color: "#a1a1aa",
                     fontSize: "15px",
                     lineHeight: "24px",
                     margin: "0 0 24px 0",
-                  }}
-                  className="body-text">
+                  }}>
                   {t.body1}
                 </Text>
 
                 <Text
                   style={{
-                    color: "#52525b",
+                    color: "#a1a1aa",
                     fontSize: "15px",
                     lineHeight: "24px",
                     margin: "0 0 32px 0",
-                  }}
-                  className="body-text">
+                  }}>
                   {t.body2}
                 </Text>
 
-                {/* CTA Button Section - Double Button Strategy */}
+                {/* CTA Button - White on Black */}
                 <div style={{ marginBottom: "40px" }}>
-                  {/* Light Mode: Black Button */}
-                  <div className="light-mode-only">
-                    <Button
-                      href={t.ctaUrl}
-                      style={{
-                        backgroundColor: "#000000",
-                        color: "#ffffff",
-                        padding: "14px 28px",
-                        fontWeight: "bold",
-                        fontSize: "13px",
-                        textDecoration: "none",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                        borderRadius: "9999px",
-                      }}>
-                      {t.button}
-                    </Button>
-                  </div>
-
-                  {/* Dark Mode: White Button */}
-                  <div className="dark-mode-only">
-                    <Button
-                      href={t.ctaUrl}
-                      style={{
-                        backgroundColor: "#ffffff",
-                        color: "#000000",
-                        padding: "14px 28px",
-                        fontWeight: "bold",
-                        fontSize: "13px",
-                        textDecoration: "none",
-                        textTransform: "uppercase",
-                        letterSpacing: "0.05em",
-                        borderRadius: "9999px",
-                      }}>
-                      {t.button}
-                    </Button>
-                  </div>
+                  <Button
+                    href={t.ctaUrl}
+                    style={{
+                      backgroundColor: "#ffffff",
+                      color: "#000000",
+                      padding: "14px 28px",
+                      fontWeight: "bold",
+                      fontSize: "13px",
+                      textDecoration: "none",
+                      textTransform: "uppercase",
+                      letterSpacing: "0.05em",
+                      borderRadius: "9999px",
+                      display: "inline-block",
+                    }}>
+                    {t.button}
+                  </Button>
                 </div>
 
                 {/* Footer */}
                 <div
                   style={{
-                    borderTop: "1px solid #e5e5e5",
+                    borderTop: "1px solid #222222",
                     paddingTop: "24px",
                   }}>
                   <Text
                     style={{
-                      color: "#a1a1aa",
+                      color: "#52525b",
                       fontSize: "11px",
                       margin: "0",
                       textTransform: "uppercase",
