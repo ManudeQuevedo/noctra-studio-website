@@ -18,6 +18,7 @@ export async function POST(request: Request) {
     console.log('[API/Send] Payload received:', { name, email, lang });
 
     // 0. The Gatekeeper: Check for duplicates
+    // Using simple select to check existence
     const { data: existingLeads, error: searchError } = await supabase
       .from('leads')
       .select('*')
@@ -25,15 +26,7 @@ export async function POST(request: Request) {
 
     if (searchError) {
       console.error('[API/Send] Database Check Failed:', searchError);
-      // Proceed cautiously or fail? Let's fail safe and allow processing if db is down? 
-      // User requested "If exists: return 409". If DB fails, we can't check. 
-      // Let's assume critical failure and return 500 or just log and proceed. 
-      // "Antigravity Protocol" suggests reliability. 
-      // If db check fails, we might create duplicate emails, but better than blocking user?
-      // Strict instruction: "The Gatekeeper". Let's throw detailed error to logs but maybe not block unless sure.
-      // ACTUALLY, strict instruction: "If existing... return 409".
-      // Let's assume if it fails we can't be sure, so we proceed or error. 
-      // I will return 500 if DB check fails to be safe.
+      // Fail safe: If DB is down, return error to avoid inconsistencies
       return NextResponse.json({ error: 'Database verification failed' }, { status: 500 });
     }
 
@@ -45,7 +38,7 @@ export async function POST(request: Request) {
       );
     }
 
-    // 0.5 Insert into DB (Recorded before email sending to prevent race conditions if possible)
+    // 0.5 Insert into DB
     const { error: insertError } = await supabase
       .from('leads')
       .insert({ name, email, language: lang });
