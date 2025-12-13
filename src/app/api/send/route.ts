@@ -6,16 +6,16 @@ const resend = new Resend(process.env.RESEND_API_KEY);
 
 export async function POST(request: Request) {
   try {
-    const { name, email, message } = await request.json();
+    const { name, email, lang } = await request.json();
 
-    console.log('[API/Send] Payload received:', { name, email, message });
+    console.log('[API/Send] Payload received:', { name, email, lang });
 
     // 1. Send Confirmation to User
     const userTask = resend.emails.send({
       from: 'Noctra System <system@noctra.studio>',
       to: email,
-      subject: 'Noctra / Protocol Initiated',
-      react: WelcomeEmail({ name }),
+      subject: lang === 'es' ? 'Noctra / Protocolo Iniciado' : 'Noctra / Protocol Initiated',
+      react: WelcomeEmail({ name, lang }),
     });
 
     // 2. Send Notification to Admin
@@ -25,13 +25,11 @@ export async function POST(request: Request) {
       replyTo: name ? `${name} <${email}>` : email,
       subject: `Noctra / Signal Acquired: ${name || 'Unknown'}`,
       text: `
-        New inquiry received via Noctra Studio.
+        New Signal Received.
         
         Name: ${name || 'Not provided'}
         Email: ${email}
-        
-        Message:
-        ${message || '(No message provided)'}
+        Language: ${lang || 'en'}
       `,
     });
 

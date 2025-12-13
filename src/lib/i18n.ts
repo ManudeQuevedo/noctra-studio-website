@@ -63,7 +63,7 @@ export const translations = {
       hours: "Hrs",
       minutes: "Min",
       seconds: "Seg",
-      deploymentWindow: "Ventana de Despliegue: T1 2026",
+      deploymentWindow: "Ventana de Despliegue: 1er Trimestre 2026",
       systemStatus: "Protocolos de Arquitectura del Sistema Bajo Finalización."
     }
   }

@@ -7,8 +7,15 @@ import { Button } from "@/components/ui/button";
 import { ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
-export function ContactForm() {
-  const { t } = useLanguage();
+interface ContactFormProps {
+  locale?: "en" | "es";
+}
+
+export function ContactForm({ locale }: ContactFormProps) {
+  const { t, language } = useLanguage();
+  // Ensure default to 'en' if undefined
+  const currentLang = locale || language || "en";
+
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<
@@ -22,10 +29,11 @@ export function ContactForm() {
     setStatus("loading");
 
     try {
+      // API Payload: { name, email, lang }
       const res = await fetch("/api/send", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ name, email }),
+        body: JSON.stringify({ name, email, lang: currentLang }),
       });
 
       if (res.ok) {
