@@ -15,6 +15,7 @@ export const translations = {
       success: "Thank you! We'll keep you posted.",
       error: "Something went wrong. Please try again.",
       sending: "Sending...",
+      duplicate_signal: "Signal already received. Check your inbox.",
       microcopy: "Join the waitlist for priority architecture audits and engineering insights. No spam."
     },
     footer: {
@@ -48,6 +49,7 @@ export const translations = {
       success: "¡Gracias! Te mantendremos informado.",
       error: "Algo salió mal. Por favor intenta de nuevo.",
       sending: "Enviando...",
+      duplicate_signal: "Señal ya recibida. Revisa tu bandeja de entrada.",
       microcopy: "Únete a la lista de espera para auditorías de arquitectura prioritarias e insights de ingeniería. Sin spam."
     },
     footer: {

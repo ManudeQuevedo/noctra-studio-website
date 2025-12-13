@@ -4,7 +4,7 @@ import { useState } from "react";
 import { useLanguage } from "@/lib/i18n";
 import { Input } from "@/components/ui/input";
 import { Button } from "@/components/ui/button";
-import { ArrowRight, Loader2, CheckCircle2 } from "lucide-react";
+import { ArrowRight, Loader2, CheckCircle2, AlertCircle } from "lucide-react"; // Added AlertCircle
 import { motion, AnimatePresence } from "framer-motion";
 
 interface ContactFormProps {
@@ -19,7 +19,7 @@ export function ContactForm({ locale }: ContactFormProps) {
   const [name, setName] = useState("");
   const [email, setEmail] = useState("");
   const [status, setStatus] = useState<
-    "idle" | "loading" | "success" | "error"
+    "idle" | "loading" | "success" | "error" | "duplicate" // Added duplicate
   >("idle");
 
   const handleSubmit = async (e: React.FormEvent) => {
@@ -40,6 +40,8 @@ export function ContactForm({ locale }: ContactFormProps) {
         setStatus("success");
         setName("");
         setEmail("");
+      } else if (res.status === 409) {
+        setStatus("duplicate");
       } else {
         setStatus("error");
       }
@@ -59,6 +61,17 @@ export function ContactForm({ locale }: ContactFormProps) {
             className="flex items-center gap-2 text-green-500 bg-green-500/10 p-3 rounded-lg border border-green-500/20">
             <CheckCircle2 className="w-5 h-5" />
             <span className="text-sm font-medium">{t.form.success}</span>
+          </motion.div>
+        ) : status === "duplicate" ? ( // Handle duplicate status
+          <motion.div
+            initial={{ opacity: 0, y: 10 }}
+            animate={{ opacity: 1, y: 0 }}
+            exit={{ opacity: 0, y: -10 }}
+            className="flex items-center gap-2 text-yellow-500 bg-yellow-500/10 p-3 rounded-lg border border-yellow-500/20">
+            <AlertCircle className="w-5 h-5" />
+            <span className="text-sm font-medium">
+              {t.form.duplicate_signal}
+            </span>
           </motion.div>
         ) : (
           <motion.form
