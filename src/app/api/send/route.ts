@@ -21,7 +21,7 @@ export async function POST(request: Request) {
     // 2. Send Notification to Admin
     const adminTask = resend.emails.send({
       from: 'Noctra System <system@noctra.studio>',
-      to: ['hello@noctra.studio', 'contact@manudequevedo.com'],
+      to: 'hello@noctra.studio',
       replyTo: name ? `${name} <${email}>` : email,
       subject: `Noctra / Signal Acquired: ${name || 'Unknown'}`,
       text: `
