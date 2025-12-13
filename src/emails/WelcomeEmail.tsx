@@ -89,7 +89,7 @@ export const WelcomeEmail = ({ name, lang = "en" }: WelcomeEmailProps) => {
                     {/* Logo */}
                     <div style={{ marginBottom: "32px" }}>
                       <Img
-                        src="https://noctra.studio/static/noctra-logo-white.png"
+                        src="https://noctra.studio/static/noctra-logo-black.png"
                         alt="Noctra Studio"
                         width="auto"
                         height="32"
