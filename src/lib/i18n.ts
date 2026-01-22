@@ -21,8 +21,9 @@ export const translations = {
         line1: "> Establishing secure connection... [OK]",
         line2: "> Encrypting payload... [OK]",
         line3: "> Protocol Initiated.",
-        authorize: "Authorize Secure Comms",
-        signal_secured: "SIGNAL SECURED",
+        authorize: "Secure Studio Identity",
+        vcard_hint: "Save our contact card to ensure priority dispatches reach your inbox and bypass spam filters.",
+        signal_secured: "IDENTITY SAVED",
         confirmation_dispatch: "Transmission complete. A confirmation dispatch has been sent to your inbox."
       }
     },
@@ -63,8 +64,9 @@ export const translations = {
         line1: "> Estableciendo conexión segura... [OK]",
         line2: "> Encriptando carga útil... [OK]",
         line3: "> Protocolo Iniciado.",
-        authorize: "Autorizar Comunicaciones Blindadas",
-        signal_secured: "SEÑAL ASEGURADA",
+        authorize: "Asegurar Identidad del Estudio",
+        vcard_hint: "Guarda nuestra tarjeta de contacto para asegurar que los envíos prioritarios lleguen a tu bandeja de entrada y eviten filtros de spam.",
+        signal_secured: "IDENTIDAD GUARDADA",
         confirmation_dispatch: "Transmisión completada. Hemos enviado una confirmación a tu bandeja de entrada."
       }
     },

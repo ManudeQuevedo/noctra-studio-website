@@ -74,7 +74,7 @@ END:VCARD`;
     const url = window.URL.createObjectURL(blob);
     const link = document.createElement("a");
     link.href = url;
-    link.setAttribute("download", "noctra_system.vcf");
+    link.setAttribute("download", "noctra_studio_contact.vcf");
     document.body.appendChild(link);
     link.click();
     document.body.removeChild(link);
@@ -183,6 +183,16 @@ END:VCARD`;
                   </>
                 )}
               </Button>
+
+              {/* vCard Context Hint */}
+              {!downloaded && (
+                <motion.p
+                  initial={{ opacity: 0 }}
+                  animate={{ opacity: 1 }}
+                  className="text-[10px] text-zinc-500 mt-4 leading-relaxed max-w-[90%] italic">
+                  {t.form.terminal.vcard_hint}
+                </motion.p>
+              )}
 
               {/* Final Post-Interaction Message */}
               {downloaded && (

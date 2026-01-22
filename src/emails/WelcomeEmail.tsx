@@ -22,23 +22,23 @@ export const WelcomeEmail = ({ name, lang = "en" }: WelcomeEmailProps) => {
 
   const content = {
     en: {
-      subject: "Protocol Initiated",
+      subject: "Noctra / Protocol Initiated",
       headline: `Protocol Initiated, ${greetingName}.`,
       body1:
-        "We have received your signal. Our studio is active and accepting select inquiries for 2025.",
+        "We have received your signal. Our studio is active and accepting select architectural inquiries for 2026.",
       body2:
-        "Have a project in mind? We specialize in high-performance architecture. Let's talk.",
+        "Have a project that requires senior engineering talent? We specialize in high-performance digital infrastructure. Let's talk.",
       button: "INITIATE COMMS",
       ctaUrl: "mailto:hello@noctra.studio?subject=Project%20Inquiry",
       footer: `© ${new Date().getFullYear()} Noctra Studio. All rights reserved.`,
     },
     es: {
-      subject: "Protocolo Iniciado",
+      subject: "Noctra / Protocolo Iniciado",
       headline: `Protocolo Iniciado, ${greetingName}.`,
       body1:
-        "Hemos recibido tu señal. Nuestro estudio está activo y aceptando proyectos selectos para 2025.",
+        "Hemos recibido tu señal. Nuestro estudio está activo y aceptando consultas de arquitectura selectas para 2026.",
       body2:
-        "¿Tienes un proyecto en mente? Nos especializamos en arquitectura de alto rendimiento. Hablemos.",
+        "¿Tienes un proyecto que requiere talento de ingeniería senior? Nos especializamos en infraestructura digital de alto rendimiento. Hablemos.",
       button: "INICIAR COMUNICACIÓN",
       ctaUrl: "mailto:hello@noctra.studio?subject=Consulta%20de%20Proyecto",
       footer: `© ${new Date().getFullYear()} Noctra Studio. Todos los derechos reservados.`,
