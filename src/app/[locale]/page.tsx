@@ -1,13 +1,7 @@
 import dynamic from "next/dynamic";
 import { Hero } from "@/components/hero";
-import { HeroTextSection } from "@/components/home/HeroTextSection";
-
-import { SiteAuditTool } from "@/components/home/SiteAuditTool";
-import { EngagementModels } from "@/components/sections/EngagementModels";
 import { generatePageMetadata } from "@/lib/metadata";
-import { getTranslations } from "next-intl/server";
-
-import { HomeContentWrapper } from "@/components/home/HomeContentWrapper";
+import { ServiceSchema, FAQSchema } from "@/components/seo/JsonLd";
 
 // Lazy load heavy components below the fold
 const ServicesGrid = dynamic(
@@ -15,50 +9,42 @@ const ServicesGrid = dynamic(
     import("@/components/home/services-grid").then((mod) => ({
       default: mod.ServicesGrid,
     })),
-  { ssr: true }
+  { ssr: true },
+);
+const WhyDifferentSection = dynamic(
+  () =>
+    import("@/components/home/WhyDifferentSection").then((mod) => ({
+      default: mod.WhyDifferentSection,
+    })),
+  { ssr: true },
+);
+const PricingSection = dynamic(
+  () =>
+    import("@/components/home/pricing-section").then((mod) => ({
+      default: mod.PricingSection,
+    })),
+  { ssr: true },
 );
 const ProcessSection = dynamic(
   () =>
     import("@/components/home/process-section").then((mod) => ({
       default: mod.ProcessSection,
     })),
-  { ssr: true }
+  { ssr: true },
 );
-const PhilosophySection = dynamic(
+const FAQSection = dynamic(
   () =>
-    import("@/components/home/philosophy-section").then((mod) => ({
-      default: mod.PhilosophySection,
+    import("@/components/home/FAQSection").then((mod) => ({
+      default: mod.FAQSection,
     })),
-  { ssr: true }
+  { ssr: true },
 );
-const TargetAudienceSection = dynamic(
+const SocialProofSection = dynamic(
   () =>
-    import("@/components/home/TargetAudienceSection").then((mod) => ({
-      default: mod.TargetAudienceSection,
+    import("@/components/home/SocialProofSection").then((mod) => ({
+      default: mod.SocialProofSection,
     })),
-  { ssr: true }
-);
-const BusinessImpactSection = dynamic(
-  () =>
-    import("@/components/home/BusinessImpactSection").then((mod) => ({
-      default: mod.BusinessImpactSection,
-    })),
-  { ssr: true }
-);
-const ModernStackSection = dynamic(
-  () =>
-    import("@/components/home/ModernStackSection").then((mod) => ({
-      default: mod.ModernStackSection,
-    })),
-  { ssr: true }
-);
-
-const FeaturedWorkSection = dynamic(
-  () =>
-    import("@/components/home/FeaturedWorkSection").then((mod) => ({
-      default: mod.FeaturedWorkSection,
-    })),
-  { ssr: true }
+  { ssr: true },
 );
 
 export async function generateMetadata({
@@ -80,49 +66,42 @@ const SERVICE_IMAGES = {
 
 /**
  * HomePage
- * Purpose: The main landing page of the website.
- * Key Features:
- * - Hero section with 3D starfield
- * - Manifesto text (HeroTextSection)
- * - Site Audit Tool (lead magnet)
- * - Services grid
- * - Engagement Models (pricing with USD/MXN toggle)
- * - Target audience breakdown
- * - Philosophy section with tech marquee
+ * Purpose: Main landing page — benefit-focused, conversion-oriented.
+ * Section Order: Hero → Services → WhyDifferent → Pricing → Process → FAQ → SocialProof
  */
 export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
-  const { locale } = await params;
-  const t = await getTranslations({ locale, namespace: "HomePage" });
   const images = SERVICE_IMAGES;
 
   return (
     <main className="min-h-screen">
-      <HomeContentWrapper>
-        {/* SECTION 1: The Hero */}
-        <Hero />
-        <PhilosophySection />
+      {/* 1. Hero — Headline + CTAs + trust badge */}
+      <Hero />
 
-        {/* SECTION 2: The Intro (Lead Statement) */}
+      {/* 2. Services — Benefit-focused 4-service grid */}
+      <ServicesGrid images={images} />
 
-        <HeroTextSection />
+      {/* 3. Why Different — 4 differentiator cards */}
+      <WhyDifferentSection />
 
-        {/* SECTION 3: Site Audit Tool (Lead Magnet) */}
-        <section className="w-full px-6 md:px-8 py-24 bg-neutral-950/50 border-y border-neutral-900">
-          <SiteAuditTool />
-        </section>
+      {/* 4. Pricing — Transparent modular pricing + optional modules */}
+      <PricingSection />
 
-        <ServicesGrid images={images} />
-        <BusinessImpactSection />
-        <EngagementModels />
-        <TargetAudienceSection />
-        <FeaturedWorkSection />
-        <ModernStackSection />
-        <ProcessSection />
-      </HomeContentWrapper>
+      {/* 5. Process — 5-phase client journey */}
+      <ProcessSection />
+
+      {/* 6. FAQ — 7 questions accordion */}
+      <FAQSection />
+
+      {/* 7. Social Proof — Early adopter offer */}
+      <SocialProofSection />
+
+      {/* SEO Schemas */}
+      <ServiceSchema />
+      <FAQSchema />
     </main>
   );
 }

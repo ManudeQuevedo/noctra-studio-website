@@ -17,14 +17,30 @@ export const routing = defineRouting({
     '/services': '/services',
     '/work': '/work',
     '/contact': '/contact',
-    '/careers': '/careers',
     '/blog': '/blog',
     '/privacy': '/privacy',
     '/terms': '/terms',
     '/studio': '/studio',
     '/dashboard': '/dashboard',
     '/admin': '/admin',
-    '/login': '/login'
+    '/login': '/login',
+    '/guarantee': {
+      en: '/guarantee',
+      es: '/garantia'
+    },
+    '/technology-explained': {
+      en: '/technology-explained',
+      es: '/tecnologia-explicada'
+    },
+    '/custom-pricing': {
+      en: '/custom-pricing',
+      es: '/precios-personalizados'
+    },
+    '/first-clients': {
+      en: '/first-clients',
+      es: '/primeros-clientes'
+    },
+    "/careers": { en: "/careers", es: "/talento" }
   }
 });
  

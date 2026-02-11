@@ -2,30 +2,26 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Check, ArrowRight } from "lucide-react";
+import { Check, ArrowRight, Plus } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+
+interface OptionalModule {
+  name: string;
+  price: string;
+}
 
 export function PricingSection() {
   const t = useTranslations("Pricing");
 
   const tiers = [
-    {
-      id: "tier1",
-      key: "tier1",
-      popular: false,
-    },
-    {
-      id: "tier2",
-      key: "tier2",
-      popular: true,
-    },
-    {
-      id: "tier3",
-      key: "tier3",
-      popular: false,
-    },
+    { id: "tier1", key: "tier1", popular: false },
+    { id: "tier2", key: "tier2", popular: true },
+    { id: "tier3", key: "tier3", popular: false },
   ];
+
+  const optionalModules = t.raw("optional_modules") as OptionalModule[];
+  const additionalText = t.raw("additional_text") as string[];
 
   return (
     <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 border-t border-neutral-900">
@@ -55,11 +51,11 @@ export function PricingSection() {
               "relative flex flex-col p-8 rounded-2xl border transition-all duration-300",
               tier.popular
                 ? "bg-neutral-900/80 border-white/20 shadow-[0_0_30px_-10px_rgba(255,255,255,0.1)]"
-                : "bg-neutral-950/50 border-white/5 hover:border-white/10"
+                : "bg-neutral-950/50 border-white/5 hover:border-white/10",
             )}>
             {tier.popular && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-white text-black text-xs font-bold uppercase tracking-widest rounded-full">
-                Most Common
+                {t("most_common")}
               </div>
             )}
 
@@ -76,19 +72,6 @@ export function PricingSection() {
             </div>
 
             <ul className="space-y-4 mb-8 flex-1">
-              {/* 
-                Note: We assume features is an array in the JSON. 
-                However, next-intl usually returns objects or strings.
-                We'll access specific keys if they were objects, but since we defined them as arrays in the JSON structure update,
-                we need to be careful. next-intl `useTranslations` doesn't return arrays directly with `t('key')`.
-                Instead, we often iterate if we know the count or structure.
-                
-                Wait, in the JSON update I used an array: "features": ["...", "..."]
-                next-intl (depending on version/config) might allow `t.raw('features')` to get the array.
-                Let's try `t.raw`. If that fails, we might need to restructure the JSON to use keys like "feature1", "feature2".
-                
-                Actually, standard practice with next-intl for arrays is `t.raw()`.
-              */}
               {(t.raw(`${tier.key}.features`) as string[]).map((feature, i) => (
                 <li
                   key={i}
@@ -105,7 +88,7 @@ export function PricingSection() {
                 "w-full flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-all duration-300",
                 tier.popular
                   ? "bg-white text-black hover:bg-neutral-200"
-                  : "bg-neutral-800 text-white hover:bg-neutral-700"
+                  : "bg-neutral-800 text-white hover:bg-neutral-700",
               )}>
               {t("cta")}
               <ArrowRight className="w-4 h-4" />
@@ -113,6 +96,50 @@ export function PricingSection() {
           </motion.div>
         ))}
       </div>
+
+      {/* Optional Modules */}
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.3 }}
+        className="mt-12 p-8 rounded-2xl border border-neutral-800 bg-neutral-950/50">
+        <h3 className="text-lg font-semibold text-white mb-6">
+          {t("optional_modules_title")}
+        </h3>
+        <div className="grid gap-4 sm:grid-cols-3">
+          {optionalModules.map((mod, i) => (
+            <div
+              key={i}
+              className="flex items-center gap-3 p-4 rounded-xl border border-neutral-800 bg-neutral-900/30">
+              <Plus className="w-4 h-4 text-neutral-500 shrink-0" />
+              <div>
+                <span className="text-sm text-white">{mod.name}</span>
+                <span className="block text-xs text-neutral-500 font-mono">
+                  {mod.price}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
+      </motion.div>
+
+      {/* Additional Text */}
+      <motion.div
+        initial={{ opacity: 0 }}
+        whileInView={{ opacity: 1 }}
+        viewport={{ once: true }}
+        transition={{ duration: 0.5, delay: 0.4 }}
+        className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
+        {additionalText.map((text, i) => (
+          <div
+            key={i}
+            className="flex items-center gap-2 text-sm text-neutral-500">
+            <span className="w-1 h-1 rounded-full bg-neutral-700" />
+            {text}
+          </div>
+        ))}
+      </motion.div>
     </section>
   );
 }

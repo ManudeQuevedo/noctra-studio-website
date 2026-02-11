@@ -1,7 +1,7 @@
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 
-type PageKey = 'home' | 'about' | 'services' | 'contact' | 'blog';
+type PageKey = 'home' | 'about' | 'services' | 'contact' | 'blog' | 'careers';
 
 export async function generatePageMetadata(
   locale: string,

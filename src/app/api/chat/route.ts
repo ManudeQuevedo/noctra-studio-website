@@ -1,21 +1,53 @@
 import { google } from "@ai-sdk/google";
 import { streamText, convertToCoreMessages } from "ai";
+import { z } from "zod";
 
 export const maxDuration = 30;
+
+// Input validation schema
+const MessageSchema = z.object({
+  role: z.enum(["user", "assistant", "system"]),
+  content: z.string().min(1, "Message cannot be empty").max(4000, "Message too long"),
+});
+
+const ChatRequestSchema = z.object({
+  messages: z
+    .array(MessageSchema)
+    .min(1, "At least one message required")
+    .max(50, "Too many messages in conversation"),
+});
 
 export async function POST(req: Request) {
   try {
     const body = await req.json();
-    console.log("Chat API Request Body:", JSON.stringify(body, null, 2));
-    const { messages } = body;
-    console.log("Chat API Messages:", JSON.stringify(messages, null, 2));
 
-    if (!Array.isArray(messages)) {
-      throw new Error("Messages must be an array");
+    // Validate input
+    const validationResult = ChatRequestSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      return new Response(
+        JSON.stringify({
+          error: "Invalid input",
+          details: validationResult.error.errors.map(e => ({
+            field: e.path.join("."),
+            message: e.message,
+          }))
+        }),
+        { status: 400, headers: { "Content-Type": "application/json" } }
+      );
     }
+
+    const { messages } = validationResult.data;
+
+    // Sanitize message content (trim and enforce limits)
+    const sanitizedMessages = messages.map(msg => ({
+      role: msg.role,
+      content: msg.content.trim().slice(0, 4000), // Hard cap at 4000 chars
+    }));
 
     const result = await streamText({
       model: google("gemini-2.0-flash"),
+      messages: sanitizedMessages,
       system: `IDENTITY:
 You are the Senior Strategy Director at Noctra Studio. You are NOT a support bot. You are a high-level consultant.
 Your goal is to diagnose the user's business pain points first, then prescribe the correct Noctra architecture as the solution.
@@ -51,7 +83,6 @@ PRICING & CTA:
 - Growth Tier: ~$60k-$120k MXN (Corporate).
 - Enterprise: Custom.
 - *Closing:* Always guide them to "Book a Discovery Call" if they seem interested.`,
-      messages: messages,
     });
 
     // Get the text stream response

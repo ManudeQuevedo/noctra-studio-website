@@ -3,19 +3,62 @@ import { ConfirmationTemplate } from "@/components/email/ConfirmationTemplate";
 import { AuditConfirmationTemplate } from "@/components/email/AuditConfirmationTemplate";
 import { Resend } from "resend";
 import { NextResponse } from "next/server";
+import { z } from "zod";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Input validation schemas
+const ContactFormSchema = z.object({
+  type: z.literal("contact"),
+  name: z.string().min(1, "Name is required").max(100, "Name too long"),
+  email: z.string().email("Invalid email address"),
+  website: z.string().url("Invalid website URL").optional().or(z.literal("")),
+  service: z.string().max(200, "Service description too long").optional(),
+  budget: z.string().max(50, "Budget string too long").optional(),
+  details: z.string().max(2000, "Details too long").optional(),
+});
+
+const AuditFormSchema = z.object({
+  type: z.literal("audit"),
+  email: z.string().email("Invalid email address"),
+  url: z.string().url("Invalid URL").min(1, "URL is required"),
+});
+
+const RequestSchema = z.discriminatedUnion("type", [
+  ContactFormSchema,
+  AuditFormSchema,
+]);
 
 export async function POST(request: Request) {
   try {
     const body = await request.json();
-    const { type, name, email, website, service, budget, details, url } = body;
+
+    // Validate input
+    const validationResult = RequestSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          error: "Invalid input",
+          details: validationResult.error.errors.map(e => ({
+            field: e.path.join("."),
+            message: e.message,
+          }))
+        },
+        { status: 400 }
+      );
+    }
+
+    const validatedData = validationResult.data;
+    const { type } = validatedData;
 
     // Generate ticket ID
     // eslint-disable-next-line react-hooks/purity
     const ticketId = `#NOC-${Date.now()}-${Math.floor(Math.random() * 1000)}`;
 
     if (type === "audit") {
+      const { email, url } = validatedData;
+
       const [notificationResult, confirmationResult] = await Promise.all([
         // 1. Notification to Noctra Studio (Audit)
         resend.emails.send({
@@ -55,6 +98,8 @@ export async function POST(request: Request) {
     }
 
     // Default: Contact Form
+    const { name, email, website, service, budget, details } = validatedData;
+
     const [notificationResult, confirmationResult] = await Promise.all([
       // 1. Notification to Noctra Studio
       resend.emails.send({
@@ -65,10 +110,10 @@ export async function POST(request: Request) {
           <ContactTemplate
             name={name}
             email={email}
-            website={website}
-            service={service}
-            budget={budget}
-            details={details}
+            website={website ?? ""}
+            service={service ?? ""}
+            budget={budget ?? ""}
+            details={details ?? ""}
           />
         ),
       }),

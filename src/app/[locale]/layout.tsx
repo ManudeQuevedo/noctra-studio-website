@@ -10,7 +10,11 @@ import { Header } from "@/components/header";
 import { FooterWrapper } from "@/components/FooterWrapper";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
-import { OrganizationSchema, WebsiteSchema } from "@/components/seo/JsonLd";
+import {
+  OrganizationSchema,
+  WebsiteSchema,
+  LocalBusinessSchema,
+} from "@/components/seo/JsonLd";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
 import { SmoothScroll } from "@/components/SmoothScroll";
@@ -109,6 +113,7 @@ export default async function LocaleLayout({
             <ScrollToTop />
             <OrganizationSchema />
             <WebsiteSchema />
+            <LocalBusinessSchema />
             <SpeedInsights />
             <Analytics />
             <ChatWidget />

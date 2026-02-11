@@ -33,12 +33,79 @@ export default async function middleware(request: NextRequest) {
        }
 
        // 4. Add Security Headers
+       const isDevelopment = process.env.NODE_ENV === 'development';
+
+       // Content Security Policy
+       // This protects against XSS, clickjacking, and other code injection attacks
+       const cspDirectives = [
+         // Default: Only allow resources from same origin
+         "default-src 'self'",
+
+         // Scripts: Allow self, inline scripts (needed for Next.js), and trusted CDNs
+         isDevelopment
+           ? "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live" // Dev mode needs eval
+           : "script-src 'self' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com",
+
+         // Styles: Allow self and inline styles (needed for Tailwind, Framer Motion)
+         "style-src 'self' 'unsafe-inline'",
+
+         // Images: Allow self, data URIs, and external image sources
+         "img-src 'self' data: blob: https://images.unsplash.com https://placehold.co https://*.supabase.co",
+
+         // Fonts: Allow self and data URIs
+         "font-src 'self' data:",
+
+         // Connect: API endpoints and external services
+         "connect-src 'self' https://*.supabase.co https://www.googleapis.com https://safebrowsing.googleapis.com https://http-observatory.security.mozilla.org https://vercel.live https://*.sentry.io https://o172531.ingest.us.sentry.io",
+
+         // Frame: Only allow same origin (prevents clickjacking)
+         "frame-src 'self'",
+
+         // Objects: Block all object/embed/applet tags
+         "object-src 'none'",
+
+         // Base URI: Restrict base tag to same origin
+         "base-uri 'self'",
+
+         // Form actions: Only allow forms to submit to same origin
+         "form-action 'self'",
+
+         // Frame ancestors: Only allow embedding on same origin (backup to X-Frame-Options)
+         "frame-ancestors 'self'",
+
+         // Upgrade insecure requests (HTTP -> HTTPS)
+         "upgrade-insecure-requests",
+
+         // Block all mixed content
+         "block-all-mixed-content",
+       ];
+
+       const csp = cspDirectives.join('; ');
+
        const securityHeaders = {
+         // Content Security Policy - Primary XSS defense
+         'Content-Security-Policy': csp,
+
+         // Permissions Policy - Control browser features
+         'Permissions-Policy': 'camera=(), microphone=(), geolocation=(), interest-cohort=()',
+
+         // DNS Prefetch Control - Allow DNS prefetching for performance
          'X-DNS-Prefetch-Control': 'on',
+
+         // HSTS - Force HTTPS for 2 years
          'Strict-Transport-Security': 'max-age=63072000; includeSubDomains; preload',
+
+         // X-Frame-Options - Prevent clickjacking (legacy, CSP is primary)
          'X-Frame-Options': 'SAMEORIGIN',
+
+         // X-Content-Type-Options - Prevent MIME sniffing
          'X-Content-Type-Options': 'nosniff',
-         'Referrer-Policy': 'origin-when-cross-origin',
+
+         // X-XSS-Protection - Legacy XSS protection for older browsers
+         'X-XSS-Protection': '1; mode=block',
+
+         // Referrer Policy - Control referrer information
+         'Referrer-Policy': 'strict-origin-when-cross-origin',
        };
 
        Object.entries(securityHeaders).forEach(([key, value]) => {

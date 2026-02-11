@@ -1,27 +1,79 @@
 import { NextRequest, NextResponse } from "next/server";
+import { z } from "zod";
+
+// Simple in-memory rate limiter (for single-instance deployments)
+// For production with multiple instances, use Upstash Redis or Vercel KV
+const rateLimitMap = new Map<string, { count: number; resetAt: number }>();
+
+function rateLimit(identifier: string, limit: number = 5, windowMs: number = 60000): boolean {
+  const now = Date.now();
+  const record = rateLimitMap.get(identifier);
+
+  // Clean up expired entries periodically
+  if (rateLimitMap.size > 1000) {
+    for (const [key, value] of rateLimitMap.entries()) {
+      if (value.resetAt < now) {
+        rateLimitMap.delete(key);
+      }
+    }
+  }
+
+  if (!record || record.resetAt < now) {
+    // First request or window expired
+    rateLimitMap.set(identifier, { count: 1, resetAt: now + windowMs });
+    return true;
+  }
+
+  if (record.count >= limit) {
+    return false; // Rate limit exceeded
+  }
+
+  record.count++;
+  return true;
+}
+
+// Input validation schema
+const AuditRequestSchema = z.object({
+  url: z.string().url("Invalid URL format").min(1, "URL is required"),
+});
 
 export async function POST(req: NextRequest) {
   try {
-    const { url } = await req.json();
+    // Rate limiting (5 requests per minute per IP)
+    const ip = req.headers.get('x-forwarded-for') ?? req.headers.get('x-real-ip') ?? 'unknown';
 
-    if (!url) {
+    if (!rateLimit(ip, 5, 60000)) {
       return NextResponse.json(
-        { error: "URL is required" },
+        {
+          error: "Rate limit exceeded. Please try again in a minute.",
+          retryAfter: 60
+        },
+        { status: 429 }
+      );
+    }
+
+    const body = await req.json();
+
+    // Validate input
+    const validationResult = AuditRequestSchema.safeParse(body);
+
+    if (!validationResult.success) {
+      return NextResponse.json(
+        {
+          error: "Invalid input",
+          details: validationResult.error.errors.map(e => ({
+            field: e.path.join("."),
+            message: e.message,
+          }))
+        },
         { status: 400 }
       );
     }
 
-    // Validate and encode the URL
-    let validatedUrl: string;
-    try {
-      const urlObj = new URL(url.startsWith("http") ? url : `https://${url}`);
-      validatedUrl = urlObj.toString();
-    } catch {
-      return NextResponse.json(
-        { error: "Invalid URL format" },
-        { status: 400 }
-      );
-    }
+    const { url } = validationResult.data;
+
+    // Ensure URL has protocol
+    const validatedUrl = url.startsWith("http") ? url : `https://${url}`;
 
     const encodedUrl = encodeURIComponent(validatedUrl);
     const apiKey = process.env.GOOGLE_PAGESPEED_API_KEY;

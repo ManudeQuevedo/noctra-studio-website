@@ -15,7 +15,8 @@ export function Footer() {
   const [time, setTime] = useState("");
   const pathname = usePathname();
   const isContactPage = pathname?.endsWith("/contact");
-  const isCareersPage = pathname?.includes("/careers");
+  const isCareersPage =
+    pathname?.includes("/careers") || pathname?.includes("/talento");
   const isWorkPage = pathname?.endsWith("/work");
   const hideCtaRow = isContactPage || isCareersPage || isWorkPage;
 
@@ -63,7 +64,7 @@ export function Footer() {
       {/* Row 2: The Data Grid */}
       <div className="border-b border-neutral-900">
         <div className="max-w-7xl mx-auto">
-          <div className="grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-neutral-900">
+          <div className="grid grid-cols-1 md:grid-cols-5 divide-y md:divide-y-0 md:divide-x divide-neutral-900">
             {/* Col 1: Identity */}
             <div className="p-6 md:p-8 flex flex-col gap-4">
               <h3 className="text-neutral-400 text-xs uppercase tracking-wider font-semibold">
@@ -145,7 +146,34 @@ export function Footer() {
               </nav>
             </div>
 
-            {/* Col 4: Socials */}
+            {/* Col 4: Resources */}
+            <div className="p-6 md:p-8 flex flex-col gap-4">
+              <h3 className="text-neutral-400 text-xs uppercase tracking-wider font-semibold">
+                {t("resources_title")}
+              </h3>
+              <nav className="flex flex-col gap-3 pt-1">
+                <Link
+                  href="/guarantee"
+                  className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
+                  {t("link_guarantee")}
+                </Link>
+                <Link
+                  href="/technology-explained"
+                  className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
+                  {t("link_technology")}
+                </Link>
+                <Link
+                  href={{
+                    pathname: "/contact",
+                    query: { intent: "discovery" },
+                  }}
+                  className="text-neutral-400 hover:text-white transition-all duration-200 hover:translate-x-1 w-fit">
+                  {t("link_schedule")}
+                </Link>
+              </nav>
+            </div>
+
+            {/* Col 5: Socials */}
             <div className="p-6 md:p-8 flex flex-col gap-4">
               <h3 className="text-neutral-400 text-xs uppercase tracking-wider font-semibold">
                 {t("connect_title")}

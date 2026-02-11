@@ -98,7 +98,7 @@ export default function Sidebar({
       initial={false}
       animate={{ width: isCollapsed ? 80 : 256 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="h-full bg-neutral-950/80 backdrop-blur-xl supports-[backdrop-filter]:bg-neutral-950/60 border-r border-neutral-800 flex flex-col relative">
+      className="h-full bg-neutral-950/80 backdrop-blur-xl supports-backdrop-filter:bg-neutral-950/60 border-r border-neutral-800 flex flex-col relative">
       {/* Header with Logo and Collapse Toggle */}
       <div className="p-4 border-b border-neutral-800 flex items-center justify-between">
         {!isCollapsed && (
@@ -152,7 +152,7 @@ export default function Sidebar({
         {!isCollapsed && (
           <div className="flex items-center gap-3 px-2" title={userEmail}>
             {/* Avatar with Initials */}
-            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center shrink-0">
               <span className="text-sm font-bold text-white">{initials}</span>
             </div>
             {/* User Info */}
