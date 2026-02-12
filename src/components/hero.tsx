@@ -42,7 +42,7 @@ export function Hero() {
             variant="outline"
             size="lg"
             className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
-            <Link href="/services">{t("cta_services")}</Link>
+            <Link href="/work">{t("cta_work")}</Link>
           </Button>
         </div>
       </motion.div>

@@ -22,9 +22,50 @@
       "title": "Soluciones que generan resultados reales",
       "subtitle": "Cada servicio está diseñado para generar ROI medible para tu negocio."
     },
-    "cta_start": "Agendar diagnóstico gratuito",
+    "cta_start": "Agendar consulta gratuita",
     "cta_services": "Explorar Servicios",
-    "cta_work": "Ver Casos de Estudio"
+    "cta_work": "Ver casos de estudio"
+  },
+  "AIAutomationShowcase": {
+    "pre_title": "DIFERENCIADOR CLAVE",
+    "title": "Automatización con IA para reducir tu carga operativa",
+    "subtitle": "No solo construimos sitios bonitos. Construimos sistemas que trabajan por ti 24/7.",
+    "intro": "Mientras otras agencias te venden \"presencia digital\", nosotros automatizamos las tareas que te quitan tiempo de tu negocio principal.",
+    "problem_label": "El Desafío",
+    "solution_label": "Nuestra Solución",
+    "result_label": "Impacto de Negocio",
+    "use_cases": [
+      {
+        "industry": "Médicos & Clínicas",
+        "icon": "medical",
+        "problem": "40% de citas perdidas por no-shows y cancelaciones de último minuto",
+        "solution": "Sistema de confirmación automática vía WhatsApp + SMS",
+        "result": "Reducción de 40% en no-shows = +$150k MXN/año en ingresos recuperados"
+      },
+      {
+        "industry": "Bufetes Legales",
+        "icon": "legal",
+        "problem": "Horas perdidas clasificando consultas que no son casos viables",
+        "solution": "Intake automatizado 24/7 con scoring de casos",
+        "result": "80% de consultas pre-calificadas antes de hablar con abogado"
+      },
+      {
+        "industry": "E-commerce",
+        "icon": "ecommerce",
+        "problem": "75% de carritos abandonados = ventas perdidas",
+        "solution": "Secuencias automáticas de recuperación + upselling personalizado",
+        "result": "Recuperación de 25-30% de carritos abandonados"
+      },
+      {
+        "industry": "Contadores & CFPs",
+        "icon": "finance",
+        "problem": "Clientes enviando documentos incompletos repetidamente",
+        "solution": "Portal de cliente con checklist inteligente + recordatorios automáticos",
+        "result": "60% menos tiempo en admin = más clientes o más tiempo libre"
+      }
+    ],
+    "cta": "¿Qué podemos automatizar en tu negocio?",
+    "closing_statement": "Esto es lo que justifica nuestro precio premium vs. una plantilla de WordPress. No vendemos sitios. Vendemos tiempo recuperado."
   },
   "Metadata": {
     "home": {
@@ -336,37 +377,51 @@
     ]
   },
   "FAQ": {
-    "title": "Preguntas Frecuentes",
+    "title": "Preguntas que nos hacen (y deberías hacer)",
+    "subtitle": "Si no encuentras tu pregunta aquí, agenda una llamada. No mordemos.",
+    "filter_all": "Todas",
+    "categories": {
+      "pricing": "Pricing & Inversión",
+      "guarantees": "Garantías & ROI",
+      "technical": "Técnico (pero entendible)",
+      "post_launch": "Post-Lanzamiento",
+      "operations": "Operaciones & Proceso"
+    },
     "items": [
       {
-        "question": "¿Por qué debería confiar en una agencia nueva?",
-        "answer": "Pregunta justa. En lugar de ocultar que somos nuevos, lo usamos como ventaja: (1) Obtienes acceso directo al fundador, no staff junior, (2) Obtienes mejor precio mientras construimos portfolio, (3) Obtienes tecnología de vanguardia, no sistemas legacy, (4) Ofrecemos garantía de resultados o reembolso proporcional - agencias establecidas rara vez hacen esto."
+        "question": "¿Cuál es la diferencia real entre un sitio de $5k y uno de $35k?",
+        "category": "pricing",
+        "answer": "Excelente pregunta. La diferencia no es \"más bonito\". Es:\n\n**CONVERSIÓN:**\n• Sitio $5k: Template genérico, convierte ~1-2% de visitantes\n• Sitio $35k: Diseño estratégico, convierte ~3-5% (40% más clientes con mismo tráfico)\n\n**VELOCIDAD:**\n• $5k: WordPress + 20 plugins = 4-6 segundos carga (Google penaliza, usuarios abandonan)\n• $35k: Arquitectura moderna = <1 segundo carga (mejor SEO, mejor experiencia)\n\n**PROPIEDAD:**\n• $5k: Atado a plataforma propietaria, migrarlo cuesta otro proyecto\n• $35k: Código completo es tuyo, GitHub ownership, portabilidad total\n\n**INTEGRACIÓN:**\n• $5k: Formulario básico que va a tu email\n• $35k: Integrado con tu CRM, WhatsApp, calendarios, analytics avanzado\n\n**SOPORTE:**\n• $5k: \"Soporte por 30 días\" luego pagas $200/hora por cambios\n• $35k: 60 días de optimización incluidos, cambios basados en data real\n\nResultado: Sitio $35k se paga en 6-8 meses con mejor conversión. Sitio $5k es gasto, no inversión."
       },
       {
-        "question": "¿Qué pasa si no estoy satisfecho con el resultado?",
-        "answer": "Establecemos KPIs claros antes de empezar (ej: 'sitio carga en <2 segundos', '3% tasa de conversión', '40 leads/mes'). Damos tracking mensual. Si no cumplimos los KPIs acordados en los primeros 60 días, obtienes reembolso proporcional. Esto va en contrato."
+        "question": "¿Cómo garantizan el ROI de 6 meses que mencionan?",
+        "category": "guarantees",
+        "answer": "No lo \"garantizamos\" contractualmente (eso sería irresponsable - tu éxito depende de múltiples factores fuera de nuestro control como tu oferta, precio, servicio).\n\nLo que SÍ hacemos:\n\n**TRACKING REAL:**\n• Configuramos analytics desde día 1\n• Dashboard mensual con: tráfico, conversiones, fuentes, comportamiento\n• Mides resultados reales, no promesas\n\n**OPTIMIZACIÓN BASADA EN DATA:**\n• Primeros 60 días monitoreamos performance\n• Si conversión < 3%, hacemos ajustes: CTAs, copy, flujos\n• Iteramos hasta alcanzar benchmarks de industria\n\n**EXPECTATIVAS CLARAS:**\n• Te decimos upfront qué esperar (basado en tu industria + tráfico estimado)\n• Si proyectamos 10 leads/mes y solo llegas a 3, investigamos por qué\n• Separamos \"problema de sitio\" vs \"problema de tráfico/oferta\"\n\n**CLÁUSULA DE SATISFACCIÓN:**\n• Si después de 60 días + optimizaciones el sitio objetivamente no convierte mejor que tu situación anterior, negociamos un reembolso proporcional o trabajo adicional sin costo.\n• Esto está en el contrato. No es marketing.\n\n¿Riesgo cero? No. ¿Riesgo mitigado con proceso serio? Sí."
       },
       {
-        "question": "¿Cuánto tiempo toma realmente ver resultados?",
-        "answer": "Resultados inmediatos: Velocidad del sitio, apariencia profesional, formularios funcionando - día 1. Resultados SEO: 2-3 meses para aparecer en Google en búsquedas relevantes. Generación de leads: Típicamente 30-40 leads calificados en primeros 3 meses. ROI completo: Mayoría de clientes recuperan inversión en 6-8 meses con nuevo negocio."
+        "question": "¿Por qué no usan WordPress como todas las agencias?",
+        "category": "technical",
+        "answer": "Usamos WordPress cuando tiene sentido (blogs con múltiples editores, sitios con necesidades muy específicas de plugins).\n\nPero para la mayoría de sitios corporativos y e-commerce, WordPress es:\n\n**LENTO:**\n• PHP server-side rendering + 20 plugins = 4-6 segundos carga\n• Google penaliza sitios lentos en SEO\n• 53% de usuarios móviles abandonan si tarda >3 segundos\n\n**INSEGURO:**\n• WordPress es 40% de todos los sitios web = target #1 de hackers\n• Plugins desactualizados son vulnerabilidades constantes\n• Necesitas contratar mantenimiento mensual ($3-5k/mes)\n\n**CARO A LARGO PLAZO:**\n• $15k setup + $4k/mes mantenimiento = $63k primer año\n• Plugins premium: $500-2000/año\n• Hosting robusto: $200-500/mes\n• Total 3 años: $150k+ MXN\n\nNuestra alternativa (Next.js + arquitectura moderna):\n• <1 segundo carga (mejor SEO, mejor UX)\n• Infraestructura serverless = $20/mes hosting\n• Sin plugins = sin vulnerabilidades\n• Costo 3 años: $35k proyecto + $720 hosting = $35,720 MXN\n\n**AHORRO: $114,280 MXN en 3 años.**\n\n¿Sacrificas algo? Sí: Si necesitas instalar un plugin específico de WordPress, no puedes. Pero el 90% de funcionalidades se construyen mejor custom anyway."
       },
       {
-        "question": "¿Qué necesito tener listo antes de empezar?",
-        "answer": "Mínimo: (1) Objetivo de negocio claro (generar leads, vender en línea, informar), (2) Acceso a assets de marca si los tienes (logo, colores), (3) 1-2 horas semanales para dar feedback. Nosotros manejamos todo lo demás: copywriting, diseño, implementación técnica, setup de hosting."
+        "question": "¿Qué pasa si mi sitio necesita cambios después de lanzar?",
+        "category": "post_launch",
+        "answer": "Depende del tipo de cambio y cuándo lo pides:\n\n**PRIMEROS 60 DÍAS (POST-LANZAMIENTO):**\n• Hasta 2 rondas de ajustes INCLUIDAS\n• Esto cubre: CTAs que no convierten, copy que necesita mejora, secciones que confunden usuarios\n• No cubre: features nuevos fuera del scope original, cambio completo de diseño\n\n**DESPUÉS DE 60 DÍAS:**\n• Cambios menores (texto, imágenes, ajustes de estilo): $500-1500 por paquete\n• Features nuevos (formulario adicional, página nueva, integración): $3k-8k según complejidad\n• Rediseño parcial (home page nueva): $8k-15k\n• Rediseño completo: esencialmente un proyecto nuevo\n\n**PERO AQUÍ EL SECRETO:**\nTe entregamos todo el código en GitHub con ownership completo. Si después de 60 días prefieres que otro developer haga cambios, puedes. No hay vendor lock-in.\n\nLa mayoría de clientes regresan con nosotros porque:\n1. Conocemos el proyecto por dentro\n2. Nuestro rate es competitivo ($1500-2000/día vs $2500-3500 de otras agencias)\n3. Mantenemos arquitectura limpia (otros developers pueden trabajar con nuestro código)\n\n**ALTERNATIVA: RETAINER MENSUAL**\nSi proyectas necesitar cambios frecuentes: $5k/mes = 3 días de trabajo mensuales. No usados, acumulan hasta 2 meses."
       },
       {
-        "question": "¿Qué pasa con el sitio después del proyecto?",
-        "answer": "Eres dueño de todo: código, contenido, dominio, cuentas de hosting. Puedes: (1) Contratarnos para mantenimiento ($5k/mes optimización continua), (2) Contratar otro desarrollador (proveemos documentación completa), (3) Manejarlo tú mismo (entrenamos a tu equipo). Sin amarres, nunca."
+        "question": "¿Trabajan con empresas fuera de Querétaro/México?",
+        "category": "operations",
+        "answer": "Sí, pero con consideraciones:\n\n**MÉXICO (CUALQUIER ESTADO):**\n• Sin problema. Todo es remoto.\n• Preferimos clientes en zona horaria similar (facilita comunicación)\n• Facturamos normalmente con RFC mexicano\n\n**INTERNACIONAL (USA, LATAM, EUROPA):**\n• Técnicamente podemos, pero:\n• Zona horaria: Si eres USA East Coast, podemos. Si eres Australia, complicado.\n• Pagos: Preferimos transferencia internacional o Wise (no PayPal)\n• Facturación: Podemos facturar en USD pero entidad mexicana\n• Legal: Contrato bajo ley mexicana (si esto es problema, probablemente no somos fit)\n\n**¿POR QUÉ SOMOS SELECTIVOS CON INTERNACIONAL?**\nNoctra es un estudio boutique, no una agencia masiva. Clientes internacionales a veces:\n• Tienen expectativas de servicio 24/7 (no somos eso)\n• Necesitan llamadas a medianoche por zona horaria (no sostenible)\n• Quieren contratos más complejos (no es nuestra fortaleza)\n\nPreferimos 10 clientes locales felices que 50 clientes internacionales mediocres.\n\nDicho esto: Si eres empresa mexicana con operaciones en USA, perfecto. Si eres startup latina con equipo distribuido, podemos funcionar. Agenda llamada para ver fit."
       },
       {
-        "question": "¿Por qué no usar WordPress/Wix/Squarespace?",
-        "answer": "Estas plataformas están bien para sitios básicos. Usamos Next.js porque: (1) Velocidad: <1 segundo de carga vs 5-8 segundos típico de WordPress, (2) Sin plugins rompiéndose: Todo integrado, nada que actualizar manualmente, (3) Mejor SEO: Google prioriza sitios rápidos, (4) Menor costo a largo plazo: $5k/año mantenimiento vs $15k+ con WordPress. Para negocios serios, stack moderno gana."
-      },
-      {
-        "question": "¿Trabajan con mi industria específica?",
-        "answer": "Nos enfocamos en fundamentos de negocio que funcionan en todas las industrias: generación de leads, optimización de conversión, experiencia de usuario. Hemos trabajado con servicios profesionales, retail, educación y B2B. Si tu negocio necesita clientes online, podemos ayudar. Primera consulta es gratis - hablemos de tu caso específico."
+        "question": "Vi que usan Next.js y TypeScript. ¿Necesito saber de eso?",
+        "category": "technical",
+        "answer": "No. Cero. Nada.\n\nEso es como preguntar \"Vi que usan soldadura TIG para mi portón. ¿Necesito saber soldar?\"\n\nTú interactúas con:\n• Un sitio web que funciona (rápido, seguro, moderno)\n• Un panel de administración intuitivo (si necesitas editar contenido)\n• Google Analytics dashboard (si quieres ver métricas)\n\nNosotros nos encargamos de:\n• Código (TypeScript, Next.js, React, lo que sea necesario)\n• Infraestructura (Vercel, hosting, CDN, DNS)\n• Seguridad (HTTPS, headers, rate limiting)\n• Performance (optimización de assets, caching)\n\n**¿ENTONCES POR QUÉ LO MENCIONAMOS?**\nTransparencia. Hay clientes técnicos (CTOs, founders con background tech) que SÍ quieren saber qué stack usamos. Para ellos es importante saber que no usamos tecnología legacy.\n\nPara clientes no-técnicos: ignora el tech stack. Enfócate en resultados.\n\n**¿PUEDO VER EL CÓDIGO?**\nSí. El repositorio es tuyo. Si tienes un CTO o developer in-house, pueden auditarlo.\n\n**¿QUÉ PASA SI QUIERO MIGRAR A OTRO DEVELOPER?**\nPuedes. El código es portable. No es un sistema propietario. Cualquier developer competente de Next.js puede continuar el trabajo (aunque obviamente preferimos que regreses con nosotros)."
       }
-    ]
+    ],
+    "cta_title": "¿Aún tienes dudas?",
+    "cta_text": "Agenda una llamada de 15 min. Sin compromiso, sin pitch agresivo.",
+    "cta_button": "Hablemos"
   },
   "SocialProof": {
     "badge": "Oferta limitada",
@@ -526,7 +581,7 @@
     "most_common": "Más Común",
     "tier1": {
       "name": "Sitio Web Profesional",
-      "price": "Desde $30,000 MXN",
+      "price": "Desde $20,000 MXN",
       "description": "Tu sitio web trabajando 24/7 convirtiendo visitantes en clientes.",
       "features": [
         "5 páginas estratégicas",
@@ -537,7 +592,7 @@
     },
     "tier2": {
       "name": "E-commerce",
-      "price": "Desde $45,000 MXN",
+      "price": "Desde $35,000 MXN",
       "description": "Vende en línea sin complicaciones — de visita a venta en 3 clics.",
       "features": [
         "Catálogo orientado a conversión",
@@ -568,42 +623,192 @@
       "50% al inicio, 50% al lanzar",
       "Garantía de 60 días post-lanzamiento"
     ],
-    "cta": "Iniciar mi proyecto"
+    "cta": "Iniciar mi proyecto",
+    "comparison_context": {
+      "title": "Inversión transparente",
+      "intro": "Precios fijos, sin sorpresas. Aquí está lo que pagarías con alternativas:",
+      "table": {
+        "title": "Costo real de 3 años",
+        "subtitle": "(Horizonte típico para amortizar un sitio web)",
+        "columns": [
+          {
+            "option": "WordPress + Agencia",
+            "year_1": "$15,000 setup",
+            "year_2": "$48,000 mantenimiento (12 meses × $4k)",
+            "year_3": "$48,000 mantenimiento",
+            "total_3_years": "$111,000 MXN",
+            "hidden_costs": "Plugins premium, hosting, CDN, seguridad, actualizaciones",
+            "highlight": false
+          },
+          {
+            "option": "Freelancer Offshore",
+            "year_1": "$15,000 inicial",
+            "year_2": "$36,000 fixes & features (3 meses de debugging diluidos)",
+            "year_3": "$24,000 mantenimiento",
+            "total_3_years": "$75,000 MXN",
+            "hidden_costs": "Zona horaria, comunicación, calidad inconsistente, sin garantías",
+            "highlight": false
+          },
+          {
+            "option": "DIY Wix/Squarespace",
+            "year_1": "$500/mes × 12 = $6,000",
+            "year_2": "$6,000 + 40h de tu tiempo = $46,000 (valuando tu tiempo a $1k/hora)",
+            "year_3": "$6,000 + 20h ajustes = $26,000",
+            "total_3_years": "$78,000 MXN",
+            "hidden_costs": "Tu tiempo (que podrías usar atendiendo clientes), limitaciones técnicas, no escalable",
+            "highlight": false
+          },
+          {
+            "option": "Noctra Studio",
+            "year_1": "$20,000 inicial + $0 mantenimiento primeros 60 días",
+            "year_2": "$0 (infraestructura incluida, optimización incluida)",
+            "year_3": "$0 (sin vendor lock-in, código es tuyo)",
+            "total_3_years": "$20,000 MXN",
+            "hidden_costs": "Ninguno. Precio all-inclusive.",
+            "highlight": true
+          }
+        ],
+        "footnote": "* Cálculos basados en promedios de mercado México 2025. Tu kilometraje puede variar."
+      },
+      "calculator_cta": {
+        "text": "Calcular ROI de tu proyecto",
+        "description": "Calculadora interactiva: ingresa tus ingresos mensuales y te mostramos el periodo de recuperación"
+      }
+    },
+    "roi_calculator": {
+      "title": "¿En cuánto tiempo se paga tu sitio?",
+      "intro": "Responde 3 preguntas para ver el retorno de inversión:",
+      "inputs": {
+        "current_clients": {
+          "label": "¿Cuántos clientes nuevos obtienes por mes actualmente?",
+          "placeholder": "ej: 5",
+          "helper": "Promedio de los últimos 6 meses"
+        },
+        "avg_ticket": {
+          "label": "¿Cuál es tu ticket promedio por cliente?",
+          "placeholder": "$8,000",
+          "helper": "Valor promedio de una venta/servicio (MXN)"
+        },
+        "investment_tier": {
+          "label": "¿Qué inversión estás considerando?",
+          "options": {
+            "20000": "Sitio Profesional - $20k",
+            "35000": "E-commerce - $35k",
+            "80000": "Sistema Custom - $80k"
+          }
+        }
+      },
+      "outputs": {
+        "payback_period": {
+          "label": "Se paga en:",
+          "unit": "meses"
+        },
+        "monthly_new_revenue": {
+          "label": "Ingresos adicionales mensuales:",
+          "description": "Basado en 40% mejora en conversión"
+        },
+        "annual_roi": {
+          "label": "ROI a 12 meses:",
+          "description": "Retorno sobre inversión primer año"
+        },
+        "three_year_revenue": {
+          "label": "Ingresos adicionales a 3 años:",
+          "description": "Asumiendo conversión constante"
+        }
+      },
+      "cta": "Agenda consulta para validar estos números",
+      "disclaimer": "* Cálculos estimados basados en benchmarks de industria. Resultados reales varían por negocio."
+    }
   },
   "Process": {
     "title": "Nuestro proceso",
     "subtitle": "Pasos claros para que siempre sepas qué está pasando con tu proyecto.",
     "steps": {
       "0": {
-        "title": "Diagnóstico (Sin costo)",
-        "description": "Llamada de 45 min para entender tu negocio.",
-        "you_get": "Propuesta detallada con alcance, cronograma y garantías.",
-        "you_need": "Acceso a analytics actuales (si existen)."
+        "number": "01",
+        "title": "Diagnóstico y Descubrimiento",
+        "subtitle": "Entregable: Hoja de Ruta del Proyecto",
+        "description": "No empezamos a diseñar hasta entender tu negocio. Esta fase produce un documento estratégico que guía todo el proyecto.",
+        "deliverables": [
+          "Análisis de competencia (3-5 competidores directos)",
+          "Definición de audiencia objetivo y user personas",
+          "Mapa de sitio y arquitectura de información",
+          "Lista priorizada de features (must-have vs nice-to-have)",
+          "Cronograma detallado con milestones"
+        ],
+        "timeline": "3-5 días",
+        "your_involvement": "2 llamadas (kickoff + revisión), 1h feedback escrito",
+        "icon": "🗺️"
       },
       "1": {
-        "title": "Fundamentos (Semana 1-2)",
-        "description": "Definición de arquitectura y estrategia de contenido.",
-        "you_get": "Wireframes + copy inicial + roadmap técnico.",
-        "you_need": "1 sesión de feedback, acceso a assets de marca."
+        "number": "02",
+        "title": "Diseño y Prototipado",
+        "subtitle": "Entregable: Vista Previa Interactiva en Figma",
+        "description": "Antes de escribir código, diseñamos la experiencia completa. Verás exactamente cómo se verá y funcionará tu sitio.",
+        "deliverables": [
+          "Wireframes de todas las páginas principales",
+          "Diseño visual de alta fidelidad (desktop + mobile)",
+          "Prototipo interactivo clickeable en Figma",
+          "Sistema de diseño (colores, tipografía, componentes)",
+          "Copy sugerido para secciones clave"
+        ],
+        "timeline": "7-10 días",
+        "your_involvement": "Revisión semanal (30 min), hasta 2 rondas de cambios incluidas",
+        "icon": "🎨"
       },
       "2": {
-        "title": "Desarrollo (Semana 3-6)",
-        "description": "Construcción + iteración basada en tus comentarios.",
-        "you_get": "Acceso a ambiente de staging para revisión continua.",
-        "you_need": "Feedback semanal específico."
+        "number": "03",
+        "title": "Desarrollo y Construcción",
+        "subtitle": "Entregable: Sitio de Vista Previa en Vivo",
+        "description": "Convertimos el diseño en código. Acceso día 1 a tu sitio en staging para que veas progreso en tiempo real.",
+        "deliverables": [
+          "URL de staging con acceso privado (actualizaciones diarias)",
+          "Implementación mobile-first responsive",
+          "Integración de CMS (si aplica) para que edites contenido",
+          "Optimización de velocidad (Core Web Vitals)",
+          "Configuración de analytics y tracking"
+        ],
+        "timeline": "10-15 días",
+        "your_involvement": "Revisión semanal de staging, feedback incremental",
+        "icon": "⚙️"
       },
       "3": {
-        "title": "Lanzamiento (Semana 7)",
-        "description": "Testing final, configuración de analytics, deploy.",
-        "you_get": "Sitio en producción + dashboard de métricas + sesión de training.",
-        "you_need": "Firma de aprobación final."
+        "number": "04",
+        "title": "Lanzamiento y Entrega",
+        "subtitle": "Entregable: Sitio Live + Código Completo",
+        "description": "No solo lanzamos tu sitio. Te entregamos todo: código, documentación, accesos. Es 100% tuyo.",
+        "deliverables": [
+          "Sitio publicado en tu dominio",
+          "Repositorio completo en GitHub (ownership transferido a ti)",
+          "Documentación técnica (cómo actualizar, dónde está qué)",
+          "Guía de contenido (cómo agregar páginas, editar textos)",
+          "Accesos completos (hosting, dominio, analytics, todo)"
+        ],
+        "timeline": "2-3 días",
+        "your_involvement": "Aprobación final, validación de accesos",
+        "icon": "🚀"
       },
       "4": {
-        "title": "Optimización (Primeros 60 días)",
-        "description": "Monitoreo activo + ajustes basados en datos reales.",
-        "you_get": "2 rondas de optimización incluidas.",
-        "you_need": "Compartir feedback de tus clientes."
+        "number": "05",
+        "title": "Optimización Continua (60 días)",
+        "subtitle": "Entregable: Reporte de Optimización Mensual",
+        "description": "Post-lanzamiento, monitoreamos métricas reales y optimizamos. No te dejamos solo el día que lanzamos.",
+        "deliverables": [
+          "Monitoreo semanal de métricas (tráfico, conversiones, velocidad)",
+          "Hasta 2 rondas de ajustes basados en data real",
+          "A/B testing de CTAs o secciones clave (si el tráfico lo permite)",
+          "Reporte mensual con insights accionables",
+          "Recomendaciones para siguiente fase (si aplica)"
+        ],
+        "timeline": "60 días post-lanzamiento",
+        "your_involvement": "Llamada mensual de revisión (30 min)",
+        "icon": "📊"
       }
+    },
+    "labels": {
+      "timeline": "Tiempos:",
+      "involvement": "Tu participación:",
+      "cta": "¿Preguntas sobre el proceso?"
     }
   },
 
@@ -1549,8 +1754,10 @@
     "recommended_title": "Únete a Nuestra Red",
     "hero": {
       "headline": "Construye grandes proyectos sin el compromiso de tiempo completo",
-      "subheadline": "Somos una red de freelancers especializados que colaboran en proyectos web de alta calidad. Tú aportas expertise, nosotros traemos los clientes y la coordinación.",
-      "cta": "Aplicar para unirte a la red"
+      "subheadline": "40% del proyecto para ti + Clientes pre-calificados + Pago garantizado en 3 días",
+      "micro_copy": "Sin prospección. Sin cobro. Sin fees de plataforma.",
+      "cta_primary": "Aplicar para unirte a la red",
+      "cta_secondary": "Ver cómo funciona el pricing ↓"
     },
     "how_it_works": {
       "title": "Cómo funciona la colaboración",
@@ -1578,19 +1785,27 @@
         }
       ]
     },
+    "compensation": {
+      "title": "Tu Compensación"
+    },
     "roles": {
       "title": "Especializaciones con las que colaboramos",
       "intro": "No necesitamos generalistas. Necesitamos especialistas que sean los mejores en lo que hacen.",
+      "badge_freelance": "Freelance",
+      "badge_high_demand": "Alta Demanda 🔥",
       "items": [
         {
           "role_name": "Diseñador de Marca",
           "what_you_do": [
-            "Crear identidades de marca para clientes de Noctra Studio (no para Noctra)",
+            "Crear identidades de marca para clientes de Noctra Studio",
             "Diseño de logos, paletas de color, sistemas tipográficos",
             "Documentación de guías de marca"
           ],
-          "typical_project": "Cliente necesita rebrand completo antes de lanzar sitio web - tú creas la identidad visual, nosotros construimos el sitio alrededor de ella",
-          "compensation_range": "$15,000 - $40,000 MXN por proyecto"
+          "compensation_range": "$6,000 - $16,000 MXN por proyecto (40% del total)",
+          "typical_example": "Proyecto típico: Cliente paga $15,000 → Tú recibes $6,000",
+          "complex_example": "Proyecto complejo: Cliente paga $40,000 → Tú recibes $16,000",
+          "demand": "Demanda actual: 2-3 proyectos/mes",
+          "high_demand": true
         },
         {
           "role_name": "Copywriter",
@@ -1599,28 +1814,37 @@
             "Transformar features técnicas en beneficios de negocio",
             "Crear descripciones de servicios y CTAs convincentes"
           ],
-          "typical_project": "Startup B2B SaaS necesita copy de sitio web que convierta producto técnico en propuesta de valor clara para tomadores de decisiones",
-          "compensation_range": "$8,000 - $25,000 MXN por proyecto"
+          "compensation_range": "$3,200 - $10,000 MXN por proyecto (40% del total)",
+          "typical_example": "Proyecto típico: Cliente paga $8,000 → Tú recibes $3,200",
+          "complex_example": "Proyecto complejo: Cliente paga $25,000 → Tú recibes $10,000",
+          "demand": "Demanda actual: 3-4 proyectos/mes",
+          "high_demand": true
         },
         {
           "role_name": "Fotógrafo/Videógrafo",
           "what_you_do": [
             "Fotografía de producto para sitios e-commerce",
             "Fotos de equipo y oficina para sitios corporativos",
-            "Video de formato corto para hero sections o páginas about"
+            "Video de formato corto para hero sections"
           ],
-          "typical_project": "Restaurante necesita fotografía profesional de alimentos para su nuevo sitio de pedidos en línea - 30-50 platillos",
-          "compensation_range": "$5,000 - $20,000 MXN por proyecto"
+          "compensation_range": "$2,000 - $8,000 MXN por proyecto (40% del total)",
+          "typical_example": "Proyecto típico: Cliente paga $5,000 → Tú recibes $2,000",
+          "complex_example": "Proyecto complejo: Cliente paga $20,000 → Tú recibes $8,000",
+          "demand": "Demanda actual: 1-2 proyectos/mes",
+          "high_demand": false
         },
         {
           "role_name": "Diseñador UI/UX",
           "what_you_do": [
             "Crear mockups y prototipos de alta fidelidad",
-            "Creación de design system (componentes, espaciado, patrones)",
+            "Creación de design system (componentes, espaciado)",
             "Optimización de flujos de usuario para conversión"
           ],
-          "typical_project": "Colegio privado necesita rediseño de sistema de inscripciones - simplificar proceso de 8 pasos a 3 pasos con mejor UX",
-          "compensation_range": "$12,000 - $35,000 MXN por proyecto"
+          "compensation_range": "$4,800 - $14,000 MXN por proyecto (40% del total)",
+          "typical_example": "Proyecto típico: Cliente paga $12,000 → Tú recibes $4,800",
+          "complex_example": "Proyecto complejo: Cliente paga $35,000 → Tú recibes $14,000",
+          "demand": "Demanda actual: 2-3 proyectos/mes",
+          "high_demand": true
         },
         {
           "role_name": "Ilustrador/Diseñador de Iconos",
@@ -1629,28 +1853,36 @@
             "Sets de iconos para páginas de servicios",
             "Infografías y visualización de datos"
           ],
-          "typical_project": "Startup tech necesita estilo de ilustración personalizado + 20 iconos únicos para su landing page de producto",
-          "compensation_range": "$6,000 - $18,000 MXN por proyecto"
+          "compensation_range": "$2,400 - $7,200 MXN por proyecto (40% del total)",
+          "typical_example": "Proyecto típico: Cliente paga $6,000 → Tú recibes $2,400",
+          "complex_example": "Proyecto complejo: Cliente paga $18,000 → Tú recibes $7,200",
+          "demand": "Demanda actual: 1 proyecto/mes",
+          "high_demand": false
         },
         {
           "role_name": "Especialista en SEO",
           "what_you_do": [
             "Investigación de keywords y estrategia de contenido",
             "Auditorías técnicas de SEO y recomendaciones",
-            "Optimización de SEO local para negocios de Querétaro/México"
+            "Optimización de SEO local (GMB, mapas)"
           ],
-          "typical_project": "Despacho de abogados quiere rankear para 'abogado laboral Querétaro' - tú creas estrategia de contenido + plan de optimización técnica",
-          "compensation_range": "$10,000 - $30,000 MXN por proyecto"
+          "compensation_range": "$4,000 - $12,000 MXN por proyecto (40% del total)",
+          "typical_example": "Proyecto típico: Cliente paga $10,000 → Tú recibes $4,000",
+          "complex_example": "Proyecto complejo: Cliente paga $30,000 → Tú recibes $12,000",
+          "demand": "Demanda actual: 1-2 proyectos/mes",
+          "high_demand": false
         }
       ],
-      "not_currently_needed": {
-        "title": "Lo que NO necesitamos ahora:",
-        "list": [
-          "Desarrolladores full-stack (Manu maneja todo el desarrollo técnico)",
-          "Project managers (Manu coordina directamente)",
-          "Marketers generales (muy amplio)",
-          "Community managers (no es parte de nuestra oferta)"
-        ]
+      "current_needs": {
+        "title": "Dónde necesitamos más ayuda ahora",
+        "intro": "En este momento, nuestras mayores necesidades son:",
+        "high_priority_list": [
+          "Copywriters que conviertan features en beneficios",
+          "Diseñadores UI/UX con experiencia en Figma + prototipos",
+          "Especialistas en SEO local (Querétaro/México)",
+          "Fotógrafos para e-commerce y sitios corporativos"
+        ],
+        "closing_note": "¿Tu especialidad no está aquí? Aplica de todas formas. Mantenemos todas las aplicaciones en archivo para consideración futura."
       }
     },
     "benefits": {
@@ -1716,18 +1948,107 @@
         }
       ]
     },
-    "compensation": {
+    "pricing_model": {
       "title": "Cómo funciona el pricing",
-      "intro": "Creemos en pricing transparente y predecible. Así es como estructuramos fees de colaboración:",
-      "client_pays": "Cliente paga a Noctra Studio",
-      "noctra_pays_you": "Noctra Studio paga a ti",
-      "split_explanation": "Tu compensación es 60-70% del costo del componente del servicio, dependiendo de complejidad del proyecto y tu involucramiento. Noctra Studio retiene 30-40% por adquisición de cliente, coordinación de proyecto, aseguramiento de calidad y gestión del cliente.",
+      "intro": "Creemos en compensación transparente y predecible. Así es como estructuramos la colaboración:",
+      "diagram": {
+        "step_1": {
+          "label": "Cliente paga a Noctra Studio",
+          "amount": "100%"
+        },
+        "step_2": {
+          "label": "Noctra retiene",
+          "amount": "60%",
+          "breakdown": "Adquisición, coordinación, QA, gestión del cliente"
+        },
+        "step_3": {
+          "label": "Tú recibes",
+          "amount": "40%",
+          "breakdown": "Ejecución del componente especializado"
+        }
+      },
+      "headline_2": "Tu compensación: 40% del proyecto",
+      "subtext": "Sin comisiones ocultas. Sin negociaciones proyecto por proyecto. El pricing se define al inicio y no cambia.",
       "example": {
-        "title": "Ejemplo: Proyecto de identidad de marca",
-        "client_pays": "Cliente paga a Noctra: $30,000 MXN",
-        "you_receive": "Tú recibes: $20,000 MXN (67%)",
-        "noctra_retains": "Noctra retiene: $10,000 MXN (33%)",
-        "covers": "Qué cubre la porción de Noctra: Costos de adquisición de cliente, llamada de discovery, creación de brief de proyecto, comunicación con cliente y gestión de revisiones, revisión de calidad, riesgo de cobro de pagos"
+        "title": "Ejemplo real de un proyecto",
+        "label_client_pays": "Cliente Paga",
+        "label_your_gain": "Tu Ganancia",
+        "label_noctra_share": "Retenido por Noctra",
+        "client_pays": "$30,000 MXN",
+        "your_share": {
+          "amount": "$12,000 MXN (40%)",
+          "for": "Diseño de logo, paleta, tipografía, guía de marca"
+        },
+        "noctra_share": {
+          "amount": "$18,000 MXN (60%)",
+          "for": "Prospección del cliente, propuesta comercial, coordinación de proyecto, revisión de calidad, gestión de cambios, cobro y facturación"
+        }
+      },
+      "comparison": {
+        "button_text": "¿Por qué solo 40%? Ver comparación ↓",
+        "title": "Comparativa con alternativas",
+        "intro": "Tu compensación depende del contexto. Aquí está el panorama real:",
+        "table": {
+          "headers": ["Plataforma", "Tu ganancia neta", "Tiempo invertido"],
+          "rows": [
+            {
+              "platform": "Fiverr",
+              "earnings": "20-30%*",
+              "time": "20h ejecución + 15h propuestas perdidas",
+              "footnote": "*Después de 20% fee + carreras a la baja"
+            },
+            {
+              "platform": "Upwork",
+              "earnings": "10-20%*",
+              "time": "20h ejecución + 10h proposals + competencia global $5/hora",
+              "footnote": "*Después de 20% fee"
+            },
+            {
+              "platform": "Freelance Directo",
+              "earnings": "100%",
+              "time": "20h ejecución + 10h prospección + 5h propuestas + 3h negociación + 2h cobro = 40h total",
+              "footnote": "Tu rate efectivo baja 50%"
+            },
+            {
+              "platform": "Agencia Tradicional",
+              "earnings": "20-30%",
+              "time": "Horario fijo + overhead + burocracia",
+              "footnote": ""
+            },
+            {
+              "platform": "Noctra Studio",
+              "earnings": "40%",
+              "time": "20h ejecución + 0h todo lo demás",
+              "footnote": "Flujo consistente + pago garantizado"
+            }
+          ]
+        },
+        "effective_rate": {
+          "title": "Rate efectivo - Lo que realmente importa",
+          "scenario_title": "Proyecto de $30,000 MXN:",
+          "scenarios": [
+            {
+              "type": "Freelance directo",
+              "earnings": "$30,000 (100%)",
+              "time": "40 horas totales (20h ejecución + 20h admin)",
+              "rate": "$750/hora"
+            },
+            {
+              "type": "Noctra Studio (1 proyecto)",
+              "earnings": "$12,000 (40%)",
+              "time": "20 horas (solo ejecución)",
+              "rate": "$600/hora"
+            },
+            {
+              "type": "Noctra Studio (2 proyectos en 40h)",
+              "earnings": "$24,000",
+              "time": "40 horas",
+              "rate": "$600/hora con flujo constante",
+              "benefits": ["Flujo predecible", "Pago garantizado", "Más tiempo ejecutando"]
+            }
+          ]
+        },
+        "closing_note": "💡 El mejor modelo depende de tu situación. Si ya tienes flujo constante de clientes propios que pagan bien y rápido, mantén esa situación. Noctra es para complementar o reemplazar Upwork/Fiverr, no para reemplazar tus mejores clientes directos."
       },
       "terms": {
         "title": "Términos de pago",
@@ -1761,7 +2082,42 @@
         "why_placeholder": "¿Qué te atrae de la colaboración por proyecto vs empleo tradicional o freelancing solo?"
       },
       "submit": "Enviar aplicación",
-      "success": "Gracias por aplicar. Si tu portfolio se alinea con nuestras necesidades, te contactaremos en 5 días hábiles para una conversación. Si no te contactamos, significa que no hay fit ahora - pero mantenemos todas las aplicaciones en archivo para consideración futura."
+      "success": {
+        "title": "Gracias por aplicar",
+        "section_1": {
+          "title": "QUÉ SIGUE:",
+          "steps": [
+            "1. Revisaremos tu portfolio en 3-5 días hábiles",
+            "2. Si hay fit, te contactaremos para llamada de 30 minutos",
+            "3. En esa llamada discutiremos:",
+            "   → Tus especializaciones y estilo de trabajo",
+            "   → Proyectos actuales en pipeline",
+            "   → Estructura de compensación (40% transparente)",
+            "   → Disponibilidad y preferencias"
+          ]
+        },
+        "section_2": {
+          "content": "Si no te contactamos en 5 días, significa que no tenemos proyectos inmediatos en tu área, pero mantenemos tu aplicación en archivo para consideración futura (típicamente 3-6 meses)."
+        },
+        "section_3": {
+          "title": "MIENTRAS TANTO:",
+          "actions": [
+            {
+              "text": "→ Síguenos en X/Twitter para ver proyectos y oportunidades:",
+              "link": "https://x.com/NoctraStudio",
+              "link_text": "@noctra_studio"
+            },
+            {
+              "text": "→ Únete a nuestra lista de espera prioritaria:",
+              "link": "#",
+              "link_text": "Registrarme en lista de espera"
+            }
+          ]
+        },
+        "closing": {
+          "content": "NO ES UN RECHAZO PERMANENTE. Nuestras necesidades cambian cada trimestre."
+        }
+      }
     },
     "faq": {
       "title": "Preguntas frecuentes",
@@ -1793,6 +2149,33 @@
         {
           "q": "¿Qué pasa si quiero dejar de colaborar?",
           "a": "Solo avísanos. Sin contratos forzosos ni penalizaciones. Termina cualquier proyecto activo al que te hayas comprometido y listo. Agradeceríamos tu honestidad sobre los motivos, pero no es obligatorio."
+        }
+      ],
+      "compensation_title": "Preguntas sobre el modelo de compensación",
+      "compensation_items": [
+        {
+          "q": "¿Por qué solo 40% si yo hago el trabajo?",
+          "a": "Nosotros hacemos trabajo también, solo que diferente:\n\n→ Antes del proyecto: Prospectamos, hacemos propuestas comerciales, cerramos ventas (10-15 horas por proyecto cerrado)\n→ Durante el proyecto: Coordinamos comunicación con cliente, manejamos cambios de alcance, hacemos QA\n→ Después del proyecto: Cobramos, facturamos, manejamos garantías\n\nEl 60% que retenemos cubre todo eso + el riesgo (garantizamos reembolso al cliente si no queda satisfecho, incluso si ya te pagamos a ti).\n\nPiénsalo así: ¿Prefieres ganar $30k invirtiendo 40 horas (20h ejecución + 20h admin), o ganar $12k invirtiendo solo 20 horas y usar las otras 20h en otro proyecto?"
+        },
+        {
+          "q": "¿Cómo me comparo con Fiverr o Upwork?",
+          "a": "FIVERR:\n→ Cliente paga $1,000 USD\n→ Fiverr toma 20% = $200\n→ Tú recibes $800\n→ Pero... invertiste 15h en proposals que no ganaste\n→ Rate efectivo real: mucho menos\n\nUPWORK:\n→ Similar a Fiverr\n→ Plus: competencia con freelancers de $5/hora\n→ Carreras a la baja en precio\n\nNOCTRA STUDIO:\n→ Cliente paga $30,000 MXN\n→ Noctra toma 60% = $18,000 (pero te trae al cliente pre-calificado)\n→ Tú recibes 40% = $12,000\n→ Inviertes 0h en prospección\n→ Pago garantizado en 3 días"
+        },
+        {
+          "q": "¿Puedo negociar un porcentaje más alto?",
+          "a": "En proyectos excepcionales donde tu involucramiento es 80%+ del trabajo (ej: un dashboard SaaS complejo donde el diseñador hace casi todo), podemos discutir splits personalizados.\n\nPara proyectos estándar, mantenemos 40/60 por simplicidad y transparencia."
+        },
+        {
+          "q": "¿Qué pasa si traigo mi propio cliente a Noctra?",
+          "a": "Si tú traes el cliente y solo necesitas apoyo de coordinación/QA de Noctra, podemos discutir un split diferente (ej: 70/30 para ti).\n\nAgenda una llamada para discutir estos casos."
+        },
+        {
+          "q": "¿Cómo me pagan?",
+          "a": "Transferencia bancaria (SPEI), sin fees de plataforma deducidos de tu tarifa. Facturas como freelancer (si tienes RFC) o podemos usar recibo de honorarios.\n\nEntregas milestone → Revisamos en 24-48h → Te pagamos en 3 días hábiles."
+        },
+        {
+          "q": "¿Qué pasa si el cliente cancela el proyecto a mitad?",
+          "a": "Si ya completaste trabajo antes de la cancelación, te pagamos proporcionalmente por milestones entregados. Esto está en nuestros contratos con clientes.\n\nEjemplo: Proyecto de $30k cancelado después de entregar 50% → Te pagamos $6k (50% de tu $12k total)."
         }
       ]
     },

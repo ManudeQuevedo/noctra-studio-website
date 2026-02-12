@@ -18,6 +18,13 @@ const WhyDifferentSection = dynamic(
     })),
   { ssr: true },
 );
+const AIAutomationShowcase = dynamic(
+  () =>
+    import("@/components/home/AIAutomationShowcase").then((mod) => ({
+      default: mod.AIAutomationShowcase,
+    })),
+  { ssr: true },
+);
 const PricingSection = dynamic(
   () =>
     import("@/components/home/pricing-section").then((mod) => ({
@@ -67,7 +74,7 @@ const SERVICE_IMAGES = {
 /**
  * HomePage
  * Purpose: Main landing page — benefit-focused, conversion-oriented.
- * Section Order: Hero → Services → WhyDifferent → Pricing → Process → FAQ → SocialProof
+ * Section Order: Hero → Services → WhyDifferent → AIAutomation → Pricing → Process → FAQ → SocialProof
  */
 export default async function HomePage({
   params,
@@ -87,16 +94,19 @@ export default async function HomePage({
       {/* 3. Why Different — 4 differentiator cards */}
       <WhyDifferentSection />
 
-      {/* 4. Pricing — Transparent modular pricing + optional modules */}
+      {/* 4. AI Automation — Key differentiator */}
+      <AIAutomationShowcase />
+
+      {/* 5. Pricing — Transparent modular pricing + optional modules */}
       <PricingSection />
 
-      {/* 5. Process — 5-phase client journey */}
+      {/* 6. Process — 5-phase client journey */}
       <ProcessSection />
 
-      {/* 6. FAQ — 7 questions accordion */}
+      {/* 7. FAQ — 7 questions accordion */}
       <FAQSection />
 
-      {/* 7. Social Proof — Early adopter offer */}
+      {/* 8. Social Proof — Early adopter offer */}
       <SocialProofSection />
 
       {/* SEO Schemas */}

@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Check, ArrowRight, Plus } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import { PriceComparison } from "./price-comparison";
 
 interface OptionalModule {
   name: string;
@@ -38,6 +39,8 @@ export function PricingSection() {
           {t("subtitle")}
         </p>
       </motion.div>
+
+      <PriceComparison />
 
       <div className="grid gap-8 md:grid-cols-3">
         {tiers.map((tier, index) => (
