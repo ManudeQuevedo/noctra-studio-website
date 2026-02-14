@@ -6,6 +6,7 @@ import { Link } from "@/i18n/routing";
 import { ArrowRight } from "lucide-react";
 import { useSearchParams, useRouter } from "next/navigation";
 import { ProjectModal } from "@/components/work/ProjectModal";
+import { ProjectedImpact } from "@/components/work/ProjectedImpact";
 import {
   SiNextdotjs,
   SiTailwindcss,
@@ -29,13 +30,13 @@ export default function WorkPage() {
   const handleOpenModal = (id: string) => {
     const params = new URLSearchParams(searchParams.toString());
     params.set("project", id);
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: false });
   };
 
   const handleCloseModal = () => {
     const params = new URLSearchParams(searchParams.toString());
     params.delete("project");
-    router.push(`?${params.toString()}`);
+    router.push(`?${params.toString()}`, { scroll: false });
   };
 
   const caseStudies = [
@@ -212,6 +213,9 @@ export default function WorkPage() {
                         {project.approach}
                       </p>
                     </div>
+
+                    {/* Projected Impact */}
+                    <ProjectedImpact projectKey={project.id.replace("-", "_")} />
 
                     <div className="pt-4 border-t border-neutral-800">
                       <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-wider mb-3">

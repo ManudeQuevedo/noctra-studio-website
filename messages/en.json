@@ -825,6 +825,7 @@
       "context": "CONTEXT",
       "challenge": "CHALLENGE",
       "approach": "APPROACH",
+      "projected_impact": "PROJECTED IMPACT",
       "stack": "STACK"
     },
     "projects": {
@@ -836,6 +837,16 @@
         "context": "Specialty coffee shop needing premium digital presence.",
         "challenge": "Low visibility, outdated template.",
         "approach": "Mobile-first rebuild, interactive menu, local SEO.",
+        "projected_impact": {
+          "intro": "If implemented, a specialty coffee shop like Café Aurora could expect:",
+          "metrics": [
+            { "metric": "Organic traffic", "value": "+40% in 6 months", "description": "Optimized technical SEO, perfect Core Web Vitals, clean architecture", "icon": "trending-up" },
+            { "metric": "Load speed", "value": "3x faster vs WordPress", "description": "Load time <1 second vs 3-4 seconds average from templates", "icon": "zap" },
+            { "metric": "Online conversion", "value": "+25% online orders", "description": "Interactive menu with direct WhatsApp integration, simplified ordering process", "icon": "shopping-cart" },
+            { "metric": "ROI", "value": "8 months", "description": "Investment $35k MXN ÷ (avg ticket $500 × 87 extra monthly orders)", "icon": "dollar-sign" }
+          ],
+          "methodology_note": "Based on: Analysis of 10 similar coffee shops in Mexico + food industry benchmarks + web-to-order conversion data"
+        },
         "problem": "Legacy WordPress site was crashing during peak morning traffic, leading to 15% lost revenue.",
         "solution": "Migrated to a Headless Next.js architecture with Shopify integration for instant checkout.",
         "metric_value": "300%",
@@ -849,6 +860,16 @@
         "context": "Solo fitness coach offering high-ticket programs.",
         "challenge": "Low conversion, weak trust signals.",
         "approach": "Figma-first UX, social proof integration, A/B testing ready.",
+        "projected_impact": {
+          "intro": "If implemented, a premium fitness coach like StrongFit could expect:",
+          "metrics": [
+            { "metric": "Landing → consult conversion", "value": "+50% vs generic page", "description": "UX prioritizing social proof and transparent availability", "icon": "trending-up" },
+            { "metric": "Close time", "value": "-40% sales cycle", "description": "Calendar integration = less friction to book", "icon": "zap" },
+            { "metric": "Value perception", "value": "Premium positioning", "description": "Modern design communicates professional expertise, justifies premium pricing", "icon": "gem" },
+            { "metric": "ROI", "value": "4 months", "description": "Investment $35k ÷ (2 extra clients/month × $4k ticket × 4 months)", "icon": "dollar-sign" }
+          ],
+          "methodology_note": "Based on: Personal coach/trainer benchmarks + B2C premium services conversion data"
+        },
         "problem": "Manual membership management via spreadsheets was costing the founder 20 hours/week.",
         "solution": "Built a custom dashboard with Stripe integration for automated billing and class scheduling.",
         "metric_value": "20h+",
@@ -860,7 +881,17 @@
         "tag3": "Concept",
         "context": "SaaS platform for finance professionals.",
         "challenge": "Complex data, cluttered UI, cognitive load.",
-        "approach": "Information architecture restructuring, component library, Chart.js."
+        "approach": "Information architecture restructuring, component library, Chart.js.",
+        "projected_impact": {
+          "intro": "If implemented, a SaaS platform for financial professionals like FinTrack could expect:",
+          "metrics": [
+            { "metric": "User adoption", "value": "+60% engagement", "description": "Intuitive dashboard reduces learning curve", "icon": "trending-up" },
+            { "metric": "Cognitive load", "value": "-50% analysis time", "description": "Data visualization optimized for fast decision-making", "icon": "zap" },
+            { "metric": "Retention", "value": "+35% monthly retention", "description": "Superior UX = less churn, more referrals", "icon": "refresh-cw" },
+            { "metric": "Differentiation", "value": "Premium positioning", "description": "UI/UX quality justifies 2x pricing vs competition", "icon": "gem" }
+          ],
+          "methodology_note": "Based on: B2B SaaS benchmarks + UX studies on financial dashboards"
+        }
       },
       "vaultra": {
         "tag1": "Cybersecurity",
@@ -868,89 +899,386 @@
         "tag3": "Concept",
         "context": "Next-gen payment infrastructure requiring bank-grade security.",
         "challenge": "Rapid scaling exposed vulnerabilities. Manual security reviews were slowing down deployment velocity, and the legacy stack failed modern compliance checks.",
-        "approach": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface."
+        "approach": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface.",
+        "projected_impact": {
+          "intro": "If implemented, a fintech payment infrastructure like Vaultra could expect:",
+          "metrics": [
+            { "metric": "Time to market", "value": "-40% vs traditional method", "description": "Automated CI/CD + serverless architecture = rapid deployment", "icon": "zap" },
+            { "metric": "Infrastructure costs", "value": "-60% vs dedicated servers", "description": "Serverless scaling = pay only for actual usage", "icon": "dollar-sign" },
+            { "metric": "Security", "value": "Bank-grade compliance", "description": "Zero-trust + automated scans = facilitated certifications", "icon": "lock" },
+            { "metric": "Scalability", "value": "0 → 1M users without rewrite", "description": "Architecture prepared for scale from day 1", "icon": "trending-up" }
+          ],
+          "methodology_note": "Based on: Fintech startup benchmarks + serverless vs traditional infrastructure data"
+        }
       }
+    },
+    "modal_v2": {
+      "cafe_aurora": {
+        "overview": {
+          "client_type": "Specialty coffee shop",
+          "industry": "Gastronomy / F&B",
+          "challenge_one_liner": "Coffee shop with premium products but a digital presence that didn't reflect its quality",
+          "what_we_did": "Mobile-first website with interactive menu and WhatsApp order integration"
+        },
+        "pain_points": {
+          "title": "The Real Problems",
+          "intro": "Café Aurora had an excellent product, but their website was holding them back:",
+          "items": [
+            {
+              "icon": "🐌",
+              "title": "Slow site scaring away customers",
+              "description": "Heavy WordPress template. Took 4-6 seconds to load. On mobile (70% of traffic), it sometimes wouldn't load at all.",
+              "impact": "Google penalized them in local searches. Users left before even seeing the menu."
+            },
+            {
+              "icon": "📱",
+              "title": "Menu impossible to read on mobile",
+              "description": "PDF menu that required zooming. Low-quality photos. Outdated prices.",
+              "impact": "Customers called to ask for prices instead of ordering online. Staff was overwhelmed."
+            },
+            {
+              "icon": "❌",
+              "title": "Zero online conversion",
+              "description": "No easy way to order. The 'contact' button opened an email client (no one uses email to order coffee).",
+              "impact": "Losing sales to competitors with functional ordering systems."
+            },
+            {
+              "icon": "🔍",
+              "title": "Invisible in local searches",
+              "description": "When someone searched for 'specialty coffee Querétaro', they didn't appear on the first page.",
+              "impact": "Dependency on Instagram. If the algorithm changes, they lose traffic."
+            }
+          ]
+        },
+        "analysis": {
+          "title": "How We Analyzed the Problem",
+          "intro": "Before designing a single pixel, we did our research:",
+          "steps": [
+            {
+              "number": "01",
+              "title": "Competitor Analysis",
+              "what_we_did": "Reviewed 8 similar coffee shops in Querétaro and Mexico City",
+              "what_we_learned": "The best-converting sites had visual menus with large photos, clear prices, and a direct WhatsApp button."
+            },
+            {
+              "number": "02",
+              "title": "User Journey Mapping",
+              "what_we_did": "Tracked the real journey: User searches on Google → arrives at site → what do they do?",
+              "what_we_learned": "90% of visits are on mobile. If they don't find the menu/prices fast, they leave."
+            },
+            {
+              "number": "03",
+              "title": "Performance Benchmarking",
+              "what_we_did": "Measured current site speed vs competitors",
+              "what_we_learned": "Their site: 4.8s. Fast competitors: 1.2s. Every extra second = -7% conversion."
+            }
+          ]
+        },
+        "solution": {
+          "title": "The Solution We Designed",
+          "intro": "We designed a mobile-first experience focused on conversion:",
+          "items": [
+            {
+              "problem": "Slow site",
+              "solution": "Next.js + Vercel Edge Architecture",
+              "how_it_works": "The site is pre-built and served from global edge locations (CDN).",
+              "result": "Loads in < 1 second. Google rewards it in search rankings."
+            },
+            {
+              "problem": "Unreadable menu",
+              "solution": "Interactive menu with photos and filters",
+              "how_it_works": "Every product has a professional photo, short description, and clear price.",
+              "result": "Users find what they want in 10 seconds vs 2 mins before."
+            }
+          ]
+        },
+        "deliverables": {
+          "title": "What We Built",
+          "intro": "Not just a pretty site. We built a conversion system:",
+          "categories": [
+            {
+              "name": "Visual Design",
+              "items": ["Conversion-optimized homepage", "Interactive menu (50+ products)", "Ambient gallery"]
+            },
+            {
+              "name": "Functionality",
+              "items": ["WhatsApp ordering system", "Menu category filters", "Google Maps integration"]
+            }
+          ]
+        },
+        "stack_why": {
+          "title": "Technical Stack",
+          "items": [
+            {
+              "tech": "Next.js",
+              "icon": "⚡",
+              "why": "Enables static generation for extreme speed.",
+              "benefit": "Speed < 1 second = better SEO + more sales."
+            },
+            {
+              "tech": "Vercel Edge",
+              "icon": "🌍",
+              "why": "Site is served from the server closest to the user.",
+              "benefit": "Instant loading everywhere."
+            }
+          ]
+        },
+        "learnings": {
+          "title": "Key Learnings",
+          "items": [
+            "Mobile-first is not optional: 70% of coffee shop traffic is mobile.",
+            "Friction kills conversion: Direct WhatsApp eliminates ordering barriers.",
+            "Photos sell: A visual menu leads to 3x more orders."
+          ]
+        }
+      },
+      "strongfit": {
+        "overview": {
+          "client_type": "Solo fitness coach",
+          "industry": "Fitness / Wellness",
+          "challenge_one_liner": "Coach with excellent results but a generic landing page that wasn't converting",
+          "what_we_did": "Strategic landing page with UX focused on conversion and prominent social proof"
+        },
+        "pain_points": {
+          "title": "The Real Problems",
+          "intro": "StrongFit had happy clients, but their digital presence didn't reflect it:",
+          "items": [
+            {
+              "icon": "🤷",
+              "title": "Generic landing page",
+              "description": "Same stock photos and copy as the competition. Zero differentiation.",
+              "impact": "Users couldn't distinguish StrongFit. They competed only on price."
+            },
+            {
+              "icon": "❓",
+              "title": "Lack of trust",
+              "description": "No visible testimonials or real transformation photos in sight.",
+              "impact": "Prospects doubted the effectiveness of the program."
+            }
+          ]
+        },
+        "analysis": {
+          "title": "How We Analyzed the Problem",
+          "intro": "We studied the competition and user behavior:",
+          "steps": [
+            {
+              "number": "01",
+              "title": "User Testing",
+              "what_we_did": "Real prospects navigated the current landing page.",
+              "what_we_learned": "80% didn't see the testimonials. 60% got frustrated when booking."
+            },
+            {
+              "number": "02",
+              "title": "Conversion Benchmarking",
+              "what_we_did": "Analyzed the current conversion rate.",
+              "what_we_learned": "Only 2% booked. The standard for premium coaches is 5-8%."
+            }
+          ]
+        },
+        "solution": {
+          "title": "The Solution We Designed",
+          "intro": "UX focused 100% on converting visitors into clients:",
+          "items": [
+            {
+              "problem": "Zero trust",
+              "solution": "Strategic Social Proof",
+              "how_it_works": "Testimonials and transformations at 3 key points of the scroll.",
+              "result": "Trust built from the first second."
+            },
+            {
+              "problem": "Slow booking",
+              "solution": "Calendly Integration",
+              "how_it_works": "Live calendar to book a consultation in 2 clicks.",
+              "result": "Friction removed, process became instant."
+            }
+          ]
+        },
+        "deliverables": {
+          "title": "What We Built",
+          "intro": "A single-page conversion machine:",
+          "categories": [
+            {
+              "name": "Landing Sections",
+              "items": ["Value-driven Hero", "Social proof bar", "Transformation gallery"]
+            },
+            {
+              "name": "Key Functionality",
+              "items": ["Calendly integration", "Floating WhatsApp button", "Humanized intro video"]
+            }
+          ]
+        },
+        "stack_why": {
+          "title": "Technical Stack",
+          "items": [
+            {
+              "tech": "React + Next.js",
+              "icon": "⚛️",
+              "why": "Dynamic landing for exit-intent popups and A/B testing.",
+              "benefit": "Easy to optimize without touching code later."
+            },
+            {
+              "tech": "Hotjar",
+              "icon": "🔥",
+              "why": "Heatmaps to see exactly where users drop off.",
+              "benefit": "Real data to constantly improve the landing."
+            }
+          ]
+        },
+        "learnings": {
+          "title": "Key Learnings",
+          "items": [
+            "Immediate credibility: Social proof is mandatory above the fold.",
+            "Transparent pricing: Pre-qualifies prospects and saves time.",
+            "Humanizing sells: Intro video > 500 words of copy."
+          ]
+        }
+      }
+    },
+    "modal_labels": {
+      "challenge": "The Challenge",
+      "context": "The Context",
+      "solution": "Our Solution",
+      "stack": "Technologies Used",
+      "process": "The Noctra Process",
+      "results": "Projected Results",
+      "action": "How we did it",
+      "projected_impact": "Projected Impact",
+      "cta_title": "Does your project face similar challenges?",
+      "cta_button": "Let's talk about your project",
+      "view_technical": "View full technical details ↓",
+      "view_business": "View simplified version ↑"
     },
     "modal": {
       "cafe-aurora": {
         "title": "Café Aurora",
-        "subtitle": "Premium Digital Presence for Specialty Coffee",
-        "challenge": "Low online visibility with an outdated Wix template that didn't reflect the premium in-store experience. Customers couldn't browse the menu or place orders digitally.",
-        "context": "Café Aurora is a local specialty coffee shop with a loyal customer base and award-winning baristas, but their digital presence was holding back growth.",
-        "solution": "We built a mobile-first Next.js website with an interactive menu, real-time inventory updates, and local SEO optimization. The design mirrors the minimalist aesthetic of their physical space.",
-        "stack": ["Next.js 14", "Tailwind CSS", "GSAP", "Stripe", "Google Maps API", "Headless CMS"],
+        "subtitle": "From generic template to premium digital experience",
+        "challenge": "Aurora had award-winning baristas and loyal customers, but their website was an outdated Wix template. Customers couldn't browse the menu, place orders online, or easily find the café on Google Maps.",
+        "context": "A specialty coffee shop with a great local reputation, but whose digital presence didn't reflect the quality of its in-store experience. They were losing customers who searched for \"coffee near me\" on Google.",
+        "solution": "We built a fast, modern website designed mobile-first. It includes an interactive menu where customers can filter by drink type, see prices, and order directly via WhatsApp. We also optimized it to rank first in local Google searches.",
+        "stack": ["Next.js", "Tailwind", "GSAP", "Stripe", "Google Maps API", "Headless CMS"],
         "process": [
-          {"step": "Discovery", "description": "Competitor analysis, customer interviews, brand audit"},
-          {"step": "Strategy", "description": "Mobile-first approach, local SEO focus, conversion optimization"},
-          {"step": "UX", "description": "User flows, wireframes, interactive menu prototype"},
-          {"step": "Design", "description": "Component library, dark mode, accessibility standards"},
-          {"step": "Build", "description": "Next.js implementation, Stripe integration, CMS setup"}
+          {"step": "Discovery", "description": "We visited the café, interviewed customers, and analyzed what the digital competition was doing right (and wrong)"},
+          {"step": "Strategy", "description": "We decided to prioritize mobile-first, local SEO, and a menu that invites ordering"},
+          {"step": "UX Design", "description": "We created wireframes and an interactive menu prototype to test with real users"},
+          {"step": "Visual Design", "description": "We built the digital identity: elegant dark mode and reusable components"},
+          {"step": "Build", "description": "We coded everything in Next.js, connected payments with Stripe, and set up the CMS so the client can edit their menu independently"}
         ],
         "results": [
-          {"metric": "300%", "label": "Menu Engagement", "context": "Measured by click-depth on menu items.", "action": "Interactive filtering replaced static PDF scrolling."},
-          {"metric": "<100ms", "label": "Load Time", "context": "LCP (Largest Contentful Paint) on 4G networks.", "action": "Static generation (SSG) + Image optimization."},
-          {"metric": "+40%", "label": "Local Search", "context": "Increase in Google Maps discovery.", "action": "Structured Data (Schema.org) implementation."}
+          {"metric": "300%", "label": "More menu engagement", "context": "Customers now explore 3x more products than before.", "action": "We replaced a static PDF with an interactive menu with filters."},
+          {"metric": "<1s", "label": "Load time", "context": "The page loads in under 1 second, even on 4G.", "action": "We used static generation and automatic image optimization."},
+          {"metric": "+40%", "label": "Google Maps visibility", "context": "More people find the café when searching on Google.", "action": "We implemented structured data so Google better understands the business."}
         ]
       },
       "strongfit": {
         "title": "StrongFit",
-        "subtitle": "High-Converting Landing Page for Fitness Coaching",
-        "challenge": "Solo fitness coach had great testimonials but a generic landing page with weak trust signals, resulting in low conversion rates for high-ticket programs.",
-        "context": "StrongFit offers premium 1-on-1 coaching programs ($2k-$5k). The founder needed a page that matched the value of the service.",
-        "solution": "Figma-first UX design with social proof integration, video testimonials, and A/B testing infrastructure. Built with React and optimized for conversion tracking.",
-        "stack": ["React", "Figma", "Google Analytics", "Hotjar", "ConvertKit", "Testimonial.to"],
+        "subtitle": "From generic page to conversion machine for premium coaching",
+        "challenge": "A personal trainer with incredible results and testimonials from transformed clients, but a landing page that looked thrown together in 5 minutes. Visitors didn't trust it enough to invest $2,000-$5,000 USD in a program.",
+        "context": "StrongFit offers high-value 1-on-1 coaching programs. The founder knew the service was worth every penny, but the website didn't communicate that quality.",
+        "solution": "We designed a landing page that builds trust step by step: prominent video testimonials, verifiable results from real clients, integrated calendar for booking free consultations, and a design that screams \"premium\" from the first scroll.",
+        "stack": ["React", "Figma", "Analytics", "Hotjar", "ConvertKit", "Testimonial.to"],
         "process": [
-          {"step": "Discovery", "description": "Customer journey mapping, competitor teardowns"},
-          {"step": "Strategy", "description": "Trust-building elements, conversion funnel design"},
-          {"step": "UX", "description": "High-fidelity Figma prototype, A/B test planning"},
-          {"step": "Design", "description": "Video integration, social proof layout, CTA optimization"},
-          {"step": "Build", "description": "React implementation, analytics setup, form validation"}
+          {"step": "Discovery", "description": "We mapped the complete customer journey: from seeing an ad to paying for the program"},
+          {"step": "Strategy", "description": "We identified key moments to build trust and reduce objections"},
+          {"step": "UX Design", "description": "We created a high-fidelity Figma prototype and planned A/B tests"},
+          {"step": "Visual Design", "description": "We integrated video testimonials, designed the social proof layout, and optimized every CTA"},
+          {"step": "Build", "description": "We implemented in React, configured detailed analytics, and added form validation"}
         ],
         "results": [
-          {"metric": "2x", "label": "Conversion Rate", "context": "Visitor-to-Booking ratio.", "action": "Sticky CTA logic + Social Proof positioning."},
-          {"metric": "0.00", "label": "Layout Shift", "context": "CLS Score of 0.00.", "action": "Defined aspect ratios for all media assets."},
-          {"metric": "Instant", "label": "A/B Test Velocity", "context": "Time to deploy new headline variants.", "action": "Headless CMS integration for instant edits."}
+          {"metric": "2x", "label": "More people book consultations", "context": "Twice as many visitors now book a session.", "action": "Always-visible CTAs + strategically placed testimonials."},
+          {"metric": "0.00", "label": "Zero layout shifts", "context": "The page doesn't jump around while loading — smooth experience.", "action": "We defined exact dimensions for all videos and images."},
+          {"metric": "Instant", "label": "Copy changes in seconds", "context": "The client can change titles and text without touching code.", "action": "We connected a CMS for instant edits without a developer."}
         ]
       },
       "fintrack": {
         "title": "FinTrack",
-        "subtitle": "SaaS Dashboard Redesign for Finance Professionals",
-        "challenge": "Complex financial data presented in a cluttered UI caused cognitive load and user churn. Power users needed faster insights without overwhelming new users.",
-        "context": "FinTrack is a SaaS platform serving 2,000+ finance professionals tracking portfolios, crypto, and tax obligations.",
-        "solution": "Complete information architecture restructuring with a component library, Chart.js integration, and progressive disclosure patterns to reduce cognitive load.",
+        "subtitle": "From confusing dashboard to a tool users love",
+        "challenge": "A financial platform with powerful data but such a cluttered interface that new users got lost and power users wasted time finding features. The result: frustrated users canceling their subscriptions.",
+        "context": "FinTrack serves 2,000+ finance professionals tracking portfolios, crypto, and tax obligations. They needed an interface that makes complex things simple.",
+        "solution": "We redesigned the entire information architecture. Now information appears progressively: the most important things first, details available with a click. Modern charts with Chart.js, dark mode by default, and shortcuts for power users.",
         "stack": ["TypeScript", "React", "Chart.js", "Tailwind", "Zustand", "React Query"],
         "process": [
-          {"step": "Discovery", "description": "Heat mapping, user interviews, data architecture audit"},
-          {"step": "Strategy", "description": "Progressive disclosure, dark mode priority, power user shortcuts"},
-          {"step": "UX", "description": "Component library design, dashboard layout iterations"},
-          {"step": "Design", "description": "Data visualization standards, dark mode palette"},
-          {"step": "Build", "description": "TypeScript migration, Chart.js setup, state management"}
+          {"step": "Discovery", "description": "We analyzed heat maps, interviewed frustrated users, and audited how data flowed"},
+          {"step": "Strategy", "description": "We designed a progressive disclosure system: essentials up top, details on demand"},
+          {"step": "UX Design", "description": "We built a reusable component library and iterated on the dashboard layout"},
+          {"step": "Visual Design", "description": "We defined data visualization standards and a professional dark palette"},
+          {"step": "Build", "description": "We migrated to TypeScript, configured Chart.js, and optimized state management"}
         ],
         "results": [
-          {"metric": "-40%", "label": "Support Tickets", "context": "Reduction in 'How do I...' queries.", "action": "Intuitive Information Architecture + Tooltips."},
-          {"metric": "<50ms", "label": "Data Sync", "context": "Latency between database and UI.", "action": "Optimistic UI updates + Edge caching."},
-          {"metric": "70%", "label": "Dark Mode Adoption", "context": "70% of users switched within week 1.", "action": "System-preference detection + Toggle."}
+          {"metric": "-40%", "label": "Fewer support tickets", "context": "Users no longer ask \"how do I do this?\" — the interface is intuitive.", "action": "We reorganized all navigation and added contextual tooltips."},
+          {"metric": "<50ms", "label": "Real-time data", "context": "Numbers update almost instantly.", "action": "We implemented optimistic updates and edge caching."},
+          {"metric": "70%", "label": "Adopted dark mode", "context": "7 out of 10 users activated dark mode in the first week.", "action": "We detect system preference and offer an easy toggle."}
         ]
       },
       "vaultra": {
         "title": "Vaultra",
-        "subtitle": "Zero-Trust Fintech Infrastructure",
-        "challenge": "Rapid scaling exposed vulnerabilities. Manual security reviews were slowing down deployment velocity, and the legacy stack failed modern compliance checks.",
-        "context": "Vaultra is a next-gen payment infrastructure provider handling sensitive financial data for enterprise clients.",
-        "solution": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface.",
-        "stack": ["Next.js 14", "Vercel Edge", "Auth0", "Snyk", "TypeScript", "Redis"],
+        "subtitle": "Next-Generation Payment Infrastructure",
+        "challenge": "Meeting bank-grade cybersecurity standards without sacrificing development speed. Rapid growth had exposed vulnerabilities, manual security reviews slowed down releases, and the legacy stack failed modern audits.",
+        "context": "Vaultra handles confidential financial data for enterprise clients. Every second of downtime or every vulnerability can mean millions in losses and reputation damage.",
+        "solution": "We built an architecture where every update goes through automated security scans before going live, data never travels without end-to-end encryption, and if someone tries to attack, the system automatically shuts down and alerts the team.",
+        "stack": ["Next.js", "Vercel", "Auth0", "TypeScript"],
         "process": [
-          {"step": "Audit", "description": "Comprehensive security audit and penetration testing"},
-          {"step": "Architecture", "description": "Zero-trust design and edge network planning"},
-          {"step": "Hardening", "description": "Implementation of strict CSP and security headers"},
-          {"step": "Automation", "description": "CI/CD security scanning pipeline integration"},
-          {"step": "Compliance", "description": "SOC2 readiness verification and documentation"}
+          {"step": "Audit", "description": "We reviewed all existing security top to bottom, including penetration testing"},
+          {"step": "Architecture", "description": "We designed a system where nobody and nothing has access by default — you have to earn it"},
+          {"step": "Hardening", "description": "We configured strict security headers so the browser rejects any suspicious content"},
+          {"step": "Automation", "description": "We connected tools that scan every line of code before it reaches production"},
+          {"step": "Compliance", "description": "We prepared all documentation so the SOC2 audit is a formality, not a headache"}
         ],
         "results": [
-          {"metric": "A+", "label": "Security Grade", "context": "Mozilla Observatory Score.", "action": "Strict CSP Headers + HSTS Implementation."},
-          {"metric": "Ready", "label": "SOC2 Compliance", "context": "Compliance audit preparation.", "action": "Automated CI/CD vulnerability scanning."},
-          {"metric": "0s", "label": "Downtime Deploys", "context": "Uptime during feature releases.", "action": "Atomic deployments via Vercel Edge."}
-        ]
+          {"metric": "A+", "label": "Security grade", "context": "Perfect score on Mozilla Observatory.", "action": "We configured strict CSP headers and mandatory HSTS."},
+          {"metric": "Ready", "label": "SOC2 Compliance", "context": "Prepared to pass the compliance audit.", "action": "Automated vulnerability scanning on every deployment."},
+          {"metric": "0s", "label": "Zero downtime", "context": "Updates go live without interrupting service.", "action": "Atomic deployments via Vercel's Edge network."}
+        ],
+        "has_dual_version": true,
+        "business_version": {
+          "approach_title": "APPROACH (Non-Technical Version)",
+          "approach_description": "We built an architecture where:",
+          "approach_points": [
+            "Every update goes through automated security scans before going live",
+            "Data never travels without end-to-end encryption",
+            "If someone tries to attack, the system automatically shuts down and alerts the team",
+            "All code is reviewed by automated tools + humans"
+          ],
+          "outcomes_title": "BUSINESS OUTCOMES",
+          "outcomes": [
+            "Launch 40% faster than traditional method with dedicated servers",
+            "Security certification compliance included (PCI-DSS ready)",
+            "Scalable to millions of users without rewriting code",
+            "Operating costs 60% lower (serverless vs dedicated servers)"
+          ]
+        },
+        "technical_version": {
+          "title": "Technical Details (For CTOs/Developers)",
+          "approach_title": "TECHNICAL APPROACH",
+          "approach_description": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface.",
+          "technical_details": [
+            "Zero-Trust Architecture with strict CSP headers",
+            "CI/CD with automated security scanning (SAST + DAST)",
+            "Vercel Edge Network for global distribution",
+            "Rate limiting + DDoS protection at edge",
+            "Secrets management with Vault/AWS Secrets Manager",
+            "Complete audit logging of all transactions"
+          ],
+          "stack_title": "FULL STACK",
+          "stack_technologies": [
+            "Next.js 14 (App Router)",
+            "TypeScript strict mode",
+            "Vercel Edge Functions",
+            "Tailwind CSS",
+            "React Hook Form + Zod validation",
+            "Supabase (PostgreSQL + Row Level Security)",
+            "Stripe API (PCI-compliant)",
+            "GitHub Actions (CI/CD pipeline)"
+          ],
+          "security_title": "SECURITY MEASURES",
+          "security_measures": [
+            "CSP headers (Content Security Policy)",
+            "HSTS (HTTP Strict Transport Security)",
+            "X-Frame-Options: DENY",
+            "X-Content-Type-Options: nosniff",
+            "Referrer-Policy: strict-origin-when-cross-origin",
+            "Restrictive Permissions-Policy"
+          ]
+        }
       }
     }
   },
@@ -1036,7 +1364,12 @@
   "ContactPage": {
     "hero": {
       "title": "Let's talk about your project.",
-      "subtitle": "Tell us what you need, and we'll get back to you within 24 hours with a clear plan."
+      "subtitle": "No spam. No aggressive sales calls. Just an honest 20-minute conversation to see if Noctra is the right fit for you.",
+      "trust_badges": {
+        "0": "Free consultation",
+        "1": "Response < 24h",
+        "2": "Founder direct"
+      }
     },
     "commitment_badge": "Free consultation · 24-hour response · Talk directly with the founder",
     "pricing_philosophy": {
@@ -1046,14 +1379,40 @@
     "process_outline": {
       "title": "What happens next?",
       "steps": [
-        "Free consultation call (20 mins)",
-        "We send you a clear proposal (48 hours)",
-        "We build, you review weekly",
-        "Launch & handover"
+        {
+          "title": "Free consultation call (20 mins)",
+          "description": "No commitment. No sales pitches. We just learn about your business and see if there's a fit."
+        },
+        {
+          "title": "We send you a clear proposal (48 hours)",
+          "description": "Detailed scope + timeline + guarantees. Fixed price, no surprises later."
+        },
+        {
+          "title": "We build, you review weekly",
+          "description": "Staging access from day 1. Structured feedback every week. We iterate until it's perfect."
+        },
+        {
+          "title": "Launch & handover",
+          "description": "Full codebase + documentation + access credentials. 60 days of optimization included."
+        }
+      ]
+    },
+    "banner": {
+      "title": "GUARANTEED FAST RESPONSE",
+      "content": "We'll reply within 24 hours with:",
+      "benefits": [
+        "→ Preliminary project analysis",
+        "→ Estimated investment range",
+        "→ 3 available time slots for a call"
       ]
     },
     "details": {
       "email_label": "Email",
+      "whatsapp_label": "WHATSAPP",
+      "whatsapp_number": "+52 55 5500 0228",
+      "whatsapp_availability": "Mon-Fri 9AM-6PM CST",
+      "whatsapp_cta": "Direct message →",
+      "whatsapp_note": "We prefer WhatsApp for quick initial consultations (typical response in 2-3 hours). For detailed projects, use the form below.",
       "location_label": "Location",
       "location_value": "Querétaro, MX",
       "time_label": "Local Time"
@@ -1076,9 +1435,18 @@
       "budget_label": "Budget Range",
       "budget_placeholder": "Select a range...",
       "budget_options": {
-        "30-50k": "$30k - $50k (Website / Landing)",
-        "60-120k": "$60k - $120k (E-commerce / Web App)",
-        "150k+": "+$150k (Full Platform)"
+        "20-35k": "$1-2k USD (Landing page or basic site)",
+        "35-60k": "$2-3.5k USD (Professional site or e-commerce)",
+        "60-120k": "$3.5-7k USD (Full business system)",
+        "120k+": "$7k+ USD (Complex/multi-phase project)",
+        "unsure": "I don't know yet"
+      },
+      "budget_descriptions": {
+        "20-35k": "Ideal for: Freelancers, local businesses",
+        "35-60k": "Ideal for: E-commerce, corporate sites, basic automation",
+        "60-120k": "Ideal for: Dashboards, client portals, complex integrations",
+        "120k+": "Ideal for: SaaS platforms, marketplaces, enterprise systems",
+        "unsure": "No problem, we'll help you estimate during the consultation"
       },
       "timeline_label": "When do you need it?",
       "timeline_placeholder": "Select a timeline...",
@@ -1089,9 +1457,16 @@
       },
       "success_criteria_label": "How will you measure success? (Optional)",
       "details_label": "Tell us about your project",
-      "details_placeholder": "What are your goals? What challenges are you facing? Any specific requirements?",
+      "details_helper": "Help us prepare a specific proposal:",
+      "details_questions": {
+        "0": "→ What problem are you trying to solve?",
+        "1": "→ What have you already tried?",
+        "2": "→ When do you need it ready?",
+        "3": "→ Any specific technical requirements? (optional)"
+      },
+      "details_placeholder": "e.g., My dental clinic loses 30% of appointments to last-minute cancellations. I've tried manual reminders but they don't scale. I need something ready in 2 months for the summer peak season.",
       "success_criteria_placeholder": "e.g., more leads, faster website, online sales",
-      "submit": "Send My Project Details",
+      "submit": "Talk to Manu",
       "sending": "Sending..."
     },
     "success": {

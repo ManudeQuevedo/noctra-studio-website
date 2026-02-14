@@ -3,6 +3,13 @@
 import { useEffect } from "react";
 import Lenis from "lenis";
 
+// Expose Lenis instance globally so modals can stop/start it
+declare global {
+  interface Window {
+    __lenis?: Lenis;
+  }
+}
+
 export function SmoothScroll() {
   useEffect(() => {
     const lenis = new Lenis({
@@ -14,6 +21,9 @@ export function SmoothScroll() {
       touchMultiplier: 2,
     });
 
+    // Store globally so modals can pause/resume
+    window.__lenis = lenis;
+
     function raf(time: number) {
       lenis.raf(time);
       requestAnimationFrame(raf);
@@ -23,6 +33,7 @@ export function SmoothScroll() {
 
     return () => {
       lenis.destroy();
+      delete window.__lenis;
     };
   }, []);
 

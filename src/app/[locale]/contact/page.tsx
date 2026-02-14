@@ -5,8 +5,8 @@ import { useForm } from "react-hook-form";
 import { motion } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Instagram, MapPin, Clock } from "lucide-react";
-import { FaXTwitter } from "react-icons/fa6";
+import { ArrowRight, Instagram, MapPin, Clock, Phone, FileText, Settings2, Rocket, Zap } from "lucide-react";
+import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import { RouteScopedBackground } from "@/components/ui/RouteScopedBackground";
 
@@ -26,56 +26,10 @@ function ContactForm() {
   const [time, setTime] = useState<string>("");
   const [focusedField, setFocusedField] = useState<string | null>(null);
   const [isSuccess, setIsSuccess] = useState(false);
-  const [currency, setCurrency] = useState<"MXN" | "USD">("MXN");
 
   const locale = useLocale();
 
-  const BUDGET_OPTIONS = {
-    MXN: [
-      {
-        label: t("form.budget_options.30-50k"),
-        value: "Foundation ($30k - $50k)",
-      },
-      {
-        label: t("form.budget_options.60-120k"),
-        value: "Architecture ($60k - $120k)",
-      },
-      {
-        label: t("form.budget_options.150k+"),
-        value: "Intelligence (+$150k)",
-      },
-      {
-        label: t("budget.retainer"),
-        value: "Consulting",
-      },
-      {
-        label: t("budget.unsure"),
-        value: "Undecided",
-      },
-    ],
-    USD: [
-      {
-        label: "Foundation ($1.5k - $3k)",
-        value: "Foundation (USD)",
-      },
-      {
-        label: "Architecture ($3.5k - $8k)",
-        value: "Architecture (USD)",
-      },
-      {
-        label: "Intelligence (Custom / $8k+)",
-        value: "Intelligence (USD)",
-      },
-      {
-        label: "Consulting / Retainer",
-        value: "Consulting",
-      },
-      {
-        label: "Not sure / Let's discuss value",
-        value: "Undecided",
-      },
-    ],
-  };
+  const BUDGET_KEYS = ["20-35k", "35-60k", "60-120k", "120k+", "unsure"] as const;
 
   const searchParams = useSearchParams();
   const interest = searchParams.get("interest");
@@ -194,16 +148,22 @@ function ContactForm() {
                 {t("hero.subtitle")}
               </motion.p>
 
-              {/* Commitment Badge */}
+              {/* Trust Badges */}
               <motion.div
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.6, delay: 0.2 }}
-                className="mt-8 inline-flex items-center gap-3 px-4 py-2 rounded-full bg-white/5 border border-white/10 backdrop-blur-sm">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-sm font-mono text-neutral-300 tracking-tight">
-                  {t("commitment_badge")}
-                </span>
+                className="mt-8 flex flex-wrap items-center gap-4 md:gap-6">
+                {[0, 1, 2].map((i) => (
+                  <div
+                    key={i}
+                    className="flex items-center gap-2 text-sm text-neutral-400">
+                    <span className="text-emerald-500 font-bold">✓</span>
+                    <span className="font-mono tracking-tight">
+                      {t(`hero.trust_badges.${i}`)}
+                    </span>
+                  </div>
+                ))}
               </motion.div>
             </div>
 
@@ -223,23 +183,38 @@ function ContactForm() {
                 </p>
               </div>
 
-              {/* Process Outline */}
+              {/* Process Outline — Vertical Timeline */}
               <div className="space-y-4">
                 <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
                   {t("process_outline.title")}
                 </h3>
-                <ul className="space-y-2">
-                  {[0, 1, 2, 3].map((i) => (
-                    <li
-                      key={i}
-                      className="flex items-center gap-3 text-neutral-300">
-                      <span className="text-xs font-mono text-neutral-600">
-                        0{i + 1}
-                      </span>
-                      {t(`process_outline.steps.${i}`)}
-                    </li>
-                  ))}
-                </ul>
+                <div className="relative">
+                  {[0, 1, 2, 3].map((i) => {
+                    const Icon = PROCESS_ICONS[i];
+                    return (
+                      <div key={i} className="flex gap-4 relative">
+                        {/* Icon + connector */}
+                        <div className="flex flex-col items-center">
+                          <span className="text-sm w-8 h-8 flex items-center justify-center rounded-full bg-white/5 border border-neutral-800 text-neutral-400">
+                            <Icon className="w-4 h-4" />
+                          </span>
+                          {i < 3 && (
+                            <div className="w-px h-full border-l border-dashed border-neutral-700 my-1" />
+                          )}
+                        </div>
+                        {/* Content */}
+                        <div className={i < 3 ? "pb-6" : ""}>
+                          <p className="text-sm text-neutral-200 font-medium">
+                            {t(`process_outline.steps.${i}.title`)}
+                          </p>
+                          <p className="text-xs text-neutral-500 mt-1 leading-relaxed max-w-xs">
+                            {t(`process_outline.steps.${i}.description`)}
+                          </p>
+                        </div>
+                      </div>
+                    );
+                  })}
+                </div>
               </div>
             </motion.div>
 
@@ -260,6 +235,34 @@ function ContactForm() {
                     hello@noctra.studio
                   </a>
                 </div>
+
+                {/* WhatsApp Block */}
+                <div className="col-span-1 md:col-span-2 space-y-3 py-6 border-t border-b border-neutral-800">
+                  <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+                    {t("details.whatsapp_label")}
+                  </span>
+                  <div className="flex items-center gap-3">
+                    <FaWhatsapp className="w-6 h-6 text-[#25D366]" />
+                    <span className="text-xl font-medium">
+                      {t("details.whatsapp_number")}
+                    </span>
+                    <span className="text-xs font-mono text-neutral-500">
+                      {t("details.whatsapp_availability")}
+                    </span>
+                  </div>
+                  <a
+                    href="https://wa.me/525555000228?text=Hola%2C%20vengo%20del%20sitio%20web%20de%20Noctra%20Studio"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#25D366] hover:bg-[#20bd5a] text-black font-bold text-sm rounded-full transition-colors">
+                    <FaWhatsapp className="w-4 h-4" />
+                    {t("details.whatsapp_cta")}
+                  </a>
+                  <p className="text-xs text-neutral-500 max-w-md leading-relaxed">
+                    {t("details.whatsapp_note")}
+                  </p>
+                </div>
+
                 <div className="space-y-2">
                   <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
                     {t("details.location_label")}
@@ -367,7 +370,39 @@ function ContactForm() {
                 </div>
               </motion.div>
             ) : (
-              <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
+              <div className="space-y-12">
+                {/* Guarantee Banner */}
+                <div className="rounded-2xl border border-neutral-800 bg-neutral-900/50 p-6 md:p-8">
+                  <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+                    <div className="space-y-4">
+                      <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-mono font-bold tracking-widest uppercase">
+                        <Zap className="w-3 h-3" />
+                        {t("banner.title")}
+                      </div>
+                      <div className="space-y-2">
+                        <p className="text-lg font-medium text-white">
+                          {t("banner.content")}
+                        </p>
+                        <ul className="space-y-2">
+                          {(t.raw("banner.benefits") as string[]).map((benefit, i) => (
+                            <li key={i} className="text-sm text-neutral-400 flex items-center gap-2">
+                              <span className="text-emerald-500/50 font-mono text-xs">→</span>
+                              {benefit.replace("→ ", "")}
+                            </li>
+                          ))}
+                        </ul>
+                      </div>
+                    </div>
+                    
+                    <div className="hidden md:block">
+                      <div className="w-20 h-20 rounded-full border border-neutral-800 flex items-center justify-center bg-neutral-900">
+                        <Clock className="w-8 h-8 text-neutral-700" />
+                      </div>
+                    </div>
+                  </div>
+                </div>
+
+                <form onSubmit={handleSubmit(onSubmit)} className="space-y-12">
                 {/* Name */}
                 <div className="relative">
                   <label htmlFor="name" className={labelClasses}>
@@ -464,56 +499,34 @@ function ContactForm() {
 
                 {/* Budget Selection */}
                 <div className="relative">
-                  <div className="flex items-center justify-between mb-2">
-                    <label
-                      htmlFor="budget"
-                      className={labelClasses.replace("mb-2", "mb-0")}>
-                      {t("form.budget_label")}
-                    </label>
-
-                    {/* Currency Toggle */}
-                    <div className="flex items-center gap-2 bg-neutral-900 rounded-full p-1 border border-neutral-800">
-                      {(["MXN", "USD"] as const).map((curr) => (
-                        <button
-                          key={curr}
-                          type="button"
-                          onClick={() => setCurrency(curr)}
-                          className={cn(
-                            "px-3 py-1 text-[10px] font-mono font-medium rounded-full transition-all duration-300",
-                            currency === curr
-                              ? "bg-white text-black shadow-sm"
-                              : "text-neutral-500 hover:text-neutral-300"
-                          )}>
-                          {curr}
-                        </button>
-                      ))}
-                    </div>
-                  </div>
-
-                  <select
-                    {...register("budget", { required: true })}
-                    id="budget"
-                    className={cn(
-                      inputClasses("budget"),
-                      "appearance-none bg-transparent"
-                    )}
-                    onFocus={() => setFocusedField("budget")}
-                    onBlur={() => setFocusedField(null)}>
-                    <option
-                      value=""
-                      disabled
-                      className="bg-neutral-900 text-white">
-                      {t("form.budget_placeholder")}
-                    </option>
-                    {BUDGET_OPTIONS[currency].map((option) => (
-                      <option
-                        key={option.value}
-                        value={option.value}
-                        className="bg-neutral-900 text-white">
-                        {option.label}
-                      </option>
+                  <label className={labelClasses}>
+                    {t("form.budget_label")}
+                  </label>
+                  <input type="hidden" {...register("budget", { required: true })} />
+                  <div className="grid grid-cols-1 gap-3">
+                    {BUDGET_KEYS.map((key) => (
+                      <button
+                        key={key}
+                        type="button"
+                        onClick={() => setValue("budget", key)}
+                        className={cn(
+                          "w-full text-left px-4 py-3 rounded-lg border transition-all duration-200",
+                          selectedBudget === key
+                            ? "border-white bg-white/5 shadow-[0_0_15px_rgba(255,255,255,0.08)]"
+                            : "border-neutral-800 hover:border-neutral-600 hover:bg-white/[0.02]"
+                        )}>
+                        <span className={cn(
+                          "block text-sm font-medium transition-colors",
+                          selectedBudget === key ? "text-white" : "text-neutral-300"
+                        )}>
+                          {t(`form.budget_options.${key}`)}
+                        </span>
+                        <span className="block text-xs text-neutral-500 mt-0.5">
+                          {t(`form.budget_descriptions.${key}`)}
+                        </span>
+                      </button>
                     ))}
-                  </select>
+                  </div>
                 </div>
 
                 {/* Timeline */}
@@ -573,14 +586,36 @@ function ContactForm() {
                   <label htmlFor="details" className={labelClasses}>
                     {t("form.details_label")}
                   </label>
+
+                  {/* Guiding questions card */}
+                  <div className="rounded-lg border border-neutral-800 bg-white/[0.02] px-4 py-3 mb-5">
+                    <p className="text-xs text-neutral-400 mb-2 font-medium">
+                      {t("form.details_helper")}
+                    </p>
+                    <ul className="space-y-1">
+                      {[0, 1, 2, 3].map((i) => (
+                        <li
+                          key={i}
+                          className="text-[11px] text-neutral-600 font-mono">
+                          {t(`form.details_questions.${i}`)}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
                   <textarea
                     {...register("details", { required: true })}
                     id="details"
                     rows={4}
                     placeholder={t("form.details_placeholder")}
-                    className={cn(inputClasses("details"), "resize-none")}
+                    className={cn(inputClasses("details"), "resize-none overflow-hidden text-base placeholder:text-sm placeholder:italic")}
                     onFocus={() => setFocusedField("details")}
                     onBlur={() => setFocusedField(null)}
+                    onInput={(e) => {
+                      const target = e.target as HTMLTextAreaElement;
+                      target.style.height = "auto";
+                      target.style.height = `${target.scrollHeight}px`;
+                    }}
                   />
                 </div>
 
@@ -590,7 +625,7 @@ function ContactForm() {
                   whileTap={{ scale: 0.98 }}
                   disabled={isSubmitting}
                   type="submit"
-                  className="w-full bg-white text-black py-6 text-lg font-bold tracking-wide uppercase flex items-center justify-center gap-4 hover:bg-neutral-200 transition-colors disabled:opacity-50 rounded-full">
+                  className="w-full bg-white hover:bg-neutral-200 text-black py-6 text-lg font-bold tracking-wide flex items-center justify-center gap-4 transition-colors disabled:opacity-50 rounded-full">
                   {isSubmitting ? (
                     t("form.sending")
                   ) : (
@@ -601,13 +636,16 @@ function ContactForm() {
                   )}
                 </motion.button>
               </form>
-            )}
-          </motion.div>
+            </div>
+          )}
+        </motion.div>
         </div>
       </div>
     </main>
   );
 }
+
+const PROCESS_ICONS = [Phone, FileText, Settings2, Rocket];
 
 export default function ContactPage() {
   return (

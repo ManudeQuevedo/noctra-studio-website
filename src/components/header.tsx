@@ -225,6 +225,7 @@ export function Header() {
 
       {/* --- DESKTOP HEADER (MD+) --- */}
       <motion.header
+        data-fixed-header
         className="fixed z-[50] top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
         initial={{ y: -20, opacity: 0 }}
         animate={{
