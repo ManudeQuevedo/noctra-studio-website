@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { Check, ArrowRight, Plus } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
-import { PriceComparison } from "./price-comparison";
+import { WhyLocalBenefits } from "./WhyLocalBenefits";
 
 interface OptionalModule {
   name: string;
@@ -40,7 +40,7 @@ export function PricingSection() {
         </p>
       </motion.div>
 
-      <PriceComparison />
+      <WhyLocalBenefits />
 
       <div className="grid gap-8 md:grid-cols-3">
         {tiers.map((tier, index) => (

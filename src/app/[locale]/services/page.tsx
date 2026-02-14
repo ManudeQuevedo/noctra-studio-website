@@ -19,7 +19,7 @@ const ServiceSection = ({
   index,
   image,
 }: {
-  service: { id: string; key: string };
+  service: { id: string; key: string; path: string };
   index: number;
   image: string;
 }) => {
@@ -132,16 +132,24 @@ const ServiceSection = ({
                   </p>
                 </div>
 
-                {/* Deep Link CTA */}
-                <Link
-                  href={{
-                    pathname: "/contact",
-                    query: { interest: service.id },
-                  }}
-                  className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
-                  {t(`${service.key}.cta`)}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
+                 {/* Deep Link CTA */}
+                <div className="flex flex-col gap-4">
+                  <Link
+                    href={{
+                      pathname: "/contact",
+                      query: { interest: service.id },
+                    }}
+                    className="inline-flex items-center gap-1 text-sm text-neutral-500 hover:text-neutral-900 dark:hover:text-white underline-offset-4 hover:underline transition-colors">
+                    {t("how_we_work.title")} — {t(`${service.key}.cta`)}
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                  <Link
+                    href={service.path as any}
+                    className="inline-flex items-center gap-2 px-6 py-3 rounded-full border border-neutral-800 hover:border-white transition-all w-fit text-sm font-medium">
+                    View Details
+                    <ArrowRight className="w-4 h-4" />
+                  </Link>
+                </div>
               </div>
 
               {/* Deliverables */}
@@ -189,10 +197,10 @@ export default function ServicesPage() {
   const t = useTranslations("ServicesPage");
 
   const services = [
-    { id: "digital-architecture", key: "web_dev", label: "Architecture" },
-    { id: "visual-identity", key: "branding", label: "Identity" },
-    { id: "intelligent-systems", key: "ai", label: "Systems" },
-    { id: "growth", key: "seo", label: "Growth" },
+    { id: "professional-websites", key: "web_dev", label: "Websites", path: "/services/professional-websites" as const },
+    { id: "ecommerce", key: "ecommerce", label: "E-commerce", path: "/services/ecommerce" as const },
+    { id: "custom-systems", key: "ai", label: "Systems", path: "/services/custom-systems" as const },
+    { id: "optimization", key: "seo", label: "Optimization", path: "/services/optimization" as const },
   ];
 
   const scrollToService = (id: string) => {

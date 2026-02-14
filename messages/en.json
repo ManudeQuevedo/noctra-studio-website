@@ -6,10 +6,27 @@
     "part3": "visionary brands ",
     "part4": "to grow without friction."
   },
+  "WhyLocal": {
+    "title": "Why do businesses in Mexico and beyond choose Noctra?",
+    "items": [
+      {
+        "title": "Direct founder access",
+        "description": "No account managers or bureaucracy. You talk directly with the person building your site. Decisions in hours, not weeks."
+      },
+      {
+        "title": "Modern code, no maintenance",
+        "description": "We don't use WordPress. We build with Next.js so your site is ultra-fast and doesn't need expensive maintenance fees."
+      },
+      {
+        "title": "Results guarantee",
+        "description": "If we don't meet the agreed performance indicators, we refund a proportional part. Shared risk."
+      }
+    ]
+  },
   "HomePage": {
     "hero": {
-      "title": "Websites that pay for themselves in 6 months",
-      "subtitle": "Strategic web development for businesses that need measurable results, not just pretty design",
+      "title": "Websites that generate real customers, not just visits",
+      "subtitle": "Strategic web development for businesses in Mexico and abroad (USA, Canada, Europe) that need measurable results",
       "trust_badge": "From $20,000 MXN · Results guarantee · Accessible founder"
     },
     "credibility": "Led by engineering talent with 7+ years shipping production systems for high-scale brands.",
@@ -24,13 +41,13 @@
     },
     "cta_start": "Schedule free consultation",
     "cta_services": "Explore Services",
-    "cta_work": "View Case Studies"
+    "cta_work": "View work process"
   },
   "AIAutomationShowcase": {
     "pre_title": "KEY DIFFERENTIATOR",
-    "title": "AI Automation to reduce your operational load",
+    "title": "Web automation that recovers your time",
     "subtitle": "We don't just build pretty sites. We build systems that work for you 24/7.",
-    "intro": "While other agencies sell you \"digital presence,\" we automate the tasks that take time away from your core business.",
+    "intro": "Available for clinics, firms, and local businesses that want to automate the tasks that take time away from their core business.",
     "problem_label": "The Challenge",
     "solution_label": "Our Solution",
     "result_label": "Business Impact",
@@ -38,30 +55,30 @@
       {
         "industry": "Medical & Clinics",
         "icon": "medical",
-        "problem": "40% of appointments lost due to no-shows and last-minute cancellations",
-        "solution": "Automated confirmation system via WhatsApp + SMS",
-        "result": "40% reduction in no-shows = +$150k MXN/year in recovered revenue"
+        "problem": "Patients forgetting appointments or canceling late",
+        "solution": "Automated confirmation system via WhatsApp",
+        "result": "15+ hours weekly recovered in calls and coordination"
       },
       {
-        "industry": "Law Firms",
+        "industry": "Law Firms & Consultants",
         "icon": "legal",
-        "problem": "Hours lost classifying inquiries that are not viable cases",
-        "solution": "24/7 automated intake with case scoring",
-        "result": "80% of inquiries pre-qualified before talking to a lawyer"
+        "problem": "Hours lost filtering unqualified prospects",
+        "solution": "Smart intake form with automatic filtering",
+        "result": "80% of calls now with ideal clients"
       },
       {
-        "industry": "E-commerce",
+        "industry": "Local Businesses",
         "icon": "ecommerce",
-        "problem": "75% of abandoned carts = lost sales",
-        "solution": "Automated recovery sequences + personalized upselling",
-        "result": "Recovery of 25-30% of abandoned carts"
+        "problem": "Customers asking the same questions over and over",
+        "solution": "Web assistant with intelligent responses",
+        "result": "24/7 attention without interrupting your work"
       },
       {
-        "industry": "Accountants & CFPs",
+        "industry": "Administratives",
         "icon": "finance",
-        "problem": "Clients repeatedly sending incomplete documents",
-        "solution": "Client portal with smart checklist + automated reminders",
-        "result": "60% less time on admin = more clients or more free time"
+        "problem": "Clients sending paperwork in pieces and late",
+        "solution": "Digital checklist with friendly reminders",
+        "result": "60% less time chasing documents"
       }
     ],
     "cta": "What can we automate in your business?",
@@ -70,13 +87,13 @@
   "Metadata": {
     "home": {
       "title": "Strategic Web Development in Querétaro | Noctra Studio",
-      "description": "Websites that generate measurable ROI. From $30k MXN. Results guarantee. Speak directly with the founder.",
+      "description": "Websites that generate measurable ROI for clients in Mexico and abroad. From $30k MXN. Results guarantee. Speak directly with the founder.",
       "keywords": "web development querétaro, professional website, ecommerce, digital strategy, measurable results, SEO",
       "og_title": "Noctra Studio — Websites that pay for themselves",
       "og_description": "Strategic web development for businesses that need measurable results. From $30k MXN. Results guarantee.",
       "og_image_alt": "Noctra Studio — Strategic Web Development",
       "twitter_title": "Noctra Studio — Strategic Web Development in Querétaro",
-      "twitter_description": "Websites that generate measurable ROI. Results guarantee."
+      "twitter_description": "Websites that generate real results for businesses in Querétaro."
     },
     "about": {
       "title": "About Us | Noctra Studio",
@@ -231,101 +248,114 @@
   },
   "AboutPage": {
     "hero": {
-      "title": "Built Different.",
-      "subtitle": "A small studio that delivers big results. Senior-level work, direct founder access, and technology that actually moves your business forward."
+      "title": "Why Noctra Studio is different",
+      "subtitle": "Brutal honesty in a world of agencies that over-promise and under-deliver."
     },
-    "founder_note": {
-      "title": "A Note from the Founder.",
-      "content_1": "I started Noctra because I was tired of seeing businesses overpay for mediocre websites. At big agencies, your project gets handed to a junior while you talk to an account manager. Here, you talk to me—the person actually building your site.",
-      "content_2": "We keep things simple: understand your business, build something that works, and make sure it delivers real results. No jargon, no meetings that should have been emails, no surprises on the invoice."
-    },
-    "team_narrative": {
-      "title": "Small Team, Senior Talent.",
-      "content": "We're small on purpose. Instead of maintaining a large staff with overhead costs, we bring in specialized experts only when your project needs them. You pay for the work, not for office space and account managers."
-    },
-    "brand_anatomy": {
-      "section_label": "// BRAND ANATOMY",
-      "etymology": {
-        "label": "Etymology",
-        "headline": "Noctra (Latin)",
-        "body": "Derived from 'Nocturnal' (Night) and 'Intra' (Within). We operate in the depths of the code, where the real work happens."
-      },
-      "symbology": {
-        "label": "Symbology",
-        "headline": "The Signal",
-        "body": "Our logo represents a beacon in the dark. A single point of clarity in a chaotic digital landscape."
-      },
-      "output": {
-        "label": "Output",
-        "headline": "Silent Systems",
-        "body": "We don't shout. We build systems that work so well, they feel invisible. Performance is our only marketing."
-      }
-    },
-    "tech_radar": {
-      "title": "Tech Radar",
-      "intro": "We choose this stack because it guarantees speed, security, and long-term maintainability—not because it's trendy.",
-      "ui_ux": "UI/UX Design",
-      "frontend": "Frontend Architecture",
-      "backend_db": "Backend & Database",
-      "cms": "Headless CMS",
-      "infrastructure": "Infrastructure & DevOps"
-    },
-    "process": {
-      "title": "How We Work.",
-      "description": "A clear, four-step process so you always know exactly what's happening with your project.",
-      "steps": [
+    "history": {
+      "title": "The real story",
+      "intro": "I'm Manu, founder of Noctra Studio. I started this agency because I saw too many local businesses paying $4k-$7.5k for WordPress sites that end up slow, outdated, and completely dependent on the agency that built them.",
+      "approach_title": "My approach is different:",
+      "items": [
         {
-          "title": "Discovery & Planning",
-          "desc": "We learn about your business, analyze your competitors, and create a detailed plan before writing a single line of code.",
-          "checkpoint": "You get: Project Roadmap"
+          "title": "Modern code that belongs to you from day 1",
+          "desc": "I don't use WordPress. I use Next.js because it loads 4x faster, doesn't depend on plugins that break, and doesn't leave you trapped with annual maintenance costs.",
+          "icon": "code"
         },
         {
-          "title": "Design & Prototype",
-          "desc": "We design the look and feel of your project. You see and approve the design before we start building.",
-          "checkpoint": "You get: Interactive Preview"
+          "title": "Direct access without intermediaries",
+          "desc": "You talk to me, the one who writes the code. Not an 'account manager' who has to consult with the technical team. Decisions in hours, not weeks.",
+          "icon": "phone"
         },
         {
-          "title": "Build & Iterate",
-          "desc": "We build your project with weekly updates. You can see progress in real-time and give feedback at every step.",
-          "checkpoint": "You get: Live Preview Site"
+          "title": "Transparent pricing you know before starting",
+          "desc": "Here you know the exact price in the proposal. Zero hidden costs or surprise invoices.",
+          "icon": "dollar"
         },
         {
-          "title": "Launch & Support",
-          "desc": "We handle the launch, set up hosting, and provide support to make sure everything runs smoothly.",
-          "checkpoint": "You get: Live Website + Support"
+          "title": "Measurable results guarantee",
+          "desc": "We establish clear KPIs before starting. If we don't meet them in 60 days, there's a proportional refund. This is in the contract.",
+          "icon": "chart"
         }
       ]
     },
-    "compensation": {
-      "title": "Compensation Model",
-      "subtitle": "We value output, not hours. No haggling, no chasing invoices.",
-      "metric": "Project-Based Rates",
-      "description": "Compensation is scoped and agreed upon before a single line of code is written. Rates are determined by complexity and impact, not time.",
-      "terms": {
-        "deposit": "50% Commencement Deposit",
-        "completion": "50% Completion Payment",
-        "net0": "Net-0 Payment Terms (Immediate upon approval)"
-      }
+    "team": {
+      "title": "How I work",
+      "intro": "I work with a curated team of freelance specialists that I bring in as your project needs:",
+      "items": [
+        {
+          "title": "UI/UX Design",
+          "desc": "For projects that require custom and unique design."
+        },
+        {
+          "title": "Strategic Copywriting",
+          "desc": "For sites that need to sell with the right words."
+        },
+        {
+          "title": "Professional Photography",
+          "desc": "For businesses that need to stand out visually."
+        },
+        {
+          "title": "Branding",
+          "desc": "For companies that need identity from scratch."
+        }
+      ],
+      "footer": "You pay for the specific work your project needs. You don't pay to maintain a staff of 15 people."
     },
-    "impact": {
-      "title": "The Noctra Ecosystem",
-      "subtitle": "We believe in open source, open knowledge, and open doors. Our impact goes beyond the code we ship.",
-      "volunteering": {
-        "title": "Technological Volunteering",
-        "desc": "We dedicate 10% of our studio time to building digital infrastructure for non-profits and educational institutions.",
-        "note_label": "Current Project:",
-        "note_text": "Open-source literacy platform for rural schools.",
-        "cta": "Join the Initiative"
-      },
-      "mentorship": {
-        "title": "Technical Mentorship",
-        "desc": "The 'Noctra Residency' is a 3-month intensive program where we train the next generation of systems architects.",
-        "note_label": "Next Cohort:",
-        "note_text": "Applications open Q3 2025.",
-        "cta": "Apply for Residency"
-      }
+    "tech": {
+      "title": "The technology I use (and why it should matter to you)",
+      "items": [
+        {
+          "label": "Next.js + TypeScript",
+          "reason": "Loads in <2 seconds vs 5-8 seconds for WordPress. Google prioritizes fast sites."
+        },
+        {
+          "label": "Vercel + Cloudflare",
+          "reason": "Your site is on the fastest network in the world. It doesn't go down, it doesn't get slow."
+        },
+        {
+          "label": "Plausible + Search Console",
+          "reason": "Understand where your visits come from and what converts. 100% private."
+        },
+        {
+          "label": "Supabase + PostgreSQL",
+          "reason": "Professional database for custom systems and total data security."
+        }
+      ],
+      "summary_labels": [
+        "It's modern (it will last years, not months)",
+        "It's fast (Google prioritizes it)",
+        "It's yours (you don't depend on me to move it)"
+      ]
+    },
+    "trust": {
+      "title": "Why trust a new agency?",
+      "subtitle": "Yes, Noctra Studio is new. Here's why that's an advantage for you:",
+      "items": [
+        {
+          "title": "Founder access, not junior staff",
+          "desc": "In established agencies, your project is executed by a junior. Here, you talk to someone with 10+ years of technical experience."
+        },
+        {
+          "title": "Cutting-edge technology, no legacy systems",
+          "desc": "We build everything on the most modern stack from scratch, without the drag of old platforms."
+        },
+        {
+          "title": "Competitive pricing while we build our portfolio",
+          "desc": "I'm building case studies. You get a better price, I get a real case. Everyone wins."
+        },
+        {
+          "title": "Written results guarantee",
+          "desc": "Since I'm building my reputation, I offer a KPI guarantee or refund. Others don't do this."
+        }
+      ]
+    },
+    "cta": {
+      "title": "Ready for a project without intermediaries or surprises?",
+      "button": "Schedule my free consultation",
+      "footer": "Response in <24 hours · No commitment · Speak directly with Manu"
     }
   },
+
   "Footer": {
     "hook": "Ready to start your project?",
     "book_discovery": "Get a Free Consultation",
@@ -723,29 +753,29 @@
       ],
       "cta": "Let's talk about your website"
     },
-    "branding": {
-      "title": "Visual Identity & Design",
-      "problem": "Your brand looks different on every platform, and customers notice.",
-      "solution": "We create a cohesive design system so your brand looks polished everywhere.",
-      "focus": "Inconsistent design makes you look unprofessional. We create a complete visual system—logo, colors, fonts, and design rules—so your brand looks perfect on every screen, every time.",
-      "why": "A consistent brand builds trust and makes your business look established.",
+    "ecommerce": {
+      "title": "Online Stores",
+      "focus": "Your window to the global market. We create shopping experiences that eliminate friction and turn visits into recurring revenue.",
+      "why": "An optimized e-commerce is the difference between having a catalog and having a scalable business.",
+      "problem": "You try to sell through Instagram or with a site that doesn't build trust or facilitate payment.",
+      "solution": "Robust platforms with integrated payments, inventory management, and sales-oriented design.",
       "process": [
-        "Understand your brand and audience",
-        "Develop your visual language",
-        "Create design templates and components",
-        "Deliver brand guidelines"
+        "We analyze your products and logistics",
+        "We design the ideal shopping flow",
+        "We configure payments and shipping",
+        "We launch and monitor conversions"
       ],
       "deliverables": [
-        "Brand Guidelines (your visual rulebook)",
-        "Logo & Icon Pack (all formats)",
-        "Figma Source Files (fully editable designs)"
+        "Full store with payment gateway",
+        "Product management dashboard",
+        "Sales analytics configuration"
       ],
       "deliverables_subtext": [
-        "A complete guide so your visuals stay consistent everywhere.",
-        "High-resolution logos and icons ready for any platform.",
-        "Fully editable design files for your team or future designer."
+        "Ready to receive card and bank transfer payments.",
+        "Change prices, stock, and photos without depending on us.",
+        "Understand where your sales come from and why."
       ],
-      "cta": "Let's talk about your brand"
+      "cta": "Explore E-commerce details"
     },
     "ai": {
       "title": "Custom Systems & Automation",
@@ -815,483 +845,198 @@
     }
   },
   "WorkPage": {
-    "title": "Our Work — Real Problems, Modern Solutions",
-    "subtitle": "Concept case studies showing how we approach common business challenges with modern technology. Each one demonstrates our process from problem to solution.",
-    "disclaimer": "These case studies are conceptual explorations designed to demonstrate Noctra Studio’s methodology and approach to digital challenges.",
-    "cta_title": "Ready to get similar results?",
-    "cta_button": "Get a Free Estimate",
-    "see_full_case_study": "See Full Case Study",
-    "labels": {
-      "context": "CONTEXT",
-      "challenge": "CHALLENGE",
-      "approach": "APPROACH",
-      "projected_impact": "PROJECTED IMPACT",
-      "stack": "STACK"
-    },
-    "projects": {
-      "cafe_aurora": {
-        "title": "Café Aurora",
-        "tag1": "Website Redesign",
-        "tag2": "Local Business",
-        "tag3": "Concept",
-        "context": "Specialty coffee shop needing premium digital presence.",
-        "challenge": "Low visibility, outdated template.",
-        "approach": "Mobile-first rebuild, interactive menu, local SEO.",
-        "projected_impact": {
-          "intro": "If implemented, a specialty coffee shop like Café Aurora could expect:",
-          "metrics": [
-            { "metric": "Organic traffic", "value": "+40% in 6 months", "description": "Optimized technical SEO, perfect Core Web Vitals, clean architecture", "icon": "trending-up" },
-            { "metric": "Load speed", "value": "3x faster vs WordPress", "description": "Load time <1 second vs 3-4 seconds average from templates", "icon": "zap" },
-            { "metric": "Online conversion", "value": "+25% online orders", "description": "Interactive menu with direct WhatsApp integration, simplified ordering process", "icon": "shopping-cart" },
-            { "metric": "ROI", "value": "8 months", "description": "Investment $35k MXN ÷ (avg ticket $500 × 87 extra monthly orders)", "icon": "dollar-sign" }
-          ],
-          "methodology_note": "Based on: Analysis of 10 similar coffee shops in Mexico + food industry benchmarks + web-to-order conversion data"
-        },
-        "problem": "Legacy WordPress site was crashing during peak morning traffic, leading to 15% lost revenue.",
-        "solution": "Migrated to a Headless Next.js architecture with Shopify integration for instant checkout.",
-        "metric_value": "300%",
-        "metric_label": "Faster Load Time"
-      },
-      "strongfit": {
-        "title": "StrongFit Systems",
-        "tag1": "Landing Page",
-        "tag2": "Conversion Strategy",
-        "tag3": "Concept",
-        "context": "Solo fitness coach offering high-ticket programs.",
-        "challenge": "Low conversion, weak trust signals.",
-        "approach": "Figma-first UX, social proof integration, A/B testing ready.",
-        "projected_impact": {
-          "intro": "If implemented, a premium fitness coach like StrongFit could expect:",
-          "metrics": [
-            { "metric": "Landing → consult conversion", "value": "+50% vs generic page", "description": "UX prioritizing social proof and transparent availability", "icon": "trending-up" },
-            { "metric": "Close time", "value": "-40% sales cycle", "description": "Calendar integration = less friction to book", "icon": "zap" },
-            { "metric": "Value perception", "value": "Premium positioning", "description": "Modern design communicates professional expertise, justifies premium pricing", "icon": "gem" },
-            { "metric": "ROI", "value": "4 months", "description": "Investment $35k ÷ (2 extra clients/month × $4k ticket × 4 months)", "icon": "dollar-sign" }
-          ],
-          "methodology_note": "Based on: Personal coach/trainer benchmarks + B2C premium services conversion data"
-        },
-        "problem": "Manual membership management via spreadsheets was costing the founder 20 hours/week.",
-        "solution": "Built a custom dashboard with Stripe integration for automated billing and class scheduling.",
-        "metric_value": "20h+",
-        "metric_label": "Saved Weekly"
-      },
-      "fintrack": {
-        "tag1": "SaaS Dashboard",
-        "tag2": "Data Viz",
-        "tag3": "Concept",
-        "context": "SaaS platform for finance professionals.",
-        "challenge": "Complex data, cluttered UI, cognitive load.",
-        "approach": "Information architecture restructuring, component library, Chart.js.",
-        "projected_impact": {
-          "intro": "If implemented, a SaaS platform for financial professionals like FinTrack could expect:",
-          "metrics": [
-            { "metric": "User adoption", "value": "+60% engagement", "description": "Intuitive dashboard reduces learning curve", "icon": "trending-up" },
-            { "metric": "Cognitive load", "value": "-50% analysis time", "description": "Data visualization optimized for fast decision-making", "icon": "zap" },
-            { "metric": "Retention", "value": "+35% monthly retention", "description": "Superior UX = less churn, more referrals", "icon": "refresh-cw" },
-            { "metric": "Differentiation", "value": "Premium positioning", "description": "UI/UX quality justifies 2x pricing vs competition", "icon": "gem" }
-          ],
-          "methodology_note": "Based on: B2B SaaS benchmarks + UX studies on financial dashboards"
+    "badge": "Portfolio in construction",
+    "title": "How we work with our clients",
+    "subtitle": "A clear, transparent, and results-oriented process. No surprises, no middlemen, no empty promises.",
+    "sections": {
+      "in_progress": {
+        "title": "Projects in construction",
+        "description": "We are building our portfolio with real clients. Here is what we are developing right now:",
+        "projects": {
+          "woodax": {
+            "name": "Woodax Design",
+            "type": "Premium custom carpentry · Querétaro",
+            "challenge": "Woodax creates high-end custom furniture, but their digital presence didn't reflect the quality of their craftsmanship. They needed a site to showcase their work without depending on Instagram.",
+            "solution": "Visual portfolio focused on conversion, a quoting system that qualifies projects before contact, and optimization for 'custom carpentry Querétaro'.",
+            "deliverables": [
+              "Project gallery with filters (kitchens, closets, furniture)",
+              "Smart quoting form",
+              "Mobile-optimized site (80% of traffic)",
+              "Speed <1.5 seconds"
+            ],
+            "objective": "Objective: 15+ qualified monthly quotes (projects >$50k MXN)",
+            "timeline": "Launching Q1 2025",
+            "stack": "Next.js + Sanity CMS + Vercel"
+          },
+          "dyma": {
+            "name": "Dyma Group",
+            "type": "Multi-industry business group · Querétaro",
+            "challenge": "A corporate presence that reflects their strength as a consolidated group. They needed to centralize information for their companies without losing individual identities.",
+            "solution": "Corporate site with scalable architecture, client portal for project tracking, and a system they can update without depending on us.",
+            "deliverables": [
+              "Corporate site with company-specific sections",
+              "CMS for autonomous updates",
+              "Private portal with segmented access",
+              "Administrative dashboard"
+            ],
+            "objective": "Objective: Robust presence and autonomous management",
+            "timeline": "In development - Q1 2025",
+            "stack": "Next.js + Supabase + Authentication"
+          }
         }
       },
-      "vaultra": {
-        "tag1": "Cybersecurity",
-        "tag2": "FinTech",
-        "tag3": "Concept",
-        "context": "Next-gen payment infrastructure requiring bank-grade security.",
-        "challenge": "Rapid scaling exposed vulnerabilities. Manual security reviews were slowing down deployment velocity, and the legacy stack failed modern compliance checks.",
-        "approach": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface.",
-        "projected_impact": {
-          "intro": "If implemented, a fintech payment infrastructure like Vaultra could expect:",
-          "metrics": [
-            { "metric": "Time to market", "value": "-40% vs traditional method", "description": "Automated CI/CD + serverless architecture = rapid deployment", "icon": "zap" },
-            { "metric": "Infrastructure costs", "value": "-60% vs dedicated servers", "description": "Serverless scaling = pay only for actual usage", "icon": "dollar-sign" },
-            { "metric": "Security", "value": "Bank-grade compliance", "description": "Zero-trust + automated scans = facilitated certifications", "icon": "lock" },
-            { "metric": "Scalability", "value": "0 → 1M users without rewrite", "description": "Architecture prepared for scale from day 1", "icon": "trending-up" }
-          ],
-          "methodology_note": "Based on: Fintech startup benchmarks + serverless vs traditional infrastructure data"
-        }
-      }
-    },
-    "modal_v2": {
-      "cafe_aurora": {
-        "overview": {
-          "client_type": "Specialty coffee shop",
-          "industry": "Gastronomy / F&B",
-          "challenge_one_liner": "Coffee shop with premium products but a digital presence that didn't reflect its quality",
-          "what_we_did": "Mobile-first website with interactive menu and WhatsApp order integration"
-        },
-        "pain_points": {
-          "title": "The Real Problems",
-          "intro": "Café Aurora had an excellent product, but their website was holding them back:",
-          "items": [
-            {
-              "icon": "🐌",
-              "title": "Slow site scaring away customers",
-              "description": "Heavy WordPress template. Took 4-6 seconds to load. On mobile (70% of traffic), it sometimes wouldn't load at all.",
-              "impact": "Google penalized them in local searches. Users left before even seeing the menu."
-            },
-            {
-              "icon": "📱",
-              "title": "Menu impossible to read on mobile",
-              "description": "PDF menu that required zooming. Low-quality photos. Outdated prices.",
-              "impact": "Customers called to ask for prices instead of ordering online. Staff was overwhelmed."
-            },
-            {
-              "icon": "❌",
-              "title": "Zero online conversion",
-              "description": "No easy way to order. The 'contact' button opened an email client (no one uses email to order coffee).",
-              "impact": "Losing sales to competitors with functional ordering systems."
-            },
-            {
-              "icon": "🔍",
-              "title": "Invisible in local searches",
-              "description": "When someone searched for 'specialty coffee Querétaro', they didn't appear on the first page.",
-              "impact": "Dependency on Instagram. If the algorithm changes, they lose traffic."
-            }
-          ]
-        },
-        "analysis": {
-          "title": "How We Analyzed the Problem",
-          "intro": "Before designing a single pixel, we did our research:",
-          "steps": [
-            {
-              "number": "01",
-              "title": "Competitor Analysis",
-              "what_we_did": "Reviewed 8 similar coffee shops in Querétaro and Mexico City",
-              "what_we_learned": "The best-converting sites had visual menus with large photos, clear prices, and a direct WhatsApp button."
-            },
-            {
-              "number": "02",
-              "title": "User Journey Mapping",
-              "what_we_did": "Tracked the real journey: User searches on Google → arrives at site → what do they do?",
-              "what_we_learned": "90% of visits are on mobile. If they don't find the menu/prices fast, they leave."
-            },
-            {
-              "number": "03",
-              "title": "Performance Benchmarking",
-              "what_we_did": "Measured current site speed vs competitors",
-              "what_we_learned": "Their site: 4.8s. Fast competitors: 1.2s. Every extra second = -7% conversion."
-            }
-          ]
-        },
-        "solution": {
-          "title": "The Solution We Designed",
-          "intro": "We designed a mobile-first experience focused on conversion:",
-          "items": [
-            {
-              "problem": "Slow site",
-              "solution": "Next.js + Vercel Edge Architecture",
-              "how_it_works": "The site is pre-built and served from global edge locations (CDN).",
-              "result": "Loads in < 1 second. Google rewards it in search rankings."
-            },
-            {
-              "problem": "Unreadable menu",
-              "solution": "Interactive menu with photos and filters",
-              "how_it_works": "Every product has a professional photo, short description, and clear price.",
-              "result": "Users find what they want in 10 seconds vs 2 mins before."
-            }
-          ]
-        },
-        "deliverables": {
-          "title": "What We Built",
-          "intro": "Not just a pretty site. We built a conversion system:",
-          "categories": [
-            {
-              "name": "Visual Design",
-              "items": ["Conversion-optimized homepage", "Interactive menu (50+ products)", "Ambient gallery"]
-            },
-            {
-              "name": "Functionality",
-              "items": ["WhatsApp ordering system", "Menu category filters", "Google Maps integration"]
-            }
-          ]
-        },
-        "stack_why": {
-          "title": "Technical Stack",
-          "items": [
-            {
-              "tech": "Next.js",
-              "icon": "⚡",
-              "why": "Enables static generation for extreme speed.",
-              "benefit": "Speed < 1 second = better SEO + more sales."
-            },
-            {
-              "tech": "Vercel Edge",
-              "icon": "🌍",
-              "why": "Site is served from the server closest to the user.",
-              "benefit": "Instant loading everywhere."
-            }
-          ]
-        },
-        "learnings": {
-          "title": "Key Learnings",
-          "items": [
-            "Mobile-first is not optional: 70% of coffee shop traffic is mobile.",
-            "Friction kills conversion: Direct WhatsApp eliminates ordering barriers.",
-            "Photos sell: A visual menu leads to 3x more orders."
-          ]
-        }
-      },
-      "strongfit": {
-        "overview": {
-          "client_type": "Solo fitness coach",
-          "industry": "Fitness / Wellness",
-          "challenge_one_liner": "Coach with excellent results but a generic landing page that wasn't converting",
-          "what_we_did": "Strategic landing page with UX focused on conversion and prominent social proof"
-        },
-        "pain_points": {
-          "title": "The Real Problems",
-          "intro": "StrongFit had happy clients, but their digital presence didn't reflect it:",
-          "items": [
-            {
-              "icon": "🤷",
-              "title": "Generic landing page",
-              "description": "Same stock photos and copy as the competition. Zero differentiation.",
-              "impact": "Users couldn't distinguish StrongFit. They competed only on price."
-            },
-            {
-              "icon": "❓",
-              "title": "Lack of trust",
-              "description": "No visible testimonials or real transformation photos in sight.",
-              "impact": "Prospects doubted the effectiveness of the program."
-            }
-          ]
-        },
-        "analysis": {
-          "title": "How We Analyzed the Problem",
-          "intro": "We studied the competition and user behavior:",
-          "steps": [
-            {
-              "number": "01",
-              "title": "User Testing",
-              "what_we_did": "Real prospects navigated the current landing page.",
-              "what_we_learned": "80% didn't see the testimonials. 60% got frustrated when booking."
-            },
-            {
-              "number": "02",
-              "title": "Conversion Benchmarking",
-              "what_we_did": "Analyzed the current conversion rate.",
-              "what_we_learned": "Only 2% booked. The standard for premium coaches is 5-8%."
-            }
-          ]
-        },
-        "solution": {
-          "title": "The Solution We Designed",
-          "intro": "UX focused 100% on converting visitors into clients:",
-          "items": [
-            {
-              "problem": "Zero trust",
-              "solution": "Strategic Social Proof",
-              "how_it_works": "Testimonials and transformations at 3 key points of the scroll.",
-              "result": "Trust built from the first second."
-            },
-            {
-              "problem": "Slow booking",
-              "solution": "Calendly Integration",
-              "how_it_works": "Live calendar to book a consultation in 2 clicks.",
-              "result": "Friction removed, process became instant."
-            }
-          ]
-        },
-        "deliverables": {
-          "title": "What We Built",
-          "intro": "A single-page conversion machine:",
-          "categories": [
-            {
-              "name": "Landing Sections",
-              "items": ["Value-driven Hero", "Social proof bar", "Transformation gallery"]
-            },
-            {
-              "name": "Key Functionality",
-              "items": ["Calendly integration", "Floating WhatsApp button", "Humanized intro video"]
-            }
-          ]
-        },
-        "stack_why": {
-          "title": "Technical Stack",
-          "items": [
-            {
-              "tech": "React + Next.js",
-              "icon": "⚛️",
-              "why": "Dynamic landing for exit-intent popups and A/B testing.",
-              "benefit": "Easy to optimize without touching code later."
-            },
-            {
-              "tech": "Hotjar",
-              "icon": "🔥",
-              "why": "Heatmaps to see exactly where users drop off.",
-              "benefit": "Real data to constantly improve the landing."
-            }
-          ]
-        },
-        "learnings": {
-          "title": "Key Learnings",
-          "items": [
-            "Immediate credibility: Social proof is mandatory above the fold.",
-            "Transparent pricing: Pre-qualifies prospects and saves time.",
-            "Humanizing sells: Intro video > 500 words of copy."
-          ]
-        }
-      }
-    },
-    "modal_labels": {
-      "challenge": "The Challenge",
-      "context": "The Context",
-      "solution": "Our Solution",
-      "stack": "Technologies Used",
-      "process": "The Noctra Process",
-      "results": "Projected Results",
-      "action": "How we did it",
-      "projected_impact": "Projected Impact",
-      "cta_title": "Does your project face similar challenges?",
-      "cta_button": "Let's talk about your project",
-      "view_technical": "View full technical details ↓",
-      "view_business": "View simplified version ↑"
-    },
-    "modal": {
-      "cafe-aurora": {
-        "title": "Café Aurora",
-        "subtitle": "From generic template to premium digital experience",
-        "challenge": "Aurora had award-winning baristas and loyal customers, but their website was an outdated Wix template. Customers couldn't browse the menu, place orders online, or easily find the café on Google Maps.",
-        "context": "A specialty coffee shop with a great local reputation, but whose digital presence didn't reflect the quality of its in-store experience. They were losing customers who searched for \"coffee near me\" on Google.",
-        "solution": "We built a fast, modern website designed mobile-first. It includes an interactive menu where customers can filter by drink type, see prices, and order directly via WhatsApp. We also optimized it to rank first in local Google searches.",
-        "stack": ["Next.js", "Tailwind", "GSAP", "Stripe", "Google Maps API", "Headless CMS"],
-        "process": [
-          {"step": "Discovery", "description": "We visited the café, interviewed customers, and analyzed what the digital competition was doing right (and wrong)"},
-          {"step": "Strategy", "description": "We decided to prioritize mobile-first, local SEO, and a menu that invites ordering"},
-          {"step": "UX Design", "description": "We created wireframes and an interactive menu prototype to test with real users"},
-          {"step": "Visual Design", "description": "We built the digital identity: elegant dark mode and reusable components"},
-          {"step": "Build", "description": "We coded everything in Next.js, connected payments with Stripe, and set up the CMS so the client can edit their menu independently"}
-        ],
-        "results": [
-          {"metric": "300%", "label": "More menu engagement", "context": "Customers now explore 3x more products than before.", "action": "We replaced a static PDF with an interactive menu with filters."},
-          {"metric": "<1s", "label": "Load time", "context": "The page loads in under 1 second, even on 4G.", "action": "We used static generation and automatic image optimization."},
-          {"metric": "+40%", "label": "Google Maps visibility", "context": "More people find the café when searching on Google.", "action": "We implemented structured data so Google better understands the business."}
+      "included": {
+        "title": "What's included in EVERY project",
+        "description": "Regardless of size, this is what you always get when working with Noctra:",
+        "items": [
+          {
+            "title": "Own code that belongs to you (no WordPress)",
+            "icon": "code",
+            "details": "What you receive at the end:",
+            "deliverables": [
+              "Complete GitHub repository (ownership transferred)",
+              "Technical documentation of how it's built",
+              "Guide for basic changes",
+              "Zero dependency on Noctra"
+            ],
+            "why_it_matters": "Many agencies use WordPress with annual paid plugins. You get stuck. Here, the code is yours from day 1."
+          },
+          {
+            "title": "Technical SEO optimization included",
+            "icon": "search",
+            "details": "What we configure:",
+            "deliverables": [
+              "Google Search Console",
+              "Meta tags and semantic structure",
+              "XML Sitemap and robots.txt",
+              "Schema markup for rich snippets",
+              "Clean and descriptive URLs"
+            ],
+            "why_it_matters": "A beautiful site that no one finds on Google is useless."
+          },
+          {
+            "title": "Speed guarantee <2 seconds",
+            "icon": "zap",
+            "details": "How we guarantee it:",
+            "deliverables": [
+              "Lighthouse CI on every deploy",
+              "Monitored Core Web Vitals",
+              "Automatic image optimization",
+              "Correct cache configuration"
+            ],
+            "why_it_matters": "Every extra second = 7% fewer conversions. Google penalizes slow sites."
+          },
+          {
+            "title": "🛡️ 60 days of post-launch support",
+            "icon": "life-buoy",
+            "details": "What's included:",
+            "deliverables": [
+              "Weekly metrics monitoring",
+              "Up to 2 adjustment rounds based on real data",
+              "WhatsApp support <4 hours (business hours)",
+              "Monthly report with insights"
+            ],
+            "why_it_matters": "The first 60 days are when you discover what works. You need agile support."
+          },
+          {
+            "title": "💬 Direct access to founder via WhatsApp",
+            "icon": "message-square",
+            "details": "This means:",
+            "deliverables": [
+              "You speak with Manu, who writes the code",
+              "Decisions in hours, not weeks",
+              "No account manager intermediaries",
+              "Urgent changes on the same day"
+            ],
+            "why_it_matters": "Your time is valuable. Large agencies have slow processes."
+          }
         ]
       },
-      "strongfit": {
-        "title": "StrongFit",
-        "subtitle": "From generic page to conversion machine for premium coaching",
-        "challenge": "A personal trainer with incredible results and testimonials from transformed clients, but a landing page that looked thrown together in 5 minutes. Visitors didn't trust it enough to invest $2,000-$5,000 USD in a program.",
-        "context": "StrongFit offers high-value 1-on-1 coaching programs. The founder knew the service was worth every penny, but the website didn't communicate that quality.",
-        "solution": "We designed a landing page that builds trust step by step: prominent video testimonials, verifiable results from real clients, integrated calendar for booking free consultations, and a design that screams \"premium\" from the first scroll.",
-        "stack": ["React", "Figma", "Analytics", "Hotjar", "ConvertKit", "Testimonial.to"],
-        "process": [
-          {"step": "Discovery", "description": "We mapped the complete customer journey: from seeing an ad to paying for the program"},
-          {"step": "Strategy", "description": "We identified key moments to build trust and reduce objections"},
-          {"step": "UX Design", "description": "We created a high-fidelity Figma prototype and planned A/B tests"},
-          {"step": "Visual Design", "description": "We integrated video testimonials, designed the social proof layout, and optimized every CTA"},
-          {"step": "Build", "description": "We implemented in React, configured detailed analytics, and added form validation"}
-        ],
-        "results": [
-          {"metric": "2x", "label": "More people book consultations", "context": "Twice as many visitors now book a session.", "action": "Always-visible CTAs + strategically placed testimonials."},
-          {"metric": "0.00", "label": "Zero layout shifts", "context": "The page doesn't jump around while loading — smooth experience.", "action": "We defined exact dimensions for all videos and images."},
-          {"metric": "Instant", "label": "Copy changes in seconds", "context": "The client can change titles and text without touching code.", "action": "We connected a CMS for instant edits without a developer."}
+      "process": {
+        "title": "Our process (5 phases)",
+        "timeline": [
+          {
+            "step": "1",
+            "label": "Discovery & Diagnosis",
+            "duration": "3-5 days",
+            "description": "Competitor analysis, audience definition, project roadmap.",
+            "deliverables_label": "Deliverables: Strategic document + sitemap + timeline",
+            "user_time": "Your time: 2 calls + 1 hour of feedback"
+          },
+          {
+            "step": "2",
+            "label": "Design & Prototyping",
+            "duration": "7-10 days",
+            "description": "Wireframes, visual design, interactive Figma prototype.",
+            "deliverables_label": "Deliverables: Figma link + design system",
+            "user_time": "Your time: 30-min weekly review + up to 2 change rounds"
+          },
+          {
+            "step": "3",
+            "label": "Development & Construction",
+            "duration": "10-15 days",
+            "description": "Code implementation, staging access from day 1.",
+            "deliverables_label": "Deliverables: Staging URL (updated daily) + GitHub repo",
+            "user_time": "Your time: Weekly review + incremental feedback"
+          },
+          {
+            "step": "4",
+            "label": "Launch & Handoff",
+            "duration": "2-3 days",
+            "description": "Publication, ownership transfer, training.",
+            "deliverables_label": "Deliverables: Live site + documentation + full access",
+            "user_time": "Your time: Final validation + 30 min of training"
+          },
+          {
+            "step": "5",
+            "label": "Continuous Optimization",
+            "duration": "60 days",
+            "description": "Monitoring, A/B testing, data-driven adjustments.",
+            "deliverables_label": "Deliverables: Monthly reports + up to 2 optimization rounds",
+            "user_time": "Your time: 30-min monthly call"
+          }
         ]
       },
-      "fintrack": {
-        "title": "FinTrack",
-        "subtitle": "From confusing dashboard to a tool users love",
-        "challenge": "A financial platform with powerful data but such a cluttered interface that new users got lost and power users wasted time finding features. The result: frustrated users canceling their subscriptions.",
-        "context": "FinTrack serves 2,000+ finance professionals tracking portfolios, crypto, and tax obligations. They needed an interface that makes complex things simple.",
-        "solution": "We redesigned the entire information architecture. Now information appears progressively: the most important things first, details available with a click. Modern charts with Chart.js, dark mode by default, and shortcuts for power users.",
-        "stack": ["TypeScript", "React", "Chart.js", "Tailwind", "Zustand", "React Query"],
-        "process": [
-          {"step": "Discovery", "description": "We analyzed heat maps, interviewed frustrated users, and audited how data flowed"},
-          {"step": "Strategy", "description": "We designed a progressive disclosure system: essentials up top, details on demand"},
-          {"step": "UX Design", "description": "We built a reusable component library and iterated on the dashboard layout"},
-          {"step": "Visual Design", "description": "We defined data visualization standards and a professional dark palette"},
-          {"step": "Build", "description": "We migrated to TypeScript, configured Chart.js, and optimized state management"}
-        ],
-        "results": [
-          {"metric": "-40%", "label": "Fewer support tickets", "context": "Users no longer ask \"how do I do this?\" — the interface is intuitive.", "action": "We reorganized all navigation and added contextual tooltips."},
-          {"metric": "<50ms", "label": "Real-time data", "context": "Numbers update almost instantly.", "action": "We implemented optimistic updates and edge caching."},
-          {"metric": "70%", "label": "Adopted dark mode", "context": "7 out of 10 users activated dark mode in the first week.", "action": "We detect system preference and offer an easy toggle."}
+      "faq": {
+        "title": "Frequently Asked Questions",
+        "items": [
+          {
+            "question": "How much does a project cost?",
+            "answer": "From $20,000 MXN for basic sites up to $120,000+ MXN for custom systems. 70% of clients are in the $35k-$65k range. During the consultation, we'll give you an exact quote."
+          },
+          {
+            "question": "How long does it take?",
+            "answer": "4-6 weeks for standard sites. Custom systems 8-12 weeks. Exact timeline in the proposal."
+          },
+          {
+            "question": "What do I need to have ready?",
+            "answer": "Minimum: Clarity on business objective, brand assets (if you have them), and 1-2 hours per week for feedback. We handle everything else."
+          },
+          {
+            "question": "What happens if I'm not satisfied?",
+            "answer": "Measurable results guarantee. If we don't meet KPIs in 60 days, proportional refund. <link>See full guarantee</link>"
+          },
+          {
+            "question": "Do you work outside of Querétaro?",
+            "answer": "Yes. 100% remote. Video calls, online staging, communication via WhatsApp."
+          }
         ]
-      },
-      "vaultra": {
-        "title": "Vaultra",
-        "subtitle": "Next-Generation Payment Infrastructure",
-        "challenge": "Meeting bank-grade cybersecurity standards without sacrificing development speed. Rapid growth had exposed vulnerabilities, manual security reviews slowed down releases, and the legacy stack failed modern audits.",
-        "context": "Vaultra handles confidential financial data for enterprise clients. Every second of downtime or every vulnerability can mean millions in losses and reputation damage.",
-        "solution": "We built an architecture where every update goes through automated security scans before going live, data never travels without end-to-end encryption, and if someone tries to attack, the system automatically shuts down and alerts the team.",
-        "stack": ["Next.js", "Vercel", "Auth0", "TypeScript"],
-        "process": [
-          {"step": "Audit", "description": "We reviewed all existing security top to bottom, including penetration testing"},
-          {"step": "Architecture", "description": "We designed a system where nobody and nothing has access by default — you have to earn it"},
-          {"step": "Hardening", "description": "We configured strict security headers so the browser rejects any suspicious content"},
-          {"step": "Automation", "description": "We connected tools that scan every line of code before it reaches production"},
-          {"step": "Compliance", "description": "We prepared all documentation so the SOC2 audit is a formality, not a headache"}
-        ],
-        "results": [
-          {"metric": "A+", "label": "Security grade", "context": "Perfect score on Mozilla Observatory.", "action": "We configured strict CSP headers and mandatory HSTS."},
-          {"metric": "Ready", "label": "SOC2 Compliance", "context": "Prepared to pass the compliance audit.", "action": "Automated vulnerability scanning on every deployment."},
-          {"metric": "0s", "label": "Zero downtime", "context": "Updates go live without interrupting service.", "action": "Atomic deployments via Vercel's Edge network."}
-        ],
-        "has_dual_version": true,
-        "business_version": {
-          "approach_title": "APPROACH (Non-Technical Version)",
-          "approach_description": "We built an architecture where:",
-          "approach_points": [
-            "Every update goes through automated security scans before going live",
-            "Data never travels without end-to-end encryption",
-            "If someone tries to attack, the system automatically shuts down and alerts the team",
-            "All code is reviewed by automated tools + humans"
-          ],
-          "outcomes_title": "BUSINESS OUTCOMES",
-          "outcomes": [
-            "Launch 40% faster than traditional method with dedicated servers",
-            "Security certification compliance included (PCI-DSS ready)",
-            "Scalable to millions of users without rewriting code",
-            "Operating costs 60% lower (serverless vs dedicated servers)"
-          ]
-        },
-        "technical_version": {
-          "title": "Technical Details (For CTOs/Developers)",
-          "approach_title": "TECHNICAL APPROACH",
-          "approach_description": "We engineered a Zero-Trust frontend architecture. By implementing automated CI/CD security scanning and migrating to Vercel's Edge network with strict CSP headers, we eliminated the attack surface.",
-          "technical_details": [
-            "Zero-Trust Architecture with strict CSP headers",
-            "CI/CD with automated security scanning (SAST + DAST)",
-            "Vercel Edge Network for global distribution",
-            "Rate limiting + DDoS protection at edge",
-            "Secrets management with Vault/AWS Secrets Manager",
-            "Complete audit logging of all transactions"
-          ],
-          "stack_title": "FULL STACK",
-          "stack_technologies": [
-            "Next.js 14 (App Router)",
-            "TypeScript strict mode",
-            "Vercel Edge Functions",
-            "Tailwind CSS",
-            "React Hook Form + Zod validation",
-            "Supabase (PostgreSQL + Row Level Security)",
-            "Stripe API (PCI-compliant)",
-            "GitHub Actions (CI/CD pipeline)"
-          ],
-          "security_title": "SECURITY MEASURES",
-          "security_measures": [
-            "CSP headers (Content Security Policy)",
-            "HSTS (HTTP Strict Transport Security)",
-            "X-Frame-Options: DENY",
-            "X-Content-Type-Options: nosniff",
-            "Referrer-Policy: strict-origin-when-cross-origin",
-            "Restrictive Permissions-Policy"
-          ]
-        }
       }
+    },
+    "cta": {
+      "title": "Ready to start your project?",
+      "subtitle": "We don sell websites. We sell systems that work for your business 24/7.",
+      "button": "Schedule my free consultation",
+      "after_title": "What happens next:",
+      "after_items": [
+        "Response in <24 hours",
+        "20-30 minute free consultation",
+        "Clear proposal in 48 hours",
+        "No commitment, no fine print"
+      ]
     }
   },
-  "BusinessImpact": {
-    "title": "We don't just write code. We drive results.",
-    "subtitle": "Our systems are engineered to reduce operational costs, increase conversion rates, and provide total data ownership.",
-    "metrics": {
-      "hosting": "Hosting Cost Reduction",
-      "conversion": "Conversion Increase",
-      "ops": "Weekly Ops Savings",
-      "tools": "Data Ownership"
-    }
-  },
+
   "ModernStack": {
     "title": "Enterprise Infrastructure",
     "nextjs": {
@@ -1363,110 +1108,81 @@
   },
   "ContactPage": {
     "hero": {
-      "title": "Let's talk about your project.",
-      "subtitle": "No spam. No aggressive sales calls. Just an honest 20-minute conversation to see if Noctra is the right fit for you.",
+      "title": "Let's talk about your project",
+      "subtitle": "Brutal honesty in a world of agencies that overpromise and underdeliver.",
       "trust_badges": {
         "0": "Free consultation",
         "1": "Response < 24h",
-        "2": "Founder direct"
+        "2": "Direct founder access"
       }
     },
-    "commitment_badge": "Free consultation · 24-hour response · Talk directly with the founder",
-    "pricing_philosophy": {
-      "title": "How We Price",
-      "content": "Fixed prices based on what you need. No hidden fees, no hourly surprises. You know exactly what you're paying before we start."
-    },
-    "process_outline": {
-      "title": "What happens next?",
-      "steps": [
-        {
-          "title": "Free consultation call (20 mins)",
-          "description": "No commitment. No sales pitches. We just learn about your business and see if there's a fit."
-        },
-        {
-          "title": "We send you a clear proposal (48 hours)",
-          "description": "Detailed scope + timeline + guarantees. Fixed price, no surprises later."
-        },
-        {
-          "title": "We build, you review weekly",
-          "description": "Staging access from day 1. Structured feedback every week. We iterate until it's perfect."
-        },
-        {
-          "title": "Launch & handover",
-          "description": "Full codebase + documentation + access credentials. 60 days of optimization included."
-        }
+    "post_submit_info": {
+      "title": "What happens after submitting this form:",
+      "items": [
+        "Response in less than 24 hours",
+        "Free 20-30 minute consultation via video call",
+        "Detailed proposal in 48 hours max (price, scope, timeline)",
+        "No commitment, no pressure, no fine print"
       ]
-    },
-    "banner": {
-      "title": "GUARANTEED FAST RESPONSE",
-      "content": "We'll reply within 24 hours with:",
-      "benefits": [
-        "→ Preliminary project analysis",
-        "→ Estimated investment range",
-        "→ 3 available time slots for a call"
-      ]
-    },
-    "details": {
-      "email_label": "Email",
-      "whatsapp_label": "WHATSAPP",
-      "whatsapp_number": "+52 55 5500 0228",
-      "whatsapp_availability": "Mon-Fri 9AM-6PM CST",
-      "whatsapp_cta": "Direct message →",
-      "whatsapp_note": "We prefer WhatsApp for quick initial consultations (typical response in 2-3 hours). For detailed projects, use the form below.",
-      "location_label": "Location",
-      "location_value": "Querétaro, MX",
-      "time_label": "Local Time"
     },
     "form": {
       "name_label": "Name",
-      "name_placeholder": "Alejandro Vega",
+      "name_placeholder": "Your full name",
       "email_label": "Email",
-      "email_placeholder": "you@yourcompany.com",
-      "website_label": "Website (Optional)",
-      "website_placeholder": "yourcompany.com",
-      "service_label": "What do you need?",
-      "service_placeholder": "Select a service...",
+      "email_placeholder": "you@company.com",
+      "phone_label": "Phone (optional)",
+      "phone_placeholder": "+1 ...",
+      "service_label": "What type of project do you need?",
+      "service_placeholder": "Select an option...",
       "service_options": {
-        "digital_architecture": "Professional Website",
-        "visual_identity": "Visual Identity & Design",
-        "ai_automation": "Custom System / Automation",
-        "growth": "SEO & Growth"
+        "website": "Professional website (clinics, firms, companies)",
+        "ecommerce": "Online store (selling products/services)",
+        "custom_system": "Custom system (CRM, automation, portals)",
+        "optimization": "Existing site optimization (improve speed/conversion)",
+        "not_sure": "I'm not sure - I need advice"
       },
-      "budget_label": "Budget Range",
-      "budget_placeholder": "Select a range...",
+      "budget_label": "What is your approximate budget?",
+      "currency_label": "Currency",
       "budget_options": {
-        "20-35k": "$1-2k USD (Landing page or basic site)",
-        "35-60k": "$2-3.5k USD (Professional site or e-commerce)",
-        "60-120k": "$3.5-7k USD (Full business system)",
-        "120k+": "$7k+ USD (Complex/multi-phase project)",
-        "unsure": "I don't know yet"
+        "mxn": {
+          "20-35k": "$20k - $35k (Landing / Simple site)",
+          "35-50k": "$35k - $50k (Full professional site)",
+          "50-80k": "$50k - $80k (E-commerce / Advanced site)",
+          "80-120k": "$80k - $120k (Custom system)",
+          "120k+": "+$120k (Full platform)",
+          "monthly": "Monthly maintenance ($5k-$10k/mo)",
+          "discuss": "Not sure yet · Let's discuss"
+        },
+        "usd": {
+          "20-35k": "$1k - $1.8k (Landing / Simple site)",
+          "35-50k": "$1.8k - $2.5k (Professional website)",
+          "50-80k": "$2.5k - $4k (E-commerce / Advanced)",
+          "80-120k": "$4k - $6k (Custom system)",
+          "120k+": "+$6k (Full platform)",
+          "monthly": "Monthly retainer ($250-$500/mo)",
+          "discuss": "Not sure yet · Let's discuss"
+        }
       },
-      "budget_descriptions": {
-        "20-35k": "Ideal for: Freelancers, local businesses",
-        "35-60k": "Ideal for: E-commerce, corporate sites, basic automation",
-        "60-120k": "Ideal for: Dashboards, client portals, complex integrations",
-        "120k+": "Ideal for: SaaS platforms, marketplaces, enterprise systems",
-        "unsure": "No problem, we'll help you estimate during the consultation"
+      "source_label": "How did you hear about us?",
+      "source_placeholder": "Select an option...",
+      "source_options": {
+        "google": "Google search",
+        "referral": "Referral by [name]",
+        "linkedin": "LinkedIn",
+        "social": "Facebook/Instagram",
+        "other": "Other"
       },
-      "timeline_label": "When do you need it?",
-      "timeline_placeholder": "Select a timeline...",
+      "timeline_label": "When do you need it ready?",
+      "timeline_placeholder": "Select a timeframe...",
       "timeline_options": {
-        "asap": "As soon as possible",
-        "1_month": "Within a month",
-        "3_months": "3+ months from now"
+        "asap": "As soon as possible (1-2 months)",
+        "3_months": "Within the next 3 months",
+        "6_months": "3-6 months",
+        "future": "It's a future project"
       },
-      "success_criteria_label": "How will you measure success? (Optional)",
-      "details_label": "Tell us about your project",
-      "details_helper": "Help us prepare a specific proposal:",
-      "details_questions": {
-        "0": "→ What problem are you trying to solve?",
-        "1": "→ What have you already tried?",
-        "2": "→ When do you need it ready?",
-        "3": "→ Any specific technical requirements? (optional)"
-      },
-      "details_placeholder": "e.g., My dental clinic loses 30% of appointments to last-minute cancellations. I've tried manual reminders but they don't scale. I need something ready in 2 months for the summer peak season.",
-      "success_criteria_placeholder": "e.g., more leads, faster website, online sales",
-      "submit": "Talk to Manu",
+      "details_label": "Tell me more about your project",
+      "details_placeholder": "Give us a general idea of what you are looking to achieve...",
+      "submit": "Request my free consultation",
       "sending": "Sending..."
     },
     "success": {
@@ -1483,12 +1199,16 @@
         "confirmation": "We've sent a confirmation to your email."
       }
     },
-    "budget": {
-      "identity": "Website / Landing Page",
-      "growth": "E-commerce / Corporate Site",
-      "system": "Custom Software / Web App",
-      "retainer": "Ongoing Maintenance",
-      "unsure": "Not sure yet · Let's discuss"
+    "details": {
+      "email_label": "Email",
+      "whatsapp_label": "WhatsApp & Calls",
+      "whatsapp_number": "+52 ...",
+      "whatsapp_availability": "Mon-Fri, 9am - 7pm",
+      "whatsapp_cta": "Contact via WhatsApp",
+      "whatsapp_note": "Quick response for technical questions or follow-ups.",
+      "location_label": "Location",
+      "location_value": "CDMX / Remote",
+      "time_label": "Timezone"
     },
     "loading": "Loading..."
   },
@@ -1830,7 +1550,7 @@
     "examples": [
       {
         "type": "Professional Website",
-        "kpis": ["Page load < 2 seconds", "3%+ conversion rate", "30-40 qualified leads/month", "Top 10 Google ranking for 5 keywords"]
+        "kpis": ["Page load < 2 seconds", "3%+ conversion rate", "30-40 qualified leads/month", "Appear in Google local searches (Google Business Profile optimized + main keywords)"]
       },
       {
         "type": "E-commerce",
@@ -1841,15 +1561,227 @@
         "kpis": ["15+ hours/week time saved", "99.9% system uptime", "User adoption rate > 80%", "Data processing time reduced 50%"]
       }
     ],
+    "example_real": {
+      "title": "Example: Medical clinic in Querétaro (projected)",
+      "kpis": [
+        "✅ Site loads in <2 seconds",
+        "✅ 30+ appointment requests per month",
+        "✅ Visitor to patient conversion >3%",
+        "📊 Projected ROI: Investment recovery in 4-6 months"
+      ],
+      "result": "Benchmark: These results are projected based on industry cases for the healthcare sector.",
+      "status": "Based on industry benchmarks"
+    },
     "fine_print_title": "The fine print",
     "fine_print": [
       "KPIs must be agreed upon before project start",
       "External factors (your team's response time, content delays) may extend timelines",
       "Refund is proportional to unmet KPIs, not full project cost",
-      "Guarantee applies to deliverables within our control"
+      "Guarantee applies to deliverables within our control",
+      "This guarantee applies to projects from $20,000 MXN.",
+      "$20k-$35k projects: 30-day guarantee",
+      "$35k+ projects: 60-day guarantee"
     ],
     "cta": "Schedule a free consultation",
     "cta_subtitle": "We'll discuss your specific goals and what KPIs make sense for your business."
+  },
+  "LandingPage": {
+    "title": "Strategic Landing Page",
+    "subtitle": "Your first digital step. Focused, fast, effective.",
+    "price": "$20,000 MXN",
+    "for_who_title": "Is this for you?",
+    "for_who": [
+      "You need digital presence NOW but have a tight budget",
+      "You offer a specific service/product and want to generate leads",
+      "You want to validate demand before investing in a full site",
+      "You need a destination page for Facebook/Google Ads campaigns"
+    ],
+    "deliverables_title": "Exactly what you get",
+    "deliverables": [
+      {
+        "title": "1-3 ultra-focused pages",
+        "description": "We don't ramble. Every word has a purpose: communication of your offer and lead capture."
+      },
+      {
+        "title": "Mobile-first design",
+        "description": "70% of your traffic will be mobile. We design for that first, desktop later."
+      },
+      {
+        "title": "Loads in <1.5 seconds",
+        "description": "Fast landing pages convert 2x better. We guarantee speed from day 1."
+      },
+      {
+        "title": "Conversion-optimized form",
+        "description": "Not just \"name and email\". Smart fields that qualify before contacting you."
+      },
+      {
+        "title": "Basic Analytics configured",
+        "description": "Google Analytics + Facebook Pixel (if running ads). Know what works from day 1."
+      },
+      {
+        "title": "Basic on-page SEO",
+        "description": "Meta tags, semantic structure, sitemap. No advanced positioning, but solid foundations."
+      },
+      {
+        "title": "Hosting + domain included",
+        "description": "No hidden costs. Your landing live on your domain, SSL included (1st year)."
+      }
+    ],
+    "investment_title": "Investment",
+    "investment_price": "$20,000 MXN (all included)",
+    "includes_title": "Includes",
+    "includes": [
+      "1-3 focused pages",
+      "Custom responsive design",
+      "Capture form",
+      "Hosting + domain 1st year",
+      "Basic SEO",
+      "30 days of support"
+    ],
+    "not_includes_title": "NOT included (but you can add)",
+    "not_includes": [
+      { "name": "Dynamic blog", "price": "+$12,000 MXN" },
+      { "name": "A/B testing", "price": "+$8,000 MXN" },
+      { "name": "CRM Integration (HubSpot/Salesforce)", "price": "+$10,000 MXN" },
+      { "name": "Professional copy", "price": "+$6,000 MXN" }
+    ],
+    "payment_title": "Payment methods",
+    "payment_terms": "50% to start, 50% upon launch",
+    "timeline_title": "Timeline",
+    "timeline": "2-3 weeks from kickoff to launch",
+    "use_cases_title": "Ideal use cases",
+    "use_cases": [
+      "Medical clinic offering a specific treatment",
+      "Lawyer specialized in divorce/migration/fiscal",
+      "Mechanic shop wanting to generate online appointments",
+      "Coach/consultant launching a course or masterclass",
+      "Unique event needing a registration page"
+    ],
+    "upgrade_title": "Upgrade path",
+    "upgrade_path": "Many clients start with a $20k landing to validate demand. When proven, we upgrade to a full 5-page site ($35k) reusing initial work. You don't pay twice."
+  },
+  "ServiceDetails": {
+    "professional_websites": {
+      "title": "Professional Websites",
+      "subtitle": "Your top salesperson working 24/7 to attract and close clients.",
+      "price": "From $35,000 MXN",
+      "landing_page_note": "Looking for something simpler and more affordable? Check out our <link>Strategic Landing Page</link> starting at $20,000 MXN",
+      "for_who": [
+        "Medical clinics needing 24/7 appointment scheduling",
+        "Accounting or legal firms looking for qualified leads",
+        "B2B service companies requiring a premium presence",
+        "Schools or institutions needing to communicate their value clearly"
+      ],
+      "what_includes": [
+        "5 strategic pages designed for conversion",
+        "Technical SEO optimized for local searches",
+        "Smart forms integrated with your CRM or email",
+        "Simple analytics dashboard to measure results",
+        "60 days of total post-launch technical support"
+      ],
+      "investment": {
+        "title": "Transparent Investment",
+        "price": "From $35,000 MXN",
+        "includes": "Full site, optimization, support, and code ownership.",
+        "not_includes": "Hosting cost (Vercel) or third-party domains.",
+        "modules": [
+          { "name": "Dynamic Blog / News section", "price": "+$10,000 MXN" },
+          { "name": "Multi-language system", "price": "+$15,000 MXN" }
+        ]
+      }
+    },
+    "ecommerce": {
+      "title": "Online Stores",
+      "subtitle": "Turn visits into sales with a frictionless shopping experience.",
+      "price": "From $50,000 MXN",
+      "for_who": [
+        "Businesses selling physical products looking to scale",
+        "Workshops needing an automated sales system",
+        "Local brands seeking national reach",
+        "Entrepreneurs needing a robust and scalable platform"
+      ],
+      "what_includes": [
+        "Optimized and easy-to-manage product catalog",
+        "Cart and checkout process in 3 clicks",
+        "Integration with major payment gateways",
+        "Inventory management and automatic notifications",
+        "Sales dashboard to view real-time metrics"
+      ],
+      "investment": {
+        "title": "Transparent Investment",
+        "price": "From $50,000 MXN",
+        "includes": "Sales platform, configured payments, and training.",
+        "not_includes": "Transaction fees from payment gateways.",
+        "modules": [
+          { "name": "Accounting system integration", "price": "+$12,000 MXN" },
+          { "name": "Coupons and automated marketing", "price": "+$8,000 MXN" }
+        ]
+      }
+    },
+    "custom_systems": {
+      "title": "Custom Systems & Automation",
+      "subtitle": "Free up your time by automating the manual processes holding you back.",
+      "price": "Based on scope - from $80,000 MXN",
+      "for_who": [
+        "Businesses with repetitive manual processes in Excel",
+        "Companies using generic CRMs that don't fit them",
+        "Teams needing dashboards with real-time data",
+        "Operations looking to reduce human error through software"
+      ],
+      "what_includes": [
+        "Software architecture designed for your workflow",
+        "Automation of repetitive tasks and emails",
+        "Integration with the tools you already use",
+        "Custom dashboards with business KPIs",
+        "Full scalability as your operation grows"
+      ],
+      "investment": {
+        "title": "Transparent Investment",
+        "price": "From $80,000 MXN",
+        "includes": "Process analysis, custom development, and deployment.",
+        "not_includes": "Third-party licenses if required.",
+        "modules": [
+          { "name": "Native mobile app", "price": "Extra quote" },
+          { "name": "AI module for data analysis", "price": "Extra quote" }
+        ]
+      }
+    },
+    "optimization": {
+      "title": "Existing Site Optimization",
+      "subtitle": "Don't throw away your current site, make it work as it should.",
+      "price": "From $15,000 MXN",
+      "for_who": [
+        "Websites that load slowly and scare away customers",
+        "Businesses with traffic but not enough leads",
+        "Companies with sites that look bad on mobile devices",
+        "Brands wanting to improve their Google positioning"
+      ],
+      "what_includes": [
+        "Deep technical performance and conversion audit",
+        "Speed optimization (W3C and Core Web Vitals)",
+        "UX improvements to increase contact rate",
+        "On-Page SEO and local search optimization",
+        "Code cleanup and removal of slow dependencies"
+      ],
+      "investment": {
+        "title": "Transparent Investment",
+        "price": "From $15,000 MXN",
+        "includes": "Audit, execution of improvements, and results report.",
+        "not_includes": "Full redesign of sections (unless necessary).",
+        "modules": [
+          { "name": "Monthly content strategy", "price": "+$12,000 MXN/month" },
+          { "name": "Advanced A/B testing", "price": "+$8,000 MXN" }
+        ]
+      }
+    },
+    "common": {
+      "process": "Our Process",
+      "guarantee_title": "60-Day Guarantee",
+      "guarantee_desc": "If we don't meet the agreed KPIs in the first 60 days post-launch, you receive a proportional refund.",
+      "guarantee_link": "See guarantee details",
+      "cta_title": "Ready to start your project?",
+      "cta_button": "Request proposal"
+    }
   },
   "TechnologyPage": {
     "title": "Why Next.js (Explained Without Jargon)",

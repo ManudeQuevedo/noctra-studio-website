@@ -40,7 +40,27 @@ export const routing = defineRouting({
       en: '/first-clients',
       es: '/primeros-clientes'
     },
-    "/careers": { en: "/careers", es: "/talento" }
+    "/careers": { en: "/careers", es: "/talento" },
+    '/services/landing-page': {
+      en: '/services/landing-page',
+      es: '/servicios/landing-page'
+    },
+    '/services/professional-websites': {
+      en: '/services/professional-websites',
+      es: '/servicios/sitios-web-profesionales'
+    },
+    '/services/ecommerce': {
+      en: '/services/ecommerce',
+      es: '/servicios/tiendas-en-linea'
+    },
+    '/services/custom-systems': {
+      en: '/services/custom-systems',
+      es: '/servicios/sistemas-a-medida'
+    },
+    '/services/optimization': {
+      en: '/services/optimization',
+      es: '/servicios/optimizacion'
+    }
   }
 });
  

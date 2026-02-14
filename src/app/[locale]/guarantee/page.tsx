@@ -127,6 +127,49 @@ export default function GuaranteePage() {
         </div>
       </section>
 
+      {/* Real Example */}
+      <section className="py-24 px-6 md:px-8 border-b border-neutral-800 relative z-10">
+        <div className="max-w-4xl mx-auto">
+          <FadeIn>
+            <div className="p-8 md:p-12 rounded-3xl border border-emerald-500/20 bg-emerald-500/[0.02] relative overflow-hidden group">
+              <div className="absolute top-0 right-0 p-8 opacity-10 group-hover:opacity-20 transition-opacity">
+                <Target className="w-32 h-32 text-emerald-500" />
+              </div>
+              
+              <div className="relative z-10">
+                <h3 className="text-2xl md:text-3xl font-bold mb-8">
+                  {t("example_real.title")}
+                </h3>
+                
+                <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
+                  <div className="space-y-6">
+                    <ul className="space-y-4">
+                      {(t.raw("example_real.kpis") as string[]).map((kpi, i) => (
+                        <li key={i} className="flex items-center gap-3 text-lg text-emerald-50/90">
+                          <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
+                            <div className="w-1.5 h-1.5 rounded-full bg-emerald-400" />
+                          </div>
+                          {kpi}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                  
+                  <div className="flex flex-col justify-center space-y-4 border-t md:border-t-0 md:border-l border-emerald-500/10 pt-8 md:pt-0 md:pl-12">
+                    <p className="text-xl font-bold text-white">
+                      {t("example_real.result")}
+                    </p>
+                    <span className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-neutral-400 uppercase tracking-widest w-fit">
+                      {t("example_real.status")}
+                    </span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
+
       {/* Fine Print */}
       <section className="py-24 px-6 md:px-8 border-b border-neutral-800 relative z-10">
         <div className="max-w-3xl mx-auto">
@@ -135,12 +178,12 @@ export default function GuaranteePage() {
               {t("fine_print_title")}
             </h2>
             <ul className="space-y-4">
-              {[0, 1, 2, 3].map((i) => (
+              {(t.raw("fine_print") as string[]).map((text, i) => (
                 <li key={i} className="flex items-start gap-3 text-neutral-400">
                   <span className="text-neutral-600 font-mono text-xs mt-1">
                     {i + 1}.
                   </span>
-                  {t(`fine_print.${i}`)}
+                  {text}
                 </li>
               ))}
             </ul>

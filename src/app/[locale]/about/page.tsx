@@ -2,10 +2,19 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-
-import { BrandAnatomy } from "@/components/about/BrandAnatomy";
-import { TechStack } from "@/components/tech-stack";
-import { ImpactSection } from "@/components/about/ImpactSection";
+import { Link } from "@/i18n/routing";
+import { 
+  ArrowRight, 
+  CheckCircle2, 
+  Zap, 
+  Code, 
+  Phone, 
+  DollarSign, 
+  LineChart,
+  Target,
+  Users,
+  MessageSquare
+} from "lucide-react";
 import NextImage from "next/image";
 
 const FadeIn = ({
@@ -24,47 +33,39 @@ const FadeIn = ({
   </motion.div>
 );
 
-/**
- * AboutPage
- * Purpose: Tells the story of Noctra Studio, its founder, and its methodology.
- * Key Features:
- * - Founder's Note with signature
- * - Brand Anatomy (interactive breakdown)
- * - Tech Stack grid
- * - Methodology (Sticky scroll layout)
- * - Impact/Ecosystem section
- */
 export default function AboutPage() {
   const t = useTranslations("AboutPage");
 
+  const historyIcons = [Code, Phone, DollarSign, LineChart];
+
   return (
-    <main className="min-h-screen bg-transparent text-neutral-900 dark:text-neutral-50 selection:bg-black selection:text-white dark:selection:bg-white dark:selection:text-black relative">
+    <main className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black relative">
       {/* 1. Hero Section */}
-      <section className="min-h-[80vh] flex flex-col justify-center px-6 md:px-8 pt-32 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
-        <div className="max-w-7xl mx-auto w-full">
+      <section className="pt-32 pb-16 px-6 md:px-8 border-b border-neutral-900 relative z-10">
+        <div className="max-w-7xl mx-auto w-full text-center md:text-left">
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-neutral-900 dark:text-neutral-50 text-balance">
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white text-balance">
             {t("hero.title")}
           </motion.h1>
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-xl md:text-2xl text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed text-balance">
+            className="text-xl md:text-2xl text-neutral-400 max-w-3xl leading-relaxed text-balance">
             {t("hero.subtitle")}
           </motion.p>
         </div>
       </section>
 
-      {/* 2. The Founder's Note */}
-      <section className="py-24 md:py-32 px-6 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-center">
-          {/* Image Placeholder - Asymmetric Layout */}
+      {/* 2. Sección: La historia real */}
+      <section className="py-24 md:py-32 px-6 md:px-8 border-b border-neutral-900 relative z-10">
+        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-2 gap-16 items-start">
+          {/* Legend/Founder Image Area */}
           <FadeIn>
-            <div className="relative aspect-[3/4] md:aspect-square bg-neutral-100 dark:bg-neutral-900 rounded-sm overflow-hidden group grayscale">
+            <div className="relative aspect-[3/4] bg-neutral-900 rounded-2xl overflow-hidden group grayscale hover:grayscale-0 transition-all duration-500">
               <NextImage
                 src="/images/founder.jpg"
                 alt="Manu, Founder of Noctra Studio"
@@ -72,14 +73,12 @@ export default function AboutPage() {
                 className="object-cover transition-transform duration-700 group-hover:scale-105"
                 sizes="(max-width: 768px) 100vw, 50vw"
               />
-              <div className="absolute inset-0 bg-gradient-to-br from-neutral-200/20 to-neutral-100/20 opacity-50 group-hover:opacity-0 transition-opacity duration-500" />
-              {/* Noise Texture */}
-              <div className="absolute inset-0 opacity-20 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat bg-[length:100px_100px] mix-blend-multiply" />
-              <div className="absolute bottom-6 left-6">
-                <div className="flex items-baseline gap-3 text-white drop-shadow-md">
-                  <span className="text-2xl font-bold">Manu,</span>
-                  <span className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
-                    Founder
+              <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
+              <div className="absolute bottom-10 left-10">
+                <div className="flex flex-col gap-2 text-white">
+                  <span className="text-4xl font-bold">Manu</span>
+                  <span className="text-sm font-mono text-neutral-400 uppercase tracking-widest">
+                    Founder @ Noctra Studio
                   </span>
                 </div>
               </div>
@@ -87,98 +86,111 @@ export default function AboutPage() {
           </FadeIn>
 
           {/* Text Content */}
-          <div className="flex flex-col gap-8">
+          <div className="flex flex-col gap-12">
             <FadeIn delay={0.2}>
-              <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-neutral-50 text-balance">
-                {t("founder_note.title")}
+              <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-8">
+                {t("history.title")}
               </h2>
-              <div className="space-y-6 text-lg text-neutral-600 dark:text-neutral-400 leading-relaxed max-w-2xl text-balance">
-                <p>{t("founder_note.content_1")}</p>
-                <p>{t("founder_note.content_2")}</p>
-              </div>
-              <div className="mt-12">
-                {/* Digital Signature Image */}
-                <NextImage
-                  src="/images/signature.png"
-                  alt="Signature"
-                  width={160}
-                  height={64}
-                  className="dark:invert opacity-80 w-32 md:w-40 mt-8"
-                />
+              <div className="space-y-8 text-lg text-neutral-400 leading-relaxed">
+                <p className="text-xl text-white font-medium">
+                  {t("history.intro")}
+                </p>
+                <div className="pt-8 space-y-8">
+                  <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
+                    {t("history.approach_title")}
+                  </h3>
+                  <div className="grid grid-cols-1 gap-8">
+                    {(t.raw("history.items") as any[]).map((item, i) => {
+                      const Icon = historyIcons[i] || CheckCircle2;
+                      return (
+                        <div key={i} className="flex gap-6">
+                          <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
+                            <Icon className="w-6 h-6 text-white" />
+                          </div>
+                          <div className="space-y-2">
+                            <h4 className="text-lg font-bold text-white">{item.title}</h4>
+                            <p className="text-neutral-400">{item.desc}</p>
+                          </div>
+                        </div>
+                      );
+                    })}
+                  </div>
+                </div>
               </div>
             </FadeIn>
           </div>
         </div>
       </section>
 
-      {/* 2.5. Team Narrative */}
-      <section className="py-24 px-6 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10 bg-neutral-50 dark:bg-neutral-900/50">
-        <div className="max-w-3xl mx-auto text-center">
+      {/* 3. Sección: Cómo trabajo */}
+      <section className="py-24 md:py-32 px-6 md:px-8 bg-white/[0.01] border-b border-neutral-900 relative z-10">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
-            <h2 className="text-3xl md:text-4xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-neutral-50">
-              {t("team_narrative.title")}
-            </h2>
-            <p className="text-lg md:text-xl text-neutral-600 dark:text-neutral-400 leading-relaxed text-balance">
-              {t("team_narrative.content")}
+            <div className="max-w-3xl mb-16">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6">
+                {t("team.title")}
+              </h2>
+              <p className="text-xl text-neutral-400">
+                {t("team.intro")}
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+            {(t.raw("team.items") as any[]).map((item, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div className="p-8 border border-neutral-800 rounded-2xl bg-black hover:border-white/20 transition-all duration-300 h-full">
+                  <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
+                    <div className="w-2 h-2 rounded-full bg-blue-500" />
+                    {item.title}
+                  </h3>
+                  <p className="text-neutral-400 leading-relaxed text-sm">
+                    {item.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+          
+          <FadeIn delay={0.4}>
+            <p className="mt-12 text-sm font-mono text-neutral-500 text-center italic">
+              {t("team.footer")}
             </p>
           </FadeIn>
         </div>
       </section>
 
-      {/* 3. Brand Anatomy */}
-      <BrandAnatomy />
-
-      {/* 3. The Tech Engine (Spec Sheet) */}
-      <section className="py-24 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50/30 dark:bg-neutral-900/30 relative z-10">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
+      {/* 4. Sección: Mi stack tecnológico */}
+      <section className="py-24 md:py-32 px-6 md:px-8 border-b border-neutral-900 relative z-10">
+        <div className="max-w-7xl mx-auto">
           <FadeIn>
-            <div className="mb-12">
-              <h2 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
-                {t("tech_radar.title")}
-              </h2>
-              <p className="text-neutral-600 dark:text-neutral-400 mt-4 text-lg">
-                {t("tech_radar.intro")}
-              </p>
-            </div>
-            <TechStack />
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-16 text-center">
+              {t("tech.title")}
+            </h2>
           </FadeIn>
-        </div>
-      </section>
 
-      {/* 4. The Methodology (Sticky Layout) */}
-      <section className="py-24 md:py-32 px-6 md:px-8 border-b border-neutral-200 dark:border-neutral-800 relative z-10">
-        <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24">
-          {/* Left Column - Sticky */}
-          <div className="md:col-span-4 relative">
-            <div className="md:sticky md:top-48">
-              <FadeIn>
-                <h2 className="text-4xl md:text-5xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-neutral-50 text-balance">
-                  {t("process.title")}
-                </h2>
-                <p className="text-neutral-600 dark:text-neutral-400 text-lg leading-relaxed text-balance">
-                  {t("process.description")}
-                </p>
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+            {(t.raw("tech.items") as any[]).map((item, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div className="p-8 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-4">
+                  <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
+                    STAKED
+                  </div>
+                  <h3 className="text-lg font-bold text-white">{item.label}</h3>
+                  <p className="text-sm text-neutral-400 leading-relaxed">
+                    {item.reason}
+                  </p>
+                </div>
               </FadeIn>
-            </div>
+            ))}
           </div>
 
-          {/* Right Column - Scrolling Steps */}
-          <div className="md:col-span-8 flex flex-col gap-24">
-            {[0, 1, 2, 3].map((index) => (
-              <FadeIn key={index} delay={index * 0.1}>
-                <div className="group border-l border-neutral-200 dark:border-neutral-800 pl-8 py-2 transition-colors hover:border-neutral-900/50 dark:hover:border-neutral-100/50">
-                  <div className="text-sm font-mono text-neutral-400 dark:text-neutral-500 mb-4 group-hover:text-neutral-900 dark:group-hover:text-neutral-50 transition-colors">
-                    0{index + 1}
-                  </div>
-                  <h3 className="text-2xl font-bold mb-4 text-neutral-900 dark:text-neutral-50 group-hover:text-neutral-600 dark:group-hover:text-neutral-300 transition-colors text-balance">
-                    {t(`process.steps.${index}.title`)}
-                  </h3>
-                  <p className="text-neutral-600 dark:text-neutral-400 leading-loose text-lg max-w-xl mb-6 text-balance">
-                    {t(`process.steps.${index}.desc`)}
-                  </p>
-                  <div className="inline-block border border-neutral-200 dark:border-neutral-800 rounded-md px-3 py-1 text-xs font-mono text-neutral-500 dark:text-neutral-400 bg-neutral-50 dark:bg-neutral-900">
-                    {t(`process.steps.${index}.checkpoint`)}
-                  </div>
+          <div className="flex flex-wrap justify-center gap-6">
+            {(t.raw("tech.summary_labels") as string[]).map((label, i) => (
+              <FadeIn key={i} delay={0.5 + i * 0.1}>
+                <div className="flex items-center gap-2 text-neutral-500 text-xs font-mono uppercase tracking-[0.2em]">
+                  <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                  {label}
                 </div>
               </FadeIn>
             ))}
@@ -186,8 +198,61 @@ export default function AboutPage() {
         </div>
       </section>
 
-      {/* 5. The Noctra Ecosystem */}
-      <ImpactSection />
+      {/* 5. Sección: Por qué confiar */}
+      <section className="py-24 md:py-32 px-6 md:px-8 bg-white/[0.01] border-b border-neutral-900 relative z-10">
+        <div className="max-w-6xl mx-auto">
+          <FadeIn>
+            <div className="text-center mb-16 space-y-4">
+              <h2 className="text-4xl md:text-5xl font-bold tracking-tight">
+                {t("trust.title")}
+              </h2>
+              <p className="text-xl text-neutral-400 max-w-2xl mx-auto italic">
+                {t("trust.subtitle")}
+              </p>
+            </div>
+          </FadeIn>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+            {(t.raw("trust.items") as any[]).map((item, i) => (
+              <FadeIn key={i} delay={i * 0.1}>
+                <div className="p-10 rounded-2xl border border-neutral-800 bg-black hover:bg-neutral-900/50 transition-colors group">
+                  <div className="inline-flex items-center justify-center w-8 h-8 rounded-full bg-emerald-500/10 text-emerald-500 font-mono text-sm mb-6">
+                    ✓
+                  </div>
+                  <h3 className="text-2xl font-bold mb-4 text-white group-hover:translate-x-1 transition-transform">{item.title}</h3>
+                  <p className="text-neutral-400 leading-relaxed">
+                    {item.desc}
+                  </p>
+                </div>
+              </FadeIn>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* 6. CTA Final */}
+      <section className="py-32 md:py-48 px-6 md:px-8 text-center relative z-10">
+        <div className="max-w-4xl mx-auto space-y-12">
+          <FadeIn>
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tighter text-white">
+              {t("cta.title")}
+            </h2>
+          </FadeIn>
+          <FadeIn delay={0.2}>
+            <div className="flex flex-col items-center gap-8">
+              <Link
+                href="/contact"
+                className="inline-flex items-center gap-3 bg-white text-black px-10 py-5 rounded-full text-2xl font-bold hover:scale-105 transition-transform group shadow-2xl shadow-white/10">
+                {t("cta.button")}
+                <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
+              </Link>
+              <p className="text-neutral-500 font-mono text-sm uppercase tracking-widest">
+                {t("cta.footer")}
+              </p>
+            </div>
+          </FadeIn>
+        </div>
+      </section>
     </main>
   );
 }
