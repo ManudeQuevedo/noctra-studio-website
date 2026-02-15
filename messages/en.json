@@ -1029,10 +1029,15 @@
               "Mobile-optimized site (80% of traffic)",
               "Speed <1.5 seconds"
             ],
+            "timeline_data": {
+              "current_phase": 3,
+              "phases": ["Discovery", "Design", "Development", "Launch"],
+              "status_text": "Currently in Development • Expected launch: March 2025"
+            },
             "objective": "Target: 15+ qualified quotes/month (>$50k MXN)",
             "status": "Project launching March 2025",
-            "next_milestone": "Tracking begins post-launch",
-            "timeline": "Launching Q1 2025",
+            "next_milestone": "Final performance audit",
+            "timeline": "Launching March 2025",
             "stack": "Next.js + Sanity CMS + Vercel",
             "mockup_badge": "In Development"
           },
@@ -1047,90 +1052,141 @@
               "Private portal with segmented access",
               "Administrative dashboard"
             ],
+            "timeline_data": {
+              "current_phase": 2,
+              "phases": ["Discovery", "Design", "Development", "Launch"],
+              "status_text": "Currently in Design phase • Expected launch: April 2025"
+            },
             "objective": "Target: Robust presence & autonomous management",
             "status": "Phase 2 of 4 complete",
             "next_milestone": "Client portal integration",
-            "timeline": "In development - Q1 2025",
+            "timeline": "Launching April 2025",
             "stack": "Next.js + Supabase + Authentication",
             "mockup_badge": "In Development"
+          },
+          "valtru": {
+            "name": "Valtru Interiorismo",
+            "type": "Interior Design Studio · Querétaro",
+            "challenge": "A studio looking to institutionalize their digital presence and attract premium residential projects through an immersive visual experience.",
+            "solution": "High-impact visual portfolio, project storytelling engine, and lead generation focused on architectural firms.",
+            "deliverables": [
+              "Immersive project views",
+              "Storytelling-focused CMS",
+              "Premium brand integration",
+              "Performance optimization"
+            ],
+            "timeline_data": {
+              "current_phase": 0,
+              "phases": ["Discovery", "Design", "Development", "Launch"],
+              "status_text": "Contract signing in March • Project starts Q2 2025"
+            },
+            "objective": "Target: High-end residential leads",
+            "status": "Starting soon",
+            "next_milestone": "Kickoff meeting",
+            "timeline": "Starting Q2 2025",
+            "stack": "Next.js + Sanity CMS",
+            "mockup_badge": "Starting Soon",
+            "is_future": true
           }
         }
       },
       "industries": {
         "title": "Industries we're building for",
+        "subtitle": "From custom manufacturing to corporate groups, we create systems that work for your business",
         "items": [
           {
-            "name": "Custom Manufacturing",
-            "description": "Premium workshops, furniture, and unique components.",
-            "status": "Active project",
-            "icon": "factory"
+            "name": "Custom Manufacturing & Craftsmen",
+            "benefit": "Portfolios that qualify leads, not just showcase work",
+            "example": "Like Woodax Design",
+            "status": "Active Project",
+            "status_type": "active",
+            "icon": "hammer"
           },
           {
-            "name": "Corporate Groups",
-            "description": "Multi-company presence and centralized portals.",
-            "status": "Active project",
+            "name": "Corporate Groups & Holdings",
+            "benefit": "Centralized web presence without losing individual brand identity",
+            "example": "Like Dyma Group",
+            "status": "Active Project",
+            "status_type": "active",
             "icon": "building_2"
           },
           {
             "name": "Professional Services",
-            "description": "Lawyers, clinics, and consultants looking for ROI.",
-            "status": "Accepting clients",
+            "benefit": "Automated client intake and qualification systems",
+            "example": "Law firms, consultancies, accountants",
+            "status": "Accepting Clients",
+            "status_type": "accepting",
             "icon": "briefcase"
           },
           {
-            "name": "Local Retail",
-            "description": "Physical stores expanding to digital e-commerce.",
-            "status": "Accepting clients",
-            "icon": "shopping_cart"
+            "name": "Local Retail & Commerce",
+            "benefit": "E-commerce that converts browsers into repeat customers",
+            "status": "Accepting Clients",
+            "status_type": "accepting",
+            "icon": "shopping_bag"
           },
           {
-            "name": "Healthcare & Clinics",
-            "description": "Specialized appointment systems and patient info.",
-            "status": "Accepting clients",
+            "name": "Healthcare & Medical",
+            "benefit": "Appointment systems that reduce no-shows by 60%",
+            "status": "Accepting Clients",
+            "status_type": "accepting",
             "icon": "stethoscope"
           },
           {
             "name": "Hospitality & Tourism",
-            "description": "Booking systems and immersive local experiences.",
-            "status": "Accepting clients",
-            "icon": "plane"
+            "benefit": "Booking systems integrated with your operations",
+            "status": "Accepting Clients",
+            "status_type": "accepting",
+            "icon": "map_pin"
           }
         ]
       },
+      "conversion_cta": {
+        "title": "Ready to be our next success story?",
+        "subtitle": "We're accepting 3 new projects this month. Limited spots to ensure quality.",
+        "availability": "2 of 3 spots remaining this month",
+        "trust_badge": "No commitment • No aggressive pitch • No surprises",
+        "left_title": "Why Act Now",
+        "right_title": "What Happens Next",
+        "left_items": [
+          "25% early adopter discount (first 5 clients)",
+          "Priority support for 12 months",
+          "Featured in our portfolio (optional)",
+          "Direct founder access throughout project"
+        ],
+        "right_items": [
+          "Free 30-min discovery call (no pitch, just strategy)",
+          "Custom proposal in 48 hours",
+          "Live staging access from day 1",
+          "Launch in 3-5 weeks"
+        ],
+        "primary_button": "Schedule Free Discovery Call",
+        "secondary_button": "See Our Process First →"
+      },
       "comparison": {
-        "title": "Transparency: Our Value vs Others",
-        "description": "Why the $20k-$35k investment pays for itself in just 12 months.",
-        "headers": {
-          "feature": "Strategy & Technology",
-          "others": "What others charge extra for",
-          "noctra": "Included in every Noctra project"
-        },
-        "rows": [
-          {
-            "feature": "Own code (no WordPress)",
-            "others": "$2k-5k annual maintenance",
-            "noctra": "Complete ownership from day 1"
-          },
-          {
-            "feature": "Technical SEO optimization",
-            "others": "$500-1500/month SEO retainer",
-            "noctra": "High-performance base included"
-          },
-          {
-            "feature": "60 days support",
-            "others": "End support at delivery",
-            "noctra": "Post-launch metrics tracking"
-          },
-          {
-            "feature": "Mobile optimization",
-            "others": "Responsive is \"extra\"",
-            "noctra": "Mobile-first approach (80%+ traffic)"
-          },
-          {
-            "feature": "Speed <1.5 seconds",
-            "others": "\"We'll optimize if you pay more\"",
-            "noctra": "Zero technical debt"
-          }
+        "title": "What's included in EVERY project (vs what competitors charge extra)",
+        "description": "We don't believe in charging for essentials. Our projects are delivered complete, optimized, and ready to scale.",
+        "left_title": "What's Included (No Extra Cost)",
+        "right_title": "What Others Charge Extra For",
+        "left_items": [
+          "Own code that belongs to you (no WordPress)",
+          "Technical SEO optimization included",
+          "60 days of post-launch support",
+          "Speed optimization (<1.5 seconds)",
+          "Mobile-first responsive design",
+          "Analytics & tracking configured",
+          "Security best practices built-in",
+          "Complete documentation + video walkthrough"
+        ],
+        "right_items": [
+          "WordPress maintenance: $2k-5k/year",
+          "SEO retainer: $500-1500/month",
+          "Support ends at delivery",
+          "\"We'll optimize if you pay more\"",
+          "Responsive design is \"premium feature\"",
+          "Analytics setup: $300-800",
+          "Security hardening: $500-1200",
+          "Documentation: Not provided"
         ]
       },
       "included": {
@@ -1206,6 +1262,7 @@
           {
             "step": "1",
             "label": "Discovery & Diagnosis",
+            "weeks": "Week 1",
             "duration": "3-5 days",
             "description": "Competitor analysis, audience definition, project roadmap.",
             "deliverables_label": "Deliverables: Strategic document + sitemap + timeline",
@@ -1214,6 +1271,7 @@
           {
             "step": "2",
             "label": "Design & Prototyping",
+            "weeks": "Weeks 2-3",
             "duration": "7-10 days",
             "description": "Wireframes, visual design, interactive Figma prototype.",
             "deliverables_label": "Deliverables: Figma link + design system",
@@ -1222,6 +1280,7 @@
           {
             "step": "3",
             "label": "Development & Construction",
+            "weeks": "Weeks 3-5",
             "duration": "10-15 days",
             "description": "Code implementation, staging access from day 1.",
             "deliverables_label": "Deliverables: Staging URL (updated daily) + GitHub repo",
@@ -1230,6 +1289,7 @@
           {
             "step": "4",
             "label": "Launch & Handoff",
+            "weeks": "Week 6",
             "duration": "2-3 days",
             "description": "Publication, ownership transfer, training.",
             "deliverables_label": "Deliverables: Live site + documentation + full access",
@@ -1238,6 +1298,7 @@
           {
             "step": "5",
             "label": "Continuous Optimization",
+            "weeks": "Months 2-3",
             "duration": "60 days",
             "description": "Monitoring, A/B testing, data-driven adjustments.",
             "deliverables_label": "Deliverables: Monthly reports + up to 2 optimization rounds",
@@ -1249,24 +1310,40 @@
         "title": "Frequently Asked Questions",
         "items": [
           {
+            "category": "Investment",
+            "icon": "dollar",
             "question": "How much does a project cost?",
             "answer": "From $20,000 MXN for basic sites up to $120,000+ MXN for custom systems. 70% of clients are in the $35k-$65k range. During the consultation, we'll give you an exact quote."
           },
           {
+            "category": "Timeline",
+            "icon": "clock",
             "question": "How long does it take?",
             "answer": "4-6 weeks for standard sites. Custom systems 8-12 weeks. Exact timeline in the proposal."
           },
           {
+            "category": "Preparation",
+            "icon": "checklist",
             "question": "What do I need to have ready?",
             "answer": "Minimum: Clarity on business objective, brand assets (if you have them), and 1-2 hours per week for feedback. We handle everything else."
           },
           {
+            "category": "Guarantee",
+            "icon": "shield_check",
             "question": "What happens if I'm not satisfied?",
             "answer": "Measurable results guarantee. If we don't meet KPIs in 60 days, proportional refund. <link>See full guarantee</link>"
           },
           {
+            "category": "Logistics",
+            "icon": "globe",
             "question": "Do you work outside of Querétaro?",
             "answer": "Yes. 100% remote. Video calls, online staging, communication via WhatsApp."
+          },
+          {
+            "category": "Portfolio",
+            "icon": "rotate",
+            "question": "Can I see examples of your work?",
+            "answer": "Absolutely. We have 2 projects currently in development (Woodax Design and Dyma Group, shown above). Full case studies with metrics will be available when these projects launch in Q1 2025. Want to be next? Schedule a call to see detailed previews."
           }
         ]
       }
