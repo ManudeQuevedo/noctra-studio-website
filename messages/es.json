@@ -270,7 +270,7 @@
     "index": "Inicio",
     "studio": "Nosotros",
     "capabilities": "Servicios",
-    "deployments": "Portafolio",
+    "deployments": "Nuestro Trabajo",
     "initiate": "Contacto",
     "system_capabilities": "Nuestros Servicios",
     "all_systems_operational": "Todos los Sistemas Operativos",
@@ -1027,9 +1027,12 @@
               "Sitio optimizado para móvil (80% de tráfico)",
               "Velocidad <1.5 segundos"
             ],
-            "objective": "Objetivo: 15+ cotizaciones calificadas mensuales (proyectos >$50k MXN)",
+            "objective": "Meta: 15+ cotizaciones calificadas mensuales (proyectos >$50k MXN)",
+            "status": "Lanzamiento del proyecto en Marzo 2025",
+            "next_milestone": "El seguimiento comienza post-lanzamiento",
             "timeline": "Lanzamiento Q1 2025",
-            "stack": "Next.js + Sanity CMS + Vercel"
+            "stack": "Next.js + Sanity CMS + Vercel",
+            "mockup_badge": "En Desarrollo"
           },
           "dyma": {
             "name": "Dyma Group",
@@ -1042,11 +1045,91 @@
               "Portal privado con acceso segmentado",
               "Dashboard de ventas real-time"
             ],
-            "objective": "Objetivo: Presencia robusta y gestión autónoma",
+            "objective": "Meta: Presencia robusta y gestión autónoma",
+            "status": "Fase 2 de 4 completada",
+            "next_milestone": "Integración del portal de clientes",
             "timeline": "En desarrollo - Q1 2025",
-            "stack": "Next.js + Supabase + Autenticación"
+            "stack": "Next.js + Supabase + Autenticación",
+            "mockup_badge": "En Desarrollo"
           }
         }
+      },
+      "industries": {
+        "title": "Industrias para las que construimos",
+        "items": [
+          {
+            "name": "Manufactura a Medida",
+            "description": "Talleres premium, muebles y componentes únicos.",
+            "status": "Proyecto activo",
+            "icon": "factory"
+          },
+          {
+            "name": "Grupos Corporativos",
+            "description": "Presencia multi-empresa y portales centralizados.",
+            "status": "Proyecto activo",
+            "icon": "building_2"
+          },
+          {
+            "name": "Servicios Profesionales",
+            "description": "Abogados, clínicas y consultores buscando ROI.",
+            "status": "Aceptando clientes",
+            "icon": "briefcase"
+          },
+          {
+            "name": "Retail Local",
+            "description": "Tiendas físicas expandiéndose a e-commerce digital.",
+            "status": "Aceptando clientes",
+            "icon": "shopping_cart"
+          },
+          {
+            "name": "Salud y Clínicas",
+            "description": "Sistemas de citas especializados e info de pacientes.",
+            "status": "Aceptando clientes",
+            "icon": "stethoscope"
+          },
+          {
+            "name": "Hospitalidad y Turismo",
+            "description": "Sistemas de reserva y experiencias locales inmersivas.",
+            "status": "Aceptando clientes",
+            "icon": "plane"
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Transparencia: Nuestro Valor vs Otros",
+        "description": "Por qué la inversión de $20k-$35k se paga sola en solo 12 meses.",
+        "headers": {
+          "feature": "Estrategia y Tecnología",
+          "others": "Lo que otros cobran extra",
+          "noctra": "Incluido en cada proyecto de Noctra"
+        },
+        "rows": [
+          {
+            "feature": "Código propio (no WordPress)",
+            "others": "$2k-5k mantenimiento anual",
+            "noctra": "Propiedad completa desde el día 1"
+          },
+          {
+            "feature": "Optimización técnica SEO",
+            "others": "$500-1500/mes iguala SEO",
+            "noctra": "Base de alto rendimiento incluida"
+          },
+          {
+            "feature": "60 días de soporte",
+            "others": "Fin del soporte al entregar",
+            "noctra": "Seguimiento de métricas post-lanzamiento"
+          },
+          {
+            "feature": "Optimización móvil",
+            "others": "Responsivo es \"extra\"",
+            "noctra": "Enfoque mobile-first (80%+ tráfico)"
+          },
+          {
+            "feature": "Velocidad <1.5 segundos",
+            "others": "\"Lo optimizamos si pagas más\"",
+            "noctra": "Cero deuda técnica"
+          }
+        ]
       },
       "included": {
         "title": "Lo que incluye CADA proyecto",

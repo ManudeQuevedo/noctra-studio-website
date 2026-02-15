@@ -270,7 +270,7 @@
     "index": "Home",
     "studio": "About",
     "capabilities": "Services",
-    "deployments": "Portfolio",
+    "deployments": "Our Work",
     "initiate": "Contact",
     "system_capabilities": "Our Services",
     "all_systems_operational": "All Systems Operational",
@@ -1029,9 +1029,12 @@
               "Mobile-optimized site (80% of traffic)",
               "Speed <1.5 seconds"
             ],
-            "objective": "Objective: 15+ qualified monthly quotes (projects >$50k MXN)",
+            "objective": "Target: 15+ qualified quotes/month (>$50k MXN)",
+            "status": "Project launching March 2025",
+            "next_milestone": "Tracking begins post-launch",
             "timeline": "Launching Q1 2025",
-            "stack": "Next.js + Sanity CMS + Vercel"
+            "stack": "Next.js + Sanity CMS + Vercel",
+            "mockup_badge": "In Development"
           },
           "dyma": {
             "name": "Dyma Group",
@@ -1044,11 +1047,91 @@
               "Private portal with segmented access",
               "Administrative dashboard"
             ],
-            "objective": "Objective: Robust presence and autonomous management",
+            "objective": "Target: Robust presence & autonomous management",
+            "status": "Phase 2 of 4 complete",
+            "next_milestone": "Client portal integration",
             "timeline": "In development - Q1 2025",
-            "stack": "Next.js + Supabase + Authentication"
+            "stack": "Next.js + Supabase + Authentication",
+            "mockup_badge": "In Development"
           }
         }
+      },
+      "industries": {
+        "title": "Industries we're building for",
+        "items": [
+          {
+            "name": "Custom Manufacturing",
+            "description": "Premium workshops, furniture, and unique components.",
+            "status": "Active project",
+            "icon": "factory"
+          },
+          {
+            "name": "Corporate Groups",
+            "description": "Multi-company presence and centralized portals.",
+            "status": "Active project",
+            "icon": "building_2"
+          },
+          {
+            "name": "Professional Services",
+            "description": "Lawyers, clinics, and consultants looking for ROI.",
+            "status": "Accepting clients",
+            "icon": "briefcase"
+          },
+          {
+            "name": "Local Retail",
+            "description": "Physical stores expanding to digital e-commerce.",
+            "status": "Accepting clients",
+            "icon": "shopping_cart"
+          },
+          {
+            "name": "Healthcare & Clinics",
+            "description": "Specialized appointment systems and patient info.",
+            "status": "Accepting clients",
+            "icon": "stethoscope"
+          },
+          {
+            "name": "Hospitality & Tourism",
+            "description": "Booking systems and immersive local experiences.",
+            "status": "Accepting clients",
+            "icon": "plane"
+          }
+        ]
+      },
+      "comparison": {
+        "title": "Transparency: Our Value vs Others",
+        "description": "Why the $20k-$35k investment pays for itself in just 12 months.",
+        "headers": {
+          "feature": "Strategy & Technology",
+          "others": "What others charge extra for",
+          "noctra": "Included in every Noctra project"
+        },
+        "rows": [
+          {
+            "feature": "Own code (no WordPress)",
+            "others": "$2k-5k annual maintenance",
+            "noctra": "Complete ownership from day 1"
+          },
+          {
+            "feature": "Technical SEO optimization",
+            "others": "$500-1500/month SEO retainer",
+            "noctra": "High-performance base included"
+          },
+          {
+            "feature": "60 days support",
+            "others": "End support at delivery",
+            "noctra": "Post-launch metrics tracking"
+          },
+          {
+            "feature": "Mobile optimization",
+            "others": "Responsive is \"extra\"",
+            "noctra": "Mobile-first approach (80%+ traffic)"
+          },
+          {
+            "feature": "Speed <1.5 seconds",
+            "others": "\"We'll optimize if you pay more\"",
+            "noctra": "Zero technical debt"
+          }
+        ]
       },
       "included": {
         "title": "What's included in EVERY project",

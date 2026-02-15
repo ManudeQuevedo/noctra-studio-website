@@ -15,9 +15,21 @@ import {
   ChevronDown,
   Layout,
   Rocket,
-  Settings
+  Settings,
+  Factory,
+  Building2,
+  Briefcase,
+  ShoppingCart,
+  Stethoscope,
+  Plane,
+  Monitor,
+  Smartphone,
+  Target,
+  Activity,
+  Milestone
 } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
+import { cn } from "@/lib/utils";
 
 export default function WorkClient() {
   const t = useTranslations("WorkPage");
@@ -29,10 +41,50 @@ export default function WorkClient() {
     search: Search,
     zap: Zap,
     "life-buoy": LifeBuoy,
-    "message-square": MessageSquare
+    "message-square": MessageSquare,
+    factory: Factory,
+    building_2: Building2,
+    briefcase: Briefcase,
+    shopping_cart: ShoppingCart,
+    stethoscope: Stethoscope,
+    plane: Plane
   };
 
   const processIcons = [Search, Layout, Code, Rocket, Settings];
+
+  const ProjectMockup = ({ projectKey }: { projectKey: string }) => {
+    const brandColors: Record<string, string> = {
+      woodax: "from-amber-900/20 to-orange-950/20",
+      dyma: "from-blue-900/20 to-slate-900/20"
+    };
+
+    return (
+      <div className={cn(
+        "relative w-full aspect-video rounded-2xl overflow-hidden mb-8 bg-gradient-to-br border border-white/5",
+        brandColors[projectKey] || "from-neutral-900 to-black"
+      )}>
+        {/* Mockup Frames */}
+        <div className="absolute inset-0 flex items-center justify-center p-8 gap-4 opacity-40">
+          <div className="w-2/3 aspect-video bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
+            <Monitor className="w-8 h-8 text-white/20" />
+          </div>
+          <div className="w-1/4 h-3/4 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
+            <Smartphone className="w-6 h-6 text-white/20" />
+          </div>
+        </div>
+
+        {/* Overlay */}
+        <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
+          <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-2">
+            <Construction className="w-4 h-4 text-amber-500" />
+            <span className="text-xs font-mono font-bold uppercase tracking-widest text-white">
+              {t(`sections.in_progress.projects.${projectKey}.mockup_badge`)}
+            </span>
+          </div>
+        </div>
+      </div>
+    );
+  };
 
   return (
     <main className="min-h-screen bg-[#050505] text-white">
@@ -87,6 +139,9 @@ export default function WorkClient() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   className="group p-8 md:p-10 rounded-3xl border border-neutral-800 bg-black hover:border-white/20 transition-all duration-500 flex flex-col h-full">
+                  
+                  <ProjectMockup projectKey={projectKey} />
+
                   <div className="flex flex-col mb-8">
                     <h3 className="text-3xl font-bold tracking-tight mb-2">
                       {project.name}
@@ -124,20 +179,43 @@ export default function WorkClient() {
                     </div>
                   </div>
 
-                  <div className="mt-10 pt-8 border-t border-neutral-800 grid grid-cols-2 gap-4">
-                    <div className="space-y-1">
-                      <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Stack</p>
-                      <p className="text-xs text-neutral-300">{project.stack}</p>
+                  <div className="mt-10 pt-8 border-t border-neutral-800 space-y-6">
+                    <div className="grid grid-cols-2 gap-4">
+                      <div className="space-y-1">
+                        <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Stack</p>
+                        <p className="text-xs text-neutral-300 font-medium">{project.stack}</p>
+                      </div>
+                      <div className="space-y-1">
+                        <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Timeline</p>
+                        <p className="text-xs text-neutral-300 font-medium">{project.timeline}</p>
+                      </div>
                     </div>
-                    <div className="space-y-1">
-                      <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Timeline</p>
-                      <p className="text-xs text-neutral-300">{project.timeline}</p>
-                    </div>
-                    <div className="col-span-2 pt-4">
-                      <div className="p-4 rounded-xl bg-white/5 border border-white/10">
-                        <p className="text-xs font-bold text-white">
-                          {project.objective}
-                        </p>
+
+                    {/* Progress Tracker */}
+                    <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-4">
+                      <div className="flex items-start gap-3">
+                        <Target className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                        <div className="space-y-1">
+                          <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest opacity-60">Target Outcome</p>
+                          <p className="text-sm font-bold text-white leading-tight">{project.objective}</p>
+                        </div>
+                      </div>
+                      
+                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/5">
+                        <div className="flex items-center gap-2">
+                          <Activity className="w-3.5 h-3.5 text-blue-400" />
+                          <div className="space-y-0.5">
+                            <p className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider">Status</p>
+                            <p className="text-[11px] text-neutral-300">{project.status}</p>
+                          </div>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          <Milestone className="w-3.5 h-3.5 text-amber-500" />
+                          <div className="space-y-0.5">
+                            <p className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider">Next Milestone</p>
+                            <p className="text-[11px] text-neutral-300">{project.next_milestone}</p>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
@@ -148,90 +226,96 @@ export default function WorkClient() {
         </div>
       </section>
 
-      {/* Included Section */}
-      <section className="py-24 px-6 border-t border-neutral-900">
+      {/* Industries Grid */}
+      <section className="py-24 px-6 border-t border-neutral-900 bg-black">
         <div className="max-w-6xl mx-auto">
-          <div className="mb-16 text-center">
+          <div className="mb-16">
             <h2 className="text-3xl md:text-5xl font-bold mb-6">
-              {t("sections.included.title")}
+              {t("sections.industries.title")}
             </h2>
-            <p className="text-neutral-400 max-w-2xl mx-auto">
-              {t("sections.included.description")}
-            </p>
           </div>
 
-          <div className="space-y-4">
-            {(t.raw("sections.included.items") as any[]).map((item, i) => {
-              const Icon = icons[item.icon] || CheckCircle2;
-              const isExpanded = expandedIndex === i;
-
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {(t.raw("sections.industries.items") as any[]).map((industry, i) => {
+              const Icon = icons[industry.icon] || Factory;
               return (
                 <motion.div
                   key={i}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
-                  transition={{ delay: i * 0.1 }}
-                  className={`rounded-2xl border transition-all duration-300 overflow-hidden ${
-                    isExpanded ? "border-white/20 bg-white/[0.03]" : "border-neutral-800 bg-black hover:border-neutral-700"
-                  }`}
-                >
-                  <button
-                    onClick={() => setExpandedIndex(isExpanded ? null : i)}
-                    className="w-full p-6 md:p-8 flex items-center justify-between text-left group"
-                  >
-                    <div className="flex items-center gap-6">
-                      <div className={`w-12 h-12 rounded-xl flex items-center justify-center transition-colors ${
-                        isExpanded ? "bg-white text-black" : "bg-white/5 text-white border border-white/10 group-hover:bg-white/10"
-                      }`}>
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <h3 className="text-xl md:text-2xl font-bold">{item.title}</h3>
-                    </div>
-                    <ChevronDown className={`w-6 h-6 text-neutral-500 transition-transform duration-300 ${isExpanded ? "rotate-180" : ""}`} />
-                  </button>
-
-                  <AnimatePresence>
-                    {isExpanded && (
-                      <motion.div
-                        initial={{ height: 0, opacity: 0 }}
-                        animate={{ height: "auto", opacity: 1 }}
-                        exit={{ height: 0, opacity: 0 }}
-                        transition={{ duration: 0.3 }}
-                      >
-                        <div className="px-6 pb-8 md:px-8 md:pb-10 pt-2 border-t border-white/5">
-                          <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
-                            <div className="space-y-6">
-                              <div>
-                                <p className="text-sm font-mono text-neutral-500 uppercase tracking-widest mb-4">
-                                  {item.details}
-                                </p>
-                                <ul className="space-y-3">
-                                  {item.deliverables.map((del: string, j: number) => (
-                                    <li key={j} className="flex items-start gap-3 text-neutral-300">
-                                      <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
-                                      <span>{del}</span>
-                                    </li>
-                                  ))}
-                                </ul>
-                              </div>
-                            </div>
-                            <div className="p-6 rounded-xl bg-white/5 border border-white/10">
-                              <p className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-3">
-                                {locale === 'es' ? 'Por qué importa' : 'Why it matters'}
-                              </p>
-                              <p className="text-neutral-400 leading-relaxed italic">
-                                "{item.why_it_matters}"
-                              </p>
-                            </div>
-                          </div>
-                        </div>
-                      </motion.div>
-                    )}
-                  </AnimatePresence>
+                  transition={{ delay: i * 0.05 }}
+                  className="p-8 rounded-2xl border border-neutral-800 bg-neutral-900/40 hover:border-emerald-500/30 transition-all group">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center mb-6 group-hover:bg-emerald-500/10 group-hover:border-emerald-500/20 transition-colors">
+                    <Icon className="w-6 h-6 text-neutral-400 group-hover:text-emerald-500 transition-colors" />
+                  </div>
+                  <h3 className="text-xl font-bold mb-3">{industry.name}</h3>
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-6">
+                    {industry.description}
+                  </p>
+                  <div className="pt-4 border-t border-white/5">
+                    <p className={cn(
+                      "text-[10px] font-mono uppercase tracking-widest",
+                      industry.status === "Active project" || industry.status === "Proyecto activo" 
+                        ? "text-emerald-500" 
+                        : "text-neutral-500"
+                    )}>
+                      {industry.status}
+                    </p>
+                  </div>
                 </motion.div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* Value Comparison Table */}
+      <section className="py-24 px-6 border-t border-neutral-900 bg-white/[0.01]">
+        <div className="max-w-6xl mx-auto">
+          <div className="mb-16 text-center">
+            <h2 className="text-3xl md:text-5xl font-bold mb-6">
+              {t("sections.comparison.title")}
+            </h2>
+            <p className="text-neutral-400 max-w-2xl mx-auto">
+              {t("sections.comparison.description")}
+            </p>
+          </div>
+
+          <div className="overflow-x-auto">
+            <table className="w-full text-left border-collapse">
+              <thead>
+                <tr>
+                  <th className="py-6 px-4 border-b border-neutral-800 text-xs font-mono text-neutral-500 uppercase tracking-widest w-1/3">
+                    {t("sections.comparison.headers.feature")}
+                  </th>
+                  <th className="py-6 px-4 border-b border-neutral-800 text-xs font-mono text-neutral-500 uppercase tracking-widest w-1/3">
+                    {t("sections.comparison.headers.others")}
+                  </th>
+                  <th className="py-6 px-4 border-b border-neutral-800 text-xs font-mono text-emerald-500 uppercase tracking-widest w-1/3">
+                    {t("sections.comparison.headers.noctra")}
+                  </th>
+                </tr>
+              </thead>
+              <tbody>
+                {(t.raw("sections.comparison.rows") as any[]).map((row, i) => (
+                  <tr key={i} className="group hover:bg-white/[0.02] transition-colors">
+                    <td className="py-8 px-4 border-b border-neutral-900 font-bold text-lg">
+                      {row.feature}
+                    </td>
+                    <td className="py-8 px-4 border-b border-neutral-900 text-neutral-500 italic">
+                      {row.others}
+                    </td>
+                    <td className="py-8 px-4 border-b border-neutral-900 text-white font-medium">
+                      <div className="flex items-center gap-3">
+                        <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
+                        {row.noctra}
+                      </div>
+                    </td>
+                  </tr>
+                ))}
+              </tbody>
+            </table>
           </div>
         </div>
       </section>
