@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import BlogClient from "./BlogClient";
+import TermsClient from "./TermsClient";
 
 export async function generateMetadata({
   params,
@@ -7,9 +7,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return generatePageMetadata(locale, "blog");
+  return generatePageMetadata(locale, "terms");
 }
 
-export default function BlogPage() {
-  return <BlogClient />;
+export default function TermsAndConditionsPage() {
+  return <TermsClient />;
 }

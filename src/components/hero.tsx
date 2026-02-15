@@ -16,8 +16,20 @@ export function Hero() {
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
         className="max-w-7xl space-y-8 w-full z-30 relative pointer-events-auto px-6">
-        <div className="mb-6 inline-flex items-center justify-center border border-neutral-200 dark:border-neutral-800 rounded-full px-4 py-1 text-xs font-mono uppercase tracking-widest text-neutral-500">
-          {t("hero.trust_badge")}
+        <div className="mb-6 inline-flex items-center justify-center border border-neutral-800 rounded-full px-6 py-2.5 bg-neutral-900/50 backdrop-blur-sm shadow-[0_0_25px_rgba(16,185,129,0.1)] border-emerald-500/10 gap-4 transition-all hover:border-emerald-500/20 group">
+          <div className="flex items-center gap-4">
+            <span className="text-sm md:text-base font-black text-white tracking-tight uppercase font-mono">
+              {t("hero.trust_badge.price")}
+            </span>
+            <div className="w-px h-3 bg-neutral-800" />
+            <span className="text-[11px] md:text-xs font-bold text-emerald-500 uppercase tracking-[0.2em] animate-pulse-slow">
+              {t("hero.trust_badge.guarantee")}
+            </span>
+            <div className="w-px h-3 bg-neutral-800" />
+            <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-widest">
+              {t("hero.trust_badge.founder")}
+            </span>
+          </div>
         </div>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold tracking-tighter text-white">
           {t("hero.title")}

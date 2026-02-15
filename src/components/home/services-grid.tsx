@@ -82,9 +82,13 @@ export function ServicesGrid({ images }: ServicesGridProps) {
               key={service.id}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, y: -5 }}
               viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative overflow-hidden rounded-2xl bg-neutral-900/50 border border-white/10 p-8 transition-all duration-500 hover:border-neutral-900 dark:hover:border-white/40 hover:shadow-[0_0_30px_-5px_rgba(0,0,0,0.1)] dark:hover:shadow-[0_0_30px_-5px_rgba(255,255,255,0.15)] h-full flex flex-col">
+              transition={{ 
+                duration: 0.2, 
+                ease: "easeOut"
+              }}
+              className="group relative overflow-hidden rounded-2xl bg-neutral-900/50 border border-white/10 p-8 transition-all duration-300 hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] h-full flex flex-col cursor-pointer">
               {/* Background Image */}
               {service.image && (
                 <>
@@ -102,19 +106,19 @@ export function ServicesGrid({ images }: ServicesGridProps) {
               )}
 
               <div className="relative z-10 h-full flex flex-col">
-                <div className="mb-6 inline-flex text-white transition-colors">
+                <div className="mb-6 inline-flex text-white group-hover:text-emerald-400 transition-colors duration-300">
                   <service.icon className="w-6 h-6" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-white/90 transition-colors">
+                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-50 transition-colors">
                   {service.title}
                 </h3>
 
-                <p className="text-neutral-400 leading-relaxed mb-6 group-hover:text-neutral-300 transition-colors flex-1">
+                <p className="text-neutral-400 leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors flex-1">
                   {service.description}
                 </p>
-                <div className="flex items-center text-sm font-medium text-white opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300">
-                  <span className="mr-2">{t("learn_more")}</span>
+                <div className="flex items-center text-sm font-bold text-emerald-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mt-auto">
+                  <span className="mr-2 uppercase tracking-widest text-[10px]">{t("learn_more")}</span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>

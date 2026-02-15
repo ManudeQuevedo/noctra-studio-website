@@ -1,11 +1,4 @@
 {
-  "HeroTextSection": {
-    "banner": "LED BY ENGINEERING TALENT WITH OVER 7 YEARS OF SHIPPING PRODUCTION SYSTEMS FOR LARGE-SCALE BRANDS.",
-    "part1": "We don't just build websites. ",
-    "part2": "We architect the silent, scalable systems that empower ",
-    "part3": "visionary brands ",
-    "part4": "to grow without friction."
-  },
   "WhyLocal": {
     "title": "Why do businesses in Mexico and beyond choose Noctra?",
     "items": [
@@ -27,7 +20,11 @@
     "hero": {
       "title": "Websites that generate real customers, not just visits",
       "subtitle": "Strategic web development for businesses in Mexico and abroad (USA, Canada, Europe) that need measurable results",
-      "trust_badge": "From $20,000 MXN · Results guarantee · Accessible founder"
+      "trust_badge": {
+        "price": "From $20,000 MXN",
+        "guarantee": "Results guarantee",
+        "founder": "Accessible founder"
+      }
     },
     "credibility": "Led by engineering talent with 7+ years shipping production systems for high-scale brands.",
     "intro_text": "We don't just build websites. We architect strategic digital systems that empower visionary companies to grow with measurable results.",
@@ -47,42 +44,45 @@
     "pre_title": "KEY DIFFERENTIATOR",
     "title": "Web automation that recovers your time",
     "subtitle": "We don't just build pretty sites. We build systems that work for you 24/7.",
-    "intro": "Available for clinics, firms, and local businesses that want to automate the tasks that take time away from their core business.",
-    "problem_label": "The Challenge",
-    "solution_label": "Our Solution",
-    "result_label": "Business Impact",
+    "intro": "While other agencies sell you 'digital presence,' we automate the tasks that steal time from your core business.",
+    "problem_label": "The typical challenge",
+    "solution_label": "Our solution",
+    "result_label": "Expected result",
     "use_cases": [
       {
         "industry": "Medical & Clinics",
         "icon": "medical",
-        "problem": "Patients forgetting appointments or canceling late",
-        "solution": "Automated confirmation system via WhatsApp",
-        "result": "15+ hours weekly recovered in calls and coordination"
+        "problem": "High rate of no-shows due to forgotten appointments",
+        "solution": "Automated confirmation system via WhatsApp + SMS",
+        "result": "Significant reduction in no-shows. Available for medical and dental clinics."
       },
       {
-        "industry": "Law Firms & Consultants",
+        "industry": "Law Firms",
         "icon": "legal",
-        "problem": "Hours lost filtering unqualified prospects",
-        "solution": "Smart intake form with automatic filtering",
-        "result": "80% of calls now with ideal clients"
+        "problem": "Time lost on consultations that don't qualify as ideal clients",
+        "solution": "24/7 automated intake with pre-qualification questionnaire",
+        "result": "You only talk to prospects who meet your ideal profile. Available for specialized firms."
       },
       {
-        "industry": "Local Businesses",
+        "industry": "E-commerce",
         "icon": "ecommerce",
-        "problem": "Customers asking the same questions over and over",
-        "solution": "Web assistant with intelligent responses",
-        "result": "24/7 attention without interrupting your work"
+        "problem": "75% abandoned carts = lost sales",
+        "solution": "Automated recovery sequences + personalized reminders",
+        "result": "Cart recovery without manual intervention. Available for online stores."
       },
       {
-        "industry": "Administratives",
+        "industry": "Accountants & CFPs",
         "icon": "finance",
-        "problem": "Clients sending paperwork in pieces and late",
-        "solution": "Digital checklist with friendly reminders",
-        "result": "60% less time chasing documents"
+        "problem": "Clients sending incomplete documentation repeatedly",
+        "solution": "Client portal with smart checklist + automated reminders",
+        "result": "Less time on admin = more capacity for new clients. Available for accounting firms."
       }
     ],
-    "cta": "What can we automate in your business?",
-    "closing_statement": "This is what justifies our premium price vs. a WordPress template. We don't sell sites. We sell recovered time."
+    "cta_question": "What can we automate in your business?",
+    "cta": "Let's talk in a free consultation",
+    "see_more": "See more automation examples",
+    "see_less": "Show fewer examples",
+    "closing_statement": "Automation available from $4,000 USD. We don't sell sites. We sell recovered time."
   },
   "Metadata": {
     "home": {
@@ -144,6 +144,126 @@
       "og_image_alt": "Join Our Freelancer Network",
       "twitter_title": "Join Our Network — Noctra Studio",
       "twitter_description": "Project-based collaboration for senior freelancers."
+    },
+    "work": {
+      "title": "Our Work | Noctra Studio",
+      "description": "See real projects and case studies from Noctra Studio. Strategic web development delivering measurable results for businesses.",
+      "keywords": "web development portfolio, case studies, noctra studio work, project showcase",
+      "og_title": "Our Work — Noctra Studio",
+      "og_description": "Real projects delivering measurable results for businesses in Mexico and abroad.",
+      "og_image_alt": "Noctra Studio Portfolio",
+      "twitter_title": "Our Work — Noctra Studio",
+      "twitter_description": "Case studies and project results from Noctra Studio."
+    },
+    "guarantee": {
+      "title": "Our Guarantee | Noctra Studio",
+      "description": "Results guarantee: if we don't meet agreed KPIs, you get a proportional refund. Shared risk, real accountability.",
+      "keywords": "results guarantee, web development guarantee, performance guarantee, noctra studio",
+      "og_title": "Results Guarantee — Noctra Studio",
+      "og_description": "If we don't meet your KPIs, you get a proportional refund. Shared risk.",
+      "og_image_alt": "Noctra Studio Results Guarantee",
+      "twitter_title": "Our Guarantee — Noctra Studio",
+      "twitter_description": "Shared risk: proportional refund if we don't meet agreed KPIs."
+    },
+    "technology": {
+      "title": "Our Technology | Noctra Studio",
+      "description": "Why we use Next.js instead of WordPress. Modern technology explained in plain language for business owners.",
+      "keywords": "nextjs vs wordpress, modern web technology, web development technology, fast websites",
+      "og_title": "Technology Explained — Noctra Studio",
+      "og_description": "Modern technology explained simply. Why Next.js means faster, cheaper, better for your business.",
+      "og_image_alt": "Noctra Studio Technology Stack",
+      "twitter_title": "Our Technology — Noctra Studio",
+      "twitter_description": "Why modern technology means better results for your business."
+    },
+    "custom-pricing": {
+      "title": "Custom Pricing | Noctra Studio",
+      "description": "Get a custom quote for your web project. Transparent pricing based on your specific needs and goals.",
+      "keywords": "custom web development pricing, website quote, project estimate, noctra studio pricing",
+      "og_title": "Custom Pricing — Noctra Studio",
+      "og_description": "Transparent pricing tailored to your project. No hidden fees.",
+      "og_image_alt": "Noctra Studio Custom Pricing",
+      "twitter_title": "Custom Pricing — Noctra Studio",
+      "twitter_description": "Get a transparent quote for your web project."
+    },
+    "first-clients": {
+      "title": "Early Adopter Offer | Noctra Studio",
+      "description": "Special pricing for our first clients. Get premium web development at founding rates with direct founder access.",
+      "keywords": "web development deal, early adopter, founding client, special pricing",
+      "og_title": "Early Adopter Offer — Noctra Studio",
+      "og_description": "Premium web development at founding rates. Limited availability.",
+      "og_image_alt": "Noctra Studio Early Adopter Offer",
+      "twitter_title": "Early Adopter Offer — Noctra Studio",
+      "twitter_description": "Special founding rates for premium web development."
+    },
+    "services-professional-websites": {
+      "title": "Professional Websites | Noctra Studio",
+      "description": "High-performance professional websites that convert visitors into clients. Built with Next.js for speed and SEO.",
+      "keywords": "professional website, business website, website development, high performance website",
+      "og_title": "Professional Websites — Noctra Studio",
+      "og_description": "Websites that convert visitors into clients. Fast, SEO-optimized, built to perform.",
+      "og_image_alt": "Noctra Studio Professional Websites",
+      "twitter_title": "Professional Websites — Noctra Studio",
+      "twitter_description": "High-performance websites that convert visitors into clients."
+    },
+    "services-ecommerce": {
+      "title": "E-commerce Development | Noctra Studio",
+      "description": "E-commerce solutions that turn visits into sales. From product catalog to checkout, optimized for conversion.",
+      "keywords": "ecommerce development, online store, ecommerce website, shopping cart development",
+      "og_title": "E-commerce Development — Noctra Studio",
+      "og_description": "From visit to sale in 3 clicks. E-commerce built for conversion.",
+      "og_image_alt": "Noctra Studio E-commerce Development",
+      "twitter_title": "E-commerce Development — Noctra Studio",
+      "twitter_description": "Online stores optimized for conversion and sales."
+    },
+    "services-custom-systems": {
+      "title": "Custom Web Systems | Noctra Studio",
+      "description": "Custom web applications, CRM systems, and process automation. Recover 15+ hours weekly with tailored solutions.",
+      "keywords": "custom web application, CRM development, process automation, business system development",
+      "og_title": "Custom Web Systems — Noctra Studio",
+      "og_description": "Automate what steals your time. Custom systems that recover 15+ hours weekly.",
+      "og_image_alt": "Noctra Studio Custom Systems",
+      "twitter_title": "Custom Web Systems — Noctra Studio",
+      "twitter_description": "Custom applications and automation for business efficiency."
+    },
+    "services-optimization": {
+      "title": "Website Optimization & SEO | Noctra Studio",
+      "description": "Speed optimization, technical SEO, and performance monitoring. Make your existing website faster and more visible.",
+      "keywords": "website optimization, SEO services, page speed optimization, technical SEO",
+      "og_title": "Optimization & SEO — Noctra Studio",
+      "og_description": "Make your website faster and more visible. Technical SEO and performance optimization.",
+      "og_image_alt": "Noctra Studio Optimization Services",
+      "twitter_title": "Optimization & SEO — Noctra Studio",
+      "twitter_description": "Speed and SEO optimization for better search visibility."
+    },
+    "services-landing-page": {
+      "title": "Landing Page Development | Noctra Studio",
+      "description": "High-converting landing pages designed to capture leads and drive action. A/B tested and performance optimized.",
+      "keywords": "landing page development, lead generation page, conversion optimization, landing page design",
+      "og_title": "Landing Pages — Noctra Studio",
+      "og_description": "High-converting landing pages that capture leads and drive action.",
+      "og_image_alt": "Noctra Studio Landing Pages",
+      "twitter_title": "Landing Pages — Noctra Studio",
+      "twitter_description": "Landing pages designed for maximum conversion."
+    },
+    "privacy": {
+      "title": "Privacy Policy | Noctra Studio",
+      "description": "Privacy policy for Noctra Studio. Learn how we collect, use, and protect your personal information.",
+      "keywords": "privacy policy, data protection, noctra studio privacy",
+      "og_title": "Privacy Policy — Noctra Studio",
+      "og_description": "How we protect your personal information.",
+      "og_image_alt": "Noctra Studio Privacy Policy",
+      "twitter_title": "Privacy Policy — Noctra Studio",
+      "twitter_description": "Our commitment to protecting your data."
+    },
+    "terms": {
+      "title": "Terms & Conditions | Noctra Studio",
+      "description": "Terms and conditions for Noctra Studio services. Clear terms for transparent business relationships.",
+      "keywords": "terms and conditions, service agreement, noctra studio terms",
+      "og_title": "Terms & Conditions — Noctra Studio",
+      "og_description": "Clear terms for transparent business relationships.",
+      "og_image_alt": "Noctra Studio Terms & Conditions",
+      "twitter_title": "Terms & Conditions — Noctra Studio",
+      "twitter_description": "Service terms for Noctra Studio clients."
     }
   },
   "Navigation": {
@@ -164,86 +284,6 @@
       "ai": "AI & Automation",
       "devops": "Security & Performance",
       "headless": "Modern Technology"
-    }
-  },
-  "CareersPage": {
-    "hero": {
-      "title": "Join the Network.",
-      "subtitle": "A curated collective of independent architects, designers, and strategists building the next generation of digital systems."
-    },
-    "culture": {
-      "headline": "Build the systems you wish existed.",
-      "paragraph1": "We are tired of the 'agency grind'—endless meetings, subjective feedback, and spaghetti code. Noctra is the antidote.",
-      "paragraph2": "Here, you don't just close tickets. You architect solutions. You work with autonomy, you ship to production, and you get paid for output, not hours."
-    },
-    "roster": {
-      "label": "The Roster",
-      "engineer": {
-        "title": "The Engineer.",
-        "desc": "Mastery of Next.js, TypeScript, and Serverless infrastructure. You build silent, robust systems."
-      },
-      "visualist": {
-        "title": "The Visualist.",
-        "desc": "Systems thinker. You design interfaces that feel inevitable. Figma expert."
-      },
-      "strategist": {
-        "title": "The Strategist.",
-        "desc": "Data-driven. You build automations and growth loops using AI and Technical SEO."
-      }
-    },
-    "vetting": {
-      "title": "Selection Process.",
-      "steps": {
-        "0": {
-          "title": "Alignment",
-          "desc": "Screening call. We test for communication clarity and cultural fit. No HR fluff."
-        },
-        "1": {
-          "title": "The Audit",
-          "desc": "Technical proof. A micro-task or code review to validate execution standards. We don't trust CVs; we trust output."
-        },
-        "2": {
-          "title": "Access",
-          "desc": "Integration. Access to our private Slack, Linear, and GitHub repositories."
-        }
-      }
-    },
-    "protocols": {
-      "title": "Standard Operating Procedures.",
-      "context": "These protocols protect our clients' confidentiality and maintain enterprise-grade security standards.",
-      "items": {
-        "0": {
-          "title": "IP Transfer.",
-          "desc": "Work-for-hire basis. All intellectual property rights transfer to Noctra Studio immediately upon final payment."
-        },
-        "1": {
-          "title": "Silence (NDA).",
-          "desc": "Strict non-disclosure. Client details and internal architectures remain confidential by default."
-        },
-        "2": {
-          "title": "Non-Solicitation.",
-          "desc": "Client relationships belong to the Studio. Circumvention results in immediate blacklisting and legal action."
-        },
-        "3": {
-          "title": "Asynchronous.",
-          "desc": "We respect deep work. No daily standups. Updates are pushed via Linear/GitHub, not meetings."
-        }
-      }
-    },
-    "compensation": {
-      "title": "Compensation Model",
-      "subtitle": "We value output, not hours. No haggling, no chasing invoices.",
-      "metric": "Project-Based Rates",
-      "description": "Compensation is scoped and agreed upon before a single line of code is written. Rates are determined by complexity and impact, not time.",
-      "terms": {
-        "deposit": "50% Commencement Deposit",
-        "completion": "50% Completion Payment",
-        "net0": "Net-0 Payment Terms (Immediate upon approval)"
-      }
-    },
-    "cta": {
-      "button": "Initiate Vetting Process",
-      "subtext": "Send your portfolio and GitHub. No cover letters."
     }
   },
   "AboutPage": {
@@ -329,25 +369,32 @@
     },
     "trust": {
       "title": "Why trust a new agency?",
-      "subtitle": "Yes, Noctra Studio is new. Here's why that's an advantage for you:",
+      "subtitle": "It's the question everyone has but no one asks. I'll answer it directly:",
+      "highlight": "Yes, Noctra Studio is new. Here is why that is an advantage for you:",
       "items": [
         {
-          "title": "Founder access, not junior staff",
-          "desc": "In established agencies, your project is executed by a junior. Here, you talk to someone with 10+ years of technical experience."
+          "title": "Access to the founder, not junior staff",
+          "desc": "In established agencies, your project is executed by a junior while you talk to an account manager. Here, you talk directly to someone with 10+ years of technical experience."
         },
         {
           "title": "Cutting-edge technology, no legacy systems",
-          "desc": "We build everything on the most modern stack from scratch, without the drag of old platforms."
+          "desc": "Big agencies have clients on old platforms they must maintain. We build everything on a modern stack from scratch: Next.js, not WordPress."
         },
         {
-          "title": "Competitive pricing while we build our portfolio",
-          "desc": "I'm building case studies. You get a better price, I get a real case. Everyone wins."
+          "title": "Competitive pricing while I build my portfolio",
+          "desc": "I'm transparent: I'm building case studies. You get a better price than established agencies, I get a real case to show. We both win."
         },
         {
           "title": "Written results guarantee",
-          "desc": "Since I'm building my reputation, I offer a KPI guarantee or refund. Others don't do this."
+          "desc": "Because I'm building a reputation, I offer a guarantee of measurable KPIs or a proportional refund. Established agencies don't do this — they don't need to."
+        },
+        {
+          "title": "No vendor lock-in",
+          "desc": "Your code is yours from day 1. You can take it wherever you want. Full documentation included. Big agencies tie you down with dependencies."
         }
-      ]
+      ],
+      "cta_button": "Ready for a project without intermediaries?",
+      "cta_footer": "Response in <24 hours · No commitment · Speak directly with Manu"
     },
     "cta": {
       "title": "Ready for a project without intermediaries or surprises?",
@@ -355,56 +402,82 @@
       "footer": "Response in <24 hours · No commitment · Speak directly with Manu"
     }
   },
-
   "Footer": {
-    "hook": "Ready to start your project?",
-    "book_discovery": "Get a Free Consultation",
+    "cta": {
+      "title": "Ready to start your project?",
+      "subtitle": "Schedule a free consultation. No commitment, no aggressive sales.",
+      "button_primary": "Free Consultation",
+      "button_secondary": "See Our Work"
+    },
     "studio_label": "Noctra Studio",
     "brand_tagline": "Web Development & Digital Solutions",
-    "nav_title": "Pages",
-    "services_title": "Services",
-    "service_work": "Our Work",
-    "service_digital_arch": "Professional Websites",
-    "service_visual_identity": "Visual Identity & Design",
-    "service_intelligent_systems": "Custom Systems",
-    "service_growth": "SEO & Growth",
-    "resources_title": "Resources",
-    "link_guarantee": "Our Guarantee",
-    "link_technology": "Our Technology",
-    "link_schedule": "Free Consultation",
-    "connect_title": "Connect",
+    "sections": {
+      "company": "Company",
+      "services": "Services",
+      "resources": "Resources",
+      "legal": "Legal",
+      "contact": "Contact"
+    },
+    "links": {
+      "home": "Home",
+      "about": "About Us",
+      "work": "Our Work",
+      "network": "Join the Network",
+      "contact": "Contact",
+      "websites": "Professional Websites",
+      "ecommerce": "E-commerce",
+      "systems": "Custom Systems",
+      "branding": "Visual Identity & Design",
+      "seo": "SEO & Growth",
+      "guarantee": "Our Guarantee",
+      "technology": "Our Technology",
+      "consultation": "Free Consultation",
+      "roi_calculator": "ROI Calculator"
+    },
+    "copyright": "© {year} Noctra Studio · All rights reserved",
+    "status": {
+      "label": "Systems operational",
+      "uptime": "99.9% uptime"
+    },
+    "location": "Querétaro, México · Serving clients across all of Mexico",
+    "made_with": "Made with ☕ in Querétaro, México",
     "terms_of_service": "Terms of Service",
     "privacy_policy": "Privacy Policy",
-    "copyright": "© {year} Noctra Studio. All rights reserved.",
-    "system_status": "All Systems Operational",
-    "location": "Querétaro, México · We work with clients across all of Mexico",
-    "designed_in": "Designed & Built in Querétaro, MX. Serving clients worldwide."
+    "cookie_policy": "Cookie Policy",
+    "social": {
+      "instagram": "Instagram",
+      "twitter": "X (Twitter)",
+      "linkedin": "LinkedIn",
+      "github": "GitHub"
+    }
   },
   "WhyDifferent": {
     "title": "Why we're different",
     "subtitle": "What makes us unique in a market full of agencies.",
     "items": [
       {
-        "title": "Direct founder, always",
-        "benefit": "You won't navigate layers of project managers. You speak with who writes the code. Decisions in hours, not weeks.",
-        "proof": "Direct WhatsApp with response < 4 hours"
+        "title": "Accessible engineering founder",
+        "benefit": "You don't talk to junior account managers. You solve with the architect of your system.",
+        "proof": "Direct line to CEO & Lead Engineer"
       },
       {
-        "title": "Radical transparency",
-        "benefit": "You'll know exactly what you're paying for and why. Total access to your project from day 1. No hidden costs or surprises.",
-        "proof": "Live staging environment from day 1"
+        "title": "Transparency in high scale",
+        "benefit": "We use the same tech stack as Airbnb and Netflix. Performance is not an option, it's our standard.",
+        "refresh": "See the tech stack →",
+        "proof": "Next.js 15, Vercel & Tailwind 4"
       },
       {
         "title": "Measurable results or your money back",
-        "benefit": "We establish clear KPIs before starting. Monthly progress tracking. If we don't deliver, proportional refund.",
-        "proof": "Written guarantee in our contract"
+        "benefit": "If we don't hit the agreed KPIs, we refund you. We share the risk to ensure your growth.",
+        "proof": "Contractual Performance Guarantee"
       },
       {
-        "title": "Modern stack, no lock-in",
-        "benefit": "Your code is yours, always. You can take it anywhere you want. Technology that will last years, not months.",
-        "proof": "Complete code + documentation at delivery"
+        "title": "Clean code, zero legacy",
+        "benefit": "No builders or bloated plugins. Pure hand-written code that stays fast for years.",
+        "proof": "100/100 Lighthouse Performance"
       }
-    ]
+    ],
+    "guarantee_link": "See our guarantee policy →"
   },
   "FAQ": {
     "title": "Questions people ask us (and you should too)",
@@ -494,7 +567,8 @@
         "Complete technical SEO",
         "Contact forms",
         "Analytics configured"
-      ]
+      ],
+      "roi_indicator": "Typical payback: 2-3 months through improved conversion"
     },
     "tier2": {
       "name": "E-commerce",
@@ -505,7 +579,8 @@
         "Frictionless purchase process",
         "Inventory integration",
         "Real-time sales dashboard"
-      ]
+      ],
+      "roi_indicator": "Average client sees 3.2x more online sales within 6 months"
     },
     "tier3": {
       "name": "Custom Systems",
@@ -516,13 +591,23 @@
         "Process automation & integrations",
         "Dashboards with metrics that matter",
         "Priority support (< 4 hours)"
-      ]
+      ],
+      "roi_indicator": "ROI varies - we'll calculate specific ROI in discovery call"
     },
     "optional_modules_title": "Optional modules",
     "optional_modules": [
-      { "name": "Dynamic blog", "price": "+$12,000 MXN" },
-      { "name": "Multi-language", "price": "+$18,000 MXN" },
-      { "name": "Client portal", "price": "+$25,000 MXN" }
+      {
+        "name": "Dynamic blog",
+        "price": "+$12,000 MXN"
+      },
+      {
+        "name": "Multi-language",
+        "price": "+$18,000 MXN"
+      },
+      {
+        "name": "Client portal",
+        "price": "+$25,000 MXN"
+      }
     ],
     "additional_text": [
       "Final prices, VAT included",
@@ -530,6 +615,23 @@
       "60-day post-launch guarantee"
     ],
     "cta": "Start my project",
+    "compare_all_features": "Compare all features →",
+    "back_to_pricing": "← Back to pricing",
+    "feature_comparison": {
+      "columns": ["Professional Website", "E-commerce", "Custom Systems"],
+      "rows": [
+        { "name": "Strategic Pages", "values": ["5 Pages", "Unlimited", "Unlimited"] },
+        { "name": "Responsive Design", "values": [true, true, true] },
+        { "name": "Technical SEO", "values": [true, true, true] },
+        { "name": "CMS / Blog", "values": ["Optional", true, true] },
+        { "name": "Customer Portal", "values": [false, "Optional", true] },
+        { "name": "Inventory & Shipping", "values": [false, true, "Optional"] },
+        { "name": "Payment Gateway", "values": ["Basic", true, true] },
+        { "name": "Custom Integrations", "values": [false, false, true] },
+        { "name": "Advanced Automation", "values": [false, false, true] },
+        { "name": "Priority Support", "values": [false, false, true] }
+      ]
+    },
     "comparison_context": {
       "title": "Transparent investment",
       "intro": "Fixed prices, no surprises. Here's what you'd pay with alternatives:",
@@ -581,8 +683,62 @@
         "description": "Interactive calculator: input your monthly revenue, we show payback period"
       }
     },
+    "roi_section": {
+      "title": "ROI Calculator: See how your site pays for itself",
+      "subtitle": "It's not an expense, it's an investment. Discover your project's break-even point.",
+      "business_types": {
+        "medical": {
+          "label": "Medical/Dental Clinic",
+          "client_label": "patients"
+        },
+        "legal": {
+          "label": "Law Firm",
+          "client_label": "cases"
+        },
+        "accounting": {
+          "label": "Accounting Firm",
+          "client_label": "clients"
+        },
+        "school": {
+          "label": "Private School",
+          "client_label": "enrollments"
+        },
+        "ecommerce": {
+          "label": "E-commerce / Store",
+          "client_label": "clients"
+        },
+        "services": {
+          "label": "Service Company",
+          "client_label": "contracts"
+        },
+        "restaurant": {
+          "label": "Restaurant / Cafe",
+          "client_label": "diners"
+        },
+        "other": {
+          "label": "Other",
+          "client_label": "clients"
+        }
+      },
+      "labels": {
+        "business_type": "Business Type",
+        "monthly_revenue": "Current Monthly Revenue",
+        "clients_needed": "How many new {label} would you need monthly to pay for the site?",
+        "avg_ticket": "Average Ticket per {label} (MXN)",
+        "investment": "Estimated Site Investment",
+        "custom_investment": "Custom Amount",
+        "results_title": "Results Projection",
+        "payback_months": "Months to recover investment",
+        "clients_to_pay": "Total {label} to cover cost",
+        "new_monthly_revenue": "Additional monthly revenue (projected)",
+        "annual_roi": "Projected Year 1 ROI",
+        "cta": "Let's talk in a free consultation",
+        "disclaimer": "* Calculations based on a 40% conversion improvement. Real results vary by business.",
+        "per_month": "MXN/mo"
+      }
+    },
     "roi_calculator": {
-      "title": "When will your site pay for itself?",
+      "title": "How long will your site take to pay for itself?",
       "intro": "Answer 3 questions to see your return on investment:",
       "inputs": {
         "current_clients": {
@@ -832,18 +988,6 @@
     },
     "start_project": "Start Your Project"
   },
-  "FeaturedWork": {
-    "title": "Selected Engineering.",
-    "view_all": "View All Work",
-    "projects": {
-      "cafe_aurora": {
-        "title": "Café Aurora"
-      },
-      "strongfit": {
-        "title": "StrongFit Systems"
-      }
-    }
-  },
   "WorkPage": {
     "badge": "Portfolio in construction",
     "title": "How we work with our clients",
@@ -1036,68 +1180,10 @@
       ]
     }
   },
-
-  "ModernStack": {
-    "title": "Enterprise Infrastructure",
-    "nextjs": {
-      "title": "Global Edge Network",
-      "desc": "We deploy to the edge. Your application lives close to your users, ensuring sub-100ms latency worldwide."
-    },
-    "typescript": {
-      "title": "Type-Safe Architecture",
-      "desc": "We don't ship bugs. Our strict type systems ensure that your business logic is mathematically verified before deployment."
-    },
-    "headless": {
-      "title": "Decoupled Systems",
-      "desc": "Future-proof by design. We separate your content from your code, allowing marketing to move fast without breaking engineering."
-    }
-  },
-  "TargetAudience": {
-    "title": "Built for those who value excellence.",
-    "professional": {
-      "headline": "Velocity for Founders",
-      "target": "Startups & MVPs",
-      "copy": "You need to ship fast without breaking things. We build robust MVPs that investors trust and users love."
-    },
-    "business": {
-      "headline": "Migration & Scale",
-      "target": "Scale-Ups & Growth",
-      "copy": "Outgrowing your WordPress site? We migrate you to a modern stack that handles millions of millions of visitors without slowing down."
-    },
-    "enterprise": {
-      "headline": "Security & Systems",
-      "target": "Enterprise & FinTech",
-      "copy": "Protect your data and your brand. We build compliant, type-safe architecture that your IT team will approve."
-    }
-  },
-
   "BlogPage": {
     "title": "Coming Soon",
     "description": "We're preparing practical insights on web development, SEO, and digital growth for businesses like yours. Check back soon."
   },
-  "About": {
-    "title": "Our Philosophy",
-    "description": "Led by a developer & designer with 10+ years of combined experience in UI development, branding, and modern web systems. Chaos is the default state of the web. We engineer clarity. We don't just build websites; we architect silent, scalable digital systems that cut through the noise. No bloat, just execution.",
-    "philosophy_section": {
-      "label": "// OUR DNA",
-      "title_line1": "ENGINEERING",
-      "title_line2": "CLARITY.",
-      "description": "Led by engineering talent with over 7 years of shipping production systems for large-scale brands.",
-      "system_monitor": {
-        "header": "NOCTRA_SYSTEM_V1.0",
-        "live": "LIVE",
-        "core_architecture": "Core Architecture:",
-        "online": "Online",
-        "performance": "Performance:",
-        "security_protocols": "Security Protocols:",
-        "active": "Active",
-        "optimized": "Optimized",
-        "terminal_text": "$ Loading system diagnostics...",
-        "mobile_status": "System Operational | V1.0"
-      }
-    }
-  },
-
   "Contact": {
     "title": "Ready to start?",
     "subtitle": "Let's discuss how we can elevate your brand. Reach out to us for a consultation.",
@@ -1299,6 +1385,63 @@
       }
     }
   },
+  "LegalLayout": {
+    "toc_title": "Table of Contents",
+    "breadcrumb_home": "Home",
+    "last_updated": "Last updated: {date}",
+    "footer": {
+      "title": "Questions about this policy?",
+      "subtitle": "We're here to help clarify any doubts regarding your data or our terms.",
+      "cta": "Contact Us"
+    }
+  },
+  "CookieConsent": {
+    "banner": {
+      "title": "We use cookies",
+      "description": "Essential for site operations + optional analytics.",
+      "policy_link": "Cookie Policy",
+      "essential_only": "Only Essential",
+      "configure": "Configure",
+      "accept_all": "Accept All"
+    },
+    "modal": {
+      "title": "Cookie Settings",
+      "description": "Manage your cookie preferences. You can change these settings at any time. Learn more in our",
+      "policy_link": "Cookie Policy",
+      "essential": {
+        "title": "Essential Cookies",
+        "badge": "Always Active",
+        "description": "Required for the website to function properly. Cannot be disabled.",
+        "items": [
+          "Session management and authentication",
+          "Security features (CSRF protection)",
+          "Language preferences",
+          "Cookie consent preferences"
+        ]
+      },
+      "analytics": {
+        "title": "Analytics Cookies",
+        "description": "Help us understand how visitors interact with our website to improve your experience.",
+        "items": [
+          "Google Analytics (anonymized IP)",
+          "Plausible Analytics (privacy-friendly)",
+          "Vercel Analytics (performance monitoring)"
+        ]
+      },
+      "marketing": {
+        "title": "Marketing Cookies",
+        "description": "Used to track visitors across websites and display relevant ads.",
+        "items": [
+          "Facebook Pixel",
+          "Google Ads conversion tracking",
+          "LinkedIn Insight Tag"
+        ]
+      },
+      "reject_all": "Reject All",
+      "save": "Save Preferences"
+    },
+    "floating_button": "Manage cookies"
+  },
   "JoinNetwork": {
     "title": "Join the Network",
     "subtitle": "A curated collective of independent architects, designers, and strategists.",
@@ -1352,66 +1495,6 @@
     },
     "disclaimer": "Full legal documentation provided upon successful vetting."
   },
-  "SiteAudit": {
-    "status_ready": "SYSTEM READY",
-    "title": "Analyze your architecture.",
-    "description": "Enter your current website URL. We will scan for performance bottlenecks, SEO gaps, and architectural debt.",
-    "placeholder_url": "your-site.com",
-    "button_scan": "Run Diagnostics",
-    "scanning_step1": "Pinging edge nodes...",
-    "scanning_step2": "Analyzing DOM complexity...",
-    "scanning_step3": "Calculating Lighthouse score...",
-    "result_title": "Optimization Required",
-    "result_desc": "We detected 3 critical issues in your current stack affecting Core Web Vitals and conversion rates.",
-    "email_label": "Send full technical report to:",
-    "placeholder_email": "engineer@company.com",
-    "button_send": "Send Report",
-    "success_title": "TRANSMISSION COMPLETE",
-    "success_desc": "Your architecture is queued for manual review. Check your inbox for the ticket confirmation.",
-    "button_reset": "Return to Base",
-    "metric_explanations": {
-      "performance": "Measures how fast your site loads. Google ranks fast sites higher, and users buy more from them.",
-      "seo": "Determines if Google can read your site. Low scores mean you are invisible to potential customers.",
-      "accessibility": "Ensures all users can access your content. Crucial for legal compliance and reaching wider audiences.",
-      "bestPractices": "Code health and security. Poor scores here indicate a fragile site prone to bugs.",
-      "security": "Protects your users and data. A secure site builds trust and prevents malicious attacks."
-    },
-    "scan_steps": {
-      "step1": "Initializing secure handshake...",
-      "step2": "Querying global DNS propagation...",
-      "step3": "Validating SSL Certificate chain (Qualys)...",
-      "step4": "Analyzing domain reputation vectors...",
-      "step5": "Cross-referencing spam blacklists...",
-      "step6": "Finalizing security scorecard..."
-    },
-    "headlines": {
-      "critical": "CRITICAL PERFORMANCE ISSUES DETECTED",
-      "optimization": "OPTIMIZATION REQUIRED",
-      "nominal": "SYSTEM NOMINAL // READY FOR SCALE"
-    },
-    "badges": {
-      "excellent": "EXCELLENT",
-      "needs_work": "NEEDS WORK",
-      "critical": "CRITICAL",
-      "secure": "SECURE",
-      "warning": "WARNING",
-      "vulnerable": "VULNERABLE",
-      "analyzing": "ANALYZING...",
-      "processing": "PROCESSING"
-    },
-    "labels": {
-      "performance": "PERFORMANCE",
-      "security": "SECURITY POSTURE",
-      "accessibility": "ACCESSIBILITY",
-      "best_practices": "BEST PRACTICES",
-      "seo": "SEO"
-    },
-    "messages": {
-      "deep_scan": "Deep scan initiated. Results will be emailed.",
-      "diagnosis_label": "NOCTRA DIAGNOSIS",
-      "analyzing": "Analyzing..."
-    }
-  },
   "Studio": {
     "title": "NOCTRA_COMMAND_CENTER",
     "subtitle": "v2.0.0 | SYSTEM_ONLINE",
@@ -1461,7 +1544,6 @@
       "total_budget": "15000"
     }
   },
-
   "EngagementModels": {
     "label": "// Our Plans",
     "title_line1": "Transparent Pricing.",
@@ -1550,15 +1632,30 @@
     "examples": [
       {
         "type": "Professional Website",
-        "kpis": ["Page load < 2 seconds", "3%+ conversion rate", "30-40 qualified leads/month", "Appear in Google local searches (Google Business Profile optimized + main keywords)"]
+        "kpis": [
+          "Page load < 2 seconds",
+          "3%+ conversion rate",
+          "30-40 qualified leads/month",
+          "Appear in Google local searches (Google Business Profile optimized + main keywords)"
+        ]
       },
       {
         "type": "E-commerce",
-        "kpis": ["Cart abandonment < 30%", "Average order value increase 15%", "Mobile conversion rate > 2%", "Page load < 1.5 seconds"]
+        "kpis": [
+          "Cart abandonment < 30%",
+          "Average order value increase 15%",
+          "Mobile conversion rate > 2%",
+          "Page load < 1.5 seconds"
+        ]
       },
       {
         "type": "Custom Systems",
-        "kpis": ["15+ hours/week time saved", "99.9% system uptime", "User adoption rate > 80%", "Data processing time reduced 50%"]
+        "kpis": [
+          "15+ hours/week time saved",
+          "99.9% system uptime",
+          "User adoption rate > 80%",
+          "Data processing time reduced 50%"
+        ]
       }
     ],
     "example_real": {
@@ -1640,10 +1737,22 @@
     ],
     "not_includes_title": "NOT included (but you can add)",
     "not_includes": [
-      { "name": "Dynamic blog", "price": "+$12,000 MXN" },
-      { "name": "A/B testing", "price": "+$8,000 MXN" },
-      { "name": "CRM Integration (HubSpot/Salesforce)", "price": "+$10,000 MXN" },
-      { "name": "Professional copy", "price": "+$6,000 MXN" }
+      {
+        "name": "Dynamic blog",
+        "price": "+$12,000 MXN"
+      },
+      {
+        "name": "A/B testing",
+        "price": "+$8,000 MXN"
+      },
+      {
+        "name": "CRM Integration (HubSpot/Salesforce)",
+        "price": "+$10,000 MXN"
+      },
+      {
+        "name": "Professional copy",
+        "price": "+$6,000 MXN"
+      }
     ],
     "payment_title": "Payment methods",
     "payment_terms": "50% to start, 50% upon launch",
@@ -1685,8 +1794,14 @@
         "includes": "Full site, optimization, support, and code ownership.",
         "not_includes": "Hosting cost (Vercel) or third-party domains.",
         "modules": [
-          { "name": "Dynamic Blog / News section", "price": "+$10,000 MXN" },
-          { "name": "Multi-language system", "price": "+$15,000 MXN" }
+          {
+            "name": "Dynamic Blog / News section",
+            "price": "+$10,000 MXN"
+          },
+          {
+            "name": "Multi-language system",
+            "price": "+$15,000 MXN"
+          }
         ]
       }
     },
@@ -1713,8 +1828,14 @@
         "includes": "Sales platform, configured payments, and training.",
         "not_includes": "Transaction fees from payment gateways.",
         "modules": [
-          { "name": "Accounting system integration", "price": "+$12,000 MXN" },
-          { "name": "Coupons and automated marketing", "price": "+$8,000 MXN" }
+          {
+            "name": "Accounting system integration",
+            "price": "+$12,000 MXN"
+          },
+          {
+            "name": "Coupons and automated marketing",
+            "price": "+$8,000 MXN"
+          }
         ]
       }
     },
@@ -1741,8 +1862,14 @@
         "includes": "Process analysis, custom development, and deployment.",
         "not_includes": "Third-party licenses if required.",
         "modules": [
-          { "name": "Native mobile app", "price": "Extra quote" },
-          { "name": "AI module for data analysis", "price": "Extra quote" }
+          {
+            "name": "Native mobile app",
+            "price": "Extra quote"
+          },
+          {
+            "name": "AI module for data analysis",
+            "price": "Extra quote"
+          }
         ]
       }
     },
@@ -1769,8 +1896,14 @@
         "includes": "Audit, execution of improvements, and results report.",
         "not_includes": "Full redesign of sections (unless necessary).",
         "modules": [
-          { "name": "Monthly content strategy", "price": "+$12,000 MXN/month" },
-          { "name": "Advanced A/B testing", "price": "+$8,000 MXN" }
+          {
+            "name": "Monthly content strategy",
+            "price": "+$12,000 MXN/month"
+          },
+          {
+            "name": "Advanced A/B testing",
+            "price": "+$8,000 MXN"
+          }
         ]
       }
     },
@@ -1841,30 +1974,75 @@
     "subtitle": "Answer a few questions and get an estimated range in under 2 minutes.",
     "step1_title": "What do you need?",
     "step1_options": [
-      { "label": "Professional website", "value": "website" },
-      { "label": "Online store (e-commerce)", "value": "ecommerce" },
-      { "label": "Custom system or web app", "value": "custom" },
-      { "label": "Not sure yet", "value": "unsure" }
+      {
+        "label": "Professional website",
+        "value": "website"
+      },
+      {
+        "label": "Online store (e-commerce)",
+        "value": "ecommerce"
+      },
+      {
+        "label": "Custom system or web app",
+        "value": "custom"
+      },
+      {
+        "label": "Not sure yet",
+        "value": "unsure"
+      }
     ],
     "step2_title": "How many pages/sections?",
     "step2_options": [
-      { "label": "1-5 pages (standard)", "value": "small" },
-      { "label": "6-15 pages (medium)", "value": "medium" },
-      { "label": "15+ pages (large)", "value": "large" }
+      {
+        "label": "1-5 pages (standard)",
+        "value": "small"
+      },
+      {
+        "label": "6-15 pages (medium)",
+        "value": "medium"
+      },
+      {
+        "label": "15+ pages (large)",
+        "value": "large"
+      }
     ],
     "step3_title": "Do you need any of these?",
     "step3_options": [
-      { "label": "Dynamic blog", "price": "+$12,000 MXN" },
-      { "label": "Multi-language support", "price": "+$18,000 MXN" },
-      { "label": "Client portal / login area", "price": "+$25,000 MXN" },
-      { "label": "Payment processing", "price": "+$15,000 MXN" }
+      {
+        "label": "Dynamic blog",
+        "price": "+$12,000 MXN"
+      },
+      {
+        "label": "Multi-language support",
+        "price": "+$18,000 MXN"
+      },
+      {
+        "label": "Client portal / login area",
+        "price": "+$25,000 MXN"
+      },
+      {
+        "label": "Payment processing",
+        "price": "+$15,000 MXN"
+      }
     ],
     "step4_title": "When do you need it?",
     "step4_options": [
-      { "label": "ASAP (next 2 weeks)", "value": "urgent" },
-      { "label": "Next month", "value": "soon" },
-      { "label": "Next 2-3 months", "value": "flexible" },
-      { "label": "Just exploring options", "value": "exploring" }
+      {
+        "label": "ASAP (next 2 weeks)",
+        "value": "urgent"
+      },
+      {
+        "label": "Next month",
+        "value": "soon"
+      },
+      {
+        "label": "Next 2-3 months",
+        "value": "flexible"
+      },
+      {
+        "label": "Just exploring options",
+        "value": "exploring"
+      }
     ],
     "result_title": "Your estimated range",
     "result_note": "This is a rough estimate. Your actual price depends on specific requirements discussed during your free consultation.",
@@ -2146,7 +2324,11 @@
         "title": "Comparison with alternatives",
         "intro": "Your compensation depends on context. Here's the real landscape:",
         "table": {
-          "headers": ["Platform", "Your net earnings", "Time invested"],
+          "headers": [
+            "Platform",
+            "Your net earnings",
+            "Time invested"
+          ],
           "rows": [
             {
               "platform": "Fiverr",
@@ -2201,7 +2383,11 @@
               "earnings": "$24,000",
               "time": "40 hours",
               "rate": "$600/hour with constant flow",
-              "benefits": ["Predictable flow", "Guaranteed payment", "More time executing"]
+              "benefits": [
+                "Predictable flow",
+                "Guaranteed payment",
+                "More time executing"
+              ]
             }
           ]
         },
@@ -2226,13 +2412,25 @@
         "location": "Location (city, state)",
         "location_note": "Remote work is fine, but we prefer Mexico-based talent for timezone alignment",
         "specialization": "Primary specialization",
-        "specialization_options": ["Brand Designer", "Copywriter", "Photographer/Videographer", "UI/UX Designer", "Illustrator/Icon Designer", "SEO Specialist", "Other (specify)"],
+        "specialization_options": [
+          "Brand Designer",
+          "Copywriter",
+          "Photographer/Videographer",
+          "UI/UX Designer",
+          "Illustrator/Icon Designer",
+          "SEO Specialist",
+          "Other (specify)"
+        ],
         "portfolio_url": "Portfolio URL",
         "portfolio_note": "Behance, personal site, Dribbble, or PDF - whatever shows your best work",
         "best_work": "Link to your single best project (with context)",
         "best_work_placeholder": "Paste link and briefly explain: What was the challenge? What did you create? What was the result?",
         "availability": "Current availability",
-        "availability_options": ["Available now", "Available in 2-4 weeks", "Just exploring, not available yet"],
+        "availability_options": [
+          "Available now",
+          "Available in 2-4 weeks",
+          "Just exploring, not available yet"
+        ],
         "rate_expectation": "Rate expectation for typical project in your specialty",
         "rate_note": "Be realistic. We'll discuss specifics if there's a fit, but we need to know if expectations align.",
         "why_interested": "Why are you interested in joining this network?",

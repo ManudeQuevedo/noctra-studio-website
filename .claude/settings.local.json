@@ -4,7 +4,10 @@
       "Bash(npm audit:*)",
       "Bash(npm install:*)",
       "Bash(npm run build:*)",
-      "Bash(ls:*)"
+      "Bash(ls:*)",
+      "Bash(find:*)",
+      "Bash(node:*)",
+      "Bash(npx next build:*)"
     ],
     "deny": [],
     "ask": []

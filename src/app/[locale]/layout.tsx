@@ -15,14 +15,15 @@ import {
   WebsiteSchema,
   LocalBusinessSchema,
 } from "@/components/seo/JsonLd";
-import { SpeedInsights } from "@vercel/speed-insights/next";
-import { Analytics } from "@vercel/analytics/react";
+import { VercelScripts } from "@/components/VercelScripts";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
 import { Cursor } from "@/components/ui/cursor";
 import { ChatWidget } from "@/components/ui/ChatWidget";
 import { IntroProvider } from "@/context/IntroContext";
 import { IntroLoader } from "@/components/ui/IntroLoader";
+import { CookieBanner } from "@/components/cookie-consent/CookieBanner";
+import { CookieSettingsButton } from "@/components/cookie-consent/CookieSettingsButton";
 
 // Satoshi - Brand primary font
 const satoshi = localFont({
@@ -48,16 +49,38 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://noctra-studio.vercel.app"),
+  metadataBase: new URL("https://noctra.studio"),
   title: "Noctra Studio | Digital Architecture & Web Development",
   description:
-    "Clarity in the digital night. Modern web development and digital architecture studio.",
+    "Strategic web development studio in Querétaro, Mexico. Websites that generate measurable ROI for businesses.",
   alternates: {
     canonical: "/",
     languages: {
       en: "/en",
       es: "/es",
     },
+  },
+  openGraph: {
+    title: "Noctra Studio | Strategic Web Development",
+    description:
+      "Websites that generate measurable ROI for businesses in Mexico and abroad.",
+    siteName: "Noctra Studio",
+    type: "website",
+    images: [
+      {
+        url: "/og-image.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Noctra Studio — Strategic Web Development",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "Noctra Studio | Strategic Web Development",
+    description:
+      "Websites that generate measurable ROI for businesses in Mexico and abroad.",
+    images: ["/twitter-image.jpg"],
   },
   icons: [
     {
@@ -114,9 +137,10 @@ export default async function LocaleLayout({
             <OrganizationSchema />
             <WebsiteSchema />
             <LocalBusinessSchema />
-            <SpeedInsights />
-            <Analytics />
             <ChatWidget />
+            <CookieBanner />
+            <CookieSettingsButton />
+            <VercelScripts />
           </IntroProvider>
         </ThemeProvider>
       </NextIntlClientProvider>

@@ -5,7 +5,6 @@ import { motion } from "framer-motion";
 import { CheckCircle2, HelpCircle, Calculator, Info } from "lucide-react";
 import { cn } from "@/lib/utils";
 import { useState } from "react";
-import { RoiModal } from "./roi-modal";
 
 interface ComparisonColumn {
   option: string;
@@ -19,7 +18,6 @@ interface ComparisonColumn {
 
 export function PriceComparison() {
   const t = useTranslations("Pricing.comparison_context");
-  const [isRoiModalOpen, setIsRoiModalOpen] = useState(false);
 
   const columns = t.raw("table.columns") as ComparisonColumn[];
 
@@ -131,7 +129,11 @@ export function PriceComparison() {
         </div>
 
         <button
-          onClick={() => setIsRoiModalOpen(true)}
+          onClick={() => {
+            document.getElementById('roi-calculator')?.scrollIntoView({ 
+              behavior: 'smooth' 
+            });
+          }}
           className="px-8 py-3 bg-white text-black font-bold rounded-xl hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)] active:scale-95">
           {t("calculator_cta.text")}
         </button>
@@ -140,11 +142,6 @@ export function PriceComparison() {
       <p className="text-[10px] text-neutral-600 mt-6 text-center italic">
         {t("table.footnote")}
       </p>
-
-      <RoiModal
-        isOpen={isRoiModalOpen}
-        onClose={() => setIsRoiModalOpen(false)}
-      />
     </div>
   );
 }

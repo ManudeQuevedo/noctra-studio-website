@@ -5,8 +5,8 @@ export function OrganizationSchema() {
     "@context": "https://schema.org",
     "@type": "Organization",
     name: "Noctra Studio",
-    url: "https://noctrastudio.com",
-    logo: "https://noctrastudio.com/noctra-studio-icon-dark-theme.svg",
+    url: "https://noctra.studio",
+    logo: "https://noctra.studio/noctra-studio-icon-dark-theme.svg",
     description:
       "Strategic web development studio. Websites that generate measurable ROI. From $20k MXN. Results guarantee.",
     address: {
@@ -20,7 +20,7 @@ export function OrganizationSchema() {
     ],
     contactPoint: {
       "@type": "ContactPoint",
-      email: "hola@noctrastudio.com",
+      email: "hola@noctra.studio",
       contactType: "Customer Service",
       availableLanguage: ["English", "Spanish"],
     },
@@ -39,7 +39,7 @@ export function WebsiteSchema() {
     "@context": "https://schema.org",
     "@type": "WebSite",
     name: "Noctra Studio",
-    url: "https://noctrastudio.com",
+    url: "https://noctra.studio",
     description:
       "Strategic web development for businesses that need measurable results.",
     inLanguage: ["en", "es"],
@@ -47,7 +47,7 @@ export function WebsiteSchema() {
       "@type": "SearchAction",
       target: {
         "@type": "EntryPoint",
-        urlTemplate: "https://noctrastudio.com/search?q={search_term_string}",
+        urlTemplate: "https://noctra.studio/search?q={search_term_string}",
       },
       "query-input": "required name=search_term_string",
     },
@@ -66,8 +66,8 @@ export function LocalBusinessSchema() {
     "@context": "https://schema.org",
     "@type": "LocalBusiness",
     name: "Noctra Studio",
-    url: "https://noctrastudio.com",
-    email: "hola@noctrastudio.com",
+    url: "https://noctra.studio",
+    email: "hola@noctra.studio",
     description:
       "Strategic web development studio in Querétaro, Mexico. Websites that generate measurable ROI.",
     address: {

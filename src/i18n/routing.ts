@@ -18,8 +18,18 @@ export const routing = defineRouting({
     '/work': '/work',
     '/contact': '/contact',
     '/blog': '/blog',
-    '/privacy': '/privacy',
-    '/terms': '/terms',
+    '/privacy-policy': {
+      en: '/privacy-policy',
+      es: '/aviso-de-privacidad'
+    },
+    '/terms-and-conditions': {
+      en: '/terms-and-conditions',
+      es: '/terminos-y-condiciones'
+    },
+    '/cookie-policy': {
+      en: '/cookie-policy',
+      es: '/politica-de-cookies'
+    },
     '/studio': '/studio',
     '/dashboard': '/dashboard',
     '/admin': '/admin',

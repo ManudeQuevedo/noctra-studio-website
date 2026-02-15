@@ -1,7 +1,25 @@
 import { getTranslations } from 'next-intl/server';
 import type { Metadata } from 'next';
 
-type PageKey = 'home' | 'about' | 'services' | 'contact' | 'blog' | 'careers';
+type PageKey =
+  | 'home'
+  | 'about'
+  | 'services'
+  | 'contact'
+  | 'blog'
+  | 'careers'
+  | 'work'
+  | 'guarantee'
+  | 'technology'
+  | 'custom-pricing'
+  | 'first-clients'
+  | 'services-professional-websites'
+  | 'services-ecommerce'
+  | 'services-custom-systems'
+  | 'services-optimization'
+  | 'services-landing-page'
+  | 'privacy'
+  | 'terms';
 
 export async function generatePageMetadata(
   locale: string,

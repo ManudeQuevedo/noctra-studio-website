@@ -1,10 +1,11 @@
 "use client";
 
+import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { Stethoscope, Scale, ShoppingBag, TrendingUp } from "lucide-react";
+import { Stethoscope, Scale, ShoppingBag, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
 
 const iconMap: Record<string, any> = {
   medical: Stethoscope,
@@ -15,6 +16,8 @@ const iconMap: Record<string, any> = {
 
 export function AIAutomationShowcase() {
   const t = useTranslations("AIAutomationShowcase");
+  const [isExpanded, setIsExpanded] = useState(false);
+  
   const items = t.raw("use_cases") as Array<{
     industry: string;
     icon: string;
@@ -22,6 +25,8 @@ export function AIAutomationShowcase() {
     solution: string;
     result: string;
   }>;
+
+  const visibleItems = isExpanded ? items : items.slice(0, 2);
 
   return (
     <section className="w-full px-6 md:px-8 py-24 bg-neutral-950 border-t border-b border-neutral-900 overflow-hidden">
@@ -65,51 +70,72 @@ export function AIAutomationShowcase() {
         </div>
 
         {/* Use Cases Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-20">
-          {items.map((item, index) => (
-            <motion.div
-              key={index}
-              initial={{ opacity: 0, x: index % 2 === 0 ? -20 : 20 }}
-              whileInView={{ opacity: 1, x: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.5, delay: index * 0.1 }}
-              className="group relative p-8 rounded-3xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/60 transition-all duration-300 flex flex-col h-full">
-              <div className="flex items-center gap-4 mb-6">
-                <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
-                  {(() => {
-                    const Icon = iconMap[item.icon] || TrendingUp;
-                    return <Icon className="w-6 h-6 text-white" />;
-                  })()}
-                </div>
-                <h3 className="text-xl font-bold text-white tracking-tight">
-                  {item.industry}
-                </h3>
-              </div>
-
-              <div className="space-y-4 flex-grow">
-                <div>
-                  <p className="text-neutral-500 text-xs uppercase font-mono tracking-widest mb-1">
-                    {t("problem_label")}
-                  </p>
-                  <p className="text-neutral-300">{item.problem}</p>
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
+          <AnimatePresence mode="popLayout">
+            {visibleItems.map((item, index) => (
+              <motion.div
+                key={item.industry}
+                layout
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                exit={{ opacity: 0, scale: 0.9 }}
+                transition={{ duration: 0.4, delay: isExpanded ? 0 : index * 0.1 }}
+                className="group relative p-8 rounded-3xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/60 transition-all duration-300 flex flex-col h-full">
+                <div className="flex items-center gap-4 mb-6">
+                  <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
+                    {(() => {
+                      const Icon = iconMap[item.icon] || TrendingUp;
+                      return <Icon className="w-6 h-6 text-white" />;
+                    })()}
+                  </div>
+                  <h3 className="text-xl font-bold text-white tracking-tight">
+                    {item.industry}
+                  </h3>
                 </div>
 
-                <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
-                  <p className="text-emerald-500/70 text-xs uppercase font-mono tracking-widest mb-1">
-                    {t("solution_label")}
-                  </p>
-                  <p className="text-white font-medium">{item.solution}</p>
-                </div>
+                <div className="space-y-4 flex-grow">
+                  <div>
+                    <p className="text-neutral-500 text-xs uppercase font-mono tracking-widest mb-1">
+                      {t("problem_label")}
+                    </p>
+                    <p className="text-neutral-300">{item.problem}</p>
+                  </div>
 
-                <div>
-                  <p className="text-neutral-500 text-xs uppercase font-mono tracking-widest mb-1">
-                    {t("result_label")}
-                  </p>
-                  <p className="text-white font-bold text-lg">{item.result}</p>
+                  <div className="p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10">
+                    <p className="text-emerald-500/70 text-xs uppercase font-mono tracking-widest mb-1">
+                      {t("solution_label")}
+                    </p>
+                    <p className="text-white font-medium">{item.solution}</p>
+                  </div>
+
+                  <div>
+                    <p className="text-neutral-500 text-xs uppercase font-mono tracking-widest mb-1">
+                      {t("result_label")}
+                    </p>
+                    <p className="text-white font-bold text-lg">{item.result}</p>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          ))}
+              </motion.div>
+            ))}
+          </AnimatePresence>
+        </div>
+
+        {/* Expand Toggle Button */}
+        <div className="flex justify-center mb-20 animate-in fade-in slide-in-from-bottom-4 duration-1000">
+          <Button
+            variant="ghost"
+            onClick={() => setIsExpanded(!isExpanded)}
+            className="group relative px-8 py-6 rounded-2xl border border-neutral-800 bg-neutral-900/50 hover:bg-neutral-900 hover:border-emerald-500/30 text-neutral-400 hover:text-emerald-500 transition-all duration-300 gap-3">
+            <span className="font-bold tracking-tight uppercase text-xs">
+              {isExpanded ? t("see_less") : t("see_more")}
+            </span>
+            {isExpanded ? (
+              <ChevronUp className="w-4 h-4 group-hover:-translate-y-1 transition-transform" />
+            ) : (
+              <ChevronDown className="w-4 h-4 group-hover:translate-y-1 transition-transform" />
+            )}
+            <div className="absolute inset-0 rounded-2xl bg-emerald-500/5 opacity-0 group-hover:opacity-100 transition-opacity blur-xl" />
+          </Button>
         </div>
 
         {/* Bottom CTA */}
@@ -119,6 +145,9 @@ export function AIAutomationShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col items-center gap-6">
+            <p className="text-white text-xl md:text-2xl font-bold mb-2">
+              {t("cta_question")}
+            </p>
             <Button
               asChild
               size="lg"

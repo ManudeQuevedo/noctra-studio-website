@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import BlogClient from "./BlogClient";
+import PrivacyPolicyClient from "./PrivacyPolicyClient";
 
 export async function generateMetadata({
   params,
@@ -7,9 +7,9 @@ export async function generateMetadata({
   params: Promise<{ locale: string }>;
 }) {
   const { locale } = await params;
-  return generatePageMetadata(locale, "blog");
+  return generatePageMetadata(locale, "privacy");
 }
 
-export default function BlogPage() {
-  return <BlogClient />;
+export default function PrivacyPolicyPage() {
+  return <PrivacyPolicyClient />;
 }
