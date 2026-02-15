@@ -905,26 +905,30 @@
       "solution": "We build fast, modern websites designed to convert visitors into customers.",
       "focus": "Your website is your hardest-working salesperson. We make sure it looks professional, loads instantly, and guides visitors toward contacting you or buying.",
       "why": "A fast, professional website builds trust and keeps visitors from leaving.",
+      "image_label": "24/7 Conversion Machine",
+      "pricing_label": "Starting at $20k MXN",
       "process": [
-        "We analyze your current site and competitors",
+        "Direct analysis of your current site and competitors",
         "Design the structure and look of your new site",
         "Build and test every page and feature",
         "Launch worldwide with fast hosting"
       ],
       "deliverables": [
         "Your site live and hosted globally",
-        "Full code ownership (it's yours, forever)",
-        "Optimized for Google (loads fast, ranks higher)"
+        "Full code ownership",
+        "Optimized for Google"
       ],
       "deliverables_subtext": [
         "Your website loads instantly for visitors anywhere in the world.",
-        "You own 100% of the code. Switch providers anytime, take everything.",
-        "Faster websites rank higher on Google and convert more visitors."
+        "Switch providers anytime, zero vendor lock-in.",
+        "More organic traffic = fewer paid ads needed."
       ],
       "cta": "Let's talk about your website"
     },
     "ecommerce": {
       "title": "Online Stores",
+      "image_label": "Frictionless Shopping Experience",
+      "pricing_label": "Starting at $35k MXN",
       "focus": "Your window to the global market. We create shopping experiences that eliminate friction and turn visits into recurring revenue.",
       "why": "An optimized e-commerce is the difference between having a catalog and having a scalable business.",
       "problem": "You try to sell through Instagram or with a site that doesn't build trust or facilitate payment.",
@@ -942,16 +946,18 @@
       ],
       "deliverables_subtext": [
         "Ready to receive card and bank transfer payments.",
-        "Change prices, stock, and photos without depending on us.",
-        "Understand where your sales come from and why."
+        "Update prices & inventory yourself in seconds.",
+        "Understand exactly where your sales come from."
       ],
       "cta": "Explore E-commerce details"
     },
     "ai": {
-      "title": "Custom Systems & Automation",
+      "title": "Custom Systems",
+      "image_label": "Automated Business Processes",
+      "pricing_label": "Custom quote based on scope",
       "problem": "Repetitive tasks and manual processes are eating your team's time.",
       "solution": "We build custom tools and automations that do the work for you.",
-      "focus": "We build smart systems that handle repetitive work automatically—from answering customer questions to managing appointments and sending follow-ups. Your team focuses on what matters.",
+      "focus": "We build smart systems that handle repetitive work automatically—from answering customer questions to managing appointments and sending follow-ups.",
       "why": "Automation saves hours every week and eliminates human errors.",
       "process": [
         "Map out your current workflows",
@@ -960,19 +966,19 @@
         "Test and launch with your team"
       ],
       "deliverables": [
-        "Custom automation or AI assistant",
-        "Documentation your team can follow",
-        "Video walkthrough of how everything works"
+        "Custom automation or system",
+        "Business intelligence dashboard",
+        "Operational documentation"
       ],
       "deliverables_subtext": [
-        "Automated customer support, lead follow-up, or data processing 24/7.",
-        "Clear docs so your team knows how to use and maintain the system.",
-        "Step-by-step video so anyone on your team can manage it."
+        "Automated customer support or data processing 24/7.",
+        "Visual metrics to make data-driven decisions.",
+        "Clear docs so your team is fully independent."
       ],
       "cta": "Let's talk about automation"
     },
     "seo": {
-      "title": "SEO & Growth",
+      "title": "Optimization & Growth",
       "problem": "Your website isn't showing up on Google, and you don't know where your leads come from.",
       "solution": "We make your site visible on search engines and track what's actually working.",
       "focus": "Stop guessing where your customers find you. We optimize your site for Google, set up analytics, and give you a clear picture of how your website is performing.",
@@ -995,6 +1001,7 @@
       ],
       "cta": "Let's talk about growth"
     },
+    "pricing_callout_link": "See full pricing breakdown",
     "metrics": {
       "lighthouse": "Built for Performance",
       "latency": "Fast Worldwide",
@@ -1216,21 +1223,66 @@
         "2": "Direct founder access"
       }
     },
-    "post_submit_info": {
-      "title": "What happens after submitting this form:",
+    "steps": {
+      "step_1": {
+        "title": "Identity",
+        "label": "Step 1 of 3"
+      },
+      "step_2": {
+        "title": "Project details",
+        "label": "Step 2 of 3"
+      },
+      "step_3": {
+        "title": "Context",
+        "label": "Step 3 of 3"
+      },
+      "next": "Next step",
+      "back": "Go back"
+    },
+    "validation": {
+      "email_valid": "Valid email address",
+      "required": "This field is required",
+      "invalid_email": "Please enter a valid email",
+      "phone_format": "Numbers only, please"
+    },
+    "budget_scopes": {
+      "20-35k": "Landing or simple strategic site",
+      "35-50k": "Full professional site + content architecture",
+      "50-80k": "E-commerce or advanced systems",
+      "80-120k": "Custom infrastructure / Web App",
+      "120k+": "Full transformation platform",
+      "monthly": "Continuous growth & maintenance",
+      "discuss": "Custom scope focused on results"
+    },
+    "expectations": {
+      "title": "What you'll receive within 24 hours:",
       "items": [
-        "Response in less than 24 hours",
-        "Free 20-30 minute consultation via video call",
-        "Detailed proposal in 48 hours max (price, scope, timeline)",
-        "No commitment, no pressure, no fine print"
+        "Confirmation email with next steps",
+        "Calendly link to book your free 30-min discovery call",
+        "Quick-start guide PDF with project checklist"
       ]
     },
+    "testimonials": [
+      {
+        "quote": "Manu responded in 2 hours and had a proposal ready in 3 days. Impressive speed.",
+        "author": "Tech CEO"
+      },
+      {
+        "quote": "The most transparent consultation I've ever had. No agency fluff, just results.",
+        "author": "Project Manager"
+      },
+      {
+        "quote": "Finally a partner who actually understands business ROI, not just code.",
+        "author": "Founding Partner"
+      }
+    ],
+    "testimonials_title": "Why work with us",
     "form": {
-      "name_label": "Name",
+      "name_label": "What's your name?",
       "name_placeholder": "Your full name",
-      "email_label": "Email",
+      "email_label": "Your email",
       "email_placeholder": "you@company.com",
-      "phone_label": "Phone (optional)",
+      "phone_label": "Phone (for quick follow-up)",
       "phone_placeholder": "+1 ...",
       "service_label": "What type of project do you need?",
       "service_placeholder": "Select an option...",
@@ -1245,21 +1297,21 @@
       "currency_label": "Currency",
       "budget_options": {
         "mxn": {
-          "20-35k": "$20k - $35k (Landing / Simple site)",
-          "35-50k": "$35k - $50k (Full professional site)",
-          "50-80k": "$50k - $80k (E-commerce / Advanced site)",
-          "80-120k": "$80k - $120k (Custom system)",
-          "120k+": "+$120k (Full platform)",
-          "monthly": "Monthly maintenance ($5k-$10k/mo)",
+          "20-35k": "$20k - $35k",
+          "35-50k": "$35k - $50k",
+          "50-80k": "$50k - $80k",
+          "80-120k": "$80k - $120k",
+          "120k+": "+$120k",
+          "monthly": "Monthly maintenance",
           "discuss": "Not sure yet · Let's discuss"
         },
         "usd": {
-          "20-35k": "$1k - $1.8k (Landing / Simple site)",
-          "35-50k": "$1.8k - $2.5k (Professional website)",
-          "50-80k": "$2.5k - $4k (E-commerce / Advanced)",
-          "80-120k": "$4k - $6k (Custom system)",
-          "120k+": "+$6k (Full platform)",
-          "monthly": "Monthly retainer ($250-$500/mo)",
+          "20-35k": "$1k - $1.8k",
+          "35-50k": "$1.8k - $2.5k",
+          "50-80k": "$2.5k - $4k",
+          "80-120k": "$4k - $6k",
+          "120k+": "+$6k",
+          "monthly": "Monthly retainer",
           "discuss": "Not sure yet · Let's discuss"
         }
       },
@@ -1280,9 +1332,9 @@
         "6_months": "3-6 months",
         "future": "It's a future project"
       },
-      "details_label": "Tell me more about your project",
-      "details_placeholder": "Give us a general idea of what you are looking to achieve...",
-      "submit": "Request my free consultation",
+      "details_label": "Additional context (optional)",
+      "details_placeholder": "Tell us a bit about your goals...",
+      "submit": "Submit project details",
       "sending": "Sending..."
     },
     "success": {

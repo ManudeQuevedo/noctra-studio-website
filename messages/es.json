@@ -588,28 +588,32 @@
       "title": "Sitios Web Profesionales",
       "focus": "Tu sitio web es tu mejor vendedor. Nos aseguramos de que se vea profesional, cargue instantáneamente y guíe a los visitantes a contactarte o comprar.",
       "why": "Un sitio rápido y profesional genera confianza y evita que los visitantes se vayan.",
+      "image_label": "Máquina de Conversión 24/7",
+      "pricing_label": "Desde $20k MXN",
       "problem": "Tu sitio web actual es lento, anticuado o simplemente no está trayendo clientes.",
       "solution": "Construimos sitios rápidos y modernos diseñados para convertir visitantes en clientes.",
       "process": [
-        "Analizamos tu sitio actual y competidores",
+        "Análisis directo de tu sitio actual y competidores",
         "Diseñamos la estructura y apariencia de tu nuevo sitio",
         "Construimos y probamos cada página y funcionalidad",
         "Lanzamos mundialmente con hosting rápido"
       ],
       "deliverables": [
         "Tu sitio en vivo y alojado globalmente",
-        "Propiedad total del código (es tuyo, para siempre)",
-        "Optimizado para Google (carga rápido, posiciona mejor)"
+        "Propiedad total del código",
+        "Optimizado para Google"
       ],
       "deliverables_subtext": [
         "Tu sitio carga instantáneamente para visitantes en cualquier parte del mundo.",
-        "Eres dueño del 100% del código. Cambia de proveedor cuando quieras, llévate todo.",
-        "Sitios más rápidos posicionan mejor en Google y convierten más visitantes."
+        "Cambia de proveedor cuando quieras, cero dependencia.",
+        "Más tráfico orgánico = menos inversión en publicidad pagada."
       ],
       "cta": "Hablemos de tu sitio web"
     },
     "ecommerce": {
       "title": "Tiendas En Línea",
+      "image_label": "Experiencia de Compra Sin Fricción",
+      "pricing_label": "Desde $35k MXN",
       "focus": "Tu ventana al mercado global. Creamos experiencias de compra que eliminan la fricción y convierten visitas en ingresos recurrentes.",
       "why": "Un e-commerce optimizado es la diferencia entre tener un catálogo y tener un negocio escalable.",
       "problem": "Intentas vender por Instagram o con un sitio que no genera confianza ni facilita el pago.",
@@ -627,13 +631,15 @@
       ],
       "deliverables_subtext": [
         "Lista para recibir pagos con tarjeta y SPEI.",
-        "Cambia precios, stock y fotos sin depender de nosotros.",
-        "Entiende de dónde vienen tus ventas y por qué."
+        "Actualiza precios y stock tú mismo en segundos.",
+        "Entiende exactamente de dónde vienen tus ventas."
       ],
       "cta": "Explorar detalles de E-commerce"
     },
     "ai": {
       "title": "Sistemas Personalizados",
+      "image_label": "Procesos de Negocio Automatizados",
+      "pricing_label": "Cotización a medida según alcance",
       "focus": "Herramientas hechas a la medida de tu negocio que automatizan lo repetitivo y te dan información para tomar mejores decisiones.",
       "why": "Automatizar procesos manuales libera tiempo y reduce errores.",
       "problem": "Pierdes horas en tareas repetitivas que podrían automatizarse.",
@@ -646,13 +652,13 @@
       ],
       "deliverables": [
         "Sistema personalizado funcionando",
-        "Dashboard con métricas clave",
-        "Documentación y capacitación"
+        "Dashboard de inteligencia de negocio",
+        "Documentación operativa"
       ],
       "deliverables_subtext": [
         "CRM, gestión o automatización a tu medida.",
-        "Visualiza lo que importa para tomar decisiones.",
-        "Tu equipo sabrá usar todo sin depender de nosotros."
+        "Visualiza métricas clave para decidir mejor.",
+        "Tu equipo será totalmente independiente."
       ],
       "cta": "Describir mi necesidad"
     },
@@ -679,7 +685,8 @@
         "Sabes exactamente cómo avanza tu posicionamiento."
       ],
       "cta": "Hablemos de tu crecimiento"
-    }
+    },
+    "pricing_callout_link": "Ver desglose de precios"
   },
   "Pricing": {
     "title": "Precios transparentes",
@@ -1217,21 +1224,66 @@
         "2": "Fundador directo"
       }
     },
-    "post_submit_info": {
-      "title": "Qué pasa después de enviar este formulario:",
+    "steps": {
+      "step_1": {
+        "title": "Identidad",
+        "label": "Paso 1 de 3"
+      },
+      "step_2": {
+        "title": "Detalles del proyecto",
+        "label": "Paso 2 de 3"
+      },
+      "step_3": {
+        "title": "Contexto",
+        "label": "Paso 3 de 3"
+      },
+      "next": "Siguiente paso",
+      "back": "Regresar"
+    },
+    "validation": {
+      "email_valid": "Correo válido",
+      "required": "Este campo es obligatorio",
+      "invalid_email": "Introduce un correo válido",
+      "phone_format": "Solo números, por favor"
+    },
+    "budget_scopes": {
+      "20-35k": "Landing o sitio estratégico simple",
+      "35-50k": "Sitio profesional completo + arquitectura de contenido",
+      "50-80k": "E-commerce o sistemas avanzados",
+      "80-120k": "Infraestructura personalizada / Web App",
+      "120k+": "Plataforma de transformación completa",
+      "monthly": "Crecimiento continuo y mantenimiento",
+      "discuss": "Alcance personalizado enfocado en resultados"
+    },
+    "expectations": {
+      "title": "Lo que recibirás en menos de 24 horas:",
       "items": [
-        "Respuesta en menos de 24 horas",
-        "Consulta gratuita de 20-30 minutos vía videollamada",
-        "Propuesta detallada en máximo 48 horas (precio, alcance, timeline)",
-        "Sin compromiso, sin presión, sin letra chica"
+        "Correo de confirmación con los siguientes pasos",
+        "Link de Calendly para agendar tu llamada de descubrimiento gratuita (30 min)",
+        "Guía PDF de inicio rápido con checklist de proyecto"
       ]
     },
+    "testimonials": [
+      {
+        "quote": "Manu respondió en 2 horas y tenía una propuesta lista en 3 días. Velocidad impresionante.",
+        "author": "Director de Tecnología"
+      },
+      {
+        "quote": "La consulta más transparente que he tenido. Sin rodeos de agencia, solo resultados.",
+        "author": "Gerente de Proyecto"
+      },
+      {
+        "quote": "Finalmente un socio que realmente entiende el ROI del negocio, no solo el código.",
+        "author": "Socio Fundador"
+      }
+    ],
+    "testimonials_title": "Por qué trabajar con nosotros",
     "form": {
-      "name_label": "Nombre",
+      "name_label": "¿Cuál es tu nombre?",
       "name_placeholder": "Tu nombre completo",
-      "email_label": "Email",
+      "email_label": "Tu correo",
       "email_placeholder": "tu@empresa.com",
-      "phone_label": "Teléfono (opcional)",
+      "phone_label": "Teléfono (para seguimiento rápido)",
       "phone_placeholder": "+52 ...",
       "service_label": "¿Qué tipo de proyecto necesitas?",
       "service_placeholder": "Selecciona una opción...",
@@ -1246,22 +1298,22 @@
       "currency_label": "Moneda",
       "budget_options": {
         "mxn": {
-          "20-35k": "$20k - $35k (Landing / Sitio simple)",
-          "35-50k": "$35k - $50k (Sitio profesional completo)",
-          "50-80k": "$50k - $80k (E-commerce / Sitio avanzado)",
-          "80-120k": "$80k - $120k (Sistema custom)",
-          "120k+": "+$120k (Plataforma completa)",
-          "monthly": "Mantenimiento mensual ($5k-$10k/mes)",
+          "20-35k": "$20k - $35k",
+          "35-50k": "$35k - $50k",
+          "50-80k": "$50k - $80k",
+          "80-120k": "$80k - $120k",
+          "120k+": "+$120k",
+          "monthly": "Mantenimiento mensual",
           "discuss": "No estoy seguro · Platiquemos"
         },
         "usd": {
-          "20-35k": "$1k - $1.8k (Landing / Simple site)",
-          "35-50k": "$1.8k - $2.5k (Professional website)",
-          "50-80k": "$2.5k - $4k (E-commerce / Advanced)",
-          "80-120k": "$4k - $6k (Custom system)",
-          "120k+": "+$6k (Full platform)",
-          "monthly": "Monthly retainer ($250-$500/mo)",
-          "discuss": "Not sure yet · Let's discuss"
+          "20-35k": "$1k - $1.8k",
+          "35-50k": "$1.8k - $2.5k",
+          "50-80k": "$2.5k - $4k",
+          "80-120k": "$4k - $6k",
+          "120k+": "+$6k",
+          "monthly": "Retenedor mensual",
+          "discuss": "Aún no estoy seguro · Platiquemos"
         }
       },
       "source_label": "¿Cómo nos conociste?",
@@ -1281,9 +1333,9 @@
         "6_months": "3-6 meses",
         "future": "Es un proyecto a futuro"
       },
-      "details_label": "Cuéntame más sobre tu proyecto",
-      "details_placeholder": "Danos una idea general de lo que buscas lograr...",
-      "submit": "Solicitar mi consulta gratuita",
+      "details_label": "Contexto adicional (opcional)",
+      "details_placeholder": "Cuéntanos un poco sobre tus objetivos...",
+      "submit": "Enviar detalles del proyecto",
       "sending": "Enviando..."
     },
     "details": {
