@@ -483,6 +483,16 @@
     "title": "Questions people ask us (and you should too)",
     "subtitle": "Can't find your question here? Book a call. We don't bite.",
     "filter_all": "All",
+    "search": {
+      "placeholder": "Search questions (e.g., 'WordPress', 'timeline', 'refund')",
+      "no_results": "No results found - Book a call to ask us directly"
+    },
+    "featured": {
+      "question": "What's the real difference between a $5k and a $35k site?",
+      "answer": "It's not just design; it's the architecture. A $5k site is usually a template-based brochure. A $35k investment at Noctra covers: **Strategic positioning**, **custom systems** (CRM, APIs), **high-performance engineering**, and **conversion optimization** that turns visitors into revenue. One is an expense; the other is a revenue-generating asset.",
+      "label": "Most Asked Question",
+      "see_all": "See all FAQs below"
+    },
     "categories": {
       "pricing": "Pricing & Investment",
       "guarantees": "Guarantees & ROI",
@@ -528,16 +538,20 @@
   },
   "SocialProof": {
     "badge": "Limited offer",
-    "title": "First 5 clients receive:",
-    "subtitle": "We're building our track record. You get better pricing, I get a case study. We both win.",
+    "spots_remaining": "3 of 5 spots remaining",
+    "title": "Build our track record, save on your site",
+    "subtitle": "We're looking for 5 visionary partners to showcase our capabilities. You get the same high-end engineering at a startup-friendly price.",
     "benefits": [
       "25% discount on initial project",
       "Support priority for 12 months",
-      "Right to appear in our portfolio (optional)",
-      "Access to new features at no additional cost"
+      "Direct communication with founding engineers"
     ],
+    "testimonial": {
+      "text": "At first, I was hesitant about the cost, but the 25% discount made it a no-brainer. The ROI we saw in the first 2 months was incredible.",
+      "author": "Founder, E-commerce Startup"
+    },
     "transparency": "Why? We're building our track record. You get better pricing, I get a case study. We both win.",
-    "cta": "Claim one of 5 spots"
+    "cta": "Schedule free discovery call (spots limited)"
   },
   "Services": {
     "title": "Our Services",

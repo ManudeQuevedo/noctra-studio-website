@@ -480,8 +480,18 @@
   },
   "FAQ": {
     "title": "Preguntas que nos hacen (y deberías hacer)",
-    "subtitle": "Si no encuentras tu pregunta aquí, agenda una llamada. No mordemos.",
-    "filter_all": "Todas",
+    "subtitle": "¿No encuentras tu pregunta? Agenda una llamada. No mordemos.",
+    "filter_all": "Todo",
+    "search": {
+      "placeholder": "Buscar preguntas (ej. 'WordPress', 'tiempos', 'reembolso')",
+      "no_results": "No se encontraron resultados - Agenda una llamada para preguntarnos directamente"
+    },
+    "featured": {
+      "question": "¿Cuál es la diferencia real entre un sitio de $5k y uno de $35k?",
+      "answer": "No es solo el diseño; es la arquitectura. Un sitio de $5k suele ser una plantilla estática. Una inversión de $35k en Noctra cubre: **Posicionamiento estratégico**, **sistemas a la medida** (CRM, APIs), **ingeniería de alto rendimiento**, y **optimización de conversión** que convierte visitantes en ingresos. Uno es un gasto; el otro es un activo que genera dinero.",
+      "label": "La pregunta que más nos hacen",
+      "see_all": "Ver todas las preguntas frecuentes"
+    },
     "categories": {
       "pricing": "Pricing & Inversión",
       "guarantees": "Garantías & ROI",
@@ -527,16 +537,20 @@
   },
   "SocialProof": {
     "badge": "Oferta limitada",
-    "title": "Primeros 5 clientes reciben:",
-    "subtitle": "Estamos construyendo nuestro track record. Obtienes mejor precio, yo obtengo un caso de estudio. Ambos ganamos.",
+    "spots_remaining": "3 de 5 lugares disponibles",
+    "title": "Construyamos nuestro historial, ahorra en tu sitio",
+    "subtitle": "Buscamos 5 socios visionarios para demostrar nuestras capacidades. Obtienes la misma ingeniería de alto nivel a un precio accesible.",
     "benefits": [
       "25% descuento en proyecto inicial",
       "Prioridad de soporte durante 12 meses",
-      "Derecho a aparecer en nuestro portfolio (opcional)",
-      "Acceso a nuevas features sin costo adicional"
+      "Comunicación directa con ingenieros fundadores"
     ],
-    "transparency": "¿Por qué? Estamos construyendo nuestro track record. Obtienes mejor precio, yo obtengo un caso de estudio. Ambos ganamos.",
-    "cta": "Reclamar uno de 5 lugares"
+    "testimonial": {
+      "text": "Al principio dudaba por el costo, pero el descuento del 25% lo hizo una decisión fácil. El ROI que vimos en los primeros 2 meses fue increíble.",
+      "author": "Fundador, Startup E-commerce"
+    },
+    "transparency": "¿Por qué? Estamos construyendo nuestro historial. Tú obtienes mejor precio, yo obtengo un caso de éxito. Ambos ganamos.",
+    "cta": "Agenda llamada de descubrimiento gratis (cupo limitado)"
   },
   "Services": {
     "title": "Nuestros Servicios",
