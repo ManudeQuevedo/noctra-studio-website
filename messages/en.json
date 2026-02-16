@@ -632,70 +632,93 @@
     "compare_all_features": "Compare all features →",
     "back_to_pricing": "← Back to pricing",
     "feature_comparison": {
-      "columns": ["Professional Website", "E-commerce", "Custom Systems"],
+      "columns": [
+        "Professional Website",
+        "E-commerce",
+        "Custom Systems"
+      ],
       "rows": [
-        { "name": "Strategic Pages", "values": ["5 Pages", "Unlimited", "Unlimited"] },
-        { "name": "Responsive Design", "values": [true, true, true] },
-        { "name": "Technical SEO", "values": [true, true, true] },
-        { "name": "CMS / Blog", "values": ["Optional", true, true] },
-        { "name": "Customer Portal", "values": [false, "Optional", true] },
-        { "name": "Inventory & Shipping", "values": [false, true, "Optional"] },
-        { "name": "Payment Gateway", "values": ["Basic", true, true] },
-        { "name": "Custom Integrations", "values": [false, false, true] },
-        { "name": "Advanced Automation", "values": [false, false, true] },
-        { "name": "Priority Support", "values": [false, false, true] }
+        {
+          "name": "Strategic Pages",
+          "values": [
+            "5 Pages",
+            "Unlimited",
+            "Unlimited"
+          ]
+        },
+        {
+          "name": "Responsive Design",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "name": "Technical SEO",
+          "values": [
+            true,
+            true,
+            true
+          ]
+        },
+        {
+          "name": "CMS / Blog",
+          "values": [
+            "Optional",
+            true,
+            true
+          ]
+        },
+        {
+          "name": "Customer Portal",
+          "values": [
+            false,
+            "Optional",
+            true
+          ]
+        },
+        {
+          "name": "Inventory & Shipping",
+          "values": [
+            false,
+            true,
+            "Optional"
+          ]
+        },
+        {
+          "name": "Payment Gateway",
+          "values": [
+            "Basic",
+            true,
+            true
+          ]
+        },
+        {
+          "name": "Custom Integrations",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        },
+        {
+          "name": "Advanced Automation",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        },
+        {
+          "name": "Priority Support",
+          "values": [
+            false,
+            false,
+            true
+          ]
+        }
       ]
-    },
-    "comparison_context": {
-      "title": "Transparent investment",
-      "intro": "Fixed prices, no surprises. Here's what you'd pay with alternatives:",
-      "table": {
-        "title": "Real 3-year cost",
-        "subtitle": "(Typical horizon to amortize a website)",
-        "columns": [
-          {
-            "option": "WordPress + Agency",
-            "year_1": "$15,000 setup",
-            "year_2": "$48,000 maintenance (12 months × $4k)",
-            "year_3": "$48,000 maintenance",
-            "total_3_years": "$111,000 MXN",
-            "hidden_costs": "Premium plugins, hosting, CDN, security, updates",
-            "highlight": false
-          },
-          {
-            "option": "Offshore Freelancer",
-            "year_1": "$15,000 initial",
-            "year_2": "$36,000 fixes & features (3 months of diluted debugging)",
-            "year_3": "$24,000 maintenance",
-            "total_3_years": "$75,000 MXN",
-            "hidden_costs": "Time zone, communication, inconsistent quality, no guarantees",
-            "highlight": false
-          },
-          {
-            "option": "DIY Wix/Squarespace",
-            "year_1": "$500/month × 12 = $6,000",
-            "year_2": "$6,000 + 40h of your time = $46,000 (valuing your time at $1k/hour)",
-            "year_3": "$6,000 + 20h adjustments = $26,000",
-            "total_3_years": "$78,000 MXN",
-            "hidden_costs": "Your time (which you could use serving clients), technical limitations, not scalable",
-            "highlight": false
-          },
-          {
-            "option": "Noctra Studio",
-            "year_1": "$20,000 initial + $0 maintenance first 60 days",
-            "year_2": "$0 (infrastructure included, optimization included)",
-            "year_3": "$0 (no vendor lock-in, code is yours)",
-            "total_3_years": "$20,000 MXN",
-            "hidden_costs": "None. All-inclusive price.",
-            "highlight": true
-          }
-        ],
-        "footnote": "* Calculations based on Mexico 2025 market averages. Your mileage may vary."
-      },
-      "calculator_cta": {
-        "text": "Calculate ROI of your project",
-        "description": "Interactive calculator: input your monthly revenue, we show payback period"
-      }
     },
     "real_roi": {
       "title": "Real ROI Calculator",
@@ -763,7 +786,7 @@
         "disclaimer_text": "These projections are estimates based on industry averages. Results vary by market and product-market fit.",
         "market_note": "Cost assumptions based on Querétaro/Mexico market rates as of 2025.",
         "privacy_note": "Your data is not stored. Calculations happen in your browser.",
-        "per_month": "MXN/mo"
+        "per_month": "per month"
       },
       "fields": {
         "reception": "Reception/Secretary",
@@ -846,6 +869,1320 @@
       },
       "cta": "Schedule consultation to validate these numbers",
       "disclaimer": "* Estimated calculations based on industry benchmarks. Real results vary by business."
+    },
+    "infrastructure_comparison": {
+      "title": "Transparent investment",
+      "subtitle": "Fixed prices, no surprises. Here's what you'd pay with alternatives:",
+      "tagline": "Build your current tech stack, see what you're really spending",
+      "industry_labels": {
+        "select": "Select your industry:",
+        "medical": {
+          "label": "Medical Professional",
+          "sub": "Doctors, Dentists, Clinics",
+          "icon": "Stethoscope"
+        },
+        "legal": {
+          "label": "Legal & Consulting",
+          "sub": "Lawyers, Accountants, Consultants",
+          "icon": "Briefcase"
+        },
+        "retail": {
+          "label": "Local Retail",
+          "sub": "Physical stores, E-commerce",
+          "icon": "ShoppingBag"
+        },
+        "manufacturing": {
+          "label": "Manufacturing",
+          "sub": "Custom production, Workshops",
+          "icon": "Hammer"
+        },
+        "b2b": {
+          "label": "B2B Services",
+          "sub": "Agencies, SaaS, Corporate",
+          "icon": "Building2"
+        },
+        "hospitality": {
+          "label": "Hospitality",
+          "sub": "Hotels, Tours, Restaurants",
+          "icon": "Hotel"
+        },
+        "other": {
+          "label": "Other",
+          "sub": "Let me select manually",
+          "icon": "LayoutGrid"
+        },
+        "select_button": "Select",
+        "selected_badge": "Selected Industry",
+        "change_button": "Change Industry",
+        "clear_button": "Clear All"
+      },
+      "columns": {
+        "current": {
+          "title": "YOUR CURRENT SETUP",
+          "empty_state": "👈 Select the tools you currently use from the categories below",
+          "total_label": "TOTAL 2-YEAR COST",
+          "monthly_avg": "Monthly average",
+          "hidden_costs_title": "⚠️ HIDDEN COSTS NOT INCLUDED:",
+          "hidden_costs_items": [
+            "Emergency fixes when systems break",
+            "Platform update compatibility issues",
+            "Integration maintenance",
+            "Your time managing 4+ vendors",
+            "Switching costs if unsatisfied"
+          ],
+          "clear_all": "Clear all selections",
+          "show_all": "Show all",
+          "show_less": "Show less"
+        },
+        "noctra": {
+          "title": "WITH NOCTRA STUDIO",
+          "badge": "RECOMMENDED",
+          "tagline": "ALL-IN-ONE SOLUTION",
+          "total_label": "TOTAL 2-YEAR COST",
+          "monthly_label": "Monthly cost: $0 (one-time investment)",
+          "included_title": "What's included:",
+          "included_items": [
+            "Professional custom website",
+            "Built-in SEO optimization",
+            "Automated booking/contact system",
+            "Email/SMS confirmations",
+            "No-show reminders",
+            "Lead qualification forms",
+            "Analytics & conversion tracking",
+            "Mobile-first design",
+            "Speed <1.5 seconds",
+            "60-day support included",
+            "Complete documentation",
+            "Training included"
+          ],
+          "zero_hidden_title": "✅ ZERO HIDDEN COSTS:",
+          "zero_hidden_items": [
+            "Infrastructure included",
+            "Optimization included",
+            "Full code ownership (yours forever)",
+            "No vendor lock-in",
+            "No monthly subscriptions",
+            "No commission fees",
+            "No platform dependencies"
+          ]
+        }
+      },
+      "savings_card": {
+        "title": "💵 YOU SAVE",
+        "roi_label": "Return on Investment",
+        "payback_label": "Payback Period",
+        "payback_value": "Immediate (vs ongoing subscriptions)",
+        "enough_to_title": "💡 That's enough to:",
+        "enough_to_items": [
+          "Hire a full-time employee",
+          "Open a second location",
+          "Invest in inventory",
+          "Expand your business"
+        ]
+      },
+      "tiers": {
+        "ecommerce": "Note: For e-commerce sites, our investment is $35,000 MXN (Still saving you {savings})",
+        "enterprise": "Note: For custom client portals, our investment starts at $35,000 MXN"
+      },
+      "breakdown": {
+        "cta_open": "See detailed year-by-year breakdown ▼",
+        "cta_close": "Close breakdown ▲",
+        "title": "DETAILED YEAR-BY-YEAR BREAKDOWN",
+        "year_1": "YEAR 1:",
+        "year_2": "YEAR 2:",
+        "subtotal": "Subtotal",
+        "grand_total": "2-YEAR GRAND TOTAL",
+        "extra_considerations": "💡 Additional considerations:",
+        "extra_items": [
+          "Vendor coordination: 5-10 hrs/month",
+          "Emergency support: $3k-10k/incident",
+          "API changes require updates",
+          "Migration costs if switching"
+        ]
+      },
+      "warnings": {
+        "high_spend": "⚠️ You're spending 5x more than necessary. Consider consolidating with an all-in-one solution.",
+        "wp_risk": "💡 Common combination, but maintenance typically falls on you when freelancer moves on. Noctra includes 60-day support + documentation.",
+        "marketing_seo": "💡 A website with built-in SEO could reduce your paid advertising dependency by 40-60%, saving you significant amounts over 2 years.",
+        "doctoralia": "💡 Doctoralia takes 15-20% commission per appointment. Direct bookings eliminate this expense.",
+        "hospitality_ota": "⚠️ OTA commissions are your biggest expense! A professional website can reduce dependency by 40-60%."
+      },
+      "methodology": {
+        "cta_open": "How we calculated these numbers",
+        "cta_close": "Close ▲",
+        "title": "METHODOLOGY",
+        "summary": "These estimates represent 2-year total cost of ownership for small-medium businesses in Mexico (Querétaro, CDMX, Guadalajara, Monterrey) as of Feb 2025.",
+        "sections": [
+          {
+            "title": "DATA SOURCES:",
+            "items": [
+              "30+ agency proposals (Jan 2024-Feb 25)",
+              "Official platform pricing (Shopify, Wix, Squarespace, Doctoralia, etc.)",
+              "Freelancer marketplace data (Workana, Domestika, Upwork Mexico)",
+              "Industry reports (Clutch, GoodFirms)",
+              "Direct competitor analysis (15+ calls)"
+            ]
+          },
+          {
+            "title": "ASSUMPTIONS:",
+            "items": [
+              "Business website: 5-10 pages",
+              "Professional-grade hosting",
+              "Maintenance includes: bug fixes, security updates, minor changes",
+              "Excludes: Major redesigns, complex custom integrations"
+            ]
+          }
+        ],
+        "currency": "Mexican Pesos (MXN). USD conversions use $18 MXN/USD (Feb 2025 average)",
+        "variations": "YOUR COSTS MAY VARY based on specific requirements, content volume, integration complexity, and provider experience.",
+        "commitment": "TRANSPARENCY COMMITMENT: If you're a competing provider and believe any figures are inaccurate, contact us at hello@noctra.studio",
+        "last_updated": "Last updated: February 15, 2025"
+      },
+      "ctas": {
+        "consultation": "Schedule free consultation →",
+        "calculate_roi": "Calculate exact ROI ↓",
+        "footer_savings": "💰 YOUR POTENTIAL SAVINGS",
+        "footer_period": "over 2 years",
+        "footer_note": "That's enough to hire a full-time employee or open a second location",
+        "footer_btn": "Calculate exact ROI for your business →"
+      },
+      "categories": {
+        "medical": [
+          {
+            "id": "med_web",
+            "label": "🌐 Website & Digital Presence",
+            "options": [
+              {
+                "id": "med_agency",
+                "label": "WordPress with medical agency",
+                "min": 85000,
+                "max": 125000,
+                "info": "Setup $15k + Maintenance $35k-55k/year"
+              },
+              {
+                "id": "med_template",
+                "label": "Template website (Wix/Squarespace)",
+                "min": 48000,
+                "max": 90000,
+                "info": "Subscription $6k/year + your time $21k-42k/year"
+              },
+              {
+                "id": "med_freelancer",
+                "label": "Local freelancer website",
+                "min": 40000,
+                "max": 85000,
+                "info": "Build $12k-25k + Maintenance $14k-30k/year"
+              },
+              {
+                "id": "med_social",
+                "label": "Social media only (no website)",
+                "min": 0,
+                "max": 0,
+                "warning": "missing_patients"
+              }
+            ]
+          },
+          {
+            "id": "med_mgmt",
+            "label": "📅 Appointment & Patient Management",
+            "options": [
+              {
+                "id": "doctoralia",
+                "label": "Doctoralia (directory + booking)",
+                "min": 21000,
+                "max": 42000,
+                "info": "Monthly subscription + 15-20% commission per appointment"
+              },
+              {
+                "id": "med_calendly",
+                "label": "Calendly Pro + Zoom",
+                "min": 8000,
+                "max": 15000,
+                "info": "Basic scheduling, no patient management"
+              },
+              {
+                "id": "med_manual",
+                "label": "Manual appointments (Excel/paper)",
+                "min": 0,
+                "max": 0,
+                "warning": "staff_time_med"
+              },
+              {
+                "id": "med_assistant",
+                "label": "WhatsApp Business + assistant",
+                "min": 24000,
+                "max": 60000,
+                "info": "Assistant salary for scheduling"
+              }
+            ]
+          },
+          {
+            "id": "med_comm",
+            "label": "📞 Communication & Reception",
+            "options": [
+              {
+                "id": "receptionist",
+                "label": "In-person receptionist",
+                "min": 192000,
+                "max": 384000,
+                "info": "Salary $8k-16k/month × 24 months + benefits"
+              },
+              {
+                "id": "virtual_reception",
+                "label": "Virtual receptionist service",
+                "min": 48000,
+                "max": 96000,
+                "info": "Outsourced answering service $2k-4k/month"
+              },
+              {
+                "id": "sms_reminder",
+                "label": "SMS reminder system",
+                "min": 12000,
+                "max": 24000,
+                "info": "Automated SMS platform"
+              },
+              {
+                "id": "whatsapp_conf",
+                "label": "Manual WhatsApp confirmations",
+                "min": 36000,
+                "max": 72000,
+                "warning": "staff_time_comm"
+              }
+            ]
+          },
+          {
+            "id": "med_marketing",
+            "label": "📢 Marketing & Patient Acquisition",
+            "options": [
+              {
+                "id": "med_ads",
+                "label": "Google Ads for medical practices",
+                "min": 60000,
+                "max": 180000,
+                "info": "Ad spend + 15% management fee"
+              },
+              {
+                "id": "med_sm_manager",
+                "label": "Social media manager (medical focus)",
+                "min": 24000,
+                "max": 72000,
+                "info": "Content creation + posting $1k-3k/month"
+              },
+              {
+                "id": "med_content",
+                "label": "Educational content (blog, videos)",
+                "min": 36000,
+                "max": 96000,
+                "info": "Professional medical content creation"
+              },
+              {
+                "id": "med_seo",
+                "label": "Medical SEO specialist",
+                "min": 36000,
+                "max": 84000,
+                "info": "Ongoing optimization $1.5k-3.5k/month"
+              }
+            ]
+          },
+          {
+            "id": "med_reputation",
+            "label": "⭐ Reputation Management",
+            "options": [
+              {
+                "id": "google_reviews",
+                "label": "Google reviews management",
+                "min": 12000,
+                "max": 36000,
+                "info": "Monitoring + response service"
+              },
+              {
+                "id": "manual_reviews",
+                "label": "Manual review responses",
+                "min": 6000,
+                "max": 18000,
+                "info": "Staff time responding to reviews"
+              },
+              {
+                "id": "satisfaction_surveys",
+                "label": "Patient feedback platform",
+                "min": 8000,
+                "max": 20000,
+                "info": "Automated satisfaction surveys"
+              }
+            ]
+          },
+          {
+            "id": "med_billing",
+            "label": "💳 Payments & Billing",
+            "options": [
+              {
+                "id": "pos_terminal",
+                "label": "POS terminal (card payments)",
+                "min": 18000,
+                "max": 36000,
+                "info": "Sample fees based on $500k annual billing"
+              },
+              {
+                "id": "invoicing",
+                "label": "Electronic invoicing system",
+                "min": 6000,
+                "max": 18000,
+                "info": "CFDi compliant invoicing"
+              },
+              {
+                "id": "payment_gateway",
+                "label": "Online payment gateway",
+                "min": 12000,
+                "max": 30000,
+                "info": "Setup + monthly fees + transaction %"
+              }
+            ]
+          }
+        ],
+        "legal": [
+          {
+            "id": "legal_web",
+            "label": "🌐 Professional Website",
+            "options": [
+              {
+                "id": "legal_agency",
+                "label": "WordPress with legal agency",
+                "min": 85000,
+                "max": 140000
+              },
+              {
+                "id": "legal_template",
+                "label": "Premium template (Squarespace/Webflow)",
+                "min": 48000,
+                "max": 90000
+              },
+              {
+                "id": "legal_freelancer",
+                "label": "Senior freelancer",
+                "min": 55000,
+                "max": 95000
+              },
+              {
+                "id": "legal_directory",
+                "label": "Legal directory profile only",
+                "min": 0,
+                "max": 0,
+                "warning": "low_credibility"
+              }
+            ]
+          },
+          {
+            "id": "legal_leads",
+            "label": "🎯 Lead Generation",
+            "options": [
+              {
+                "id": "legal_seo",
+                "label": "Legal SEO specialist",
+                "min": 48000,
+                "max": 96000
+              },
+              {
+                "id": "legal_ads",
+                "label": "Google Ads (legal = high CPC)",
+                "min": 120000,
+                "max": 300000,
+                "info": "Legal keywords cost $50-200 per click"
+              },
+              {
+                "id": "legal_linkedin",
+                "label": "LinkedIn Ads + content",
+                "min": 36000,
+                "max": 84000
+              },
+              {
+                "id": "legal_networking",
+                "label": "Manual networking",
+                "min": 48000,
+                "max": 96000,
+                "warning": "time_lost_legal"
+              }
+            ]
+          },
+          {
+            "id": "legal_crm",
+            "label": "📋 Client Qualification & CRM",
+            "options": [
+              {
+                "id": "legal_sec",
+                "label": "Receptionist/secretary",
+                "min": 144000,
+                "max": 288000,
+                "info": "Salary $6k-12k/month"
+              },
+              {
+                "id": "legal_panther",
+                "label": "Legal CRM (Clio, PracticePanther)",
+                "min": 36000,
+                "max": 84000
+              },
+              {
+                "id": "legal_followup",
+                "label": "Basic forms + manual follow-up",
+                "min": 24000,
+                "max": 48000,
+                "warning": "time_lost_followup"
+              }
+            ]
+          },
+          {
+            "id": "legal_consult",
+            "label": "📞 Initial Consultations",
+            "options": [
+              {
+                "id": "legal_calendly",
+                "label": "Calendly Pro + Zoom Pro",
+                "min": 10000,
+                "max": 18000
+              },
+              {
+                "id": "legal_phone_sched",
+                "label": "Manual scheduling by phone",
+                "min": 72000,
+                "max": 144000,
+                "warning": "billable_hours_lost"
+              },
+              {
+                "id": "legal_whatsapp",
+                "label": "WhatsApp Business + assistant",
+                "min": 24000,
+                "max": 60000
+              }
+            ]
+          },
+          {
+            "id": "legal_content",
+            "label": "📝 Content & Authority",
+            "options": [
+              {
+                "id": "legal_blog",
+                "label": "Legal blog + SEO content",
+                "min": 48000,
+                "max": 120000
+              },
+              {
+                "id": "legal_videos",
+                "label": "Explainer videos",
+                "min": 36000,
+                "max": 96000
+              },
+              {
+                "id": "legal_social",
+                "label": "Social media posting",
+                "min": 24000,
+                "max": 72000
+              },
+              {
+                "id": "legal_newsletter",
+                "label": "Legal newsletter",
+                "min": 12000,
+                "max": 30000
+              }
+            ]
+          },
+          {
+            "id": "legal_docs",
+            "label": "📄 Documents & Digital Signature",
+            "options": [
+              {
+                "id": "docusign",
+                "label": "DocuSign / HelloSign",
+                "min": 12000,
+                "max": 30000
+              },
+              {
+                "id": "legal_dropbox",
+                "label": "Document storage (Dropbox Business)",
+                "min": 8000,
+                "max": 20000
+              }
+            ]
+          }
+        ],
+        "retail": [
+          {
+            "id": "retail_web",
+            "label": "🛒 E-commerce Platform",
+            "options": [
+              {
+                "id": "retail_shopify",
+                "label": "Shopify",
+                "min": 36000,
+                "max": 72000,
+                "info": "Subscription $1.5k/month + apps $500-1.5k/month"
+              },
+              {
+                "id": "retail_woo",
+                "label": "WooCommerce + hosting",
+                "min": 30000,
+                "max": 65000
+              },
+              {
+                "id": "retail_mercadolibre",
+                "label": "Mercado Libre only",
+                "min": 132000,
+                "max": 192000,
+                "info": "Approx 11-16% commission based on $600k sales/year"
+              },
+              {
+                "id": "retail_amazon",
+                "label": "Amazon México",
+                "min": 180000,
+                "max": 250000,
+                "info": "High commission + FBA fees"
+              }
+            ]
+          },
+          {
+            "id": "retail_pos",
+            "label": "💳 Point of Sale",
+            "options": [
+              {
+                "id": "retail_clip",
+                "label": "POS system (Square, Clip)",
+                "min": 18000,
+                "max": 42000,
+                "info": "Hardware + software + 3.5% transaction fee"
+              },
+              {
+                "id": "retail_bank",
+                "label": "Traditional bank terminal",
+                "min": 43000,
+                "max": 54000,
+                "info": "Sample 3.6-4.5% commission on $600k sales"
+              },
+              {
+                "id": "retail_manual_inv",
+                "label": "Manual inventory (Excel)",
+                "min": 0,
+                "max": 0,
+                "warning": "error_prone_inv"
+              }
+            ]
+          },
+          {
+            "id": "retail_marketing",
+            "label": "📢 Digital Marketing",
+            "options": [
+              {
+                "id": "retail_ads",
+                "label": "Facebook/Instagram Ads",
+                "min": 60000,
+                "max": 240000
+              },
+              {
+                "id": "retail_sm",
+                "label": "Social media management",
+                "min": 24000,
+                "max": 72000
+              },
+              {
+                "id": "retail_photo",
+                "label": "Product photography",
+                "min": 12000,
+                "max": 36000
+              },
+              {
+                "id": "retail_email",
+                "label": "Email marketing (Klaviyo, Mailchimp)",
+                "min": 10000,
+                "max": 30000
+              }
+            ]
+          },
+          {
+            "id": "retail_inv",
+            "label": "📦 Inventory Management",
+            "options": [
+              {
+                "id": "retail_logic",
+                "label": "Inventory software (Vend, Lightspeed)",
+                "min": 24000,
+                "max": 60000
+              },
+              {
+                "id": "retail_multichannel",
+                "label": "Multi-channel integration",
+                "min": 12000,
+                "max": 30000
+              },
+              {
+                "id": "retail_excel_staff",
+                "label": "Excel + manual counting",
+                "min": 48000,
+                "max": 96000,
+                "warning": "staff_time_retail"
+              }
+            ]
+          },
+          {
+            "id": "retail_logistics",
+            "label": "🚚 Logistics & Shipping",
+            "options": [
+              {
+                "id": "retail_shipping_api",
+                "label": "Shipping integration software",
+                "min": 8000,
+                "max": 20000
+              },
+              {
+                "id": "retail_labels",
+                "label": "Label printing software",
+                "min": 6000,
+                "max": 15000
+              },
+              {
+                "id": "retail_coord",
+                "label": "Manual coordination",
+                "min": 24000,
+                "max": 48000,
+                "warning": "staff_time_logistics"
+              }
+            ]
+          },
+          {
+            "id": "retail_cs",
+            "label": "💬 Customer Service",
+            "options": [
+              {
+                "id": "retail_wa_api",
+                "label": "WhatsApp Business API",
+                "min": 15000,
+                "max": 36000
+              },
+              {
+                "id": "retail_chatbot",
+                "label": "Basic chatbot",
+                "min": 18000,
+                "max": 42000
+              },
+              {
+                "id": "retail_zendesk",
+                "label": "Ticket system (Zendesk)",
+                "min": 24000,
+                "max": 60000
+              },
+              {
+                "id": "retail_manual_wa",
+                "label": "Manual WhatsApp (personal)",
+                "min": 36000,
+                "max": 72000,
+                "warning": "owner_time_wa"
+              }
+            ]
+          }
+        ],
+        "manufacturing": [
+          {
+            "id": "mfg_web",
+            "label": "📸 Portfolio & Website",
+            "options": [
+              {
+                "id": "mfg_wp",
+                "label": "WordPress with gallery",
+                "min": 75000,
+                "max": 120000
+              },
+              {
+                "id": "mfg_insta_only",
+                "label": "Instagram as only portfolio",
+                "min": 0,
+                "max": 0,
+                "warning": "missing_b2b"
+              },
+              {
+                "id": "mfg_squarespace",
+                "label": "Squarespace template",
+                "min": 48000,
+                "max": 90000
+              },
+              {
+                "id": "mfg_fb",
+                "label": "Facebook page only",
+                "min": 0,
+                "max": 0,
+                "warning": "unprofessional_mfg"
+              }
+            ]
+          },
+          {
+            "id": "mfg_quotes",
+            "label": "💰 Quoting & Estimation",
+            "options": [
+              {
+                "id": "mfg_quoted",
+                "label": "Quoting software (QuoteWell)",
+                "min": 18000,
+                "max": 42000
+              },
+              {
+                "id": "mfg_excel",
+                "label": "Excel + manual calculations",
+                "min": 72000,
+                "max": 144000,
+                "warning": "owner_time_quotes"
+              },
+              {
+                "id": "mfg_manual_chat",
+                "label": "WhatsApp + photos + manual math",
+                "min": 36000,
+                "max": 72000,
+                "warning": "error_prone_quotes"
+              },
+              {
+                "id": "mfg_visits",
+                "label": "In-person visits for all quotes",
+                "min": 48000,
+                "max": 96000,
+                "warning": "gas_time_mfg"
+              }
+            ]
+          },
+          {
+            "id": "mfg_mgmt",
+            "label": "📋 Project Management",
+            "options": [
+              {
+                "id": "mfg_asana",
+                "label": "Project software (Monday, Asana)",
+                "min": 24000,
+                "max": 60000
+              },
+              {
+                "id": "mfg_paper",
+                "label": "WhatsApp + paper + calls",
+                "min": 36000,
+                "max": 72000,
+                "warning": "disorganized_mfg"
+              },
+              {
+                "id": "mfg_pipedrive",
+                "label": "CRM for tracking (Pipedrive)",
+                "min": 18000,
+                "max": 48000
+              }
+            ]
+          },
+          {
+            "id": "mfg_marketing",
+            "label": "📢 Marketing & Lead Generation",
+            "options": [
+              {
+                "id": "mfg_ads",
+                "label": "Google Ads for local services",
+                "min": 48000,
+                "max": 144000
+              },
+              {
+                "id": "mfg_showcase",
+                "label": "Social media showcase",
+                "min": 24000,
+                "max": 60000
+              },
+              {
+                "id": "mfg_photo",
+                "label": "Professional photography of work",
+                "min": 15000,
+                "max": 40000
+              },
+              {
+                "id": "mfg_seo",
+                "label": "Local SEO",
+                "min": 24000,
+                "max": 60000
+              }
+            ]
+          },
+          {
+            "id": "mfg_comm",
+            "label": "📞 Client Communication",
+            "options": [
+              {
+                "id": "mfg_wa_updates",
+                "label": "Project updates (WhatsApp manual)",
+                "min": 24000,
+                "max": 48000,
+                "warning": "time_lost_wa_mfg"
+              },
+              {
+                "id": "mfg_notifications",
+                "label": "Notification system",
+                "min": 12000,
+                "max": 30000
+              },
+              {
+                "id": "mfg_gallery",
+                "label": "Private client gallery",
+                "min": 8000,
+                "max": 20000
+              }
+            ]
+          },
+          {
+            "id": "mfg_billing",
+            "label": "💳 Payments & Deposits",
+            "options": [
+              {
+                "id": "mfg_pos",
+                "label": "POS terminal for deposits",
+                "min": 12000,
+                "max": 30000
+              },
+              {
+                "id": "mfg_transfers",
+                "label": "Manual bank transfers",
+                "min": 0,
+                "max": 0,
+                "warning": "tedious_tracking"
+              },
+              {
+                "id": "mfg_contracts",
+                "label": "Printed contracts + signature",
+                "min": 6000,
+                "max": 15000
+              }
+            ]
+          }
+        ],
+        "b2b": [
+          {
+            "id": "b2b_web",
+            "label": "🌐 Corporate Website",
+            "options": [
+              {
+                "id": "b2b_enterprise_wp",
+                "label": "Enterprise WordPress",
+                "min": 12000,
+                "max": 200000
+              },
+              {
+                "id": "b2b_senior_fl",
+                "label": "Senior freelancer",
+                "min": 70000,
+                "max": 140000
+              },
+              {
+                "id": "b2b_webflow",
+                "label": "Webflow + designer",
+                "min": 80000,
+                "max": 160000
+              }
+            ]
+          },
+          {
+            "id": "b2b_leads",
+            "label": "🎯 B2B Lead Generation",
+            "options": [
+              {
+                "id": "b2b_navigator",
+                "label": "LinkedIn Sales Navigator",
+                "min": 24000,
+                "max": 48000
+              },
+              {
+                "id": "b2b_apollo",
+                "label": "Cold outreach tools (Lemlist, Apollo)",
+                "min": 18000,
+                "max": 42000
+              },
+              {
+                "id": "b2b_seo",
+                "label": "Enterprise SEO",
+                "min": 60000,
+                "max": 144000
+              },
+              {
+                "id": "b2b_content",
+                "label": "Content marketing",
+                "min": 48000,
+                "max": 120000
+              }
+            ]
+          },
+          {
+            "id": "b2b_sales",
+            "label": "📊 CRM & Sales",
+            "options": [
+              {
+                "id": "b2b_hubspot",
+                "label": "HubSpot CRM",
+                "min": 48000,
+                "max": 120000
+              },
+              {
+                "id": "b2b_salesforce",
+                "label": "Salesforce",
+                "min": 72000,
+                "max": 180000
+              },
+              {
+                "id": "b2b_pipedrive",
+                "label": "Pipedrive",
+                "min": 18000,
+                "max": 48000
+              },
+              {
+                "id": "b2b_excel",
+                "label": "Excel + manual tracking",
+                "min": 48000,
+                "max": 96000,
+                "warning": "time_spreadsheets"
+              }
+            ]
+          },
+          {
+            "id": "b2b_props",
+            "label": "📄 Proposals & Contracts",
+            "options": [
+              {
+                "id": "b2b_pandadoc",
+                "label": "PandaDoc / Proposify",
+                "min": 24000,
+                "max": 60000
+              },
+              {
+                "id": "b2b_docusign",
+                "label": "Digital signature (DocuSign)",
+                "min": 12000,
+                "max": 30000
+              },
+              {
+                "id": "b2b_manual_pdf",
+                "label": "Word/PDF manual creation",
+                "min": 24000,
+                "max": 48000,
+                "warning": "design_time_props"
+              }
+            ]
+          },
+          {
+            "id": "b2b_project",
+            "label": "📋 Project & Billing",
+            "options": [
+              {
+                "id": "b2b_asana",
+                "label": "Project management (Asana Pro, Monday)",
+                "min": 30000,
+                "max": 72000
+              },
+              {
+                "id": "b2b_harvest",
+                "label": "Time tracking (Harvest, Toggl)",
+                "min": 12000,
+                "max": 30000
+              },
+              {
+                "id": "b2b_quickbooks",
+                "label": "Invoicing (QuickBooks, Xero)",
+                "min": 18000,
+                "max": 42000
+              }
+            ]
+          },
+          {
+            "id": "b2b_comm",
+            "label": "💬 Client Communication",
+            "options": [
+              {
+                "id": "b2b_slack",
+                "label": "Slack/Teams for clients",
+                "min": 18000,
+                "max": 42000
+              },
+              {
+                "id": "b2b_portal",
+                "label": "Custom client portal",
+                "min": 48000,
+                "max": 120000
+              },
+              {
+                "id": "b2b_calls",
+                "label": "Email + manual calls",
+                "min": 36000,
+                "max": 72000,
+                "warning": "time_coordinating"
+              }
+            ]
+          }
+        ],
+        "hospitality": [
+          {
+            "id": "hosp_web",
+            "label": "🏨 Website & Direct Bookings",
+            "options": [
+              {
+                "id": "hosp_wp",
+                "label": "WordPress + booking plugin",
+                "min": 75000,
+                "max": 140000
+              },
+              {
+                "id": "hosp_cloudbeds",
+                "label": "Dedicated platform (Cloudbeds)",
+                "min": 48000,
+                "max": 120000
+              },
+              {
+                "id": "hosp_template",
+                "label": "Template with reservations",
+                "min": 48000,
+                "max": 90000
+              }
+            ]
+          },
+          {
+            "id": "hosp_ota",
+            "label": "🌐 OTA Commissions",
+            "options": [
+              {
+                "id": "hosp_booking",
+                "label": "Booking.com",
+                "min": 360000,
+                "max": 432000,
+                "info": "Based on approx 15-18% commission on $1.2M earnings/year"
+              },
+              {
+                "id": "hosp_airbnb",
+                "label": "Airbnb",
+                "min": 168000,
+                "max": 192000,
+                "info": "Double commission structure (host + guest fees)"
+              },
+              {
+                "id": "hosp_expedia",
+                "label": "Expedia",
+                "min": 216000,
+                "max": 300000,
+                "info": "Highest commission, but high visibility"
+              }
+            ]
+          },
+          {
+            "id": "hosp_mgmt",
+            "label": "🗂️ Property Management",
+            "options": [
+              {
+                "id": "hosp_pms",
+                "label": "PMS (Property Management System)",
+                "min": 36000,
+                "max": 96000
+              },
+              {
+                "id": "hosp_channel",
+                "label": "Channel manager (syncs OTAs)",
+                "min": 24000,
+                "max": 60000
+              },
+              {
+                "id": "hosp_manual",
+                "label": "Excel + Google Calendar",
+                "min": 48000,
+                "max": 96000,
+                "warning": "double_booking_risk"
+              }
+            ]
+          },
+          {
+            "id": "hosp_marketing",
+            "label": "📢 Tourism Marketing",
+            "options": [
+              {
+                "id": "hosp_hotel_ads",
+                "label": "Google Hotel Ads",
+                "min": 48000,
+                "max": 144000
+              },
+              {
+                "id": "hosp_tourism_sm",
+                "label": "Facebook/Instagram for tourism",
+                "min": 36000,
+                "max": 96000
+              },
+              {
+                "id": "hosp_photo",
+                "label": "Professional photography",
+                "min": 20000,
+                "max": 50000
+              },
+              {
+                "id": "hosp_virtual_tour",
+                "label": "Virtual tour videos",
+                "min": 25000,
+                "max": 60000
+              }
+            ]
+          },
+          {
+            "id": "hosp_comm",
+            "label": "💬 Guest Communication",
+            "options": [
+              {
+                "id": "hosp_wa_staff",
+                "label": "WhatsApp Business + staff time",
+                "min": 24000,
+                "max": 60000
+              },
+              {
+                "id": "hosp_emails",
+                "label": "Automated pre/post-stay emails",
+                "min": 12000,
+                "max": 30000
+              },
+              {
+                "id": "hosp_chatbot",
+                "label": "Multi-language chatbot",
+                "min": 24000,
+                "max": 60000
+              }
+            ]
+          },
+          {
+            "id": "hosp_reputation",
+            "label": "⭐ Reviews & Reputation",
+            "options": [
+              {
+                "id": "hosp_tripadvisor",
+                "label": "TripAdvisor review management",
+                "min": 12000,
+                "max": 36000
+              },
+              {
+                "id": "hosp_manual_reviews",
+                "label": "Manual review responses",
+                "min": 12000,
+                "max": 30000,
+                "warning": "staff_time_reviews"
+              },
+              {
+                "id": "hosp_feedback",
+                "label": "Guest feedback software",
+                "min": 8000,
+                "max": 24000
+              }
+            ]
+          }
+        ],
+        "universal": [
+          {
+            "id": "tech_basics",
+            "label": "🔧 Technical Basics",
+            "options": [
+              {
+                "id": "uni_hosting",
+                "label": "Web hosting",
+                "min": 3000,
+                "max": 12000
+              },
+              {
+                "id": "uni_domain",
+                "label": "Domain + professional email",
+                "min": 2000,
+                "max": 6000
+              },
+              {
+                "id": "uni_ssl",
+                "label": "SSL certificate",
+                "min": 1000,
+                "max": 4000
+              },
+              {
+                "id": "uni_backups",
+                "label": "Automated backups",
+                "min": 3000,
+                "max": 8000
+              }
+            ]
+          },
+          {
+            "id": "analytics",
+            "label": "📊 Analytics & Tracking",
+            "options": [
+              {
+                "id": "uni_ga4",
+                "label": "Google Analytics 4 setup",
+                "min": 3000,
+                "max": 8000
+              },
+              {
+                "id": "uni_pixels",
+                "label": "Conversion pixels (Facebook, Google)",
+                "min": 2000,
+                "max": 5000
+              },
+              {
+                "id": "uni_heatmaps",
+                "label": "Heatmaps (Hotjar)",
+                "min": 6000,
+                "max": 18000
+              },
+              {
+                "id": "uni_no_tracking",
+                "label": "No tracking",
+                "min": 0,
+                "max": 0,
+                "warning": "flying_blind"
+              }
+            ]
+          },
+          {
+            "id": "security",
+            "label": "🔒 Security",
+            "options": [
+              {
+                "id": "uni_firewall",
+                "label": "Firewall + DDoS protection",
+                "min": 8000,
+                "max": 24000
+              },
+              {
+                "id": "uni_uptime",
+                "label": "Uptime monitoring",
+                "min": 4000,
+                "max": 12000
+              },
+              {
+                "id": "uni_no_security",
+                "label": "No protection",
+                "min": 0,
+                "max": 0,
+                "warning": "high_security_risk"
+              }
+            ]
+          }
+        ]
+      },
+      "option_warnings": {
+        "missing_patients": "⚠️ You're missing 65% of potential patients who search online first",
+        "staff_time_med": "⚠️ Costs 10-15 hours/week in staff time ($48k-$72k value)",
+        "staff_time_comm": "⚠️ Staff time: 15 hours/week @ $100/hour",
+        "low_credibility": "⚠️ Low credibility, no control over branding",
+        "time_lost_legal": "⚠️ Your time: 20 hours/month @ $100-200/hour",
+        "time_lost_followup": "⚠️ Your time in follow-ups",
+        "billable_hours_lost": "⚠️ 15 hours/week of billable time lost",
+        "error_prone_inv": "⚠️ Error-prone, no real-time stock tracking",
+        "staff_time_retail": "⚠️ Staff time: 20 hours/month",
+        "staff_time_logistics": "⚠️ Staff time managing shipments",
+        "owner_time_wa": "⚠️ Your time answering questions",
+        "missing_b2b": "⚠️ Loses B2B clients who need professional presentation",
+        "unprofessional_mfg": "⚠️ Not professional for high-ticket projects",
+        "owner_time_quotes": "⚠️ 30 hours/month @ $100-200/hour",
+        "error_prone_quotes": "⚠️ Time-consuming, error-prone",
+        "gas_time_mfg": "⚠️ Gas + time for every potential client",
+        "disorganized_mfg": "⚠️ Disorganized, hard to track",
+        "time_lost_wa_mfg": "⚠️ Time sending photos, updates",
+        "tedious_tracking": "⚠️ Tedious tracking, no automation",
+        "time_spreadsheets": "⚠️ Time lost in spreadsheets",
+        "design_time_props": "⚠️ Design time per proposal",
+        "time_coordinating": "⚠️ Time coordinating updates",
+        "double_booking_risk": "⚠️ High risk of double bookings, lost revenue",
+        "staff_time_reviews": "⚠️ Staff time responding to reviews",
+        "flying_blind": "⚠️ Flying blind - no idea what's working",
+        "high_security_risk": "⚠️ High risk of downtime and attacks"
+      }
     }
   },
   "Process": {
@@ -1088,7 +2425,12 @@
             ],
             "timeline_data": {
               "current_phase": 3,
-              "phases": ["Discovery", "Design", "Development", "Launch"],
+              "phases": [
+                "Discovery",
+                "Design",
+                "Development",
+                "Launch"
+              ],
               "status_text": "Currently in Development • Expected launch: March 2025"
             },
             "objective": "Target: 15+ qualified quotes/month (>$50k MXN)",
@@ -1144,7 +2486,12 @@
             ],
             "timeline_data": {
               "current_phase": 2,
-              "phases": ["Discovery", "Design", "Development", "Launch"],
+              "phases": [
+                "Discovery",
+                "Design",
+                "Development",
+                "Launch"
+              ],
               "status_text": "Currently in Design phase • Expected launch: April 2025"
             },
             "objective": "Target: Robust presence & autonomous management",
@@ -1200,7 +2547,12 @@
             ],
             "timeline_data": {
               "current_phase": 0,
-              "phases": ["Discovery", "Design", "Development", "Launch"],
+              "phases": [
+                "Discovery",
+                "Design",
+                "Development",
+                "Launch"
+              ],
               "status_text": "Contract signing in March • Project starts Q2 2025"
             },
             "objective": "Target: High-end residential leads",
