@@ -10,6 +10,7 @@ import {
   Mail,
   ExternalLink,
   Loader2,
+  X,
 } from "lucide-react";
 import { motion } from "framer-motion";
 import { Link } from "@/i18n/routing";
@@ -17,7 +18,7 @@ import jsPDF from "jspdf";
 import html2canvas from "html2canvas-pro";
 
 export const Results = () => {
-  const { calculateRecommendation, answers } = useQuiz();
+  const { calculateRecommendation, answers, closeQuiz } = useQuiz();
   const [result, setResult] = useState<any>(null);
   const [isDownloading, setIsDownloading] = useState(false);
   const hasSubmittedRef = useRef(false);
