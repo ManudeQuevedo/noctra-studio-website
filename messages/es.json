@@ -663,6 +663,8 @@
       "cta": "Describir mi necesidad"
     },
     "seo": {
+      "image_label": "Crecimiento Orgánico",
+      "pricing_label": "Desde $8,000 MXN/mes",
       "title": "SEO y Crecimiento",
       "focus": "Estrategias para que tu sitio aparezca en Google, atraiga tráfico calificado y convierta más visitantes en clientes.",
       "why": "Si no apareces en Google, no existes para tus clientes potenciales.",
@@ -686,7 +688,296 @@
       ],
       "cta": "Hablemos de tu crecimiento"
     },
-    "pricing_callout_link": "Ver desglose de precios"
+    "pricing_callout_link": "Ver desglose de precios",
+    "best_for": {
+      "label": "IDEAL PARA",
+      "web_dev": [
+        { "icon": "👨‍⚕️", "text": "Doctores y clínicas médicas" },
+        { "icon": "⚖️", "text": "Abogados y consultores" },
+        { "icon": "💼", "text": "Servicios profesionales" },
+        { "icon": "🏢", "text": "Negocios locales" },
+        { "icon": "🎓", "text": "Instituciones educativas" }
+      ],
+      "ecommerce": [
+        { "icon": "🛍️", "text": "Tiendas minoristas locales" },
+        { "icon": "👕", "text": "Moda y accesorios" },
+        { "icon": "🍽️", "text": "Alimentos y bebidas" },
+        { "icon": "🎨", "text": "Productos artesanales" },
+        { "icon": "💄", "text": "Belleza y cosméticos" }
+      ],
+      "ai": [
+        { "icon": "⚙️", "text": "Operaciones de manufactura" },
+        { "icon": "📊", "text": "Plataformas de servicios B2B" },
+        { "icon": "🏗️", "text": "Gestión de construcción" },
+        { "icon": "🏥", "text": "Clínicas con múltiples sedes" },
+        { "icon": "🖥️", "text": "Dashboards corporativos" }
+      ],
+      "seo": [
+        { "icon": "🦷", "text": "Dentistas y especialistas" },
+        { "icon": "🏡", "text": "Inmobiliarias" },
+        { "icon": "⚖️", "text": "Despachos legales" },
+        { "icon": "🔧", "text": "Servicios locales" },
+        { "icon": "🏥", "text": "Turismo médico" }
+      ]
+    },
+    "journey": {
+      "label": "TRAYECTO",
+      "phases": {
+        "web_dev": "01 Presencia Web",
+        "ecommerce": "02 E-Commerce",
+        "ai": "03 Sistemas a Medida",
+        "seo": "04 Optimización"
+      }
+    },
+    "system_label": "SISTEMA",
+    "problem_label": "El Problema",
+    "solution_label": "La Solución",
+    "cta_labels": {
+      "scoping_call": "Agendar llamada de scoping",
+      "site_audit": "Iniciar auditoría gratuita",
+      "default": "Hablemos de tu proyecto"
+    },
+    "scoping_call_box": {
+      "title": "En esta llamada vamos a:",
+      "footer": "Sin compromiso de compra",
+      "items": [
+        "Entender tu proceso actual",
+        "Identificar mejoras con automatización",
+        "Darte un presupuesto estimado",
+        "Discutir tiempos y enfoque"
+      ]
+    },
+    "comparison": {
+      "title": "COMPARA NUESTROS SERVICIOS",
+      "subtitle": "Elige la solución adecuada para tu negocio",
+      "labels": ["Profesional", "E-Commerce", "Sistemas a medida"],
+      "features": [
+        { "name": "Inversión", "values": ["Desde $20,000 MXN", "Desde $35,000 MXN", "Cotización a medida"] },
+        { "name": "Tiempos", "values": ["3-6 semanas", "6-8 semanas", "8-16 semanas"] },
+        { "name": "Páginas", "values": ["5-10 páginas estratégicas", "10-20 páginas", "Ilimitadas"] },
+        { "name": "E-commerce", "values": ["-", "✓", "✓"] },
+        { "name": "CRM a medida", "values": ["-", "-", "✓"] },
+        { "name": "Integraciones", "values": ["Básicas", "Avanzadas", "Completas"] },
+        { "name": "Desarrollo de API", "values": ["-", "-", "✓"] },
+        { "name": "Soporte", "values": ["60 días", "90 días", "A medida"] }
+      ],
+      "footer_text": "¿No estás seguro de cuál es el adecuado?",
+      "cta_quiz": "Tomar quiz de 2 minutos",
+      "cta_consult": "Agendar consulta"
+    },
+    "faq": {
+      "title": "PREGUNTAS FRECUENTES",
+      "items": [
+        {
+          "question": "¿Qué incluye el precio?",
+          "answer": "Todo. Configuración, desarrollo, pruebas, lanzamiento, documentación, capacitación y 60-90 días de soporte. Sin cargos ocultos."
+        },
+        {
+          "question": "¿Puedo escalar de Profesional a E-Commerce después?",
+          "answer": "Sí. Construimos pensando en la escalabilidad. Escalar típicamente cuesta la diferencia entre niveles más el trabajo de integración."
+        },
+        {
+          "question": "¿Trabajan con negocios fuera de México?",
+          "answer": "Sí. Hemos trabajado con clientes en EE. UU., Canadá y Europa. Toda la comunicación en inglés o español."
+        },
+        {
+          "question": "¿Qué pasa después del periodo de soporte?",
+          "answer": "Eres dueño del código y puedes gestionarlo tú mismo, contratarnos para soporte continuo o trabajar con cualquier desarrollador."
+        },
+        {
+          "question": "¿Cómo funcionan los pagos?",
+          "answer": "50% de anticipo para iniciar, 50% al lanzamiento. Aceptamos transferencia bancaria o tarjeta de crédito. Planes de pago disponibles para Sistemas a Medida."
+        }
+      ]
+    },
+    "real_examples": {
+      "title": "EJEMPLOS REALES",
+      "view_more": "Mira lo que estamos construyendo →",
+      "coming": "Proyectos en desarrollo - mira la página de Portafolio",
+      "items": {
+        "web_dev": [
+          { "name": "Woodax Design", "desc": "Portfolio de carpintería premium con calificación de leads" },
+          { "name": "Próximamente", "desc": "Clínica médica con automatización de citas" }
+        ],
+        "ecommerce": [
+          { "name": "Próximamente", "desc": "Retail local con integración de inventario" }
+        ],
+        "ai": [
+          { "name": "Dyma Group", "desc": "Sitio corporativo con gestión multi-entidad" },
+          { "name": "Próximamente", "desc": "CRM para startup de fintech" }
+        ],
+        "seo": [
+          { "name": "Dr. Example", "desc": "Posicionamiento local para clínica dental" },
+          { "name": "Legal Firm", "desc": "Estrategia de contenidos para abogados" }
+        ]
+      }
+    },
+    "smart_cta": [
+      "¿Listo para empezar?",
+      "Construyamos tu proyecto juntos.",
+      "Inversión:",
+      "Tiempo Est.:",
+      "ROI Est.:",
+      "Agendar videollamada",
+      "Calcular ROI"
+    ],
+    "pricing_breakdown": {
+      "labels": {
+        "show": "Ver desglose detallado de precios",
+        "hide": "Ocultar desglose de precios",
+        "included": "QUÉ INCLUYE",
+        "timeline": "TIEMPO ESTIMADO",
+        "deliverables": "ENTREGABLES CLAVE",
+        "investment": "DESGLOSE DE INVERSIÓN",
+        "total": "Inversión Total"
+      },
+      "web_dev": {
+        "included": [
+          "Diseño y desarrollo personalizado",
+          "Optimización móvil (Responsive)",
+          "SEO técnico (Estructura base)",
+          "Formularios y automatización",
+          "Configuración Analytics (GA4)",
+          "Optimización de velocidad (<1.5s)",
+          "Seguridad y certificado SSL",
+          "60 días de soporte post-lanzamiento",
+          "Documentación completa",
+          "Sesión de capacitación incluida"
+        ],
+        "timeline": [
+          "Semana 1: Descubrimiento y estrategia",
+          "Semanas 2-3: Diseño y prototipado",
+          "Semanas 3-5: Desarrollo y pruebas",
+          "Semana 6: Lanzamiento y entrega",
+          "Total: 6 semanas desde el inicio"
+        ],
+        "deliverables": [
+          "📄 Documento estratégico y sitemap",
+          "🎨 Sistema de diseño en Figma",
+          "💻 Web en vivo (Código propio)",
+          "📊 Dashboard de analíticas",
+          "📚 Documentación técnica",
+          "🎓 Sesión de capacitación de 1 hora"
+        ],
+        "investment": [
+          { "label": "Diseño y Estrategia", "value": "$6,000 MXN" },
+          { "label": "Desarrollo", "value": "$10,000 MXN" },
+          { "label": "Optimización y Pruebas", "value": "$2,500 MXN" },
+          { "label": "Lanzamiento y Soporte", "value": "$1,500 MXN" },
+          { "total": "$20,000 MXN" }
+        ],
+        "note": "Pago único, sin mensualidades, el código es tuyo para siempre"
+      },
+      "ecommerce": {
+        "included": [
+          "Todo en Sitios Profesionales, más:",
+          "Sistema de catálogo de productos",
+          "Carrito de compras y checkout",
+          "Pasarela de pago (Stripe/MercadoPago)",
+          "Gestión de inventario",
+          "Panel de administración de pedidos",
+          "Reportes de ventas avanzados",
+          "Cálculo de envíos integrado"
+        ],
+        "timeline": [
+          "Semana 1: Estrategia comercial",
+          "Semanas 2-3: Optimización UX/UI",
+          "Semanas 4-7: Desarrollo e integración",
+          "Semanas 8-9: Pruebas transaccionales",
+          "Total: 9 semanas desde el inicio"
+        ],
+        "deliverables": [
+          "📦 Catálogo de productos admin",
+          "🛒 Flujo de compra completo",
+          "💳 Pasarela de pago configurada",
+          "📊 Panel de administración",
+          "📈 Dashboard de ventas",
+          "🎓 Capacitación admin 2 horas"
+        ],
+        "investment": [
+          { "label": "Diseño y Estrategia", "value": "$8,000 MXN" },
+          { "label": "Desarrollo E-commerce", "value": "$20,000 MXN" },
+          { "label": "Integración y Pasarelas", "value": "$5,000 MXN" },
+          { "label": "Lanzamiento y Soporte", "value": "$2,000 MXN" },
+          { "total": "$35,000 MXN" }
+        ],
+        "note": "Sin comisiones por venta de nuestra parte."
+      },
+      "ai": {
+        "included": [
+          "Flujos de automatización a medida",
+          "Optimización de procesos internos",
+          "Integración API (CRM, herramientas)",
+          "Paneles de control y reportes",
+          "Gestión de roles y permisos",
+          "Migración de datos e importación",
+          "Documentación operativa",
+          "Capacitación de equipos"
+        ],
+        "timeline": [
+          "Simple: 4-6 semanas",
+          "Medio: 8-12 semanas",
+          "Complejo: 12-20 semanas",
+          "Definiremos el tiempo en la llamada"
+        ],
+        "deliverables": [
+          "🤖 Sistema de automatización custom",
+          "📊 Dashboard de Business Intelligence",
+          "🔗 Integraciones API configuradas",
+          "👥 Gestión de usuarios y roles",
+          "📚 Documentación operativa",
+          "💾 Migración de datos (si aplica)"
+        ],
+        "investment_notes": [
+          "Complejidad: Simple → Medio → Complejo",
+          "Rango típico: $35,000 - $150,000 MXN",
+          "Cotización fija tras llamada de scoping"
+        ],
+        "context_box": {
+          "title": "En esta llamada vamos a:",
+          "items": [
+            "Entender tu proceso actual",
+            "Identificar mejoras con automatización",
+            "Darte un presupuesto estimado",
+            "Discutir tiempos y enfoque"
+          ],
+          "footer": "Sin compromiso de compra"
+        }
+      },
+      "seo": {
+        "included": [
+          "Auditoría mensual de performance",
+          "SEO técnico y de contenido",
+          "Estrategia de conversión (CRO)",
+          "Implementación de tests A/B",
+          "Monitoreo de competencia",
+          "Llamada mensual de estrategia",
+          "Monitoreo de uptime 24/7"
+        ],
+        "timeline": [
+          "Mes 1: Auditoría y estrategia",
+          "Meses 2-3: Implementación y ajustes",
+          "Meses 4+: Optimización y crecimiento",
+          "Compromiso mín: 3 meses"
+        ],
+        "deliverables": [
+          "📊 Reporte mensual de resultados",
+          "📈 Dashboard de rankings Google",
+          "🎯 Recomendaciones de conversión",
+          "📝 Roadmap de contenidos",
+          "🧪 Resultados de tests A/B",
+          "📞 Llamada estratégica mensual"
+        ],
+        "investment": [
+          { "label": "Servicio Base", "value": "$8,000 MXN/mes" },
+          { "label": "Contenido (Opcional)", "value": "+$5,000/mes" },
+          { "label": "Tests A/B (Opcional)", "value": "+$3,000/mes" },
+          { "label": "Optimización CRO (Opcional)", "value": "+$4,000/mes" }
+        ],
+        "note": "Cancela en cualquier momento tras 3 meses"
+      }
+    },
+    "start_project": "Iniciar Proyecto"
   },
   "Pricing": {
     "title": "Precios transparentes",
@@ -1440,6 +1731,34 @@
         "high_spend": "⚠️ Estás gastando más de 5 veces lo necesario. Considera consolidar con una solución todo-en-uno.",
         "doctoralia": "⚠️ Las comisiones de Doctoralia pueden comerse hasta el 20% de tu margen. Un motor de reservas propio es vital.",
         "hospitality_ota": "⚠️ Depender 100% de OTAs (Booking/Airbnb) es ceder tu rentabilidad. El canal directo con Noctra ahorra miles."
+      },
+      "option_warnings": {
+        "missing_patients": "⚠️ Pierdes el 65% de pacientes potenciales que buscan en línea primero",
+        "staff_time_med": "⚠️ Cuesta 10-15 horas/semana de personal ($48k-$72k valor)",
+        "staff_time_comm": "⚠️ Tiempo de personal: 15 horas/semana @ $100/hora",
+        "low_credibility": "⚠️ Baja credibilidad, sin control de marca",
+        "time_lost_legal": "⚠️ Tu tiempo: 20 horas/mes @ $100-200/hora",
+        "time_lost_followup": "⚠️ Tu tiempo en seguimientos",
+        "billable_hours_lost": "⚠️ 15 horas/semana de tiempo facturable perdido",
+        "error_prone_inv": "⚠️ Propenso a errores, sin rastreo de stock en tiempo real",
+        "staff_time_retail": "⚠️ Tiempo de personal: 20 horas/mes",
+        "staff_time_logistics": "⚠️ Tiempo de personal gestionando envíos",
+        "owner_time_wa": "⚠️ Tu tiempo respondiendo preguntas",
+        "missing_b2b": "⚠️ Pierdes clientes B2B que necesitan presentación profesional",
+        "unprofessional_mfg": "⚠️ Poco profesional para proyectos de alto valor",
+        "owner_time_quotes": "⚠️ 30 horas/mes @ $100-200/hora",
+        "error_prone_quotes": "⚠️ Consume tiempo, propenso a errores",
+        "gas_time_mfg": "⚠️ Gasolina + tiempo por cada cliente potencial",
+        "disorganized_mfg": "⚠️ Desorganizado, difícil de rastrear",
+        "time_lost_wa_mfg": "⚠️ Tiempo enviando fotos, actualizaciones",
+        "tedious_tracking": "⚠️ Rastreo tedioso, sin automatización",
+        "time_spreadsheets": "⚠️ Tiempo perdido en hojas de cálculo",
+        "design_time_props": "⚠️ Tiempo de diseño por propuesta",
+        "time_coordinating": "⚠️ Tiempo coordinando actualizaciones",
+        "double_booking_risk": "⚠️ Alto riesgo de doble reserva, ingresos perdidos",
+        "staff_time_reviews": "⚠️ Tiempo de personal respondiendo reseñas",
+        "flying_blind": "⚠️ A ciegas - sin saber qué está funcionando",
+        "high_security_risk": "⚠️ Alto riesgo de caídas y ataques"
       }
     }
   },

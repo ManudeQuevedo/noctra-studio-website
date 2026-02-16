@@ -24,6 +24,8 @@ import { IntroProvider } from "@/context/IntroContext";
 import { IntroLoader } from "@/components/ui/IntroLoader";
 import { CookieBanner } from "@/components/cookie-consent/CookieBanner";
 import { CookieSettingsButton } from "@/components/cookie-consent/CookieSettingsButton";
+import { QuizProvider } from "@/components/quiz/QuizContext";
+import { QuizModal } from "@/components/quiz/QuizModal";
 
 // Satoshi - Brand primary font
 const satoshi = localFont({
@@ -128,19 +130,22 @@ export default async function LocaleLayout({
           enableSystem={false}
           disableTransitionOnChange>
           <IntroProvider>
-            <IntroLoader />
-            <BackgroundManager />
-            <Header />
-            {children}
-            <FooterWrapper />
-            <ScrollToTop />
-            <OrganizationSchema />
-            <WebsiteSchema />
-            <LocalBusinessSchema />
-            <ChatWidget />
-            <CookieBanner />
-            <CookieSettingsButton />
-            <VercelScripts />
+            <QuizProvider>
+              <IntroLoader />
+              <BackgroundManager />
+              <Header />
+              {children}
+              <FooterWrapper />
+              <ScrollToTop />
+              <OrganizationSchema />
+              <WebsiteSchema />
+              <LocalBusinessSchema />
+              <ChatWidget />
+              <CookieBanner />
+              <CookieSettingsButton />
+              <QuizModal />
+              <VercelScripts />
+            </QuizProvider>
           </IntroProvider>
         </ThemeProvider>
       </NextIntlClientProvider>

@@ -2367,30 +2367,320 @@
       "cta": "Let's talk about automation"
     },
     "seo": {
-      "title": "Optimization & Growth",
-      "problem": "Your website isn't showing up on Google, and you don't know where your leads come from.",
-      "solution": "We make your site visible on search engines and track what's actually working.",
-      "focus": "Stop guessing where your customers find you. We optimize your site for Google, set up analytics, and give you a clear picture of how your website is performing.",
-      "why": "Knowing what works lets you invest in what actually brings customers.",
+      "image_label": "Organic Growth Strategy",
+      "pricing_label": "From $8,000 MXN/mo",
+      "title": "SEO & Growth",
+      "focus": "Strategies for your site to appear on Google, attract qualified traffic, and convert more visitors into customers.",
+      "why": "If you don't appear on Google, you don't exist for your potential customers.",
+      "problem": "Your site doesn't appear in relevant searches and you're losing customers to the competition.",
+      "solution": "We optimize your site to rank on Google and convert traffic into measurable results.",
       "process": [
-        "Analyze your market and competitors",
-        "Fix technical SEO issues",
-        "Create a content plan",
-        "Set up analytics and tracking"
+        "SEO audit of your current site",
+        "Keyword and content strategy",
+        "Technical and on-page implementation",
+        "Monthly monitoring and adjustments"
       ],
       "deliverables": [
-        "Monthly performance report",
-        "Content strategy roadmap",
-        "Live dashboard to track your Google rankings"
+        "Technical SEO implemented",
+        "Content strategy",
+        "Monthly performance reports"
       ],
       "deliverables_subtext": [
-        "Clear monthly insights on what's working and where to improve.",
-        "A plan of topics and pages to attract your ideal customers.",
-        "See your Google visibility improving in real-time."
+        "Speed, structure, and optimized structured data.",
+        "Content plan based on real searches from your customers.",
+        "You know exactly how your positioning is advancing."
       ],
-      "cta": "Let's talk about growth"
+      "cta": "Let's talk about your growth"
     },
-    "pricing_callout_link": "See full pricing breakdown",
+    "pricing_callout_link": "See pricing breakdown",
+    "best_for": {
+      "label": "BEST FOR",
+      "web_dev": [
+        { "icon": "👨‍⚕️", "text": "Doctors & Medical practices" },
+        { "icon": "⚖️", "text": "Lawyers & Consultants" },
+        { "icon": "💼", "text": "Professional services" },
+        { "icon": "🏢", "text": "Local businesses" },
+        { "icon": "🎓", "text": "Educational institutions" }
+      ],
+      "ecommerce": [
+        { "icon": "🛍️", "text": "Local retail stores" },
+        { "icon": "👕", "text": "Fashion & apparel" },
+        { "icon": "🍽️", "text": "Food & beverage" },
+        { "icon": "🎨", "text": "Handmade/artisan products" },
+        { "icon": "💄", "text": "Beauty & cosmetics" }
+      ],
+      "ai": [
+        { "icon": "⚙️", "text": "Manufacturing operations" },
+        { "icon": "📊", "text": "B2B service platforms" },
+        { "icon": "🏗️", "text": "Construction management" },
+        { "icon": "🏥", "text": "Multi-location clinics" },
+        { "icon": "🖥️", "text": "Corporate dashboards" }
+      ],
+      "seo": [
+        { "icon": "🦷", "text": "Dentists & Specialists" },
+        { "icon": "🏡", "text": "Real Estate Agencies" },
+        { "icon": "⚖️", "text": "Law Firms" },
+        { "icon": "🔧", "text": "Local Services" },
+        { "icon": "🏥", "text": "Medical Tourism" }
+      ]
+    },
+    "journey": {
+      "label": "JOURNEY",
+      "phases": {
+        "web_dev": "01 Web Presence",
+        "ecommerce": "02 E-Commerce",
+        "ai": "03 Custom Systems",
+        "seo": "04 Optimization"
+      }
+    },
+    "system_label": "SYSTEM",
+    "problem_label": "The Problem",
+    "solution_label": "The Solution",
+    "cta_labels": {
+      "scoping_call": "Schedule scoping call",
+      "site_audit": "Start free site audit",
+      "default": "Let's talk about your project"
+    },
+    "scoping_call_box": {
+      "title": "In this call we'll:",
+      "footer": "No commitment required",
+      "items": [
+        "Understand your workflow",
+        "Identify automation opportunities",
+        "Provide ballpark estimate",
+        "Discuss timeline & approach"
+      ]
+    },
+    "comparison": {
+      "title": "COMPARE OUR SERVICES",
+      "subtitle": "Choose the right solution for your business",
+      "labels": ["Professional", "E-Commerce", "Custom Systems"],
+      "features": [
+        { "name": "Investment", "values": ["From $20,000 MXN", "From $35,000 MXN", "Custom Quote"] },
+        { "name": "Timeline", "values": ["3-6 weeks", "6-8 weeks", "8-16 weeks"] },
+        { "name": "Pages", "values": ["5-10 strategic pages", "10-20 pages", "Unlimited"] },
+        { "name": "E-commerce", "values": ["-", "✓", "✓"] },
+        { "name": "Custom CRM", "values": ["-", "-", "✓"] },
+        { "name": "Integrations", "values": ["Basic", "Advanced", "Full"] },
+        { "name": "API Development", "values": ["-", "-", "✓"] },
+        { "name": "Support", "values": ["60 days", "90 days", "Custom"] }
+      ],
+      "footer_text": "Not sure which is right for you?",
+      "cta_quiz": "Take 2-minute quiz",
+      "cta_consult": "Schedule consultation"
+    },
+    "faq": {
+      "title": "FREQUENTLY ASKED QUESTIONS",
+      "items": [
+        {
+          "question": "What's included in the price?",
+          "answer": "Everything. Setup, development, testing, launch, documentation, training, and 60-90 days of support. No hidden fees."
+        },
+        {
+          "question": "Can I upgrade from Professional to E-Commerce later?",
+          "answer": "Yes. We build with scalability in mind. Upgrading typically costs the difference between tiers plus integration work."
+        },
+        {
+          "question": "Do you work with businesses outside Mexico?",
+          "answer": "Yes. We've worked with clients in USA, Canada, and Europe. All communication in English or Spanish."
+        },
+        {
+          "question": "What happens after the 60-day support period?",
+          "answer": "You own the code and can manage it yourself, hire us for ongoing support ($X/month), or work with any developer."
+        },
+        {
+          "question": "How do payments work?",
+          "answer": "50% upfront to begin, 50% at launch. We accept bank transfer or credit card. Payment plans available for Custom Systems."
+        }
+      ]
+    },
+    "real_examples": {
+      "title": "REAL EXAMPLES",
+      "view_more": "See what we're building →",
+      "coming": "Projects in development - see Our Work page",
+      "items": {
+        "web_dev": [
+          { "name": "Woodax Design", "desc": "Premium carpentry portfolio with lead qualification" },
+          { "name": "Soon", "desc": "Medical practice with appointment automation" }
+        ],
+        "ecommerce": [
+          { "name": "Soon", "desc": "Local retail with inventory integration" }
+        ],
+        "ai": [
+          { "name": "Dyma Group", "desc": "Corporate site with multi-entity management" },
+          { "name": "Soon", "desc": "CRM for fintech startup" }
+        ],
+        "seo": [
+          { "name": "Dr. Example", "desc": "Local SEO for dental clinic" },
+          { "name": "Legal Firm", "desc": "Content strategy for law firm" }
+        ]
+      }
+    },
+    "smart_cta": [
+      "Ready to start?",
+      "Let's build your project together.",
+      "Investment:",
+      "Est. Timeline:",
+      "Est. ROI:",
+      "Schedule strategy call",
+      "Calculate ROI"
+    ],
+    "pricing_breakdown": {
+      "labels": {
+        "show": "View detailed pricing",
+        "hide": "Hide pricing details",
+        "included": "WHAT'S INCLUDED",
+        "timeline": "EST. TIMELINE",
+        "deliverables": "KEY DELIVERABLES",
+        "investment": "INVESTMENT BREAKDOWN",
+        "total": "Total Investment"
+      },
+      "web_dev": {
+        "included": [
+          "Custom design & development",
+          "Mobile-first responsive design",
+          "SEO optimization (technical)",
+          "Contact forms & automation",
+          "Analytics setup (GA4)",
+          "Performance optimization (<1.5s)",
+          "Security & SSL configuration",
+          "60 days of support",
+          "Complete documentation",
+          "Training session included"
+        ],
+        "timeline": [
+          "Week 1: Discovery & strategy",
+          "Weeks 2-3: Design & prototyping",
+          "Weeks 3-5: Development & testing",
+          "Week 6: Launch & handoff",
+          "Total: 6 weeks from kickoff"
+        ],
+        "deliverables": [
+          "📄 Strategic document & sitemap",
+          "🎨 Figma design system",
+          "💻 Live website (your code)",
+          "📊 Analytics dashboard",
+          "📚 Technical documentation",
+          "🎓 1-hour training session"
+        ],
+        "investment": [
+          { "label": "Design & Strategy", "value": "$6,000 MXN" },
+          { "label": "Development", "value": "$10,000 MXN" },
+          { "label": "Optimization & Testing", "value": "$2,500 MXN" },
+          { "label": "Launch & Training", "value": "$1,500 MXN" },
+          { "total": "$20,000 MXN" }
+        ],
+        "note": "One-time payment, no monthly fees, code is yours forever"
+      },
+      "ecommerce": {
+        "included": [
+          "Everything in Professional Websites, plus:",
+          "Product catalog system",
+          "Shopping cart & checkout flow",
+          "Payment gateway (Stripe/MercadoPago)",
+          "Inventory management",
+          "Order tracking dashboard",
+          "Sales analytics & reporting",
+          "Shipping calculator integration"
+        ],
+        "timeline": [
+          "Week 1: Discovery & commerce strategy",
+          "Weeks 2-3: Design & UX optimization",
+          "Weeks 4-7: Development & integration",
+          "Weeks 8-9: Testing & launch",
+          "Total: 9 weeks from kickoff"
+        ],
+        "deliverables": [
+          "📦 Product catalog system",
+          "🛒 Shopping cart & checkout",
+          "💳 Payment processing setup",
+          "📊 Admin dashboard for orders",
+          "📈 Sales analytics dashboard",
+          "🎓 2-hour admin training"
+        ],
+        "investment": [
+          { "label": "Design & Strategy", "value": "$8,000 MXN" },
+          { "label": "Development", "value": "$20,000 MXN" },
+          { "label": "Integration & Testing", "value": "$5,000 MXN" },
+          { "label": "Launch & Training", "value": "$2,000 MXN" },
+          { "total": "$35,000 MXN" }
+        ],
+        "note": "No transaction fees from us. Direct payment gateway."
+      },
+      "ai": {
+        "included": [
+          "Custom automation workflows",
+          "Business process optimization",
+          "API integrations (CRM, tools, databases)",
+          "Admin dashboards & reporting",
+          "User roles & permissions",
+          "Data migration & import",
+          "Operational documentation",
+          "Team training sessions"
+        ],
+        "timeline": [
+          "Simple: 4-6 weeks",
+          "Medium: 8-12 weeks",
+          "Complex: 12-20 weeks",
+          "We'll determine timeline during call"
+        ],
+        "deliverables": [
+          "🤖 Custom automation system",
+          "📊 Business intelligence dashboard",
+          "🔗 API integrations configured",
+          "👥 User management & roles",
+          "📚 Operational documentation",
+          "💾 Data migration (if needed)"
+        ],
+        "investment_notes": [
+          "Complexity: Simple → Medium → Complex",
+          "Typical Range: $35,000 - $150,000 MXN",
+          "Fixed-price quote after scoping call"
+        ],
+        "context_box": {
+          "title": "In this call we'll:",
+          "items": [
+            "Understand your workflow",
+            "Identify automation opportunities",
+            "Provide ballpark estimate",
+            "Discuss timeline & approach"
+          ],
+          "footer": "No commitment required"
+        }
+      },
+      "seo": {
+        "included": [
+          "Monthly performance audit",
+          "SEO optimization (technical)",
+          "Content strategy & planning",
+          "Conversion rate optimization",
+          "A/B testing implementation",
+          "Monthly strategy call",
+          "Performance monitoring"
+        ],
+        "timeline": [
+          "Month 1: Audit & strategy",
+          "Months 2-3: Implementation & testing",
+          "Months 4+: Optimization & growth",
+          "Min commitment: 3 months"
+        ],
+        "deliverables": [
+          "📊 Monthly performance report",
+          "📈 Google rankings dashboard",
+          "🎯 Conversion recommendations",
+          "📝 Content strategy roadmap",
+          "🧪 A/B testing results",
+          "📞 Monthly strategy call"
+        ],
+        "investment": [
+          { "label": "Base Service", "value": "$8,000 MXN/mo" },
+          { "label": "Content (Optional)", "value": "+$5,000/mo" },
+          { "label": "A/B Testing (Optional)", "value": "+$3,000/mo" },
+          { "label": "CRO (Optional)", "value": "+$4,000/mo" }
+        ],
+        "note": "Cancel anytime after 3-month minimum"
+      }
+    },
     "metrics": {
       "lighthouse": "Built for Performance",
       "latency": "Fast Worldwide",
