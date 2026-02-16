@@ -8,7 +8,7 @@ import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { WhyLocalBenefits } from "./WhyLocalBenefits";
 import { PriceComparison } from "./price-comparison";
-import { ROICalculatorSection } from "./ROICalculatorSection";
+import { RealROICalculator } from "./RealROICalculator";
 import { FeatureComparisonTable } from "./FeatureComparisonTable";
 
 interface OptionalModule {
@@ -134,7 +134,7 @@ export function PricingSection() {
       </AnimatePresence>
 
       {/* ROI Calculator Section */}
-      <ROICalculatorSection />
+      <RealROICalculator />
 
       {/* Optional Modules */}
       <motion.div

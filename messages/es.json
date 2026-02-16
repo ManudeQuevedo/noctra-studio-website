@@ -817,63 +817,115 @@
         "description": "Calculadora interactiva: ingresa tus ingresos mensuales y te mostramos el periodo de recuperación"
       }
     },
-    "roi_section": {
-      "title": "Calculadora de ROI: Mira cómo tu sitio se paga solo",
-      "subtitle": "No es un gasto, es una inversión. Descubre el punto de equilibrio de tu proyecto.",
+    "real_roi": {
+      "title": "Calculadora de ROI Real",
+      "subtitle": "Mira tu incremento real de utilidades tras costos operativos — sin números inflados",
+      "steps": {
+        "profile": "Selección",
+        "inputs": "Estado Actual",
+        "projections": "Proyecciones",
+        "output": "Resultado ROI"
+      },
       "business_types": {
-        "medical": {
-          "label": "Consultorio médico/dental",
-          "client_label": "pacientes"
+        "professional": {
+          "label": "Servicios Profesionales",
+          "sub": "Médicos, Abogados, Contadores",
+          "client_label": "paciente/cliente"
         },
-        "legal": {
-          "label": "Despacho legal",
-          "client_label": "casos"
+        "retail": {
+          "label": "Retail Local",
+          "sub": "Tiendas físicas, E-commerce local",
+          "client_label": "venta"
         },
-        "accounting": {
-          "label": "Despacho contable",
-          "client_label": "clientes"
+        "manufacturing": {
+          "label": "Manufactura / Custom",
+          "sub": "Talleres, Producción B2B",
+          "client_label": "proyecto"
         },
-        "school": {
-          "label": "Escuela privada",
-          "client_label": "inscripciones"
+        "b2b": {
+          "label": "Servicios B2B",
+          "sub": "Agencias, Servicios Corporativos",
+          "client_label": "cliente"
         },
-        "ecommerce": {
-          "label": "E-commerce / Tienda",
-          "client_label": "clientes"
-        },
-        "services": {
-          "label": "Empresa de servicios",
-          "client_label": "contratos"
-        },
-        "restaurant": {
-          "label": "Restaurante / Café",
-          "client_label": "clientes"
-        },
-        "other": {
-          "label": "Otro",
-          "client_label": "clientes"
+        "saas": {
+          "label": "Digital / SaaS",
+          "sub": "Apps, Plataformas, Productos Digitales",
+          "client_label": "usuario"
         }
       },
+      "universal_inputs": {
+        "revenue": "Ingreso mensual (MXN)",
+        "avg_value": "Valor promedio de transacción (MXN)",
+        "conversion": "Tasa de conversión actual (%)"
+      },
       "labels": {
-        "business_type": "Tipo de negocio",
-        "monthly_revenue": "Ingreso mensual actual",
-        "clients_needed": "¿Cuántos {label} nuevos necesitarías mensualmente para pagar el sitio?",
-        "avg_ticket": "Ticket promedio por {label} (MXN)",
-        "investment": "Inversión estimada en el sitio",
-        "custom_investment": "Monto personalizado",
-        "results_title": "Proyección de Resultados",
-        "payback_months": "Meses para recuperar inversión",
-        "clients_to_pay": "{label} totales para cubrir costo",
-        "new_monthly_revenue": "Ingreso mensual adicional (proyectado)",
-        "annual_roi": "ROI proyectado al año 1",
-        "cta": "Platiquemos en la consulta gratuita",
-        "disclaimer": "* Cálculos basados en una mejora de conversión del 40%. Los resultados reales varían por negocio.",
+        "fixed_monthly": "Costos Fijos Mensuales",
+        "variable_per": "Costos Variables por {label}",
+        "pre_sale": "Costos de Pre-venta y Cierre",
+        "calculated_metrics": "Utilidad Neta Actual (est.)",
+        "impact_projections": "Impacto Proyectado del Sitio Web",
+        "roi_dashboard": "Panel de Resultados ROI Real",
+        "current_state": "Estado Actual",
+        "projected_state": "Con Sitio Web Profesional",
+        "monthly_net": "Utilidad Neta Mensual",
+        "profit_margin": "Margen de Utilidad",
+        "owner_time": "Tiempo del Dueño en Admin",
+        "cac": "Costo de Adquisición (CAC)",
+        "additional_profit": "Utilidad Mensual Adicional",
+        "payback_period": "Periodo de Recuperación",
+        "months": "meses",
+        "annual_roi": "ROI a 12 Meses",
+        "recovered_time": "Tiempo Recuperado",
+        "hours_month": "hrs/mes",
+        "download_report": "Descargar Reporte Completo (PDF)",
+        "audit_cta": "Obtener Auditoría Gratis",
+        "discovery_cta": "Agendar Llamada de Descubrimiento",
+        "disclaimer_text": "Estas proyecciones son estimaciones basadas en promedios de la industria. Los resultados varían por mercado.",
+        "market_note": "Supuestos de costos basados en tasas de mercado de Querétaro/México al 2025.",
+        "privacy_note": "Tus datos no se guardan. Los cálculos ocurren en tu navegador.",
         "per_month": "MXN/mes"
+      },
+      "fields": {
+        "reception": "Recepción / Secretaría",
+        "rent": "Renta de Oficina / Consultorio",
+        "utilities": "Servicios (Internet, luz, tel)",
+        "platforms": "Suscripciones (Doctoralia, etc)",
+        "insurance": "Seguro Profesional",
+        "marketing": "Inversión en Marketing Actual",
+        "materials": "Insumos / Materiales",
+        "admin_hours": "Tiempo admin por cliente (hrs)",
+        "retail_rent": "Renta de Local",
+        "salaries": "Sueldos + Prestaciones (IMSS)",
+        "pos": "Sistemas de Cobro / POS",
+        "security": "Seguridad / Seguros",
+        "cogs": "Costo de Ventas (COGS %)",
+        "fees": "Comisiones Bancarias (%)",
+        "cash_card": "Split Efectivo vs Tarjeta (%)",
+        "shipping": "Empaque / Envío",
+        "shrinkage": "Merma / Pérdida (%)",
+        "workshop": "Renta de Taller / Nave",
+        "maintenance": "Mantenimiento de Equipo",
+        "raw_materials": "Materia Prima (% materiales)",
+        "labor_hours": "Horas labor por proyecto",
+        "labor_rate": "Costo hora labor",
+        "waste": "Desperdicio / Scrap (%)",
+        "logistics": "Entrega / Logística",
+        "quote_time": "Tiempo de cotización (hrs)",
+        "quote_conv": "Tasa de cierre de cotización (%)",
+        "software": "Suscripciones de Software",
+        "dev": "Desarrollo Profesional",
+        "freelance": "Costos de Freelance (% del proj)",
+        "duration": "Duración promedio proyecto (sems)",
+        "utilization": "Tasa de utilización del equipo (%)",
+        "hosting": "Hosting e Infraestructura",
+        "support_tools": "Herramientas de Soporte",
+        "mrr": "Ingreso Mensual Recurrente (MRR)",
+        "lifetime": "Vida del cliente (meses)",
+        "churn": "Tasa de Cancelación (Churn %)"
       }
     },
     "roi_calculator": {
       "title": "¿En cuánto tiempo se paga tu sitio?",
-      "intro": "Responde 3 preguntas para ver el retorno de inversión:",
       "inputs": {
         "current_clients": {
           "label": "¿Cuántos clientes nuevos obtienes por mes actualmente?",
@@ -1015,6 +1067,11 @@
       "in_progress": {
         "title": "Proyectos en construcción",
         "description": "Estamos construyendo nuestro portafolio con clientes reales. Aquí está lo que estamos desarrollando ahora:",
+        "expected_results_label": "Resultados Esperados (basado en proyectos similares)",
+        "disclaimer": "Las proyecciones son estimaciones. Los resultados reales dependen de las condiciones del mercado y la ejecución.",
+        "before_after_label": "Ver Antes vs Después",
+        "before_after_placeholder": "📊 Métricas de rendimiento y comparación antes/después disponibles post-lanzamiento",
+        "before_after_coming_soon": "Lanzamiento en {date} — Comparación antes/después próximamente",
         "projects": {
           "woodax": {
             "name": "Woodax Design",
@@ -1037,7 +1094,40 @@
             "next_milestone": "Auditoría final de rendimiento",
             "timeline": "Lanzamiento Marzo 2025",
             "stack": "Next.js + Sanity CMS + Vercel",
-            "mockup_badge": "En Desarrollo"
+            "mockup_badge": "En Desarrollo",
+            "before_after": {
+              "is_placeholder": true,
+              "launch_date": "Marzo 2025",
+              "before": {
+                "title": "Antes de Noctra",
+                "items": [
+                  "Tiempos de carga lentos (8+ segundos)",
+                  "No apto para móviles",
+                  "Calificación de leads manual",
+                  "Dependencia de agencia para cambios"
+                ]
+              },
+              "after": {
+                "title": "Después de Noctra",
+                "items": [
+                  "Carga en <1.5 segundos",
+                  "Diseño mobile-first",
+                  "Sistema de calificación automatizado",
+                  "Actualizaciones autónomas por el cliente"
+                ]
+              },
+              "metrics": "Tráfico: +45% | Leads: +120% | Conversión: +38% | Tiempo ahorrado: 15hrs/semana"
+            },
+            "expected_results": {
+              "title": "Impacto Proyectado (horizonte 6 meses)",
+              "metrics": [
+                "Calidad de prospectos: 15+ cotizaciones calificadas/mes (proyectos >$50k MXN)",
+                "Tiempo ahorrado: 12 horas/semana (sin más calificación por Instagram DM)",
+                "Tasa de conversión: 30-40% de leads calificados → contratos firmados",
+                "Aumento en LTV del cliente: 25% (negocio recurrente/referido)"
+              ],
+              "benchmark_note": "Basado en promedios de proveedores de servicios premium con sistemas de calificación automatizados"
+            }
           },
           "dyma": {
             "name": "Dyma Group",
@@ -1060,7 +1150,40 @@
             "next_milestone": "Integración del portal de clientes",
             "timeline": "Lanzamiento Abril 2025",
             "stack": "Next.js + Supabase + Autenticación",
-            "mockup_badge": "En Desarrollo"
+            "mockup_badge": "En Desarrollo",
+            "before_after": {
+              "is_placeholder": true,
+              "launch_date": "Abril 2025",
+              "before": {
+                "title": "Antes de Noctra",
+                "items": [
+                  "Arquitectura obsoleta",
+                  "Identidad de marca fragmentada",
+                  "Sin gestión centralizada",
+                  "Ciclos de actualización lentos"
+                ]
+              },
+              "after": {
+                "title": "Después de Noctra",
+                "items": [
+                  "Stack moderno en edge-runtime",
+                  "Diseño corporativo unificado",
+                  "Centro de control centralizado",
+                  "Actualizaciones autónomas instantáneas"
+                ]
+              },
+              "metrics": "Consistencia: 100% | Eficiencia: +40% | Tiempo ahorrado: 8hrs/semana"
+            },
+            "expected_results": {
+              "title": "Impacto Proyectado (horizonte 6 meses)",
+              "metrics": [
+                "Tiempo de gestión ahorrado: 8 horas/semana (actualizaciones autónomas)",
+                "Consistencia de marca: 100% en todas las entidades",
+                "Atribución de leads: Rastreo de qué entidad genera consultas",
+                "Productividad del equipo: reducción del 40% en tickets relacionados con la web"
+              ],
+              "benchmark_note": "Basado en promedios de grupos corporativos multi-entidad con sistemas centralizados"
+            }
           },
           "valtru": {
             "name": "Valtru Interiorismo",
