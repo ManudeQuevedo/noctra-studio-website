@@ -2,7 +2,6 @@
 
 import { useLocale } from "next-intl";
 import { usePathname, useRouter } from "@/i18n/routing";
-import { motion } from "framer-motion";
 
 export default function LanguageSwitcher() {
   const locale = useLocale();

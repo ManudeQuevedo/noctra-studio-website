@@ -68,31 +68,21 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
   const [avgTicket, setAvgTicket] = useState<number>(8000);
   const [investmentTier, setInvestmentTier] = useState<number>(20000);
 
-  const [results, setResults] = useState({
-    monthlyNewRevenue: 0,
-    paybackMonths: 0,
-    annualRoi: 0,
-    threeYearRevenue: 0,
-  });
+  const monthlyNewRevenue = currentClients * avgTicket * CONVERSION_IMPROVEMENT;
+  const paybackMonthsRaw =
+    monthlyNewRevenue > 0 ? investmentTier / monthlyNewRevenue : 0;
+  const annualRoiRaw =
+    investmentTier > 0
+      ? ((monthlyNewRevenue * 12 - investmentTier) / investmentTier) * 100
+      : 0;
+  const threeYearRevenue = monthlyNewRevenue * 36;
 
-  useEffect(() => {
-    const monthlyNewRevenue =
-      currentClients * avgTicket * CONVERSION_IMPROVEMENT;
-    const paybackMonths =
-      monthlyNewRevenue > 0 ? investmentTier / monthlyNewRevenue : 0;
-    const annualRoi =
-      investmentTier > 0
-        ? ((monthlyNewRevenue * 12 - investmentTier) / investmentTier) * 100
-        : 0;
-    const threeYearRevenue = monthlyNewRevenue * 36;
-
-    setResults({
-      monthlyNewRevenue,
-      paybackMonths: isFinite(paybackMonths) ? paybackMonths : 0,
-      annualRoi: isFinite(annualRoi) ? annualRoi : 0,
-      threeYearRevenue,
-    });
-  }, [currentClients, avgTicket, investmentTier]);
+  const results = {
+    monthlyNewRevenue,
+    paybackMonths: isFinite(paybackMonthsRaw) ? paybackMonthsRaw : 0,
+    annualRoi: isFinite(annualRoiRaw) ? annualRoiRaw : 0,
+    threeYearRevenue,
+  };
 
   return (
     <AnimatePresence>

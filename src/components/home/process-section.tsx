@@ -52,7 +52,7 @@ export function ProcessSection() {
   return (
     <section
       id="process"
-      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32 border-t border-neutral-900">
+      className="w-full max-w-7xl mx-auto px-6 md:px-8 pt-16 md:pt-24 pb-0 border-t border-neutral-900">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -77,7 +77,7 @@ export function ProcessSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
             className="group relative">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 p-8 md:p-12 rounded-[2.5rem] bg-neutral-950 border border-neutral-800/50 hover:border-emerald-500/30 transition-all duration-500 relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-8 p-6 md:p-12 rounded-[2.5rem] bg-neutral-950 border border-neutral-800/50 hover:border-emerald-500/30 transition-all duration-500 relative overflow-hidden">
               {/* Background Glow */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-[100px] -mr-48 -mt-48 transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
 
@@ -133,7 +133,7 @@ export function ProcessSection() {
                   </ul>
                 </div>
 
-                <div className="grid grid-cols-1 md:grid-cols-2 gap-6 pt-8 border-t border-neutral-900">
+                <div className="grid grid-cols-2 gap-3 sm:gap-6 pt-8 border-t border-neutral-900">
                   <div className="flex items-center gap-4">
                     <div className="w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center border border-neutral-800 shrink-0">
                       <Clock className="w-5 h-5 text-neutral-500" />
@@ -173,7 +173,7 @@ export function ProcessSection() {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
-        className="mt-24 text-center">
+        className="mt-8 text-center pb-12">
         <motion.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}

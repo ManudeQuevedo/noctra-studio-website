@@ -8,13 +8,41 @@ export const MainGoals = () => {
   const { answers, setAnswer, nextStep } = useQuiz();
 
   const options = [
-    { id: "get-inquiries", label: "Get more customer inquiries", desc: "Increase contact form submissions and calls" },
-    { id: "sell-online", label: "Sell products or services online", desc: "Enable direct purchases through the website" },
-    { id: "build-credibility", label: "Build credibility and trust", desc: "Professional presence that establishes authority" },
-    { id: "automate", label: "Automate repetitive tasks", desc: "Reduce manual work with automated systems" },
-    { id: "track-customers", label: "Track and understand customers", desc: "Analytics to know where customers come from" },
-    { id: "reduce-dependency", label: "Reduce dependency on platforms", desc: "Own your customer data, less reliance on Instagram/Facebook" },
-    { id: "improve-rankings", label: "Improve Google rankings", desc: "Show up when people search for your services" },
+    {
+      id: "get-inquiries",
+      label: "Get more customer inquiries",
+      desc: "Increase contact form submissions and calls",
+    },
+    {
+      id: "sell-online",
+      label: "Sell products or services online",
+      desc: "Enable direct purchases through the website",
+    },
+    {
+      id: "build-credibility",
+      label: "Build credibility and trust",
+      desc: "Professional presence that establishes authority",
+    },
+    {
+      id: "automate",
+      label: "Automate repetitive tasks",
+      desc: "Reduce manual work with automated systems",
+    },
+    {
+      id: "track-customers",
+      label: "Track and understand customers",
+      desc: "Analytics to know where customers come from",
+    },
+    {
+      id: "reduce-dependency",
+      label: "Reduce dependency on platforms",
+      desc: "Own your customer data, less reliance on Instagram/Facebook",
+    },
+    {
+      id: "improve-rankings",
+      label: "Improve Google rankings",
+      desc: "Show up when people search for your services",
+    },
   ];
 
   const handleToggle = (id: string) => {
@@ -22,7 +50,7 @@ export const MainGoals = () => {
     let newGoals: MainGoalEnum[];
 
     if (currentGoals.includes(id as MainGoalEnum)) {
-      newGoals = currentGoals.filter(g => g !== id);
+      newGoals = currentGoals.filter((g) => g !== id);
     } else {
       if (currentGoals.length >= 5) return; // Max 5
       newGoals = [...currentGoals, id as MainGoalEnum];
@@ -34,13 +62,20 @@ export const MainGoals = () => {
   return (
     <div className="space-y-8 max-w-xl mx-auto">
       <div className="text-center space-y-2">
-        <h2 className="text-2xl font-bold text-white">What's your main goal for your website?</h2>
-        <p className="text-neutral-400">Select up to 5 priorities ({answers.mainGoals?.length || 0}/5 selected)</p>
+        <h2 className="text-2xl font-bold text-white">
+          What&apos;s your main goal for your website?
+        </h2>
+        <p className="text-neutral-400">
+          Select up to 5 priorities ({answers.mainGoals?.length || 0}/5
+          selected)
+        </p>
       </div>
 
       <div className="grid grid-cols-1 gap-3">
         {options.map((option, index) => {
-          const isSelected = answers.mainGoals?.includes(option.id as MainGoalEnum);
+          const isSelected = answers.mainGoals?.includes(
+            option.id as MainGoalEnum,
+          );
 
           return (
             <motion.button
@@ -52,24 +87,27 @@ export const MainGoals = () => {
               className={`
                 w-full p-4 rounded-xl border text-left transition-all duration-200 group relative overflow-hidden
                 flex items-center gap-4
-                ${isSelected 
-                  ? "bg-white border-white shadow-xl" 
-                  : "bg-neutral-900/50 border-neutral-800 hover:border-neutral-600 hover:bg-neutral-800/50"
+                ${
+                  isSelected
+                    ? "bg-white border-white shadow-xl"
+                    : "bg-neutral-900/50 border-neutral-800 hover:border-neutral-600 hover:bg-neutral-800/50"
                 }
-              `}
-            >
-              <div className={`
+              `}>
+              <div
+                className={`
                 w-6 h-6 rounded-md border flex items-center justify-center shrink-0 transition-colors
                 ${isSelected ? "border-black bg-black text-white" : "border-neutral-600 group-hover:border-neutral-400"}
               `}>
                 {isSelected && <Check className="w-4 h-4" />}
               </div>
-              
+
               <div>
-                <div className={`font-bold text-base ${isSelected ? "text-black" : "text-neutral-200 group-hover:text-white"}`}>
+                <div
+                  className={`font-bold text-base ${isSelected ? "text-black" : "text-neutral-200 group-hover:text-white"}`}>
                   {option.label}
                 </div>
-                <div className={`text-sm mt-0.5 ${isSelected ? "text-neutral-600" : "text-neutral-500 group-hover:text-neutral-400"}`}>
+                <div
+                  className={`text-sm mt-0.5 ${isSelected ? "text-neutral-600" : "text-neutral-500 group-hover:text-neutral-400"}`}>
                   {option.desc}
                 </div>
               </div>
@@ -84,12 +122,12 @@ export const MainGoals = () => {
           disabled={!answers.mainGoals || answers.mainGoals.length === 0}
           className={`
             px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center gap-2 transition-all
-            ${(!answers.mainGoals || answers.mainGoals.length === 0)
-              ? "bg-neutral-800 text-neutral-600 cursor-not-allowed"
-              : "bg-white text-black hover:bg-neutral-200 active:scale-95"
+            ${
+              !answers.mainGoals || answers.mainGoals.length === 0
+                ? "bg-neutral-800 text-neutral-600 cursor-not-allowed"
+                : "bg-white text-black hover:bg-neutral-200 active:scale-95"
             }
-          `}
-        >
+          `}>
           Next Step <ArrowRight className="w-4 h-4" />
         </button>
       </div>

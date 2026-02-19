@@ -130,7 +130,7 @@ export function FAQSection() {
   // Calculate counts for each category
   const counts = useMemo(() => {
     const c: Record<string, number> = { all: items.length };
-    items.forEach(item => {
+    items.forEach((item) => {
       c[item.category] = (c[item.category] || 0) + 1;
     });
     return c;
@@ -138,8 +138,9 @@ export function FAQSection() {
 
   const filteredItems = useMemo(() => {
     return items.filter((item) => {
-      const matchesCategory = activeCategory === "all" || item.category === activeCategory;
-      const matchesSearch = 
+      const matchesCategory =
+        activeCategory === "all" || item.category === activeCategory;
+      const matchesSearch =
         item.question.toLowerCase().includes(searchTerm.toLowerCase()) ||
         item.answer.toLowerCase().includes(searchTerm.toLowerCase());
       return matchesCategory && matchesSearch;
@@ -151,7 +152,7 @@ export function FAQSection() {
   };
 
   return (
-    <section className="w-full px-6 md:px-8 py-24">
+    <section className="w-full px-6 md:px-8 pt-4 pb-24">
       <div className="max-w-4xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -184,7 +185,7 @@ export function FAQSection() {
             <div className="text-neutral-300 text-sm leading-relaxed max-w-2xl">
               {renderAnswer(t("featured.answer"))}
             </div>
-            <button 
+            <button
               onClick={scrollToFaq}
               className="text-emerald-500 hover:text-emerald-400 font-bold text-sm flex items-center gap-2 transition-colors">
               {t("featured.see_all")}
@@ -228,10 +229,11 @@ export function FAQSection() {
                 : "bg-transparent text-neutral-400 border-neutral-800 hover:border-neutral-600 hover:text-neutral-200",
             )}>
             {t("filter_all")}
-            <span className={cn(
-              "text-[10px] px-1.5 py-0.5 rounded-md",
-              activeCategory === "all" ? "bg-black/20" : "bg-neutral-800"
-            )}>
+            <span
+              className={cn(
+                "text-[10px] px-1.5 py-0.5 rounded-md",
+                activeCategory === "all" ? "bg-black/20" : "bg-neutral-800",
+              )}>
               {counts.all}
             </span>
           </button>
@@ -251,10 +253,11 @@ export function FAQSection() {
               )}>
               {CATEGORY_ICONS[key]}
               <span className="hidden sm:inline">{categories[key]}</span>
-              <span className={cn(
-                "text-[10px] px-1.5 py-0.5 rounded-md",
-                activeCategory === key ? "bg-black/20" : "bg-neutral-800"
-              )}>
+              <span
+                className={cn(
+                  "text-[10px] px-1.5 py-0.5 rounded-md",
+                  activeCategory === key ? "bg-black/20" : "bg-neutral-800",
+                )}>
                 {counts[key] || 0}
               </span>
             </button>

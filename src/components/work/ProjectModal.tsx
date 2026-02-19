@@ -13,9 +13,6 @@ import {
   Server,
   AlertCircle,
   Search,
-  Target,
-  MousePointer2,
-  BarChart3,
   Lightbulb,
   CheckCircle2,
   Package,
@@ -44,7 +41,7 @@ import {
 } from "react-icons/si";
 
 // Expanded tech icon map — covers all stack names used in translations
-const techIcons: Record<string, any> = {
+const techIcons: Record<string, React.ComponentType<{ className?: string }>> = {
   "Next.js": SiNextdotjs,
   "Next.js 14": SiNextdotjs,
   Tailwind: SiTailwindcss,
@@ -69,9 +66,9 @@ const techIcons: Record<string, any> = {
 // Map project IDs to their images
 const projectImages: Record<string, string> = {
   "cafe-aurora": "/images/cafe-aurora.jpg",
-  "strongfit": "/images/strongfit.jpg",
-  "fintrack": "/images/fintrack.jpg",
-  "vaultra": "/images/vaultra.jpg",
+  strongfit: "/images/strongfit.jpg",
+  fintrack: "/images/fintrack.jpg",
+  vaultra: "/images/vaultra.jpg",
 };
 
 interface ProjectModalProps {
@@ -83,14 +80,13 @@ interface ProjectModalProps {
 // New V2 Storytelling Component
 function ModalV2({ projectId }: { projectId: string }) {
   const t = useTranslations("WorkPage.modal_v2");
-  const tLabels = useTranslations("WorkPage.modal_labels");
   const projectKey = projectId.replace("-", "_");
 
   // Load data - safety check
   let data: any = null;
   try {
     data = t.raw(projectKey);
-  } catch (e) {
+  } catch {
     return null;
   }
 
@@ -110,12 +106,20 @@ function ModalV2({ projectId }: { projectId: string }) {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-800">
-            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-1">Cliente</div>
-            <div className="text-sm font-medium text-neutral-200">{data.overview.client_type}</div>
+            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-1">
+              Cliente
+            </div>
+            <div className="text-sm font-medium text-neutral-200">
+              {data.overview.client_type}
+            </div>
           </div>
           <div className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-800">
-            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-1">Industria</div>
-            <div className="text-sm font-medium text-neutral-200">{data.overview.industry}</div>
+            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-1">
+              Industria
+            </div>
+            <div className="text-sm font-medium text-neutral-200">
+              {data.overview.industry}
+            </div>
           </div>
         </div>
       </div>
@@ -131,10 +135,14 @@ function ModalV2({ projectId }: { projectId: string }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.pain_points.items.map((item: any, i: number) => (
-            <div key={i} className="p-6 rounded-2xl bg-orange-500/5 border border-orange-500/10 space-y-3 group hover:border-orange-500/20 transition-colors">
+            <div
+              key={i}
+              className="p-6 rounded-2xl bg-orange-500/5 border border-orange-500/10 space-y-3 group hover:border-orange-500/20 transition-colors">
               <div className="text-2xl">{item.icon}</div>
               <h5 className="font-bold text-orange-200/90">{item.title}</h5>
-              <p className="text-sm text-neutral-400 leading-relaxed">{item.description}</p>
+              <p className="text-sm text-neutral-400 leading-relaxed">
+                {item.description}
+              </p>
               <div className="pt-2 border-t border-orange-500/10">
                 <p className="text-xs text-orange-400/60 leading-snug">
                   <span className="font-bold">Impacto:</span> {item.impact}
@@ -163,10 +171,12 @@ function ModalV2({ projectId }: { projectId: string }) {
               <div className="space-y-1">
                 <h5 className="font-bold text-neutral-200">{step.title}</h5>
                 <div className="text-sm text-neutral-400">
-                  <span className="text-neutral-500 italic">Acción:</span> {step.what_we_did}
+                  <span className="text-neutral-500 italic">Acción:</span>{" "}
+                  {step.what_we_did}
                 </div>
                 <div className="text-sm text-blue-400/80">
-                  <span className="text-neutral-500 italic">Hallazgo:</span> {step.what_we_learned}
+                  <span className="text-neutral-500 italic">Hallazgo:</span>{" "}
+                  {step.what_we_learned}
                 </div>
               </div>
             </div>
@@ -185,16 +195,26 @@ function ModalV2({ projectId }: { projectId: string }) {
         </div>
         <div className="space-y-4">
           {data.solution.items.map((item: any, i: number) => (
-            <div key={i} className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
+            <div
+              key={i}
+              className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
               <div className="space-y-2">
-                <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">Problema</div>
+                <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                  Problema
+                </div>
                 <h5 className="font-bold text-neutral-200">{item.problem}</h5>
               </div>
               <div className="space-y-3">
-                <div className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">Solución</div>
+                <div className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest">
+                  Solución
+                </div>
                 <h5 className="font-bold text-emerald-400">{item.solution}</h5>
-                <p className="text-sm text-neutral-400 leading-relaxed">{item.how_it_works}</p>
-                <div className="text-sm text-emerald-400/80 italic">→ {item.result}</div>
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  {item.how_it_works}
+                </p>
+                <div className="text-sm text-emerald-400/80 italic">
+                  → {item.result}
+                </div>
               </div>
             </div>
           ))}
@@ -212,12 +232,20 @@ function ModalV2({ projectId }: { projectId: string }) {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {data.deliverables.categories.map((cat: any, i: number) => (
-            <div key={i} className="space-y-4 p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800">
-              <h5 className="font-bold text-white border-b border-neutral-800 pb-3">{cat.name}</h5>
+            <div
+              key={i}
+              className="space-y-4 p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800">
+              <h5 className="font-bold text-white border-b border-neutral-800 pb-3">
+                {cat.name}
+              </h5>
               <ul className="space-y-2">
                 {cat.items.map((item: string, j: number) => (
-                  <li key={j} className="text-sm text-neutral-400 flex items-start gap-2">
-                    <span className="text-emerald-500 mt-1 flex-shrink-0">✓</span>
+                  <li
+                    key={j}
+                    className="text-sm text-neutral-400 flex items-start gap-2">
+                    <span className="text-emerald-500 mt-1 flex-shrink-0">
+                      ✓
+                    </span>
                     {item}
                   </li>
                 ))}
@@ -244,14 +272,24 @@ function ModalV2({ projectId }: { projectId: string }) {
           {data.stack_why.items.map((item: any, i: number) => {
             const Icon = techIcons[item.tech];
             return (
-              <div key={i} className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 flex gap-4">
+              <div
+                key={i}
+                className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 flex gap-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center text-neutral-400">
-                  {Icon ? <Icon className="w-6 h-6" /> : <div className="text-xl">{item.icon}</div>}
+                  {Icon ? (
+                    <Icon className="w-6 h-6" />
+                  ) : (
+                    <div className="text-xl">{item.icon}</div>
+                  )}
                 </div>
                 <div className="space-y-2">
                   <h5 className="font-bold text-white">{item.tech}</h5>
-                  <p className="text-xs text-neutral-400 leading-relaxed">{item.why}</p>
-                  <p className="text-xs text-purple-400/80 font-mono tracking-tight">{item.benefit}</p>
+                  <p className="text-xs text-neutral-400 leading-relaxed">
+                    {item.why}
+                  </p>
+                  <p className="text-xs text-purple-400/80 font-mono tracking-tight">
+                    {item.benefit}
+                  </p>
                 </div>
               </div>
             );
@@ -271,7 +309,9 @@ function ModalV2({ projectId }: { projectId: string }) {
             return (
               <div key={i} className="space-y-1">
                 <h5 className="text-sm font-bold text-neutral-200">{bold}</h5>
-                <p className="text-sm text-neutral-400 leading-relaxed">{rest}</p>
+                <p className="text-sm text-neutral-400 leading-relaxed">
+                  {rest}
+                </p>
               </div>
             );
           })}
@@ -293,8 +333,12 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
 
   const businessVersion = {
     approachTitle: t(`${projectId}.business_version.approach_title`),
-    approachDescription: t(`${projectId}.business_version.approach_description`),
-    approachPoints: t.raw(`${projectId}.business_version.approach_points`) as string[],
+    approachDescription: t(
+      `${projectId}.business_version.approach_description`,
+    ),
+    approachPoints: t.raw(
+      `${projectId}.business_version.approach_points`,
+    ) as string[],
     outcomesTitle: t(`${projectId}.business_version.outcomes_title`),
     outcomes: t.raw(`${projectId}.business_version.outcomes`) as string[],
   };
@@ -302,12 +346,20 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
   const technicalVersion = {
     title: t(`${projectId}.technical_version.title`),
     approachTitle: t(`${projectId}.technical_version.approach_title`),
-    approachDescription: t(`${projectId}.technical_version.approach_description`),
-    technicalDetails: t.raw(`${projectId}.technical_version.technical_details`) as string[],
+    approachDescription: t(
+      `${projectId}.technical_version.approach_description`,
+    ),
+    technicalDetails: t.raw(
+      `${projectId}.technical_version.technical_details`,
+    ) as string[],
     stackTitle: t(`${projectId}.technical_version.stack_title`),
-    stackTechnologies: t.raw(`${projectId}.technical_version.stack_technologies`) as string[],
+    stackTechnologies: t.raw(
+      `${projectId}.technical_version.stack_technologies`,
+    ) as string[],
     securityTitle: t(`${projectId}.technical_version.security_title`),
-    securityMeasures: t.raw(`${projectId}.technical_version.security_measures`) as string[],
+    securityMeasures: t.raw(
+      `${projectId}.technical_version.security_measures`,
+    ) as string[],
   };
 
   const handleCopy = (text: string, index: number) => {
@@ -323,7 +375,9 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
         <h3 className="text-sm font-mono text-emerald-400 uppercase tracking-wider">
           {businessVersion.approachTitle}
         </h3>
-        <p className="text-neutral-400">{businessVersion.approachDescription}</p>
+        <p className="text-neutral-400">
+          {businessVersion.approachDescription}
+        </p>
         <div className="space-y-3 pl-4">
           {businessVersion.approachPoints.map((point: string, i: number) => (
             <div key={i} className="flex items-start gap-3 text-neutral-300">
@@ -392,12 +446,20 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                   {technicalVersion.approachDescription}
                 </p>
                 <div className="space-y-2 pl-4">
-                  {technicalVersion.technicalDetails.map((detail: string, i: number) => (
-                    <div key={i} className="flex items-start gap-3 text-neutral-300 text-sm">
-                      <span className="text-purple-500 mt-0.5 flex-shrink-0">→</span>
-                      <span className="font-mono leading-relaxed">{detail}</span>
-                    </div>
-                  ))}
+                  {technicalVersion.technicalDetails.map(
+                    (detail: string, i: number) => (
+                      <div
+                        key={i}
+                        className="flex items-start gap-3 text-neutral-300 text-sm">
+                        <span className="text-purple-500 mt-0.5 flex-shrink-0">
+                          →
+                        </span>
+                        <span className="font-mono leading-relaxed">
+                          {detail}
+                        </span>
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
 
@@ -408,23 +470,27 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                   {technicalVersion.stackTitle}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {technicalVersion.stackTechnologies.map((tech: string, i: number) => (
-                    <div
-                      key={i}
-                      className="flex items-center justify-between bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2.5 group hover:border-cyan-800/50 transition-colors">
-                      <code className="text-sm text-cyan-300 font-mono">{tech}</code>
-                      <button
-                        onClick={() => handleCopy(tech, i)}
-                        className="text-neutral-600 hover:text-cyan-400 transition-colors p-1"
-                        title="Copy">
-                        {copiedIndex === i ? (
-                          <Check className="w-3.5 h-3.5 text-emerald-400" />
-                        ) : (
-                          <Copy className="w-3.5 h-3.5" />
-                        )}
-                      </button>
-                    </div>
-                  ))}
+                  {technicalVersion.stackTechnologies.map(
+                    (tech: string, i: number) => (
+                      <div
+                        key={i}
+                        className="flex items-center justify-between bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2.5 group hover:border-cyan-800/50 transition-colors">
+                        <code className="text-sm text-cyan-300 font-mono">
+                          {tech}
+                        </code>
+                        <button
+                          onClick={() => handleCopy(tech, i)}
+                          className="text-neutral-600 hover:text-cyan-400 transition-colors p-1"
+                          title="Copy">
+                          {copiedIndex === i ? (
+                            <Check className="w-3.5 h-3.5 text-emerald-400" />
+                          ) : (
+                            <Copy className="w-3.5 h-3.5" />
+                          )}
+                        </button>
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
 
@@ -435,13 +501,17 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                   {technicalVersion.securityTitle}
                 </h4>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-2">
-                  {technicalVersion.securityMeasures.map((measure: string, i: number) => (
-                    <div
-                      key={i}
-                      className="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2.5">
-                      <code className="text-xs text-red-300/80 font-mono">{measure}</code>
-                    </div>
-                  ))}
+                  {technicalVersion.securityMeasures.map(
+                    (measure: string, i: number) => (
+                      <div
+                        key={i}
+                        className="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2.5">
+                        <code className="text-xs text-red-300/80 font-mono">
+                          {measure}
+                        </code>
+                      </div>
+                    ),
+                  )}
                 </div>
               </div>
             </div>
@@ -455,6 +525,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
 export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   const t = useTranslations("WorkPage.modal");
   const tLabels = useTranslations("WorkPage.modal_labels");
+  const tV2 = useTranslations("WorkPage.modal_v2");
 
   const scrollRef = useRef<HTMLDivElement>(null);
 
@@ -491,7 +562,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
       // Also pad fixed elements (navbar) to prevent shift
       const fixedElements = document.querySelectorAll<HTMLElement>(
-        '[data-fixed-header]'
+        "[data-fixed-header]",
       );
       fixedElements.forEach((el) => {
         el.style.paddingRight = `${scrollbarWidth}px`;
@@ -506,7 +577,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
       document.body.style.paddingRight = "";
 
       const fixedElements = document.querySelectorAll<HTMLElement>(
-        '[data-fixed-header]'
+        "[data-fixed-header]",
       );
       fixedElements.forEach((el) => {
         el.style.paddingRight = "";
@@ -579,7 +650,6 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
               ref={scrollRef}
               data-lenis-prevent
               className="overflow-y-auto flex-1 px-8 py-8 overscroll-contain scrollbar-thin scrollbar-thumb-neutral-800 scrollbar-track-transparent">
-              
               <div className="max-w-3xl mx-auto space-y-12">
                 {/* Hero Image */}
                 {projectImages[projectId] && (
@@ -596,17 +666,12 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
                 {/* Content Switcher: V2 vs Legacy */}
                 {(() => {
-                  try {
-                    const tV2 = useTranslations("WorkPage.modal_v2");
-                    const projectKey = projectId.replace("-", "_");
-                    
-                    // Simple check: does the project key exist in our V2 translations?
-                    const v2Projects = ["cafe_aurora", "strongfit"];
-                    if (v2Projects.includes(projectKey)) {
-                      return <ModalV2 projectId={projectId} />;
-                    }
-                  } catch (e) {
-                    console.error("Modal V2 check failed:", e);
+                  const projectKey = projectId.replace("-", "_");
+
+                  // Simple check: does the project key exist in our V2 translations?
+                  const v2Projects = ["cafe_aurora", "strongfit"];
+                  if (v2Projects.includes(projectKey)) {
+                    return <ModalV2 projectId={projectId} />;
                   }
 
                   return (
@@ -656,7 +721,9 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                                       {Icon ? (
                                         <Icon className="w-5 h-5" />
                                       ) : (
-                                        <span className="text-xs font-mono px-1">{tech.slice(0, 2).toUpperCase()}</span>
+                                        <span className="text-xs font-mono px-1">
+                                          {tech.slice(0, 2).toUpperCase()}
+                                        </span>
                                       )}
                                     </div>
                                     {/* Tooltip */}
@@ -681,7 +748,9 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
                       {/* The Noctra Process */}
                       <div className="border-t border-neutral-800 pt-12">
-                        <h3 className="text-2xl font-bold mb-8">{tLabels("process")}</h3>
+                        <h3 className="text-2xl font-bold mb-8">
+                          {tLabels("process")}
+                        </h3>
                         <div className="space-y-6">
                           {project.process.map((item: any, index: number) => (
                             <div
@@ -691,7 +760,9 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                                 {index + 1}
                               </div>
                               <div className="flex-1 pt-2">
-                                <h4 className="font-bold text-lg mb-1">{item.step}</h4>
+                                <h4 className="font-bold text-lg mb-1">
+                                  {item.step}
+                                </h4>
                                 <p className="text-neutral-400 text-sm">
                                   {item.description}
                                 </p>
@@ -703,7 +774,9 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
 
                       {/* The Results (KPIs) */}
                       <div className="border-t border-neutral-800 pt-12">
-                        <h3 className="text-2xl font-bold mb-8">{tLabels("results")}</h3>
+                        <h3 className="text-2xl font-bold mb-8">
+                          {tLabels("results")}
+                        </h3>
                         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                           {project.results.map((result: any) => (
                             <div
@@ -723,7 +796,9 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                                   {result.context}
                                 </p>
                                 <p className="text-xs text-neutral-500 leading-snug">
-                                  <span className="text-emerald-500/80">{tLabels("action")}:</span>{" "}
+                                  <span className="text-emerald-500/80">
+                                    {tLabels("action")}:
+                                  </span>{" "}
                                   {result.action}
                                 </p>
                               </div>
@@ -738,9 +813,14 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                 {/* CTA (Shared for both V1 and V2) */}
                 <div className="border-t border-neutral-800 pt-12">
                   <div className="text-center space-y-4">
-                    <h3 className="text-2xl font-bold">{tLabels("cta_title")}</h3>
+                    <h3 className="text-2xl font-bold">
+                      {tLabels("cta_title")}
+                    </h3>
                     <Link
-                      href={{ pathname: "/contact", query: { intent: "estimate", project: projectId } }}
+                      href={{
+                        pathname: "/contact",
+                        query: { intent: "estimate", project: projectId },
+                      }}
                       onClick={onClose}
                       className="inline-flex items-center gap-2 text-lg text-white hover:text-neutral-300 transition-colors group">
                       {tLabels("cta_button")}

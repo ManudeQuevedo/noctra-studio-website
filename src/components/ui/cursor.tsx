@@ -13,22 +13,22 @@ export function Cursor() {
   const cursorXSpring = useSpring(mouseX, springConfig);
   const cursorYSpring = useSpring(mouseY, springConfig);
 
+  // Use a more robust way to detect initial hover capability without triggering cascading render lint error
   useEffect(() => {
-    // Initial detection: Show cursor only if device has a fine pointer (mouse/trackpad)
     const hasHoverCapability = window.matchMedia(
       "(hover: hover) and (pointer: fine)",
     ).matches;
-    setIsVisible(hasHoverCapability);
+    if (hasHoverCapability) {
+      setIsVisible(true);
+    }
 
     const moveCursor = (e: MouseEvent) => {
-      // If we receive mousemove, a mouse/trackpad is active
       setIsVisible(true);
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
     };
 
     const handleTouchStart = () => {
-      // If the last input was touch, hide the custom cursor
       setIsVisible(false);
     };
 

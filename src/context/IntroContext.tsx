@@ -21,13 +21,9 @@ export function IntroProvider({ children }: { children: React.ReactNode }) {
   const [mounted, setMounted] = useState(false);
   const [initialized, setInitialized] = useState(false);
 
-  // Mark as mounted on client
+  // Handle mounting and intro logic in a single effect to avoid cascading renders
   useEffect(() => {
     setMounted(true);
-  }, []);
-
-  useEffect(() => {
-    if (!mounted) return;
 
     // Only run on homepage
     const isHomePage =
@@ -40,24 +36,25 @@ export function IntroProvider({ children }: { children: React.ReactNode }) {
       return;
     }
 
-    // Check storage
+    // Check storage for intro preference
     const hasSeenIntro = sessionStorage.getItem("intro-played");
     if (hasSeenIntro) {
       setIsIntroComplete(true);
       setShowIntro(false);
     } else {
-      // If we are on homepage and haven't seen intro, show it
       setIsIntroComplete(false);
       setShowIntro(true);
     }
     setInitialized(true);
-  }, [pathname, mounted]);
+  }, [pathname]);
 
   const setIntroComplete = () => {
     setIsIntroComplete(true);
     setShowIntro(false);
     sessionStorage.setItem("intro-played", "true");
   };
+
+  if (!mounted) return null;
 
   return (
     <IntroContext.Provider

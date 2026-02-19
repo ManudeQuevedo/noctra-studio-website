@@ -76,7 +76,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
       </motion.div>
 
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
-        {services.map((service, index) => (
+        {services.map((service) => (
           <Link href="/services" key={service.id} className="block h-full">
             <motion.div
               key={service.id}

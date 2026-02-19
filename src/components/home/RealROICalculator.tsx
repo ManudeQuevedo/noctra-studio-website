@@ -249,8 +249,8 @@ export function RealROICalculator() {
     let projectedMargin = 0;
     let timeSpent = 0;
     let timeSaved = 0;
-    let currentCAC = 0;
-    let projectedCAC = 0;
+    const currentCAC = 0;
+    const projectedCAC = 0;
 
     const ownerHourlyRate =
       currency === "MXN" ? 500 : Math.round(500 / CONFIG.EXCHANGE_RATE);

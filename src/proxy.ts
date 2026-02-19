@@ -36,17 +36,6 @@ export default async function middleware(request: NextRequest) {
        // We need to return this response, but we also need to do the admin check.
        // So we store the user and the response.
        user = supabaseUser;
-       
-       // 3. Admin Access Control (Strict Check)
-       // /centro-comando is the Command Center (requires auth)
-       // /studio is Sanity Studio (has its own auth, no Supabase check)
-       if (request.nextUrl.pathname.startsWith('/centro-comando')) {
-         const ADMIN_EMAILS = ['hello@noctra.studio', 'contact@manudequevedo.com'];
-         if (!user || !user.email || !ADMIN_EMAILS.includes(user.email)) {
-           return NextResponse.redirect(new URL('/', request.url));
-         }
-       }
-
        // 4. Add Security Headers
        const isDevelopment = process.env.NODE_ENV === 'development';
 

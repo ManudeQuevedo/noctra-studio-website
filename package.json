@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --no-turbopack",
+    "dev": "next dev --turbopack",
     "dev:turbo": "next dev",
     "dev:studio": "sanity dev --basePath /studio",
     "build": "next build",

@@ -19,10 +19,17 @@ export const CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000; // 365 days
 
 declare global {
   interface Window {
-    dataLayer: any[];
-    gtag: (...args: any[]) => void;
-    fbq: any;
-    _fbq: any;
+    dataLayer: unknown[];
+    gtag: (command: string, ...args: unknown[]) => void;
+    fbq: ((command: string, ...args: unknown[]) => void) & {
+      push?: (...args: unknown[]) => void;
+      loaded?: boolean;
+      version?: string;
+      queue?: unknown[];
+      callMethod?: (command: string, ...args: unknown[]) => void;
+    };
+    _fbq: unknown;
+    doNotTrack?: string;
   }
 }
 
@@ -31,8 +38,12 @@ declare global {
  */
 export function shouldRespectDNT(): boolean {
   if (typeof navigator === 'undefined') return false;
-  // @ts-ignore - DNT is not in standard navigator types
-  const dnt = navigator.doNotTrack || window.doNotTrack || navigator.msDoNotTrack;
+  
+  // Actually, navigator might have it but TS doesn't know. 
+  // We'll cast to any for this specific low-level browser check to avoid complex type augmentation.
+  const nav = navigator as any;
+  const win = window as any;
+  const dnt = nav.doNotTrack || win.doNotTrack || nav.msDoNotTrack;
   return dnt === '1' || dnt === 'yes';
 }
 
@@ -44,7 +55,7 @@ export function getStoredConsent(): CookieConsent | null {
   try {
     const stored = localStorage.getItem(CONSENT_KEY);
     if (!stored) return null;
-    return JSON.parse(stored);
+    return JSON.parse(stored) as CookieConsent;
   } catch {
     return null;
   }
@@ -119,10 +130,11 @@ function loadGoogleAnalytics() {
   document.head.appendChild(script);
 
   window.dataLayer = window.dataLayer || [];
-  window.gtag = function() {
-    window.dataLayer.push(arguments as any);
+  window.gtag = function(...args: unknown[]) {
+    // We use a type cast here because dataLayer.push is internal to gtag.js logic
+    (window.dataLayer as any[]).push(args);
   };
-  window.gtag('js', new Date());
+  window.gtag('js', String(new Date()));
   window.gtag('config', GA_ID, { anonymize_ip: true });
 }
 
@@ -141,27 +153,33 @@ function loadFacebookPixel() {
   const FB_PIXEL_ID = 'XXXXXXXXXX'; // Replace with real one
   if (document.querySelector('[data-fb-loaded]')) return;
 
-  // @ts-ignore
-  !(function(f: any, b: any, e: any, v: any, n?: any, t?: any, s?: any) {
-    if (f.fbq) return;
-    n = f.fbq = function() {
-      n.callMethod ? n.callMethod.apply(n, arguments) : n.queue.push(arguments);
-    };
-    if (!f._fbq) f._fbq = n;
+  // Initialize FB Pixel without using arguments or apply() to satisfy linter
+  if (!window.fbq) {
+    const n = function(command: string, ...args: unknown[]) {
+      if (n.callMethod) {
+        n.callMethod(command, ...args);
+      } else {
+        n.queue?.push([command, ...args]);
+      }
+    } as any;
+    
     n.push = n;
-    n.loaded = !0;
+    n.loaded = true;
     n.version = '2.0';
     n.queue = [];
-    t = b.createElement(e);
-    t.async = !0;
-    t.src = v;
-    s = b.getElementsByTagName(e)[0];
-    if (s && s.parentNode) s.parentNode.insertBefore(t, s);
-  })(window, document, 'script', 'https://connect.facebook.net/en_US/fbevents.js');
+    window.fbq = n;
+  }
+
+  const script = document.createElement('script');
+  script.async = true;
+  script.src = 'https://connect.facebook.net/en_US/fbevents.js';
+  script.setAttribute('data-fb-loaded', 'true');
+  
+  const firstScript = document.getElementsByTagName('script')[0];
+  if (firstScript && firstScript.parentNode) {
+    firstScript.parentNode.insertBefore(script, firstScript);
+  }
 
   window.fbq('init', FB_PIXEL_ID);
   window.fbq('track', 'PageView');
-  
-  const fbScript = document.querySelector('script[src*="fbevents.js"]');
-  if (fbScript) fbScript.setAttribute('data-fb-loaded', 'true');
 }
