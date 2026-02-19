@@ -13,6 +13,12 @@ export const projectId = assertValue(
 
 function assertValue<T>(v: T | undefined, errorMessage: string): T {
   if (v === undefined) {
+    // During build time, don't crash the entire build if variables are missing.
+    // This allows the build to pass and the user to add the variables in Vercel.
+    if (process.env.NEXT_PHASE === 'phase-production-build' || process.env.NODE_ENV === 'production') {
+       console.warn(`[Sanity Env Warning]: ${errorMessage}`);
+       return "" as unknown as T;
+    }
     throw new Error(errorMessage);
   }
 

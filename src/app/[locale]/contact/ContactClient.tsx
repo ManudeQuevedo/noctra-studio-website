@@ -5,7 +5,25 @@ import { useForm } from "react-hook-form";
 import { motion, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
-import { ArrowRight, Instagram, MapPin, Clock, Phone, FileText, Settings2, Rocket, Zap, Check, AlertCircle, DollarSign, MessageSquare, User, Mail, ChevronRight, ChevronLeft } from "lucide-react";
+import {
+  ArrowRight,
+  Instagram,
+  MapPin,
+  Clock,
+  Phone,
+  FileText,
+  Settings2,
+  Rocket,
+  Zap,
+  Check,
+  AlertCircle,
+  DollarSign,
+  MessageSquare,
+  User,
+  Mail,
+  ChevronRight,
+  ChevronLeft,
+} from "lucide-react";
 import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import { RouteScopedBackground } from "@/components/ui/RouteScopedBackground";
@@ -24,7 +42,10 @@ type FormData = {
 
 const TestimonialSidebar = () => {
   const t = useTranslations("ContactPage");
-  const testimonials = t.raw("testimonials") as { quote: string; author: string }[];
+  const testimonials = t.raw("testimonials") as {
+    quote: string;
+    author: string;
+  }[];
 
   return (
     <div className="space-y-8 lg:sticky lg:top-40 h-fit">
@@ -56,7 +77,9 @@ const TestimonialSidebar = () => {
       {/* Trust Badges */}
       <div className="pt-8 border-t border-neutral-900 grid grid-cols-2 gap-4">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono uppercase tracking-tight">
+          <div
+            key={i}
+            className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono uppercase tracking-tight">
             <Check className="w-3 h-3 text-emerald-500" />
             {t(`hero.trust_badges.${i}`)}
           </div>
@@ -79,9 +102,7 @@ const ExpectationsCard = () => {
             <div className="mt-1 shrink-0 w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center">
               <Check className="w-2.5 h-2.5 text-emerald-500" />
             </div>
-            <p className="text-xs text-neutral-500 leading-relaxed">
-              {item}
-            </p>
+            <p className="text-xs text-neutral-500 leading-relaxed">{item}</p>
           </div>
         ))}
       </div>
@@ -127,7 +148,7 @@ function ContactForm() {
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value.replace(/\D/g, "");
     if (val.length > 10) val = val.slice(0, 10);
-    
+
     // Format: (XXX) XXX XXXX
     if (val.length > 6) {
       val = `(${val.slice(0, 3)}) ${val.slice(3, 6)} ${val.slice(6)}`;
@@ -159,12 +180,14 @@ function ContactForm() {
 
   useEffect(() => {
     const updateTime = () => {
-      setTime(new Date().toLocaleTimeString("en-US", {
-        hour: "2-digit",
-        minute: "2-digit",
-        hour12: true,
-        timeZone: "America/Mexico_City",
-      }));
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+          timeZone: "America/Mexico_City",
+        }),
+      );
     };
     updateTime();
     const interval = setInterval(updateTime, 1000);
@@ -187,10 +210,11 @@ function ContactForm() {
   };
 
   const nextStep = async () => {
-    const fieldsToValidate = currentStep === 1 
-      ? ["name", "email", "phone"] 
-      : ["service", "budget", "timeline"];
-    
+    const fieldsToValidate =
+      currentStep === 1
+        ? ["name", "email", "phone"]
+        : ["service", "budget", "timeline"];
+
     const isStepValid = await trigger(fieldsToValidate as any);
     if (isStepValid) {
       setDirection(1);
@@ -206,35 +230,37 @@ function ContactForm() {
   const stepVariants = {
     enter: (direction: number) => ({
       x: direction > 0 ? 100 : -100,
-      opacity: 0
+      opacity: 0,
     }),
     center: {
       zIndex: 1,
       x: 0,
-      opacity: 1
+      opacity: 1,
     },
     exit: (direction: number) => ({
       zIndex: 0,
       x: direction < 0 ? 100 : -100,
-      opacity: 0
-    })
+      opacity: 0,
+    }),
   };
 
-  const inputClasses = (fieldName: keyof FormData) => cn(
-    "w-full bg-transparent border-b py-4 text-xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-700",
-    errors[fieldName] ? "border-red-500/50" : "border-neutral-800 focus:border-emerald-500 focus:pl-4 pl-0"
-  );
+  const inputClasses = (fieldName: keyof FormData) =>
+    cn(
+      "w-full bg-transparent border-b py-4 text-xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-700",
+      errors[fieldName]
+        ? "border-red-500/50"
+        : "border-neutral-800 focus:border-emerald-500 focus:pl-4 pl-0",
+    );
 
   return (
     <main className="min-h-screen text-white pt-32 pb-24 relative overflow-hidden">
       <RouteScopedBackground />
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          
           {/* Main Info Column */}
           <div className="lg:col-span-4 space-y-12">
             <div>
-              <motion.h1 
+              <motion.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-6xl md:text-7xl font-black tracking-tight mb-8 leading-none">
@@ -268,18 +294,24 @@ function ContactForm() {
                   </div>
                   <div className="flex gap-2">
                     {[1, 2, 3].map((s) => (
-                      <div 
+                      <div
                         key={s}
                         className={cn(
                           "w-2.4 h-2 rounded-full transition-all duration-500",
-                          s === currentStep ? "w-8 bg-emerald-500" : s < currentStep ? "bg-emerald-900" : "bg-neutral-800"
+                          s === currentStep
+                            ? "w-8 bg-emerald-500"
+                            : s < currentStep
+                              ? "bg-emerald-900"
+                              : "bg-neutral-800",
                         )}
                       />
                     ))}
                   </div>
                 </div>
 
-                <form onSubmit={handleSubmit(onSubmit)} className="flex-1 flex flex-col">
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="flex-1 flex flex-col">
                   <div className="relative overflow-hidden flex-1 min-h-[400px]">
                     <AnimatePresence mode="wait" custom={direction}>
                       <motion.div
@@ -290,8 +322,7 @@ function ContactForm() {
                         animate="center"
                         exit="exit"
                         transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="w-full"
-                      >
+                        className="w-full">
                         {currentStep === 1 && (
                           <div className="space-y-12">
                             <div className="group relative">
@@ -313,15 +344,17 @@ function ContactForm() {
                                 {t("form.email_label")}
                               </label>
                               <div className="relative">
-                                {watchAll.email && !errors.email && /^\S+@\S+$/i.test(watchAll.email) ? (
+                                {watchAll.email &&
+                                !errors.email &&
+                                /^\S+@\S+$/i.test(watchAll.email) ? (
                                   <Check className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
                                 ) : (
                                   <Mail className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
                                 )}
                                 <input
-                                  {...register("email", { 
-                                    required: true, 
-                                    pattern: /^\S+@\S+$/i 
+                                  {...register("email", {
+                                    required: true,
+                                    pattern: /^\S+@\S+$/i,
                                   })}
                                   placeholder={t("form.email_placeholder")}
                                   className={inputClasses("email")}
@@ -352,13 +385,31 @@ function ContactForm() {
                               <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
                                 {t("form.service_label")}
                               </label>
-                              <select 
+                              <select
                                 {...register("service", { required: true })}
-                                className={cn(inputClasses("service"), "appearance-none cursor-pointer")}
-                              >
-                                <option value="" disabled className="bg-neutral-900">{t("form.service_placeholder")}</option>
-                                {["website", "ecommerce", "custom_system", "optimization", "not_sure"].map(opt => (
-                                  <option key={opt} value={opt} className="bg-neutral-900">{t(`form.service_options.${opt}`)}</option>
+                                className={cn(
+                                  inputClasses("service"),
+                                  "appearance-none cursor-pointer",
+                                )}>
+                                <option
+                                  value=""
+                                  disabled
+                                  className="bg-neutral-900">
+                                  {t("form.service_placeholder")}
+                                </option>
+                                {[
+                                  "website",
+                                  "ecommerce",
+                                  "custom_system",
+                                  "optimization",
+                                  "not_sure",
+                                ].map((opt) => (
+                                  <option
+                                    key={opt}
+                                    value={opt}
+                                    className="bg-neutral-900">
+                                    {t(`form.service_options.${opt}`)}
+                                  </option>
                                 ))}
                               </select>
                               <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
@@ -370,14 +421,16 @@ function ContactForm() {
                                   {t("form.budget_label")}
                                 </label>
                                 <div className="flex gap-1 p-0.5 bg-white/5 rounded-full border border-white/10">
-                                  {(["mxn", "usd"] as const).map(curr => (
-                                    <button 
-                                      key={curr} 
-                                      type="button" 
+                                  {(["mxn", "usd"] as const).map((curr) => (
+                                    <button
+                                      key={curr}
+                                      type="button"
                                       onClick={() => setValue("currency", curr)}
                                       className={cn(
                                         "px-2 py-0.5 text-[9px] font-bold uppercase rounded-full transition-all",
-                                        watchAll.currency === curr ? "bg-white text-black" : "text-neutral-500"
+                                        watchAll.currency === curr
+                                          ? "bg-white text-black"
+                                          : "text-neutral-500",
                                       )}>
                                       {curr}
                                     </button>
@@ -385,23 +438,38 @@ function ContactForm() {
                                 </div>
                               </div>
                               <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                {["20-35k", "35-50k", "50-80k", "80-120k", "120k+", "monthly", "discuss"].map(key => (
+                                {[
+                                  "20-35k",
+                                  "35-50k",
+                                  "50-80k",
+                                  "80-120k",
+                                  "120k+",
+                                  "monthly",
+                                  "discuss",
+                                ].map((key) => (
                                   <button
                                     key={key}
                                     type="button"
-                                    onClick={() => setValue("budget", key, { shouldValidate: true })}
+                                    onClick={() =>
+                                      setValue("budget", key, {
+                                        shouldValidate: true,
+                                      })
+                                    }
                                     className={cn(
                                       "p-3 rounded-xl border text-left transition-all text-xs font-bold",
-                                      watchAll.budget === key ? "bg-emerald-500/10 border-emerald-500/50 text-white shadow-[0_0_15px_rgba(16,185,129,0.1)]" : "bg-white/5 border-white/5 text-neutral-400 hover:border-white/10"
+                                      watchAll.budget === key
+                                        ? "bg-emerald-500/10 border-emerald-500/50 text-white shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+                                        : "bg-white/5 border-white/5 text-neutral-400 hover:border-white/10",
+                                    )}>
+                                    {t(
+                                      `form.budget_options.${watchAll.currency}.${key}`,
                                     )}
-                                  >
-                                    {t(`form.budget_options.${watchAll.currency}.${key}`)}
                                   </button>
                                 ))}
                               </div>
                               <AnimatePresence>
                                 {budgetScope && (
-                                  <motion.p 
+                                  <motion.p
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: "auto" }}
                                     className="text-[10px] font-mono text-emerald-500/80 bg-emerald-500/5 p-3 rounded-lg border border-emerald-500/10">
@@ -416,14 +484,28 @@ function ContactForm() {
                               <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
                                 {t("form.timeline_label")}
                               </label>
-                              <select 
+                              <select
                                 {...register("timeline", { required: true })}
-                                className={cn(inputClasses("timeline"), "appearance-none cursor-pointer")}
-                              >
-                                <option value="" disabled className="bg-neutral-900">{t("form.timeline_placeholder")}</option>
-                                {["asap", "3_months", "6_months", "future"].map(opt => (
-                                  <option key={opt} value={opt} className="bg-neutral-900">{t(`form.timeline_options.${opt}`)}</option>
-                                ))}
+                                className={cn(
+                                  inputClasses("timeline"),
+                                  "appearance-none cursor-pointer",
+                                )}>
+                                <option
+                                  value=""
+                                  disabled
+                                  className="bg-neutral-900">
+                                  {t("form.timeline_placeholder")}
+                                </option>
+                                {["asap", "3_months", "6_months", "future"].map(
+                                  (opt) => (
+                                    <option
+                                      key={opt}
+                                      value={opt}
+                                      className="bg-neutral-900">
+                                      {t(`form.timeline_options.${opt}`)}
+                                    </option>
+                                  ),
+                                )}
                               </select>
                               <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
                             </div>
@@ -436,13 +518,28 @@ function ContactForm() {
                               <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
                                 {t("form.source_label")}
                               </label>
-                              <select 
+                              <select
                                 {...register("source")}
-                                className={cn(inputClasses("source"), "appearance-none cursor-pointer")}
-                              >
-                                <option value="" className="bg-neutral-900">{t("form.source_placeholder")}</option>
-                                {["google", "referral", "linkedin", "social", "other"].map(opt => (
-                                  <option key={opt} value={opt} className="bg-neutral-900">{t(`form.source_options.${opt}`)}</option>
+                                className={cn(
+                                  inputClasses("source"),
+                                  "appearance-none cursor-pointer",
+                                )}>
+                                <option value="" className="bg-neutral-900">
+                                  {t("form.source_placeholder")}
+                                </option>
+                                {[
+                                  "google",
+                                  "referral",
+                                  "linkedin",
+                                  "social",
+                                  "other",
+                                ].map((opt) => (
+                                  <option
+                                    key={opt}
+                                    value={opt}
+                                    className="bg-neutral-900">
+                                    {t(`form.source_options.${opt}`)}
+                                  </option>
                                 ))}
                               </select>
                               <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
@@ -456,10 +553,13 @@ function ContactForm() {
                                 {...register("details")}
                                 placeholder={t("form.details_placeholder")}
                                 rows={4}
-                                className={cn(inputClasses("details"), "resize-none h-auto max-h-48 scrollbar-hide")}
+                                className={cn(
+                                  inputClasses("details"),
+                                  "resize-none h-auto max-h-48 scrollbar-hide",
+                                )}
                               />
                             </div>
-                            
+
                             <ExpectationsCard />
                           </div>
                         )}
@@ -478,7 +578,7 @@ function ContactForm() {
                         {t("steps.back")}
                       </button>
                     )}
-                    
+
                     {currentStep < 3 ? (
                       <button
                         type="button"
@@ -512,21 +612,33 @@ function ContactForm() {
       {/* Footer Info */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 mt-48 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-neutral-900 pt-16">
         <div className="space-y-4">
-          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">WhatsApp</span>
-          <div className="flex items-center gap-3">
-            <FaWhatsapp className="w-5 h-5 text-emerald-500" />
-            <span className="text-xl font-bold">{t("details.whatsapp_number")}</span>
-          </div>
+          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
+            WhatsApp
+          </span>
+          <a
+            href={`https://wa.me/${t("details.whatsapp_number").replace(/\D/g, "")}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 hover:opacity-70 transition-opacity group w-fit">
+            <FaWhatsapp className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+            <span className="text-xl font-bold">
+              {t("details.whatsapp_number")}
+            </span>
+          </a>
         </div>
         <div className="space-y-4">
-          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">Location</span>
+          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
+            Location
+          </span>
           <div className="flex items-center gap-3 text-xl font-bold">
             <MapPin className="w-5 h-5 text-emerald-500" />
             {t("details.location_value")}
           </div>
         </div>
         <div className="space-y-4">
-          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">Timezone</span>
+          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
+            Timezone
+          </span>
           <div className="flex items-center gap-3 text-xl font-bold tabular-nums">
             <Clock className="w-5 h-5 text-emerald-500" />
             {time}
@@ -537,28 +649,30 @@ function ContactForm() {
   );
 }
 
-const SuccessState = ({ t, onReset }: { t: any, onReset: () => void }) => (
+const SuccessState = ({ t, onReset }: { t: any; onReset: () => void }) => (
   <motion.div
     initial={{ scale: 0.9, opacity: 0 }}
     animate={{ scale: 1, opacity: 1 }}
-    className="w-full max-w-md mx-auto text-center space-y-8"
-  >
+    className="w-full max-w-md mx-auto text-center space-y-8">
     <div className="bg-white text-black p-12 rounded-[2.5rem] relative overflow-hidden shadow-2xl">
       <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-emerald-500" />
       <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8">
         <Check className="w-8 h-8 text-emerald-600" />
       </div>
-      <h3 className="text-3xl font-black tracking-tight mb-4">{t("success.title")}</h3>
-      <p className="text-neutral-600 font-medium mb-12">{t("success.message")}</p>
-      
+      <h3 className="text-3xl font-black tracking-tight mb-4">
+        {t("success.title")}
+      </h3>
+      <p className="text-neutral-600 font-medium mb-12">
+        {t("success.message")}
+      </p>
+
       <div className="space-y-6 pt-8 border-t border-neutral-100">
         <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">
           Request ID: #NOC-{Math.floor(Math.random() * 9000) + 1000}
         </div>
-        <button 
+        <button
           onClick={onReset}
-          className="text-sm font-bold text-neutral-400 hover:text-black transition-colors"
-        >
+          className="text-sm font-bold text-neutral-400 hover:text-black transition-colors">
           {t("success.action")}
         </button>
       </div>
@@ -568,7 +682,12 @@ const SuccessState = ({ t, onReset }: { t: any, onReset: () => void }) => (
 
 export default function ContactClient() {
   return (
-    <Suspense fallback={<div className="min-h-screen pt-48 text-center font-mono opacity-50">INITIALIZING...</div>}>
+    <Suspense
+      fallback={
+        <div className="min-h-screen pt-48 text-center font-mono opacity-50">
+          INITIALIZING...
+        </div>
+      }>
       <ContactForm />
     </Suspense>
   );
