@@ -121,7 +121,14 @@ export function PricingSection() {
                 </ul>
 
                 <Link
-                  href="/contact"
+                  href={{
+                    pathname: "/contact",
+                    query: {
+                      servicio: t(`${tier.key}.name`),
+                      precio: t(`${tier.key}.price`),
+                      tipo: "proyecto",
+                    },
+                  }}
                   className={cn(
                     "w-full flex items-center justify-center gap-2 py-3 rounded-lg font-medium transition-all duration-300",
                     tier.popular

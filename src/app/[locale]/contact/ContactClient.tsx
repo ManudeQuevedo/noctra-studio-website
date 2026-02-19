@@ -25,7 +25,10 @@ import {
   ChevronLeft,
   Target,
 } from "lucide-react";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
 import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
+
 import { cn } from "@/lib/utils";
 import { RouteScopedBackground } from "@/components/ui/RouteScopedBackground";
 
@@ -130,6 +133,7 @@ function ContactForm() {
   const [time, setTime] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState(false);
   const [direction, setDirection] = useState(0);
+  const [phoneValid, setPhoneValid] = useState<boolean | null>(null);
 
   const {
     register,
@@ -157,42 +161,22 @@ function ContactForm() {
   const watchAll = watch();
   const searchParams = useSearchParams();
   const interest = searchParams.get("interest");
+  // New params
+  const tipo = searchParams.get("tipo");
+  const planParam = searchParams.get("plan");
+  const descuento = searchParams.get("descuento");
+  const servicioParam = searchParams.get("servicio");
+  const precioParam = searchParams.get("precio");
 
-  // Phone auto-formatter (Mexican format: +52 (XXX) XXX XXXX)
-  const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-    let val = e.target.value.replace(/\D/g, "");
-
-    // If it starts with 52, keep it, otherwise assume user is typing the 10 digits
-    if (val.startsWith("52") && val.length > 2) {
-      // already has 52
-    } else if (val.length > 0 && !val.startsWith("52")) {
-      // doesn't have 52, we'll prefix it later or just let the formatting handle it
+  // Phone handler for react-phone-number-input
+  const handlePhoneChange = (value: string | undefined) => {
+    const val = value || "";
+    setValue("phone", val);
+    if (val) {
+      setPhoneValid(isValidPhoneNumber(val));
+    } else {
+      setPhoneValid(null);
     }
-
-    if (val.length > 12) val = val.slice(0, 12);
-
-    let formatted = "";
-    if (val.length > 0) {
-      formatted = "+";
-      if (val.length <= 2) {
-        formatted += val;
-      } else {
-        formatted += "52";
-        const digits = val.startsWith("52") ? val.slice(2) : val;
-
-        if (digits.length > 0) {
-          formatted += " (" + digits.slice(0, 3);
-          if (digits.length > 3) {
-            formatted += ") " + digits.slice(3, 6);
-            if (digits.length > 6) {
-              formatted += " " + digits.slice(6, 10);
-            }
-          }
-        }
-      }
-    }
-
-    setValue("phone", formatted);
   };
 
   const budgetScope = useMemo(() => {
@@ -201,6 +185,7 @@ function ContactForm() {
   }, [watchAll.budget, t]);
 
   useEffect(() => {
+    // 1. Handle "interest" (legacy)
     if (interest) {
       const serviceMap: Record<string, string> = {
         "digital-architecture": "website",
@@ -211,7 +196,47 @@ function ContactForm() {
       const mappedService = serviceMap[interest];
       if (mappedService) setValue("service", mappedService);
     }
-  }, [interest, setValue]);
+
+    // 2. Handle new "tipo" and "servicio" params
+    if (servicioParam) {
+      // Try to find exact match or close match
+      const opts = ["website", "ecommerce", "custom_system", "optimization"];
+      const s = servicioParam.toLowerCase();
+      if (opts.includes(s)) {
+        setValue("service", s);
+      } else if (s.includes("web")) {
+        setValue("service", "website");
+      } else if (s.includes("commer") || s.includes("tienda")) {
+        setValue("service", "ecommerce");
+      }
+    }
+
+    let detailsParts: string[] = [];
+    if (planParam) {
+      detailsParts.push(
+        `Interés en plan: ${planParam}${precioParam ? ` (${precioParam})` : ""}`,
+      );
+    }
+    if (descuento) {
+      detailsParts.push(`Aplicar descuento: ${descuento}%`);
+    }
+
+    if (detailsParts.length > 0) {
+      setValue("details", detailsParts.join("\n"));
+    }
+
+    if (tipo === "automatizacion") {
+      setValue("service", "custom_system");
+    }
+  }, [
+    interest,
+    servicioParam,
+    planParam,
+    precioParam,
+    descuento,
+    tipo,
+    setValue,
+  ]);
 
   useEffect(() => {
     const updateTime = () => {
@@ -299,8 +324,26 @@ function ContactForm() {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-6xl md:text-7xl font-black tracking-tight mb-8 leading-none">
-                {t("hero.title")}
+                {tipo === "socio-fundador" ? "Socio Fundador" : t("hero.title")}
               </motion.h1>
+
+              {tipo === "socio-fundador" && (
+                <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+                  <p className="text-emerald-500 font-bold text-sm">
+                    🚀 Estás aplicando para el precio especial de Socio Fundador
+                    (25% OFF).
+                  </p>
+                </div>
+              )}
+
+              {tipo === "automatizacion" && (
+                <div className="mb-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl">
+                  <p className="text-blue-400 font-bold text-sm">
+                    🤖 Consulta especializada en Automatización con IA.
+                  </p>
+                </div>
+              )}
+
               <p className="text-xl text-neutral-400 font-medium leading-relaxed">
                 {t("hero.subtitle")}
               </p>
@@ -398,17 +441,36 @@ function ContactForm() {
                             </div>
 
                             <div className="group relative">
-                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                              <label
+                                className={cn(
+                                  "text-[10px] font-mono uppercase tracking-[0.2em] transition-colors",
+                                  phoneValid === false
+                                    ? "text-red-500"
+                                    : phoneValid === true
+                                      ? "text-emerald-500"
+                                      : "text-neutral-500 group-focus-within:text-emerald-500",
+                                )}>
                                 {t("form.phone_label")}
                               </label>
                               <div className="relative">
-                                <Phone className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
-                                <input
-                                  {...register("phone")}
+                                <PhoneInput
+                                  defaultCountry="MX"
+                                  value={watchAll.phone}
                                   onChange={handlePhoneChange}
+                                  className={cn(
+                                    "phone-input-container",
+                                    phoneValid === true && "valid",
+                                    phoneValid === false && "invalid",
+                                  )}
                                   placeholder={t("form.phone_placeholder")}
-                                  className={inputClasses("phone")}
+                                  international
+                                  countryCallingCodeEditable={false}
                                 />
+                                {phoneValid === false && (
+                                  <p className="text-red-500 text-[10px] font-mono mt-2 absolute -bottom-5 left-0">
+                                    Número inválido para el país seleccionado
+                                  </p>
+                                )}
                               </div>
                             </div>
                           </div>
@@ -582,11 +644,17 @@ function ContactForm() {
 
                             <div className="group relative">
                               <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
-                                {t("form.details_label")}
+                                {tipo === "automatizacion"
+                                  ? "Cuéntanos sobre los procesos que quieres automatizar"
+                                  : t("form.details_label")}
                               </label>
                               <textarea
                                 {...register("details")}
-                                placeholder={t("form.details_placeholder")}
+                                placeholder={
+                                  tipo === "automatizacion"
+                                    ? "Ej: Atención al cliente, gestión de inventarios, etc."
+                                    : t("form.details_placeholder")
+                                }
                                 rows={4}
                                 className={cn(
                                   inputClasses("details"),
@@ -618,13 +686,16 @@ function ContactForm() {
                       <button
                         type="button"
                         onClick={nextStep}
-                        className="flex-1 bg-white text-black py-5 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all">
+                        disabled={currentStep === 1 && phoneValid !== true}
+                        className="flex-1 bg-white text-black py-5 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all disabled:opacity-50">
                         {t("steps.next")}
                         <ChevronRight className="w-4 h-4" />
                       </button>
                     ) : (
                       <button
-                        disabled={isSubmitting || !isValid}
+                        disabled={
+                          isSubmitting || !isValid || phoneValid !== true
+                        }
                         type="submit"
                         className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black py-5 rounded-full text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all disabled:opacity-50">
                         {isSubmitting ? t("form.sending") : t("form.submit")}

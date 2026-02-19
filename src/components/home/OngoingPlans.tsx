@@ -95,7 +95,13 @@ export function OngoingPlans() {
             </ul>
 
             <Link
-              href="/contact"
+              href={{
+                pathname: "/contact",
+                query: {
+                  plan: t(`${plan.key}.name`),
+                  tipo: "gestion",
+                },
+              }}
               className={cn(
                 "w-full flex items-center justify-center gap-2 py-4 rounded-xl font-black text-xs uppercase tracking-widest transition-all duration-300",
                 plan.popular

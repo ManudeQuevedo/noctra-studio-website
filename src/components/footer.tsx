@@ -227,7 +227,7 @@ export function Footer() {
                   <Link
                     href={{
                       pathname: "/contact" as any,
-                      query: { intent: "consultation" },
+                      query: { tipo: "consulta" },
                     }}
                     className="text-sm text-neutral-500 hover:text-white transition-colors">
                     {t("links.consultation")}

@@ -5,6 +5,7 @@ import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { ChevronDown } from "lucide-react";
+import { scrollToId } from "@/lib/scroll";
 
 export function PageHero() {
   const t = useTranslations("HomePage");
@@ -49,7 +50,7 @@ export function PageHero() {
               size="lg"
               className="rounded-full h-12 px-8 text-base bg-white text-black hover:bg-neutral-200 transition-colors duration-300">
               <Link
-                href={{ pathname: "/contact", query: { intent: "discovery" } }}>
+                href={{ pathname: "/contact", query: { tipo: "consulta" } }}>
                 {t("cta_start")}
               </Link>
             </Button>
@@ -59,11 +60,11 @@ export function PageHero() {
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.15, ease: "easeOut" }}>
             <Button
-              asChild
+              onClick={() => scrollToId("process")}
               variant="outline"
               size="lg"
               className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
-              <Link href="/work">{t("cta_work")}</Link>
+              {t("cta_work")}
             </Button>
           </motion.div>
         </div>

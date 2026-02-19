@@ -105,7 +105,7 @@ export function SocialProofSection() {
               <Link
                 href={{
                   pathname: "/contact",
-                  query: { intent: "first-clients" },
+                  query: { tipo: "socio-fundador", descuento: "25" },
                 }}>
                 {t("cta")}
               </Link>

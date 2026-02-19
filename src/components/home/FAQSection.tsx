@@ -333,7 +333,10 @@ export function FAQSection() {
                   {t("search.no_results")}
                 </p>
                 <Link
-                  href="/contact"
+                  href={{
+                    pathname: "/contact",
+                    query: { tipo: "dudas-generales" },
+                  }}
                   className="inline-flex items-center gap-2 text-emerald-500 hover:text-emerald-400 font-bold text-sm">
                   {t("cta_button")} <ArrowRight className="w-4 h-4" />
                 </Link>
@@ -353,7 +356,7 @@ export function FAQSection() {
           </h3>
           <p className="text-neutral-400 mb-6">{t("cta_text")}</p>
           <Link
-            href="/contact"
+            href={{ pathname: "/contact", query: { tipo: "dudas-generales" } }}
             className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-2xl hover:bg-emerald-50 transition-all group active:scale-95">
             {t("cta_button")}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />

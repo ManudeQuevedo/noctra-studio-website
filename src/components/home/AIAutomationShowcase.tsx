@@ -164,7 +164,13 @@ export function AIAutomationShowcase() {
               asChild
               size="lg"
               className="rounded-full h-14 px-10 text-lg bg-white text-black hover:bg-neutral-200 transition-all shadow-[0_0_20px_rgba(255,255,255,0.1)]">
-              <Link href="/contact">{t("cta")}</Link>
+              <Link
+                href={{
+                  pathname: "/contact",
+                  query: { tipo: "automatizacion" },
+                }}>
+                {t("cta")}
+              </Link>
             </Button>
 
             <p className="text-neutral-400 max-w-2xl mx-auto text-base leading-relaxed">

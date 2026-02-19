@@ -273,7 +273,10 @@ export function Header() {
                     whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}>
                     <Link
-                      href="/contact"
+                      href={{
+                        pathname: "/contact",
+                        query: { tipo: "consulta" },
+                      }}
                       className="hidden md:flex items-center justify-center px-6 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-neutral-200 transition-colors">
                       {t("book_strategy_call")}
                     </Link>
