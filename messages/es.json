@@ -1405,6 +1405,16 @@
           "sub": "Hoteles, airbnb y rentas",
           "icon": "Hotel"
         },
+        "education": {
+          "label": "Educación y Escuelas",
+          "sub": "Escuelas privadas, Tutorías, Cursos",
+          "icon": "GraduationCap"
+        },
+        "realEstate": {
+          "label": "Bienes Raíces",
+          "sub": "Inmobiliarias, Desarrolladoras, Brokers",
+          "icon": "Home"
+        },
         "other": {
           "label": "Otra Industria",
           "sub": "Proyectos personalizados",
@@ -1584,6 +1594,64 @@
                 "min": 80000,
                 "max": 300000,
                 "info": "Comisión variable por gestión"
+              }
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu_web",
+            "label": "🎓 Sitio Web e Inscripciones",
+            "options": [
+              {
+                "id": "edu_agency",
+                "label": "Sitio escolar con agencia",
+                "min": 75000,
+                "max": 130000,
+                "info": "Setup + CMS + mantenimiento 2 años"
+              },
+              {
+                "id": "edu_template",
+                "label": "Template (Wix/Squarespace)",
+                "min": 20000,
+                "max": 48000,
+                "info": "Suscripción + tiempo gestionando contenido"
+              },
+              {
+                "id": "edu_lms",
+                "label": "Plataforma LMS (Teachable/Moodle)",
+                "min": 36000,
+                "max": 96000,
+                "info": "Licencia + costos de integración 2 años"
+              }
+            ]
+          }
+        ],
+        "realEstate": [
+          {
+            "id": "re_web",
+            "label": "🏠 Sitio Web y Propiedades",
+            "options": [
+              {
+                "id": "re_agency",
+                "label": "Sitio inmobiliario con agencia",
+                "min": 80000,
+                "max": 150000,
+                "info": "Integración MLS + portal 2 años"
+              },
+              {
+                "id": "re_portals",
+                "label": "Portales (Lamudi/MercadoLibre)",
+                "min": 36000,
+                "max": 96000,
+                "info": "Suscripciones mensuales + listings premium"
+              },
+              {
+                "id": "re_crm",
+                "label": "CRM Inmobiliario (Zoho/Salesforce)",
+                "min": 48000,
+                "max": 120000,
+                "info": "Licencia + onboarding 2 años"
               }
             ]
           }

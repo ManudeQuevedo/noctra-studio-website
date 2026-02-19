@@ -912,6 +912,16 @@
           "sub": "Hotels, Tours, Restaurants",
           "icon": "Hotel"
         },
+        "education": {
+          "label": "Education & Schools",
+          "sub": "Private schools, Tutoring, Courses",
+          "icon": "GraduationCap"
+        },
+        "realEstate": {
+          "label": "Real Estate",
+          "sub": "Agencies, Developers, Brokers",
+          "icon": "Home"
+        },
         "other": {
           "label": "Other",
           "sub": "Let me select manually",
@@ -2068,6 +2078,64 @@
                 "label": "Guest feedback software",
                 "min": 8000,
                 "max": 24000
+              }
+            ]
+          }
+        ],
+        "education": [
+          {
+            "id": "edu_web",
+            "label": "🎓 Website & Enrollment",
+            "options": [
+              {
+                "id": "edu_agency",
+                "label": "Agency-built school website",
+                "min": 75000,
+                "max": 130000,
+                "info": "Setup + CMS + maintenance 2 years"
+              },
+              {
+                "id": "edu_template",
+                "label": "Template (Wix/Squarespace)",
+                "min": 20000,
+                "max": 48000,
+                "info": "Subscription + your time managing content"
+              },
+              {
+                "id": "edu_lms",
+                "label": "LMS platform (Teachable/Moodle)",
+                "min": 36000,
+                "max": 96000,
+                "info": "License + integration costs 2 years"
+              }
+            ]
+          }
+        ],
+        "realEstate": [
+          {
+            "id": "re_web",
+            "label": "🏠 Website & Property Listings",
+            "options": [
+              {
+                "id": "re_agency",
+                "label": "Agency-built real estate site",
+                "min": 80000,
+                "max": 150000,
+                "info": "MLS integration + portal features 2 years"
+              },
+              {
+                "id": "re_portals",
+                "label": "Portal listings (Lamudi/MercadoLibre)",
+                "min": 36000,
+                "max": 96000,
+                "info": "Monthly subscriptions + premium listings"
+              },
+              {
+                "id": "re_crm",
+                "label": "Real estate CRM (Zoho/Salesforce)",
+                "min": 48000,
+                "max": 120000,
+                "info": "License + onboarding cost 2 years"
               }
             ]
           }
