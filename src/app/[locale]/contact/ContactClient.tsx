@@ -56,7 +56,7 @@ const TestimonialSidebar = () => {
       {/* Trust Badges */}
       <div className="pt-8 border-t border-neutral-900 grid grid-cols-2 gap-4">
         {[0, 1, 2].map((i) => (
-          <div key={i} className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono uppercase tracking-tighter">
+          <div key={i} className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono uppercase tracking-tight">
             <Check className="w-3 h-3 text-emerald-500" />
             {t(`hero.trust_badges.${i}`)}
           </div>
@@ -237,7 +237,7 @@ function ContactForm() {
               <motion.h1 
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                className="text-6xl md:text-7xl font-black tracking-tighter mb-8 leading-none">
+                className="text-6xl md:text-7xl font-black tracking-tight mb-8 leading-none">
                 {t("hero.title")}
               </motion.h1>
               <p className="text-xl text-neutral-400 font-medium leading-relaxed">
@@ -548,7 +548,7 @@ const SuccessState = ({ t, onReset }: { t: any, onReset: () => void }) => (
       <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8">
         <Check className="w-8 h-8 text-emerald-600" />
       </div>
-      <h3 className="text-3xl font-black tracking-tighter mb-4">{t("success.title")}</h3>
+      <h3 className="text-3xl font-black tracking-tight mb-4">{t("success.title")}</h3>
       <p className="text-neutral-600 font-medium mb-12">{t("success.message")}</p>
       
       <div className="space-y-6 pt-8 border-t border-neutral-100">

@@ -43,7 +43,7 @@ export default function AboutClient() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tighter mb-8 text-white text-balance">
+            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-8 text-white text-balance">
             {t("hero.title")}
           </motion.h1>
           <motion.p
@@ -246,7 +246,7 @@ export default function AboutClient() {
       <section className="py-32 md:py-48 px-6 md:px-8 text-center relative z-10">
         <div className="max-w-4xl mx-auto space-y-12">
           <FadeIn>
-            <h2 className="text-4xl md:text-7xl font-bold tracking-tighter text-white">
+            <h2 className="text-4xl md:text-7xl font-bold tracking-tight text-white">
               {t("cta.title")}
             </h2>
           </FadeIn>

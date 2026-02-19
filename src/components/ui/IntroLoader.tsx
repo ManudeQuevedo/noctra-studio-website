@@ -86,9 +86,18 @@ export function IntroLoader() {
   );
 }
 
+import { useLocale } from "next-intl";
+
 function TextSequence() {
+  const locale = useLocale();
   const [wordIndex, setWordIndex] = useState(0);
-  const words = ["Zero Friction.", "Infinite Scale."];
+
+  const wordsByLocale: Record<string, string[]> = {
+    en: ["Clarity first.", "Results after."],
+    es: ["Claridad primero.", "Resultados después."],
+  };
+
+  const words = wordsByLocale[locale] ?? wordsByLocale.en;
 
   useEffect(() => {
     const interval = setInterval(() => {

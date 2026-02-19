@@ -33,7 +33,7 @@ export function FeaturedWorkSection() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+            className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             {t("title")}
           </motion.h2>
           <motion.div
@@ -54,10 +54,15 @@ export function FeaturedWorkSection() {
           {projects.map((project, index) => (
             <motion.div
               key={project.key}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true }}
-              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
+                delay: index * 0.1,
+              }}
               className="group relative aspect-video overflow-hidden rounded-lg border border-neutral-800 bg-neutral-900">
               <NextImage
                 src={project.image}
@@ -68,10 +73,10 @@ export function FeaturedWorkSection() {
 
               {/* Overlay */}
               <div className="absolute inset-0 bg-black/60 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-8">
-                <h3 className="text-2xl font-bold text-white mb-2">
+                <h3 className="text-2xl md:text-3xl font-semibold text-white mb-2">
                   {t(`projects.${project.key}.title`)}
                 </h3>
-                <p className="text-emerald-400 font-mono text-sm uppercase tracking-wider">
+                <p className="text-emerald-400 text-xs font-bold uppercase tracking-widest">
                   {project.metric}
                 </p>
               </div>

@@ -51,7 +51,7 @@ export function PhilosophySection() {
             <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
               {t("label")}
             </span>
-            <h2 className="text-5xl md:text-7xl font-bold tracking-tighter text-white leading-none">
+            <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
               {t("title_line1")}
               <br />
               {t("title_line2")}

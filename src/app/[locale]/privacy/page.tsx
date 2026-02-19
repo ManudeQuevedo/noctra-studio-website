@@ -6,7 +6,7 @@ export default function PrivacyPage() {
   return (
     <main className="min-h-screen bg-white dark:bg-neutral-950 text-neutral-900 dark:text-neutral-50 pt-32 pb-24">
       <div className="max-w-3xl mx-auto px-6 md:px-8">
-        <h1 className="text-4xl md:text-5xl font-bold tracking-tighter mb-8">
+        <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
           {t("title")}
         </h1>
         <p className="text-neutral-500 dark:text-neutral-400 mb-12">

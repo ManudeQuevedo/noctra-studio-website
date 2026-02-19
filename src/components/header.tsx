@@ -199,24 +199,24 @@ export function Header() {
           <div
             className={cn(
               "w-6 h-[14px] flex flex-col justify-between transition-all duration-300",
-              isOpen && "h-6 relative"
+              isOpen && "h-6 relative",
             )}>
             <span
               className={cn(
                 "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45"
+                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45",
               )}
             />
             <span
               className={cn(
                 "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45"
+                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45",
               )}
             />
             <span
               className={cn(
                 "w-full h-[2px] bg-white rounded-full transition-all duration-300",
-                isOpen && "opacity-0"
+                isOpen && "opacity-0",
               )}
             />
           </div>
@@ -266,11 +266,16 @@ export function Header() {
               {/* Right: CTA + Menu */}
               <div className="flex items-center gap-6 z-50">
                 {showStrategyButton && (
-                  <Link
-                    href="/contact"
-                    className="hidden md:flex items-center justify-center px-6 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-wide hover:bg-neutral-200 transition-colors">
-                    {t("book_strategy_call")}
-                  </Link>
+                  <motion.div
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                    transition={{ duration: 0.15, ease: "easeOut" }}>
+                    <Link
+                      href="/contact"
+                      className="hidden md:flex items-center justify-center px-6 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-neutral-200 transition-colors">
+                      {t("book_strategy_call")}
+                    </Link>
+                  </motion.div>
                 )}
 
                 <button
@@ -278,27 +283,27 @@ export function Header() {
                   className="flex items-center gap-4 group cursor-pointer">
                   <span
                     className={cn(
-                      "text-[10px] font-mono uppercase tracking-widest transition-colors duration-300",
-                      isOpen ? "text-neutral-500" : "text-white"
+                      "text-xs font-bold uppercase tracking-widest transition-colors duration-300",
+                      isOpen ? "text-neutral-500" : "text-white",
                     )}>
                     {isOpen ? "CLOSE" : "MENU"}
                   </span>
                   <div
                     className={cn(
                       "relative flex items-center justify-center w-10 h-10 rounded-full transition-colors duration-300",
-                      isOpen ? "bg-white/10" : "bg-black/5 dark:bg-white/10"
+                      isOpen ? "bg-white/10" : "bg-black/5 dark:bg-white/10",
                     )}>
                     <div
                       className={cn(
                         "w-full h-full flex flex-col items-center justify-center gap-[5px] transition-all duration-300",
-                        isOpen && "gap-0"
+                        isOpen && "gap-0",
                       )}>
                       <span
                         className={cn(
                           "w-5 h-[1.5px] transition-all duration-300",
                           isOpen
                             ? "bg-white rotate-45 translate-y-[0.5px]"
-                            : "bg-white"
+                            : "bg-white",
                         )}
                       />
                       <span
@@ -306,7 +311,7 @@ export function Header() {
                           "w-5 h-[1.5px] transition-all duration-300",
                           isOpen
                             ? "bg-white -rotate-45 -translate-y-[0.5px]"
-                            : "bg-white"
+                            : "bg-white",
                         )}
                       />
                     </div>
@@ -337,33 +342,38 @@ export function Header() {
                             delay: 0.2 + index * 0.1,
                             duration: 0.5,
                           }}>
-                          <Link
-                            href={item.href as any}
-                            className={cn(
-                              "group flex items-baseline gap-6 transition-all duration-500",
-                              isActive
-                                ? "opacity-100"
-                                : "opacity-40 hover:opacity-100"
-                            )}
-                            onClick={() => setIsOpen(false)}>
-                            <span className="text-xs font-mono text-neutral-500 group-hover:text-neutral-300 transition-colors">
-                              0{index + 1}
-                            </span>
-
-                            <div className="flex items-center gap-4">
-                              {isActive && (
-                                <span className="text-emerald-500 text-4xl lg:text-5xl font-bold tracking-tight">
-                                  {">_"}
-                                </span>
+                          <motion.div
+                            whileHover={{ scale: 1.02 }}
+                            whileTap={{ scale: 0.98 }}
+                            transition={{ duration: 0.15, ease: "easeOut" }}>
+                            <Link
+                              href={item.href as any}
+                              className={cn(
+                                "group flex items-baseline gap-6 transition-all duration-500",
+                                isActive
+                                  ? "opacity-100"
+                                  : "opacity-40 hover:opacity-100",
                               )}
-                              <span
-                                className={cn(
-                                  "text-6xl lg:text-7xl font-bold tracking-tighter text-white"
-                                )}>
-                                {item.label}
+                              onClick={() => setIsOpen(false)}>
+                              <span className="text-xs font-mono text-neutral-500 group-hover:text-neutral-300 transition-colors">
+                                0{index + 1}
                               </span>
-                            </div>
-                          </Link>
+
+                              <div className="flex items-center gap-4">
+                                {isActive && (
+                                  <span className="text-emerald-500 text-4xl lg:text-5xl font-bold tracking-tight">
+                                    {">_"}
+                                  </span>
+                                )}
+                                <span
+                                  className={cn(
+                                    "text-5xl lg:text-6xl font-bold tracking-tight text-white",
+                                  )}>
+                                  {item.label}
+                                </span>
+                              </div>
+                            </Link>
+                          </motion.div>
                         </motion.div>
                       );
                     })}
@@ -373,7 +383,7 @@ export function Header() {
                   <div className="w-[300px] border-l border-neutral-800/50 pl-16 py-4 flex flex-col justify-between h-full bg-gradient-to-b from-transparent to-black/20">
                     <div className="space-y-12">
                       <div className="space-y-6">
-                        <h4 className="text-xs font-mono uppercase text-neutral-500 tracking-[0.2em]">
+                        <h4 className="text-xs font-bold uppercase text-neutral-500 tracking-widest">
                           {t("system_capabilities")}
                         </h4>
                         <ul className="space-y-4">
@@ -476,7 +486,7 @@ export function Header() {
                           "flex items-center justify-center gap-3 text-3xl font-bold tracking-tight transition-colors duration-300",
                           isActive
                             ? "text-white"
-                            : "text-neutral-500 hover:text-white"
+                            : "text-neutral-500 hover:text-white",
                         )}
                         onClick={() => setIsOpen(false)}>
                         {isActive && (

@@ -59,18 +59,18 @@ export function ServicesGrid({ images }: ServicesGridProps) {
     <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24">
       {/* Section Header */}
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="text-center mb-16 space-y-4">
         <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
           {tHome("services_section.label")}
         </span>
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
           {tHome("services_section.title")}
         </h2>
-        <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
           {tHome("services_section.subtitle")}
         </p>
       </motion.div>
@@ -80,13 +80,13 @@ export function ServicesGrid({ images }: ServicesGridProps) {
           <Link href="/services" key={service.id} className="block h-full">
             <motion.div
               key={service.id}
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 24 }}
               whileInView={{ opacity: 1, y: 0 }}
-              whileHover={{ scale: 1.02, y: -5 }}
-              viewport={{ once: true }}
-              transition={{ 
-                duration: 0.2, 
-                ease: "easeOut"
+              whileHover={{ y: -4, transition: { duration: 0.2 } }}
+              viewport={{ once: true, margin: "-80px" }}
+              transition={{
+                duration: 0.5,
+                ease: "easeOut",
               }}
               className="group relative overflow-hidden rounded-2xl bg-neutral-900/50 border border-white/10 p-8 transition-all duration-300 hover:border-emerald-500/30 hover:shadow-[0_0_30px_rgba(16,185,129,0.1)] h-full flex flex-col cursor-pointer">
               {/* Background Image */}
@@ -110,15 +110,17 @@ export function ServicesGrid({ images }: ServicesGridProps) {
                   <service.icon className="w-6 h-6" />
                 </div>
 
-                <h3 className="text-2xl font-bold text-white mb-3 group-hover:text-emerald-50 transition-colors">
+                <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3 group-hover:text-emerald-50 transition-colors">
                   {service.title}
                 </h3>
 
-                <p className="text-neutral-400 leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors flex-1">
+                <p className="text-base text-neutral-400 leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors flex-1">
                   {service.description}
                 </p>
                 <div className="flex items-center text-sm font-bold text-emerald-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mt-auto">
-                  <span className="mr-2 uppercase tracking-widest text-[10px]">{t("learn_more")}</span>
+                  <span className="mr-2 uppercase tracking-widest text-[10px]">
+                    {t("learn_more")}
+                  </span>
                   <ArrowRight className="w-4 h-4" />
                 </div>
               </div>
@@ -134,16 +136,21 @@ export function ServicesGrid({ images }: ServicesGridProps) {
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.5 }}
         className="mt-12 flex justify-center">
-        <Link
-          href="/services"
-          className={cn(
-            "group flex items-center gap-2 px-8 py-3 rounded-full",
-            "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900",
-            "font-medium transition-transform duration-300 hover:scale-105"
-          )}>
-          {t("explore_capabilities")}
-          <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
-        </Link>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}>
+          <Link
+            href="/services"
+            className={cn(
+              "group flex items-center gap-2 px-8 py-3 rounded-full",
+              "bg-neutral-900 text-white dark:bg-white dark:text-neutral-900",
+              "font-medium transition-transform duration-300",
+            )}>
+            {t("explore_capabilities")}
+            <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );

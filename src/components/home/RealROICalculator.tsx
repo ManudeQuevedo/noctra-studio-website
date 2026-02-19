@@ -581,11 +581,11 @@ export function RealROICalculator() {
                                 </p>
                                 <div className="space-y-2 border-t border-neutral-800 pt-3">
                                   <div className="flex justify-between text-[9px] font-mono">
-                                    <span className="text-neutral-500 uppercase tracking-tighter">E-commerce</span>
+                                    <span className="text-neutral-500 uppercase tracking-tight">E-commerce</span>
                                     <span className="text-emerald-500">1% - 3%</span>
                                   </div>
                                   <div className="flex justify-between text-[9px] font-mono">
-                                    <span className="text-neutral-500 uppercase tracking-tighter">B2B / Services</span>
+                                    <span className="text-neutral-500 uppercase tracking-tight">B2B / Services</span>
                                     <span className="text-emerald-500">2% - 5%</span>
                                   </div>
                                 </div>
@@ -765,7 +765,7 @@ export function RealROICalculator() {
                   <div className="space-y-8">
                     <div className="p-8 rounded-[24px] bg-red-500/5 border border-red-500/10 text-center">
                       <div className="text-xs font-mono uppercase tracking-[0.2em] text-red-500/60 mb-2">Estimated Current Net Profit</div>
-                      <div className="text-4xl font-black text-white tracking-tighter mb-4">{formatCur(metrics.currentNetProfit)}</div>
+                      <div className="text-4xl font-black text-white tracking-tight mb-4">{formatCur(metrics.currentNetProfit)}</div>
                       <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-red-500/10 text-[10px] font-bold text-red-500 uppercase tracking-widest">
                         {metrics.currentMargin.toFixed(1)}% Margin
                       </div>
@@ -863,22 +863,22 @@ export function RealROICalculator() {
                   <div className="grid grid-cols-1 md:grid-cols-4 gap-12 relative z-10 print:grid-cols-4">
                     <div className="space-y-3">
                       <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-emerald-500/60 font-bold">{t("labels.additional_profit")}</div>
-                      <div className="text-4xl font-black text-emerald-500 tracking-tighter">+{formatCur(metrics.monthlyGain)}</div>
+                      <div className="text-4xl font-black text-emerald-500 tracking-tight">+{formatCur(metrics.monthlyGain)}</div>
                       <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">{t("labels.per_month")}</div>
                     </div>
                     <div className="space-y-3">
                       <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500 font-bold">{t("labels.payback_period")}</div>
-                      <div className="text-4xl font-black text-white tracking-tighter print:text-black">{metrics.payback.toFixed(1)}</div>
+                      <div className="text-4xl font-black text-white tracking-tight print:text-black">{metrics.payback.toFixed(1)}</div>
                       <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">{t("labels.months")}</div>
                     </div>
                     <div className="space-y-3">
                       <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500 font-bold">{t("labels.annual_roi")}</div>
-                      <div className="text-4xl font-black text-white tracking-tighter print:text-black">{Math.round(metrics.roiYear)}%</div>
+                      <div className="text-4xl font-black text-white tracking-tight print:text-black">{Math.round(metrics.roiYear)}%</div>
                       <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">Year 1 Projection</div>
                     </div>
                     <div className="space-y-3">
                       <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-emerald-500/60 font-bold">{t("labels.recovered_time")}</div>
-                      <div className="text-4xl font-black text-emerald-500 tracking-tighter">{Math.round(metrics.timeSaved)}</div>
+                      <div className="text-4xl font-black text-emerald-500 tracking-tight">{Math.round(metrics.timeSaved)}</div>
                       <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">{t("labels.hours_month")}</div>
                     </div>
                   </div>

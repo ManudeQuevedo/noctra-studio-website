@@ -57,7 +57,7 @@ export function JoinNetwork() {
         {/* 1. Header Section */}
         <div className="mb-16 md:mb-24">
           <FadeIn>
-            <h2 className="text-4xl md:text-6xl font-bold tracking-tighter mb-6 text-neutral-900 dark:text-white">
+            <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-white">
               {t("title")}
             </h2>
             <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">

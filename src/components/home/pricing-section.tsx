@@ -37,10 +37,10 @@ export function PricingSection() {
         viewport={{ once: true }}
         transition={{ duration: 0.6 }}
         className="text-center mb-16 space-y-4">
-        <h2 className="text-4xl md:text-5xl font-bold tracking-tighter text-white">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">
           {t("title")}
         </h2>
-        <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+        <p className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
           {t("subtitle")}
         </p>
 
@@ -48,7 +48,9 @@ export function PricingSection() {
           <button
             onClick={() => setShowingComparison(!showingComparison)}
             className="group flex items-center gap-2 text-emerald-500 hover:text-emerald-400 transition-all font-bold text-sm uppercase tracking-widest">
-            {showingComparison ? t("back_to_pricing") : t("compare_all_features")}
+            {showingComparison
+              ? t("back_to_pricing")
+              : t("compare_all_features")}
           </button>
         </div>
       </motion.div>
@@ -89,31 +91,33 @@ export function PricingSection() {
                 )}
 
                 <div className="mb-8">
-                  <h3 className="text-lg font-mono text-neutral-400 uppercase tracking-widest mb-2">
+                  <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-2">
                     {t(`${tier.key}.name`)}
                   </h3>
                   <div className="mb-4">
                     <div className="text-3xl font-bold text-white">
                       {t(`${tier.key}.price`)}
                     </div>
-                    <div className="text-[10px] text-neutral-500 mt-2 font-medium leading-relaxed max-w-[200px] border-l border-neutral-800 pl-3">
+                    <div className="text-xs text-neutral-500 mt-2 font-medium leading-relaxed max-w-[200px] border-l border-neutral-800 pl-3">
                       {t(`${tier.key}.roi_indicator`)}
                     </div>
                   </div>
-                  <p className="text-neutral-400 text-sm leading-relaxed">
+                  <p className="text-sm text-neutral-400 leading-relaxed">
                     {t(`${tier.key}.description`)}
                   </p>
                 </div>
 
                 <ul className="space-y-4 mb-8 flex-1">
-                  {(t.raw(`${tier.key}.features`) as string[]).map((feature, i) => (
-                    <li
-                      key={i}
-                      className="flex items-start gap-3 text-sm text-neutral-300">
-                      <Check className="w-5 h-5 text-white shrink-0" />
-                      <span>{feature}</span>
-                    </li>
-                  ))}
+                  {(t.raw(`${tier.key}.features`) as string[]).map(
+                    (feature, i) => (
+                      <li
+                        key={i}
+                        className="flex items-start gap-3 text-sm text-neutral-300">
+                        <Check className="w-5 h-5 text-white shrink-0" />
+                        <span>{feature}</span>
+                      </li>
+                    ),
+                  )}
                 </ul>
 
                 <Link

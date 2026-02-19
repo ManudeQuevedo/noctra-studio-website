@@ -488,7 +488,7 @@ export default function ServicesClient() {
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}>
-          <h1 className="text-6xl md:text-[9.5rem] font-black tracking-tighter mb-8 leading-none bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+          <h1 className="text-6xl md:text-[9.5rem] font-black tracking-tight mb-8 leading-none bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
             {t("title")}
           </h1>
           <p className="text-xl md:text-3xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-medium px-4">

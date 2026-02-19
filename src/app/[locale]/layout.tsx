@@ -19,7 +19,6 @@ import { VercelScripts } from "@/components/VercelScripts";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
 import { Cursor } from "@/components/ui/cursor";
-import { ChatWidget } from "@/components/ui/ChatWidget";
 import { IntroProvider } from "@/context/IntroContext";
 import { IntroLoader } from "@/components/ui/IntroLoader";
 import { CookieBanner } from "@/components/cookie-consent/CookieBanner";
@@ -140,7 +139,6 @@ export default async function LocaleLayout({
               <OrganizationSchema />
               <WebsiteSchema />
               <LocalBusinessSchema />
-              <ChatWidget />
               <CookieBanner />
               <CookieSettingsButton />
               <QuizModal />

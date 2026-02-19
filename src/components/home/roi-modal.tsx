@@ -225,7 +225,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                         {t("outputs.payback_period.label")}
                       </span>
                     </div>
-                    <div className="text-4xl md:text-5xl font-black text-emerald-500 tracking-tighter leading-none">
+                    <div className="text-4xl md:text-5xl font-black text-emerald-500 tracking-tight leading-none">
                       <AnimatedCounter
                         value={results.paybackMonths}
                         decimals={results.paybackMonths < 10 ? 1 : 0}

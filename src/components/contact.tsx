@@ -11,7 +11,7 @@ export function Contact() {
   return (
     <section id="contact" className="container py-24 max-w-2xl">
       <div className="space-y-8 text-center">
-        <h2 className="text-3xl font-bold tracking-tighter sm:text-4xl md:text-5xl">
+        <h2 className="text-3xl font-bold tracking-tight sm:text-4xl md:text-5xl">
           {t("title")}
         </h2>
         <p className="text-muted-foreground">{t("subtitle")}</p>

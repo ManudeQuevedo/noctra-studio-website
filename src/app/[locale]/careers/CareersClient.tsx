@@ -82,7 +82,7 @@ export function CareersClient() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-7xl font-bold tracking-tighter mb-6">
+            className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
             {t("hero.headline")}
           </motion.h1>
           <motion.p
@@ -761,7 +761,7 @@ export function CareersClient() {
             <>
               <FadeIn>
                 <div className="text-center mb-16">
-                  <h2 className="text-3xl md:text-5xl font-bold tracking-tighter mb-4">
+                  <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
                     {t("application.title")}
                   </h2>
                   <p className="text-neutral-600 text-lg">

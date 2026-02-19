@@ -24,10 +24,10 @@ export function WhyDifferentSection() {
           viewport={{ once: true }}
           transition={{ duration: 0.5 }}
           className="text-center mb-16">
-          <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-white mb-4">
+          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
             {t("title")}
           </h2>
-          <p className="text-neutral-400 text-lg max-w-2xl mx-auto">
+          <p className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
         </motion.div>
@@ -47,8 +47,8 @@ export function WhyDifferentSection() {
                 className="group relative p-10 rounded-3xl border border-neutral-800 bg-neutral-900/10 hover:border-emerald-500/20 hover:bg-neutral-900/30 transition-all duration-300">
                 {/* Number Badge */}
                 <div className="absolute top-0 right-0 p-8">
-                  <span className="text-4xl font-black text-white/5 group-hover:text-emerald-500/10 transition-colors font-mono tracking-tighter">
-                    {String(index + 1).padStart(2, '0')}
+                  <span className="text-4xl font-black text-white/5 group-hover:text-emerald-500/10 transition-colors font-mono tracking-tight">
+                    {String(index + 1).padStart(2, "0")}
                   </span>
                 </div>
 
@@ -57,32 +57,41 @@ export function WhyDifferentSection() {
                     <div className="flex-shrink-0 w-14 h-14 rounded-2xl bg-white/5 border border-white/5 flex items-center justify-center group-hover:bg-white/10 group-hover:border-white/10 transition-all group-hover:scale-110 duration-500">
                       <Icon className="w-7 h-7 text-white" />
                     </div>
-                    <h3 className="text-2xl md:text-3xl font-black text-white leading-tight">
+                    <h3 className="text-2xl md:text-3xl font-semibold text-white leading-tight">
                       {item.title}
                     </h3>
                   </div>
 
                   <div className="space-y-6 flex-1">
-                    <p className="text-neutral-400 text-lg leading-relaxed group-hover:text-neutral-300 transition-colors">
+                    <p className="text-lg md:text-xl text-neutral-400 leading-relaxed group-hover:text-neutral-300 transition-colors">
                       {item.benefit}
                     </p>
 
                     <div className="pt-6 border-t border-neutral-800 space-y-4">
                       <div className="inline-flex items-center gap-3 text-sm font-bold text-neutral-300">
                         <div className="w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                          <svg className="w-3 h-3 text-emerald-500" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth="4">
-                            <path strokeLinecap="round" strokeLinejoin="round" d="M5 13l4 4L19 7" />
+                          <svg
+                            className="w-3 h-3 text-emerald-500"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor"
+                            strokeWidth="4">
+                            <path
+                              strokeLinecap="round"
+                              strokeLinejoin="round"
+                              d="M5 13l4 4L19 7"
+                            />
                           </svg>
                         </div>
-                        <span className="group-hover:text-emerald-50 transition-colors tracking-tight font-mono uppercase text-[10px]">
+                        <span className="group-hover:text-emerald-50 transition-colors text-xs font-bold uppercase tracking-widest">
                           {item.proof}
                         </span>
                       </div>
 
                       {isGuaranteeCard && (
                         <div className="pt-2">
-                          <Link 
-                            href="/guarantee" 
+                          <Link
+                            href="/guarantee"
                             className="text-emerald-500 text-sm font-bold border-b border-emerald-500/30 hover:border-emerald-500 transition-all pb-0.5 inline-block">
                             {t("guarantee_link")}
                           </Link>

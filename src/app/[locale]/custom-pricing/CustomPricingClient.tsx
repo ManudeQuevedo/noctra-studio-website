@@ -81,7 +81,7 @@ export default function CustomPricingClient() {
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
-            className="text-5xl md:text-6xl font-bold tracking-tighter mb-4">
+            className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
             {t("title")}
           </motion.h1>
           <motion.p
@@ -272,7 +272,7 @@ export default function CustomPricingClient() {
                   <h2 className="text-xl font-bold mb-2">
                     {t("result_title")}
                   </h2>
-                  <p className="text-5xl md:text-6xl font-bold tracking-tighter my-6">
+                  <p className="text-5xl md:text-6xl font-bold tracking-tight my-6">
                     ${calculateRange()[0].toLocaleString()} – $
                     {calculateRange()[1].toLocaleString()}{" "}
                     <span className="text-lg text-neutral-400 font-normal">

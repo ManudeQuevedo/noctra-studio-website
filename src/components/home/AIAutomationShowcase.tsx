@@ -5,7 +5,14 @@ import { useTranslations } from "next-intl";
 import { motion, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { Stethoscope, Scale, ShoppingBag, TrendingUp, ChevronDown, ChevronUp } from "lucide-react";
+import {
+  Stethoscope,
+  Scale,
+  ShoppingBag,
+  TrendingUp,
+  ChevronDown,
+  ChevronUp,
+} from "lucide-react";
 
 const iconMap: Record<string, any> = {
   medical: Stethoscope,
@@ -17,7 +24,7 @@ const iconMap: Record<string, any> = {
 export function AIAutomationShowcase() {
   const t = useTranslations("AIAutomationShowcase");
   const [isExpanded, setIsExpanded] = useState(false);
-  
+
   const items = t.raw("use_cases") as Array<{
     industry: string;
     icon: string;
@@ -45,7 +52,7 @@ export function AIAutomationShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
-            className="text-3xl md:text-5xl font-bold tracking-tight text-white">
+            className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             {t("title")}
           </motion.h2>
           <motion.p
@@ -53,7 +60,7 @@ export function AIAutomationShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
-            className="text-xl text-neutral-300 max-w-2xl mx-auto italic">
+            className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto italic leading-relaxed">
             &ldquo;{t("subtitle")}&rdquo;
           </motion.p>
           <motion.div
@@ -63,7 +70,7 @@ export function AIAutomationShowcase() {
             transition={{ delay: 0.3 }}
             className="pt-6 relative">
             <div className="absolute inset-0 blur-3xl bg-emerald-500/5 -z-10" />
-            <p className="text-neutral-400 text-lg max-w-3xl mx-auto leading-relaxed border-l-2 border-emerald-500/30 pl-6 text-left md:text-center md:border-l-0 md:pl-0">
+            <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed border-l-2 border-emerald-500/30 pl-6 text-left md:text-center md:border-l-0 md:pl-0">
               {t("intro")}
             </p>
           </motion.div>
@@ -79,7 +86,10 @@ export function AIAutomationShowcase() {
                 initial={{ opacity: 0, scale: 0.9 }}
                 animate={{ opacity: 1, scale: 1 }}
                 exit={{ opacity: 0, scale: 0.9 }}
-                transition={{ duration: 0.4, delay: isExpanded ? 0 : index * 0.1 }}
+                transition={{
+                  duration: 0.4,
+                  delay: isExpanded ? 0 : index * 0.1,
+                }}
                 className="group relative p-8 rounded-3xl border border-neutral-800 bg-neutral-900/40 hover:bg-neutral-900/60 transition-all duration-300 flex flex-col h-full">
                 <div className="flex items-center gap-4 mb-6">
                   <div className="w-12 h-12 rounded-xl bg-white/5 flex items-center justify-center group-hover:bg-white/10 transition-colors">
@@ -88,7 +98,7 @@ export function AIAutomationShowcase() {
                       return <Icon className="w-6 h-6 text-white" />;
                     })()}
                   </div>
-                  <h3 className="text-xl font-bold text-white tracking-tight">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-white tracking-tight">
                     {item.industry}
                   </h3>
                 </div>
@@ -112,7 +122,9 @@ export function AIAutomationShowcase() {
                     <p className="text-neutral-500 text-xs uppercase font-mono tracking-widest mb-1">
                       {t("result_label")}
                     </p>
-                    <p className="text-white font-bold text-lg">{item.result}</p>
+                    <p className="text-white font-bold text-lg">
+                      {item.result}
+                    </p>
                   </div>
                 </div>
               </motion.div>
@@ -145,7 +157,7 @@ export function AIAutomationShowcase() {
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="flex flex-col items-center gap-6">
-            <p className="text-white text-xl md:text-2xl font-bold mb-2">
+            <p className="text-white text-xl md:text-3xl font-bold mb-2">
               {t("cta_question")}
             </p>
             <Button
@@ -155,7 +167,7 @@ export function AIAutomationShowcase() {
               <Link href="/contact">{t("cta")}</Link>
             </Button>
 
-            <p className="text-neutral-500 max-w-2xl mx-auto text-sm md:text-base leading-relaxed">
+            <p className="text-neutral-400 max-w-2xl mx-auto text-base leading-relaxed">
               {t("closing_statement")}
             </p>
           </motion.div>

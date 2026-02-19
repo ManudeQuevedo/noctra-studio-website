@@ -39,7 +39,7 @@ export function LegalPageLayout({
 
           {/* HEADER */}
           <header className="mb-16">
-            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tighter text-neutral-950 dark:text-white mb-6">
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 dark:text-white mb-6">
               {title}
             </h1>
             <div className="inline-block bg-neutral-100 dark:bg-neutral-900 px-4 py-2 rounded-xl text-sm font-mono text-neutral-500 dark:text-neutral-400">

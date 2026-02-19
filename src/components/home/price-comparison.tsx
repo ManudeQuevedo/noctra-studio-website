@@ -438,7 +438,7 @@ export function PriceComparison() {
                           <Zap className="w-4 h-4 text-white fill-white" />
                           <h5 className="font-black text-white uppercase tracking-widest text-xs">Noctra Studio</h5>
                         </div>
-                        <div className="px-2 py-0.5 rounded-full bg-black/20 text-white text-[8px] font-black uppercase tracking-tighter">
+                        <div className="px-2 py-0.5 rounded-full bg-black/20 text-white text-[8px] font-black uppercase tracking-tight">
                           {columns.noctra.badge}
                         </div>
                       </div>
@@ -658,7 +658,7 @@ export function PriceComparison() {
              <h4 className="text-2xl md:text-3xl font-black text-white mb-4 relative z-10 uppercase tracking-widest">
                {savingsCard.title}
              </h4>
-             <div className="text-5xl md:text-7xl font-black text-emerald-500 mb-6 relative z-10 tracking-tighter">
+             <div className="text-5xl md:text-7xl font-black text-emerald-500 mb-6 relative z-10 tracking-tight">
                ${savings.toLocaleString()}
                <span className="text-lg font-medium text-neutral-500 ml-4 tracking-normal uppercase">
                  en 2 años

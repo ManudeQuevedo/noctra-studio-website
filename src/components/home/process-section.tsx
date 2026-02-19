@@ -52,15 +52,15 @@ export function ProcessSection() {
   return (
     <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 border-t border-neutral-900">
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
-        transition={{ duration: 0.6 }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="text-center mb-20 space-y-4">
-        <h2 className="text-4xl md:text-6xl font-black tracking-tighter text-white uppercase italic">
+        <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white uppercase italic">
           {t("title")}
         </h2>
-        <p className="text-lg text-neutral-400 max-w-2xl mx-auto">
+        <p className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
           {t("subtitle")}
         </p>
       </motion.div>
@@ -69,10 +69,11 @@ export function ProcessSection() {
         {stepEntries.map(([key, step], index) => (
           <motion.div
             key={key}
-            initial={{ opacity: 0, y: 40 }}
+            initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
-            viewport={{ once: true, margin: "-100px" }}
-            transition={{ duration: 0.7, delay: index * 0.1 }}
+            whileHover={{ y: -4, transition: { duration: 0.2 } }}
+            viewport={{ once: true, margin: "-80px" }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
             className="group relative">
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 md:p-12 rounded-[2.5rem] bg-neutral-950 border border-neutral-800/50 hover:border-emerald-500/30 transition-all duration-500 relative overflow-hidden">
               {/* Background Glow */}
@@ -95,15 +96,15 @@ export function ProcessSection() {
                 </div>
 
                 <div className="space-y-2">
-                  <h3 className="text-2xl md:text-3xl font-bold text-white group-hover:text-emerald-400 transition-colors">
+                  <h3 className="text-2xl md:text-3xl font-semibold text-white group-hover:text-emerald-400 transition-colors">
                     {step.title}
                   </h3>
-                  <p className="text-emerald-500/80 font-bold text-sm uppercase tracking-widest">
+                  <p className="text-xs font-bold text-emerald-500/80 uppercase tracking-widest">
                     {step.subtitle}
                   </p>
                 </div>
 
-                <p className="text-neutral-400 leading-relaxed text-lg max-w-md">
+                <p className="text-lg md:text-xl text-neutral-300 leading-relaxed max-w-md">
                   {step.description}
                 </p>
               </div>
@@ -134,7 +135,7 @@ export function ProcessSection() {
                       <Clock className="w-5 h-5 text-neutral-500" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">
+                      <div className="text-xs font-bold uppercase tracking-widest text-neutral-600">
                         {labels.timeline}
                       </div>
                       <div className="text-sm text-neutral-300 font-medium">
@@ -148,7 +149,7 @@ export function ProcessSection() {
                       <User className="w-5 h-5 text-neutral-500" />
                     </div>
                     <div>
-                      <div className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">
+                      <div className="text-xs font-bold uppercase tracking-widest text-neutral-600">
                         {labels.involvement}
                       </div>
                       <div className="text-sm text-neutral-300 font-medium">
@@ -164,16 +165,22 @@ export function ProcessSection() {
       </div>
 
       <motion.div
-        initial={{ opacity: 0, y: 20 }}
+        initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
-        viewport={{ once: true }}
+        viewport={{ once: true, margin: "-80px" }}
+        transition={{ duration: 0.5, ease: "easeOut" }}
         className="mt-24 text-center">
-        <Link
-          href="/contact"
-          className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-2xl hover:bg-emerald-50 transition-all group active:scale-95 shadow-[0_0_40px_-5px_rgba(255,255,255,0.1)]">
-          {labels.cta}
-          <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
-        </Link>
+        <motion.div
+          whileHover={{ scale: 1.02 }}
+          whileTap={{ scale: 0.98 }}
+          transition={{ duration: 0.15, ease: "easeOut" }}>
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-2xl hover:bg-emerald-50 transition-all group active:scale-95 shadow-[0_0_40px_-5px_rgba(255,255,255,0.1)]">
+            {labels.cta}
+            <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
+          </Link>
+        </motion.div>
       </motion.div>
     </section>
   );
