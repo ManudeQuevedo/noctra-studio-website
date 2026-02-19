@@ -2,13 +2,14 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { Check, Sparkles } from "lucide-react";
+import { Check, Sparkles, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 
 export function SocialProofSection() {
   const t = useTranslations("SocialProof");
   const benefits = t.raw("benefits") as string[];
+  const partnershipItems = t.raw("partnership.items") as string[];
 
   return (
     <section className="w-full px-6 md:px-8 py-24">
@@ -30,7 +31,8 @@ export function SocialProofSection() {
                   <Sparkles className="w-4 h-4" />
                   <span>{t("badge")}</span>
                 </div>
-                <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold font-mono">
+                <div className="px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-xs font-bold font-mono flex items-center gap-2">
+                  <Calendar className="w-3 h-3" />
                   {t("spots_remaining")}
                 </div>
               </div>
@@ -56,28 +58,31 @@ export function SocialProofSection() {
                     <div className="flex-shrink-0 w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center">
                       <Check className="w-3 h-3 text-emerald-400" />
                     </div>
-                    <span className="text-neutral-200 text-sm md:text-base font-medium">{benefit}</span>
+                    <span className="text-neutral-200 text-sm md:text-base font-medium">
+                      {benefit}
+                    </span>
                   </motion.div>
                 ))}
               </div>
 
-              {/* Testimonial Snippet */}
-              <motion.div 
+              {/* Partnership Block */}
+              <motion.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                className="p-6 rounded-2xl bg-white/[0.03] border border-white/[0.05] relative italic">
-                <span className="absolute -top-3 -left-2 text-4xl text-emerald-500/20 font-serif">"</span>
-                <p className="text-neutral-300 text-sm leading-relaxed mb-4 relative z-10">
-                  {t("testimonial.text")}
-                </p>
-                <div className="flex items-center gap-3">
-                  <div className="w-8 h-8 rounded-full bg-emerald-500/20 flex items-center justify-center text-[10px] font-bold text-emerald-500 not-italic">
-                    ES
-                  </div>
-                  <span className="text-xs text-neutral-500 font-medium not-italic">
-                    {t("testimonial.author")}
-                  </span>
+                className="p-6 rounded-2xl bg-white/[0.03] border border-emerald-500/20 relative">
+                <h4 className="text-[10px] font-mono font-black text-emerald-500 uppercase tracking-widest mb-4">
+                  {t("partnership.title")}
+                </h4>
+                <div className="space-y-3">
+                  {partnershipItems.map((item, i) => (
+                    <div key={i} className="flex items-start gap-2">
+                      <Check className="w-3.5 h-3.5 text-emerald-500/60 mt-0.5 flex-shrink-0" />
+                      <p className="text-neutral-300 text-xs font-medium leading-relaxed">
+                        {item}
+                      </p>
+                    </div>
+                  ))}
                 </div>
               </motion.div>
             </div>
@@ -85,7 +90,9 @@ export function SocialProofSection() {
             {/* Strategic Note / Why? */}
             <div className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800">
               <p className="text-neutral-400 text-sm leading-relaxed">
-                <span className="text-emerald-500 font-bold uppercase tracking-wider text-[10px] block mb-2">Strategic Partnership</span>
+                <span className="text-emerald-500 font-bold uppercase tracking-wider text-[10px] block mb-2">
+                  Strategic Partnership
+                </span>
                 {t("transparency")}
               </p>
             </div>

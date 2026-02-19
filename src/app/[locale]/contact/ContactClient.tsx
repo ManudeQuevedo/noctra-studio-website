@@ -23,6 +23,7 @@ import {
   Mail,
   ChevronRight,
   ChevronLeft,
+  Target,
 } from "lucide-react";
 import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
@@ -45,6 +46,7 @@ const TestimonialSidebar = () => {
   const testimonials = t.raw("testimonials") as {
     quote: string;
     author: string;
+    icon?: string;
   }[];
 
   return (
@@ -62,11 +64,23 @@ const TestimonialSidebar = () => {
               viewport={{ once: true }}
               transition={{ delay: i * 0.1 }}
               className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/20 transition-colors group">
-              <MessageSquare className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
-              <p className="text-sm text-neutral-300 italic mb-4 leading-relaxed">
-                "{test.quote}"
+              {test.icon === "zap" && (
+                <Zap className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+              {test.icon === "file-text" && (
+                <FileText className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+              {test.icon === "target" && (
+                <Target className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+              {!test.icon && (
+                <MessageSquare className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+
+              <p className="text-sm text-neutral-300 mb-4 leading-relaxed font-medium">
+                {test.quote}
               </p>
-              <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+              <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-500/60 group-hover:text-emerald-500 transition-colors">
                 — {test.author}
               </span>
             </motion.div>
@@ -616,7 +630,7 @@ function ContactForm() {
             WhatsApp
           </span>
           <a
-            href={`https://wa.me/${t("details.whatsapp_number").replace(/\D/g, "")}`}
+            href="https://wa.me/524463731451?text=Hola%20Manu%2C%20me%20interesa%20hablar%20sobre%20mi%20proyecto"
             target="_blank"
             rel="noopener noreferrer"
             className="flex items-center gap-3 hover:opacity-70 transition-opacity group w-fit">
@@ -668,7 +682,7 @@ const SuccessState = ({ t, onReset }: { t: any; onReset: () => void }) => (
 
       <div className="space-y-6 pt-8 border-t border-neutral-100">
         <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">
-          Request ID: #NOC-{Math.floor(Math.random() * 9000) + 1000}
+          Request ID: #NOC-7777
         </div>
         <button
           onClick={onReset}

@@ -35,7 +35,7 @@ export default function BlogClient() {
           publishedAt,
           author->{name, image},
           categories[]->{title},
-          "description": pt::text(body[0..1])
+          "description": coalesce(pt::text(body[0..1]), "")
         }`;
         const data = await client.fetch(query);
         setPosts(data);

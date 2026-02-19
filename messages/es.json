@@ -420,6 +420,7 @@
     },
     "links": {
       "home": "Inicio",
+      "blog": "Blog",
       "about": "Nosotros",
       "work": "Nuestro Trabajo",
       "network": "Únete a la Red",
@@ -537,7 +538,7 @@
   },
   "SocialProof": {
     "badge": "Oferta limitada",
-    "spots_remaining": "3 de 5 lugares disponibles",
+    "spots_remaining": "Aceptando proyectos desde marzo 2026",
     "title": "Construyamos nuestro historial, ahorra en tu sitio",
     "subtitle": "Buscamos 5 socios visionarios para demostrar nuestras capacidades. Obtienes la misma ingeniería de alto nivel a un precio accesible.",
     "benefits": [
@@ -545,12 +546,17 @@
       "Prioridad de soporte durante 12 meses",
       "Comunicación directa con ingenieros fundadores"
     ],
-    "testimonial": {
-      "text": "Al principio dudaba por el costo, pero el descuento del 25% lo hizo una decisión fácil. El ROI que vimos en los primeros 2 meses fue increíble.",
-      "author": "Fundador, Startup E-commerce"
+    "partnership": {
+      "title": "Qué incluye la alianza",
+      "items": [
+        "25% de descuento sobre precio estándar",
+        "Soporte prioritario por 12 meses",
+        "Tu proyecto será un caso de estudio público",
+        "Línea directa con Manu durante todo el proyecto"
+      ]
     },
     "transparency": "¿Por qué? Estamos construyendo nuestro historial. Tú obtienes mejor precio, yo obtengo un caso de éxito. Ambos ganamos.",
-    "cta": "Agenda llamada de descubrimiento gratis (cupo limitado)"
+    "cta": "Aplica para precio de socio fundador →"
   },
   "Services": {
     "title": "Nuestros Servicios",
@@ -570,6 +576,8 @@
   "ServicesPage": {
     "title": "Lo Que Construimos",
     "subtitle": "Cada servicio está diseñado para generar resultados reales para tu negocio.",
+    "hero_cta_consult": "Agendar consulta gratuita →",
+    "hero_cta_pricing": "Ver precios ↓",
     "how_we_work": {
       "title": "Cómo Trabajamos",
       "steps": [
@@ -2354,9 +2362,9 @@
       "title": "Platiquemos de tu proyecto",
       "subtitle": "Brutal honestidad en un mundo de agencias que prometen demasiado y entregan poco.",
       "trust_badges": {
-        "0": "Consulta gratuita",
-        "1": "Respuesta < 24h",
-        "2": "Fundador directo"
+        "0": "CONSULTA GRATUITA",
+        "1": "RESPUESTA < 24H",
+        "2": "ACCESO DIRECTO A FUNDADOR"
       }
     },
     "steps": {
@@ -2400,19 +2408,22 @@
     },
     "testimonials": [
       {
-        "quote": "Manu respondió en 2 horas y tenía una propuesta lista en 3 días. Velocidad impresionante.",
-        "author": "Director de Tecnología"
+        "quote": "Envías el brief hoy. Recibes una propuesta detallada con alcance, cronograma y precio exacto en menos de 72 horas. No es una cotización genérica — es un documento específico para tu negocio.",
+        "author": "NUESTRO COMPROMISO, POR ESCRITO",
+        "icon": "zap"
       },
       {
-        "quote": "La consulta más transparente que he tenido. Sin rodeos de agencia, solo resultados.",
-        "author": "Gerente de Proyecto"
+        "quote": "Sin sorpresas por hora. Sin el 'eso no estaba incluido'. Apruebas el precio exacto antes de que escribamos una sola línea de código. Los cambios tras la aprobación pasan por una orden de cambio formal.",
+        "author": "CLÁUSULA CONTRACTUAL, CADA PROYECTO",
+        "icon": "file-text"
       },
       {
-        "quote": "Finalmente un socio que realmente entiende el ROI del negocio, no solo el código.",
-        "author": "Socio Fundador"
+        "quote": "Definimos KPIs contigo antes de empezar. Si no los alcanzamos en 60 días tras el lanzamiento, recibes un reembolso proporcional. Esto no es una línea de marketing — está en el contrato.",
+        "author": "GARANTÍA DE RENDIMIENTO, FIRMADO",
+        "icon": "target"
       }
     ],
-    "testimonials_title": "Por qué trabajar con nosotros",
+    "testimonials_title": "NUESTROS COMPROMISOS CONTIGO",
     "form": {
       "name_label": "¿Cuál es tu nombre?",
       "name_placeholder": "Tu nombre completo",

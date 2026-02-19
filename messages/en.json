@@ -420,6 +420,7 @@
     },
     "links": {
       "home": "Home",
+      "blog": "Blog",
       "about": "About Us",
       "work": "Our Work",
       "network": "Join the Network",
@@ -538,7 +539,7 @@
   },
   "SocialProof": {
     "badge": "Limited offer",
-    "spots_remaining": "3 of 5 spots remaining",
+    "spots_remaining": "Accepting projects from March 2026",
     "title": "Build our track record, save on your site",
     "subtitle": "We're looking for 5 visionary partners to showcase our capabilities. You get the same high-end engineering at a startup-friendly price.",
     "benefits": [
@@ -546,12 +547,17 @@
       "Support priority for 12 months",
       "Direct communication with founding engineers"
     ],
-    "testimonial": {
-      "text": "At first, I was hesitant about the cost, but the 25% discount made it a no-brainer. The ROI we saw in the first 2 months was incredible.",
-      "author": "Founder, E-commerce Startup"
+    "partnership": {
+      "title": "What the partnership includes",
+      "items": [
+        "25% discount vs. standard pricing",
+        "Priority support for 12 months",
+        "Your project becomes a public case study",
+        "Direct line to Manu throughout the project"
+      ]
     },
     "transparency": "Why? We're building our track record. You get better pricing, I get a case study. We both win.",
-    "cta": "Schedule free discovery call (spots limited)"
+    "cta": "Apply for founding partner pricing →"
   },
   "Services": {
     "title": "Our Services",
@@ -2279,6 +2285,8 @@
   "ServicesPage": {
     "title": "What We Build",
     "subtitle": "Every service is designed to generate real results for your business.",
+    "hero_cta_consult": "Schedule free consultation →",
+    "hero_cta_pricing": "See our pricing ↓",
     "how_we_work": {
       "title": "How We Work",
       "steps": [
@@ -3143,9 +3151,9 @@
       "title": "Let's talk about your project",
       "subtitle": "Brutal honesty in a world of agencies that overpromise and underdeliver.",
       "trust_badges": {
-        "0": "Free consultation",
-        "1": "Response < 24h",
-        "2": "Direct founder access"
+        "0": "FREE CONSULTATION",
+        "1": "RESPONSE < 24H",
+        "2": "DIRECT FOUNDER ACCESS"
       }
     },
     "steps": {
@@ -3189,19 +3197,22 @@
     },
     "testimonials": [
       {
-        "quote": "Manu responded in 2 hours and had a proposal ready in 3 days. Impressive speed.",
-        "author": "Tech CEO"
+        "quote": "You send the brief today. You get a detailed proposal with scope, timeline, and exact price within 72 hours. Not a generic quote — a document specific to your business.",
+        "author": "OUR COMMITMENT, IN WRITING",
+        "icon": "zap"
       },
       {
-        "quote": "The most transparent consultation I've ever had. No agency fluff, just results.",
-        "author": "Project Manager"
+        "quote": "No hourly surprises. No 'that wasn't included.' You approve the exact price before we write a single line of code. Changes after approval go through a formal change order.",
+        "author": "CONTRACTUAL CLAUSE, EVERY PROJECT",
+        "icon": "file-text"
       },
       {
-        "quote": "Finally a partner who actually understands business ROI, not just code.",
-        "author": "Founding Partner"
+        "quote": "We define KPIs with you before starting. If we don't hit them in 60 days post-launch, you get a proportional refund. This isn't a marketing line — it's in the contract.",
+        "author": "PERFORMANCE GUARANTEE, SIGNED",
+        "icon": "target"
       }
     ],
-    "testimonials_title": "Why work with us",
+    "testimonials_title": "OUR COMMITMENTS TO YOU",
     "form": {
       "name_label": "What's your name?",
       "name_placeholder": "Your full name",
@@ -3284,7 +3295,7 @@
       "whatsapp_cta": "Contact via WhatsApp",
       "whatsapp_note": "Quick response for technical questions or follow-ups.",
       "location_label": "Location",
-      "location_value": "CDMX / Remote",
+      "location_value": "Queretaro, MX",
       "time_label": "Timezone"
     },
     "loading": "Loading..."

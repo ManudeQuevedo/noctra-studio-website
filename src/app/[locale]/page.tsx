@@ -1,5 +1,5 @@
 import dynamic from "next/dynamic";
-import { Hero } from "@/components/hero";
+import { PageHero as Hero } from "@/components/PageHero";
 import { generatePageMetadata } from "@/lib/metadata";
 import { ServiceSchema, FAQSchema } from "@/components/seo/JsonLd";
 

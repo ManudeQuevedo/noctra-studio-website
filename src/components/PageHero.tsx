@@ -6,7 +6,7 @@ import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import { ChevronDown } from "lucide-react";
 
-export function Hero() {
+export function PageHero() {
   const t = useTranslations("HomePage");
 
   return (

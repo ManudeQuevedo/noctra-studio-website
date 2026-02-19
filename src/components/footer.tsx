@@ -204,6 +204,13 @@ export function Footer() {
               <ul className="space-y-4">
                 <li>
                   <Link
+                    href="/blog"
+                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    {t("links.blog")}
+                  </Link>
+                </li>
+                <li>
+                  <Link
                     href="/guarantee"
                     className="text-sm text-neutral-500 hover:text-white transition-colors">
                     {t("links.guarantee")}

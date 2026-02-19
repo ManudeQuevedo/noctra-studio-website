@@ -9,6 +9,7 @@ import { getMessages } from "next-intl/server";
 import { Header } from "@/components/header";
 import { FooterWrapper } from "@/components/FooterWrapper";
 import { ScrollToTop } from "@/components/ui/ScrollToTop";
+import { WhatsAppFloatingButton } from "@/components/ui/WhatsAppFloatingButton";
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
 import {
   OrganizationSchema,
@@ -136,6 +137,7 @@ export default async function LocaleLayout({
               {children}
               <FooterWrapper />
               <ScrollToTop />
+              <WhatsAppFloatingButton />
               <OrganizationSchema />
               <WebsiteSchema />
               <LocalBusinessSchema />
