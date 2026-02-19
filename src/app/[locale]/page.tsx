@@ -53,6 +53,13 @@ const SocialProofSection = dynamic(
     })),
   { ssr: true },
 );
+const OngoingPlans = dynamic(
+  () =>
+    import("@/components/home/OngoingPlans").then((mod) => ({
+      default: mod.OngoingPlans,
+    })),
+  { ssr: true },
+);
 
 export async function generateMetadata({
   params,
@@ -69,6 +76,7 @@ const SERVICE_IMAGES = {
   branding: "/images/identity.jpg",
   ai: "/images/ai.jpg",
   seo: "/images/seo.jpg",
+  ongoing: "/images/architecture.jpg", // Placeholder
 };
 
 /**
@@ -106,7 +114,10 @@ export default async function HomePage({
       {/* 7. FAQ — 7 questions accordion */}
       <FAQSection />
 
-      {/* 8. Social Proof — Early adopter offer */}
+      {/* 8. Ongoing Management Plans — New recurring service section */}
+      <OngoingPlans />
+
+      {/* 9. Social Proof — Early adopter offer */}
       <SocialProofSection />
 
       {/* SEO Schemas */}

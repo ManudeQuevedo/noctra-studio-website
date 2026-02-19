@@ -1,7 +1,14 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Code2, Palette, Bot, LineChart, ArrowRight } from "lucide-react";
+import {
+  Code2,
+  Palette,
+  Bot,
+  LineChart,
+  ArrowRight,
+  ShieldCheck,
+} from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
@@ -53,6 +60,13 @@ export function ServicesGrid({ images }: ServicesGridProps) {
       icon: LineChart,
       image: images?.seo,
     },
+    {
+      id: "ongoing",
+      title: t("ongoing_title"),
+      description: t("ongoing_desc"),
+      icon: ShieldCheck,
+      image: images?.ongoing,
+    },
   ];
 
   return (
@@ -75,7 +89,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
         </p>
       </motion.div>
 
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => (
           <Link href="/services" key={service.id} className="block h-full">
             <motion.div

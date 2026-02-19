@@ -13,6 +13,10 @@
       {
         "title": "Results guarantee",
         "description": "If we don't meet the agreed performance indicators, we refund a proportional part. Shared risk."
+      },
+      {
+        "title": "Your time is your most valuable asset",
+        "description": "You didn't study years to become a marketer or server administrator. One 30-minute monthly call to review metrics and continuous improvements. We handle everything else."
       }
     ]
   },
@@ -21,7 +25,7 @@
       "title": "Websites that generate real customers, not just visits",
       "subtitle": "Strategic web development for businesses in Mexico and abroad (USA, Canada, Europe) that need measurable results",
       "trust_badge": {
-        "price": "From $20,000 MXN",
+        "price": "From $20,000 MXN + IVA",
         "guarantee": "Results guarantee",
         "founder": "Accessible founder"
       }
@@ -82,15 +86,15 @@
     "cta": "Let's talk in a free consultation",
     "see_more": "See more automation examples",
     "see_less": "Show fewer examples",
-    "closing_statement": "Automation available from $4,000 USD. We don't sell sites. We sell recovered time."
+    "closing_statement": "Automation available from $4,000 USD. We don't sell sites. We sell focus on what matters."
   },
   "Metadata": {
     "home": {
       "title": "Strategic Web Development in Querétaro | Noctra Studio",
-      "description": "Websites that generate measurable ROI for clients in Mexico and abroad. From $30k MXN. Results guarantee. Speak directly with the founder.",
+      "description": "Websites that generate measurable ROI for clients in Mexico and abroad. From $30k MXN + IVA. Results guarantee. Speak directly with the founder.",
       "keywords": "web development querétaro, professional website, ecommerce, digital strategy, measurable results, SEO",
       "og_title": "Noctra Studio — Websites that pay for themselves",
-      "og_description": "Strategic web development for businesses that need measurable results. From $30k MXN. Results guarantee.",
+      "og_description": "Strategic web development for businesses that need measurable results. From $30k MXN + IVA. Results guarantee.",
       "og_image_alt": "Noctra Studio — Strategic Web Development",
       "twitter_title": "Noctra Studio — Strategic Web Development in Querétaro",
       "twitter_description": "Websites that generate real results for businesses in Querétaro."
@@ -513,14 +517,14 @@
         "answer": "We don't \"guarantee\" it contractually (that would be irresponsible - your success depends on multiple factors outside our control like your offer, pricing, service).\n\nWhat we DO:\n\n**REAL TRACKING:**\n• We set up analytics from day 1\n• Monthly dashboard with: traffic, conversions, sources, behavior\n• You measure real results, not promises\n\n**DATA-DRIVEN OPTIMIZATION:**\n• First 60 days we monitor performance\n• If conversion < 3%, we make adjustments: CTAs, copy, flows\n• We iterate until reaching industry benchmarks\n\n**CLEAR EXPECTATIONS:**\n• We tell you upfront what to expect (based on your industry + estimated traffic)\n• If we project 10 leads/month and you only get 3, we investigate why\n• We separate \"site problem\" vs \"traffic/offer problem\"\n\n**SATISFACTION CLAUSE:**\n• If after 60 days + optimizations the site objectively doesn't convert better than your previous situation, we negotiate a proportional refund or additional work at no cost.\n• This is in the contract. It's not marketing.\n\nZero risk? No. Mitigated risk with a serious process? Yes."
       },
       {
-        "question": "Why don't you use WordPress like every other agency?",
+        "question": "Why not use Wix, WordPress, or an agency?",
         "category": "technical",
-        "answer": "We use WordPress when it makes sense (blogs with multiple editors, sites with very specific plugin needs).\n\nBut for most corporate sites and e-commerce, WordPress is:\n\n**SLOW:**\n• PHP server-side rendering + 20 plugins = 4-6 second load\n• Google penalizes slow sites in SEO\n• 53% of mobile users abandon if it takes >3 seconds\n\n**INSECURE:**\n• WordPress is 40% of all websites = hacker target #1\n• Outdated plugins are constant vulnerabilities\n• You need to hire monthly maintenance ($3-5k/month)\n\n**EXPENSIVE LONG-TERM:**\n• $15k setup + $4k/month maintenance = $63k first year\n• Premium plugins: $500-2000/year\n• Robust hosting: $200-500/month\n• 3-year total: $150k+ MXN\n\nOur alternative (Next.js + modern architecture):\n• <1 second load (better SEO, better UX)\n• Serverless infrastructure = $20/month hosting\n• No plugins = no vulnerabilities\n• 3-year cost: $35k project + $720 hosting = $35,720 MXN\n\n**SAVINGS: $114,280 MXN over 3 years.**\n\nDo you sacrifice anything? Yes: If you need a specific WordPress plugin, you can't install it. But 90% of functionality is built better custom anyway."
+        "answer": "They're all valid options. Here's an honest breakdown so you can decide:\n\n**WIX / SQUARESPACE:**\n• Fastest to launch — good for simple informational sites\n• 5–10 hrs/week to learn and maintain yourself\n• 2-year cost: $15k–40k MXN + IVA (subscriptions + apps + your time)\n• Ceiling: limited customization, no real integrations, medium SEO\n\n**WEBFLOW:**\n• Better design control than Wix, good SEO\n• Steep learning curve: 8–15 hrs/week\n• 2-year cost: $20k–50k MXN + IVA (plan + plugins + learning time)\n• Ceiling: needs technical knowledge, limited server-side logic\n\n**TRADITIONAL AGENCY (WordPress):**\n• High customization, large ecosystem of plugins\n• WordPress = 40% of all websites = hacker target #1, requires monthly maintenance\n• Load speed: 3–8 seconds average with plugins (Google penalizes, users abandon)\n• 2-year cost: $80k–200k MXN + IVA (project + maintenance + hosting + plugins)\n\n**NOCTRA:**\n• Custom Next.js engineering — <1 second load, no plugins, no vulnerabilities\n• You don't manage anything: 1 monthly call of 30 min is all we ask\n• 2-year cost: from $20k MXN + IVA project + optional support\n• Code is yours (GitHub), no vendor lock-in\n\n**When we DO recommend WordPress:** Multiple editors needing a full CMS, specific plugin requirements, or very tight budgets where time-to-launch matters more than performance.\n\nFor growing businesses that want a site that works as a conversion asset — not a maintenance burden — we build custom."
       },
       {
         "question": "What happens if my site needs changes after launch?",
         "category": "post_launch",
-        "answer": "Depends on the type of change and when you request it:\n\n**FIRST 60 DAYS (POST-LAUNCH):**\n• Up to 2 rounds of adjustments INCLUDED\n• This covers: CTAs that don't convert, copy that needs improvement, sections that confuse users\n• Doesn't cover: new features outside original scope, complete design overhaul\n\n**AFTER 60 DAYS:**\n• Minor changes (text, images, style tweaks): $500-1500 per package\n• New features (additional form, new page, integration): $3k-8k depending on complexity\n• Partial redesign (new home page): $8k-15k\n• Complete redesign: essentially a new project\n\n**BUT HERE'S THE SECRET:**\nWe deliver all code on GitHub with complete ownership. If after 60 days you prefer another developer to make changes, you can. No vendor lock-in.\n\nMost clients come back to us because:\n1. We know the project inside out\n2. Our rate is competitive ($1500-2000/day vs $2500-3500 from other agencies)\n3. We maintain clean architecture (other developers can work with our code)\n\n**ALTERNATIVE: MONTHLY RETAINER**\nIf you expect frequent changes: $5k/month = 3 working days per month. Unused days accumulate up to 2 months."
+        "answer": "Depends on the type of change and when you request it:\n\n**FIRST 60 DAYS (POST-LAUNCH):**\n• Up to 2 rounds of adjustments INCLUDED\n• This covers: CTAs that don't convert, copy that needs improvement, sections that confuse users\n• Doesn't cover: new features outside original scope, complete design overhaul\n\n**AFTER 60 DAYS:**\n• Minor changes (text, images, style tweaks): $500-1500 + IVA per package\n• New features (additional form, new page, integration): $3k-8k + IVA depending on complexity\n• Partial redesign (new home page): $8k-15k + IVA\n• Complete redesign: essentially a new project\n\n**BUT HERE'S THE SECRET:**\nWe deliver all code on GitHub with complete ownership. If after 60 days you prefer another developer to make changes, you can. No vendor lock-in.\n\nMost clients come back to us because:\n1. We know the project inside out\n2. Our rate is competitive ($1500-2000/day + IVA vs $2500-3500 from other agencies)\n3. We maintain clean architecture (other developers can work with our code)\n\n**ALTERNATIVE: MONTHLY RETAINER**\nIf you expect frequent changes: $5k/month + IVA = 3 working days per month. Unused days accumulate up to 2 months."
       },
       {
         "question": "Do you work with companies outside Querétaro/Mexico?",
@@ -570,7 +574,9 @@
     "seo_title": "Your site improving month by month",
     "seo_desc": "Each month faster, more visible, more conversions. Monthly metrics analysis, continuous improvements based on real user behavior, priority support, and content strategies.",
     "ai_title": "Automate what takes your time",
-    "ai_desc": "Recover 15+ hours weekly automating manual processes. Custom CRM your team will actually use, management systems that eliminate spreadsheets, integrations between your tools.",
+    "ai_desc": "Every hour you spend learning tools, fixing your site, or wondering why your SEO isn't working is an hour you're not with your clients. We handle everything digital. You focus on your profession.",
+    "ongoing_title": "Your long-term digital partner",
+    "ongoing_desc": "Hosting, domain, updates, technical support and continuous improvements. You focus on your business. Once a month we review metrics and define next period improvements.",
     "explore_capabilities": "See all services",
     "lets_talk": "Let's Talk"
   },
@@ -580,7 +586,7 @@
     "most_common": "Most Common",
     "tier1": {
       "name": "Professional Website",
-      "price": "From $20,000 MXN",
+      "price": "From $20,000 MXN + IVA",
       "description": "Your website working 24/7 converting visitors into clients.",
       "features": [
         "5 strategic pages",
@@ -592,7 +598,7 @@
     },
     "tier2": {
       "name": "E-commerce",
-      "price": "From $35,000 MXN",
+      "price": "From $35,000 MXN + IVA",
       "description": "Sell online without complications — from visit to sale in 3 clicks.",
       "features": [
         "Conversion-oriented catalog",
@@ -605,7 +611,7 @@
     "tier3": {
       "name": "Custom Systems",
       "price": "According to scope",
-      "description": "Automate what takes your time — recover 15+ hours weekly.",
+      "description": "Automate what takes your time — Every hour you spend learning tools, fixing your site, or wondering why your SEO isn't working is an hour you're not with your clients. We handle everything digital. You focus on your profession.",
       "features": [
         "Custom CRM or web application",
         "Process automation & integrations",
@@ -618,110 +624,96 @@
     "optional_modules": [
       {
         "name": "Dynamic blog",
-        "price": "+$12,000 MXN"
+        "price": "+$12,000 MXN + IVA"
       },
       {
         "name": "Multi-language",
-        "price": "+$18,000 MXN"
+        "price": "+$18,000 MXN + IVA"
       },
       {
         "name": "Client portal",
-        "price": "+$25,000 MXN"
+        "price": "+$25,000 MXN + IVA"
       }
     ],
     "additional_text": [
-      "Final prices, VAT included",
+      "Prices do not include VAT (16%)",
       "50% to start, 50% at launch",
       "60-day post-launch guarantee"
     ],
     "cta": "Start my project",
     "compare_all_features": "Compare all features →",
     "back_to_pricing": "← Back to pricing",
+
     "feature_comparison": {
+      "recommended_badge": "Recommended ★",
       "columns": [
-        "Professional Website",
-        "E-commerce",
-        "Custom Systems"
+        { "id": "wix", "name": "Wix / Squarespace", "subtitle": "No-code basic" },
+        { "id": "webflow", "name": "Webflow", "subtitle": "No-code advanced" },
+        { "id": "agency", "name": "Traditional Agency", "subtitle": "WordPress / outsourced" },
+        { "id": "noctra", "name": "Noctra ★", "subtitle": "Custom engineering", "highlighted": true }
       ],
       "rows": [
         {
-          "name": "Strategic Pages",
+          "criteria": "Load Speed",
           "values": [
-            "5 Pages",
-            "Unlimited",
-            "Unlimited"
+            "Medium (3–6 sec)",
+            "Good (1–3 sec)",
+            "Variable (3–8 sec, WordPress)",
+            "✓ Optimal (<1 sec, Next.js)"
           ]
         },
         {
-          "name": "Responsive Design",
+          "criteria": "Real Technical SEO",
           "values": [
-            true,
-            true,
-            true
+            "Basic (limited)",
+            "Good",
+            "Depends on developer",
+            "✓ Complete (Core Web Vitals optimized)"
           ]
         },
         {
-          "name": "Technical SEO",
+          "criteria": "Customization",
           "values": [
-            true,
-            true,
-            true
+            "Limited (templates)",
+            "High (steep learning curve)",
+            "High (costly to change)",
+            "✓ Total (custom code)"
           ]
         },
         {
-          "name": "CMS / Blog",
+          "criteria": "Your Time Required",
           "values": [
-            "Optional",
-            true,
-            true
+            "5–10 hrs/week (learn, maintain, update)",
+            "8–15 hrs/week (high learning curve)",
+            "Weekly meetings + long review cycles",
+            "✓ 1 monthly call of 30 min"
           ]
         },
         {
-          "name": "Customer Portal",
+          "criteria": "Real Cost over 2 Years",
           "values": [
-            false,
-            "Optional",
-            true
+            "$15k–40k MXN (subscriptions + apps + your time)",
+            "$20k–50k MXN (plan + plugins + learning)",
+            "$80k–200k MXN (project + WordPress maintenance)",
+            "✓ From $20k MXN + IVA project + optional support"
           ]
         },
         {
-          "name": "Inventory & Shipping",
+          "criteria": "Post-Launch Support",
           "values": [
-            false,
-            true,
-            "Optional"
+            "Generic support, they don't know your business",
+            "Community + documentation",
+            "Extra cost per hour",
+            "✓ Founder directly, knows your entire project"
           ]
         },
         {
-          "name": "Payment Gateway",
+          "criteria": "Scalability",
           "values": [
-            "Basic",
-            true,
-            true
-          ]
-        },
-        {
-          "name": "Custom Integrations",
-          "values": [
-            false,
-            false,
-            true
-          ]
-        },
-        {
-          "name": "Advanced Automation",
-          "values": [
-            false,
-            false,
-            true
-          ]
-        },
-        {
-          "name": "Priority Support",
-          "values": [
-            false,
-            false,
-            true
+            "Limited (low ceiling)",
+            "Medium",
+            "Requires rebuilding the site",
+            "✓ Custom code, grows with you"
           ]
         }
       ]
@@ -831,7 +823,8 @@
         "mrr": "Monthly Recurring Revenue (MRR)",
         "lifetime": "Customer Lifetime (months)",
         "churn": "Churn Rate (%)"
-      }
+      },
+      "vat_note": "* Prices do not include VAT"
     },
     "roi_calculator": {
       "title": "How long will your site take to pay for itself?",
@@ -997,8 +990,8 @@
         ]
       },
       "tiers": {
-        "ecommerce": "Note: For e-commerce sites, our investment is $35,000 MXN (Still saving you {savings})",
-        "enterprise": "Note: For custom client portals, our investment starts at $35,000 MXN"
+        "ecommerce": "Note: For e-commerce sites, our investment is $35,000 MXN + IVA (Still saving you {savings})",
+        "enterprise": "Note: For custom client portals, our investment starts at $35,000 MXN + IVA"
       },
       "breakdown": {
         "cta_open": "See detailed year-by-year breakdown ▼",
@@ -2331,7 +2324,7 @@
         "number": "05",
         "title": "Continuous Optimization (60 days)",
         "subtitle": "Deliverable: Monthly Optimization Report",
-        "description": "Post-launch, we monitor real metrics and optimize. We don't leave you alone the day you launch.",
+        "description": "You focus on your profession. We focus on your digital growth. One 30-minute call per month is all we need from you — everything else is on us.",
         "deliverables": [
           "Weekly metrics monitoring (traffic, conversions, speed)",
           "Up to 2 rounds of adjustments based on real data",
@@ -2468,6 +2461,32 @@
       ],
       "cta": "Let's talk about your growth"
     },
+    "ongoing": {
+      "title": "Ongoing Digital Management",
+      "image_label": "Limitless Growth",
+      "pricing_label": "Plans from $2,500 MXN/mo",
+      "focus": "Your business doesn't stop, neither should your technology. Strategic partnership plans to ensure you never stop growing.",
+      "why": "We don't sell maintenance. We sell peace of mind and constant evolution for your most valuable digital asset.",
+      "problem": "Your site falls behind, plugins fail, or you simply don't have time to manage the technical part.",
+      "solution": "We handle the hosting, security, and improvements. You receive metrics and a monthly evolution strategy.",
+      "process": [
+        "Transfer of hosting and domain to Noctra",
+        "Initial technical audit and cleanup",
+        "Monitoring and security configuration",
+        "Start of monthly improvement cycle"
+      ],
+      "deliverables": [
+        "Ultra-fast server configured",
+        "99.9% guaranteed uptime",
+        "Monthly performance reports"
+      ],
+      "deliverables_subtext": [
+        "Your site hosted on world-class infrastructure.",
+        "If your site goes down, we know before you do and fix it.",
+        "Total transparency on what we are improving."
+      ],
+      "cta": "View management plans"
+    },
     "pricing_callout_link": "See pricing breakdown",
     "best_for": {
       "label": "BEST FOR",
@@ -2506,7 +2525,8 @@
         "web_dev": "01 Web Presence",
         "ecommerce": "02 E-Commerce",
         "ai": "03 Custom Systems",
-        "seo": "04 Optimization"
+        "seo": "04 Optimization",
+        "ongoing": "05 Ongoing Management"
       }
     },
     "system_label": "SYSTEM",
@@ -2589,6 +2609,10 @@
         "seo": [
           { "name": "Dr. Example", "desc": "Local SEO for dental clinic" },
           { "name": "Legal Firm", "desc": "Content strategy for law firm" }
+        ],
+        "ongoing": [
+          { "name": "Woodax", "desc": "Total management of corporate site and SEO" },
+          { "name": "Dyma Group", "desc": "Evolutionary maintenance of internal systems" }
         ]
       }
     },
@@ -2755,6 +2779,36 @@
           { "label": "CRO (Optional)", "value": "+$4,000/mo" }
         ],
         "note": "Cancel anytime after 3-month minimum"
+      },
+      "ongoing": {
+        "included": [
+          "Professional managed hosting",
+          "Domain included (annual)",
+          "24/7 uptime monitoring",
+          "Security updates",
+          "Incident support",
+          "Monthly metrics report",
+          "Continuous content/UX improvements (per plan)"
+        ],
+        "timeline": [
+          "Day 1: Migration and audit",
+          "Month 1+: Active management",
+          "Contract: Monthly or Annual"
+        ],
+        "deliverables": [
+          "🚀 Optimized hosting",
+          "🔒 Proactive security",
+          "📊 Strategic reports",
+          "🛠️ Incremental improvements",
+          "📞 Direct support channel",
+          "💡 Constant technical advice"
+        ],
+        "investment": [
+          { "label": "Essential Plan", "value": "$2,500 MXN/mo" },
+          { "label": "Growth Plan", "value": "$5,500 MXN/mo" },
+          { "label": "Strategic Partner", "value": "$12,000 MXN/mo" }
+        ],
+        "note": "Save 15% on annual billing"
       }
     },
     "metrics": {
@@ -3750,7 +3804,7 @@
       "$20k-$35k projects: 30-day guarantee",
       "$35k+ projects: 60-day guarantee"
     ],
-    "cta": "Schedule a free consultation",
+    "cta": "Schedule free consultation",
     "cta_subtitle": "We'll discuss your specific goals and what KPIs make sense for your business."
   },
   "LandingPage": {
@@ -4609,5 +4663,47 @@
       "contractor_status": "All collaborators work as independent contractors. Noctra Studio does not withhold taxes, provide benefits, or establish employer-employee relationships. You are responsible for your own tax obligations.",
       "ip_ownership": "All work created under Noctra Studio projects becomes property of the client. You retain the right to display work in your portfolio (with client permission) but cannot resell or reuse client work."
     }
+  },
+  "OngoingManagement": {
+    "title": "Ongoing Digital Management",
+    "subtitle": "Your business doesn't stop, neither should your technology. Strategic partnership plans to ensure you never stop growing.",
+    "tier1": {
+      "name": "Essential",
+      "price": "From $2,500 MXN/mo + IVA",
+      "features": [
+        "Managed hosting and domain",
+        "24/7 uptime monitoring",
+        "Security updates",
+        "Incident support (response < 4 business hrs)",
+        "Monthly basic metrics report"
+      ]
+    },
+    "tier2": {
+      "name": "Growth",
+      "price": "From $5,500 MXN/mo + IVA",
+      "popular": true,
+      "features": [
+        "Everything in Essential plus",
+        "Monthly strategy meeting (30 min)",
+        "2-3 content or UX improvements per month",
+        "Continuous SEO optimization",
+        "Priority support (response < 2hrs)",
+        "Minor integrations"
+      ]
+    },
+    "tier3": {
+      "name": "Strategic Partner",
+      "price": "From $12,000 MXN/mo + IVA",
+      "features": [
+        "Everything in Growth plus",
+        "Advice on new technologies and IA",
+        "Major codebase updates",
+        "Direct access to Manu via WhatsApp",
+        "Guaranteed 1-hour response",
+        "Bi-weekly executive reports"
+      ]
+    },
+    "footer": "Available for clients with a completed Noctra project. Prices do not include VAT. Monthly or annual contracts (15% discount on annual plan).",
+    "cta": "Activate ongoing management"
   }
 }

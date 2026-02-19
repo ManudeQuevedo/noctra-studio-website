@@ -2,9 +2,9 @@
 
 import { useTranslations } from "next-intl";
 import { motion } from "framer-motion";
-import { UserCheck, Zap, ShieldCheck } from "lucide-react";
+import { UserCheck, Zap, ShieldCheck, Clock } from "lucide-react";
 
-const icons = [UserCheck, Zap, ShieldCheck];
+const icons = [UserCheck, Zap, ShieldCheck, Clock];
 
 export function WhyLocalBenefits() {
   const t = useTranslations("WhyLocal");
@@ -21,7 +21,7 @@ export function WhyLocalBenefits() {
         </h2>
       </div>
 
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-8">
         {items.map((item, index) => {
           const Icon = icons[index];
           return (

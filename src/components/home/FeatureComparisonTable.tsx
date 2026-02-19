@@ -1,20 +1,28 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { Check, X, Minus } from "lucide-react";
+import { Check } from "lucide-react";
 import { motion } from "framer-motion";
 import { cn } from "@/lib/utils";
 
-interface ComparisonRow {
+interface ComparisonColumn {
+  id: string;
   name: string;
-  values: (string | boolean)[];
+  subtitle: string;
+  highlighted?: boolean;
+}
+
+interface ComparisonRow {
+  criteria: string;
+  values: string[];
 }
 
 export function FeatureComparisonTable() {
   const t = useTranslations("Pricing.feature_comparison");
-  
-  const columns = t.raw("columns") as string[];
+
+  const columns = t.raw("columns") as ComparisonColumn[];
   const rows = t.raw("rows") as ComparisonRow[];
+  const recommendedBadge = t("recommended_badge");
 
   return (
     <motion.div
@@ -23,57 +31,94 @@ export function FeatureComparisonTable() {
       exit={{ opacity: 0, y: 20 }}
       transition={{ duration: 0.4 }}
       className="w-full overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/20 backdrop-blur-sm shadow-2xl">
+      {/* Table label */}
+      <div className="px-6 pt-6 pb-4 border-b border-neutral-800/60">
+        <p className="text-xs font-bold text-neutral-500 uppercase tracking-widest">
+          {/* Compare options at a glance */}
+        </p>
+      </div>
+
       <div className="overflow-x-auto">
-        <table className="w-full text-left border-collapse">
+        <table
+          className="w-full text-left border-collapse"
+          style={{ minWidth: "640px" }}>
+          {/* Column Headers */}
           <thead>
             <tr className="border-b border-neutral-800">
-              <th className="p-6 text-sm font-bold text-neutral-500 uppercase tracking-widest bg-neutral-950/40">
-                {/* Feature Name Column */}
-              </th>
-              {columns.map((col, idx) => (
-                <th key={idx} className="p-6 text-center bg-neutral-950/40">
-                  <span className="text-base font-black text-white uppercase tracking-tight">
-                    {col}
-                  </span>
+              {/* Criteria label column */}
+              <th className="p-5 w-[180px] bg-neutral-950/40" />
+              {columns.map((col) => (
+                <th
+                  key={col.id}
+                  className={cn(
+                    "p-5 text-center border-l border-neutral-800/50",
+                    col.highlighted ? "bg-emerald-950/40" : "bg-neutral-950/30",
+                  )}>
+                  {col.highlighted && (
+                    <span className="inline-block mb-2 px-2.5 py-0.5 rounded-full bg-emerald-500 text-black text-[10px] font-black uppercase tracking-widest">
+                      {recommendedBadge}
+                    </span>
+                  )}
+                  <div
+                    className={cn(
+                      "text-sm font-black uppercase tracking-tight leading-tight",
+                      col.highlighted ? "text-emerald-400" : "text-white",
+                    )}>
+                    {col.name}
+                  </div>
+                  <div className="text-[11px] text-neutral-500 mt-1 font-medium">
+                    {col.subtitle}
+                  </div>
                 </th>
               ))}
             </tr>
           </thead>
+
+          {/* Rows */}
           <tbody>
             {rows.map((row, rowIdx) => (
-              <tr 
-                key={rowIdx} 
+              <tr
+                key={rowIdx}
                 className={cn(
-                  "border-b border-neutral-800/50 hover:bg-white/[0.02] transition-colors",
-                  rowIdx === rows.length - 1 && "border-0"
+                  "border-b border-neutral-800/40 hover:bg-white/[0.015] transition-colors",
+                  rowIdx === rows.length - 1 && "border-0",
+                  rowIdx % 2 === 0 ? "bg-transparent" : "bg-white/[0.01]",
                 )}>
-                <td className="p-6 text-sm font-medium text-neutral-300">
-                  {row.name}
+                {/* Criteria name */}
+                <td className="p-5 text-sm font-semibold text-neutral-300 bg-neutral-950/20">
+                  {row.criteria}
                 </td>
-                {row.values.map((val, valIdx) => (
-                  <td key={valIdx} className="p-6 text-center">
-                    <div className="flex justify-center items-center">
-                      {typeof val === "boolean" ? (
-                        val ? (
-                          <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20">
-                            <Check className="w-3.5 h-3.5 text-emerald-500" />
+
+                {/* Cell values */}
+                {row.values.map((val, valIdx) => {
+                  const isNoctra = columns[valIdx]?.highlighted;
+                  const isCheckmark = val.startsWith("✓");
+                  const displayVal = isCheckmark ? val.slice(2) : val;
+
+                  return (
+                    <td
+                      key={valIdx}
+                      className={cn(
+                        "p-5 text-center border-l border-neutral-800/50",
+                        isNoctra ? "bg-emerald-950/20" : "",
+                      )}>
+                      {isNoctra ? (
+                        <div className="flex flex-col items-center gap-1.5">
+                          <div className="w-5 h-5 rounded-full bg-emerald-500/15 border border-emerald-500/30 flex items-center justify-center shrink-0">
+                            <Check className="w-3 h-3 text-emerald-400" />
                           </div>
-                        ) : (
-                          <X className="w-4 h-4 text-neutral-700" />
-                        )
+                          <span className="text-xs font-semibold text-emerald-300 leading-snug max-w-[140px]">
+                            {displayVal}
+                          </span>
+                        </div>
                       ) : (
-                        <span className={cn(
-                          "text-xs font-bold px-3 py-1 rounded-full uppercase tracking-widest",
-                          val === "Optional" || val === "Opcional" 
-                            ? "bg-neutral-800 text-neutral-400" 
-                            : "bg-white/5 text-white"
-                        )}>
+                        <span className="text-xs text-neutral-400 leading-snug block max-w-[140px] mx-auto">
                           {val}
                         </span>
                       )}
-                    </div>
-                  </td>
-                ))}
+                    </td>
+                  );
+                })}
               </tr>
             ))}
           </tbody>

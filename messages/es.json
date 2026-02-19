@@ -13,6 +13,10 @@
       {
         "title": "Garantía de resultados reales",
         "description": "Si no cumplimos con los indicadores de rendimiento acordados, te reembolsamos una parte proporcional. Riesgo compartido."
+      },
+      {
+        "title": "Tu tiempo es tu activo más valioso",
+        "description": "No estudiaste años para convertirte en marketero o administrador de servidores. Una llamada mensual de 30 minutos para revisar métricas y mejoras continuas. El resto lo hacemos nosotros."
       }
     ]
   },
@@ -21,7 +25,7 @@
       "title": "Sitios web que generan clientes reales, no solo visitas",
       "subtitle": "Desarrollo web estratégico para negocios en México e internacionales que necesitan resultados medibles, no solo diseño bonito",
       "trust_badge": {
-        "price": "Desde $20,000 MXN",
+        "price": "Desde $20,000 MXN + IVA",
         "guarantee": "Garantía de resultados",
         "founder": "Fundador accesible"
       }
@@ -82,15 +86,15 @@
     "cta": "Hablemos en una consulta gratuita",
     "see_more": "Ver más ejemplos de automatización",
     "see_less": "Ver menos ejemplos",
-    "closing_statement": "Automatización disponible desde $4,000 USD. No vendemos sitios. Vendemos tiempo recuperado."
+    "closing_statement": "Automatización disponible desde $4,000 USD. No vendemos sitios. Vendemos enfoque en lo que importa."
   },
   "Metadata": {
     "home": {
       "title": "Desarrollo Web Estratégico en Querétaro | Noctra Studio",
-      "description": "Sitios web que generan ROI medible para clientes en México, EE. UU. y el mundo. Desde $30k MXN. Garantía de resultados. Habla directo con el fundador.",
+      "description": "Sitios web que generan ROI medible para clientes en México, EE. UU. y el mundo. Desde $30k MXN + IVA. Garantía de resultados. Habla directo con el fundador.",
       "keywords": "desarrollo web querétaro, sitio web profesional, ecommerce, estrategia digital, resultados medibles, SEO",
       "og_title": "Noctra Studio - Sitios web que se pagan solos",
-      "og_description": "Desarrollo web estratégico para negocios que necesitan resultados medibles. Desde $30k MXN.",
+      "og_description": "Desarrollo web estratégico para negocios que necesitan resultados medibles. Desde $30k MXN + IVA.",
       "og_image_alt": "Noctra Studio - Desarrollo Web Estratégico",
       "twitter_title": "Noctra Studio - Desarrollo Web Estratégico en Querétaro",
       "twitter_description": "Sitios web que generan resultados reales para negocios en Querétaro."
@@ -512,14 +516,14 @@
         "answer": "No lo \"garantizamos\" contractualmente (eso sería irresponsable - tu éxito depende de múltiples factores fuera de nuestro control como tu oferta, precio, servicio).\n\nLo que SÍ hacemos:\n\n**TRACKING REAL:**\n• Configuramos analytics desde día 1\n• Dashboard mensual con: tráfico, conversiones, fuentes, comportamiento\n• Mides resultados reales, no promesas\n\n**OPTIMIZACIÓN BASADA EN DATA:**\n• Primeros 60 días monitoreamos performance\n• Si conversión < 3%, hacemos ajustes: CTAs, copy, flujos\n• Iteramos hasta alcanzar benchmarks de industria\n\n**EXPECTATIVAS CLARAS:**\n• Te decimos upfront qué esperar (basado en tu industria + tráfico estimado)\n• Si proyectamos 10 leads/mes y solo llegas a 3, investigamos por qué\n• Separamos \"problema de sitio\" vs \"problema de tráfico/oferta\"\n\n**CLÁUSULA DE SATISFACCIÓN:**\n• Si después de 60 días + optimizaciones el sitio objetivamente no convierte mejor que tu situación anterior, negociamos un reembolso proporcional o trabajo adicional sin costo.\n• Esto está en el contrato. No es marketing.\n\n¿Riesgo cero? No. ¿Riesgo mitigado con proceso serio? Sí."
       },
       {
-        "question": "¿Por qué no usan WordPress como todas las agencias?",
+        "question": "¿Por qué no usar Wix, WordPress o una agencia?",
         "category": "technical",
-        "answer": "Usamos WordPress cuando tiene sentido (blogs con múltiples editores, sitios con necesidades muy específicas de plugins).\n\nPero para la mayoría de sitios corporativos y e-commerce, WordPress es:\n\n**LENTO:**\n• PHP server-side rendering + 20 plugins = 4-6 segundos carga\n• Google penaliza sitios lentos en SEO\n• 53% de usuarios móviles abandonan si tarda >3 segundos\n\n**INSEGURO:**\n• WordPress es 40% de todos los sitios web = target #1 de hackers\n• Plugins desactualizados son vulnerabilidades constantes\n• Necesitas contratar mantenimiento mensual ($3-5k/mes)\n\n**CARO A LARGO PLAZO:**\n• $15k setup + $4k/mes mantenimiento = $63k primer año\n• Plugins premium: $500-2000/año\n• Hosting robusto: $200-500/mes\n• Total 3 años: $150k+ MXN\n\nNuestra alternativa (Next.js + arquitectura moderna):\n• <1 segundo carga (mejor SEO, mejor UX)\n• Infraestructura serverless = $20/mes hosting\n• Sin plugins = sin vulnerabilidades\n• Costo 3 años: $35k proyecto + $720 hosting = $35,720 MXN\n\n**AHORRO: $114,280 MXN en 3 años.**\n\n¿Sacrificas algo? Sí: Si necesitas instalar un plugin específico de WordPress, no puedes. Pero el 90% de funcionalidades se construyen mejor custom anyway."
+        "answer": "Todas son opciones válidas. Aquí un desglose honesto para que decidas:\n\n**WIX / SQUARESPACE:**\n• Más rápido de lanzar — ideal para sitios informativos simples\n• 5–10 hrs/semana para aprender y mantenerlo tú mismo\n• 2 años de costo: $15k–40k MXN + IVA (suscripciones + apps + tu tiempo)\n• Techo: personalización limitada, sin integraciones reales, SEO medio\n\n**WEBFLOW:**\n• Mejor control de diseño que Wix, buen SEO\n• Curva de aprendizaje alta: 8–15 hrs/semana\n• 2 años de costo: $20k–50k MXN + IVA (plan + plugins + tiempo de aprendizaje)\n• Techo: requiere conocimiento técnico, lógica server-side limitada\n\n**AGENCIA TRADICIONAL (WordPress):**\n• Alta personalización, amplio ecosistema de plugins\n• WordPress = 40% de todos los sitios web = target #1 de hackers\n• Velocidad de carga: promedio 3–8 segundos con plugins (Google penaliza, usuarios abandonan)\n• 2 años de costo: $80k–200k MXN + IVA (proyecto + mantenimiento + hosting + plugins)\n\n**NOCTRA:**\n• Ingeniería Next.js a medida — <1 segundo carga, sin plugins, sin vulnerabilidades\n• No gestionas nada: 1 llamada mensual de 30 min es todo lo que pedimos\n• 2 años de costo: desde $20k MXN + IVA proyecto + soporte opcional\n• El código es tuyo (GitHub), sin vendor lock-in\n\n**Cuándo SÍ recomendamos WordPress:** Múltiples editores que necesitan un CMS completo, requerimientos específicos de plugins, o presupuestos muy ajustados donde el tiempo de lanzamiento importa más que el rendimiento.\n\nPara negocios en crecimiento que quieren un sitio que funcione como activo de conversión — no como carga de mantenimiento — construimos a medida."
       },
       {
         "question": "¿Qué pasa si mi sitio necesita cambios después de lanzar?",
         "category": "post_launch",
-        "answer": "Depende del tipo de cambio y cuándo lo pides:\n\n**PRIMEROS 60 DÍAS (POST-LANZAMIENTO):**\n• Hasta 2 rondas de ajustes INCLUIDAS\n• Esto cubre: CTAs que no convierten, copy que necesita mejora, secciones que confunden usuarios\n• No cubre: features nuevos fuera del scope original, cambio completo de diseño\n\n**DESPUÉS DE 60 DÍAS:**\n• Cambios menores (texto, imágenes, ajustes de estilo): $500-1500 por paquete\n• Features nuevos (formulario adicional, página nueva, integración): $3k-8k según complejidad\n• Rediseño parcial (home page nueva): $8k-15k\n• Rediseño completo: esencialmente un proyecto nuevo\n\n**PERO AQUÍ EL SECRETO:**\nTe entregamos todo el código en GitHub con ownership completo. Si después de 60 días prefieres que otro developer haga cambios, puedes. No hay vendor lock-in.\n\nLa mayoría de clientes regresan con nosotros porque:\n1. Conocemos el proyecto por dentro\n2. Nuestro rate es competitivo ($1500-2000/día vs $2500-3500 de otras agencias)\n3. Mantenemos arquitectura limpia (otros developers pueden trabajar con nuestro código)\n\n**ALTERNATIVA: RETAINER MENSUAL**\nSi proyectas necesitar cambios frecuentes: $5k/mes = 3 días de trabajo mensuales. No usados, acumulan hasta 2 meses."
+        "answer": "Depende del tipo de cambio y cuándo lo pides:\n\n**PRIMEROS 60 DÍAS (POST-LANZAMIENTO):**\n• Hasta 2 rondas de ajustes INCLUIDAS\n• Esto cubre: CTAs que no convierten, copy que necesita mejora, secciones que confunden usuarios\n• No cubre: features nuevos fuera del scope original, cambio completo de diseño\n\n**DESPUÉS DE 60 DÍAS:**\n• Cambios menores (texto, imágenes, ajustes de estilo): $500-1500 + IVA por paquete\n• Features nuevos (formulario adicional, página nueva, integración): $3k-8k + IVA según complejidad\n• Rediseño parcial (home page nueva): $8k-15k + IVA\n• Rediseño completo: esencialmente un proyecto nuevo\n\n**PERO AQUÍ EL SECRETO:**\nTe entregamos todo el código en GitHub con ownership completo. Si después de 60 días prefieres que otro developer haga cambios, puedes. No hay vendor lock-in.\n\nLa mayoría de clientes regresan con nosotros porque:\n1. Conocemos el proyecto por dentro\n2. Nuestro rate es competitivo ($1500-2000 + IVA/día vs $2500-3500 + IVA de otras agencias)\n3. Mantenemos arquitectura limpia (otros developers pueden trabajar con nuestro código)\n\n**ALTERNATIVA: RETAINER MENSUAL**\nSi proyectas necesitar cambios frecuentes: $5k + IVA/mes = 3 días de trabajo mensuales. No usados, acumulan hasta 2 meses."
       },
       {
         "question": "¿Trabajan con empresas fuera de Querétaro/México?",
@@ -569,7 +573,9 @@
     "seo_title": "Tu sitio mejorando mes con mes",
     "seo_desc": "Cada mes más rápido, más visible, más conversiones. Análisis mensual de métricas, mejoras continuas basadas en comportamiento real de usuarios, soporte prioritario y estrategias de contenido.",
     "ai_title": "Automatiza lo que te quita tiempo",
-    "ai_desc": "Recupera 15+ horas semanales automatizando procesos manuales. CRM personalizado que tu equipo realmente usará, sistemas de gestión que eliminan hojas de cálculo infinitas, integraciones entre tus herramientas actuales.",
+    "ai_desc": "Cada hora que pasas aprendiendo herramientas, arreglando tu sitio o preguntándote por qué el SEO no funciona, es una hora que no estás con tus clientes. Nosotros manejamos todo lo digital. Tú te enfocas en tu profesión.",
+    "ongoing_title": "Tu socio digital de largo plazo",
+    "ongoing_desc": "Hosting, dominio, actualizaciones, soporte técnico y mejoras continuas. Tú te enfocas en tu negocio. Una vez al mes revisamos métricas y definimos las mejoras del siguiente período.",
     "explore_capabilities": "Ver todos los servicios",
     "lets_talk": "Hablemos"
   },
@@ -597,7 +603,7 @@
       "focus": "Tu sitio web es tu mejor vendedor. Nos aseguramos de que se vea profesional, cargue instantáneamente y guíe a los visitantes a contactarte o comprar.",
       "why": "Un sitio rápido y profesional genera confianza y evita que los visitantes se vayan.",
       "image_label": "Máquina de Conversión 24/7",
-      "pricing_label": "Desde $20k MXN",
+      "pricing_label": "Desde $20k MXN + IVA",
       "problem": "Tu sitio web actual es lento, anticuado o simplemente no está trayendo clientes.",
       "solution": "Construimos sitios rápidos y modernos diseñados para convertir visitantes en clientes.",
       "process": [
@@ -696,6 +702,32 @@
       ],
       "cta": "Hablemos de tu crecimiento"
     },
+    "ongoing": {
+      "title": "Gestión Digital Continua",
+      "image_label": "Crecimiento Sin Límites",
+      "pricing_label": "Planes desde $2,500 MXN/mes",
+      "focus": "Tu negocio no se detiene, tu tecnología tampoco. Planes de acompañamiento estratégico para que nunca dejes de crecer.",
+      "why": "No vendemos mantenimiento. Vendemos tranquilidad y evolución constante para tu activo digital más valioso.",
+      "problem": "Tu sitio se queda atrás, los plugins fallan o simplemente no tienes tiempo para gestionar la parte técnica.",
+      "solution": "Nosotros manejamos el hosting, seguridad y mejoras. Tú recibes métricas y una estrategia de evolución mensual.",
+      "process": [
+        "Transferencia de hosting y dominio a Noctra",
+        "Auditoría técnica inicial y limpieza",
+        "Configuración de monitoreo y seguridad",
+        "Inicio de ciclo de mejoras mensuales"
+      ],
+      "deliverables": [
+        "Servidor ultra-rápido configurado",
+        "Uptime garantizado 99.9%",
+        "Reportes de rendimiento mensuales"
+      ],
+      "deliverables_subtext": [
+        "Tu sitio alojado en infraestructura de nivel mundial.",
+        "Si tu sitio cae, lo sabemos antes que tú y lo arreglamos.",
+        "Transparencia total sobre qué estamos mejorando."
+      ],
+      "cta": "Ver planes de gestión"
+    },
     "pricing_callout_link": "Ver desglose de precios",
     "best_for": {
       "label": "IDEAL PARA",
@@ -734,7 +766,8 @@
         "web_dev": "01 Presencia Web",
         "ecommerce": "02 E-Commerce",
         "ai": "03 Sistemas a Medida",
-        "seo": "04 Optimización"
+        "seo": "04 Optimización",
+        "ongoing": "05 Gestión Continua"
       }
     },
     "system_label": "SISTEMA",
@@ -817,6 +850,10 @@
         "seo": [
           { "name": "Dr. Example", "desc": "Posicionamiento local para clínica dental" },
           { "name": "Legal Firm", "desc": "Estrategia de contenidos para abogados" }
+        ],
+        "ongoing": [
+          { "name": "Woodax", "desc": "Gestión total de sitio corporativo y SEO" },
+          { "name": "Dyma Group", "desc": "Mantenimiento evolutivo de sistemas internos" }
         ]
       }
     },
@@ -983,6 +1020,36 @@
           { "label": "Optimización CRO (Opcional)", "value": "+$4,000/mes" }
         ],
         "note": "Cancela en cualquier momento tras 3 meses"
+      },
+      "ongoing": {
+        "included": [
+          "Hosting gestionado profesional",
+          "Dominio incluido (anual)",
+          "Monitoreo de uptime 24/7",
+          "Actualizaciones de seguridad",
+          "Soporte ante incidencias",
+          "Reporte mensual de métricas",
+          "Mejoras continuas de contenido/UX (según plan)"
+        ],
+        "timeline": [
+          "Día 1: Migración y auditoría",
+          "Mes 1+: Gestión activa",
+          "Contrato: Mensual o Anual"
+        ],
+        "deliverables": [
+          "🚀 Alojamiento optimizado",
+          "🔒 Seguridad proactiva",
+          "📊 Reportes estratégicos",
+          "🛠️ Mejoras incrementales",
+          "📞 Canal de soporte directo",
+          "💡 Asesoría técnica constante"
+        ],
+        "investment": [
+          { "label": "Plan Esencial", "value": "$2,500 MXN/mes" },
+          { "label": "Plan Crecimiento", "value": "$5,500 MXN/mes" },
+          { "label": "Socio Estratégico", "value": "$12,000 MXN/mes" }
+        ],
+        "note": "Ahorra 15% en contratación anual"
       }
     },
     "start_project": "Iniciar Proyecto"
@@ -993,7 +1060,7 @@
     "most_common": "Más Común",
     "tier1": {
       "name": "Sitio Web Profesional",
-      "price": "Desde $20,000 MXN",
+      "price": "Desde $20,000 MXN + IVA",
       "description": "Tu sitio web trabajando 24/7 convirtiendo visitantes en clientes.",
       "features": [
         "5 páginas estratégicas",
@@ -1005,7 +1072,7 @@
     },
     "tier2": {
       "name": "E-commerce",
-      "price": "Desde $35,000 MXN",
+      "price": "Desde $35,000 MXN + IVA",
       "description": "Vende en línea sin complicaciones — de visita a venta en 3 clics.",
       "features": [
         "Catálogo orientado a conversión",
@@ -1018,7 +1085,7 @@
     "tier3": {
       "name": "Sistemas a la Medida",
       "price": "Según alcance",
-      "description": "Automatiza lo que te quita tiempo — recupera 15+ horas semanales.",
+      "description": "Automatiza lo que te quita tiempo — Cada hora que pasas aprendiendo herramientas, arreglando tu sitio o preguntándote por qué el SEO no funciona, es una hora que no estás con tus clientes. Nosotros manejamos todo lo digital. Tú te enfocas en tu profesión.",
       "features": [
         "CRM o aplicación web personalizada",
         "Automatización de procesos e integraciones",
@@ -1031,19 +1098,19 @@
     "optional_modules": [
       {
         "name": "Blog dinámico",
-        "price": "+$12,000 MXN"
+        "price": "+$12,000 MXN + IVA"
       },
       {
         "name": "Multi-idioma",
-        "price": "+$18,000 MXN"
+        "price": "+$18,000 MXN + IVA"
       },
       {
         "name": "Portal de clientes",
-        "price": "+$25,000 MXN"
+        "price": "+$25,000 MXN + IVA"
       }
     ],
     "additional_text": [
-      "Precios finales, IVA incluido",
+      "Precios no incluyen IVA (16%)",
       "50% al inicio, 50% al lanzar",
       "Garantía de 60 días post-lanzamiento"
     ],
@@ -1051,90 +1118,75 @@
     "compare_all_features": "Comparar todas las funciones →",
     "back_to_pricing": "← Volver a precios",
     "feature_comparison": {
+      "recommended_badge": "Recomendado ★",
       "columns": [
-        "Sitio Profesional",
-        "E-commerce",
-        "Sistemas a Medida"
+        { "id": "wix", "name": "Wix / Squarespace", "subtitle": "No-code básico" },
+        { "id": "webflow", "name": "Webflow", "subtitle": "No-code avanzado" },
+        { "id": "agency", "name": "Agencia Tradicional", "subtitle": "WordPress / outsourcing" },
+        { "id": "noctra", "name": "Noctra ★", "subtitle": "Ingeniería a medida", "highlighted": true }
       ],
       "rows": [
         {
-          "name": "Páginas Estratégicas",
+          "criteria": "Velocidad de carga",
           "values": [
-            "5 Páginas",
-            "Ilimitadas",
-            "Ilimitadas"
+            "Media (3–6 seg)",
+            "Buena (1–3 seg)",
+            "Variable (3–8 seg, WordPress)",
+            "✓ Óptima (<1 seg, Next.js)"
           ]
         },
         {
-          "name": "Diseño Responsivo",
+          "criteria": "SEO técnico real",
           "values": [
-            true,
-            true,
-            true
+            "Básico (limitado)",
+            "Bueno",
+            "Depende del developer",
+            "✓ Completo (Core Web Vitals optimizados)"
           ]
         },
         {
-          "name": "SEO Técnico",
+          "criteria": "Personalización",
           "values": [
-            true,
-            true,
-            true
+            "Limitada (templates)",
+            "Alta (curva de aprendizaje)",
+            "Alta (costosa de cambiar)",
+            "✓ Total (código a medida)"
           ]
         },
         {
-          "name": "CMS / Blog",
+          "criteria": "Tiempo requerido de tu parte",
           "values": [
-            "Opcional",
-            true,
-            true
+            "5–10 hrs/semana (aprender, mantener, actualizar)",
+            "8–15 hrs/semana (curva alta)",
+            "Reuniones semanales + revisiones largas",
+            "✓ 1 llamada mensual de 30 min"
           ]
         },
         {
-          "name": "Portal de Clientes",
+          "criteria": "Costo real a 2 años",
           "values": [
-            false,
-            "Opcional",
-            true
+            "$15k–40k MXN (suscripciones + apps + tu tiempo)",
+            "$20k–50k MXN (plan + plugins + aprendizaje)",
+            "$80k–200k MXN (proyecto + mantenimiento WordPress)",
+            "✓ Desde $20k MXN + IVA proyecto + soporte opcional"
           ]
         },
         {
-          "name": "Inventario y Envíos",
+          "criteria": "Soporte post-lanzamiento",
           "values": [
-            false,
-            true,
-            "Opcional"
+            "Soporte genérico, sin conocer tu negocio",
+            "Comunidad + documentación",
+            "Costo adicional por hora",
+            "✓ Fundador directo, conoce tu proyecto completo"
           ]
         },
         {
-          "name": "Pasarela de Pagos",
+          "criteria": "Escalabilidad",
           "values": [
-            "Básica",
-            true,
-            true
-          ]
-        },
-        {
-          "name": "Integraciones a Medida",
-          "values": [
-            false,
-            false,
-            true
-          ]
-        },
-        {
-          "name": "Automatización Avanzada",
-          "values": [
-            false,
-            false,
-            true
-          ]
-        },
-        {
-          "name": "Soporte Prioritario",
-          "values": [
-            false,
-            false,
-            true
+            "Limitada (techo bajo)",
+            "Media",
+            "Requiere rehacer el sitio",
+            "✓ Código propio, crece contigo"
           ]
         }
       ]
@@ -1368,7 +1420,8 @@
         "mrr": "Ingreso Mensual Recurrente (MRR)",
         "lifetime": "Vida del cliente (meses)",
         "churn": "Tasa de Cancelación (Churn %)"
-      }
+      },
+      "vat_note": "* Precios no incluyen IVA"
     },
     "infrastructure_comparison": {
       "title": "Inversión transparente",
@@ -1953,7 +2006,7 @@
         "number": "05",
         "title": "Optimización Continua (60 días)",
         "subtitle": "Entregable: Reporte de Optimización Mensual",
-        "description": "Post-lanzamiento, monitoreamos métricas reales y optimizamos. No te dejamos solo el día que lanzamos.",
+        "description": "Tú te enfocas en tu profesión. Nosotros nos enfocamos en tu crecimiento digital. Una llamada de 30 minutos al mes es todo lo que necesitamos de ti — el resto corre por nuestra cuenta.",
         "deliverables": [
           "Monitoreo semanal de métricas (tráfico, conversiones, velocidad)",
           "Hasta 2 rondas de ajustes basados en data real",
@@ -4029,5 +4082,47 @@
       "contractor_status": "Todos los colaboradores trabajan como contratistas independientes. Noctra Studio no retiene impuestos, no provee prestaciones ni establece relaciones obrero-patronales. Eres responsable de tus propias obligaciones fiscales.",
       "ip_ownership": "Todo el trabajo creado bajo los proyectos de Noctra Studio pasa a ser propiedad del cliente. Retienes el derecho de mostrar el trabajo en tu portafolio (con permiso del cliente), pero no puedes revender o reutilizar el trabajo del cliente."
     }
+  },
+  "OngoingManagement": {
+    "title": "Gestión Digital Continua",
+    "subtitle": "Tu negocio no se detiene, tu tecnología tampoco. Planes de acompañamiento estratégico para que nunca dejes de crecer.",
+    "tier1": {
+      "name": "Esencial",
+      "price": "Desde $2,500 MXN/mes + IVA",
+      "features": [
+        "Hosting y dominio gestionados",
+        "Monitoreo de uptime 24/7",
+        "Actualizaciones de seguridad",
+        "Soporte ante incidencias (respuesta < 4hrs hábiles)",
+        "Reporte mensual de métricas básicas"
+      ]
+    },
+    "tier2": {
+      "name": "Crecimiento",
+      "price": "Desde $5,500 MXN/mes + IVA",
+      "popular": true,
+      "features": [
+        "Todo lo incluido en Esencial",
+        "Reunión mensual de estrategia (30 min)",
+        "2-3 mejoras de contenido o UX por mes",
+        "Optimización SEO continua",
+        "Soporte prioritario (respuesta < 2hrs)",
+        "Integraciones menores"
+      ]
+    },
+    "tier3": {
+      "name": "Socio Estratégico",
+      "price": "Desde $12,000 MXN/mes + IVA",
+      "features": [
+        "Todo lo incluido en Crecimiento",
+        "Asesoría para nuevas tecnologías e IA",
+        "Actualizaciones mayores del código base",
+        "Acceso directo a Manu vía WhatsApp",
+        "Respuesta garantizada en 1 hora",
+        "Informes ejecutivos quincenales"
+      ]
+    },
+    "footer": "Disponible para clientes con proyecto completado por Noctra. Precios no incluyen IVA. Contratos mensuales o anuales (descuento 15% en plan anual).",
+    "cta": "Activar gestión continua"
   }
 }

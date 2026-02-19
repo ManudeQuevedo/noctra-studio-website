@@ -1397,7 +1397,8 @@ export function RealROICalculator() {
                       {t("labels.disclaimer_text")}
                     </p>
                     <p className="text-[10px] text-neutral-500 leading-relaxed opacity-60 italic">
-                      {t("labels.market_note")} • {t("labels.privacy_note")}
+                      {t("labels.market_note")} • {t("labels.privacy_note")} •{" "}
+                      {t("vat_note")}
                     </p>
                   </div>
 

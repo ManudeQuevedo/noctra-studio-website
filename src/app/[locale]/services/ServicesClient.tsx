@@ -32,6 +32,7 @@ import {
   CircleDollarSign,
   Lightbulb,
   Search,
+  ShieldCheck,
 } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
@@ -49,6 +50,7 @@ const SERVICE_IMAGES = {
   ecommerce: "/images/identity.jpg",
   ai: "/images/ai.jpg",
   seo: "/images/seo.jpg",
+  ongoing: "/images/architecture.jpg", // Reusing architecture for now as placeholder
 };
 
 // Helper for translation icon keys
@@ -68,6 +70,7 @@ const ICON_MAP: Record<string, any> = {
   "🏗️": HardHat,
   "🏥": Hospital,
   "🖥️": LayoutPanelLeft,
+  "🛡️": ShieldCheck,
 };
 
 // Custom Illustrated Icons for Standards
@@ -394,6 +397,7 @@ const ServiceSection = ({
 
   const isCustomSystem = serviceKey === "ai";
   const isSEO = serviceKey === "seo";
+  const isOngoing = serviceKey === "ongoing";
 
   return (
     <motion.div
@@ -473,13 +477,17 @@ const ServiceSection = ({
                       )[1]
                     : isSEO
                       ? t("pricing_breakdown.seo.investment.0.value")
-                      : t(`${serviceKey}.pricing_label`)}
+                      : isOngoing
+                        ? t("pricing_breakdown.ongoing.investment.1.value")
+                        : t(`${serviceKey}.pricing_label`)}
                 </span>
-                {(isCustomSystem || isSEO) && (
+                {(isCustomSystem || isSEO || isOngoing) && (
                   <span className="text-sm text-neutral-500 italic">
                     {isCustomSystem
                       ? `(${t("pricing_breakdown.ai.investment_notes.2")})`
-                      : `(${t("pricing_breakdown.seo.note")})`}
+                      : isSEO
+                        ? `(${t("pricing_breakdown.seo.note")})`
+                        : `(${t("pricing_breakdown.ongoing.note")})`}
                   </span>
                 )}
               </div>
@@ -492,6 +500,8 @@ const ServiceSection = ({
                     <Calendar className="w-5 h-5" />
                   ) : isSEO ? (
                     <Search className="w-5 h-5" />
+                  ) : isOngoing ? (
+                    <ShieldCheck className="w-5 h-5" />
                   ) : (
                     <ArrowRight className="w-5 h-5" />
                   )}
@@ -499,7 +509,9 @@ const ServiceSection = ({
                     ? t("cta_labels.scoping_call")
                     : isSEO
                       ? t("cta_labels.site_audit")
-                      : t("cta_labels.default")}
+                      : isOngoing
+                        ? t("ongoing.cta")
+                        : t("cta_labels.default")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
 
@@ -634,6 +646,7 @@ export default function ServicesClient() {
     { id: "ecommerce", label: t("journey.phases.ecommerce") },
     { id: "ai", label: t("journey.phases.ai") },
     { id: "seo", label: t("journey.phases.seo") },
+    { id: "ongoing", label: t("journey.phases.ongoing") },
   ];
 
   const contactRef = useRef<HTMLDivElement>(null);
@@ -788,7 +801,9 @@ export default function ServicesClient() {
                 ? t("pricing_breakdown.ai.investment_notes.1").split(": ")[1]
                 : activeTab === "seo"
                   ? t("pricing_breakdown.seo.investment.0.value")
-                  : t(`${activeTab}.pricing_label`)}
+                  : activeTab === "ongoing"
+                    ? t("pricing_breakdown.ongoing.investment.1.value")
+                    : t(`${activeTab}.pricing_label`)}
             </span>
           </div>
           <Link
