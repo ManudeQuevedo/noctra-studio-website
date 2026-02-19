@@ -46,7 +46,9 @@ export function Header() {
   const isContactPage = nextPathname?.includes("/contact");
   const isCareersPage = nextPathname?.includes("/careers");
   const isAdminPage = nextPathname?.includes("/admin");
-  const isStudioPage = nextPathname?.includes("/studio");
+  const isStudioPage =
+    nextPathname?.includes("/studio") ||
+    nextPathname?.includes("/centro-comando");
   const isDashboardPage = nextPathname?.includes("/dashboard");
 
   const [mounted, setMounted] = React.useState(false);

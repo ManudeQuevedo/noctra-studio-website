@@ -5,7 +5,7 @@ export const metadata: Metadata = {
   description: "Restricted Access",
 };
 
-export default function StudioLayout({
+export default function CommandCenterLayout({
   children,
 }: {
   children: React.ReactNode;

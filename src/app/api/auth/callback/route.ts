@@ -7,7 +7,7 @@ export async function GET(request: NextRequest) {
   const token_hash = searchParams.get("token_hash");
   const type = searchParams.get("type") as EmailOtpType | null;
   const code = searchParams.get("code");
-  const next = searchParams.get("next") ?? "/en/studio";
+  const next = searchParams.get("next") ?? "/en/centro-comando";
 
   // Create a mutable array to hold cookies that need to be set
   const cookiesToSet: { name: string; value: string; options: any }[] = [];

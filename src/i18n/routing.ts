@@ -30,6 +30,7 @@ export const routing = defineRouting({
       en: '/cookie-policy',
       es: '/politica-de-cookies'
     },
+    '/centro-comando': '/centro-comando',
     '/studio': '/studio',
     '/dashboard': '/dashboard',
     '/admin': '/admin',

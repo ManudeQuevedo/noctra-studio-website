@@ -42,10 +42,10 @@ export async function middleware(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Rutas que solo necesitan auth de Supabase (sin intl)
+  // /studio es ahora Sanity Studio y necesita pasar por intl
   const isAuthRoute =
     pathname.startsWith("/api/") ||
     pathname.startsWith("/_next/") ||
-    pathname.startsWith("/studio") ||
     pathname.startsWith("/dashboard") ||
     pathname.startsWith("/admin") ||
     pathname.startsWith("/login");

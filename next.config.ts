@@ -8,6 +8,10 @@ const nextConfig: NextConfig = {
   // Disable source maps in production for security
   productionBrowserSourceMaps: false,
   
+  // Transpile Sanity packages so Turbopack can handle them without the
+  // "chunk.reason.enqueueModel is not a function" runtime error.
+  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/icons', '@sanity/vision'],
+
   // Tree shake these heavy libraries
   experimental: {
     optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
@@ -15,6 +19,12 @@ const nextConfig: NextConfig = {
   
   images: {
     remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/**',
+      },
       {
         protocol: 'https',
         hostname: 'images.unsplash.com',

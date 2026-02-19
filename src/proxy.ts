@@ -6,6 +6,19 @@ import { NextRequest, NextResponse } from "next/server";
 const intlMiddleware = createMiddleware(routing);
 
 export default async function middleware(request: NextRequest) {
+  const { pathname } = request.nextUrl;
+
+  // Sanity Studio must be served from the root /studio route without any
+  // locale redirect. Skip intl + auth entirely for /studio paths.
+  // Locale-prefixed variants (e.g. /es/studio) redirect to /studio.
+  if (pathname.startsWith('/studio')) {
+    return NextResponse.next();
+  }
+  const localeStudioMatch = pathname.match(/^\/[a-z]{2}(\/studio.*)/);
+  if (localeStudioMatch) {
+    return NextResponse.redirect(new URL(localeStudioMatch[1], request.url));
+  }
+
   // 1. Run next-intl middleware to handle locale redirection/rewrites
   const response = intlMiddleware(request);
 
@@ -25,7 +38,9 @@ export default async function middleware(request: NextRequest) {
        user = supabaseUser;
        
        // 3. Admin Access Control (Strict Check)
-       if (request.nextUrl.pathname.startsWith('/studio')) {
+       // /centro-comando is the Command Center (requires auth)
+       // /studio is Sanity Studio (has its own auth, no Supabase check)
+       if (request.nextUrl.pathname.startsWith('/centro-comando')) {
          const ADMIN_EMAILS = ['hello@noctra.studio', 'contact@manudequevedo.com'];
          if (!user || !user.email || !ADMIN_EMAILS.includes(user.email)) {
            return NextResponse.redirect(new URL('/', request.url));
@@ -50,13 +65,13 @@ export default async function middleware(request: NextRequest) {
          "style-src 'self' 'unsafe-inline'",
 
          // Images: Allow self, data URIs, and external image sources
-         "img-src 'self' data: blob: https://images.unsplash.com https://placehold.co https://*.supabase.co",
+         "img-src 'self' data: blob: https://images.unsplash.com https://placehold.co https://*.supabase.co https://cdn.sanity.io",
 
          // Fonts: Allow self and data URIs
          "font-src 'self' data:",
 
          // Connect: API endpoints and external services
-         "connect-src 'self' https://*.supabase.co https://www.googleapis.com https://safebrowsing.googleapis.com https://http-observatory.security.mozilla.org https://vercel.live https://*.sentry.io https://o172531.ingest.us.sentry.io",
+         "connect-src 'self' https://*.supabase.co https://www.googleapis.com https://safebrowsing.googleapis.com https://http-observatory.security.mozilla.org https://vercel.live https://*.sentry.io https://o172531.ingest.us.sentry.io https://*.sanity.io https://api.sanity.io https://cdn.sanity.io",
 
          // Frame: Only allow same origin (prevents clickjacking)
          "frame-src 'self'",
