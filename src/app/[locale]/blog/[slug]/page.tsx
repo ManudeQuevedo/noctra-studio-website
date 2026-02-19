@@ -53,10 +53,26 @@ export async function generateMetadata({
 
 const components = {
   block: {
-    h1: ({ children }: any) => <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 mt-12">{children}</h1>,
-    h2: ({ children }: any) => <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 mt-10">{children}</h2>,
-    h3: ({ children }: any) => <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 mt-8">{children}</h3>,
-    normal: ({ children }: any) => <p className="text-base text-neutral-400 leading-relaxed mb-6">{children}</p>,
+    h1: ({ children }: any) => (
+      <h1 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6 mt-12">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }: any) => (
+      <h2 className="text-3xl md:text-4xl font-bold text-white mb-4 mt-10">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }: any) => (
+      <h3 className="text-2xl md:text-3xl font-semibold text-white mb-4 mt-8">
+        {children}
+      </h3>
+    ),
+    normal: ({ children }: any) => (
+      <p className="text-base text-neutral-400 leading-relaxed mb-6">
+        {children}
+      </p>
+    ),
     blockquote: ({ children }: any) => (
       <blockquote className="border-l-4 border-emerald-500 pl-6 py-2 my-8 italic text-neutral-300 text-lg md:text-xl">
         {children}
@@ -64,16 +80,28 @@ const components = {
     ),
   },
   list: {
-    bullet: ({ children }: any) => <ul className="list-disc pl-6 mb-6 space-y-2 text-neutral-400">{children}</ul>,
-    number: ({ children }: any) => <ol className="list-decimal pl-6 mb-6 space-y-2 text-neutral-400">{children}</ol>,
+    bullet: ({ children }: any) => (
+      <ul className="list-disc pl-6 mb-6 space-y-2 text-neutral-400">
+        {children}
+      </ul>
+    ),
+    number: ({ children }: any) => (
+      <ol className="list-decimal pl-6 mb-6 space-y-2 text-neutral-400">
+        {children}
+      </ol>
+    ),
   },
   marks: {
     link: ({ children, value }: any) => (
-      <a href={value.href} className="text-emerald-500 hover:text-emerald-400 hover:underline transition-all">
+      <a
+        href={value.href}
+        className="text-emerald-500 hover:text-emerald-400 hover:underline transition-all">
         {children}
       </a>
     ),
-    strong: ({ children }: any) => <strong className="font-bold text-white">{children}</strong>,
+    strong: ({ children }: any) => (
+      <strong className="font-bold text-white">{children}</strong>
+    ),
   },
   types: {
     image: ({ value }: any) => (
@@ -105,12 +133,11 @@ export default async function BlogPostPage({
     <main className="min-h-screen bg-[#050505] text-white pt-32 pb-24 px-6 md:px-8 relative overflow-hidden">
       {/* Background Noise */}
       <div className="fixed inset-0 z-0 pointer-events-none opacity-[0.03] mix-blend-multiply bg-[url('https://grainy-gradients.vercel.app/noise.svg')] bg-repeat bg-[length:100px_100px]" />
-      
+
       <div className="relative z-10 max-w-4xl mx-auto">
-        <Link 
-          href="/blog" 
-          className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12 group text-sm font-medium"
-        >
+        <Link
+          href="/blog"
+          className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12 group text-sm font-medium">
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           Back to Articles
         </Link>
@@ -120,10 +147,9 @@ export default async function BlogPostPage({
           <header className="mb-12">
             <div className="flex items-center gap-4 mb-6">
               {post.categories?.map((cat) => (
-                <span 
-                  key={cat.title} 
-                  className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20"
-                >
+                <span
+                  key={cat.title}
+                  className="text-xs font-bold uppercase tracking-widest px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-500 border border-emerald-500/20">
                   {cat.title}
                 </span>
               ))}
@@ -145,15 +171,17 @@ export default async function BlogPostPage({
                     />
                   </div>
                 )}
-                <span className="font-medium text-neutral-400">{post.author?.name}</span>
+                <span className="font-medium text-neutral-400">
+                  {post.author?.name}
+                </span>
               </div>
               <div className="flex items-center gap-2">
                 <Calendar className="w-4 h-4 text-neutral-600" />
                 <time dateTime={post.publishedAt}>
-                  {new Date(post.publishedAt).toLocaleDateString(undefined, { 
-                    year: 'numeric', 
-                    month: 'long', 
-                    day: 'numeric' 
+                  {new Date(post.publishedAt).toLocaleDateString(undefined, {
+                    year: "numeric",
+                    month: "long",
+                    day: "numeric",
                   })}
                 </time>
               </div>
@@ -181,14 +209,13 @@ export default async function BlogPostPage({
 
           {/* Footer Metadata */}
           <footer className="mt-24 pt-12 border-t border-white/5 flex items-center justify-between">
-            <Link 
-              href="/blog" 
-              className="inline-flex items-center gap-2 bg-neutral-900 text-white px-6 py-3 rounded-2xl text-sm font-bold border border-neutral-800 hover:border-neutral-700 transition-all"
-            >
+            <Link
+              href="/blog"
+              className="inline-flex items-center gap-2 bg-neutral-900 text-white px-6 py-3 rounded-2xl text-sm font-bold border border-neutral-800 hover:border-neutral-700 transition-all">
               <ArrowLeft className="w-4 h-4" />
               More Articles
             </Link>
-          </header>
+          </footer>
         </article>
       </div>
     </main>

@@ -5,8 +5,6 @@ import { useTranslations } from "next-intl";
 import {
   ArrowRight,
   Instagram,
-  Linkedin,
-  Github,
   Mail,
   MapPin,
   Phone,
@@ -317,16 +315,6 @@ export function Footer() {
                   icon: FaXTwitter,
                   href: "https://x.com/NoctraStudio",
                   label: t("social.twitter"),
-                },
-                {
-                  icon: Linkedin,
-                  href: "https://linkedin.com/company/noctra-studio",
-                  label: t("social.linkedin"),
-                },
-                {
-                  icon: Github,
-                  href: "https://github.com/ManudeQuevedo",
-                  label: t("social.github"),
                 },
               ].map((social, i) => (
                 <Link
