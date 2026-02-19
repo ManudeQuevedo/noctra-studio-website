@@ -141,7 +141,7 @@ export default function BlogClient() {
 
                   {/* Text Details */}
                   <div className="p-8 flex flex-col flex-1 space-y-4">
-                    <h2 className="text-2xl font-bold leading-tight group-hover:text-emerald-400 transition-colors duration-300 line-clamp-2">
+                    <h2 className="text-2xl font-bold leading-tight group-hover:text-emerald-400 transition-colors duration-300 line-clamp-none md:line-clamp-2">
                       {post.title}
                     </h2>
                     <p className="text-neutral-500 text-sm leading-relaxed line-clamp-3 flex-1 font-medium">

@@ -18,9 +18,13 @@ export function PhaseSelector({
   setActivePhase: (id: string) => void;
 }) {
   return (
-    <div className="w-full max-w-4xl mx-auto mb-20 md:mb-24 relative px-6 overflow-hidden">
-      <div className="overflow-x-auto pb-12 scrollbar-none -mx-6 px-6">
-        <div className="relative flex justify-between items-center min-w-[500px] md:min-w-0">
+    <div className="w-full max-w-4xl mx-auto mb-20 md:mb-24 relative px-6">
+      {/* Scroll Indicators / Masks */}
+      <div className="absolute left-6 top-0 bottom-12 w-12 bg-gradient-to-r from-neutral-950 to-transparent z-20 pointer-events-none md:hidden" />
+      <div className="absolute right-6 top-0 bottom-12 w-12 bg-gradient-to-l from-neutral-950 to-transparent z-20 pointer-events-none md:hidden" />
+
+      <div className="overflow-x-auto pb-12 scrollbar-none -mx-6 px-6 relative">
+        <div className="relative flex justify-between items-center min-w-[500px] md:min-w-0 px-4 md:px-0">
           {/* Visual Timeline Line */}
           <div className="absolute top-1/2 left-0 w-full h-px bg-neutral-800 -translate-y-1/2" />
 

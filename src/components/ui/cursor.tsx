@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 
 export function Cursor() {
+  const [isVisible, setIsVisible] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
@@ -13,9 +14,22 @@ export function Cursor() {
   const cursorYSpring = useSpring(mouseY, springConfig);
 
   useEffect(() => {
+    // Initial detection: Show cursor only if device has a fine pointer (mouse/trackpad)
+    const hasHoverCapability = window.matchMedia(
+      "(hover: hover) and (pointer: fine)",
+    ).matches;
+    setIsVisible(hasHoverCapability);
+
     const moveCursor = (e: MouseEvent) => {
+      // If we receive mousemove, a mouse/trackpad is active
+      setIsVisible(true);
       mouseX.set(e.clientX);
       mouseY.set(e.clientY);
+    };
+
+    const handleTouchStart = () => {
+      // If the last input was touch, hide the custom cursor
+      setIsVisible(false);
     };
 
     const handleMouseOver = (e: MouseEvent) => {
@@ -33,19 +47,23 @@ export function Cursor() {
     };
 
     window.addEventListener("mousemove", moveCursor);
+    window.addEventListener("touchstart", handleTouchStart, { passive: true });
     window.addEventListener("mouseover", handleMouseOver);
 
     return () => {
       window.removeEventListener("mousemove", moveCursor);
+      window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("mouseover", handleMouseOver);
     };
   }, [mouseX, mouseY]);
+
+  if (!isVisible) return null;
 
   return (
     <>
       {/* Spotlight Cursor */}
       <motion.div
-        className="hidden md:block fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference backdrop-grayscale backdrop-contrast-200"
+        className="fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference backdrop-grayscale backdrop-contrast-200"
         style={{
           x: cursorXSpring,
           y: cursorYSpring,
@@ -65,14 +83,10 @@ export function Cursor() {
         }}
       />
       <style jsx global>{`
-        @media (min-width: 768px) {
-          body {
-            cursor: none;
-          }
-          a,
-          button {
-            cursor: none;
-          }
+        body,
+        a,
+        button {
+          cursor: none !important;
         }
       `}</style>
     </>

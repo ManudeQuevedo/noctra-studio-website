@@ -50,7 +50,9 @@ export function ProcessSection() {
   );
 
   return (
-    <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 border-t border-neutral-900">
+    <section
+      id="process"
+      className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 md:py-32 border-t border-neutral-900">
       <motion.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
@@ -75,17 +77,17 @@ export function ProcessSection() {
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.1 }}
             className="group relative">
-            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 p-8 md:p-12 rounded-[2.5rem] bg-neutral-950 border border-neutral-800/50 hover:border-emerald-500/30 transition-all duration-500 relative overflow-hidden">
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 p-8 md:p-12 rounded-[2.5rem] bg-neutral-950 border border-neutral-800/50 hover:border-emerald-500/30 transition-all duration-500 relative overflow-hidden">
               {/* Background Glow */}
               <div className="absolute top-0 right-0 w-96 h-96 bg-emerald-500/5 rounded-full blur-[100px] -mr-48 -mt-48 transition-opacity duration-500 opacity-0 group-hover:opacity-100" />
 
               {/* Left Column: Number and Title */}
-              <div className="lg:col-span-5 space-y-6">
+              <div className="lg:col-span-5 space-y-8">
                 <div className="flex items-center gap-6">
-                  <span className="text-6xl md:text-8xl font-black text-neutral-900 group-hover:text-emerald-500/10 transition-colors duration-500 font-mono leading-none">
+                  <span className="text-5xl md:text-8xl font-black text-neutral-900 group-hover:text-emerald-500/10 transition-colors duration-500 font-mono leading-none">
                     {step.number}
                   </span>
-                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-emerald-500/30 transition-colors duration-500">
+                  <div className="w-14 h-14 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center group-hover:border-emerald-500/30 transition-colors duration-500 shrink-0">
                     {STEP_ICONS[key] || (
                       <Search
                         className="w-7 h-7 text-white"
@@ -95,16 +97,18 @@ export function ProcessSection() {
                   </div>
                 </div>
 
-                <div className="space-y-2">
-                  <h3 className="text-2xl md:text-3xl font-semibold text-white group-hover:text-emerald-400 transition-colors">
-                    {step.title}
-                  </h3>
-                  <p className="text-xs font-bold text-emerald-500/80 uppercase tracking-widest">
-                    {step.subtitle}
-                  </p>
+                <div className="space-y-3">
+                  <div className="space-y-1">
+                    <p className="text-[10px] md:text-xs font-bold text-emerald-500/80 uppercase tracking-[0.3em]">
+                      {step.subtitle}
+                    </p>
+                    <h3 className="text-2xl md:text-4xl font-black text-white group-hover:text-emerald-400 transition-colors tracking-tight leading-tight italic uppercase">
+                      {step.title}
+                    </h3>
+                  </div>
                 </div>
 
-                <p className="text-lg md:text-xl text-neutral-300 leading-relaxed max-w-md">
+                <p className="text-base md:text-lg text-neutral-400 leading-relaxed max-w-md">
                   {step.description}
                 </p>
               </div>

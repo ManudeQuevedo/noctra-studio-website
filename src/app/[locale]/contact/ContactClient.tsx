@@ -158,20 +158,41 @@ function ContactForm() {
   const searchParams = useSearchParams();
   const interest = searchParams.get("interest");
 
-  // Phone auto-formatter
+  // Phone auto-formatter (Mexican format: +52 (XXX) XXX XXXX)
   const handlePhoneChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     let val = e.target.value.replace(/\D/g, "");
-    if (val.length > 10) val = val.slice(0, 10);
 
-    // Format: (XXX) XXX XXXX
-    if (val.length > 6) {
-      val = `(${val.slice(0, 3)}) ${val.slice(3, 6)} ${val.slice(6)}`;
-    } else if (val.length > 3) {
-      val = `(${val.slice(0, 3)}) ${val.slice(3)}`;
-    } else if (val.length > 0) {
-      val = `(${val}`;
+    // If it starts with 52, keep it, otherwise assume user is typing the 10 digits
+    if (val.startsWith("52") && val.length > 2) {
+      // already has 52
+    } else if (val.length > 0 && !val.startsWith("52")) {
+      // doesn't have 52, we'll prefix it later or just let the formatting handle it
     }
-    setValue("phone", val);
+
+    if (val.length > 12) val = val.slice(0, 12);
+
+    let formatted = "";
+    if (val.length > 0) {
+      formatted = "+";
+      if (val.length <= 2) {
+        formatted += val;
+      } else {
+        formatted += "52";
+        const digits = val.startsWith("52") ? val.slice(2) : val;
+
+        if (digits.length > 0) {
+          formatted += " (" + digits.slice(0, 3);
+          if (digits.length > 3) {
+            formatted += ") " + digits.slice(3, 6);
+            if (digits.length > 6) {
+              formatted += " " + digits.slice(6, 10);
+            }
+          }
+        }
+      }
+    }
+
+    setValue("phone", formatted);
   };
 
   const budgetScope = useMemo(() => {

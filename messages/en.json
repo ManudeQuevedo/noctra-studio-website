@@ -3220,7 +3220,7 @@
       "email_label": "Your email",
       "email_placeholder": "you@company.com",
       "phone_label": "Phone (for quick follow-up)",
-      "phone_placeholder": "+1 ...",
+      "phone_placeholder": "+52 (___) ___-____",
       "service_label": "What type of project do you need?",
       "service_placeholder": "Select an option...",
       "service_options": {

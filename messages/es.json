@@ -2431,7 +2431,7 @@
       "email_label": "Tu correo",
       "email_placeholder": "tu@empresa.com",
       "phone_label": "Teléfono (para seguimiento rápido)",
-      "phone_placeholder": "+52 ...",
+      "phone_placeholder": "+52 (___) ___-____",
       "service_label": "¿Qué tipo de proyecto necesitas?",
       "service_placeholder": "Selecciona una opción...",
       "service_options": {
