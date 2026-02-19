@@ -3135,8 +3135,9 @@
     }
   },
   "BlogPage": {
-    "title": "Coming Soon",
-    "description": "We're preparing practical insights on web development, SEO, and digital growth for businesses like yours. Check back soon."
+    "badge": "Latest Insights",
+    "title": "Insights & Engineering",
+    "description": "Practical guides and technical insights on web development, SEO, and digital strategy to help your business scale."
   },
   "Contact": {
     "title": "Ready to start?",

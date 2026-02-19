@@ -2346,8 +2346,9 @@
     "title": "Nuestro Arsenal de Ingeniería"
   },
   "BlogPage": {
-    "title": "Próximamente",
-    "description": "Estamos preparando artículos prácticos sobre desarrollo web, SEO y crecimiento digital para negocios como el tuyo. Vuelve pronto."
+    "badge": "Últimos Insights",
+    "title": "Insights e Ingeniería",
+    "description": "Explora guías prácticas y perspectivas técnicas sobre desarrollo web, SEO y estrategia digital para escalar tu negocio."
   },
   "Contact": {
     "title": "¿Listo para empezar?",

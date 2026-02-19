@@ -191,7 +191,7 @@ export default function WorkClient() {
                 {/* Text */}
                 <span
                   className={cn(
-                    "text-sm font-mono uppercase tracking-wider",
+                    "text-[10px] md:text-sm font-mono uppercase tracking-wider text-center max-w-[80px] md:max-w-none leading-tight",
                     isCurrent
                       ? "text-emerald-500 font-bold"
                       : isCompleted
@@ -270,15 +270,14 @@ export default function WorkClient() {
                   viewport={{ once: true }}
                   transition={{ delay: index * 0.1 }}
                   className="group p-8 md:p-10 rounded-3xl border border-neutral-800 bg-black hover:border-white/20 transition-all duration-500 flex flex-col h-full relative overflow-hidden">
-                  {project.is_future && (
-                    <div className="absolute top-6 right-6 z-20">
-                      <div className="px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-[10px] font-mono font-bold text-orange-500 uppercase tracking-widest">
-                        Starting Soon
-                      </div>
-                    </div>
-                  )}
-
                   <div className="flex flex-col mb-8">
+                    {project.is_future && (
+                      <div className="mb-4">
+                        <div className="inline-flex px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-[10px] font-mono font-bold text-orange-500 uppercase tracking-widest">
+                          {locale === "es" ? "Próximamente" : "Starting Soon"}
+                        </div>
+                      </div>
+                    )}
                     <h3 className="text-3xl font-bold tracking-tight mb-2">
                       {project.name}
                     </h3>
@@ -612,7 +611,7 @@ export default function WorkClient() {
                 </div>
               </div>
 
-              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-16">
+              <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8 md:mb-16">
                 {/* Left Side - Why Act Now */}
                 <div className="space-y-8">
                   <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-[0.2em] border-b border-white/5 pb-4">
@@ -658,7 +657,7 @@ export default function WorkClient() {
                 </div>
               </div>
 
-              <div className="flex flex-col items-center gap-8 border-t border-white/5 pt-12">
+              <div className="flex flex-col items-center gap-8 border-t border-white/5 pt-8 md:pt-12">
                 <div className="flex flex-col md:flex-row items-center gap-6">
                   <Link
                     href="/contact"
@@ -879,12 +878,10 @@ export default function WorkClient() {
                   <div key={i} className="flex flex-col items-center">
                     <button
                       onClick={() => {
-                        document
-                          .getElementById(`phase-${i}`)
-                          ?.scrollIntoView({
-                            behavior: "smooth",
-                            block: "center",
-                          });
+                        document.getElementById(`phase-${i}`)?.scrollIntoView({
+                          behavior: "smooth",
+                          block: "center",
+                        });
                       }}
                       className="group relative flex flex-col items-center outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-full"
                       aria-label={`Go to phase ${i + 1}: ${phase.label}`}

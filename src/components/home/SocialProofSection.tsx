@@ -101,7 +101,7 @@ export function SocialProofSection() {
             <Button
               asChild
               size="lg"
-              className="rounded-2xl h-14 px-10 text-base bg-emerald-500 text-black hover:bg-emerald-400 transition-all duration-300 w-full sm:w-auto font-bold shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)] hover:scale-[1.02] active:scale-[0.98]">
+              className="rounded-2xl h-14 px-6 sm:px-10 text-sm sm:text-base bg-emerald-500 text-black hover:bg-emerald-400 transition-all duration-300 w-full sm:w-auto font-bold shadow-[0_0_30px_-5px_rgba(16,185,129,0.3)] hover:scale-[1.02] active:scale-[0.98]">
               <Link
                 href={{
                   pathname: "/contact",

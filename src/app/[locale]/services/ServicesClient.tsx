@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence, useInView } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import NextImage from "next/image";
 import {
@@ -33,7 +33,7 @@ import {
   Lightbulb,
   Search,
 } from "lucide-react";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { cn } from "@/lib/utils";
 
 // Components
@@ -636,6 +636,9 @@ export default function ServicesClient() {
     { id: "seo", label: t("journey.phases.seo") },
   ];
 
+  const contactRef = useRef<HTMLDivElement>(null);
+  const isContactInView = useInView(contactRef, { amount: 0.1 });
+
   const scrollToSection = (id: string) => {
     const el = document.getElementById(id);
     if (el) {
@@ -764,6 +767,7 @@ export default function ServicesClient() {
 
       <div
         id="contact"
+        ref={contactRef}
         className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8 pb-32">
         <SmartCTA activePhase={activeTab} />
       </div>
@@ -772,7 +776,8 @@ export default function ServicesClient() {
       <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 z-50 pointer-events-none">
         <motion.div
           initial={{ y: 100 }}
-          animate={{ y: 0 }}
+          animate={{ y: isContactInView ? 150 : 0 }}
+          transition={{ duration: 0.4, ease: "easeOut" }}
           className="w-full p-4 rounded-2xl bg-neutral-900/90 backdrop-blur-xl border border-white/10 shadow-2xl pointer-events-auto flex items-center justify-between gap-4">
           <div className="flex flex-col">
             <span className="text-[8px] font-black text-emerald-500 uppercase tracking-widest">
