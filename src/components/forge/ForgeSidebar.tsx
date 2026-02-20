@@ -11,6 +11,9 @@ import {
   LogOut,
   Kanban,
   BarChart3,
+  StickyNote,
+  Send,
+  UserCheck,
 } from "lucide-react";
 
 export function ForgeSidebar() {
@@ -50,14 +53,29 @@ export function ForgeSidebar() {
       icon: Kanban,
     },
     {
-      label: "Métricas",
-      href: "/forge/metrics",
-      icon: BarChart3,
+      label: "Propuestas",
+      href: "/forge/proposals",
+      icon: StickyNote,
+    },
+    {
+      label: "Contratos",
+      href: "/forge/contracts",
+      icon: Send,
+    },
+    {
+      label: "Clientes",
+      href: "/forge/clients",
+      icon: UserCheck,
     },
     {
       label: "Leads",
       href: "/forge/leads",
       icon: Users,
+    },
+    {
+      label: "Métricas",
+      href: "/forge/metrics",
+      icon: BarChart3,
     },
   ];
 
