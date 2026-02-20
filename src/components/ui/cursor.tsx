@@ -1,7 +1,13 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { LazyMotion, m, domAnimation, useMotionValue, useSpring } from "framer-motion";
+import {
+  LazyMotion,
+  m,
+  domAnimation,
+  useMotionValue,
+  useSpring,
+} from "framer-motion";
 
 export function Cursor() {
   const [isVisible, setIsVisible] = useState(false);
@@ -15,12 +21,7 @@ export function Cursor() {
 
   // Use a more robust way to detect initial hover capability without triggering cascading render lint error
   useEffect(() => {
-    const hasHoverCapability = window.matchMedia(
-      "(hover: hover) and (pointer: fine)",
-    ).matches;
-    if (hasHoverCapability) {
-      setIsVisible(true);
-    }
+    let timer: NodeJS.Timeout;
 
     const moveCursor = (e: MouseEvent) => {
       setIsVisible(true);
@@ -46,11 +47,23 @@ export function Cursor() {
       }
     };
 
-    window.addEventListener("mousemove", moveCursor);
-    window.addEventListener("touchstart", handleTouchStart, { passive: true });
-    window.addEventListener("mouseover", handleMouseOver);
+    timer = setTimeout(() => {
+      const hasHoverCapability = window.matchMedia(
+        "(hover: hover) and (pointer: fine)",
+      ).matches;
+      if (hasHoverCapability) {
+        setIsVisible(true);
+      }
+
+      window.addEventListener("mousemove", moveCursor);
+      window.addEventListener("touchstart", handleTouchStart, {
+        passive: true,
+      });
+      window.addEventListener("mouseover", handleMouseOver);
+    }, 2000);
 
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("mousemove", moveCursor);
       window.removeEventListener("touchstart", handleTouchStart);
       window.removeEventListener("mouseover", handleMouseOver);

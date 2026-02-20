@@ -12,28 +12,36 @@ declare global {
 
 export function SmoothScroll() {
   useEffect(() => {
-    const lenis = new Lenis({
-      duration: 1.2,
-      easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
-      orientation: "vertical",
-      gestureOrientation: "vertical",
-      smoothWheel: true,
-      touchMultiplier: 2,
-    });
+    let lenis: Lenis;
+    let animationFrameId: number;
 
-    // Store globally so modals can pause/resume
-    window.__lenis = lenis;
+    const timer = setTimeout(() => {
+      lenis = new Lenis({
+        duration: 1.2,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        touchMultiplier: 2,
+      });
 
-    function raf(time: number) {
-      lenis.raf(time);
-      requestAnimationFrame(raf);
-    }
+      window.__lenis = lenis;
 
-    requestAnimationFrame(raf);
+      function raf(time: number) {
+        lenis.raf(time);
+        animationFrameId = requestAnimationFrame(raf);
+      }
+
+      animationFrameId = requestAnimationFrame(raf);
+    }, 1000); // Defer to unblock main thread
 
     return () => {
-      lenis.destroy();
-      delete window.__lenis;
+      clearTimeout(timer);
+      if (animationFrameId) cancelAnimationFrame(animationFrameId);
+      if (lenis) {
+        lenis.destroy();
+        delete window.__lenis;
+      }
     };
   }, []);
 

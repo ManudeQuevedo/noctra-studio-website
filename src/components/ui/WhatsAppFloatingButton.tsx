@@ -31,6 +31,7 @@ export const WhatsAppFloatingButton = () => {
           href="https://wa.me/524463731451?text=Hola%20Manu%2C%20me%20interesa%20hablar%20sobre%20mi%20proyecto"
           target="_blank"
           rel="noopener noreferrer"
+          aria-label="Chat with us on WhatsApp"
           className="flex items-center justify-center w-[52px] h-[52px] bg-[#25D366] rounded-full text-white shadow-lg hover:shadow-[#25D366]/20 hover:scale-110 transition-all duration-300">
           <FaWhatsapp className="w-6 h-6" />
         </a>

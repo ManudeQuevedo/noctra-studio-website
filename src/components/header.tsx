@@ -199,6 +199,8 @@ export function Header() {
       <div className="fixed top-6 right-6 z-[60] h-12 flex items-center md:hidden mix-blend-difference">
         <button
           onClick={() => setIsOpen(!isOpen)}
+          aria-label={isOpen ? "Close menu" : "Open menu"}
+          aria-expanded={isOpen}
           className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-full backdrop-blur-md border border-white/10 transition-transform active:scale-95">
           <div
             className={cn(
@@ -287,6 +289,8 @@ export function Header() {
 
                 <button
                   onClick={() => setIsOpen(!isOpen)}
+                  aria-label={isOpen ? "Close menu" : "Open menu"}
+                  aria-expanded={isOpen}
                   className="flex items-center gap-4 group cursor-pointer">
                   <span
                     className={cn(
@@ -434,12 +438,16 @@ export function Header() {
                           <a
                             href="https://instagram.com/noctra_studio"
                             target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="Instagram"
                             className="text-neutral-600 hover:text-white transition-colors">
                             <Instagram className="w-5 h-5" />
                           </a>
                           <a
                             href="https://x.com/NoctraStudio"
                             target="_blank"
+                            rel="noopener noreferrer"
+                            aria-label="X (formerly Twitter)"
                             className="text-neutral-600 hover:text-white transition-colors">
                             <XIcon className="w-5 h-5" />
                           </a>
@@ -525,12 +533,16 @@ export function Header() {
                       <a
                         href="https://instagram.com/noctra_studio"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="Instagram"
                         className="text-neutral-500 hover:text-white transition-colors p-2">
                         <Instagram className="w-5 h-5" />
                       </a>
                       <a
                         href="https://x.com/NoctraStudio"
                         target="_blank"
+                        rel="noopener noreferrer"
+                        aria-label="X (formerly Twitter)"
                         className="text-neutral-500 hover:text-white transition-colors p-2">
                         <XIcon className="w-5 h-5" />
                       </a>

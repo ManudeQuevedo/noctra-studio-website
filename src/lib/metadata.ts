@@ -27,9 +27,13 @@ export async function generatePageMetadata(
 ): Promise<Metadata> {
   const t = await getTranslations({ locale, namespace: 'Metadata' });
   
-  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://noctra.studio';
+  const baseUrl = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.noctra.studio';
   const pagePath = page === 'home' ? '' : page;
-  const localePath = locale === 'en' ? '' : `${locale}/`;
+  
+  // Strict absolute URLs for next-intl (avoiding ambiguous locale fallback)
+  const canonicalUrl = `${baseUrl}/${locale}${pagePath ? `/${pagePath}` : ''}`;
+  const enUrl = `${baseUrl}/en${pagePath ? `/${pagePath}` : ''}`;
+  const esUrl = `${baseUrl}/es${pagePath ? `/${pagePath}` : ''}`;
   
   return {
     title: t(`${page}.title`),
@@ -40,7 +44,7 @@ export async function generatePageMetadata(
     openGraph: {
       title: t(`${page}.og_title`),
       description: t(`${page}.og_description`),
-      url: `${baseUrl}/${localePath}${pagePath}`,
+      url: canonicalUrl,
       siteName: 'Noctra Studio',
       locale: locale === 'en' ? 'en_US' : 'es_MX',
       type: 'website',
@@ -64,10 +68,11 @@ export async function generatePageMetadata(
     
     // Alternate languages
     alternates: {
-      canonical: `${baseUrl}/${pagePath}`,
+      canonical: canonicalUrl,
       languages: {
-        'en': `${baseUrl}/${pagePath}`,
-        'es': `${baseUrl}/es/${pagePath}`,
+        'en': enUrl,
+        'es': esUrl,
+        'x-default': esUrl,
       },
     },
     

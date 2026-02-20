@@ -74,18 +74,10 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  metadataBase: new URL("https://noctra.studio"),
+  metadataBase: new URL("https://www.noctra.studio"),
   title: "Noctra Studio | Digital Architecture & Web Development",
   description:
     "Strategic web development studio in Querétaro, Mexico. Websites that generate measurable ROI for businesses.",
-  alternates: {
-    canonical: "/",
-    languages: {
-      es: "/",
-      en: "/en",
-      "x-default": "/",
-    },
-  },
   openGraph: {
     title: "Noctra Studio | Strategic Web Development",
     description:
@@ -139,6 +131,13 @@ export default async function LocaleLayout({
   return (
     <>
       <head>
+        <link
+          rel="preload"
+          href="/fonts/Satoshi-Variable.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         <link
           rel="preconnect"
           href="https://fonts.gstatic.com"

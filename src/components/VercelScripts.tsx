@@ -13,13 +13,6 @@ export function VercelScripts() {
   const [hasConsent, setHasConsent] = useState(false);
 
   useEffect(() => {
-    // Check initial consent
-    const consent = getStoredConsent();
-    if (consent?.analytics) {
-      setHasConsent(true);
-    }
-
-    // Listen for consent updates
     const handleConsentUpdate = (event: any) => {
       if (event.detail?.analytics) {
         setHasConsent(true);
@@ -28,8 +21,19 @@ export function VercelScripts() {
       }
     };
 
-    window.addEventListener("cookieConsentUpdated", handleConsentUpdate);
+    const timer = setTimeout(() => {
+      // Check initial consent
+      const consent = getStoredConsent();
+      if (consent?.analytics) {
+        setHasConsent(true);
+      }
+
+      // Listen for consent updates
+      window.addEventListener("cookieConsentUpdated", handleConsentUpdate);
+    }, 3000); // Defer by 3 seconds for TBT reduction
+
     return () => {
+      clearTimeout(timer);
       window.removeEventListener("cookieConsentUpdated", handleConsentUpdate);
     };
   }, []);
