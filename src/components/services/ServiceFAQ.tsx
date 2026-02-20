@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { ChevronDown, HelpCircle } from "lucide-react";
 import { cn } from "@/lib/utils";
 
@@ -12,6 +12,7 @@ export function ServiceFAQ() {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
         <div className="flex items-center gap-3 mb-12 justify-center">
@@ -26,7 +27,7 @@ export function ServiceFAQ() {
         <div className="space-y-4">
           {items.map((item, i) => (
             <div 
-              key={i} 
+              key={item.question} 
               className={cn(
                 "rounded-2xl border transition-all duration-300",
                 openIndex === i 
@@ -51,7 +52,7 @@ export function ServiceFAQ() {
               </button>
               <AnimatePresence>
                 {openIndex === i && (
-                  <motion.div
+                  <m.div
                     initial={{ height: 0, opacity: 0 }}
                     animate={{ height: "auto", opacity: 1 }}
                     exit={{ height: 0, opacity: 0 }}
@@ -61,7 +62,7 @@ export function ServiceFAQ() {
                     <div className="px-6 pb-6 text-neutral-400 leading-relaxed">
                       {item.answer}
                     </div>
-                  </motion.div>
+                  </m.div>
                 )}
               </AnimatePresence>
             </div>
@@ -69,5 +70,6 @@ export function ServiceFAQ() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState } from 'react';
 import { Cookie } from 'lucide-react';
-import { motion, AnimatePresence } from 'framer-motion';
+import { LazyMotion, m, domAnimation, AnimatePresence } from 'framer-motion';
 import { CookieConfigModal } from './CookieConfigModal';
 import { 
   getStoredConsent, 
@@ -33,8 +33,8 @@ export function CookieSettingsButton() {
   } : undefined;
 
   return (
-    <>
-      <motion.button
+    <LazyMotion features={domAnimation}>
+      <m.button
         initial={{ opacity: 0, scale: 0.8 }}
         animate={{ opacity: 1, scale: 1 }}
         whileHover={{ scale: 1.1, rotate: 10 }}
@@ -45,7 +45,7 @@ export function CookieSettingsButton() {
         title={t("floating_button")}
       >
         <Cookie className="w-5 h-5 group-hover:animate-pulse" />
-      </motion.button>
+      </m.button>
 
       <AnimatePresence>
         {showModal && (
@@ -56,6 +56,6 @@ export function CookieSettingsButton() {
           />
         )}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 }

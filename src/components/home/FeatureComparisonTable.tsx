@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { Check, MoveRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { useState, useRef } from "react";
 import { Link } from "@/i18n/routing";
@@ -57,7 +57,7 @@ function ComparisonCard({ col, rows, recommendedBadge, t }: any) {
           const displayVal = isCheckmark ? val.slice(2).trim() : val;
 
           return (
-            <div key={idx} className="flex justify-between items-start gap-4">
+            <div key={row.criteria} className="flex justify-between items-start gap-4">
               <span className="text-xs text-neutral-500 leading-snug w-2/5">
                 {row.criteria}
               </span>
@@ -168,9 +168,9 @@ function MobileTableSlider({ columns, rows, recommendedBadge, t }: any) {
           ))}
         </div>
         <div className="flex justify-center gap-2 mt-6">
-          {mobileColumns.map((_, idx) => (
+          {mobileColumns.map((col, idx) => (
             <button
-              key={idx}
+              key={col.id}
               onClick={() => scrollMobileTo(idx)}
               className={cn(
                 "h-1.5 rounded-full transition-all",
@@ -215,9 +215,9 @@ function MobileTableSlider({ columns, rows, recommendedBadge, t }: any) {
           </div>
           {/* Dots for Tablet */}
           <div className="flex justify-center gap-2 mt-6 mb-2">
-            {mobileColumns.slice(1).map((_, idx) => (
+            {mobileColumns.slice(1).map((col, idx) => (
               <button
-                key={idx}
+                key={col.id}
                 onClick={() => scrollTabletTo(idx)}
                 className={cn(
                   "h-1.5 rounded-full transition-all",
@@ -242,8 +242,8 @@ export function FeatureComparisonTable() {
   const recommendedBadge = t("recommended_badge");
 
   return (
-    <>
-      <motion.div
+    <LazyMotion features={domAnimation}>
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
@@ -298,7 +298,7 @@ export function FeatureComparisonTable() {
             <tbody>
               {rows.map((row, rowIdx) => (
                 <tr
-                  key={rowIdx}
+                  key={row.criteria}
                   className={cn(
                     "border-b border-neutral-800/40 hover:bg-white/[0.015] transition-colors",
                     rowIdx === rows.length - 1 && "border-0",
@@ -317,7 +317,7 @@ export function FeatureComparisonTable() {
 
                     return (
                       <td
-                        key={valIdx}
+                        key={columns[valIdx]?.id ?? valIdx}
                         className={cn(
                           "p-5 text-center border-l border-neutral-800/50",
                           isNoctra ? "bg-emerald-950/20" : "",
@@ -344,10 +344,10 @@ export function FeatureComparisonTable() {
             </tbody>
           </table>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Mobile/Tablet Slider */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         exit={{ opacity: 0, y: 20 }}
@@ -359,7 +359,7 @@ export function FeatureComparisonTable() {
           recommendedBadge={recommendedBadge}
           t={t}
         />
-      </motion.div>
-    </>
+      </m.div>
+    </LazyMotion>
   );
 }

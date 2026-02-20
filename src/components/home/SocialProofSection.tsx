@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Check, Sparkles, Calendar } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
@@ -12,9 +12,10 @@ export function SocialProofSection() {
   const partnershipItems = t.raw("partnership.items") as string[];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full px-6 md:px-8 py-24">
       <div className="max-w-3xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -48,8 +49,8 @@ export function SocialProofSection() {
               {/* Benefits checklist */}
               <div className="space-y-4">
                 {benefits.map((benefit, index) => (
-                  <motion.div
-                    key={index}
+                  <m.div
+                    key={benefit}
                     initial={{ opacity: 0, x: -10 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     viewport={{ once: true }}
@@ -61,12 +62,12 @@ export function SocialProofSection() {
                     <span className="text-neutral-200 text-sm md:text-base font-medium">
                       {benefit}
                     </span>
-                  </motion.div>
+                  </m.div>
                 ))}
               </div>
 
               {/* Partnership Block */}
-              <motion.div
+              <m.div
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -76,7 +77,7 @@ export function SocialProofSection() {
                 </h4>
                 <div className="space-y-3">
                   {partnershipItems.map((item, i) => (
-                    <div key={i} className="flex items-start gap-2">
+                    <div key={item} className="flex items-start gap-2">
                       <Check className="w-3.5 h-3.5 text-emerald-500/60 mt-0.5 flex-shrink-0" />
                       <p className="text-neutral-300 text-xs font-medium leading-relaxed">
                         {item}
@@ -84,7 +85,7 @@ export function SocialProofSection() {
                     </div>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             </div>
 
             {/* Strategic Note / Why? */}
@@ -111,8 +112,9 @@ export function SocialProofSection() {
               </Link>
             </Button>
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

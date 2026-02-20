@@ -1,6 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { Shield, Info, ExternalLink } from "lucide-react";
 
@@ -99,7 +100,7 @@ export default function PrivacyPolicyClient() {
           <h2>{t("sections.cookies.title")}</h2>
           <p>{t("sections.cookies.content")}</p>
           <p className="text-sm italic">
-            Para más detalles, consulta nuestra <a href="/es/cookie-policy" className="underline hover:text-black dark:hover:text-white">Política de Cookies</a>.
+            Para más detalles, consulta nuestra <Link href="/cookie-policy" className="underline hover:text-black dark:hover:text-white">Política de Cookies</Link>.
           </p>
         </section>
 

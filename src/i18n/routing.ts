@@ -33,7 +33,9 @@ export const routing = defineRouting({
     '/centro-comando': '/centro-comando',
     '/studio': '/studio',
     '/dashboard': '/dashboard',
-    '/admin': '/admin',
+    '/forge': '/forge',
+    '/forge/login': '/forge/login',
+    '/forge/projects': '/forge/projects',
     '/login': '/login',
     '/guarantee': {
       en: '/guarantee',

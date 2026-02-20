@@ -1,7 +1,7 @@
 "use client";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import {
   Users,
   Search,
@@ -42,14 +42,14 @@ const FadeIn = ({
   delay?: number;
   className?: string;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}
     className={className}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 export function CareersClient() {
@@ -74,18 +74,19 @@ export function CareersClient() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-transparent text-neutral-50 relative">
       {/* Hero */}
       <section className="min-h-screen flex flex-col justify-center px-6 md:px-8 pt-40 pb-20 relative z-10">
         <div className="max-w-4xl mx-auto w-full text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
             {t("hero.headline")}
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
@@ -98,7 +99,7 @@ export function CareersClient() {
                 part === "3 días" ||
                 part === "3 days" ||
                 part === "3 business days" ? (
-                  <span key={i} className="text-white font-bold">
+                  <span key={`highlight-${i}`} className="text-white font-bold">
                     {part}
                   </span>
                 ) : (
@@ -106,8 +107,8 @@ export function CareersClient() {
                 ),
               );
             })()}
-          </motion.p>
-          <motion.div
+          </m.p>
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.4 }}
@@ -130,7 +131,7 @@ export function CareersClient() {
             <p className="text-sm text-neutral-500 font-medium tracking-wide">
               {t("hero.micro_copy")}
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </section>
 
@@ -152,7 +153,7 @@ export function CareersClient() {
             {[0, 1, 2, 3, 4].map((i) => {
               const Icon = howItWorksIcons[i] || Zap;
               return (
-                <FadeIn key={i} delay={i * 0.1}>
+                <FadeIn key={t(`how_it_works.steps.${i}.title`)} delay={i * 0.1}>
                   <div className="flex flex-col items-center text-center">
                     <div className="w-12 h-12 rounded-full bg-white/5 border border-neutral-800 flex items-center justify-center mb-6 font-mono text-sm">
                       <Icon className="w-5 h-5 text-neutral-400" />
@@ -189,7 +190,7 @@ export function CareersClient() {
             {[0, 1, 2, 3, 4, 5].map((i) => {
               const highDemand = t.raw(`roles.items.${i}.high_demand`);
               return (
-                <FadeIn key={i} delay={i * 0.05}>
+                <FadeIn key={t(`roles.items.${i}.role_name`)} delay={i * 0.05}>
                   <div className="h-full p-8 rounded-2xl border border-neutral-800 bg-black hover:border-neutral-700 transition-all group flex flex-col">
                     <div className="flex flex-wrap gap-2 mb-4">
                       <span className="text-[10px] py-1 px-3 rounded-full border border-neutral-800 text-neutral-500 uppercase tracking-widest font-bold">
@@ -210,7 +211,7 @@ export function CareersClient() {
                       <ul className="space-y-3">
                         {[0, 1, 2].map((j) => (
                           <li
-                            key={j}
+                            key={t(`roles.items.${i}.what_you_do.${j}`)}
                             className="text-sm md:text-base text-neutral-400 flex items-start gap-3">
                             <span className="w-1.5 h-1.5 rounded-full bg-neutral-800 mt-2 shrink-0" />
                             {t(`roles.items.${i}.what_you_do.${j}`)}
@@ -268,7 +269,7 @@ export function CareersClient() {
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4 mb-10">
                   {[0, 1, 2, 3].map((i) => (
                     <div
-                      key={i}
+                      key={t(`roles.current_needs.high_priority_list.${i}`)}
                       className="flex items-center gap-4 p-5 bg-neutral-900/50 rounded-2xl border border-neutral-800/50 hover:border-emerald-500/30 transition-all group">
                       <div className="w-10 h-10 bg-emerald-500/10 rounded-full flex items-center justify-center shrink-0 group-hover:bg-emerald-500/20 transition-colors">
                         <CheckCircle2 className="w-5 h-5 text-emerald-500" />
@@ -303,7 +304,7 @@ export function CareersClient() {
             {[0, 1, 2, 3, 4, 5, 6, 7].map((i) => {
               const Icon = benefitIcons[i] || CheckCircle2;
               return (
-                <FadeIn key={i} delay={i * 0.05}>
+                <FadeIn key={t(`benefits.items.${i}.title`)} delay={i * 0.05}>
                   <div className="space-y-4">
                     <div className="w-10 h-10 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center">
                       <Icon className="w-5 h-5 text-neutral-400" />
@@ -337,7 +338,7 @@ export function CareersClient() {
           </FadeIn>
           <div className="space-y-6">
             {[0, 1, 2, 3, 4].map((i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+              <FadeIn key={t(`expectations.items.${i}.title`)} delay={i * 0.1}>
                 <div className="p-6 rounded-2xl border border-neutral-800 bg-black flex flex-col md:flex-row md:items-center gap-6">
                   <div className="w-12 h-12 rounded-full bg-white/5 border border-neutral-800 flex items-center justify-center shrink-0 font-mono text-xs">
                     0{i + 1}
@@ -528,7 +529,7 @@ export function CareersClient() {
                           const isNoctra = i === 4;
                           return (
                             <tr
-                              key={i}
+                              key={t(`pricing_model.comparison.table.rows.${i}.platform`)}
                               className={`border-b border-neutral-900/50 ${isNoctra ? "bg-emerald-500/5" : ""}`}>
                               <td
                                 className={`py-4 font-medium ${isNoctra ? "text-white" : "text-neutral-400"}`}>
@@ -576,7 +577,7 @@ export function CareersClient() {
                       </p>
                       {[0, 1, 2].map((i) => (
                         <div
-                          key={i}
+                          key={t(`pricing_model.comparison.effective_rate.scenarios.${i}.type`)}
                           className={`p-4 rounded-2xl border ${i === 2 ? "border-emerald-500/20 bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.03)]" : "border-neutral-900 bg-neutral-900/30"}`}>
                           <div className="flex justify-between items-start mb-2">
                             <span
@@ -607,7 +608,7 @@ export function CareersClient() {
                             <div className="mt-3 flex flex-wrap gap-1.5 pt-3 border-t border-emerald-500/10">
                               {[0, 1, 2].map((j) => (
                                 <span
-                                  key={j}
+                                  key={t(`pricing_model.comparison.effective_rate.scenarios.2.benefits.${j}`)}
                                   className="text-[10px] bg-emerald-500/10 text-emerald-500 px-2.5 py-1 rounded-full font-medium">
                                   ✓{" "}
                                   {t(
@@ -637,7 +638,7 @@ export function CareersClient() {
               </h4>
               <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
                 {[0, 1, 2].map((i) => (
-                  <div key={i} className="text-center space-y-4">
+                  <div key={t(`pricing_model.terms.list.${i}`)} className="text-center space-y-4">
                     <div className="w-12 h-12 rounded-2xl bg-neutral-900 border border-neutral-800 flex items-center justify-center mx-auto transition-transform hover:scale-110">
                       <Check className="w-6 h-6 text-emerald-500" />
                     </div>
@@ -686,7 +687,7 @@ export function CareersClient() {
                       </h3>
                       <div className="space-y-4 ml-10">
                         {[0, 1, 2].map((i) => (
-                          <div key={i} className="space-y-2">
+                          <div key={t(`application.success.section_1.steps.${i}`)} className="space-y-2">
                             <p className="text-neutral-200 font-medium">
                               {t(`application.success.section_1.steps.${i}`)}
                             </p>
@@ -694,7 +695,7 @@ export function CareersClient() {
                               <div className="grid grid-cols-1 md:grid-cols-2 gap-x-8 gap-y-2 mt-4 pl-4 border-l border-neutral-800">
                                 {[3, 4, 5, 6].map((idx) => (
                                   <p
-                                    key={idx}
+                                    key={t(`application.success.section_1.steps.${idx}`)}
                                     className="text-neutral-500 text-base">
                                     {t(
                                       `application.success.section_1.steps.${idx}`,
@@ -724,7 +725,7 @@ export function CareersClient() {
                       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 ml-10">
                         {[0, 1].map((i) => (
                           <a
-                            key={i}
+                            key={t(`application.success.section_3.actions.${i}.link_text`)}
                             href={t(
                               `application.success.section_3.actions.${i}.link`,
                             )}
@@ -831,7 +832,7 @@ export function CareersClient() {
                           {t("application.fields.specialization")}
                         </option>
                         {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-                          <option key={i} value={i}>
+                          <option key={t(`application.fields.specialization_options.${i}`)} value={i}>
                             {t(
                               `application.fields.specialization_options.${i}`,
                             )}
@@ -875,7 +876,7 @@ export function CareersClient() {
                         </label>
                         <select className="w-full bg-neutral-50 border border-neutral-200 rounded-lg p-3.5 text-base focus:outline-none focus:border-black transition-colors appearance-none">
                           {[0, 1, 2].map((i) => (
-                            <option key={i}>
+                            <option key={t(`application.fields.availability_options.${i}`)}>
                               {t(
                                 `application.fields.availability_options.${i}`,
                               )}
@@ -929,7 +930,7 @@ export function CareersClient() {
           </FadeIn>
           <div className="space-y-8">
             {[0, 1, 2, 3, 4, 5, 6].map((i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+              <FadeIn key={t(`faq.items.${i}.q`)} delay={i * 0.1}>
                 <div className="space-y-3">
                   <h3 className="text-lg md:text-xl font-bold">
                     {t(`faq.items.${i}.q`)}
@@ -974,5 +975,6 @@ export function CareersClient() {
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 }

@@ -4,61 +4,45 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { ServiceSchema, FAQSchema } from "@/components/seo/JsonLd";
 
 // Lazy load heavy components below the fold
-const ServicesGrid = dynamic(
-  () =>
-    import("@/components/home/services-grid").then((mod) => ({
-      default: mod.ServicesGrid,
-    })),
-  { ssr: true },
+const ServicesGrid = dynamic(() =>
+  import("@/components/home/services-grid").then((mod) => ({
+    default: mod.ServicesGrid,
+  })),
 );
-const WhyDifferentSection = dynamic(
-  () =>
-    import("@/components/home/WhyDifferentSection").then((mod) => ({
-      default: mod.WhyDifferentSection,
-    })),
-  { ssr: true },
+const WhyDifferentSection = dynamic(() =>
+  import("@/components/home/WhyDifferentSection").then((mod) => ({
+    default: mod.WhyDifferentSection,
+  })),
 );
-const AIAutomationShowcase = dynamic(
-  () =>
-    import("@/components/home/AIAutomationShowcase").then((mod) => ({
-      default: mod.AIAutomationShowcase,
-    })),
-  { ssr: true },
+const AIAutomationShowcase = dynamic(() =>
+  import("@/components/home/AIAutomationShowcase").then((mod) => ({
+    default: mod.AIAutomationShowcase,
+  })),
 );
-const PricingSection = dynamic(
-  () =>
-    import("@/components/home/pricing-section").then((mod) => ({
-      default: mod.PricingSection,
-    })),
-  { ssr: true },
+const PricingSection = dynamic(() =>
+  import("@/components/home/pricing-section").then((mod) => ({
+    default: mod.PricingSection,
+  })),
 );
-const ProcessSection = dynamic(
-  () =>
-    import("@/components/home/process-section").then((mod) => ({
-      default: mod.ProcessSection,
-    })),
-  { ssr: true },
+const ProcessSection = dynamic(() =>
+  import("@/components/home/process-section").then((mod) => ({
+    default: mod.ProcessSection,
+  })),
 );
-const FAQSection = dynamic(
-  () =>
-    import("@/components/home/FAQSection").then((mod) => ({
-      default: mod.FAQSection,
-    })),
-  { ssr: true },
+const FAQSection = dynamic(() =>
+  import("@/components/home/FAQSection").then((mod) => ({
+    default: mod.FAQSection,
+  })),
 );
-const SocialProofSection = dynamic(
-  () =>
-    import("@/components/home/SocialProofSection").then((mod) => ({
-      default: mod.SocialProofSection,
-    })),
-  { ssr: true },
+const SocialProofSection = dynamic(() =>
+  import("@/components/home/SocialProofSection").then((mod) => ({
+    default: mod.SocialProofSection,
+  })),
 );
-const OngoingPlans = dynamic(
-  () =>
-    import("@/components/home/OngoingPlans").then((mod) => ({
-      default: mod.OngoingPlans,
-    })),
-  { ssr: true },
+const OngoingPlans = dynamic(() =>
+  import("@/components/home/OngoingPlans").then((mod) => ({
+    default: mod.OngoingPlans,
+  })),
 );
 
 export async function generateMetadata({
@@ -72,11 +56,11 @@ export async function generateMetadata({
 
 // Static images map
 const SERVICE_IMAGES = {
-  web: "/images/architecture.jpg",
-  branding: "/images/identity.jpg",
-  ai: "/images/ai.jpg",
-  seo: "/images/seo.jpg",
-  ongoing: "/images/architecture.jpg", // Placeholder
+  web: "/images/architecture.webp",
+  branding: "/images/identity.webp",
+  ai: "/images/ai.webp",
+  seo: "/images/seo.webp",
+  ongoing: "/images/architecture.webp", // Placeholder
 };
 
 /**

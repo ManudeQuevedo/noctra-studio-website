@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { cn } from "@/lib/utils";
 
 interface Phase {
@@ -18,6 +18,7 @@ export function PhaseSelector({
   setActivePhase: (id: string) => void;
 }) {
   return (
+    <LazyMotion features={domAnimation}>
     <div className="w-full max-w-4xl mx-auto mb-20 md:mb-24 relative px-6">
       {/* Scroll Indicators / Masks */}
       <div className="absolute left-6 top-0 bottom-12 w-12 bg-gradient-to-r from-neutral-950 to-transparent z-20 pointer-events-none md:hidden" />
@@ -60,7 +61,7 @@ export function PhaseSelector({
                     </div>
 
                     {isActive && (
-                      <motion.div
+                      <m.div
                         layoutId="timeline-glow"
                         className="absolute inset-0 w-16 h-16 -left-2 -top-2 bg-emerald-500/10 rounded-full blur-xl"
                       />
@@ -78,7 +79,7 @@ export function PhaseSelector({
                       {phase.label}
                     </span>
                     {isActive && (
-                      <motion.div
+                      <m.div
                         layoutId="active-underline"
                         className="h-0.5 w-full bg-emerald-500 mt-1"
                       />
@@ -91,5 +92,6 @@ export function PhaseSelector({
         </div>
       </div>
     </div>
+    </LazyMotion>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, useMotionValue, useSpring } from "framer-motion";
+import { LazyMotion, m, domAnimation, useMotionValue, useSpring } from "framer-motion";
 
 export function Cursor() {
   const [isVisible, setIsVisible] = useState(false);
@@ -60,9 +60,9 @@ export function Cursor() {
   if (!isVisible) return null;
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       {/* Spotlight Cursor */}
-      <motion.div
+      <m.div
         className="fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference backdrop-grayscale backdrop-contrast-200"
         style={{
           x: cursorXSpring,
@@ -89,6 +89,6 @@ export function Cursor() {
           cursor: none !important;
         }
       `}</style>
-    </>
+    </LazyMotion>
   );
 }

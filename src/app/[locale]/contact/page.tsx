@@ -1,3 +1,4 @@
+import { Suspense } from "react";
 import { generatePageMetadata } from "@/lib/metadata";
 import ContactClient from "./ContactClient";
 
@@ -11,5 +12,9 @@ export async function generateMetadata({
 }
 
 export default function ContactPage() {
-  return <ContactClient />;
+  return (
+    <Suspense>
+      <ContactClient />
+    </Suspense>
+  );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useQuiz } from "./QuizContext";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { X, ChevronLeft } from "lucide-react";
 import { useEffect } from "react";
 
@@ -49,11 +49,12 @@ export function QuizModal() {
   const progress = currentStep > 0 ? (currentStep / (totalSteps - 1)) * 100 : 0;
 
   return (
+    <LazyMotion features={domAnimation}>
     <AnimatePresence>
       {isModalOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-0 md:p-4 overscroll-contain">
           {/* Backdrop */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -62,7 +63,7 @@ export function QuizModal() {
           />
 
           {/* Modal Card */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -84,7 +85,7 @@ export function QuizModal() {
                         Question {currentStep} of {totalSteps - 1}
                       </span>
                       <div className="w-32 h-1 bg-neutral-800 rounded-full mt-2 overflow-hidden">
-                        <motion.div
+                        <m.div
                           className="h-full bg-white"
                           initial={{ width: 0 }}
                           animate={{ width: `${progress}%` }}
@@ -108,9 +109,10 @@ export function QuizModal() {
             </div>
 
             {/* Footer is handled by individual steps if needed, or we can add a global one here */}
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>
+    </LazyMotion>
   );
 }

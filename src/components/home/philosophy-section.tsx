@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { TechMarquee } from "@/components/tech-marquee";
 import { useEffect, useState } from "react";
 
@@ -32,6 +32,7 @@ export function PhilosophySection() {
   }, [fullText]);
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full bg-neutral-950 py-32 relative overflow-hidden border-t border-neutral-800">
       {/* Radial Gradient Lighting */}
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(23,23,23,1)_0%,rgba(10,10,10,1)_100%)]" />
@@ -42,7 +43,7 @@ export function PhilosophySection() {
       <div className="container max-w-7xl mx-auto px-6 relative z-10">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
           {/* Left Column: The Manifesto */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -59,10 +60,10 @@ export function PhilosophySection() {
             <p className="text-lg text-neutral-400 leading-relaxed border-l-2 border-white/20 pl-6">
               {t("description")}
             </p>
-          </motion.div>
+          </m.div>
 
           {/* Right Column: The System Monitor */}
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: 20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -143,11 +144,11 @@ export function PhilosophySection() {
             {/* Decorative Corner Elements */}
             <div className="absolute -top-4 -right-4 w-24 h-24 border-t border-r border-white/10 rounded-tr-3xl" />
             <div className="absolute -bottom-4 -left-4 w-24 h-24 border-b border-l border-white/10 rounded-bl-3xl" />
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Bottom Anchor: Tech Marquee */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
@@ -156,8 +157,9 @@ export function PhilosophySection() {
           <div className="opacity-30 grayscale">
             <TechMarquee />
           </div>
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

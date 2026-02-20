@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import {
   ArrowRight,
@@ -23,14 +23,14 @@ import { useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}
   >
     {children}
-  </motion.div>
+  </m.div>
 );
 
 export default function LandingPageClient() {
@@ -48,6 +48,7 @@ export default function LandingPageClient() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-[#050505] text-white">
       {/* Hero */}
       <section className="pt-32 pb-24 px-6 md:px-8 border-b border-neutral-900 relative overflow-hidden">
@@ -65,23 +66,23 @@ export default function LandingPageClient() {
             </div>
           </FadeIn>
 
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight leading-tight"
           >
             {t("title")}
-          </motion.h1>
+          </m.h1>
 
-          <motion.p
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed"
           >
             {t("subtitle")}
-          </motion.p>
+          </m.p>
 
           <FadeIn delay={0.3}>
             <Link
@@ -104,7 +105,7 @@ export default function LandingPageClient() {
             </h2>
             <div className="space-y-6">
               {(t.raw("for_who") as string[]).map((item, i) => (
-                <FadeIn key={i} delay={i * 0.1}>
+                <FadeIn key={item} delay={i * 0.1}>
                   <div className="flex gap-4">
                     <CheckCircle2 className="w-6 h-6 text-emerald-500 shrink-0" />
                     <p className="text-lg text-neutral-300">{item}</p>
@@ -132,7 +133,7 @@ export default function LandingPageClient() {
             {(t.raw("deliverables") as any[]).map((item, i) => {
               const Icon = deliverableIcons[i] || Zap;
               return (
-                <FadeIn key={i} delay={i * 0.1}>
+                <FadeIn key={item.title} delay={i * 0.1}>
                   <div className="p-8 rounded-2xl border border-neutral-800 bg-neutral-900/30 hover:border-neutral-700 transition-all hover:bg-neutral-900/50 group h-full">
                     <Icon className="w-8 h-8 text-neutral-500 mb-6 group-hover:text-white transition-colors" />
                     <h3 className="text-xl font-bold mb-3">{item.title}</h3>
@@ -175,7 +176,7 @@ export default function LandingPageClient() {
           <h2 className="text-3xl md:text-4xl font-bold mb-12 text-center">{t("use_cases_title")}</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {(t.raw("use_cases") as string[]).map((item, i) => (
-              <FadeIn key={i} delay={i * 0.05}>
+              <FadeIn key={item} delay={i * 0.05}>
                 <div className="flex items-center gap-4 p-4 rounded-xl border border-neutral-800 bg-white/[0.02] hover:bg-white/[0.05] transition-colors">
                   <div className="w-2 h-2 rounded-full bg-emerald-500" />
                   <p className="text-neutral-300">{item}</p>
@@ -198,7 +199,7 @@ export default function LandingPageClient() {
                 <p className="text-sm font-bold text-neutral-400 uppercase tracking-widest">{t("includes_title")}</p>
                 <div className="grid grid-cols-1 gap-2">
                   {(t.raw("includes") as string[]).map((item, i) => (
-                    <div key={i} className="flex gap-2 text-sm text-neutral-300">
+                    <div key={item} className="flex gap-2 text-sm text-neutral-300">
                       <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                       <span>{item}</span>
                     </div>
@@ -211,7 +212,7 @@ export default function LandingPageClient() {
             <h3 className="text-xl font-bold mb-6">{t("not_includes_title")}</h3>
             <div className="space-y-4">
               {(t.raw("not_includes") as any[]).map((module, i) => (
-                <div key={i} className="flex justify-between items-center p-4 rounded-xl border border-neutral-800 bg-neutral-900/30 hover:border-neutral-700 transition-colors">
+                <div key={module.name} className="flex justify-between items-center p-4 rounded-xl border border-neutral-800 bg-neutral-900/30 hover:border-neutral-700 transition-colors">
                   <span className="text-neutral-300">{module.name}</span>
                   <span className="font-mono text-emerald-400">{module.price}</span>
                 </div>
@@ -276,5 +277,6 @@ export default function LandingPageClient() {
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { useState } from "react";
 import { Check, ChevronRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
@@ -73,24 +73,25 @@ export default function CustomPricingClient() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-transparent text-neutral-50 relative">
       {/* Hero */}
       <section className="flex flex-col justify-center px-6 md:px-8 pt-32 pb-16 border-b border-neutral-800 relative z-10">
         <div className="max-w-3xl mx-auto w-full text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-6xl font-bold tracking-tight mb-4">
             {t("title")}
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-lg text-neutral-400">
             {t("subtitle")}
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
@@ -99,9 +100,9 @@ export default function CustomPricingClient() {
         <div className="max-w-2xl mx-auto">
           {/* Progress */}
           <div className="flex items-center gap-2 mb-12">
-            {steps.map((_, i) => (
+            {steps.map((stepItem, i) => (
               <div
-                key={i}
+                key={stepItem.key}
                 className={`h-1 flex-1 rounded-full transition-colors duration-300 ${
                   i <= step ? "bg-white" : "bg-neutral-800"
                 }`}
@@ -112,7 +113,7 @@ export default function CustomPricingClient() {
           <AnimatePresence mode="wait">
             {/* Step 1: Service Type */}
             {step === 0 && (
-              <motion.div
+              <m.div
                 key="step1"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -122,7 +123,7 @@ export default function CustomPricingClient() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   {[0, 1, 2, 3].map((i) => (
                     <button
-                      key={i}
+                      key={t(`step1_options.${i}.value`)}
                       onClick={() => {
                         setServiceType(t(`step1_options.${i}.value`));
                         setStep(1);
@@ -138,12 +139,12 @@ export default function CustomPricingClient() {
                     </button>
                   ))}
                 </div>
-              </motion.div>
+              </m.div>
             )}
 
             {/* Step 2: Page Size */}
             {step === 1 && (
-              <motion.div
+              <m.div
                 key="step2"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -153,7 +154,7 @@ export default function CustomPricingClient() {
                 <div className="space-y-3">
                   {[0, 1, 2].map((i) => (
                     <button
-                      key={i}
+                      key={t(`step2_options.${i}.value`)}
                       onClick={() => {
                         setPageSize(t(`step2_options.${i}.value`));
                         setStep(2);
@@ -174,12 +175,12 @@ export default function CustomPricingClient() {
                   className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors">
                   <ArrowLeft className="w-4 h-4" /> Back
                 </button>
-              </motion.div>
+              </m.div>
             )}
 
             {/* Step 3: Add-ons */}
             {step === 2 && (
-              <motion.div
+              <m.div
                 key="step3"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -189,7 +190,7 @@ export default function CustomPricingClient() {
                 <div className="space-y-3">
                   {[0, 1, 2, 3].map((i) => (
                     <button
-                      key={i}
+                      key={t(`step3_options.${i}.label`)}
                       onClick={() => toggleModule(i)}
                       className={`w-full p-5 rounded-xl border text-left transition-all duration-200 hover:border-white/50 flex items-center justify-between ${
                         selectedModules.includes(i)
@@ -222,12 +223,12 @@ export default function CustomPricingClient() {
                     Continue <ChevronRight className="w-4 h-4" />
                   </button>
                 </div>
-              </motion.div>
+              </m.div>
             )}
 
             {/* Step 4: Timeline */}
             {step === 3 && (
-              <motion.div
+              <m.div
                 key="step4"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -237,7 +238,7 @@ export default function CustomPricingClient() {
                 <div className="space-y-3">
                   {[0, 1, 2, 3].map((i) => (
                     <button
-                      key={i}
+                      key={t(`step4_options.${i}.value`)}
                       onClick={() => {
                         setTimeline(t(`step4_options.${i}.value`));
                         setStep(4);
@@ -258,12 +259,12 @@ export default function CustomPricingClient() {
                   className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors">
                   <ArrowLeft className="w-4 h-4" /> Back
                 </button>
-              </motion.div>
+              </m.div>
             )}
 
             {/* Result */}
             {step === 4 && isComplete && (
-              <motion.div
+              <m.div
                 key="result"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -311,11 +312,12 @@ export default function CustomPricingClient() {
                     Start over
                   </button>
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 }

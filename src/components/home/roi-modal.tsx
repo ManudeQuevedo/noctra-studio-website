@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import {
   X,
   DollarSign,
@@ -43,7 +43,7 @@ function AnimatedCounter({
       const elapsed = now - startTime;
       const progress = Math.min(elapsed / duration, 1);
       const ease = progress === 1 ? 1 : 1 - Math.pow(2, -10 * progress);
-      setDisplayValue(start + (end - start) * ease);
+      setDisplayValue(() => start + (end - start) * ease);
       if (progress < 1) requestAnimationFrame(update);
     };
 
@@ -85,10 +85,11 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <AnimatePresence>
       {isOpen && (
         <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
@@ -96,7 +97,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
             className="fixed inset-0 bg-black/90 backdrop-blur-md"
           />
 
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95, y: 20 }}
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -274,9 +275,10 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       )}
     </AnimatePresence>
+    </LazyMotion>
   );
 }

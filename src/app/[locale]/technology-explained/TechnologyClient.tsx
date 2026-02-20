@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Zap, Wrench, Search, ShieldCheck, Key } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
@@ -15,37 +15,38 @@ const FadeIn = ({
   children: React.ReactNode;
   delay?: number;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 export default function TechnologyClient() {
   const t = useTranslations("TechnologyPage");
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-transparent text-neutral-50 relative">
       {/* Hero */}
       <section className="min-h-[60vh] flex flex-col justify-center px-6 md:px-8 pt-32 pb-16 border-b border-neutral-800 relative z-10">
         <div className="max-w-4xl mx-auto w-full text-center">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8 }}
             className="text-5xl md:text-7xl font-bold tracking-tight mb-6">
             {t("title")}
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
             className="text-xl text-neutral-400 max-w-2xl mx-auto">
             {t("subtitle")}
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
@@ -74,7 +75,7 @@ export default function TechnologyClient() {
             {[0, 1, 2, 3, 4].map((i) => {
               const Icon = categoryIcons[i];
               return (
-                <FadeIn key={i} delay={i * 0.08}>
+                <FadeIn key={t(`comparison.${i}.category`)} delay={i * 0.08}>
                   <div className="rounded-2xl border border-neutral-800 bg-neutral-950/50 overflow-hidden">
                     <div className="p-6 md:p-8">
                       <div className="flex items-center gap-3 mb-6">
@@ -185,5 +186,6 @@ export default function TechnologyClient() {
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 }

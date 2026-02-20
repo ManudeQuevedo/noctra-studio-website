@@ -4,7 +4,7 @@ import {
   useQuiz,
   CurrentSituation as CurrentSituationEnum,
 } from "../QuizContext";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 export const CurrentSituation = () => {
   const { answers, setAnswer, nextStep } = useQuiz();
@@ -43,6 +43,7 @@ export const CurrentSituation = () => {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="space-y-8 max-w-xl mx-auto">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold text-white">
@@ -58,7 +59,7 @@ export const CurrentSituation = () => {
           const isSelected = answers.currentSituation === option.id;
 
           return (
-            <motion.button
+            <m.button
               key={option.id}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -93,10 +94,11 @@ export const CurrentSituation = () => {
                   {option.desc}
                 </div>
               </div>
-            </motion.button>
+            </m.button>
           );
         })}
       </div>
     </div>
+    </LazyMotion>
   );
 };

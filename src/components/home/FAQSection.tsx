@@ -2,7 +2,7 @@
 
 import { useState, useMemo, useRef, ReactNode } from "react";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import {
   ChevronDown,
   ArrowRight,
@@ -24,92 +24,90 @@ const CATEGORY_ICONS: Record<string, ReactNode> = {
   operations: <ClipboardList className="w-3.5 h-3.5" />,
 };
 
-function renderAnswer(text: string) {
-  // Split into paragraphs by double newlines
+function RenderedAnswer({ text }: { text: string }) {
   const paragraphs = text.split("\n\n");
-  return paragraphs.map((paragraph, pIdx) => {
-    const lines = paragraph.split("\n");
-    const elements: ReactNode[] = [];
+  return (
+    <>
+      {paragraphs.map((paragraph, pIdx) => {
+        const lines = paragraph.split("\n");
+        const elements: ReactNode[] = [];
 
-    lines.forEach((line, lIdx) => {
-      const key = `${pIdx}-${lIdx}`;
+        lines.forEach((line, lIdx) => {
+          const key = `${pIdx}-${lIdx}`;
 
-      // Bold headers like **CONVERSIÓN:**
-      if (line.startsWith("**") && line.endsWith("**")) {
-        elements.push(
-          <span
-            key={key}
-            className="block text-emerald-400 font-bold text-sm tracking-wide mt-4 mb-1">
-            {line.replace(/\*\*/g, "")}
-          </span>,
+          if (line.startsWith("**") && line.endsWith("**")) {
+            elements.push(
+              <span
+                key={key}
+                className="block text-emerald-400 font-bold text-sm tracking-wide mt-4 mb-1">
+                {line.replace(/\*\*/g, "")}
+              </span>,
+            );
+            return;
+          }
+
+          const boldRegex = /\*\*(.+?)\*\*/g;
+          if (boldRegex.test(line)) {
+            const parts = line.split(/\*\*(.+?)\*\*/g);
+            elements.push(
+              <span key={key} className="block text-neutral-300 text-sm mb-0.5">
+                {parts.map((part, i) =>
+                  i % 2 === 1 ? (
+                    <strong key={`${key}-${i}`} className="text-emerald-400 font-semibold">
+                      {part}
+                    </strong>
+                  ) : (
+                    part
+                  ),
+                )}
+              </span>,
+            );
+            return;
+          }
+
+          if (line.startsWith("• ") || line.startsWith("- ")) {
+            elements.push(
+              <span
+                key={key}
+                className="flex items-start gap-2 text-neutral-400 text-sm py-0.5 pl-2">
+                <span className="text-emerald-500/60 mt-1 text-[8px]">●</span>
+                <span>{line.replace(/^[•\-] /, "")}</span>
+              </span>,
+            );
+            return;
+          }
+
+          if (/^\d+\.\s/.test(line)) {
+            elements.push(
+              <span
+                key={key}
+                className="flex items-start gap-2 text-neutral-400 text-sm py-0.5 pl-2">
+                <span className="text-emerald-500 font-bold text-xs mt-0.5">
+                  {line.match(/^(\d+)/)?.[1]}.
+                </span>
+                <span>{line.replace(/^\d+\.\s/, "")}</span>
+              </span>,
+            );
+            return;
+          }
+
+          if (line.trim()) {
+            elements.push(
+              <span key={key} className="block text-neutral-400 text-sm mb-1">
+                {line}
+              </span>,
+            );
+          }
+        });
+
+        return (
+          <div key={`para-${pIdx}`} className="mb-3 last:mb-0">
+            {elements}
+          </div>
         );
-        return;
-      }
-
-      // Bold inline like **SOME TEXT** in the middle of a line
-      const boldRegex = /\*\*(.+?)\*\*/g;
-      if (boldRegex.test(line)) {
-        const parts = line.split(/\*\*(.+?)\*\*/g);
-        elements.push(
-          <span key={key} className="block text-neutral-300 text-sm mb-0.5">
-            {parts.map((part, i) =>
-              i % 2 === 1 ? (
-                <strong key={i} className="text-emerald-400 font-semibold">
-                  {part}
-                </strong>
-              ) : (
-                part
-              ),
-            )}
-          </span>,
-        );
-        return;
-      }
-
-      // Bullet points
-      if (line.startsWith("• ") || line.startsWith("- ")) {
-        elements.push(
-          <span
-            key={key}
-            className="flex items-start gap-2 text-neutral-400 text-sm py-0.5 pl-2">
-            <span className="text-emerald-500/60 mt-1 text-[8px]">●</span>
-            <span>{line.replace(/^[•\-] /, "")}</span>
-          </span>,
-        );
-        return;
-      }
-
-      // Numbered items
-      if (/^\d+\.\s/.test(line)) {
-        elements.push(
-          <span
-            key={key}
-            className="flex items-start gap-2 text-neutral-400 text-sm py-0.5 pl-2">
-            <span className="text-emerald-500 font-bold text-xs mt-0.5">
-              {line.match(/^(\d+)/)?.[1]}.
-            </span>
-            <span>{line.replace(/^\d+\.\s/, "")}</span>
-          </span>,
-        );
-        return;
-      }
-
-      // Regular text
-      if (line.trim()) {
-        elements.push(
-          <span key={key} className="block text-neutral-400 text-sm mb-1">
-            {line}
-          </span>,
-        );
-      }
-    });
-
-    return (
-      <div key={pIdx} className="mb-3 last:mb-0">
-        {elements}
-      </div>
-    );
-  });
+      })}
+    </>
+  );
 }
 
 export function FAQSection() {
@@ -152,9 +150,10 @@ export function FAQSection() {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full px-6 md:px-8 pt-4 pb-24">
       <div className="max-w-4xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -164,10 +163,10 @@ export function FAQSection() {
             {t("title")}
           </h2>
           <p className="text-neutral-400 text-lg">{t("subtitle")}</p>
-        </motion.div>
+        </m.div>
 
         {/* Featured Callout Card */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.98 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
@@ -183,7 +182,7 @@ export function FAQSection() {
               {t("featured.question")}
             </h3>
             <div className="text-neutral-300 text-sm leading-relaxed max-w-2xl">
-              {renderAnswer(t("featured.answer"))}
+              <RenderedAnswer text={t("featured.answer")} />
             </div>
             <button
               onClick={scrollToFaq}
@@ -192,7 +191,7 @@ export function FAQSection() {
               <ArrowRight className="w-4 h-4" />
             </button>
           </div>
-        </motion.div>
+        </m.div>
 
         {/* Search Bar */}
         <div className="mb-12 relative max-w-2xl mx-auto">
@@ -209,7 +208,7 @@ export function FAQSection() {
         </div>
 
         {/* Category Pills */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 10 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -262,7 +261,7 @@ export function FAQSection() {
               </span>
             </button>
           ))}
-        </motion.div>
+        </m.div>
 
         {/* FAQ Items */}
         <div className="space-y-3 min-h-[400px]">
@@ -272,7 +271,7 @@ export function FAQSection() {
                 const globalIndex = items.indexOf(item);
                 const isOpen = openIndex === globalIndex;
                 return (
-                  <motion.div
+                  <m.div
                     key={item.question}
                     layout
                     initial={{ opacity: 0, y: 10 }}
@@ -306,24 +305,24 @@ export function FAQSection() {
                     </button>
                     <AnimatePresence>
                       {isOpen && (
-                        <motion.div
+                        <m.div
                           initial={{ height: 0, opacity: 0 }}
                           animate={{ height: "auto", opacity: 1 }}
                           exit={{ height: 0, opacity: 0 }}
                           transition={{ duration: 0.3, ease: "easeInOut" }}>
                           <div className="px-6 pb-6 pl-[4.25rem]">
                             <div className="border-l-2 border-emerald-500/20 pl-5 space-y-0">
-                              {renderAnswer(item.answer)}
+                              <RenderedAnswer text={item.answer} />
                             </div>
                           </div>
-                        </motion.div>
+                        </m.div>
                       )}
                     </AnimatePresence>
-                  </motion.div>
+                  </m.div>
                 );
               })
             ) : (
-              <motion.div
+              <m.div
                 initial={{ opacity: 0 }}
                 animate={{ opacity: 1 }}
                 key="no-results"
@@ -340,13 +339,13 @@ export function FAQSection() {
                   className="inline-flex items-center gap-2 text-emerald-500 hover:text-emerald-400 font-bold text-sm">
                   {t("cta_button")} <ArrowRight className="w-4 h-4" />
                 </Link>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
 
         {/* Bottom CTA */}
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -361,8 +360,9 @@ export function FAQSection() {
             {t("cta_button")}
             <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

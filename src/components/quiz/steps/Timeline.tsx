@@ -2,7 +2,7 @@
 
 import { useQuiz, Timeline as TimelineEnum } from "../QuizContext";
 import { Clock, Calendar, Rocket, Sparkles } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 export const Timeline = () => {
   const { setAnswer, nextStep } = useQuiz();
@@ -44,6 +44,7 @@ export const Timeline = () => {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="space-y-8 max-w-xl mx-auto">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold text-white">When do you need your website ready?</h2>
@@ -52,7 +53,7 @@ export const Timeline = () => {
 
       <div className="space-y-4">
         {options.map((option, index) => (
-          <motion.button
+          <m.button
             key={option.id}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -79,9 +80,10 @@ export const Timeline = () => {
                 </span>
               )}
             </div>
-          </motion.button>
+          </m.button>
         ))}
       </div>
     </div>
+    </LazyMotion>
   );
 };

@@ -17,7 +17,7 @@ import {
   CheckCircle2,
   Package,
 } from "lucide-react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { useEffect, useRef, useState } from "react";
 import { createPortal } from "react-dom";
 import { useTranslations } from "next-intl";
@@ -136,7 +136,7 @@ function ModalV2({ projectId }: { projectId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
           {data.pain_points.items.map((item: any, i: number) => (
             <div
-              key={i}
+              key={item.title}
               className="p-6 rounded-2xl bg-orange-500/5 border border-orange-500/10 space-y-3 group hover:border-orange-500/20 transition-colors">
               <div className="text-2xl">{item.icon}</div>
               <h5 className="font-bold text-orange-200/90">{item.title}</h5>
@@ -164,7 +164,7 @@ function ModalV2({ projectId }: { projectId: string }) {
         </div>
         <div className="space-y-6">
           {data.analysis.steps.map((step: any, i: number) => (
-            <div key={i} className="flex gap-6 group">
+            <div key={step.title} className="flex gap-6 group">
               <div className="flex-shrink-0 w-10 h-10 rounded-xl bg-blue-500/10 border border-blue-500/20 flex items-center justify-center text-xs font-mono text-blue-400">
                 {step.number}
               </div>
@@ -196,7 +196,7 @@ function ModalV2({ projectId }: { projectId: string }) {
         <div className="space-y-4">
           {data.solution.items.map((item: any, i: number) => (
             <div
-              key={i}
+              key={item.problem}
               className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
               <div className="space-y-2">
                 <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
@@ -233,7 +233,7 @@ function ModalV2({ projectId }: { projectId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           {data.deliverables.categories.map((cat: any, i: number) => (
             <div
-              key={i}
+              key={cat.name}
               className="space-y-4 p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800">
               <h5 className="font-bold text-white border-b border-neutral-800 pb-3">
                 {cat.name}
@@ -241,7 +241,7 @@ function ModalV2({ projectId }: { projectId: string }) {
               <ul className="space-y-2">
                 {cat.items.map((item: string, j: number) => (
                   <li
-                    key={j}
+                    key={item}
                     className="text-sm text-neutral-400 flex items-start gap-2">
                     <span className="text-emerald-500 mt-1 flex-shrink-0">
                       ✓
@@ -273,7 +273,7 @@ function ModalV2({ projectId }: { projectId: string }) {
             const Icon = techIcons[item.tech];
             return (
               <div
-                key={i}
+                key={item.tech}
                 className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 flex gap-4">
                 <div className="flex-shrink-0 w-12 h-12 rounded-xl bg-neutral-950 border border-neutral-800 flex items-center justify-center text-neutral-400">
                   {Icon ? (
@@ -307,7 +307,7 @@ function ModalV2({ projectId }: { projectId: string }) {
           {data.learnings.items.map((item: string, i: number) => {
             const [bold, rest] = item.split(": ");
             return (
-              <div key={i} className="space-y-1">
+              <div key={item} className="space-y-1">
                 <h5 className="text-sm font-bold text-neutral-200">{bold}</h5>
                 <p className="text-sm text-neutral-400 leading-relaxed">
                   {rest}
@@ -380,7 +380,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
         </p>
         <div className="space-y-3 pl-4">
           {businessVersion.approachPoints.map((point: string, i: number) => (
-            <div key={i} className="flex items-start gap-3 text-neutral-300">
+            <div key={point} className="flex items-start gap-3 text-neutral-300">
               <span className="text-emerald-500 mt-0.5 flex-shrink-0">→</span>
               <span className="leading-relaxed">{point}</span>
             </div>
@@ -395,7 +395,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
         <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
           {businessVersion.outcomes.map((outcome: string, i: number) => (
             <div
-              key={i}
+              key={outcome}
               className="flex items-start gap-3 bg-neutral-900/50 border border-neutral-800 rounded-lg p-4 text-neutral-300">
               <span className="text-amber-500 mt-0.5 flex-shrink-0">→</span>
               <span className="text-sm leading-relaxed">{outcome}</span>
@@ -424,7 +424,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
       {/* Technical Version (collapsible) */}
       <AnimatePresence>
         {showTechnical && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
@@ -449,7 +449,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                   {technicalVersion.technicalDetails.map(
                     (detail: string, i: number) => (
                       <div
-                        key={i}
+                        key={detail}
                         className="flex items-start gap-3 text-neutral-300 text-sm">
                         <span className="text-purple-500 mt-0.5 flex-shrink-0">
                           →
@@ -473,7 +473,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                   {technicalVersion.stackTechnologies.map(
                     (tech: string, i: number) => (
                       <div
-                        key={i}
+                        key={tech}
                         className="flex items-center justify-between bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2.5 group hover:border-cyan-800/50 transition-colors">
                         <code className="text-sm text-cyan-300 font-mono">
                           {tech}
@@ -504,7 +504,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                   {technicalVersion.securityMeasures.map(
                     (measure: string, i: number) => (
                       <div
-                        key={i}
+                        key={measure}
                         className="bg-neutral-950 border border-neutral-800 rounded-lg px-4 py-2.5">
                         <code className="text-xs text-red-300/80 font-mono">
                           {measure}
@@ -515,7 +515,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
@@ -616,16 +616,17 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
   const projectKey = projectId.replace("-", "_");
 
   const modalContent = (
+    <LazyMotion features={domAnimation}>
     <AnimatePresence>
       {project && (
-        <motion.div
+        <m.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           exit={{ opacity: 0 }}
           transition={{ duration: 0.3 }}
           className="fixed inset-0 bg-black/80 backdrop-blur-xl z-[100] flex items-center justify-center p-4 overscroll-none"
           onClick={onClose}>
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             exit={{ opacity: 0, scale: 0.95 }}
@@ -658,6 +659,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                       src={projectImages[projectId]}
                       alt={project.title}
                       fill
+                      sizes="(max-width: 1200px) 100vw, 1200px"
                       className="object-cover"
                     />
                     <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/60 via-transparent to-transparent" />
@@ -830,10 +832,11 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                 </div>
               </div>
             </div>
-          </motion.div>
-        </motion.div>
+          </m.div>
+        </m.div>
       )}
     </AnimatePresence>
+    </LazyMotion>
   );
 
   return createPortal(modalContent, document.body);

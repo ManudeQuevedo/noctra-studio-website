@@ -2,7 +2,9 @@
 
 import * as React from "react";
 import {
-  motion,
+  LazyMotion,
+  m,
+  domAnimation,
   AnimatePresence,
   useScroll,
   useMotionValueEvent,
@@ -45,7 +47,7 @@ export function Header() {
 
   const isContactPage = nextPathname?.includes("/contact");
   const isCareersPage = nextPathname?.includes("/careers");
-  const isAdminPage = nextPathname?.includes("/admin");
+  const isForgePage = nextPathname?.includes("/forge");
   const isStudioPage =
     nextPathname?.includes("/studio") ||
     nextPathname?.includes("/centro-comando");
@@ -122,7 +124,7 @@ export function Header() {
     { label: t("initiate"), href: "/contact" },
   ];
 
-  if (isAdminPage || isStudioPage || isDashboardPage) return null;
+  if (isForgePage || isStudioPage || isDashboardPage) return null;
   if (shouldHide) return null;
 
   // --- DESKTOP VARIANTS (Full Width - Footer Match) ---
@@ -175,15 +177,15 @@ export function Header() {
   const showNavbar = isIntroComplete;
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       {/* --- MOBILE GHOST HEADER (Background Blur on Scroll) --- */}
-      <motion.div
+      <m.div
         className="fixed top-0 left-0 w-full h-24 z-40 pointer-events-none md:hidden"
         initial={{ opacity: 0 }}
         animate={{ opacity: isScrolled ? 1 : 0 }}
         transition={{ duration: 0.3 }}>
         <div className="absolute inset-0 bg-black/80 backdrop-blur-md border-b border-white/5" />
-      </motion.div>
+      </m.div>
 
       {/* --- MOBILE CONTROLS (Fixed Layer / Z-[60]) --- */}
       {/* Always visible, outside animations, mix-blend-difference for visibility on all backgrounds */}
@@ -226,7 +228,7 @@ export function Header() {
       </div>
 
       {/* --- DESKTOP HEADER (MD+) --- */}
-      <motion.header
+      <m.header
         data-fixed-header
         className="fixed z-[50] top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
         initial={{ y: -20, opacity: 0 }}
@@ -240,7 +242,7 @@ export function Header() {
             - CSS controls Width & Position (max-w-[1280px], centered).
             - Framer controls Height & Background.
         */}
-        <motion.div
+        <m.div
           ref={headerRef}
           initial="closed"
           animate={isOpen ? "open" : "closed"}
@@ -268,7 +270,7 @@ export function Header() {
               {/* Right: CTA + Menu */}
               <div className="flex items-center gap-6 z-50">
                 {showStrategyButton && (
-                  <motion.div
+                  <m.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                     transition={{ duration: 0.15, ease: "easeOut" }}>
@@ -280,7 +282,7 @@ export function Header() {
                       className="hidden md:flex items-center justify-center px-6 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-neutral-200 transition-colors">
                       {t("book_strategy_call")}
                     </Link>
-                  </motion.div>
+                  </m.div>
                 )}
 
                 <button
@@ -328,7 +330,7 @@ export function Header() {
             {/* Expanded Desktop Content */}
             <AnimatePresence>
               {isOpen && (
-                <motion.div
+                <m.div
                   initial="hidden"
                   animate="visible"
                   exit="hidden"
@@ -339,7 +341,7 @@ export function Header() {
                     {navItems.map((item, index) => {
                       const isActive = pathname === item.href;
                       return (
-                        <motion.div
+                        <m.div
                           key={item.href}
                           initial={{ opacity: 0, x: -20 }}
                           animate={{ opacity: 1, x: 0 }}
@@ -347,7 +349,7 @@ export function Header() {
                             delay: 0.2 + index * 0.1,
                             duration: 0.5,
                           }}>
-                          <motion.div
+                          <m.div
                             whileHover={{ scale: 1.02 }}
                             whileTap={{ scale: 0.98 }}
                             transition={{ duration: 0.15, ease: "easeOut" }}>
@@ -378,8 +380,8 @@ export function Header() {
                                 </span>
                               </div>
                             </Link>
-                          </motion.div>
-                        </motion.div>
+                          </m.div>
+                        </m.div>
                       );
                     })}
                   </div>
@@ -398,7 +400,7 @@ export function Header() {
                             t("tags.devops"),
                             t("tags.headless"),
                           ].map((tag, i) => (
-                            <motion.li
+                            <m.li
                               key={tag}
                               initial={{ opacity: 0, x: 10 }}
                               animate={{ opacity: 1, x: 0 }}
@@ -406,7 +408,7 @@ export function Header() {
                               className="text-sm font-mono text-neutral-400 flex items-center gap-3">
                               <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
                               {tag}
-                            </motion.li>
+                            </m.li>
                           ))}
                         </ul>
                       </div>
@@ -446,12 +448,12 @@ export function Header() {
                       </div>
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
-        </motion.div>
-      </motion.header>
+        </m.div>
+      </m.header>
 
       {/* --- MOBILE CONTENT OVERLAY (Z-[50]) --- */}
       {/* 
@@ -464,7 +466,7 @@ export function Header() {
       */}
       <AnimatePresence>
         {isOpen && isMobile && (
-          <motion.div
+          <m.div
             initial="closed"
             animate="open"
             exit="exit"
@@ -479,7 +481,7 @@ export function Header() {
                 {navItems.map((item, index) => {
                   const isActive = pathname === item.href;
                   return (
-                    <motion.div
+                    <m.div
                       key={item.href}
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
@@ -501,7 +503,7 @@ export function Header() {
                         )}
                         {item.label}
                       </Link>
-                    </motion.div>
+                    </m.div>
                   );
                 })}
               </div>
@@ -538,9 +540,9 @@ export function Header() {
                 </div>
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 }

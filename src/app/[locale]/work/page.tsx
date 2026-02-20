@@ -1,5 +1,8 @@
 import { generatePageMetadata } from "@/lib/metadata";
 import WorkClient from "./WorkClient";
+import { getProjects } from "@/lib/projects";
+
+export const revalidate = 60;
 
 export async function generateMetadata({
   params,
@@ -10,6 +13,8 @@ export async function generateMetadata({
   return generatePageMetadata(locale, "work");
 }
 
-export default function WorkPage() {
-  return <WorkClient />;
+export default async function WorkPage() {
+  const projects = await getProjects();
+
+  return <WorkClient projects={projects} />;
 }

@@ -1,6 +1,12 @@
-"use client";
-
+import type { Metadata } from "next";
 import { useTranslations } from "next-intl";
+
+export const metadata: Metadata = {
+  title: "Política de Cookies | Noctra Studio",
+  description:
+    "Conoce cómo utilizamos cookies en Noctra Studio para mejorar tu experiencia de navegación.",
+  robots: { index: false, follow: false },
+};
 import { LegalPageLayout } from "@/components/LegalPageLayout";
 import { Cookie, MousePointer2 } from "lucide-react";
 

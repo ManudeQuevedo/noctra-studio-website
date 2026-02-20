@@ -2,7 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import { ArrowRight, Activity } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 interface AuditCTAProps {
   headline: string;
@@ -12,8 +12,9 @@ interface AuditCTAProps {
 
 export function AuditCTA({ headline, subtext, buttonText }: AuditCTAProps) {
   return (
+    <LazyMotion features={domAnimation}>
     <section className="max-w-7xl mx-auto px-6 py-16">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -59,7 +60,8 @@ export function AuditCTA({ headline, subtext, buttonText }: AuditCTAProps) {
             </div>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </section>
+    </LazyMotion>
   );
 }

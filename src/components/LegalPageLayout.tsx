@@ -58,7 +58,7 @@ export function LegalPageLayout({
                   <nav className="flex flex-col gap-3">
                     {toc.map((item, index) => (
                       <a 
-                        key={index} 
+                        key={item.href} 
                         href={item.href}
                         className="text-sm text-neutral-500 hover:text-black dark:hover:text-white transition-colors py-1 border-l-2 border-transparent hover:border-neutral-200 dark:hover:border-neutral-800 pl-4"
                       >

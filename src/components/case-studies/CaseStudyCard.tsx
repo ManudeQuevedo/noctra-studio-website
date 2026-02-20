@@ -58,7 +58,7 @@ export function CaseStudyCard({
             end: "bottom 20%",
             toggleActions: "play none none none",
           },
-        }
+        },
       );
     } catch (error) {
       // Gracefully handle errors in dev mode or when in iframe
@@ -78,6 +78,7 @@ export function CaseStudyCard({
           src={imagePath}
           alt={`${name} project mockup`}
           fill
+          sizes="(max-width: 768px) 100vw, 50vw"
           className="object-cover"
         />
       </div>
@@ -116,7 +117,7 @@ export function CaseStudyCard({
           <div className="flex flex-wrap gap-2">
             {techStack.map((tech, i) => (
               <span
-                key={i}
+                key={tech}
                 className="px-3 py-1 bg-neutral-900 border border-neutral-800 rounded-full text-xs font-mono text-neutral-300">
                 {tech}
               </span>

@@ -5,7 +5,8 @@ import config from "../../../../../sanity.config";
 
 export const dynamic = "force-static";
 
-export { viewport } from "next-sanity/studio";
+// Metadata and viewport should be in a separate layout or non-client component
+// export { metadata, viewport } from "next-sanity/studio";
 
 export default function StudioPage() {
   return <NextStudio config={config} />;

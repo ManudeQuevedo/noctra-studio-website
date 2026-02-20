@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { Check, Minus, ChevronDown } from "lucide-react";
 import { useState } from "react";
 import { cn } from "@/lib/utils";
@@ -21,6 +21,7 @@ export function ComparisonTable() {
   const [openRow, setOpenRow] = useState<number | null>(null);
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 px-6 bg-neutral-950/50">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-16">
@@ -40,7 +41,7 @@ export function ComparisonTable() {
                 </th>
                 {labels.map((label, i) => (
                   <th
-                    key={i}
+                    key={label}
                     className="p-8 text-center text-sm font-black text-white uppercase tracking-widest">
                     {label}
                   </th>
@@ -50,7 +51,7 @@ export function ComparisonTable() {
             <tbody className="divide-y divide-neutral-800/50">
               {features.map((feature, i) => (
                 <tr
-                  key={i}
+                  key={feature.name}
                   className={cn(
                     "group transition-colors",
                     feature.isCtaRow
@@ -61,7 +62,7 @@ export function ComparisonTable() {
                     {feature.name}
                   </td>
                   {feature.values.map((val, j) => (
-                    <td key={j} className="p-8 text-center">
+                    <td key={labels[j]} className="p-8 text-center">
                       {feature.isCtaRow ? (
                         val === "CTA_AGENDAR" ? (
                           <Link
@@ -107,7 +108,7 @@ export function ComparisonTable() {
             .filter((f) => !f.isCtaRow)
             .map((feature, i) => (
               <div
-                key={i}
+                key={feature.name}
                 className="rounded-2xl border border-neutral-800 bg-neutral-900/20 overflow-hidden">
                 <button
                   onClick={() => setOpenRow(openRow === i ? null : i)}
@@ -122,7 +123,7 @@ export function ComparisonTable() {
                 </button>
                 <AnimatePresence>
                   {openRow === i && (
-                    <motion.div
+                    <m.div
                       initial={{ height: 0, opacity: 0 }}
                       animate={{ height: "auto", opacity: 1 }}
                       exit={{ height: 0, opacity: 0 }}
@@ -130,7 +131,7 @@ export function ComparisonTable() {
                       <div className="grid grid-cols-1 gap-3">
                         {labels.map((label, j) => (
                           <div
-                            key={j}
+                            key={label}
                             className="flex items-center justify-between text-sm py-1">
                             <span className="text-neutral-500 font-medium uppercase tracking-widest text-[10px]">
                               {label}
@@ -145,7 +146,7 @@ export function ComparisonTable() {
                           </div>
                         ))}
                       </div>
-                    </motion.div>
+                    </m.div>
                   )}
                 </AnimatePresence>
               </div>
@@ -170,5 +171,6 @@ export function ComparisonTable() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

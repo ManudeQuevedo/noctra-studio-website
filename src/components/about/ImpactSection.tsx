@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Lightbulb, DraftingCompass, ArrowRight } from "lucide-react";
 import Link from "next/link";
 import { useTranslations } from "next-intl";
@@ -12,13 +12,13 @@ const FadeIn = ({
   children: React.ReactNode;
   delay?: number;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 /**
@@ -33,6 +33,7 @@ export function ImpactSection() {
   const t = useTranslations("AboutPage.impact");
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 md:py-32 bg-neutral-950 border-t border-neutral-800 relative z-10">
       <div className="max-w-7xl mx-auto px-4 md:px-8">
         <FadeIn>
@@ -117,5 +118,6 @@ export function ImpactSection() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

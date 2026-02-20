@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { 
   ArrowRight, 
@@ -19,14 +19,14 @@ interface ServicePageTemplateProps {
 }
 
 const FadeIn = ({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}
   >
     {children}
-  </motion.div>
+  </m.div>
 );
 
 const CustomTargetIcon = (props: React.SVGProps<SVGSVGElement>) => (
@@ -47,6 +47,7 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
   const common = useTranslations("ServiceDetails.common");
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-[#050505] text-white">
       {/* Hero */}
       <section className="pt-32 pb-24 px-6 md:px-8 border-b border-neutral-900">
@@ -56,22 +57,22 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
               {t("price")}
             </span>
           </FadeIn>
-          <motion.h1 
+          <m.h1 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-5xl md:text-7xl font-bold tracking-tight leading-tight"
           >
             {t("title")}
-          </motion.h1>
-          <motion.p 
+          </m.h1>
+          <m.p 
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed"
           >
             {t("subtitle")}
-          </motion.p>
+          </m.p>
           <FadeIn delay={0.3}>
             <Link
               href={{ pathname: "/contact", query: { intent: interestId } }}
@@ -93,7 +94,7 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
             </h2>
             <div className="space-y-6">
               {(t.raw("for_who") as string[]).map((item, i) => (
-                <FadeIn key={i} delay={i * 0.1}>
+                <FadeIn key={item} delay={i * 0.1}>
                   <div className="flex gap-4">
                     <CheckCircle2 className="w-6 h-6 text-emerald-500 shrink-0" />
                     <p className="text-lg text-neutral-300">{item}</p>
@@ -120,7 +121,7 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {(t.raw("what_includes") as string[]).map((item, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+              <FadeIn key={item} delay={i * 0.1}>
                 <div className="p-8 rounded-2xl border border-neutral-800 bg-neutral-900/30 hover:border-neutral-700 transition-colors h-full">
                   <TrendingUp className="w-8 h-8 text-neutral-400 mb-6" />
                   <p className="text-xl font-medium leading-relaxed">{item}</p>
@@ -142,7 +143,7 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
               { duration: "Week 4-5", label: "Development" },
               { duration: "Week 6", label: "Launch" }
             ].map((step, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+              <FadeIn key={step.label} delay={i * 0.1}>
                 <div className="relative pt-8">
                   <div className="absolute top-0 left-0 w-8 h-8 bg-white text-black rounded-lg flex items-center justify-center font-bold">
                     {i + 1}
@@ -181,7 +182,7 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
             <h3 className="text-xl font-bold mb-6">Módulos opcionales</h3>
             <div className="space-y-4">
               {(t.raw("investment.modules") as any[]).map((module, i) => (
-                <div key={i} className="flex justify-between items-center p-4 rounded-xl border border-neutral-800 bg-neutral-900/30">
+                <div key={module.name} className="flex justify-between items-center p-4 rounded-xl border border-neutral-800 bg-neutral-900/30">
                   <span className="text-neutral-300">{module.name}</span>
                   <span className="font-mono text-emerald-400">{module.price}</span>
                 </div>
@@ -224,5 +225,6 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 }

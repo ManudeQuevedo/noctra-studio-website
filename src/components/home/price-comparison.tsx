@@ -2,7 +2,7 @@
 
 import React, { useState, useMemo, useEffect } from "react";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { cn } from "@/lib/utils";
 import {
   CheckCircle2,
@@ -118,14 +118,14 @@ function ExpandableSection({
       </button>
       <AnimatePresence>
         {isOpen && (
-          <motion.div
+          <m.div
             initial={{ height: 0, opacity: 0 }}
             animate={{ height: "auto", opacity: 1 }}
             exit={{ height: 0, opacity: 0 }}
             transition={{ duration: 0.3, ease: "easeInOut" }}
             className="overflow-hidden">
             <div className="pt-3 space-y-2 pb-1">{children}</div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
     </div>
@@ -247,17 +247,18 @@ export function PriceComparison() {
   }, [selectedOptions, selectedIndustry, costs, warnings]);
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="mb-24 px-4 scroll-mt-24">
       {/* Header */}
       <div className="text-center mb-16">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 1, scale: 1 }}
           viewport={{ once: true }}
           className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-[10px] font-bold uppercase tracking-widest mb-4">
           <Zap className="w-3 h-3" />
           Transparencia Total
-        </motion.div>
+        </m.div>
         <h3 className="text-4xl md:text-5xl lg:text-6xl font-black mb-6 tracking-tight text-white">
           {t("title")}
         </h3>
@@ -276,7 +277,7 @@ export function PriceComparison() {
             {industries.map((industry) => {
               const Icon = ICON_MAP[industry.icon] || LayoutGrid;
               return (
-                <motion.button
+                <m.button
                   key={industry.id}
                   whileHover={{ y: -5, scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
@@ -297,13 +298,13 @@ export function PriceComparison() {
                     {industryLabels.select_button}{" "}
                     <ChevronRight className="w-4 h-4" />
                   </div>
-                </motion.button>
+                </m.button>
               );
             })}
           </div>
         </div>
       ) : (
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           className="max-w-6xl mx-auto mb-12 flex flex-col md:flex-row items-center justify-between p-6 rounded-3xl bg-neutral-900/50 border border-neutral-800/50 gap-6">
@@ -342,7 +343,7 @@ export function PriceComparison() {
               {industryLabels.clear_button}
             </button>
           </div>
-        </motion.div>
+        </m.div>
       )}
 
       {selectedIndustry && (
@@ -463,7 +464,7 @@ export function PriceComparison() {
 
                     {/* Warning if any */}
                     {activeWarning && (
-                      <motion.div
+                      <m.div
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className="p-4 rounded-2xl bg-amber-500/10 border border-amber-500/20 flex gap-3">
@@ -471,7 +472,7 @@ export function PriceComparison() {
                         <p className="text-[10px] text-amber-200/80 leading-relaxed italic">
                           {activeWarning}
                         </p>
-                      </motion.div>
+                      </m.div>
                     )}
 
                     {/* VS Element */}
@@ -516,7 +517,7 @@ export function PriceComparison() {
                             .slice(0, 6)
                             .map((f: string, i: number) => (
                               <li
-                                key={i}
+                                key={f}
                                 className="flex items-center gap-1.5 text-[9px] font-bold text-white/90">
                                 <CheckCircle2 className="w-3 h-3 text-white shrink-0" />
                                 <span className="truncate">{f}</span>
@@ -528,7 +529,7 @@ export function PriceComparison() {
 
                     {/* Dynamic Savings Banner */}
                     {savings > 0 && (
-                      <motion.div
+                      <m.div
                         initial={{ scale: 0.95, opacity: 0 }}
                         animate={{ scale: 1, opacity: 1 }}
                         className="p-5 rounded-2xl bg-neutral-950 border-2 border-emerald-500/50 flex items-center justify-between group/savings">
@@ -548,7 +549,7 @@ export function PriceComparison() {
                             +{roi}%
                           </div>
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </div>
                 )}
@@ -567,7 +568,7 @@ export function PriceComparison() {
                     {columns.current.hidden_costs_items.map(
                       (item: string, i: number) => (
                         <li
-                          key={i}
+                          key={item}
                           className="text-[10px] text-neutral-500 flex items-start gap-2">
                           <span className="text-red-500">•</span> {item}
                         </li>
@@ -584,7 +585,7 @@ export function PriceComparison() {
                     {columns.noctra.zero_hidden_items.map(
                       (item: string, i: number) => (
                         <li
-                          key={i}
+                          key={item}
                           className="text-[10px] text-neutral-500 flex items-start gap-2">
                           <span className="text-emerald-500">•</span> {item}
                         </li>
@@ -622,7 +623,7 @@ export function PriceComparison() {
 
         <AnimatePresence>
           {showBreakdown && (
-            <motion.div
+            <m.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -721,7 +722,7 @@ export function PriceComparison() {
                       {breakdownTranslations.extra_items.map(
                         (h: string, i: number) => (
                           <li
-                            key={i}
+                            key={h}
                             className="text-neutral-500 flex items-start gap-2">
                             <span className="text-amber-500/50">•</span> {h}
                           </li>
@@ -750,7 +751,7 @@ export function PriceComparison() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
@@ -758,7 +759,7 @@ export function PriceComparison() {
       {/* Dynamic Savings Banner Footer */}
       {selectedOptions.size > 0 && (
         <div className="max-w-5xl mx-auto mb-20 px-4">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 30 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -796,7 +797,7 @@ export function PriceComparison() {
               Calcular ROI exacto para mi negocio{" "}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
             </button>
-          </motion.div>
+          </m.div>
         </div>
       )}
 
@@ -816,7 +817,7 @@ export function PriceComparison() {
 
         <AnimatePresence>
           {showMethodology && (
-            <motion.div
+            <m.div
               initial={{ height: 0, opacity: 0 }}
               animate={{ height: "auto", opacity: 1 }}
               exit={{ height: 0, opacity: 0 }}
@@ -830,14 +831,14 @@ export function PriceComparison() {
                     <div className="space-y-6">
                       {methodologyData.sections.map(
                         (section: any, idx: number) => (
-                          <div key={idx} className="space-y-3">
+                          <div key={section.title} className="space-y-3">
                             <h5 className="text-[10px] font-black text-white uppercase tracking-widest">
                               {section.title}
                             </h5>
                             <ul className="space-y-2">
                               {section.items?.map((item: string, i: number) => (
                                 <li
-                                  key={i}
+                                  key={item}
                                   className="text-[11px] text-neutral-500 flex items-start gap-2 leading-relaxed">
                                   <span className="text-emerald-500/50 mt-1">
                                     •
@@ -893,10 +894,11 @@ export function PriceComparison() {
                   </div>
                 </div>
               </div>
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
     </div>
+    </LazyMotion>
   );
 }

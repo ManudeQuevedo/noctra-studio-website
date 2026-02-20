@@ -9,7 +9,7 @@ import {
   Building2,
   Briefcase,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 export const Budget = () => {
   const { setAnswer, nextStep } = useQuiz();
@@ -67,6 +67,7 @@ export const Budget = () => {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="space-y-8 max-w-xl mx-auto">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold text-white">
@@ -79,7 +80,7 @@ export const Budget = () => {
 
       <div className="grid grid-cols-1 gap-3">
         {options.map((option, index) => (
-          <motion.button
+          <m.button
             key={option.id}
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -112,9 +113,10 @@ export const Budget = () => {
                 </div>
               )}
             </div>
-          </motion.button>
+          </m.button>
         ))}
       </div>
     </div>
+    </LazyMotion>
   );
 };

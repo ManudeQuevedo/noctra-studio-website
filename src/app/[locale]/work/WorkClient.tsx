@@ -1,9 +1,11 @@
 "use client";
 
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
+import { ProjectCard } from "@/components/work/ProjectCard";
+import type { Project } from "@/lib/projects";
 import {
   ArrowRight,
   Code,
@@ -45,31 +47,14 @@ import {
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 
-export default function WorkClient() {
+export default function WorkClient({ projects }: { projects: Project[] }) {
   const t = useTranslations("WorkPage");
   const locale = useLocale();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
   const [activePhase, setActivePhase] = useState(0);
-  const [expandedResults, setExpandedResults] = useState<
-    Record<string, boolean>
-  >({});
-  const [expandedBeforeAfter, setExpandedBeforeAfter] = useState<
-    Record<string, boolean>
-  >({});
 
-  const toggleResults = (projectKey: string) => {
-    setExpandedResults((prev) => ({
-      ...prev,
-      [projectKey]: !prev[projectKey],
-    }));
-  };
-
-  const toggleBeforeAfter = (projectKey: string) => {
-    setExpandedBeforeAfter((prev) => ({
-      ...prev,
-      [projectKey]: !prev[projectKey],
-    }));
-  };
+  const activeProjects = projects.filter((p) => p.status !== "completed");
+  const completedProjects = projects.filter((p) => p.status === "completed");
 
   const icons: Record<string, any> = {
     code: Code,
@@ -93,496 +78,88 @@ export default function WorkClient() {
 
   const processIcons = [Search, Layout, Code, Rocket, Settings];
 
-  const ProjectMockup = ({ projectKey }: { projectKey: string }) => {
-    const altText = t(`sections.in_progress.projects.${projectKey}.alt_text`);
-    const objectPosition = projectKey === "valtru" ? "center 30%" : "center";
-
-    return (
-      <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-12 border border-white/5">
-        <Image
-          src={`/images/work/${projectKey}-preview.jpg`}
-          alt={altText}
-          fill
-          style={{ objectPosition }}
-          className="object-cover transition-transform duration-500 group-hover:scale-105"
-          sizes="(max-width: 768px) 100vw, 50vw"
-          priority={false}
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
-
-        {/* Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
-          <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-2">
-            <Construction className="w-4 h-4 text-amber-500" />
-            <span className="text-xs font-mono font-bold uppercase tracking-widest text-white">
-              {t(`sections.in_progress.projects.${projectKey}.mockup_badge`)}
-            </span>
-          </div>
-        </div>
-      </div>
-    );
-  };
-
-  const ProjectTimeline = ({ data }: { data: any }) => {
-    const { current_phase, phases, status_text, subtitle } = data;
-
-    return (
-      <div
-        className="space-y-6 pt-4"
-        aria-label={`Project progress: currently in ${phases[current_phase - 1] || "planning"}`}>
-        <div className="relative flex justify-between items-center px-2">
-          {/* Connecting Line */}
-          <div className="absolute top-1/2 left-0 w-full h-px bg-neutral-800 -translate-y-1/2 -z-0" />
-
-          {phases.map((phase: string, i: number) => {
-            const stepIndex = i + 1;
-            const isCompleted = stepIndex < current_phase;
-            const isCurrent = stepIndex === current_phase;
-            const isPending = stepIndex > current_phase;
-
-            return (
-              <div
-                key={phase}
-                className="relative z-10 flex flex-col items-center gap-3">
-                {/* Dot */}
-                <div className="relative">
-                  {isCurrent && (
-                    <motion.div
-                      animate={{ scale: [1, 1.2, 1], opacity: [1, 0.7, 1] }}
-                      transition={{
-                        duration: 1.5,
-                        repeat: Infinity,
-                        ease: "easeInOut",
-                      }}
-                      className="absolute inset-0 bg-emerald-500/30 rounded-full blur-sm"
-                    />
-                  )}
-                  <div
-                    className={cn(
-                      "w-6 h-6 rounded-full flex items-center justify-center border-2 transition-all duration-500",
-                      isCompleted
-                        ? "bg-emerald-500 border-emerald-500"
-                        : isCurrent
-                          ? "bg-black border-emerald-500"
-                          : "bg-black border-neutral-700",
-                    )}>
-                    {isCompleted && (
-                      <CheckCircle2
-                        className="w-3.5 h-3.5 text-black"
-                        strokeWidth={3}
-                      />
-                    )}
-                    {isCurrent && (
-                      <ArrowRight
-                        className="w-3.5 h-3.5 text-emerald-500"
-                        strokeWidth={3}
-                      />
-                    )}
-                    {isPending && (
-                      <div className="w-1.5 h-1.5 rounded-full bg-neutral-800" />
-                    )}
-                  </div>
-                </div>
-                {/* Text */}
-                <span
-                  className={cn(
-                    "text-[10px] md:text-sm font-mono uppercase tracking-wider text-center max-w-[80px] md:max-w-none leading-tight",
-                    isCurrent
-                      ? "text-emerald-500 font-bold"
-                      : isCompleted
-                        ? "text-neutral-300"
-                        : "text-neutral-600",
-                  )}>
-                  {phase}
-                </span>
-              </div>
-            );
-          })}
-        </div>
-
-        <div className="space-y-1">
-          <p className="text-[13px] text-neutral-400">{status_text}</p>
-          {subtitle && (
-            <p className="text-[11px] text-neutral-500 italic">{subtitle}</p>
-          )}
-        </div>
-      </div>
-    );
-  };
-
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-[#050505] text-white">
       {/* Header */}
       <section className="pt-32 pb-16 px-6">
         <div className="max-w-4xl mx-auto text-center space-y-6">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
             className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/5 border border-white/10 text-xs font-mono text-neutral-400 uppercase tracking-widest mb-4">
             <Construction className="w-3 h-3 text-amber-500" />
             {t("badge")}
-          </motion.div>
-          <motion.h1
+          </m.div>
+          <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
             className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
             {t("title")}
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
             {t("subtitle")}
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
       {/* In Progress Section */}
-      <section className="py-24 px-6 border-t border-neutral-900 bg-white/[0.01]">
-        <div className="max-w-6xl mx-auto">
-          <div className="mb-16">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              {t("sections.in_progress.title")}
-            </h2>
-            <p className="text-neutral-400 max-w-2xl">
-              {t("sections.in_progress.description")}
-            </p>
+      {activeProjects.length > 0 && (
+        <section className="py-24 px-6 border-t border-neutral-900 bg-white/[0.01]">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-16">
+              <h2 className="text-3xl md:text-4xl font-bold mb-4">
+                {t("sections.in_progress.title")}
+              </h2>
+              <p className="text-neutral-400 max-w-2xl">
+                {t("sections.in_progress.description")}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
+              {/* Projects Loop */}
+              {activeProjects.map((project, index) => (
+                <ProjectCard project={project} index={index} key={project.id} />
+              ))}
+            </div>
           </div>
+        </section>
+      )}
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-            {/* Projects Loop */}
-            {["woodax", "dyma", "valtru"].map((projectKey, index) => {
-              const project = t.raw(
-                `sections.in_progress.projects.${projectKey}`,
-              );
-              return (
-                <motion.div
-                  key={projectKey}
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: index * 0.1 }}
-                  className="group p-8 md:p-10 rounded-3xl border border-neutral-800 bg-black hover:border-white/20 transition-all duration-500 flex flex-col h-full relative overflow-hidden">
-                  <div className="flex flex-col mb-8">
-                    {project.is_future && (
-                      <div className="mb-4">
-                        <div className="inline-flex px-3 py-1 rounded-full bg-orange-500/10 border border-orange-500/20 text-[10px] font-mono font-bold text-orange-500 uppercase tracking-widest">
-                          {locale === "es" ? "Próximamente" : "Starting Soon"}
-                        </div>
-                      </div>
-                    )}
-                    <h3 className="text-3xl font-bold tracking-tight mb-2">
-                      {project.name}
-                    </h3>
-                    <p className="text-sm text-neutral-500 font-mono uppercase tracking-wider">
-                      {project.type}
-                    </p>
-                  </div>
+      {/* Finished Projects Section */}
+      {completedProjects.length > 0 && (
+        <section className="py-24 px-6 border-t border-neutral-900 bg-black">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-16">
+              <h2 className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 border-b border-white/5 pb-4 inline-block pr-12">
+                {locale === "es"
+                  ? "Proyectos Finalizados"
+                  : "Finished Projects"}
+              </h2>
+            </div>
 
-                  <ProjectMockup projectKey={projectKey} />
-
-                  {/* Before/After Comparison Section */}
-                  {project.before_after && (
-                    <div className="mb-8 p-4 rounded-2xl bg-white/[0.02] border border-white/5">
-                      <button
-                        onClick={() => toggleBeforeAfter(projectKey)}
-                        className="w-full flex items-center justify-between group/ba">
-                        <div className="flex items-center gap-3">
-                          <div className="w-8 h-8 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-500">
-                            <ArrowLeftRight className="w-4 h-4" />
-                          </div>
-                          <span className="text-sm font-bold text-neutral-300 group-hover/ba:text-white transition-colors">
-                            {t("sections.in_progress.before_after_label")}
-                          </span>
-                        </div>
-                        <div
-                          className={cn(
-                            "transition-transform duration-300 text-neutral-500",
-                            expandedBeforeAfter[projectKey] ? "rotate-180" : "",
-                          )}>
-                          <ChevronDown className="w-4 h-4" />
-                        </div>
-                      </button>
-
-                      <AnimatePresence>
-                        {expandedBeforeAfter[projectKey] && (
-                          <motion.div
-                            initial={{ height: 0, opacity: 0 }}
-                            animate={{ height: "auto", opacity: 1 }}
-                            exit={{ height: 0, opacity: 0 }}
-                            transition={{
-                              duration: 0.4,
-                              ease: [0.23, 1, 0.32, 1],
-                            }}
-                            className="overflow-hidden">
-                            <div className="pt-6 space-y-6">
-                              {project.before_after.is_placeholder ? (
-                                <div className="p-6 rounded-xl bg-emerald-500/5 border border-emerald-500/10 text-center space-y-3">
-                                  <div className="inline-flex items-center justify-center w-10 h-10 rounded-full bg-emerald-500/10 text-emerald-500 mb-2">
-                                    <Activity className="w-5 h-5" />
-                                  </div>
-                                  <p className="text-sm text-neutral-300 font-medium">
-                                    {t(
-                                      "sections.in_progress.before_after_placeholder",
-                                    )}
-                                  </p>
-                                  <p className="text-xs text-emerald-500/60 font-mono uppercase tracking-widest">
-                                    {t(
-                                      "sections.in_progress.before_after_coming_soon",
-                                      {
-                                        date: project.before_after.launch_date,
-                                      },
-                                    )}
-                                  </p>
-                                </div>
-                              ) : (
-                                <>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {/* Before Column */}
-                                    <div className="p-5 rounded-xl bg-red-500/[0.02] border border-red-500/10 space-y-4">
-                                      <h5 className="text-[10px] font-mono uppercase tracking-[0.2em] text-red-500/70">
-                                        {project.before_after.before.title}
-                                      </h5>
-                                      <ul className="space-y-2">
-                                        {project.before_after.before.items.map(
-                                          (item: string, i: number) => (
-                                            <li
-                                              key={i}
-                                              className="flex items-start gap-2 text-[11px] text-neutral-500">
-                                              <XCircle className="w-3.5 h-3.5 text-red-500/40 shrink-0 mt-0.5" />
-                                              <span>{item}</span>
-                                            </li>
-                                          ),
-                                        )}
-                                      </ul>
-                                    </div>
-
-                                    {/* After Column */}
-                                    <div className="p-5 rounded-xl bg-emerald-500/[0.02] border border-emerald-500/10 space-y-4">
-                                      <h5 className="text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-500/70">
-                                        {project.before_after.after.title}
-                                      </h5>
-                                      <ul className="space-y-2">
-                                        {project.before_after.after.items.map(
-                                          (item: string, i: number) => (
-                                            <li
-                                              key={i}
-                                              className="flex items-start gap-2 text-[11px] text-neutral-200">
-                                              <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                                              <span>{item}</span>
-                                            </li>
-                                          ),
-                                        )}
-                                      </ul>
-                                    </div>
-                                  </div>
-
-                                  {/* Metrics Row */}
-                                  <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-                                    <div className="flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
-                                      {project.before_after.metrics
-                                        .split("|")
-                                        .map((metric: string, i: number) => (
-                                          <div
-                                            key={i}
-                                            className="flex items-center gap-2">
-                                            {i > 0 && (
-                                              <div className="w-px h-3 bg-white/10 hidden md:block" />
-                                            )}
-                                            <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-wider whitespace-nowrap">
-                                              {metric.trim()}
-                                            </span>
-                                          </div>
-                                        ))}
-                                    </div>
-                                  </div>
-                                </>
-                              )}
-                            </div>
-                          </motion.div>
-                        )}
-                      </AnimatePresence>
-                    </div>
-                  )}
-
-                  <div className="space-y-8 flex-grow">
-                    <div className="space-y-4">
-                      <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
-                        {locale === "es" ? "El reto" : "The challenge"}
-                      </h4>
-                      <p className="text-neutral-400 leading-relaxed">
-                        {project.challenge}
-                      </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
-                        {locale === "es" ? "Nuestra solución" : "Our solution"}
-                      </h4>
-                      <p className="text-white leading-relaxed">
-                        {project.solution}
-                      </p>
-                    </div>
-
-                    <div className="space-y-4">
-                      <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
-                        {locale === "es"
-                          ? "Qué estamos entregando"
-                          : "What we′re delivering"}
-                      </h4>
-                      <ul className="grid grid-cols-1 gap-2">
-                        {project.deliverables.map((del: string, i: number) => (
-                          <li
-                            key={i}
-                            className="flex items-center gap-2 text-sm text-neutral-300">
-                            <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0" />
-                            <span>{del}</span>
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
-
-                    {/* Visual Timeline Implementation */}
-                    <div className="pt-8 border-t border-white/5 pb-4">
-                      <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-8">
-                        {locale === "es"
-                          ? "Estado del proyecto"
-                          : "Project Status"}
-                      </h4>
-                      <ProjectTimeline data={project.timeline_data} />
-                    </div>
-                  </div>
-
-                  <div className="mt-10 pt-8 border-t border-neutral-800 space-y-6">
-                    <div className="grid grid-cols-2 gap-4">
-                      <div className="space-y-1">
-                        <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-                          Stack
-                        </p>
-                        <p className="text-xs text-neutral-300 font-medium">
-                          {project.stack}
-                        </p>
-                      </div>
-                      <div className="space-y-1">
-                        <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-                          Timeline
-                        </p>
-                        <p className="text-xs text-neutral-300 font-medium">
-                          {project.timeline}
-                        </p>
-                      </div>
-                    </div>
-
-                    {/* Progress Tracker Box */}
-                    <div className="p-5 rounded-2xl bg-white/[0.03] border border-white/5 space-y-4">
-                      <div className="flex items-start gap-3">
-                        <Target className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                        <div className="space-y-1">
-                          <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest opacity-60">
-                            Target Outcome
-                          </p>
-                          <p className="text-sm font-bold text-white leading-tight">
-                            {project.objective}
-                          </p>
-                        </div>
-                      </div>
-
-                      <div className="grid grid-cols-1 md:grid-cols-2 gap-4 pt-2 border-t border-white/5">
-                        <div className="flex items-center gap-2">
-                          <Activity className="w-3.5 h-3.5 text-blue-400" />
-                          <div className="space-y-0.5">
-                            <p className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider">
-                              Status
-                            </p>
-                            <p className="text-[11px] text-neutral-300">
-                              {project.status}
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-2">
-                          <Milestone className="w-3.5 h-3.5 text-amber-500" />
-                          <div className="space-y-0.5">
-                            <p className="text-[9px] font-mono text-neutral-500 uppercase tracking-wider">
-                              Next Milestone
-                            </p>
-                            <p className="text-[11px] text-neutral-300">
-                              {project.next_milestone}
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-
-                    {/* Expected Results Section */}
-                    {project.expected_results && (
-                      <div className="mt-4 pt-4 border-t border-white/5">
-                        <button
-                          onClick={() => toggleResults(projectKey)}
-                          className="w-full flex items-center justify-between p-3 rounded-xl bg-neutral-900/50 hover:bg-neutral-800/50 transition-colors group/btn">
-                          <div className="flex items-center gap-2">
-                            <BarChart3 className="w-4 h-4 text-emerald-500" />
-                            <span className="text-[11px] font-bold text-neutral-300 group-hover/btn:text-white transition-colors">
-                              {t("sections.in_progress.expected_results_label")}
-                            </span>
-                          </div>
-                          <div
-                            className={cn(
-                              "transition-transform duration-300 text-neutral-500",
-                              expandedResults[projectKey] ? "rotate-180" : "",
-                            )}>
-                            <ChevronDown className="w-4 h-4" />
-                          </div>
-                        </button>
-
-                        <AnimatePresence>
-                          {expandedResults[projectKey] && (
-                            <motion.div
-                              initial={{ height: 0, opacity: 0 }}
-                              animate={{ height: "auto", opacity: 1 }}
-                              exit={{ height: 0, opacity: 0 }}
-                              transition={{ duration: 0.3, ease: "easeInOut" }}
-                              className="overflow-hidden">
-                              <div className="p-4 space-y-4">
-                                <h5 className="text-xs font-bold text-white uppercase tracking-wider">
-                                  {project.expected_results.title}
-                                </h5>
-                                <ul className="space-y-2">
-                                  {project.expected_results.metrics.map(
-                                    (metric: string, i: number) => (
-                                      <li
-                                        key={i}
-                                        className="flex items-start gap-2">
-                                        <CheckCircle2 className="w-3 h-3 text-emerald-500 shrink-0 mt-0.5" />
-                                        <span className="text-[11px] text-neutral-400 leading-tight">
-                                          {metric}
-                                        </span>
-                                      </li>
-                                    ),
-                                  )}
-                                </ul>
-                                <div className="pt-2">
-                                  <p className="text-[9px] text-neutral-500 italic leading-snug">
-                                    {project.expected_results.benchmark_note}
-                                  </p>
-                                  <p className="text-[8px] text-neutral-600 mt-2 leading-tight uppercase font-mono tracking-tight">
-                                    {t("sections.in_progress.disclaimer")}
-                                  </p>
-                                </div>
-                              </div>
-                            </motion.div>
-                          )}
-                        </AnimatePresence>
-                      </div>
-                    )}
-                  </div>
-                </motion.div>
-              );
-            })}
+            <div
+              className={cn(
+                "grid grid-cols-1 gap-12",
+                completedProjects.length > 1 ? "lg:grid-cols-2" : "max-w-2xl",
+              )}>
+              {completedProjects.map((project, index) => (
+                <ProjectCard
+                  project={project}
+                  index={index}
+                  key={project.id}
+                  isCompletedVariant={true}
+                />
+              ))}
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      )}
 
       {/* Conversion CTA Section */}
       <section className="py-24 px-6 border-t border-neutral-900 bg-gradient-to-b from-black to-[#0a0a0a]">
@@ -617,7 +194,7 @@ export default function WorkClient() {
                       t.raw("sections.conversion_cta.left_items") as string[]
                     ).map((item, i) => (
                       <li
-                        key={i}
+                        key={item}
                         className="flex items-center gap-4 text-neutral-300 group">
                         <div className="w-6 h-6 rounded-full bg-emerald-500/10 flex items-center justify-center border border-emerald-500/20 shrink-0">
                           <CheckCircle2 className="w-3 h-3 text-emerald-500" />
@@ -639,7 +216,7 @@ export default function WorkClient() {
                     {(
                       t.raw("sections.conversion_cta.right_items") as string[]
                     ).map((item, i) => (
-                      <div key={i} className="flex gap-4 group">
+                      <div key={item} className="flex gap-4 group">
                         <div className="w-6 h-6 rounded-lg bg-white/5 flex items-center justify-center border border-white/10 shrink-0 text-[10px] font-bold text-white group-hover:bg-white/10 transition-colors">
                           {i + 1}
                         </div>
@@ -698,8 +275,8 @@ export default function WorkClient() {
                 const isActive = industry.status_type === "active";
 
                 return (
-                  <motion.div
-                    key={i}
+                  <m.div
+                    key={industry.name}
                     initial={{ opacity: 0, y: 10 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
@@ -746,7 +323,7 @@ export default function WorkClient() {
                     <p className="text-sm text-neutral-400 leading-relaxed mt-auto">
                       {industry.benefit}
                     </p>
-                  </motion.div>
+                  </m.div>
                 );
               },
             )}
@@ -781,7 +358,7 @@ export default function WorkClient() {
               <div className="grid grid-cols-1 gap-6">
                 {(t.raw("sections.comparison.left_items") as string[]).map(
                   (item, i) => (
-                    <div key={i} className="flex items-start gap-4 group">
+                    <div key={item} className="flex items-start gap-4 group">
                       <div className="mt-1 w-5 h-5 rounded-full bg-emerald-500/10 flex items-center justify-center shrink-0 border border-emerald-500/20">
                         <CheckCircle2 className="w-3 h-3 text-emerald-500" />
                       </div>
@@ -808,7 +385,7 @@ export default function WorkClient() {
               <div className="grid grid-cols-1 gap-6">
                 {(t.raw("sections.comparison.right_items") as string[]).map(
                   (item, i) => (
-                    <div key={i} className="flex items-start gap-4 group">
+                    <div key={item} className="flex items-start gap-4 group">
                       <div className="mt-1 w-5 h-5 rounded-full bg-orange-500/10 flex items-center justify-center shrink-0 border border-orange-500/20">
                         <span className="text-[10px] font-bold text-orange-500">
                           $$
@@ -846,7 +423,7 @@ export default function WorkClient() {
             aria-label="Process timeline">
             {/* Desktop Horizontal Line */}
             <div className="hidden md:block absolute top-[31px] left-12 right-12 h-px bg-neutral-800">
-              <motion.div
+              <m.div
                 initial={{ scaleX: 0 }}
                 whileInView={{ scaleX: 1 }}
                 viewport={{ once: true }}
@@ -857,7 +434,7 @@ export default function WorkClient() {
 
             {/* Mobile Vertical Line */}
             <div className="md:hidden absolute left-1/2 top-4 bottom-4 w-px bg-neutral-800 -translate-x-1/2">
-              <motion.div
+              <m.div
                 initial={{ scaleY: 0 }}
                 whileInView={{ scaleY: 1 }}
                 viewport={{ once: true }}
@@ -870,7 +447,7 @@ export default function WorkClient() {
               {(t.raw("sections.process.timeline") as any[]).map((phase, i) => {
                 const isCurrent = activePhase === i;
                 return (
-                  <div key={i} className="flex flex-col items-center">
+                  <div key={phase.label} className="flex flex-col items-center">
                     <button
                       onClick={() => {
                         document.getElementById(`phase-${i}`)?.scrollIntoView({
@@ -881,7 +458,7 @@ export default function WorkClient() {
                       className="group relative flex flex-col items-center outline-none focus-visible:ring-2 focus-visible:ring-emerald-500 rounded-full"
                       aria-label={`Go to phase ${i + 1}: ${phase.label}`}
                       aria-current={isCurrent ? "step" : undefined}>
-                      <motion.div
+                      <m.div
                         animate={isCurrent ? { scale: 1.15 } : { scale: 1 }}
                         className={cn(
                           "w-16 h-16 rounded-full bg-black border-2 flex items-center justify-center text-lg font-bold transition-all duration-500 relative",
@@ -890,14 +467,14 @@ export default function WorkClient() {
                             : "border-neutral-800 text-neutral-500 group-hover:border-emerald-500 group-hover:text-emerald-500",
                         )}>
                         {isCurrent && (
-                          <motion.div
+                          <m.div
                             animate={{ scale: [1, 1.2, 1], opacity: [1, 0, 1] }}
                             transition={{ duration: 2, repeat: Infinity }}
                             className="absolute inset-0 rounded-full bg-emerald-500/20 -z-10"
                           />
                         )}
                         {String(i + 1).padStart(2, "0")}
-                      </motion.div>
+                      </m.div>
                       <span
                         className={cn(
                           "mt-4 text-[10px] font-mono uppercase tracking-[0.2em] transition-colors hidden md:block",
@@ -918,9 +495,9 @@ export default function WorkClient() {
             {(t.raw("sections.process.timeline") as any[]).map((step, i) => {
               const Icon = processIcons[i];
               return (
-                <motion.div
+                <m.div
                   id={`phase-${i}`}
-                  key={i}
+                  key={step.label}
                   onViewportEnter={() => setActivePhase(i)}
                   initial={{ opacity: 0, y: 20 }}
                   whileInView={{ opacity: 1, y: 0 }}
@@ -970,7 +547,7 @@ export default function WorkClient() {
                           .split("+")
                           .map((item: string, idx: number) => (
                             <li
-                              key={idx}
+                              key={item.trim()}
                               className="flex items-start gap-2 text-[11px] text-neutral-300">
                               <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
                               <span>{item.trim()}</span>
@@ -988,7 +565,7 @@ export default function WorkClient() {
                       </p>
                     </div>
                   </div>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
@@ -1012,8 +589,8 @@ export default function WorkClient() {
               const Icon = icons[item.icon] || MessageSquare;
 
               return (
-                <motion.div
-                  key={i}
+                <m.div
+                  key={item.question}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true }}
@@ -1079,7 +656,7 @@ export default function WorkClient() {
 
                   <AnimatePresence>
                     {isFAQExpanded && (
-                      <motion.div
+                      <m.div
                         initial={{ height: 0, opacity: 0 }}
                         animate={{ height: "auto", opacity: 1 }}
                         exit={{ height: 0, opacity: 0 }}
@@ -1109,10 +686,10 @@ export default function WorkClient() {
                             )}
                           </p>
                         </div>
-                      </motion.div>
+                      </m.div>
                     )}
                   </AnimatePresence>
-                </motion.div>
+                </m.div>
               );
             })}
           </div>
@@ -1147,7 +724,7 @@ export default function WorkClient() {
               <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                 {(t.raw("cta.after_items") as string[]).map((item, i) => (
                   <div
-                    key={i}
+                    key={item}
                     className="flex items-start gap-3 text-neutral-400">
                     <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0 mt-0.5" />
                     <span className="text-sm">{item}</span>
@@ -1159,5 +736,6 @@ export default function WorkClient() {
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 }

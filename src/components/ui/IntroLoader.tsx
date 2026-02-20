@@ -1,7 +1,7 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { useIntro } from "@/context/IntroContext";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 
@@ -38,11 +38,12 @@ export function IntroLoader() {
   if (!showIntro) return null;
 
   return (
-    <motion.div
+    <LazyMotion features={domAnimation}>
+    <m.div
       className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none"
       initial="initial">
       {/* Background Curtain */}
-      <motion.div
+      <m.div
         className="absolute inset-0 bg-[#050505] z-0 pointer-events-auto"
         initial={{ opacity: 1 }}
         animate={{ opacity: step === 4 ? 0 : 1 }}
@@ -52,21 +53,21 @@ export function IntroLoader() {
       {/* Phase 1: Text Sequence */}
       <AnimatePresence mode="wait">
         {step === 1 && (
-          <motion.div
+          <m.div
             key="text"
             initial={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 0 }}
             transition={{ duration: 0.5 }}
             className="absolute inset-0 z-10 flex items-center justify-center">
             <TextSequence />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
       {/* Phase 2 & 3: Logo Reveal & Exit */}
       <AnimatePresence>
         {step === 2 && (
-          <motion.div
+          <m.div
             key="logo"
             initial={{ opacity: 0, filter: "blur(10px)", x: 0 }}
             animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
@@ -79,10 +80,11 @@ export function IntroLoader() {
             transition={{ duration: 0.8, ease: "easeInOut" }}
             className="absolute inset-0 z-20 flex items-center justify-center">
             <BrandLogo className="text-white w-64 md:w-96 h-auto" />
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
-    </motion.div>
+    </m.div>
+    </LazyMotion>
   );
 }
 
@@ -112,7 +114,7 @@ function TextSequence() {
 
   return (
     <AnimatePresence mode="wait">
-      <motion.span
+      <m.span
         key={wordIndex}
         initial={{ opacity: 0, filter: "blur(10px)", x: 0 }}
         animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
@@ -120,7 +122,7 @@ function TextSequence() {
         transition={{ duration: 0.5, ease: "easeInOut" }}
         className="text-5xl md:text-8xl font-black font-sans text-white tracking-widest uppercase text-center leading-none px-4">
         {words[wordIndex]}
-      </motion.span>
+      </m.span>
     </AnimatePresence>
   );
 }

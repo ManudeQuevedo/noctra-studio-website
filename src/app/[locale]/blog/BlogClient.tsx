@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { useEffect, useState } from "react";
 import { client } from "@/sanity/lib/client";
 import { urlFor } from "@/sanity/lib/image";
@@ -50,6 +50,7 @@ export default function BlogClient() {
   }, []);
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-black text-white px-6 py-32 relative overflow-hidden">
       {/* Background Accents - Noctra Glow */}
       <div className="fixed top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none z-0" />
@@ -61,7 +62,7 @@ export default function BlogClient() {
       <div className="relative z-10 max-w-7xl mx-auto space-y-24">
         {/* Hero Section */}
         <div className="flex flex-col items-center text-center space-y-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             className="inline-flex items-center gap-2 border border-emerald-500/20 bg-emerald-500/5 rounded-full px-4 py-1.5 backdrop-blur-sm">
@@ -69,23 +70,23 @@ export default function BlogClient() {
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-emerald-400">
               {t("badge")}
             </span>
-          </motion.div>
+          </m.div>
 
           <div className="space-y-6 max-w-4xl">
-            <motion.h1
+            <m.h1
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.1 }}
               className="text-5xl md:text-7xl lg:text-8xl font-black tracking-tighter text-white leading-[0.9]">
               {t("title")}
-            </motion.h1>
-            <motion.p
+            </m.h1>
+            <m.p
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.2 }}
               className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
               {t("description")}
-            </motion.p>
+            </m.p>
           </div>
         </div>
 
@@ -94,7 +95,7 @@ export default function BlogClient() {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {[...Array(3)].map((_, i) => (
               <div
-                key={i}
+                key={`skeleton-${i}`}
                 className="h-[450px] bg-neutral-900/40 rounded-3xl animate-pulse border border-white/5 relative overflow-hidden">
                 <div className="absolute inset-0 bg-gradient-to-t from-black/20 to-transparent" />
               </div>
@@ -103,7 +104,7 @@ export default function BlogClient() {
         ) : posts.length > 0 ? (
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-x-8 gap-y-12">
             {posts.map((post, index) => (
-              <motion.article
+              <m.article
                 key={post._id}
                 initial={{ opacity: 0, y: 30 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -122,6 +123,8 @@ export default function BlogClient() {
                         src={urlFor(post.mainImage).url()}
                         alt={post.title}
                         fill
+                        sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                        priority={index < 3}
                         className="object-cover transition-transform duration-700 ease-out group-hover:scale-105"
                       />
                     )}
@@ -157,6 +160,7 @@ export default function BlogClient() {
                               src={urlFor(post.author.image).url()}
                               alt={post.author.name}
                               fill
+                              sizes="32px"
                               className="object-cover"
                             />
                           </div>
@@ -178,7 +182,7 @@ export default function BlogClient() {
                     </div>
                   </div>
                 </Link>
-              </motion.article>
+              </m.article>
             ))}
           </div>
         ) : (
@@ -190,5 +194,6 @@ export default function BlogClient() {
         )}
       </div>
     </main>
+    </LazyMotion>
   );
 }

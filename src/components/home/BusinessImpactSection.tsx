@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { TrendingUp, Clock, Shield, Layers } from "lucide-react";
 
 export function BusinessImpactSection() {
@@ -35,10 +35,11 @@ export function BusinessImpactSection() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 bg-neutral-950 border-y border-neutral-900">
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}
             viewport={{ once: true }}
@@ -49,11 +50,11 @@ export function BusinessImpactSection() {
             <p className="text-xl text-neutral-400 leading-relaxed max-w-lg">
               {t("subtitle")}
             </p>
-          </motion.div>
+          </m.div>
 
           <div className="grid grid-cols-2 gap-4 md:gap-8">
             {metrics.map((metric, index) => (
-              <motion.div
+              <m.div
                 key={metric.key}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -67,11 +68,12 @@ export function BusinessImpactSection() {
                 <div className="text-sm text-neutral-400 font-mono uppercase tracking-wider">
                   {metric.label}
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </div>
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

@@ -9,7 +9,7 @@ import {
   ArrowRight,
   ShieldCheck,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
 
@@ -70,9 +70,10 @@ export function ServicesGrid({ images }: ServicesGridProps) {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24">
       {/* Section Header */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 24 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true, margin: "-80px" }}
@@ -87,7 +88,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
         <p className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
           {tHome("services_section.subtitle")}
         </p>
-      </motion.div>
+      </m.div>
 
       <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
         {services.map((service) => {
@@ -103,7 +104,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
               href={{ pathname: "/services", hash: anchorMap[service.id] }}
               key={service.id}
               className="block h-full">
-              <motion.div
+              <m.div
                 key={service.id}
                 initial={{ opacity: 0, y: 24 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -149,20 +150,20 @@ export function ServicesGrid({ images }: ServicesGridProps) {
                     <ArrowRight className="w-4 h-4" />
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             </Link>
           );
         })}
       </div>
 
       {/* CTA Button */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: 0.4, duration: 0.5 }}
         className="mt-12 flex justify-center">
-        <motion.div
+        <m.div
           whileHover={{ scale: 1.02 }}
           whileTap={{ scale: 0.98 }}
           transition={{ duration: 0.15, ease: "easeOut" }}>
@@ -176,8 +177,9 @@ export function ServicesGrid({ images }: ServicesGridProps) {
             {t("explore_capabilities")}
             <ArrowRight className="w-4 h-4 transition-transform duration-300 group-hover:translate-x-1" />
           </Link>
-        </motion.div>
-      </motion.div>
+        </m.div>
+      </m.div>
     </section>
+    </LazyMotion>
   );
 }

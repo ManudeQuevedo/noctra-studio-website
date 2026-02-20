@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import {
   ArrowRight,
@@ -20,13 +20,13 @@ const FadeIn = ({
   children: React.ReactNode;
   delay?: number;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 export default function AboutClient() {
@@ -35,24 +35,25 @@ export default function AboutClient() {
   const historyIcons = [Code, Phone, DollarSign, LineChart];
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black relative">
       {/* 1. Hero Section */}
       <section className="pt-32 pb-16 px-6 md:px-8 border-b border-neutral-900 relative z-10">
         <div className="max-w-7xl mx-auto w-full text-center md:text-left">
-          <motion.h1
+          <m.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut" }}
             className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-8 text-white text-balance">
             {t("hero.title")}
-          </motion.h1>
-          <motion.p
+          </m.h1>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
             className="text-xl md:text-2xl text-neutral-400 max-w-3xl leading-relaxed text-balance">
             {t("hero.subtitle")}
-          </motion.p>
+          </m.p>
         </div>
       </section>
 
@@ -97,7 +98,7 @@ export default function AboutClient() {
                     {(t.raw("history.items") as any[]).map((item, i) => {
                       const Icon = historyIcons[i] || CheckCircle2;
                       return (
-                        <div key={i} className="flex gap-6">
+                        <div key={item.title} className="flex gap-6">
                           <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
                             <Icon className="w-6 h-6 text-white" />
                           </div>
@@ -132,7 +133,7 @@ export default function AboutClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
             {(t.raw("team.items") as any[]).map((item, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+              <FadeIn key={item.title} delay={i * 0.1}>
                 <div className="p-8 border border-neutral-800 rounded-2xl bg-black hover:border-white/20 transition-all duration-300 h-full">
                   <h3 className="text-xl font-bold mb-4 flex items-center gap-3">
                     <div className="w-2 h-2 rounded-full bg-blue-500" />
@@ -165,7 +166,7 @@ export default function AboutClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
             {(t.raw("tech.items") as any[]).map((item, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+              <FadeIn key={item.label} delay={i * 0.1}>
                 <div className="p-8 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-4">
                   <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
                     STAKED
@@ -181,7 +182,7 @@ export default function AboutClient() {
 
           <div className="flex flex-wrap justify-center gap-6">
             {(t.raw("tech.summary_labels") as string[]).map((label, i) => (
-              <FadeIn key={i} delay={0.5 + i * 0.1}>
+              <FadeIn key={label} delay={0.5 + i * 0.1}>
                 <div className="flex items-center gap-2 text-neutral-500 text-xs font-mono uppercase tracking-[0.2em]">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                   {label}
@@ -213,7 +214,7 @@ export default function AboutClient() {
 
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 mb-16">
             {(t.raw("trust.items") as any[]).map((item, i) => (
-              <FadeIn key={i} delay={i * 0.1}>
+              <FadeIn key={item.title} delay={i * 0.1}>
                 <div className="p-8 rounded-2xl border border-neutral-800 bg-black hover:bg-neutral-900/50 transition-colors group h-full flex flex-col">
                   <div className="flex items-center gap-3 mb-4">
                     <h3 className="text-xl font-bold text-white group-hover:translate-x-1 transition-transform">{item.title}</h3>
@@ -266,5 +267,6 @@ export default function AboutClient() {
         </div>
       </section>
     </main>
+    </LazyMotion>
   );
 }

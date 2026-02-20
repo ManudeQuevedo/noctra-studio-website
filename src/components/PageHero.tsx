@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
@@ -11,8 +11,9 @@ export function PageHero() {
   const t = useTranslations("HomePage");
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-32 pb-16 text-center z-10 bg-transparent">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ duration: 0.5 }}
@@ -41,7 +42,7 @@ export function PageHero() {
         </p>
 
         <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-8">
-          <motion.div
+          <m.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.15, ease: "easeOut" }}>
@@ -54,8 +55,8 @@ export function PageHero() {
                 {t("cta_start")}
               </Link>
             </Button>
-          </motion.div>
-          <motion.div
+          </m.div>
+          <m.div
             whileHover={{ scale: 1.02 }}
             whileTap={{ scale: 0.98 }}
             transition={{ duration: 0.15, ease: "easeOut" }}>
@@ -66,12 +67,12 @@ export function PageHero() {
               className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
               {t("cta_work")}
             </Button>
-          </motion.div>
+          </m.div>
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Scroll Indicator */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         animate={{ opacity: 1, y: [0, 10, 0] }}
         transition={{
@@ -80,7 +81,8 @@ export function PageHero() {
         }}
         className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-600">
         <ChevronDown className="w-8 h-8" />
-      </motion.div>
+      </m.div>
     </section>
+    </LazyMotion>
   );
 }

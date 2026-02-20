@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 import {
@@ -36,34 +36,35 @@ export function AIAutomationShowcase() {
   const visibleItems = isExpanded ? items : items.slice(0, 2);
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full px-6 md:px-8 py-24 bg-neutral-950 border-t border-b border-neutral-900 overflow-hidden">
       <div className="max-w-6xl mx-auto">
         {/* Header Section */}
         <div className="text-center mb-16 space-y-4">
-          <motion.span
+          <m.span
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             className="text-emerald-500 font-mono text-xs tracking-widest uppercase font-bold">
             {t("pre_title")}
-          </motion.span>
-          <motion.h2
+          </m.span>
+          <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.1 }}
             className="text-3xl md:text-4xl font-bold tracking-tight text-white">
             {t("title")}
-          </motion.h2>
-          <motion.p
+          </m.h2>
+          <m.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
             transition={{ delay: 0.2 }}
             className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto italic leading-relaxed">
             &ldquo;{t("subtitle")}&rdquo;
-          </motion.p>
-          <motion.div
+          </m.p>
+          <m.div
             initial={{ opacity: 0, scale: 0.95 }}
             whileInView={{ opacity: 1, scale: 1 }}
             viewport={{ once: true }}
@@ -73,14 +74,14 @@ export function AIAutomationShowcase() {
             <p className="text-lg md:text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed border-l-2 border-emerald-500/30 pl-6 text-left md:text-center md:border-l-0 md:pl-0">
               {t("intro")}
             </p>
-          </motion.div>
+          </m.div>
         </div>
 
         {/* Use Cases Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8 mb-12">
           <AnimatePresence mode="popLayout">
             {visibleItems.map((item, index) => (
-              <motion.div
+              <m.div
                 key={item.industry}
                 layout
                 initial={{ opacity: 0, scale: 0.9 }}
@@ -127,7 +128,7 @@ export function AIAutomationShowcase() {
                     </p>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             ))}
           </AnimatePresence>
         </div>
@@ -152,7 +153,7 @@ export function AIAutomationShowcase() {
 
         {/* Bottom CTA */}
         <div className="text-center space-y-8">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}
@@ -176,9 +177,10 @@ export function AIAutomationShowcase() {
             <p className="text-neutral-400 max-w-2xl mx-auto text-base leading-relaxed">
               {t("closing_statement")}
             </p>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

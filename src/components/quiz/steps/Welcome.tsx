@@ -9,7 +9,7 @@ import {
   Target,
   Sparkles,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 export const Welcome = () => {
   const { nextStep } = useQuiz();
@@ -34,14 +34,15 @@ export const Welcome = () => {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="flex flex-col items-center justify-center text-center space-y-8 py-4 md:py-8">
-      <motion.div
+      <m.div
         initial={{ scale: 0.8, opacity: 0 }}
         animate={{ scale: 1, opacity: 1 }}
         transition={{ duration: 0.5 }}
         className="w-16 h-16 rounded-2xl bg-white/5 flex items-center justify-center border border-white/10 shadow-2xl">
         <Sparkles className="w-8 h-8 text-white" />
-      </motion.div>
+      </m.div>
 
       <div className="space-y-4 max-w-lg">
         <h2 className="text-3xl md:text-4xl font-black text-white tracking-tight">
@@ -56,8 +57,8 @@ export const Welcome = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4 w-full max-w-xl">
         {benefits.map((benefit, index) => (
-          <motion.div
-            key={index}
+          <m.div
+            key={benefit.text}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 + index * 0.1 }}
@@ -68,11 +69,11 @@ export const Welcome = () => {
             <span className="text-white text-sm font-medium transition-colors">
               {benefit.text}
             </span>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.6 }}
@@ -86,7 +87,8 @@ export const Welcome = () => {
         <p className="text-xs text-neutral-500 font-medium">
           No commitment required
         </p>
-      </motion.div>
+      </m.div>
     </div>
+    </LazyMotion>
   );
 };

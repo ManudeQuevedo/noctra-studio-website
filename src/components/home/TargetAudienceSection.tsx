@@ -2,7 +2,7 @@
 
 import { Zap, TrendingUp, ShieldCheck } from "lucide-react";
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 const FadeIn = ({
   children,
@@ -13,14 +13,14 @@ const FadeIn = ({
   delay?: number;
   className?: string;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}
     className={className}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 /**
@@ -49,6 +49,7 @@ export function TargetAudienceSection() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 md:py-32 px-6 md:px-8 bg-transparent">
       <div className="max-w-7xl mx-auto">
         <FadeIn>
@@ -85,5 +86,6 @@ export function TargetAudienceSection() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

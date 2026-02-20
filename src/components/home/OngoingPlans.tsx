@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Check, ArrowRight, ShieldCheck, Zap } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
@@ -14,6 +14,7 @@ interface PlanTier {
 
 export function OngoingPlans() {
   const t = useTranslations("OngoingManagement");
+  const tPricing = useTranslations("Pricing");
 
   const plans: PlanTier[] = [
     { id: "tier1", key: "tier1" },
@@ -22,8 +23,9 @@ export function OngoingPlans() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 border-t border-neutral-900">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -39,11 +41,11 @@ export function OngoingPlans() {
         <p className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
           {t("subtitle")}
         </p>
-      </motion.div>
+      </m.div>
 
       <div className="grid gap-8 md:grid-cols-3">
         {plans.map((plan, index) => (
-          <motion.div
+          <m.div
             key={plan.id}
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -57,7 +59,7 @@ export function OngoingPlans() {
             )}>
             {plan.popular && (
               <div className="absolute -top-4 left-1/2 -translate-x-1/2 px-4 py-1 bg-emerald-500 text-black text-[10px] font-black uppercase tracking-widest rounded-full shadow-[0_0_20px_rgba(16,185,129,0.4)]">
-                {useTranslations("Pricing")("most_common")}
+                {tPricing("most_common")}
               </div>
             )}
 
@@ -81,7 +83,7 @@ export function OngoingPlans() {
             <ul className="space-y-4 mb-8 flex-1">
               {(t.raw(`${plan.key}.features`) as string[]).map((feature, i) => (
                 <li
-                  key={i}
+                  key={feature}
                   className="flex items-start gap-3 text-sm text-neutral-400 group-hover:text-neutral-300 transition-colors">
                   <Check
                     className={cn(
@@ -111,11 +113,11 @@ export function OngoingPlans() {
               {t("cta")}
               <ArrowRight className="w-4 h-4" />
             </Link>
-          </motion.div>
+          </m.div>
         ))}
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -130,10 +132,11 @@ export function OngoingPlans() {
         <Link
           href={{ pathname: "/services", hash: "ongoing" }}
           className="text-xs font-black text-emerald-500 uppercase tracking-widest hover:text-emerald-400 transition-colors flex items-center gap-2 group">
-          {useTranslations("Pricing")("compare_all_features")}
+          {tPricing("compare_all_features")}
           <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
         </Link>
-      </motion.div>
+      </m.div>
     </section>
+    </LazyMotion>
   );
 }

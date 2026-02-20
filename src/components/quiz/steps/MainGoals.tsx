@@ -2,7 +2,7 @@
 
 import { useQuiz, MainGoal as MainGoalEnum } from "../QuizContext";
 import { Check, ArrowRight } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 export const MainGoals = () => {
   const { answers, setAnswer, nextStep } = useQuiz();
@@ -60,6 +60,7 @@ export const MainGoals = () => {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="space-y-8 max-w-xl mx-auto">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold text-white">
@@ -78,7 +79,7 @@ export const MainGoals = () => {
           );
 
           return (
-            <motion.button
+            <m.button
               key={option.id}
               initial={{ opacity: 0, x: -10 }}
               animate={{ opacity: 1, x: 0 }}
@@ -111,7 +112,7 @@ export const MainGoals = () => {
                   {option.desc}
                 </div>
               </div>
-            </motion.button>
+            </m.button>
           );
         })}
       </div>
@@ -132,5 +133,6 @@ export const MainGoals = () => {
         </button>
       </div>
     </div>
+    </LazyMotion>
   );
 };

@@ -110,6 +110,7 @@ const components = {
           src={urlFor(value).url()}
           alt="Blog image"
           fill
+          sizes="(max-width: 768px) 100vw, 800px"
           className="object-cover"
         />
       </div>
@@ -167,6 +168,7 @@ export default async function BlogPostPage({
                       src={urlFor(post.author.image).url()}
                       alt={post.author.name}
                       fill
+                      sizes="32px"
                       className="object-cover"
                     />
                   </div>
@@ -195,6 +197,7 @@ export default async function BlogPostPage({
                 src={urlFor(post.mainImage).url()}
                 alt={post.title}
                 fill
+                sizes="(max-width: 1200px) 100vw, 1200px"
                 className="object-cover"
                 priority
               />

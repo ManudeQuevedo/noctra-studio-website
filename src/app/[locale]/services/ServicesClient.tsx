@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence, useInView } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import NextImage from "next/image";
 import {
@@ -259,7 +259,7 @@ const MobileServicesSlider = ({
                         const isHighlight = i < 2;
                         return (
                           <div
-                            key={i}
+                            key={ind.text}
                             className={cn(
                               "px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5",
                               isHighlight
@@ -320,13 +320,13 @@ const MobileServicesSlider = ({
       <div className="h-6 flex justify-center">
         <AnimatePresence>
           {showHint && (
-            <motion.div
+            <m.div
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
               className="text-[10px] font-mono text-neutral-500 flex items-center gap-2">
               &larr; desliza para ver m&aacute;s &rarr;
-            </motion.div>
+            </m.div>
           )}
         </AnimatePresence>
       </div>
@@ -390,7 +390,7 @@ const StandardIcons = {
           strokeWidth="2"
           className="text-neutral-700"
         />
-        <motion.path
+        <m.path
           d="M32 32L50 14"
           stroke="#10b981"
           strokeWidth="3"
@@ -445,7 +445,7 @@ const StandardIcons = {
           strokeWidth="1"
           className="text-neutral-800"
         />
-        <motion.circle
+        <m.circle
           cx="32"
           cy="12"
           r="3"
@@ -453,7 +453,7 @@ const StandardIcons = {
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 2, repeat: Infinity }}
         />
-        <motion.circle
+        <m.circle
           cx="52"
           cy="40"
           r="3"
@@ -461,7 +461,7 @@ const StandardIcons = {
           animate={{ opacity: [0.4, 1, 0.4] }}
           transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
         />
-        <motion.circle
+        <m.circle
           cx="12"
           cy="40"
           r="3"
@@ -492,7 +492,7 @@ const StandardIcons = {
           strokeWidth="2"
           className="fill-emerald-500/5"
         />
-        <motion.path
+        <m.path
           d="M20 32L28 40L44 24"
           stroke="#10b981"
           strokeWidth="4"
@@ -530,7 +530,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
   if (!data) return null;
 
   return (
-    <motion.div
+    <m.div
       initial={{ height: 0, opacity: 0 }}
       animate={{ height: "auto", opacity: 1 }}
       exit={{ height: 0, opacity: 0 }}
@@ -548,7 +548,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
               <ul className="grid grid-cols-1 gap-4">
                 {data.included.map((item: string, i: number) => (
                   <li
-                    key={i}
+                    key={item}
                     className="flex items-start gap-3 text-sm text-neutral-300">
                     <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                     {item}
@@ -565,7 +565,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
               <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                 {data.deliverables.map((item: string, i: number) => (
                   <div
-                    key={i}
+                    key={item}
                     className="px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-sm text-white font-medium flex items-center gap-2">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/40" />
                     {item}
@@ -584,7 +584,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
               </h5>
               <div className="space-y-4">
                 {data.timeline.map((step: string, i: number) => (
-                  <div key={i} className="flex items-center gap-4 group/step">
+                  <div key={step} className="flex items-center gap-4 group/step">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/30 group-last:bg-emerald-500" />
                     <span className="text-sm text-neutral-400 group-last:text-white group-last:font-bold">
                       {step}
@@ -606,7 +606,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
                     .filter((inv: any) => !inv.total)
                     .map((inv: any, i: number) => (
                       <div
-                        key={i}
+                        key={inv.label}
                         className="flex justify-between text-sm py-1 border-b border-white/[0.03]">
                         <span className="text-neutral-500">{inv.label}</span>
                         <span className="text-white font-mono">
@@ -625,7 +625,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
                 <div className="space-y-4">
                   {data.investment_notes.map((note: string, i: number) => (
                     <p
-                      key={i}
+                      key={note}
                       className="text-sm text-neutral-400 italic font-medium">
                       {note}
                     </p>
@@ -647,7 +647,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -676,7 +676,7 @@ const ServiceSection = ({
   const isOngoing = serviceKey === "ongoing";
 
   return (
-    <motion.div
+    <m.div
       initial={{ opacity: 0, scale: 0.95 }}
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
@@ -818,7 +818,7 @@ const ServiceSection = ({
                       .raw("scoping_call_box.items")
                       .map((point: string, i: number) => (
                         <li
-                          key={i}
+                          key={point}
                           className="flex items-center gap-3 text-sm text-neutral-300">
                           <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/50" />
                           {point}
@@ -847,7 +847,7 @@ const ServiceSection = ({
                 const Icon = ICON_MAP[item.icon] || Check;
                 return (
                   <div
-                    key={i}
+                    key={item.text}
                     className="flex items-center gap-4 p-4 rounded-xl border border-neutral-800/50 bg-white/[0.01] hover:border-emerald-500/30 transition-all group/ind">
                     <div className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center text-emerald-500 group-hover/ind:bg-emerald-500 group-hover/ind:text-black transition-all">
                       <Icon className="w-5 h-5" />
@@ -878,7 +878,7 @@ const ServiceSection = ({
             </button>
             <AnimatePresence>
               {showExamples && (
-                <motion.div
+                <m.div
                   initial={{ height: 0, opacity: 0 }}
                   animate={{ height: "auto", opacity: 1 }}
                   exit={{ height: 0, opacity: 0 }}
@@ -886,7 +886,7 @@ const ServiceSection = ({
                   <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
                     {examples.map((example: any, i: number) => (
                       <div
-                        key={i}
+                        key={example.name}
                         className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/50">
                         <p className="text-xs font-black text-emerald-500 mb-2 uppercase tracking-widest">
                           {example.name}
@@ -903,13 +903,13 @@ const ServiceSection = ({
                     {t("real_examples.view_more")}{" "}
                     <ExternalLink className="w-3 h-3" />
                   </Link>
-                </motion.div>
+                </m.div>
               )}
             </AnimatePresence>
           </div>
         </div>
       </div>
-    </motion.div>
+    </m.div>
   );
 };
 
@@ -936,10 +936,11 @@ export default function ServicesClient() {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0 selection:bg-emerald-500/30">
       {/* Header */}
       <section className="w-full max-w-7xl mx-auto px-6 md:px-8 mb-24 text-center">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}>
@@ -951,7 +952,7 @@ export default function ServicesClient() {
           </p>
 
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10">
-            <motion.div
+            <m.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.15, ease: "easeOut" }}>
@@ -967,8 +968,8 @@ export default function ServicesClient() {
                   {t("hero_cta_consult")}
                 </Link>
               </Button>
-            </motion.div>
-            <motion.div
+            </m.div>
+            <m.div
               whileHover={{ scale: 1.02 }}
               whileTap={{ scale: 0.98 }}
               transition={{ duration: 0.15, ease: "easeOut" }}>
@@ -982,9 +983,9 @@ export default function ServicesClient() {
                 className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
                 {t("hero_cta_pricing")}
               </Button>
-            </motion.div>
+            </m.div>
           </div>
-        </motion.div>
+        </m.div>
       </section>
 
       {/* Interactive Phase Selector */}
@@ -1076,7 +1077,7 @@ export default function ServicesClient() {
 
       {/* Mobile Sticky CTA Bar */}
       <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 z-50 pointer-events-none">
-        <motion.div
+        <m.div
           initial={{ y: 100 }}
           animate={{ y: isContactInView ? 150 : 0 }}
           transition={{ duration: 0.4, ease: "easeOut" }}
@@ -1100,8 +1101,9 @@ export default function ServicesClient() {
             className="px-6 py-3 rounded-xl bg-white text-black font-black text-xs uppercase tracking-widest flex items-center gap-2">
             {t("start_project")} <ArrowRight className="w-3 h-3" />
           </Link>
-        </motion.div>
+        </m.div>
       </div>
     </main>
+    </LazyMotion>
   );
 }

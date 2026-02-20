@@ -325,7 +325,7 @@ export function Footer() {
                 },
               ].map((social, i) => (
                 <Link
-                  key={i}
+                  key={social.href}
                   href={social.href as any}
                   target="_blank"
                   rel="noopener noreferrer"

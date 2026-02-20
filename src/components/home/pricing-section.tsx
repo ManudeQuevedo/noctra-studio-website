@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { Check, ArrowRight, Plus } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
@@ -30,8 +30,9 @@ export function PricingSection() {
   const additionalText = t.raw("additional_text") as string[];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full max-w-7xl mx-auto px-6 md:px-8 py-24 border-t border-neutral-900">
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -53,7 +54,7 @@ export function PricingSection() {
               : t("compare_all_features")}
           </button>
         </div>
-      </motion.div>
+      </m.div>
 
       <WhyLocalBenefits />
 
@@ -64,7 +65,7 @@ export function PricingSection() {
         {showingComparison ? (
           <FeatureComparisonTable key="comparison" />
         ) : (
-          <motion.div
+          <m.div
             key="cards"
             initial={{ opacity: 0, x: -20 }}
             animate={{ opacity: 1, x: 0 }}
@@ -72,7 +73,7 @@ export function PricingSection() {
             transition={{ duration: 0.4 }}
             className="grid gap-8 md:grid-cols-3">
             {tiers.map((tier, index) => (
-              <motion.div
+              <m.div
                 key={tier.id}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
@@ -111,7 +112,7 @@ export function PricingSection() {
                   {(t.raw(`${tier.key}.features`) as string[]).map(
                     (feature, i) => (
                       <li
-                        key={i}
+                        key={feature}
                         className="flex items-start gap-3 text-sm text-neutral-300">
                         <Check className="w-5 h-5 text-white shrink-0" />
                         <span>{feature}</span>
@@ -138,9 +139,9 @@ export function PricingSection() {
                   {t("cta")}
                   <ArrowRight className="w-4 h-4" />
                 </Link>
-              </motion.div>
+              </m.div>
             ))}
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
@@ -148,7 +149,7 @@ export function PricingSection() {
       <RealROICalculator />
 
       {/* Optional Modules */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 20 }}
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
@@ -160,7 +161,7 @@ export function PricingSection() {
         <div className="grid gap-4 sm:grid-cols-3">
           {optionalModules.map((mod, i) => (
             <div
-              key={i}
+              key={mod.name}
               className="flex items-center gap-3 p-4 rounded-xl border border-neutral-800 bg-neutral-900/30">
               <Plus className="w-4 h-4 text-neutral-500 shrink-0" />
               <div>
@@ -172,10 +173,10 @@ export function PricingSection() {
             </div>
           ))}
         </div>
-      </motion.div>
+      </m.div>
 
       {/* Additional Text */}
-      <motion.div
+      <m.div
         initial={{ opacity: 0 }}
         whileInView={{ opacity: 1 }}
         viewport={{ once: true }}
@@ -183,13 +184,14 @@ export function PricingSection() {
         className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2">
         {additionalText.map((text, i) => (
           <div
-            key={i}
+            key={text}
             className="flex items-center gap-2 text-sm text-neutral-500">
             <span className="w-1 h-1 rounded-full bg-neutral-700" />
             {text}
           </div>
         ))}
-      </motion.div>
+      </m.div>
     </section>
+    </LazyMotion>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import {
   ArrowRight,
   ShieldAlert,
@@ -18,13 +18,13 @@ const FadeIn = ({
   children: React.ReactNode;
   delay?: number;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 export function JoinNetwork() {
@@ -49,6 +49,7 @@ export function JoinNetwork() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 md:py-32 px-4 md:px-8 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-black relative overflow-hidden">
       {/* Background Grid */}
       <div className="absolute inset-0 bg-[linear-gradient(to_right,#80808012_1px,transparent_1px),linear-gradient(to_bottom,#80808012_1px,transparent_1px)] bg-[size:24px_24px]" />
@@ -84,7 +85,7 @@ export function JoinNetwork() {
 
                 <div className="space-y-8">
                   {[0, 1, 2].map((index) => (
-                    <div key={index} className="group">
+                    <div key={t(`manifesto.items.${index}.title`)} className="group">
                       <h3 className="text-lg font-bold text-white mb-2 flex items-center gap-3">
                         <span className="text-xs font-mono text-amber-500/50">
                           0{index + 1} {"//"}
@@ -149,5 +150,6 @@ export function JoinNetwork() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

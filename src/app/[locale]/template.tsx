@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 const fogVariant = {
   initial: { opacity: 0, filter: "blur(20px)", scale: 0.98 },
@@ -10,13 +10,15 @@ const fogVariant = {
 
 export default function Template({ children }: { children: React.ReactNode }) {
   return (
-    <motion.div
-      initial="initial"
-      animate="animate"
-      exit="exit"
-      variants={fogVariant}
-      transition={{ duration: 0.7, ease: "easeInOut" }}>
-      {children}
-    </motion.div>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        initial="initial"
+        animate="animate"
+        exit="exit"
+        variants={fogVariant}
+        transition={{ duration: 0.7, ease: "easeInOut" }}>
+        {children}
+      </m.div>
+    </LazyMotion>
   );
 }

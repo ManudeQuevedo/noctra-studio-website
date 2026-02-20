@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Code2, Zap, ScanEye } from "lucide-react";
 
 const FadeIn = ({
@@ -11,19 +11,20 @@ const FadeIn = ({
   children: React.ReactNode;
   delay?: number;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 export function NoctraStandard() {
   const t = useTranslations("AboutPage");
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 md:py-32 px-4 md:px-8 bg-neutral-900 text-white relative z-10">
       <div className="max-w-5xl mx-auto">
         <FadeIn>
@@ -35,7 +36,7 @@ export function NoctraStandard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12">
           {[{ icon: Code2 }, { icon: Zap }, { icon: ScanEye }].map(
             (item, index) => (
-              <FadeIn key={index} delay={index * 0.1}>
+              <FadeIn key={t(`manifesto.cards.${index}.title`)} delay={index * 0.1}>
                 <div className="group flex flex-col h-full justify-between border-l-2 border-neutral-800 pl-6 py-4 hover:border-white hover:bg-neutral-800/50 transition-all duration-300 ease-out rounded-r-sm">
                   <div className="mb-6">
                     <item.icon className="w-6 h-6 text-white mb-4" />
@@ -53,5 +54,6 @@ export function NoctraStandard() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

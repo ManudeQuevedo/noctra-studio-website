@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { ArrowUp } from "lucide-react";
 
 export function ScrollToTop() {
@@ -16,7 +16,7 @@ export function ScrollToTop() {
       }
     };
 
-    window.addEventListener("scroll", toggleVisibility);
+    window.addEventListener("scroll", toggleVisibility, { passive: true });
 
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
@@ -29,9 +29,10 @@ export function ScrollToTop() {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <AnimatePresence>
       {isVisible && (
-        <motion.button
+        <m.button
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: 10 }}
@@ -40,8 +41,9 @@ export function ScrollToTop() {
           className="fixed bottom-24 right-4 z-40 p-3 rounded-full bg-neutral-900/50 backdrop-blur-md border border-white/10 text-white hover:bg-neutral-900/80 transition-colors focus:outline-none focus:ring-2 focus:ring-white/20"
           aria-label="Scroll to top">
           <ArrowUp className="w-5 h-5" />
-        </motion.button>
+        </m.button>
       )}
     </AnimatePresence>
+    </LazyMotion>
   );
 }

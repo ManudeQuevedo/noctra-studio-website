@@ -12,10 +12,29 @@ import {
   Loader2,
   X,
 } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import jsPDF from "jspdf";
 import html2canvas from "html2canvas-pro";
+
+async function postQuizResults(payload: {
+  name: string | undefined;
+  email: string;
+  phone: string | undefined;
+  company: string | undefined;
+  answers: unknown;
+  recommendation: unknown;
+}) {
+  try {
+    await fetch("/api/quiz/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(payload),
+    });
+  } catch (err) {
+    console.error("Failed to submit quiz:", err);
+  }
+}
 
 export const Results = () => {
   const { calculateRecommendation, answers, closeQuiz } = useQuiz();
@@ -27,34 +46,17 @@ export const Results = () => {
     const recommendation = calculateRecommendation();
     setResult(recommendation);
 
-    // Submit quiz results to API (only once)
-    const submitQuiz = async () => {
-      if (
-        !hasSubmittedRef.current &&
-        recommendation &&
-        answers.contact?.email
-      ) {
-        hasSubmittedRef.current = true;
-        try {
-          await fetch("/api/quiz/submit", {
-            method: "POST",
-            headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({
-              name: answers.contact?.name,
-              email: answers.contact?.email,
-              phone: answers.contact?.phone,
-              company: answers.contact?.company,
-              answers: answers,
-              recommendation: recommendation,
-            }),
-          });
-        } catch (err) {
-          console.error("Failed to submit quiz:", err);
-        }
-      }
-    };
-
-    submitQuiz();
+    if (!hasSubmittedRef.current && recommendation && answers.contact?.email) {
+      hasSubmittedRef.current = true;
+      postQuizResults({
+        name: answers.contact?.name,
+        email: answers.contact?.email,
+        phone: answers.contact?.phone,
+        company: answers.contact?.company,
+        answers: answers,
+        recommendation: recommendation,
+      });
+    }
   }, [calculateRecommendation, answers]);
 
   const handleDownloadPdf = async () => {
@@ -153,6 +155,7 @@ export const Results = () => {
   const content = DATA[result.serviceId as keyof typeof DATA];
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="h-full flex flex-col pt-4 md:pt-0" id="results-content">
       {/* Compact Header */}
       <div className="text-center mb-6 shrink-0 relative">
@@ -162,12 +165,12 @@ export const Results = () => {
           <X className="w-5 h-5" />
         </button>
         <div className="inline-flex items-center gap-3 justify-center mb-2">
-          <motion.div
-            initial={{ scale: 0, rotate: -180 }}
+          <m.div
+            initial={{ scale: 0.95, opacity: 0, rotate: -180 }}
             animate={{ scale: 1, rotate: 0 }}
             className="w-8 h-8 bg-white/10 rounded-full flex items-center justify-center border border-white/20">
             <Check className="w-4 h-4 text-white stroke-[3]" />
-          </motion.div>
+          </m.div>
           <h2 className="text-xl font-black text-white tracking-tight">
             Perfect Match Found!
           </h2>
@@ -177,7 +180,7 @@ export const Results = () => {
         </p>
       </div>
 
-      <motion.div
+      <m.div
         initial={{ opacity: 0, y: 10 }}
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.2 }}
@@ -244,7 +247,7 @@ export const Results = () => {
                 <ul className="space-y-2">
                   {content.features.map((feature, i) => (
                     <li
-                      key={i}
+                      key={feature}
                       className="flex items-start gap-2 text-xs text-neutral-300">
                       <Check className="w-3.5 h-3.5 text-white shrink-0 mt-0.5" />
                       <span className="leading-tight">{feature}</span>
@@ -287,7 +290,8 @@ export const Results = () => {
             </div>
           </div>
         </div>
-      </motion.div>
+      </m.div>
     </div>
+    </LazyMotion>
   );
 };

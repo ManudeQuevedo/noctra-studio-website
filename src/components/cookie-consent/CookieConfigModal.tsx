@@ -4,7 +4,7 @@ import { useState } from 'react';
 import { Link } from '@/i18n/routing';
 import { X, Shield, BarChart, Megaphone, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { LazyMotion, m, domAnimation, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
 
@@ -47,9 +47,10 @@ export function CookieConfigModal({
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
       {/* BACKDROP */}
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         exit={{ opacity: 0 }}
@@ -58,7 +59,7 @@ export function CookieConfigModal({
       />
 
       {/* MODAL */}
-      <motion.div 
+      <m.div 
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
@@ -110,7 +111,7 @@ export function CookieConfigModal({
                 </p>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
                   {(t.raw("essential.items") as string[]).map((item, i) => (
-                    <li key={i} className="flex items-center gap-2 text-[10px] text-neutral-400 uppercase tracking-tight">
+                    <li key={item} className="flex items-center gap-2 text-[10px] text-neutral-400 uppercase tracking-tight">
                       <Check className="w-3 h-3 text-emerald-500" />
                       {item}
                     </li>
@@ -138,7 +139,7 @@ export function CookieConfigModal({
                 </p>
                 <ul className="space-y-1.5 opacity-60">
                   {(t.raw("analytics.items") as string[]).map((item, i) => (
-                    <li key={i} className="text-[10px] text-neutral-500 uppercase tracking-tight">• {item}</li>
+                    <li key={item} className="text-[10px] text-neutral-500 uppercase tracking-tight">• {item}</li>
                   ))}
                 </ul>
               </div>
@@ -163,7 +164,7 @@ export function CookieConfigModal({
                 </p>
                 <ul className="space-y-1.5 opacity-60">
                   {(t.raw("marketing.items") as string[]).map((item, i) => (
-                    <li key={i} className="text-[10px] text-neutral-500 uppercase tracking-tight">• {item}</li>
+                    <li key={item} className="text-[10px] text-neutral-500 uppercase tracking-tight">• {item}</li>
                   ))}
                 </ul>
               </div>
@@ -187,8 +188,9 @@ export function CookieConfigModal({
             {t("save")}
           </Button>
         </div>
-      </motion.div>
+      </m.div>
     </div>
+    </LazyMotion>
   );
 }
 

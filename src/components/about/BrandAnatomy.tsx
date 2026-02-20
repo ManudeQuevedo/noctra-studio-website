@@ -1,13 +1,15 @@
 "use client";
 
 import {
-  motion,
+  LazyMotion,
+  m,
+  domAnimation,
   useMotionTemplate,
   useMotionValue,
   animate,
 } from "framer-motion";
 import { useTranslations } from "next-intl";
-import { MouseEvent, useEffect, useState } from "react";
+import { MouseEvent, useEffect } from "react";
 import NextImage from "next/image";
 
 const FadeIn = ({
@@ -17,13 +19,13 @@ const FadeIn = ({
   children: React.ReactNode;
   delay?: number;
 }) => (
-  <motion.div
+  <m.div
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
     transition={{ duration: 0.6, delay }}>
     {children}
-  </motion.div>
+  </m.div>
 );
 
 /**
@@ -36,44 +38,47 @@ const FadeIn = ({
  */
 export function BrandAnatomy() {
   const t = useTranslations("AboutPage.brand_anatomy");
-  const [isMobile, setIsMobile] = useState(false);
-
-  // Mouse position tracking
   const mouseX = useMotionValue(0);
   const mouseY = useMotionValue(0);
 
-  // Detect mobile devices
   useEffect(() => {
-    const checkMobile = () => {
-      setIsMobile(window.innerWidth < 768 || "ontouchstart" in window);
+    const centerX = 400;
+    const centerY = 300;
+    const radius = 150;
+
+    const isMobileDevice = () =>
+      window.innerWidth < 768 || "ontouchstart" in window;
+
+    let animation: ReturnType<typeof animate> | null = null;
+
+    const startOrStop = () => {
+      if (isMobileDevice()) {
+        if (!animation) {
+          animation = animate(0, Math.PI * 2, {
+            duration: 8,
+            repeat: Infinity,
+            ease: "linear",
+            onUpdate: (angle) => {
+              mouseX.set(centerX + Math.cos(angle) * radius);
+              mouseY.set(centerY + Math.sin(angle) * radius);
+            },
+          });
+        }
+      } else {
+        if (animation) {
+          animation.stop();
+          animation = null;
+        }
+      }
     };
 
-    checkMobile();
-    window.addEventListener("resize", checkMobile);
-    return () => window.removeEventListener("resize", checkMobile);
-  }, []);
-
-  // Auto-scan animation for mobile (gentle drift effect)
-  useEffect(() => {
-    if (isMobile) {
-      // Gentle circular drift animation
-      const centerX = 400; // Approximate center of logo
-      const centerY = 300;
-      const radius = 150; // Drift radius
-
-      const animation = animate(0, Math.PI * 2, {
-        duration: 8,
-        repeat: Infinity,
-        ease: "linear",
-        onUpdate: (angle) => {
-          mouseX.set(centerX + Math.cos(angle) * radius);
-          mouseY.set(centerY + Math.sin(angle) * radius);
-        },
-      });
-
-      return () => animation.stop();
-    }
-  }, [isMobile, mouseX, mouseY]);
+    startOrStop();
+    window.addEventListener("resize", startOrStop);
+    return () => {
+      window.removeEventListener("resize", startOrStop);
+      if (animation) animation.stop();
+    };
+  }, [mouseX, mouseY]);
 
   // Create radial gradient that follows mouse
   const background = useMotionTemplate`
@@ -85,7 +90,8 @@ export function BrandAnatomy() {
   `;
 
   function handleMouseMove({ currentTarget, clientX, clientY }: MouseEvent) {
-    if (!isMobile) {
+    const isTouch = window.innerWidth < 768 || "ontouchstart" in window;
+    if (!isTouch) {
       const { left, top } = currentTarget.getBoundingClientRect();
       mouseX.set(clientX - left);
       mouseY.set(clientY - top);
@@ -93,6 +99,7 @@ export function BrandAnatomy() {
   }
 
   return (
+    <LazyMotion features={domAnimation}>
     <section
       className="w-full bg-black py-24 border-y border-zinc-800 relative overflow-hidden"
       onMouseMove={handleMouseMove}>
@@ -120,7 +127,7 @@ export function BrandAnatomy() {
       </div>
 
       {/* Spotlight Effect Layer - Illuminates Logo on Hover */}
-      <motion.div
+      <m.div
         className="absolute inset-0 flex items-center justify-center pointer-events-none z-[1]"
         style={{
           background,
@@ -133,7 +140,7 @@ export function BrandAnatomy() {
           className="w-[600px] h-[600px] opacity-40"
           style={{ mixBlendMode: "lighten" }}
         />
-      </motion.div>
+      </m.div>
 
       {/* Content Layer */}
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
@@ -191,5 +198,6 @@ export function BrandAnatomy() {
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

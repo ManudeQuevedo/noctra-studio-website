@@ -2,7 +2,7 @@
 
 import { useState, useEffect, Suspense, useMemo } from "react";
 import { useForm } from "react-hook-form";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
 import { useSearchParams } from "next/navigation";
 import {
@@ -60,8 +60,8 @@ const TestimonialSidebar = () => {
         </h3>
         <div className="grid grid-cols-1 gap-4">
           {testimonials.map((test, i) => (
-            <motion.div
-              key={i}
+            <m.div
+              key={test.author}
               initial={{ opacity: 0, x: 20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
@@ -86,7 +86,7 @@ const TestimonialSidebar = () => {
               <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-500/60 group-hover:text-emerald-500 transition-colors">
                 — {test.author}
               </span>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
@@ -95,7 +95,7 @@ const TestimonialSidebar = () => {
       <div className="pt-8 border-t border-neutral-900 grid grid-cols-2 gap-4">
         {[0, 1, 2].map((i) => (
           <div
-            key={i}
+            key={t(`hero.trust_badges.${i}`)}
             className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono uppercase tracking-tight">
             <Check className="w-3 h-3 text-emerald-500" />
             {t(`hero.trust_badges.${i}`)}
@@ -115,7 +115,7 @@ const ExpectationsCard = () => {
       </h4>
       <div className="space-y-3">
         {(t.raw("expectations.items") as string[]).map((item, i) => (
-          <div key={i} className="flex items-start gap-3">
+          <div key={item} className="flex items-start gap-3">
             <div className="mt-1 shrink-0 w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center">
               <Check className="w-2.5 h-2.5 text-emerald-500" />
             </div>
@@ -313,6 +313,7 @@ function ContactForm() {
     );
 
   return (
+    <LazyMotion features={domAnimation}>
     <main className="min-h-screen text-white pt-32 pb-24 relative overflow-hidden">
       <RouteScopedBackground />
       <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
@@ -320,12 +321,12 @@ function ContactForm() {
           {/* Main Info Column */}
           <div className="lg:col-span-4 space-y-12">
             <div>
-              <motion.h1
+              <m.h1
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 className="text-6xl md:text-7xl font-black tracking-tight mb-8 leading-none">
                 {tipo === "socio-fundador" ? "Socio Fundador" : t("hero.title")}
-              </motion.h1>
+              </m.h1>
 
               {tipo === "socio-fundador" && (
                 <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
@@ -392,7 +393,7 @@ function ContactForm() {
                   className="flex-1 flex flex-col">
                   <div className="relative overflow-hidden flex-1 min-h-[400px]">
                     <AnimatePresence mode="wait" custom={direction}>
-                      <motion.div
+                      <m.div
                         key={currentStep}
                         custom={direction}
                         variants={stepVariants}
@@ -566,13 +567,13 @@ function ContactForm() {
                               </div>
                               <AnimatePresence>
                                 {budgetScope && (
-                                  <motion.p
+                                  <m.p
                                     initial={{ opacity: 0, height: 0 }}
                                     animate={{ opacity: 1, height: "auto" }}
                                     className="text-[10px] font-mono text-emerald-500/80 bg-emerald-500/5 p-3 rounded-lg border border-emerald-500/10">
                                     <Zap className="inline w-3 h-3 mr-2 -mt-0.5" />
                                     Scope: {budgetScope}
-                                  </motion.p>
+                                  </m.p>
                                 )}
                               </AnimatePresence>
                             </div>
@@ -666,7 +667,7 @@ function ContactForm() {
                             <ExpectationsCard />
                           </div>
                         )}
-                      </motion.div>
+                      </m.div>
                     </AnimatePresence>
                   </div>
 
@@ -752,11 +753,12 @@ function ContactForm() {
         </div>
       </div>
     </main>
+    </LazyMotion>
   );
 }
 
 const SuccessState = ({ t, onReset }: { t: any; onReset: () => void }) => (
-  <motion.div
+  <m.div
     initial={{ scale: 0.9, opacity: 0 }}
     animate={{ scale: 1, opacity: 1 }}
     className="w-full max-w-md mx-auto text-center space-y-8">
@@ -783,7 +785,7 @@ const SuccessState = ({ t, onReset }: { t: any; onReset: () => void }) => (
         </button>
       </div>
     </div>
-  </motion.div>
+  </m.div>
 );
 
 export default function ContactClient() {

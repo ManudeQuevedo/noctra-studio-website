@@ -1,7 +1,7 @@
 "use client";
 
 import { usePathname } from "next/navigation";
-import { AnimatePresence, motion } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { StarField } from "./StarField";
 import { CaseStudiesBackground } from "./CaseStudiesBackground";
 import { GridStructure } from "@/components/backgrounds/GridStructure";
@@ -47,9 +47,10 @@ export function BackgroundManager() {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="fixed inset-0 z-[-1] pointer-events-none bg-neutral-950">
       <AnimatePresence mode="wait">
-        <motion.div
+        <m.div
           key={pathname}
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -57,8 +58,9 @@ export function BackgroundManager() {
           transition={{ duration: 1.5, ease: "easeInOut" }}
           className="absolute inset-0">
           {getBackground()}
-        </motion.div>
+        </m.div>
       </AnimatePresence>
     </div>
+    </LazyMotion>
   );
 }

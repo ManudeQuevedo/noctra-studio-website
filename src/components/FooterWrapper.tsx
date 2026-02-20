@@ -6,7 +6,7 @@ import { Footer } from "./footer";
 export function FooterWrapper() {
   const pathname = usePathname();
   const isHidden =
-    pathname?.includes("/admin") ||
+    pathname?.includes("/forge") ||
     pathname?.includes("/studio") ||
     pathname?.includes("/centro-comando") ||
     pathname?.includes("/dashboard");

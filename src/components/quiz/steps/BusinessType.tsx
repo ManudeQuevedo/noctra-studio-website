@@ -2,7 +2,7 @@
 
 import { useQuiz, BusinessType as BusinessTypeEnum } from "../QuizContext";
 import { Stethoscope, Scale, Store, Factory, Briefcase, Hotel, HelpCircle } from "lucide-react";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 export const BusinessType = () => {
   const { setAnswer, nextStep } = useQuiz();
@@ -58,6 +58,7 @@ export const BusinessType = () => {
   };
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="space-y-6">
       <div className="text-center space-y-2">
         <h2 className="text-2xl font-bold text-white">What type of business do you have?</h2>
@@ -66,7 +67,7 @@ export const BusinessType = () => {
 
       <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
         {options.map((option, index) => (
-          <motion.button
+          <m.button
             key={option.id}
             initial={{ opacity: 0, y: 10 }}
             animate={{ opacity: 1, y: 0 }}
@@ -90,9 +91,10 @@ export const BusinessType = () => {
                 </p>
               </div>
             </div>
-          </motion.button>
+          </m.button>
         ))}
       </div>
     </div>
+    </LazyMotion>
   );
 };

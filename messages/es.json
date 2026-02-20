@@ -2051,6 +2051,13 @@
         "before_after_label": "Ver Antes vs Después",
         "before_after_placeholder": "📊 Métricas de rendimiento y comparación antes/después disponibles post-lanzamiento",
         "before_after_coming_soon": "Lanzamiento en {date} — Comparación antes/después próximamente",
+        "timeline_phases": {
+          "discovery": "Discovery",
+          "design": "Diseño",
+          "development": "Desarrollo",
+          "launch": "Lanzamiento",
+          "completed": "Completado"
+        },
         "projects": {
           "woodax": {
             "name": "Woodax Design",

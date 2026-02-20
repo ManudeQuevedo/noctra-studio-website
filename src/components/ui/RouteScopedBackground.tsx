@@ -2,7 +2,7 @@
 
 import { useEffect, useRef } from "react";
 import { usePathname } from "next/navigation";
-import { motion, useMotionValue, useTransform } from "framer-motion";
+import { LazyMotion, m, domAnimation, useMotionValue, useTransform } from "framer-motion";
 
 export function RouteScopedBackground() {
   const pathname = usePathname();
@@ -37,15 +37,17 @@ export function RouteScopedBackground() {
   if (!pathname?.includes("/contact")) return null;
 
   return (
-    <motion.div
-      className="fixed inset-0 pointer-events-none z-[-1]"
-      initial={{ opacity: 0 }}
-      animate={{ opacity: 1 }}
-      exit={{ opacity: 0 }}
-      transition={{ duration: 0.3 }}
-      style={{
-        background: spotlightBackground,
-      }}
-    />
+    <LazyMotion features={domAnimation}>
+      <m.div
+        className="fixed inset-0 pointer-events-none z-[-1]"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        exit={{ opacity: 0 }}
+        transition={{ duration: 0.3 }}
+        style={{
+          background: spotlightBackground,
+        }}
+      />
+    </LazyMotion>
   );
 }

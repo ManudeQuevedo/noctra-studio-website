@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 export function ModernStackSection() {
   const t = useTranslations("ModernStack");
@@ -25,9 +25,10 @@ export function ModernStackSection() {
   ];
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 md:py-32 px-6 md:px-8 bg-white dark:bg-neutral-950">
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -36,11 +37,11 @@ export function ModernStackSection() {
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight text-neutral-900 dark:text-white mb-6">
             {t("title")}
           </h2>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-16 border-t border-neutral-200 dark:border-neutral-800 pt-12">
           {stack.map((item, index) => (
-            <motion.div
+            <m.div
               key={item.key}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
@@ -52,10 +53,11 @@ export function ModernStackSection() {
               <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
                 {item.desc}
               </p>
-            </motion.div>
+            </m.div>
           ))}
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

@@ -4,7 +4,7 @@ import { useState, useEffect } from 'react';
 import { Link } from '@/i18n/routing';
 import { Cookie, Settings, X } from 'lucide-react';
 import { useTranslations } from 'next-intl';
-import { motion, AnimatePresence } from 'framer-motion';
+import { LazyMotion, m, domAnimation, AnimatePresence } from 'framer-motion';
 import { 
   getStoredConsent, 
   isConsentExpired, 
@@ -62,10 +62,10 @@ export function CookieBanner() {
   if (!hasMounted) return null;
 
   return (
-    <>
+    <LazyMotion features={domAnimation}>
       <AnimatePresence>
         {showBanner && (
-          <motion.div 
+          <m.div 
             initial={{ y: 50, opacity: 0 }}
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 50, opacity: 0 }}
@@ -128,7 +128,7 @@ export function CookieBanner() {
 
               </div>
             </div>
-          </motion.div>
+          </m.div>
         )}
       </AnimatePresence>
 
@@ -141,6 +141,6 @@ export function CookieBanner() {
           />
         )}
       </AnimatePresence>
-    </>
+    </LazyMotion>
   );
 }

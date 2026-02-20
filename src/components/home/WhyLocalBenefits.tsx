@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { UserCheck, Zap, ShieldCheck, Clock } from "lucide-react";
 
 const icons = [UserCheck, Zap, ShieldCheck, Clock];
@@ -14,6 +14,7 @@ export function WhyLocalBenefits() {
   }>;
 
   return (
+    <LazyMotion features={domAnimation}>
     <div className="mb-24">
       <div className="text-center mb-16">
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white mb-4">
@@ -25,8 +26,8 @@ export function WhyLocalBenefits() {
         {items.map((item, index) => {
           const Icon = icons[index];
           return (
-            <motion.div
-              key={index}
+            <m.div
+              key={item.title}
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
@@ -41,10 +42,11 @@ export function WhyLocalBenefits() {
               <p className="text-neutral-400 leading-relaxed text-sm">
                 {item.description}
               </p>
-            </motion.div>
+            </m.div>
           );
         })}
       </div>
     </div>
+    </LazyMotion>
   );
 }

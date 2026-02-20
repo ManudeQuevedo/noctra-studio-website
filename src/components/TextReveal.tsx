@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { useTranslations } from "next-intl";
 
 interface TextRevealProps {
@@ -43,26 +43,28 @@ export function TextReveal({ text, className }: TextRevealProps) {
   };
 
   return (
-    <motion.div
-      style={{ overflow: "hidden", display: "flex", flexWrap: "wrap" }}
-      variants={container}
-      initial="hidden"
-      animate="visible"
-      className={className}>
+    <LazyMotion features={domAnimation}>
+      <m.div
+        style={{ overflow: "hidden", display: "flex", flexWrap: "wrap" }}
+        variants={container}
+        initial="hidden"
+        animate="visible"
+        className={className}>
       {words.map((word, index) => {
         // This simple check might fail for multi-word bracketed phrases if we split by space.
         // A better approach for the specific requirement "We are a [digital architecture firm]"
         // is to parse the full string first.
         return (
-          <motion.span
+          <m.span
             variants={child}
             style={{ marginRight: "0.25em" }}
-            key={index}>
+            key={`${index}-${word}`}>
             {word}
-          </motion.span>
+          </m.span>
         );
       })}
-    </motion.div>
+      </m.div>
+    </LazyMotion>
   );
 }
 
@@ -100,38 +102,40 @@ export function ManifestoText() {
   };
 
   return (
-    <motion.p
-      variants={container}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, margin: "-100px" }}
-      className="text-2xl md:text-3xl font-light text-neutral-600 leading-relaxed max-w-3xl mx-auto">
+    <LazyMotion features={domAnimation}>
+      <m.p
+        variants={container}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, margin: "-100px" }}
+        className="text-2xl md:text-3xl font-light text-neutral-600 leading-relaxed max-w-3xl mx-auto">
       {parts.map((part: string, index: number) => {
         if (part.startsWith("[") && part.endsWith("]")) {
           // Remove brackets
           const content = part.slice(1, -1);
           return (
-            <motion.span
-              key={index}
+            <m.span
+              key={`bracket-${index}`}
               variants={child}
               className="inline-block text-white font-bold drop-shadow-[0_0_15px_rgba(255,255,255,0.3)] mx-1">
               {content}
-            </motion.span>
+            </m.span>
           );
         }
         // Split regular text into words for smoother animation
         return part.split(" ").map((word: string, wIndex: number) => {
           if (!word) return null;
           return (
-            <motion.span
+            <m.span
               key={`${index}-${wIndex}`}
               variants={child}
               className="inline-block mr-2">
               {word}
-            </motion.span>
+            </m.span>
           );
         });
       })}
-    </motion.p>
+      </m.p>
+    </LazyMotion>
   );
 }

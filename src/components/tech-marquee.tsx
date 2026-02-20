@@ -25,7 +25,7 @@ import {
   SiGooglecloud,
   SiTypescript,
 } from "react-icons/si";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 
 const icons = [
   { icon: SiNextdotjs, label: "Next.js" },
@@ -55,9 +55,10 @@ const icons = [
 
 export function TechMarquee() {
   return (
+    <LazyMotion features={domAnimation}>
     <div className="relative flex w-full flex-col items-center justify-center overflow-hidden rounded-lg bg-neutral-950 md:shadow-xl">
       <div className="flex w-full overflow-hidden [mask-image:linear-gradient(to_right,transparent,white_20%,white_80%,transparent)]">
-        <motion.div
+        <m.div
           className="flex flex-none gap-12 py-4 pr-12"
           animate={{
             x: ["0%", "-50%"],
@@ -72,7 +73,7 @@ export function TechMarquee() {
           }}>
           {[...icons, ...icons].map((item, idx) => (
             <div
-              key={idx}
+              key={`${idx}-${item.label}`}
               className="flex items-center gap-2 text-neutral-400 hover:text-white transition-colors duration-300">
               <item.icon className="h-8 w-8" />
               <span className="text-sm font-mono uppercase tracking-wider hidden md:block">
@@ -80,8 +81,9 @@ export function TechMarquee() {
               </span>
             </div>
           ))}
-        </motion.div>
+        </m.div>
       </div>
     </div>
+    </LazyMotion>
   );
 }

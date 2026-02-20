@@ -1,16 +1,8 @@
 "use client";
 
-import Head from "next/head";
 import * as Sentry from "@sentry/nextjs";
-import { useState, useEffect } from "react";
 
 export default function SentryExamplePage() {
-  const [hasMounted, setHasMounted] = useState(false);
-
-  useEffect(() => {
-    setHasMounted(true);
-  }, []);
-
   return (
     <main
       style={{
@@ -19,65 +11,60 @@ export default function SentryExamplePage() {
         maxWidth: 600,
         margin: "auto",
       }}>
-      <Head>
-        <title>Sentry Example</title>
-      </Head>
       <h1>Sentry Test Page</h1>
       <p>
         This page is used to verify that Sentry is properly configured and
         capturing errors.
       </p>
-      {hasMounted && (
-        <div
+      <div
+        style={{
+          display: "flex",
+          flexDirection: "column",
+          gap: "1rem",
+          marginTop: "2rem",
+        }}>
+        <button
+          type="button"
           style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: "1rem",
-            marginTop: "2rem",
+            padding: "0.75rem 1.5rem",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
+          onClick={() => {
+            throw new Error("Sentry Frontend Error — Intentional Test");
           }}>
-          <button
-            type="button"
-            style={{
-              padding: "0.75rem 1.5rem",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-            onClick={() => {
-              throw new Error("Sentry Frontend Error — Intentional Test");
-            }}>
-            Throw Client-Side Error
-          </button>
+          Throw Client-Side Error
+        </button>
 
-          <button
-            type="button"
-            style={{
-              padding: "0.75rem 1.5rem",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-            onClick={async () => {
-              await fetch("/api/sentry-example-api");
-            }}>
-            Throw Server-Side Error (via API)
-          </button>
+        <button
+          type="button"
+          style={{
+            padding: "0.75rem 1.5rem",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
+          onClick={async () => {
+            await fetch("/api/sentry-example-api");
+          }}>
+          Throw Server-Side Error (via API)
+        </button>
 
-          <button
-            type="button"
-            style={{
-              padding: "0.75rem 1.5rem",
-              cursor: "pointer",
-              fontWeight: "bold",
-            }}
-            onClick={() => {
-              Sentry.captureException(
-                new Error("Sentry Manual Capture — Intentional Test"),
-              );
-              alert("Error captured and sent to Sentry.");
-            }}>
-            Capture Exception Manually
-          </button>
-        </div>
-      )}
+        <button
+          type="button"
+          style={{
+            padding: "0.75rem 1.5rem",
+            cursor: "pointer",
+            fontWeight: "bold",
+          }}
+          onClick={() => {
+            Sentry.captureException(
+              new Error("Sentry Manual Capture — Intentional Test"),
+            );
+            alert("Error captured and sent to Sentry.");
+          }}>
+          Capture Exception Manually
+        </button>
+      </div>
       <p style={{ marginTop: "2rem", color: "#888", fontSize: "0.85rem" }}>
         ⚠️ This page is for internal debugging only. Do not link it publicly.
       </p>

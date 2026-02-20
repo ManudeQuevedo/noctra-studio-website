@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, useMemo, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
   Calculator,
@@ -31,6 +31,7 @@ import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Slider } from "@/components/ui/slider";
 import { cn } from "@/lib/utils";
+import { Link } from "@/i18n/routing";
 
 type BusinessType =
   | "professional"
@@ -163,11 +164,11 @@ export function RealROICalculator() {
   // Tracking focus for pretty formatting in inputs
   const [isRevenueFocused, setIsRevenueFocused] = useState(false);
   const [revenueTemp, setRevenueTemp] = useState(
-    DEFAULT_STATE.revenue.toString(),
+    () => DEFAULT_STATE.revenue.toString(),
   );
   const [isTicketFocused, setIsTicketFocused] = useState(false);
   const [ticketTemp, setTicketTemp] = useState(
-    DEFAULT_STATE.avgTicket.toString(),
+    () => DEFAULT_STATE.avgTicket.toString(),
   );
 
   // Keep temp inputs in sync when state or currency changes externally (e.g. toggle MXN/USD)
@@ -421,6 +422,7 @@ export function RealROICalculator() {
   const prevStep = () => setStep((s) => Math.max(s - 1, 1));
 
   return (
+    <LazyMotion features={domAnimation}>
     <section
       id="roi-calculator"
       className="w-full py-24 px-6 md:px-8 border-t border-neutral-900 bg-black/50 overflow-hidden print:bg-white print:text-black">
@@ -428,14 +430,14 @@ export function RealROICalculator() {
         {/* Header */}
         <div className="flex flex-col md:flex-row items-center justify-between gap-6 mb-16">
           <div className="text-left space-y-4">
-            <motion.div
+            <m.div
               initial={{ opacity: 0, scale: 0.9 }}
               whileInView={{ opacity: 1, scale: 1 }}
               viewport={{ once: true }}
               className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/5 border border-emerald-500/10 text-[10px] font-mono font-bold text-emerald-500 uppercase tracking-widest leading-none">
               <Calculator className="w-3 h-3" />
               Interactive Tool
-            </motion.div>
+            </m.div>
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white print:text-black">
               {t("title")}
             </h2>
@@ -503,7 +505,7 @@ export function RealROICalculator() {
           <AnimatePresence mode="wait">
             {/* STEP 1: BUSINESS PROFILE */}
             {step === 1 && (
-              <motion.div
+              <m.div
                 key="step1"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -542,7 +544,7 @@ export function RealROICalculator() {
                       </p>
 
                       {isActive && (
-                        <motion.div
+                        <m.div
                           layoutId="selection"
                           className="absolute inset-0 border-2 border-emerald-500 rounded-[32px]"
                         />
@@ -550,12 +552,12 @@ export function RealROICalculator() {
                     </button>
                   );
                 })}
-              </motion.div>
+              </m.div>
             )}
 
             {/* STEP 2: INPUTS */}
             {step === 2 && (
-              <motion.div
+              <m.div
                 key="step2"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -586,7 +588,7 @@ export function RealROICalculator() {
                     <div className="space-y-4">
                       <div className="flex justify-between items-end">
                         <div className="space-y-1">
-                          <label className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
+                          <label htmlFor="roi-revenue" className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
                             Monthly Revenue
                           </label>
                           <p className="text-[10px] text-neutral-500">
@@ -628,6 +630,7 @@ export function RealROICalculator() {
                             }));
                           }}
                           onChange={(e) => setRevenueTemp(e.target.value)}
+                          id="roi-revenue"
                           className="bg-neutral-800/30 border-neutral-800 h-14 pl-16 text-lg font-bold focus:ring-1 focus:ring-emerald-500/20"
                         />
                       </div>
@@ -637,7 +640,7 @@ export function RealROICalculator() {
                     <div className="space-y-4">
                       <div className="flex justify-between items-end">
                         <div className="space-y-1">
-                          <label className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
+                          <label htmlFor="roi-avg-ticket" className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
                             Average Transaction
                           </label>
                           <p className="text-[10px] text-neutral-500">
@@ -669,6 +672,7 @@ export function RealROICalculator() {
                             setState((s) => ({ ...s, avgTicket: clamped }));
                           }}
                           onChange={(e) => setTicketTemp(e.target.value)}
+                          id="roi-avg-ticket"
                           className="bg-neutral-800/30 border-neutral-800 h-14 pl-16 text-lg font-bold focus:ring-1 focus:ring-emerald-500/20"
                         />
                       </div>
@@ -684,9 +688,9 @@ export function RealROICalculator() {
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
                           <Users className="w-3.5 h-3.5 text-neutral-500" />
-                          <label className="text-[10px] uppercase font-bold text-neutral-500 tracking-widest">
+                          <span className="text-[10px] uppercase font-bold text-neutral-500 tracking-widest">
                             Monthly Clients
-                          </label>
+                          </span>
                         </div>
                         <p className="text-[9px] text-neutral-600 font-mono">
                           {formatCur(state.revenue)} ÷{" "}
@@ -705,9 +709,9 @@ export function RealROICalculator() {
                       <div className="flex justify-between items-center bg-neutral-900/50 p-4 rounded-2xl border border-neutral-800">
                         <div className="space-y-1">
                           <div className="flex items-center gap-2">
-                            <label className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
+                            <span className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
                               Conversion Rate
-                            </label>
+                            </span>
                             <button className="group relative">
                               <HelpCircle className="w-3.5 h-3.5 text-neutral-500 hover:text-emerald-500 transition-colors" />
                               <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-4 w-[280px] p-4 bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 transition-all z-50 text-left">
@@ -854,12 +858,12 @@ export function RealROICalculator() {
                     Configure Expenses <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
-              </motion.div>
+              </m.div>
             )}
 
             {/* STEP 3: TYPE-SPECIFIC EXPENSES */}
             {step === 3 && (
-              <motion.div
+              <m.div
                 key="step3"
                 initial={{ opacity: 0, x: 20 }}
                 animate={{ opacity: 1, x: 0 }}
@@ -1266,12 +1270,12 @@ export function RealROICalculator() {
                     Calculate Impact <ArrowRight className="w-4 h-4 ml-2" />
                   </Button>
                 </div>
-              </motion.div>
+              </m.div>
             )}
 
             {/* STEP 4: RESULT DASHBOARD */}
             {step === 4 && (
-              <motion.div
+              <m.div
                 key="step4"
                 initial={{ opacity: 0, scale: 0.95 }}
                 animate={{ opacity: 1, scale: 1 }}
@@ -1412,10 +1416,10 @@ export function RealROICalculator() {
                     <Button
                       asChild
                       className="h-14 px-10 rounded-2xl bg-white text-black hover:bg-neutral-200 text-xs font-bold uppercase tracking-widest shadow-[0_20px_40px_-10px_rgba(255,255,255,0.2)]">
-                      <a href="/contact">
+                      <Link href="/contact">
                         {t("labels.discovery_cta")}
                         <ArrowRight className="w-4 h-4 ml-2" />
-                      </a>
+                      </Link>
                     </Button>
                   </div>
                 </div>
@@ -1427,12 +1431,13 @@ export function RealROICalculator() {
                     Re-calculate with different business type
                   </button>
                 </div>
-              </motion.div>
+              </m.div>
             )}
           </AnimatePresence>
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
 
@@ -1446,7 +1451,7 @@ function ExpenseInput({
   onChange: (v: number) => void;
 }) {
   const [isFocused, setIsFocused] = useState(false);
-  const [tempValue, setTempValue] = useState(value.toString());
+  const [tempValue, setTempValue] = useState(() => value.toString());
 
   // Get currency from context (since it's inside the same file we can use a simpler approach or pass it)
   // For simplicity here, we'll just use the raw number editing but with a nice prefix

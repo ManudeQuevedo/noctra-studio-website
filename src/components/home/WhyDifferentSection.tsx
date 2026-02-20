@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { User, Eye, ShieldCheck, Code2 } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
@@ -16,9 +16,10 @@ export function WhyDifferentSection() {
   }>;
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="w-full px-6 md:px-8 py-24">
       <div className="max-w-7xl mx-auto">
-        <motion.div
+        <m.div
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
@@ -30,7 +31,7 @@ export function WhyDifferentSection() {
           <p className="text-lg md:text-xl text-neutral-300 max-w-2xl mx-auto leading-relaxed">
             {t("subtitle")}
           </p>
-        </motion.div>
+        </m.div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {items.map((item, index) => {
@@ -38,8 +39,8 @@ export function WhyDifferentSection() {
             const isGuaranteeCard = index === 2; // "Measurable results or your money back" is the 3rd item
 
             return (
-              <motion.div
-                key={index}
+              <m.div
+                key={item.title}
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
@@ -100,11 +101,12 @@ export function WhyDifferentSection() {
                     </div>
                   </div>
                 </div>
-              </motion.div>
+              </m.div>
             );
           })}
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }

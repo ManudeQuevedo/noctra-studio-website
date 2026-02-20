@@ -1,4 +1,14 @@
 import { useTranslations } from "next-intl";
+import { generatePageMetadata } from "@/lib/metadata";
+
+export async function generateMetadata({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  return generatePageMetadata(locale, "terms");
+}
 
 export default function TermsPage() {
   const t = useTranslations("TermsPage");

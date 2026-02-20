@@ -1,5 +1,6 @@
 "use client";
 
+import React from "react";
 import { useTranslations } from "next-intl";
 import {
   SiPython,
@@ -38,6 +39,30 @@ import { FaUserFriends, FaFlask } from "react-icons/fa";
  * - Uses official brand icons (Simple Icons)
  * - "Blueprint" aesthetic styling
  */
+function CategoryCard({ category }: { category: { title: string; items: { label: string; icon: React.ComponentType<{ className?: string }> }[] } }) {
+  return (
+    <div className="flex flex-col h-full border-b border-r border-neutral-200 dark:border-neutral-800">
+      <div className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
+        <h3 className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+          {category.title}
+        </h3>
+      </div>
+      <div className="flex-1 flex flex-col">
+        {category.items.map((item) => (
+          <div
+            key={item.label}
+            className="group flex items-center gap-4 px-6 py-4 border-b border-neutral-100 dark:border-neutral-800 last:border-b-0 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-200 cursor-default">
+            <item.icon className="w-5 h-5 text-neutral-900 dark:text-neutral-50" />
+            <span className="text-sm font-medium text-neutral-900 dark:text-neutral-50">
+              {item.label}
+            </span>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+}
+
 export function TechStack() {
   const t = useTranslations("AboutPage.tech_radar");
 
@@ -99,44 +124,16 @@ export function TechStack() {
   const topRowItems = categories.slice(0, 3);
   const bottomRowItems = categories.slice(3, 5);
 
-  const CategoryCard = ({ category }: { category: (typeof categories)[0] }) => (
-    <div className="flex flex-col h-full border-b border-r border-neutral-200 dark:border-neutral-800">
-      {/* Header */}
-      <div className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
-        <h3 className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
-          {category.title}
-        </h3>
-      </div>
-
-      {/* List */}
-      <div className="flex-1 flex flex-col">
-        {category.items.map((item, itemIndex) => (
-          <div
-            key={itemIndex}
-            className="group flex items-center gap-4 px-6 py-4 border-b border-neutral-100 dark:border-neutral-800 last:border-b-0 hover:bg-neutral-100 dark:hover:bg-neutral-900 transition-colors duration-200 cursor-default">
-            <item.icon className="w-5 h-5 text-neutral-900 dark:text-neutral-50" />
-            <span className="text-sm font-medium text-neutral-900 dark:text-neutral-50">
-              {item.label}
-            </span>
-          </div>
-        ))}
-      </div>
-    </div>
-  );
-
   return (
     <div className="w-full border-t border-l border-neutral-200 dark:border-neutral-800 bg-white dark:bg-neutral-950">
-      {/* Top Row: 3 Columns */}
       <div className="grid grid-cols-1 lg:grid-cols-3">
-        {topRowItems.map((category, index) => (
-          <CategoryCard key={index} category={category} />
+        {topRowItems.map((category) => (
+          <CategoryCard key={category.title} category={category} />
         ))}
       </div>
-
-      {/* Bottom Row: 2 Columns */}
       <div className="grid grid-cols-1 lg:grid-cols-2">
-        {bottomRowItems.map((category, index) => (
-          <CategoryCard key={index} category={category} />
+        {bottomRowItems.map((category) => (
+          <CategoryCard key={category.title} category={category} />
         ))}
       </div>
     </div>

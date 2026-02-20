@@ -1,7 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { motion } from "framer-motion";
+import { LazyMotion, m, domAnimation } from "framer-motion";
 import { ArrowRight, Calculator, Calendar } from "lucide-react";
 import { Link } from "@/i18n/routing";
 
@@ -22,13 +22,14 @@ export function SmartCTA({ activePhase }: SmartCTAProps) {
   const data = PHASE_DATA[activePhase] || PHASE_DATA.web_dev;
 
   return (
+    <LazyMotion features={domAnimation}>
     <section className="py-24 px-6 relative overflow-hidden">
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[800px] h-[400px] bg-emerald-500/10 blur-[120px] rounded-full" />
 
       <div className="max-w-4xl mx-auto relative z-10">
         <div className="p-12 md:p-16 rounded-[3rem] border border-emerald-500/20 bg-neutral-900/40 backdrop-blur-xl text-center">
-          <motion.div
+          <m.div
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true }}>
@@ -81,9 +82,10 @@ export function SmartCTA({ activePhase }: SmartCTAProps) {
                 {t("6")}
               </Link>
             </div>
-          </motion.div>
+          </m.div>
         </div>
       </div>
     </section>
+    </LazyMotion>
   );
 }
