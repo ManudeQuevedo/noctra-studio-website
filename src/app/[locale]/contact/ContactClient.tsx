@@ -1,0 +1,802 @@
+"use client";
+
+import { useState, useEffect, Suspense, useMemo } from "react";
+import { useForm } from "react-hook-form";
+import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
+import { useTranslations, useLocale } from "next-intl";
+import { useSearchParams } from "next/navigation";
+import {
+  ArrowRight,
+  Instagram,
+  MapPin,
+  Clock,
+  Phone,
+  FileText,
+  Settings2,
+  Rocket,
+  Zap,
+  Check,
+  AlertCircle,
+  DollarSign,
+  MessageSquare,
+  User,
+  Mail,
+  ChevronRight,
+  ChevronLeft,
+  Target,
+} from "lucide-react";
+import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import "react-phone-number-input/style.css";
+import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
+
+import { cn } from "@/lib/utils";
+import { RouteScopedBackground } from "@/components/ui/RouteScopedBackground";
+
+type FormData = {
+  name: string;
+  email: string;
+  phone: string;
+  service: string;
+  currency: "mxn" | "usd";
+  budget: string;
+  source: string;
+  timeline: string;
+  details: string;
+};
+
+const TestimonialSidebar = () => {
+  const t = useTranslations("ContactPage");
+  const testimonials = t.raw("testimonials") as {
+    quote: string;
+    author: string;
+    icon?: string;
+  }[];
+
+  return (
+    <div className="space-y-8 lg:sticky lg:top-40 h-fit">
+      <div className="space-y-6">
+        <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-widest px-4 border-l border-neutral-800">
+          {t("testimonials_title")}
+        </h3>
+        <div className="grid grid-cols-1 gap-4">
+          {testimonials.map((test, i) => (
+            <m.div
+              key={test.author}
+              initial={{ opacity: 0, x: 20 }}
+              whileInView={{ opacity: 1, x: 0 }}
+              viewport={{ once: true }}
+              transition={{ delay: i * 0.1 }}
+              className="p-6 rounded-2xl bg-white/[0.02] border border-white/[0.05] hover:border-emerald-500/20 transition-colors group">
+              {test.icon === "zap" && (
+                <Zap className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+              {test.icon === "file-text" && (
+                <FileText className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+              {test.icon === "target" && (
+                <Target className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+              {!test.icon && (
+                <MessageSquare className="w-4 h-4 text-emerald-500/40 mb-4 group-hover:text-emerald-500 transition-colors" />
+              )}
+
+              <p className="text-sm text-neutral-300 mb-4 leading-relaxed font-medium">
+                {test.quote}
+              </p>
+              <span className="text-[10px] font-mono uppercase tracking-widest text-emerald-500/60 group-hover:text-emerald-500 transition-colors">
+                — {test.author}
+              </span>
+            </m.div>
+          ))}
+        </div>
+      </div>
+
+      {/* Trust Badges */}
+      <div className="pt-8 border-t border-neutral-900 grid grid-cols-2 gap-4">
+        {[0, 1, 2].map((i) => (
+          <div
+            key={t(`hero.trust_badges.${i}`)}
+            className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono uppercase tracking-tight">
+            <Check className="w-3 h-3 text-emerald-500" />
+            {t(`hero.trust_badges.${i}`)}
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+const ExpectationsCard = () => {
+  const t = useTranslations("ContactPage");
+  return (
+    <div className="mt-8 p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800 space-y-4">
+      <h4 className="text-xs font-mono font-bold text-neutral-300 uppercase tracking-widest">
+        {t("expectations.title")}
+      </h4>
+      <div className="space-y-3">
+        {(t.raw("expectations.items") as string[]).map((item, i) => (
+          <div key={item} className="flex items-start gap-3">
+            <div className="mt-1 shrink-0 w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center">
+              <Check className="w-2.5 h-2.5 text-emerald-500" />
+            </div>
+            <p className="text-xs text-neutral-500 leading-relaxed">{item}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+function ContactForm() {
+  const t = useTranslations("ContactPage");
+  const [currentStep, setCurrentStep] = useState(1);
+  const [time, setTime] = useState<string>("");
+  const [isSuccess, setIsSuccess] = useState(false);
+  const [direction, setDirection] = useState(0);
+  const [phoneValid, setPhoneValid] = useState<boolean | null>(null);
+
+  const {
+    register,
+    handleSubmit,
+    formState: { errors, isValid, isSubmitting },
+    reset,
+    watch,
+    setValue,
+    trigger,
+  } = useForm<FormData>({
+    mode: "onChange",
+    defaultValues: {
+      name: "",
+      email: "",
+      phone: "",
+      service: "",
+      currency: "mxn",
+      budget: "",
+      source: "",
+      timeline: "",
+      details: "",
+    },
+  });
+
+  const watchAll = watch();
+  const searchParams = useSearchParams();
+  const interest = searchParams.get("interest");
+  // New params
+  const tipo = searchParams.get("tipo");
+  const planParam = searchParams.get("plan");
+  const descuento = searchParams.get("descuento");
+  const servicioParam = searchParams.get("servicio");
+  const precioParam = searchParams.get("precio");
+
+  // Phone handler for react-phone-number-input
+  const handlePhoneChange = (value: string | undefined) => {
+    const val = value || "";
+    setValue("phone", val);
+    if (val) {
+      setPhoneValid(isValidPhoneNumber(val));
+    } else {
+      setPhoneValid(null);
+    }
+  };
+
+  const budgetScope = useMemo(() => {
+    if (!watchAll.budget) return null;
+    return t(`budget_scopes.${watchAll.budget}`);
+  }, [watchAll.budget, t]);
+
+  useEffect(() => {
+    // 1. Handle "interest" (legacy)
+    if (interest) {
+      const serviceMap: Record<string, string> = {
+        "digital-architecture": "website",
+        "visual-identity": "ecommerce",
+        "intelligent-systems": "custom_system",
+        growth: "optimization",
+      };
+      const mappedService = serviceMap[interest];
+      if (mappedService) setValue("service", mappedService);
+    }
+
+    // 2. Handle new "tipo" and "servicio" params
+    if (servicioParam) {
+      // Try to find exact match or close match
+      const opts = ["website", "ecommerce", "custom_system", "optimization"];
+      const s = servicioParam.toLowerCase();
+      if (opts.includes(s)) {
+        setValue("service", s);
+      } else if (s.includes("web")) {
+        setValue("service", "website");
+      } else if (s.includes("commer") || s.includes("tienda")) {
+        setValue("service", "ecommerce");
+      }
+    }
+
+    let detailsParts: string[] = [];
+    if (planParam) {
+      detailsParts.push(
+        `Interés en plan: ${planParam}${precioParam ? ` (${precioParam})` : ""}`,
+      );
+    }
+    if (descuento) {
+      detailsParts.push(`Aplicar descuento: ${descuento}%`);
+    }
+
+    if (detailsParts.length > 0) {
+      setValue("details", detailsParts.join("\n"));
+    }
+
+    if (tipo === "automatizacion") {
+      setValue("service", "custom_system");
+    }
+  }, [
+    interest,
+    servicioParam,
+    planParam,
+    precioParam,
+    descuento,
+    tipo,
+    setValue,
+  ]);
+
+  useEffect(() => {
+    const updateTime = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+          timeZone: "America/Mexico_City",
+        }),
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
+
+  const onSubmit = async (data: FormData) => {
+    try {
+      const response = await fetch("/api/send", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      if (!response.ok) throw new Error("Failed");
+      setIsSuccess(true);
+      reset();
+    } catch (e) {
+      alert("Error sending message.");
+    }
+  };
+
+  const nextStep = async () => {
+    const fieldsToValidate =
+      currentStep === 1
+        ? ["name", "email", "phone"]
+        : ["service", "budget", "timeline"];
+
+    const isStepValid = await trigger(fieldsToValidate as any);
+    if (isStepValid) {
+      setDirection(1);
+      setCurrentStep((prev) => prev + 1);
+    }
+  };
+
+  const prevStep = () => {
+    setDirection(-1);
+    setCurrentStep((prev) => prev - 1);
+  };
+
+  const stepVariants = {
+    enter: (direction: number) => ({
+      x: direction > 0 ? 100 : -100,
+      opacity: 0,
+    }),
+    center: {
+      zIndex: 1,
+      x: 0,
+      opacity: 1,
+    },
+    exit: (direction: number) => ({
+      zIndex: 0,
+      x: direction < 0 ? 100 : -100,
+      opacity: 0,
+    }),
+  };
+
+  const inputClasses = (fieldName: keyof FormData) =>
+    cn(
+      "w-full bg-transparent border-b py-4 text-xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-700",
+      errors[fieldName]
+        ? "border-red-500/50"
+        : "border-neutral-800 focus:border-emerald-500 focus:pl-4 pl-0",
+    );
+
+  return (
+    <LazyMotion features={domAnimation}>
+    <main className="min-h-screen text-white pt-32 pb-24 relative overflow-hidden">
+      <RouteScopedBackground />
+      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
+          {/* Main Info Column */}
+          <div className="lg:col-span-4 space-y-12">
+            <div>
+              <m.h1
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="text-6xl md:text-7xl font-black tracking-tight mb-8 leading-none">
+                {tipo === "socio-fundador" ? "Socio Fundador" : t("hero.title")}
+              </m.h1>
+
+              {tipo === "socio-fundador" && (
+                <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
+                  <p className="text-emerald-500 font-bold text-sm">
+                    🚀 Estás aplicando para el precio especial de Socio Fundador
+                    (25% OFF).
+                  </p>
+                </div>
+              )}
+
+              {tipo === "automatizacion" && (
+                <div className="mb-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl">
+                  <p className="text-blue-400 font-bold text-sm">
+                    🤖 Consulta especializada en Automatización con IA.
+                  </p>
+                </div>
+              )}
+
+              <p className="text-xl text-neutral-400 font-medium leading-relaxed">
+                {t("hero.subtitle")}
+              </p>
+            </div>
+
+            <div className="hidden lg:block">
+              <TestimonialSidebar />
+            </div>
+          </div>
+
+          {/* Form Column */}
+          <div className="lg:col-span-8 flex flex-col pt-8 lg:pt-0">
+            {isSuccess ? (
+              <SuccessState t={t} onReset={() => setIsSuccess(false)} />
+            ) : (
+              <div className="flex flex-col h-full bg-neutral-950/20 backdrop-blur-sm border border-white/[0.03] rounded-[2.5rem] p-8 md:p-12">
+                {/* Progress Header */}
+                <div className="flex items-center justify-between mb-16">
+                  <div className="flex flex-col gap-1">
+                    <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest font-bold">
+                      {t(`steps.step_${currentStep}.label`)}
+                    </span>
+                    <h2 className="text-2xl font-black text-white">
+                      {t(`steps.step_${currentStep}.title`)}
+                    </h2>
+                  </div>
+                  <div className="flex gap-2">
+                    {[1, 2, 3].map((s) => (
+                      <div
+                        key={s}
+                        className={cn(
+                          "w-2.4 h-2 rounded-full transition-all duration-500",
+                          s === currentStep
+                            ? "w-8 bg-emerald-500"
+                            : s < currentStep
+                              ? "bg-emerald-900"
+                              : "bg-neutral-800",
+                        )}
+                      />
+                    ))}
+                  </div>
+                </div>
+
+                <form
+                  onSubmit={handleSubmit(onSubmit)}
+                  className="flex-1 flex flex-col">
+                  <div className="relative overflow-hidden flex-1 min-h-[400px]">
+                    <AnimatePresence mode="wait" custom={direction}>
+                      <m.div
+                        key={currentStep}
+                        custom={direction}
+                        variants={stepVariants}
+                        initial="enter"
+                        animate="center"
+                        exit="exit"
+                        transition={{ duration: 0.4, ease: "easeInOut" }}
+                        className="w-full">
+                        {currentStep === 1 && (
+                          <div className="space-y-12">
+                            <div className="group relative">
+                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                {t("form.name_label")}
+                              </label>
+                              <div className="relative">
+                                <User className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
+                                <input
+                                  {...register("name", { required: true })}
+                                  placeholder={t("form.name_placeholder")}
+                                  className={inputClasses("name")}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="group relative">
+                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                {t("form.email_label")}
+                              </label>
+                              <div className="relative">
+                                {watchAll.email &&
+                                !errors.email &&
+                                /^\S+@\S+$/i.test(watchAll.email) ? (
+                                  <Check className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
+                                ) : (
+                                  <Mail className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
+                                )}
+                                <input
+                                  {...register("email", {
+                                    required: true,
+                                    pattern: /^\S+@\S+$/i,
+                                  })}
+                                  placeholder={t("form.email_placeholder")}
+                                  className={inputClasses("email")}
+                                />
+                              </div>
+                            </div>
+
+                            <div className="group relative">
+                              <label
+                                className={cn(
+                                  "text-[10px] font-mono uppercase tracking-[0.2em] transition-colors",
+                                  phoneValid === false
+                                    ? "text-red-500"
+                                    : phoneValid === true
+                                      ? "text-emerald-500"
+                                      : "text-neutral-500 group-focus-within:text-emerald-500",
+                                )}>
+                                {t("form.phone_label")}
+                              </label>
+                              <div className="relative">
+                                <PhoneInput
+                                  defaultCountry="MX"
+                                  value={watchAll.phone}
+                                  onChange={handlePhoneChange}
+                                  className={cn(
+                                    "phone-input-container",
+                                    phoneValid === true && "valid",
+                                    phoneValid === false && "invalid",
+                                  )}
+                                  placeholder={t("form.phone_placeholder")}
+                                  international
+                                  countryCallingCodeEditable={false}
+                                />
+                                {phoneValid === false && (
+                                  <p className="text-red-500 text-[10px] font-mono mt-2 absolute -bottom-5 left-0">
+                                    Número inválido para el país seleccionado
+                                  </p>
+                                )}
+                              </div>
+                            </div>
+                          </div>
+                        )}
+
+                        {currentStep === 2 && (
+                          <div className="space-y-12">
+                            <div className="group relative">
+                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                {t("form.service_label")}
+                              </label>
+                              <select
+                                {...register("service", { required: true })}
+                                className={cn(
+                                  inputClasses("service"),
+                                  "appearance-none cursor-pointer",
+                                )}>
+                                <option
+                                  value=""
+                                  disabled
+                                  className="bg-neutral-900">
+                                  {t("form.service_placeholder")}
+                                </option>
+                                {[
+                                  "website",
+                                  "ecommerce",
+                                  "custom_system",
+                                  "optimization",
+                                  "not_sure",
+                                ].map((opt) => (
+                                  <option
+                                    key={opt}
+                                    value={opt}
+                                    className="bg-neutral-900">
+                                    {t(`form.service_options.${opt}`)}
+                                  </option>
+                                ))}
+                              </select>
+                              <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
+                            </div>
+
+                            <div className="space-y-4">
+                              <div className="flex items-center justify-between">
+                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  {t("form.budget_label")}
+                                </label>
+                                <div className="flex gap-1 p-0.5 bg-white/5 rounded-full border border-white/10">
+                                  {(["mxn", "usd"] as const).map((curr) => (
+                                    <button
+                                      key={curr}
+                                      type="button"
+                                      onClick={() => setValue("currency", curr)}
+                                      className={cn(
+                                        "px-2 py-0.5 text-[9px] font-bold uppercase rounded-full transition-all",
+                                        watchAll.currency === curr
+                                          ? "bg-white text-black"
+                                          : "text-neutral-500",
+                                      )}>
+                                      {curr}
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
+                                {[
+                                  "20-35k",
+                                  "35-50k",
+                                  "50-80k",
+                                  "80-120k",
+                                  "120k+",
+                                  "monthly",
+                                  "discuss",
+                                ].map((key) => (
+                                  <button
+                                    key={key}
+                                    type="button"
+                                    onClick={() =>
+                                      setValue("budget", key, {
+                                        shouldValidate: true,
+                                      })
+                                    }
+                                    className={cn(
+                                      "p-3 rounded-xl border text-left transition-all text-xs font-bold",
+                                      watchAll.budget === key
+                                        ? "bg-emerald-500/10 border-emerald-500/50 text-white shadow-[0_0_15px_rgba(16,185,129,0.1)]"
+                                        : "bg-white/5 border-white/5 text-neutral-400 hover:border-white/10",
+                                    )}>
+                                    {t(
+                                      `form.budget_options.${watchAll.currency}.${key}`,
+                                    )}
+                                  </button>
+                                ))}
+                              </div>
+                              <AnimatePresence>
+                                {budgetScope && (
+                                  <m.p
+                                    initial={{ opacity: 0, height: 0 }}
+                                    animate={{ opacity: 1, height: "auto" }}
+                                    className="text-[10px] font-mono text-emerald-500/80 bg-emerald-500/5 p-3 rounded-lg border border-emerald-500/10">
+                                    <Zap className="inline w-3 h-3 mr-2 -mt-0.5" />
+                                    Scope: {budgetScope}
+                                  </m.p>
+                                )}
+                              </AnimatePresence>
+                            </div>
+
+                            <div className="group relative">
+                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                {t("form.timeline_label")}
+                              </label>
+                              <select
+                                {...register("timeline", { required: true })}
+                                className={cn(
+                                  inputClasses("timeline"),
+                                  "appearance-none cursor-pointer",
+                                )}>
+                                <option
+                                  value=""
+                                  disabled
+                                  className="bg-neutral-900">
+                                  {t("form.timeline_placeholder")}
+                                </option>
+                                {["asap", "3_months", "6_months", "future"].map(
+                                  (opt) => (
+                                    <option
+                                      key={opt}
+                                      value={opt}
+                                      className="bg-neutral-900">
+                                      {t(`form.timeline_options.${opt}`)}
+                                    </option>
+                                  ),
+                                )}
+                              </select>
+                              <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
+                            </div>
+                          </div>
+                        )}
+
+                        {currentStep === 3 && (
+                          <div className="space-y-12">
+                            <div className="group relative">
+                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                {t("form.source_label")}
+                              </label>
+                              <select
+                                {...register("source")}
+                                className={cn(
+                                  inputClasses("source"),
+                                  "appearance-none cursor-pointer",
+                                )}>
+                                <option value="" className="bg-neutral-900">
+                                  {t("form.source_placeholder")}
+                                </option>
+                                {[
+                                  "google",
+                                  "referral",
+                                  "linkedin",
+                                  "social",
+                                  "other",
+                                ].map((opt) => (
+                                  <option
+                                    key={opt}
+                                    value={opt}
+                                    className="bg-neutral-900">
+                                    {t(`form.source_options.${opt}`)}
+                                  </option>
+                                ))}
+                              </select>
+                              <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
+                            </div>
+
+                            <div className="group relative">
+                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                {tipo === "automatizacion"
+                                  ? "Cuéntanos sobre los procesos que quieres automatizar"
+                                  : t("form.details_label")}
+                              </label>
+                              <textarea
+                                {...register("details")}
+                                placeholder={
+                                  tipo === "automatizacion"
+                                    ? "Ej: Atención al cliente, gestión de inventarios, etc."
+                                    : t("form.details_placeholder")
+                                }
+                                rows={4}
+                                className={cn(
+                                  inputClasses("details"),
+                                  "resize-none h-auto max-h-48 scrollbar-hide",
+                                )}
+                              />
+                            </div>
+
+                            <ExpectationsCard />
+                          </div>
+                        )}
+                      </m.div>
+                    </AnimatePresence>
+                  </div>
+
+                  {/* Navigation Buttons */}
+                  <div className="mt-12 flex gap-4">
+                    {currentStep > 1 && (
+                      <button
+                        type="button"
+                        onClick={prevStep}
+                        className="flex-1 lg:flex-none px-8 py-5 rounded-full border border-neutral-800 hover:bg-white/5 transition-all text-sm font-bold flex items-center justify-center gap-2">
+                        <ChevronLeft className="w-4 h-4" />
+                        {t("steps.back")}
+                      </button>
+                    )}
+
+                    {currentStep < 3 ? (
+                      <button
+                        type="button"
+                        onClick={nextStep}
+                        disabled={currentStep === 1 && phoneValid !== true}
+                        className="flex-1 bg-white text-black py-5 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all disabled:opacity-50">
+                        {t("steps.next")}
+                        <ChevronRight className="w-4 h-4" />
+                      </button>
+                    ) : (
+                      <button
+                        disabled={
+                          isSubmitting || !isValid || phoneValid !== true
+                        }
+                        type="submit"
+                        className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black py-5 rounded-full text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all disabled:opacity-50">
+                        {isSubmitting ? t("form.sending") : t("form.submit")}
+                        <ArrowRight className="w-4 h-4" />
+                      </button>
+                    )}
+                  </div>
+                </form>
+              </div>
+            )}
+
+            {/* Mobile Testimonials */}
+            <div className="mt-16 lg:hidden">
+              <TestimonialSidebar />
+            </div>
+          </div>
+        </div>
+      </div>
+
+      {/* Footer Info */}
+      <div className="max-w-7xl mx-auto px-6 md:px-8 mt-48 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-neutral-900 pt-16">
+        <div className="space-y-4">
+          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
+            WhatsApp
+          </span>
+          <a
+            href="https://wa.me/524463731451?text=Hola%20Manu%2C%20me%20interesa%20hablar%20sobre%20mi%20proyecto"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="flex items-center gap-3 hover:opacity-70 transition-opacity group w-fit">
+            <FaWhatsapp className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
+            <span className="text-xl font-bold">
+              {t("details.whatsapp_number")}
+            </span>
+          </a>
+        </div>
+        <div className="space-y-4">
+          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
+            Location
+          </span>
+          <div className="flex items-center gap-3 text-xl font-bold">
+            <MapPin className="w-5 h-5 text-emerald-500" />
+            {t("details.location_value")}
+          </div>
+        </div>
+        <div className="space-y-4">
+          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
+            Timezone
+          </span>
+          <div className="flex items-center gap-3 text-xl font-bold tabular-nums">
+            <Clock className="w-5 h-5 text-emerald-500" />
+            {time}
+          </div>
+        </div>
+      </div>
+    </main>
+    </LazyMotion>
+  );
+}
+
+const SuccessState = ({ t, onReset }: { t: any; onReset: () => void }) => (
+  <m.div
+    initial={{ scale: 0.9, opacity: 0 }}
+    animate={{ scale: 1, opacity: 1 }}
+    className="w-full max-w-md mx-auto text-center space-y-8">
+    <div className="bg-white text-black p-12 rounded-[2.5rem] relative overflow-hidden shadow-2xl">
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-emerald-500" />
+      <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8">
+        <Check className="w-8 h-8 text-emerald-600" />
+      </div>
+      <h3 className="text-3xl font-black tracking-tight mb-4">
+        {t("success.title")}
+      </h3>
+      <p className="text-neutral-600 font-medium mb-12">
+        {t("success.message")}
+      </p>
+
+      <div className="space-y-6 pt-8 border-t border-neutral-100">
+        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">
+          Request ID: #NOC-7777
+        </div>
+        <button
+          onClick={onReset}
+          className="text-sm font-bold text-neutral-400 hover:text-black transition-colors">
+          {t("success.action")}
+        </button>
+      </div>
+    </div>
+  </m.div>
+);
+
+export default function ContactClient() {
+  return (
+    <Suspense
+      fallback={
+        <div className="min-h-screen pt-48 text-center font-mono opacity-50">
+          INITIALIZING...
+        </div>
+      }>
+      <ContactForm />
+    </Suspense>
+  );
+}

@@ -1,40 +1,12 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import { ThemeProvider } from "@/components/theme-provider";
-import { Cursor } from "@/components/ui/cursor";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { ReactNode } from "react";
 
-export const metadata: Metadata = {
-  title: "Noctra Studio | Coming Soon",
-  description:
-    "Digital products are never finished. We offer Continuous Engineering retainers to ensure your infrastructure scales, secures, and evolves with your business goals.",
-  icons: {
-    icon: [
-      { url: "/favicon-dark.svg", media: "(prefers-color-scheme: light)" },
-      { url: "/favicon-light.svg", media: "(prefers-color-scheme: dark)" },
-    ],
-  },
-};
-
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: ReactNode }) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body className="antialiased bg-background text-foreground">
-        <ThemeProvider
-          attribute="class"
-          defaultTheme="dark"
-          enableSystem={false}
-          disableTransitionOnChange>
-          <Cursor />
-          {children}
-          <Analytics />
-          <SpeedInsights />
-        </ThemeProvider>
+    <html lang="es" suppressHydrationWarning>
+      <body
+        suppressHydrationWarning
+        className="selection:bg-white selection:text-black">
+        {children}
       </body>
     </html>
   );

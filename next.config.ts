@@ -1,50 +1,102 @@
-import type { NextConfig } from "next";
+import {withSentryConfig} from '@sentry/nextjs';
+import createNextIntlPlugin from 'next-intl/plugin';
+import type { NextConfig } from 'next';
 
-// Content Security Policy Directives
-const cspDirectives = [
-  "default-src 'self'",
-  "script-src 'self' 'unsafe-eval' 'unsafe-inline'", // Required for Next.js hydration
-  "style-src 'self' 'unsafe-inline'", // Required for Tailwind CSS
-  "img-src 'self' blob: data:", // Allow self, blob (vCard), and data URIs
-  "font-src 'self'",
-  "object-src 'none'",
-  "base-uri 'self'",
-  "form-action 'self'",
-  "frame-ancestors 'none'", // Prevent iframe embedding
-  "upgrade-insecure-requests",
-];
-
-const cspHeader = cspDirectives.join("; ");
+const withNextIntl = createNextIntlPlugin('./src/i18n/request.ts');
 
 const nextConfig: NextConfig = {
+  // Disable source maps in production for security
+  productionBrowserSourceMaps: false,
+  
+  // Transpile Sanity packages so Turbopack can handle them without the
+  // "chunk.reason.enqueueModel is not a function" runtime error.
+  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/icons', '@sanity/vision'],
+
+  // Tree shake these heavy libraries
+  experimental: {
+    optimizePackageImports: ['lucide-react', 'framer-motion', 'react-icons'],
+  },
+  
+  images: {
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'cdn.sanity.io',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'images.unsplash.com',
+        port: '',
+        pathname: '/**',
+      },
+      {
+        protocol: 'https',
+        hostname: 'placehold.co',
+        port: '',
+        pathname: '/**',
+      },
+    ],
+    dangerouslyAllowSVG: true,
+    contentSecurityPolicy: "default-src 'self'; script-src 'none'; sandbox;",
+    // Ensure we aren't downloading huge images
+    formats: ['image/avif', 'image/webp'],
+    deviceSizes: [640, 750, 828, 1080, 1200, 1920],
+    imageSizes: [16, 32, 48, 64, 96, 128, 256, 384],
+    minimumCacheTTL: 2592000, // 30 days
+  },
+  
+  async redirects() {
+    return [
+      {
+        source: '/case-study',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/case-studies',
+        destination: '/work',
+        permanent: true,
+      },
+      {
+        source: '/:locale/case-study',
+        destination: '/:locale/work',
+        permanent: true,
+      },
+      {
+        source: '/:locale/case-studies',
+        destination: '/:locale/work',
+        permanent: true,
+      },
+    ];
+  },
+
   async headers() {
     return [
       {
-        source: "/:path*",
+        source: '/(.*)',
         headers: [
+          { key: 'X-DNS-Prefetch-Control', value: 'on' },
+          { key: 'X-Frame-Options', value: 'SAMEORIGIN' },
+          { key: 'X-Content-Type-Options', value: 'nosniff' },
+          { key: 'Referrer-Policy', value: 'strict-origin-when-cross-origin' },
+          { key: 'Permissions-Policy', value: 'camera=(), microphone=(), geolocation=()' },
           {
-            key: "X-DNS-Prefetch-Control",
-            value: "on",
+            key: 'Content-Security-Policy',
+            value: [
+              "default-src 'self'",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+              "style-src 'self' 'unsafe-inline'",
+              "img-src 'self' blob: data: https: https://cdn.sanity.io https://images.unsplash.com https://placehold.co",
+              "font-src 'self' data:",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://vitals.vercel-insights.com",
+              "frame-ancestors 'none'",
+            ].join('; ')
           },
           {
-            key: "Strict-Transport-Security",
-            value: "max-age=63072000; includeSubDomains; preload",
-          },
-          {
-            key: "X-Frame-Options",
-            value: "SAMEORIGIN",
-          },
-          {
-            key: "X-Content-Type-Options",
-            value: "nosniff",
-          },
-          {
-            key: "Referrer-Policy",
-            value: "origin-when-cross-origin",
-          },
-          {
-            key: "Content-Security-Policy",
-            value: cspHeader,
+            key: 'Strict-Transport-Security',
+            value: 'max-age=63072000; includeSubDomains; preload'
           },
         ],
       },
@@ -52,4 +104,40 @@ const nextConfig: NextConfig = {
   },
 };
 
-export default nextConfig;
+// Only enable Sentry build plugin if auth token is present or we are in CI
+const isSentryConfigured = process.env.SENTRY_AUTH_TOKEN || process.env.CI;
+
+export default isSentryConfigured
+  ? withSentryConfig(withNextIntl(nextConfig), {
+      // For all available options, see:
+      // https://www.npmjs.com/package/@sentry/webpack-plugin#options
+
+      org: "manu-de-quevedo",
+
+      project: "noctra-studio-logs",
+
+      // Only print logs for uploading source maps in CI
+      silent: !process.env.CI,
+
+      // For all available options, see:
+      // https://docs.sentry.io/platforms/javascript/guides/nextjs/manual-setup/
+
+      // Upload a larger set of source maps for prettier stack traces (increases build time)
+      widenClientFileUpload: true,
+
+      // Route browser requests to Sentry through a Next.js rewrite to circumvent ad-blockers.
+      // This can increase your server load as well as your hosting bill.
+      // Note: Check that the configured route will not match with your Next.js middleware, otherwise reporting of client-
+      // side errors will fail.
+      tunnelRoute: "/monitoring",
+
+      // Automatically tree-shake Sentry logger statements to reduce bundle size
+      disableLogger: true,
+
+      // Enables automatic instrumentation of Vercel Cron Monitors. (Does not yet work with App Router route handlers.)
+      // See the following for more information:
+      // https://docs.sentry.io/product/crons/
+      // https://vercel.com/docs/cron-jobs
+      automaticVercelMonitors: true,
+    })
+  : withNextIntl(nextConfig);
