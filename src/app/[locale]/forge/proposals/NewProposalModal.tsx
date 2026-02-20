@@ -188,9 +188,10 @@ export function NewProposalModal({
       if (error) throw error;
 
       router.push(`/forge/proposals/${proposal.id}/edit`);
-    } catch (err) {
-      console.error(err);
-      alert("Error al crear propuesta");
+    } catch (err: any) {
+      console.error("Proposal creation failed:", err);
+      const detail = err?.message || "Error desconocido";
+      alert(`Error al crear propuesta: ${detail}`);
     } finally {
       setIsCreating(false);
     }

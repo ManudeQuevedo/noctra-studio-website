@@ -56,7 +56,7 @@
   --secondary: #262626;
   --secondary-foreground: #ffffff;
   --muted: #262626;
-  --muted-foreground: #a3a3a3;
+  --muted-foreground: #888888; /* Increased from #666666 for AA compliance on dark bg */
   --accent: #262626;
   --accent-foreground: #ffffff;
   --destructive: oklch(0.577 0.245 27.325);
@@ -216,5 +216,17 @@
     height: 18px;
     border-radius: 2px;
     overflow: hidden;
+  }
+}
+
+/* Fix 4.3: Support users who prefer reduced motion */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
   }
 }

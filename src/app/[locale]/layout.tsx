@@ -6,10 +6,35 @@ import { ThemeProvider } from "@/components/theme-provider";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages } from "next-intl/server";
 
+import dynamic from "next/dynamic";
 import { Header } from "@/components/header";
 import { FooterWrapper } from "@/components/FooterWrapper";
-import { ScrollToTop } from "@/components/ui/ScrollToTop";
-import { WhatsAppFloatingButton } from "@/components/ui/WhatsAppFloatingButton";
+
+const ScrollToTop = dynamic(() =>
+  import("@/components/ui/ScrollToTop").then((mod) => mod.ScrollToTop),
+);
+const WhatsAppFloatingButton = dynamic(() =>
+  import("@/components/ui/WhatsAppFloatingButton").then(
+    (mod) => mod.WhatsAppFloatingButton,
+  ),
+);
+const Cursor = dynamic(() =>
+  import("@/components/ui/cursor").then((mod) => mod.Cursor),
+);
+const CookieBanner = dynamic(() =>
+  import("@/components/cookie-consent/CookieBanner").then(
+    (mod) => mod.CookieBanner,
+  ),
+);
+const CookieSettingsButton = dynamic(() =>
+  import("@/components/cookie-consent/CookieSettingsButton").then(
+    (mod) => mod.CookieSettingsButton,
+  ),
+);
+const QuizModal = dynamic(() =>
+  import("@/components/quiz/QuizModal").then((mod) => mod.QuizModal),
+);
+
 import { BackgroundManager } from "@/components/backgrounds/BackgroundManager";
 import {
   OrganizationSchema,
@@ -19,13 +44,9 @@ import {
 import { VercelScripts } from "@/components/VercelScripts";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
-import { Cursor } from "@/components/ui/cursor";
 import { IntroProvider } from "@/context/IntroContext";
 import { IntroLoader } from "@/components/ui/IntroLoader";
-import { CookieBanner } from "@/components/cookie-consent/CookieBanner";
-import { CookieSettingsButton } from "@/components/cookie-consent/CookieSettingsButton";
 import { QuizProvider } from "@/components/quiz/QuizContext";
-import { QuizModal } from "@/components/quiz/QuizModal";
 
 // Satoshi - Brand primary font
 const satoshi = localFont({
@@ -117,6 +138,18 @@ export default async function LocaleLayout({
 
   return (
     <>
+      <head>
+        <link
+          rel="preconnect"
+          href="https://fonts.gstatic.com"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preconnect"
+          href="https://cdn.resend.com"
+          crossOrigin="anonymous"
+        />
+      </head>
       <Script id="apply-attributes" strategy="beforeInteractive">
         {`
           document.documentElement.lang = '${locale}';

@@ -12,6 +12,17 @@ export const BackgroundBeamsWithCollision = ({
 }) => {
   const containerRef = useRef<HTMLDivElement>(null);
   const parentRef = useRef<HTMLDivElement>(null);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    if (!parentRef.current) return;
+    const observer = new IntersectionObserver(
+      ([entry]) => setIsVisible(entry.isIntersecting),
+      { threshold: 0 },
+    );
+    observer.observe(parentRef.current);
+    return () => observer.disconnect();
+  }, []);
 
   const beams = [
     {
@@ -68,31 +79,32 @@ export const BackgroundBeamsWithCollision = ({
 
   return (
     <LazyMotion features={domAnimation}>
-    <div
-      ref={parentRef}
-      className={cn(
-        "bg-gradient-to-b from-white to-neutral-100 dark:from-neutral-950 dark:to-neutral-800 relative flex items-center w-full justify-center overflow-hidden",
-        // h-screen if you want bigger
-        className
-      )}>
-      {beams.map((beam) => (
-        <CollisionMechanism
-          key={beam.initialX + "beam-idx"}
-          beamOptions={beam}
-          containerRef={containerRef}
-          parentRef={parentRef}
-        />
-      ))}
-
-      {children}
       <div
-        ref={containerRef}
-        className="absolute bottom-0 bg-neutral-100 w-full inset-x-0 pointer-events-none"
-        style={{
-          boxShadow:
-            "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
-        }}></div>
-    </div>
+        ref={parentRef}
+        className={cn(
+          "bg-gradient-to-b from-white to-neutral-100 dark:from-neutral-950 dark:to-neutral-800 relative flex items-center w-full justify-center overflow-hidden",
+          // h-screen if you want bigger
+          className,
+        )}>
+        {beams.map((beam) => (
+          <CollisionMechanism
+            key={beam.initialX + "beam-idx"}
+            beamOptions={beam}
+            containerRef={containerRef}
+            parentRef={parentRef}
+            isVisible={isVisible}
+          />
+        ))}
+
+        {children}
+        <div
+          ref={containerRef}
+          className="absolute bottom-0 bg-neutral-100 w-full inset-x-0 pointer-events-none"
+          style={{
+            boxShadow:
+              "0 0 24px rgba(34, 42, 53, 0.06), 0 1px 1px rgba(0, 0, 0, 0.05), 0 0 0 1px rgba(34, 42, 53, 0.04), 0 0 4px rgba(34, 42, 53, 0.08), 0 16px 68px rgba(47, 48, 55, 0.05), 0 1px 0 rgba(255, 255, 255, 0.1) inset",
+          }}></div>
+      </div>
     </LazyMotion>
   );
 };
@@ -113,8 +125,9 @@ const CollisionMechanism = React.forwardRef<
       delay?: number;
       repeatDelay?: number;
     };
+    isVisible?: boolean;
   }
->(({ parentRef, containerRef, beamOptions = {} }) => {
+>(({ parentRef, containerRef, beamOptions = {}, isVisible = true }) => {
   const beamRef = useRef<HTMLDivElement>(null);
   const [collision, setCollision] = useState<{
     detected: boolean;
@@ -127,6 +140,8 @@ const CollisionMechanism = React.forwardRef<
   const [cycleCollisionDetected, setCycleCollisionDetected] = useState(false);
 
   useEffect(() => {
+    if (!isVisible) return; // Pause operations when not in view
+
     const checkCollision = () => {
       if (
         beamRef.current &&
@@ -158,7 +173,7 @@ const CollisionMechanism = React.forwardRef<
     const animationInterval = setInterval(checkCollision, 50);
 
     return () => clearInterval(animationInterval);
-  }, [cycleCollisionDetected, containerRef, parentRef]);
+  }, [cycleCollisionDetected, containerRef, parentRef, isVisible]);
 
   useEffect(() => {
     if (collision.detected && collision.coordinates) {
@@ -201,7 +216,7 @@ const CollisionMechanism = React.forwardRef<
         }}
         className={cn(
           "absolute left-0 top-20 m-auto h-14 w-px rounded-full bg-gradient-to-t from-indigo-500 via-purple-500 to-transparent",
-          beamOptions.className
+          beamOptions.className,
         )}
       />
       <AnimatePresence>
@@ -237,7 +252,7 @@ const Explosion = ({ ...props }: React.HTMLProps<HTMLDivElement>) => {
         // eslint-disable-next-line react-hooks/purity
         duration: Math.random() * 1.5 + 0.5,
       })),
-    []
+    [],
   );
 
   return (
