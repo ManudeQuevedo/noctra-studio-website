@@ -13,10 +13,21 @@ export const layout = (content: string, locale: string) => `
         <table role="presentation" width="100%" maxWidth="600" cellpadding="0" cellspacing="0" style="width: 100%; max-width: 600px; background-color: #0a0a0a;">
           <!-- Header -->
           <tr>
-            <td style="padding: 40px 40px 32px; border-bottom: 1px solid #1f1f1f;">
-              <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 13px; font-weight: 700; letter-spacing: 0.2em; color: #ffffff; text-transform: uppercase; text-decoration: none;">
-                ◆ NOCTRA
-              </span>
+            <td style="padding: 40px 40px 32px 40px; border-bottom: 1px solid #1f1f1f; background-color: #0a0a0a;">
+              <table role="presentation" cellpadding="0" cellspacing="0" border="0">
+                <tr>
+                  <td style="vertical-align: middle;">
+                    <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 20px; color: #ffffff; line-height: 1;">
+                      ◆
+                    </span>
+                  </td>
+                  <td style="vertical-align: middle; padding-left: 10px; border-left: 1px solid #1f1f1f; margin-left: 10px;">
+                    <span style="font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.2em; color: #ffffff; text-transform: uppercase; text-decoration: none;">
+                      NOCTRA
+                    </span>
+                  </td>
+                </tr>
+              </table>
             </td>
           </tr>
           

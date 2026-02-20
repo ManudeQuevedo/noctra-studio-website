@@ -11,6 +11,10 @@ const SECURITY_HEADERS = {
   "Cache-Control": "no-store",
 };
 
+if (!process.env.RESEND_API_KEY) {
+  console.error("CRITICAL: RESEND_API_KEY is not set in environment variables.");
+}
+
 export async function POST(req: Request) {
   try {
     const body = await req.json();
@@ -133,68 +137,85 @@ export async function POST(req: Request) {
         message: safeMessage,
         service_interest: safeService,
         request_id: requestId,
-        // locale, source_page, source_cta are missing from DB schema
       })
-      .select()
+      .select("id")
       .single();
 
     if (dbError) throw dbError;
 
     // 8. Send Email via Resend (Bilingual Logic)
-    const { discoveryTemplate } = await import("@/lib/email-templates/discovery-call");
-    const { webPresenceTemplate } = await import("@/lib/email-templates/web-presence");
-    const { ecommerceTemplate } = await import("@/lib/email-templates/ecommerce");
-    const { customSystemTemplate } = await import("@/lib/email-templates/custom-system");
-    const { generalTemplate } = await import("@/lib/email-templates/general");
+    try {
+      const { discoveryTemplate } = await import("@/lib/email-templates/discovery-call");
+      const { webPresenceTemplate } = await import("@/lib/email-templates/web-presence");
+      const { ecommerceTemplate } = await import("@/lib/email-templates/ecommerce");
+      const { customSystemTemplate } = await import("@/lib/email-templates/custom-system");
+      const { generalTemplate } = await import("@/lib/email-templates/general");
 
-    const templates: Record<string, any> = {
-      discovery_call: discoveryTemplate,
-      website: webPresenceTemplate,
-      ecommerce: ecommerceTemplate,
-      custom_system: customSystemTemplate,
-      general: generalTemplate,
-    };
+      const templates: Record<string, any> = {
+        discovery_call: discoveryTemplate,
+        website: webPresenceTemplate,
+        ecommerce: ecommerceTemplate,
+        custom_system: customSystemTemplate,
+        general: generalTemplate,
+      };
 
-    const selectedTemplate = templates[safeIntent] || generalTemplate;
-    const lang = (safeLocale === "es" ? "es" : "en") as "es" | "en";
-    const template = selectedTemplate[lang];
+      const selectedTemplate = templates[safeIntent] || generalTemplate;
+      const lang = (safeLocale === "es" ? "es" : "en") as "es" | "en";
+      const template = selectedTemplate[lang];
 
-    await resend.emails.send({
-      from: "Noctra Studio <hello@noctra.studio>",
-      to: [safeEmail],
-      replyTo: "hello@noctra.studio",
-      subject: template.subject,
-      html: template.html(safeName),
-    });
+      // Use verified domain or test dev email
+      const fromAddress = "Noctra Studio <hello@noctra.studio>";
 
-    // Admin Notification
-    await resend.emails.send({
-      from: "Noctra System <hello@noctra.studio>",
-      to: ["hello@noctra.studio"],
-      replyTo: "hello@noctra.studio",
-      subject: `New Lead: ${safeName} (${safeIntent})`,
-      html: `
-        <h1>New Lead Received</h1>
-        <p><strong>Request ID:</strong> ${requestId}</p>
-        <p><strong>Name:</strong> ${safeName}</p>
-        <p><strong>Email:</strong> ${safeEmail}</p>
-        <p><strong>Phone:</strong> ${safePhone}</p>
-        <p><strong>Intent:</strong> ${safeIntent}</p>
-        <p><strong>CTA:</strong> ${safeCta}</p>
-        <p><strong>Service:</strong> ${safeService}</p>
-        <p><strong>Budget:</strong> ${safeBudget}</p>
-        <p><strong>Timeline:</strong> ${safeTimeline}</p>
-        <p><strong>Locale:</strong> ${safeLocale}</p>
-        <p><strong>Message:</strong></p>
-        <p>${safeMessage}</p>
-      `,
-    });
+      const emailResult = await resend.emails.send({
+        from: fromAddress,
+        to: [safeEmail],
+        replyTo: "hello@noctra.studio",
+        subject: template.subject,
+        html: template.html(safeName),
+      });
 
-    // 9. Update email_sent status
-    await supabase
-      .from("contact_submissions")
-      .update({ email_sent: true, email_sent_at: new Date().toISOString() })
-      .eq("id", submission.id);
+      if (emailResult.error) {
+        console.error("Resend delivery error (User):", emailResult.error);
+      } else {
+        // Only update email_sent status on success
+        await supabase
+          .from("contact_submissions")
+          .update({
+            email_sent: true,
+            email_sent_at: new Date().toISOString(),
+          })
+          .eq("id", submission.id);
+      }
+
+      // Admin Notification
+      const adminResult = await resend.emails.send({
+        from: "Noctra System <hello@noctra.studio>",
+        to: ["hello@noctra.studio"],
+        replyTo: "hello@noctra.studio",
+        subject: `New Lead: ${safeName} (${safeIntent})`,
+        html: `
+          <h1>New Lead Received</h1>
+          <p><strong>Request ID:</strong> ${requestId}</p>
+          <p><strong>Name:</strong> ${safeName}</p>
+          <p><strong>Email:</strong> ${safeEmail}</p>
+          <p><strong>Phone:</strong> ${safePhone}</p>
+          <p><strong>Intent:</strong> ${safeIntent}</p>
+          <p><strong>CTA:</strong> ${safeCta}</p>
+          <p><strong>Service:</strong> ${safeService}</p>
+          <p><strong>Budget:</strong> ${safeBudget}</p>
+          <p><strong>Timeline:</strong> ${safeTimeline}</p>
+          <p><strong>Locale:</strong> ${safeLocale}</p>
+          <p><strong>Message:</strong></p>
+          <p>${safeMessage}</p>
+        `,
+      });
+
+      if (adminResult.error) {
+        console.error("Resend delivery error (Admin):", adminResult.error);
+      }
+    } catch (emailErr) {
+      console.error("Email send exception:", emailErr);
+    }
 
     return NextResponse.json(
       { success: true, requestId, submissionId: submission.id },

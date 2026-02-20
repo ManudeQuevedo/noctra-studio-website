@@ -1,15 +1,37 @@
 "use client";
 
+import { useState, useEffect } from "react";
 import Link from "next/link";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { LayoutDashboard, Users, LogOut } from "lucide-react";
+import {
+  LayoutDashboard,
+  Users,
+  LogOut,
+  Kanban,
+  BarChart3,
+} from "lucide-react";
 
 export function ForgeSidebar() {
   const pathname = usePathname();
   const router = useRouter();
   const supabase = createClient();
+
+  const [alertCount, setAlertCount] = useState(0);
+
+  useEffect(() => {
+    const fetchAlerts = async () => {
+      const { data, error } = await supabase.rpc("get_leads_needing_attention");
+      if (!error && data) {
+        setAlertCount(data.length);
+      }
+    };
+    fetchAlerts();
+    // Refresh every 5 minutes
+    const interval = setInterval(fetchAlerts, 5 * 60 * 1000);
+    return () => clearInterval(interval);
+  }, [supabase]);
 
   const handleSignOut = async () => {
     await supabase.auth.signOut();
@@ -21,6 +43,16 @@ export function ForgeSidebar() {
       label: "Projects",
       href: "/forge/projects",
       icon: LayoutDashboard,
+    },
+    {
+      label: "Pipeline",
+      href: "/forge/pipeline",
+      icon: Kanban,
+    },
+    {
+      label: "Métricas",
+      href: "/forge/metrics",
+      icon: BarChart3,
     },
     {
       label: "Leads",
@@ -54,6 +86,11 @@ export function ForgeSidebar() {
                 className={`w-4 h-4 ${isActive ? "text-emerald-400" : ""}`}
               />
               {item.label}
+              {item.label === "Pipeline" && alertCount > 0 && (
+                <span className="ml-auto w-4 h-4 rounded-full bg-red-500 text-black text-[9px] font-black flex items-center justify-center animate-pulse">
+                  {alertCount}
+                </span>
+              )}
             </Link>
           );
         })}

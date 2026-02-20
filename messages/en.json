@@ -2361,6 +2361,11 @@
     "subtitle": "Every service is designed to generate real results for your business.",
     "hero_cta_consult": "Schedule free consultation →",
     "hero_cta_pricing": "See our pricing ↓",
+    "mobile_banner": {
+      "question": "Not sure which one?",
+      "subtitle": "Free consultation",
+      "cta": "Talk to an expert"
+    },
     "how_we_work": {
       "title": "How We Work",
       "steps": [
@@ -3294,7 +3299,8 @@
   },
   "ContactPage": {
     "hero": {
-      "title": "Let's talk about your project",
+      "title_part1": "Let's talk about",
+      "title_part2": "your project",
       "subtitle": "Brutal honesty in a world of agencies that overpromise and underdeliver.",
       "trust_badges": {
         "0": "FREE CONSULTATION",
@@ -3368,16 +3374,17 @@
       "phone_placeholder": "+52 (___) ___-____",
       "service_label": "What type of project do you need?",
       "service_placeholder": "Select an option...",
-      "service_options": {
+      "services": {
         "website": "Professional website (clinics, firms, companies)",
         "ecommerce": "Online store (selling products/services)",
         "custom_system": "Custom system (CRM, automation, portals)",
         "optimization": "Existing site optimization (improve speed/conversion)",
+        "discovery_call": "Discovery call (consultation & advice)",
         "not_sure": "I'm not sure - I need advice"
       },
       "budget_label": "What is your approximate budget?",
       "currency_label": "Currency",
-      "budget_options": {
+      "budgets": {
         "mxn": {
           "20-35k": "$20k - $35k",
           "35-50k": "$35k - $50k",
@@ -3414,13 +3421,14 @@
         "6_months": "3-6 months",
         "future": "It's a future project"
       },
-      "details_label": "Additional context (optional)",
-      "details_placeholder": "Tell us a bit about your goals...",
+      "message_label": "Additional context (optional)",
+      "message_placeholder": "Tell us a bit about your goals...",
       "submit": "Submit project details",
       "sending": "Sending..."
     },
     "success": {
       "title": "Message Sent",
+      "greeting": "Got it, {name}.",
       "message": "Thank you! We've received your project details and will get back to you within 24 hours.",
       "action": "Send another message",
       "ticket": {

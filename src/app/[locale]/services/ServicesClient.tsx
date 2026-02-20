@@ -348,17 +348,19 @@ const MobileServicesSlider = ({
       </div>
 
       {/* 6. BOTTOM STRIP CTA */}
-      <div className="mt-8 mx-6 bg-[#111111] border border-[#1e1e1e] rounded-[16px] p-4 flex items-center justify-between">
-        <div className="flex flex-col">
-          <span className="text-white font-bold text-sm">¿No sabes cuál?</span>
-          <span className="text-neutral-500 text-[10px] uppercase tracking-wider">
-            Te asesoramos gratis
+      <div className="mt-8 mx-6 bg-[#111111] border border-[#1e1e1e] rounded-[24px] p-8 flex flex-col gap-8">
+        <div className="flex flex-col gap-1 items-start">
+          <span className="text-white font-black text-xl tracking-tight leading-tight">
+            {t("mobile_banner.question")}
+          </span>
+          <span className="text-emerald-500 text-[11px] font-black uppercase tracking-[0.2em]">
+            {t("mobile_banner.subtitle")}
           </span>
         </div>
         <Link
           href={{ pathname: "/contact", query: { intent: "discovery" } }}
-          className="bg-emerald-500 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-xl hover:bg-emerald-400 transition-colors">
-          Hablar con un experto
+          className="w-full bg-emerald-500 text-black text-xs font-black uppercase tracking-[0.15em] py-5 rounded-2xl hover:bg-emerald-400 transition-all active:scale-[0.98] text-center shadow-[0_10px_20px_-5px_rgba(16,185,129,0.3)]">
+          {t("mobile_banner.cta")}
         </Link>
       </div>
     </div>

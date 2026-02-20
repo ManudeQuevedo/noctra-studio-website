@@ -33,10 +33,45 @@ export default function ForgeLeadsClient({
 }: {
   initialLeads: Lead[];
 }) {
-  const [leads] = useState<Lead[]>(initialLeads);
+  const [leads, setLeads] = useState<Lead[]>(initialLeads);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
+  const [isRetrying, setIsRetrying] = useState(false);
 
   const selectedLead = leads.find((l) => l.id === selectedLeadId);
+
+  const handleRetry = async (submissionId: string) => {
+    setIsRetrying(true);
+    try {
+      const res = await fetch("/api/contact/resend-email", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ submissionId }),
+      });
+
+      if (res.ok) {
+        // Update local state
+        setLeads((prev) =>
+          prev.map((l) =>
+            l.id === submissionId
+              ? {
+                  ...l,
+                  email_sent: true,
+                  email_sent_at: new Date().toISOString(),
+                }
+              : l,
+          ),
+        );
+      } else {
+        const error = await res.json();
+        alert(`Failed to retry: ${error.error || "Unknown error"}`);
+      }
+    } catch (err) {
+      console.error(err);
+      alert("An exception occurred while retrying.");
+    } finally {
+      setIsRetrying(false);
+    }
+  };
 
   return (
     <div className="flex h-screen bg-[#050505] text-white overflow-hidden flex-col md:flex-row">
@@ -240,9 +275,17 @@ export default function ForgeLeadsClient({
                       </p>
                     </div>
                   ) : (
-                    <p className="text-[10px] font-mono uppercase text-red-500 font-bold">
-                      NOT SENT
-                    </p>
+                    <div className="flex items-center gap-4">
+                      <p className="text-[10px] font-mono uppercase text-red-500 font-bold">
+                        Email not sent
+                      </p>
+                      <button
+                        onClick={() => handleRetry(selectedLead.id)}
+                        disabled={isRetrying}
+                        className="px-4 py-2 bg-white text-black text-[10px] font-black uppercase tracking-widest rounded-lg hover:bg-neutral-200 transition-all active:scale-95 disabled:opacity-50">
+                        {isRetrying ? "Retrying..." : "Retry Now"}
+                      </button>
+                    </div>
                   )}
                 </div>
               </div>

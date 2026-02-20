@@ -593,7 +593,9 @@ function ContactForm() {
                                       "website",
                                       "ecommerce",
                                       "custom_system",
+                                      "optimization",
                                       "discovery_call",
+                                      "not_sure",
                                     ].map((service) => (
                                       <button
                                         key={service}
@@ -622,28 +624,36 @@ function ContactForm() {
                                     {t("form.budget_label")}
                                   </label>
                                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    {["low", "medium", "high", "premium"].map(
-                                      (budget) => (
-                                        <button
-                                          key={budget}
-                                          type="button"
-                                          onClick={() =>
-                                            setValue("budget", budget as any, {
-                                              shouldValidate: true,
-                                            })
-                                          }
-                                          className={cn(
-                                            "p-4 border text-center transition-all duration-300",
-                                            watchAll.budget === budget
-                                              ? "bg-emerald-500/10 border-emerald-500 text-white"
-                                              : "bg-transparent border-neutral-800 text-neutral-400 hover:border-neutral-700",
-                                          )}>
-                                          <div className="text-xs font-bold uppercase tracking-widest">
-                                            {t(`form.budgets.${budget}`)}
-                                          </div>
-                                        </button>
-                                      ),
-                                    )}
+                                    {[
+                                      "20-35k",
+                                      "35-50k",
+                                      "50-80k",
+                                      "80-120k",
+                                      "120k+",
+                                      "monthly",
+                                      "discuss",
+                                    ].map((budget) => (
+                                      <button
+                                        key={budget}
+                                        type="button"
+                                        onClick={() =>
+                                          setValue("budget", budget as any, {
+                                            shouldValidate: true,
+                                          })
+                                        }
+                                        className={cn(
+                                          "p-4 border text-center transition-all duration-300",
+                                          watchAll.budget === budget
+                                            ? "bg-emerald-500/10 border-emerald-500 text-white"
+                                            : "bg-transparent border-neutral-800 text-neutral-400 hover:border-neutral-700",
+                                        )}>
+                                        <div className="text-xs font-bold uppercase tracking-widest whitespace-nowrap">
+                                          {t(
+                                            `form.budgets.${watchAll.currency}.${budget}`,
+                                          )}
+                                        </div>
+                                      </button>
+                                    ))}
                                   </div>
                                 </div>
                               </div>
@@ -765,26 +775,22 @@ const SuccessState = ({
       className="fixed inset-0 z-[100] bg-[#0a0a0a] flex items-center justify-center p-6">
       <div className="w-full max-w-[480px] flex flex-col items-center text-center">
         <span className="text-[11px] font-mono text-[#666666] uppercase tracking-[0.2em] mb-6">
-          {locale === "es" ? "MENSAJE ENVIADO" : "MESSAGE SENT"}
+          {t("success.ticket.title")}
         </span>
 
         <h2 className="text-4xl md:text-[42px] font-black text-white tracking-tight leading-none mb-4">
-          {locale === "es"
-            ? `Lo recibimos, ${firstName}.`
-            : `Got it, ${firstName}.`}
+          {t("success.greeting", { name: firstName })}
         </h2>
 
         <p className="text-base text-[#666666] leading-relaxed mb-12 max-w-[380px]">
-          {locale === "es"
-            ? "Revisaremos tu solicitud y te contactaremos en menos de 24 horas."
-            : "We'll review your request and get back to you within 24 hours."}
+          {t("success.message")}
         </p>
 
         <div className="w-full h-px bg-[#1f1f1f] mb-8" />
 
         <div className="flex flex-col gap-1 mb-12">
           <span className="text-[10px] font-mono text-[#444444] tracking-[0.15em] uppercase">
-            REQUEST ID
+            {t("success.ticket.id_label")}
           </span>
           <span className="text-sm font-bold text-white tracking-[0.1em] font-mono">
             {requestId}
@@ -794,7 +800,7 @@ const SuccessState = ({
         <button
           onClick={onReset}
           className="text-[13px] text-[#444444] underline hover:text-white transition-colors cursor-pointer">
-          {locale === "es" ? "Enviar otro mensaje" : "Send another message"}
+          {t("success.action")}
         </button>
 
         <div className="mt-16 text-[11px] font-mono text-[#1f1f1f] tracking-[0.2em] uppercase">

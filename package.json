@@ -17,6 +17,7 @@
     "@ai-sdk/openai": "^2.0.74",
     "@ai-sdk/react": "^2.0.104",
     "@google/generative-ai": "^0.24.1",
+    "@hello-pangea/dnd": "^18.0.1",
     "@hubspot/api-client": "^13.4.0",
     "@portabletext/react": "^6.0.2",
     "@radix-ui/react-dialog": "^1.1.15",

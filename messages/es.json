@@ -584,6 +584,11 @@
     "subtitle": "Cada servicio está diseñado para generar resultados reales para tu negocio.",
     "hero_cta_consult": "Agendar consulta gratuita →",
     "hero_cta_pricing": "Ver precios ↓",
+    "mobile_banner": {
+      "question": "¿No sabes cuál?",
+      "subtitle": "Te asesoramos gratis",
+      "cta": "Hablar con un experto"
+    },
     "how_we_work": {
       "title": "Cómo Trabajamos",
       "steps": [
@@ -2504,7 +2509,8 @@
   },
   "ContactPage": {
     "hero": {
-      "title": "Platiquemos de tu proyecto",
+      "title_part1": "Platiquemos de",
+      "title_part2": "tu proyecto",
       "subtitle": "Brutal honestidad en un mundo de agencias que prometen demasiado y entregan poco.",
       "trust_badges": {
         "0": "CONSULTA GRATUITA",
@@ -2578,16 +2584,17 @@
       "phone_placeholder": "+52 (___) ___-____",
       "service_label": "¿Qué tipo de proyecto necesitas?",
       "service_placeholder": "Selecciona una opción...",
-      "service_options": {
+      "services": {
         "website": "Sitio web profesional (consultorios, despachos, empresas)",
         "ecommerce": "Tienda en línea (venta de productos/servicios)",
         "custom_system": "Sistema a medida (CRM, automatización, portales)",
         "optimization": "Optimización de sitio existente (mejorar velocidad/conversión)",
+        "discovery_call": "Llamada de descubrimiento (asesoría y dudas)",
         "not_sure": "No estoy seguro - necesito asesoría"
       },
       "budget_label": "¿Cuál es tu presupuesto aproximado?",
       "currency_label": "Moneda",
-      "budget_options": {
+      "budgets": {
         "mxn": {
           "20-35k": "$20k - $35k",
           "35-50k": "$35k - $50k",
@@ -2624,8 +2631,8 @@
         "6_months": "3-6 meses",
         "future": "Es un proyecto a futuro"
       },
-      "details_label": "Contexto adicional (opcional)",
-      "details_placeholder": "Cuéntanos un poco sobre tus objetivos...",
+      "message_label": "Contexto adicional (opcional)",
+      "message_placeholder": "Cuéntanos un poco sobre tus objetivos...",
       "submit": "Enviar detalles del proyecto",
       "sending": "Enviando..."
     },
@@ -2642,6 +2649,7 @@
     },
     "success": {
       "title": "Mensaje Enviado",
+      "greeting": "Lo recibimos, {name}.",
       "message": "¡Gracias! Hemos recibido los detalles de tu proyecto y te responderemos en menos de 24 horas.",
       "action": "Enviar otro mensaje",
       "ticket": {
