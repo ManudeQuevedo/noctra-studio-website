@@ -15,6 +15,7 @@ export function ComparisonTable() {
   const features = t.raw("features") as Array<{
     name: string;
     values: (string | boolean)[];
+    isCtaRow?: boolean;
   }>;
 
   const [openRow, setOpenRow] = useState<number | null>(null);
@@ -50,13 +51,30 @@ export function ComparisonTable() {
               {features.map((feature, i) => (
                 <tr
                   key={i}
-                  className="group hover:bg-white/[0.02] transition-colors">
+                  className={cn(
+                    "group transition-colors",
+                    feature.isCtaRow
+                      ? "bg-neutral-900/40 border-t border-neutral-800"
+                      : "hover:bg-white/[0.02]",
+                  )}>
                   <td className="p-8 font-bold text-neutral-300 group-hover:text-white transition-colors">
                     {feature.name}
                   </td>
                   {feature.values.map((val, j) => (
                     <td key={j} className="p-8 text-center">
-                      {typeof val === "boolean" ? (
+                      {feature.isCtaRow ? (
+                        val === "CTA_AGENDAR" ? (
+                          <Link
+                            href="/contact"
+                            className="inline-block w-full py-3 bg-white text-black text-xs font-black uppercase tracking-widest rounded-xl hover:bg-emerald-50 transition-colors">
+                            {t("cta_consult")}
+                          </Link>
+                        ) : (
+                          <span className="text-neutral-600 font-medium">
+                            {val}
+                          </span>
+                        )
+                      ) : typeof val === "boolean" ? (
                         val ? (
                           <Check className="w-5 h-5 text-emerald-500 mx-auto" />
                         ) : (
@@ -85,51 +103,53 @@ export function ComparisonTable() {
 
         {/* Mobile Accordion */}
         <div className="md:hidden space-y-4">
-          {features.map((feature, i) => (
-            <div
-              key={i}
-              className="rounded-2xl border border-neutral-800 bg-neutral-900/20 overflow-hidden">
-              <button
-                onClick={() => setOpenRow(openRow === i ? null : i)}
-                className="w-full p-5 flex items-center justify-between text-left">
-                <span className="font-bold text-white">{feature.name}</span>
-                <ChevronDown
-                  className={cn(
-                    "w-5 h-5 text-neutral-500 transition-transform",
-                    openRow === i && "rotate-180 text-emerald-500",
+          {features
+            .filter((f) => !f.isCtaRow)
+            .map((feature, i) => (
+              <div
+                key={i}
+                className="rounded-2xl border border-neutral-800 bg-neutral-900/20 overflow-hidden">
+                <button
+                  onClick={() => setOpenRow(openRow === i ? null : i)}
+                  className="w-full p-5 flex items-center justify-between text-left">
+                  <span className="font-bold text-white">{feature.name}</span>
+                  <ChevronDown
+                    className={cn(
+                      "w-5 h-5 text-neutral-500 transition-transform",
+                      openRow === i && "rotate-180 text-emerald-500",
+                    )}
+                  />
+                </button>
+                <AnimatePresence>
+                  {openRow === i && (
+                    <motion.div
+                      initial={{ height: 0, opacity: 0 }}
+                      animate={{ height: "auto", opacity: 1 }}
+                      exit={{ height: 0, opacity: 0 }}
+                      className="px-5 pb-5 border-t border-neutral-800/50 pt-4">
+                      <div className="grid grid-cols-1 gap-3">
+                        {labels.map((label, j) => (
+                          <div
+                            key={j}
+                            className="flex items-center justify-between text-sm py-1">
+                            <span className="text-neutral-500 font-medium uppercase tracking-widest text-[10px]">
+                              {label}
+                            </span>
+                            <span className="text-white font-bold text-right max-w-[65%]">
+                              {typeof feature.values[j] === "boolean"
+                                ? feature.values[j]
+                                  ? "✓"
+                                  : "-"
+                                : feature.values[j]}
+                            </span>
+                          </div>
+                        ))}
+                      </div>
+                    </motion.div>
                   )}
-                />
-              </button>
-              <AnimatePresence>
-                {openRow === i && (
-                  <motion.div
-                    initial={{ height: 0, opacity: 0 }}
-                    animate={{ height: "auto", opacity: 1 }}
-                    exit={{ height: 0, opacity: 0 }}
-                    className="px-5 pb-5 border-t border-neutral-800/50 pt-4">
-                    <div className="grid grid-cols-1 gap-3">
-                      {labels.map((label, j) => (
-                        <div
-                          key={j}
-                          className="flex items-center justify-between text-sm py-1">
-                          <span className="text-neutral-500 font-medium uppercase tracking-widest text-[10px]">
-                            {label}
-                          </span>
-                          <span className="text-white font-bold">
-                            {typeof feature.values[j] === "boolean"
-                              ? feature.values[j]
-                                ? "✓"
-                                : "-"
-                              : feature.values[j]}
-                          </span>
-                        </div>
-                      ))}
-                    </div>
-                  </motion.div>
-                )}
-              </AnimatePresence>
-            </div>
-          ))}
+                </AnimatePresence>
+              </div>
+            ))}
         </div>
 
         {/* Footer CTA */}

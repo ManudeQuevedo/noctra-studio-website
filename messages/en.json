@@ -645,6 +645,9 @@
     "back_to_pricing": "← Back to pricing",
 
     "feature_comparison": {
+      "mobile_title": "How do they compare?",
+      "mobile_subtitle": "Swipe to compare",
+      "mobile_cta": "Free consultation →",
       "recommended_badge": "Recommended ★",
       "columns": [
         { "id": "wix", "name": "Wix / Squarespace", "subtitle": "No-code basic" },
@@ -654,20 +657,20 @@
       ],
       "rows": [
         {
-          "criteria": "Load Speed",
+          "criteria": "Page load speed",
           "values": [
-            "Medium (3–6 sec)",
+            "Average (3–6 sec)",
             "Good (1–3 sec)",
             "Variable (3–8 sec, WordPress)",
             "✓ Optimal (<1 sec, Next.js)"
           ]
         },
         {
-          "criteria": "Real Technical SEO",
+          "criteria": "Real technical SEO",
           "values": [
             "Basic (limited)",
             "Good",
-            "Depends on developer",
+            "Depends on the developer",
             "✓ Complete (Core Web Vitals optimized)"
           ]
         },
@@ -675,46 +678,56 @@
           "criteria": "Customization",
           "values": [
             "Limited (templates)",
-            "High (steep learning curve)",
-            "High (costly to change)",
+            "High (learning curve)",
+            "High (expensive to change)",
             "✓ Total (custom code)"
           ]
         },
         {
-          "criteria": "Your Time Required",
+          "criteria": "Time required from you",
           "values": [
-            "5–10 hrs/week (learn, maintain, update)",
-            "8–15 hrs/week (high learning curve)",
-            "Weekly meetings + long review cycles",
+            "5–10 hrs/week (learning, maintaining, updating)",
+            "8–15 hrs/week (steep learning curve)",
+            "Weekly meetings + lengthy reviews",
             "✓ 1 monthly call of 30 min"
           ]
         },
         {
-          "criteria": "Real Cost over 2 Years",
+          "criteria": "Real 2-year cost",
           "values": [
-            "$15k–40k MXN (subscriptions + apps + your time)",
-            "$20k–50k MXN (plan + plugins + learning)",
+            "$15k–40k MXN + your time (5–10 hrs/week × 2 years)",
+            "$20k–50k MXN + learning curve of 2–3 months",
             "$80k–200k MXN (project + WordPress maintenance)",
             "✓ From $20k MXN + IVA project + optional support"
           ]
         },
         {
-          "criteria": "Post-Launch Support",
+          "criteria": "Post-launch support",
           "values": [
-            "Generic support, they don't know your business",
+            "Generic support, doesn't know your business",
             "Community + documentation",
-            "Extra cost per hour",
-            "✓ Founder directly, knows your entire project"
+            "Additional hourly cost",
+            "✓ Direct founder, knows your full project"
           ]
         },
         {
           "criteria": "Scalability",
           "values": [
             "Limited (low ceiling)",
-            "Medium",
             "Requires rebuilding the site",
-            "✓ Custom code, grows with you"
+            "Requires rebuilding the site",
+            "✓ Own code, grows with you"
           ]
+        },
+        {
+          "criteria": "",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "CTA_AGENDAR"
+          ],
+          "isCtaRow": true
         }
       ]
     },
@@ -2834,7 +2847,8 @@
         "projects": {
           "woodax": {
             "name": "Woodax Design",
-            "type": "Premium custom carpentry · Querétaro",
+            "type": "Premium Custom Carpentry · Querétaro",
+            "alt_text": "Woodax Design project — premium custom carpentry in Querétaro",
             "challenge": "Woodax creates high-end custom furniture, but their digital presence didn't reflect the quality of their craftsmanship. They needed a site to showcase their work without depending on Instagram.",
             "solution": "Visual portfolio focused on conversion, a quoting system that qualifies projects before contact, and optimization for 'custom carpentry Querétaro'.",
             "deliverables": [
@@ -2895,7 +2909,8 @@
           },
           "dyma": {
             "name": "Dyma Group",
-            "type": "Multi-industry business group · Querétaro",
+            "type": "Industrial Business Group · El Marqués",
+            "alt_text": "Dyma Group project — multi-industry business group in Querétaro",
             "challenge": "A corporate presence that reflects their strength as a consolidated group. They needed to centralize information for their companies without losing individual identities.",
             "solution": "Corporate site with scalable architecture, client portal for project tracking, and a system they can update without depending on us.",
             "deliverables": [
@@ -2956,7 +2971,8 @@
           },
           "valtru": {
             "name": "Valtru Interiorismo",
-            "type": "Interior Design Studio · Querétaro",
+            "type": "Design & Architecture Studio · Zibatá",
+            "alt_text": "Valtru Interiorismo project — interior design studio in Querétaro",
             "challenge": "A studio looking to institutionalize their digital presence and attract premium residential projects through an immersive visual experience.",
             "solution": "High-impact visual portfolio, project storytelling engine, and lead generation focused on architectural firms.",
             "deliverables": [

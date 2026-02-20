@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
+import Image from "next/image";
 import {
   ArrowRight,
   Code,
@@ -93,30 +94,24 @@ export default function WorkClient() {
   const processIcons = [Search, Layout, Code, Rocket, Settings];
 
   const ProjectMockup = ({ projectKey }: { projectKey: string }) => {
-    const brandColors: Record<string, string> = {
-      woodax: "from-amber-900/20 to-orange-950/20",
-      dyma: "from-blue-900/20 to-slate-900/20",
-      valtru: "from-emerald-900/20 to-teal-950/20",
-    };
+    const altText = t(`sections.in_progress.projects.${projectKey}.alt_text`);
+    const objectPosition = projectKey === "valtru" ? "center 30%" : "center";
 
     return (
-      <div
-        className={cn(
-          "relative w-full aspect-video rounded-2xl overflow-hidden mb-12 bg-gradient-to-br border border-white/5",
-          brandColors[projectKey] || "from-neutral-900 to-black",
-        )}>
-        {/* Mockup Frames */}
-        <div className="absolute inset-0 flex items-center justify-center p-8 gap-4 opacity-40">
-          <div className="w-2/3 aspect-video bg-white/5 rounded-lg border border-white/10 flex items-center justify-center">
-            <Monitor className="w-8 h-8 text-white/20" />
-          </div>
-          <div className="w-1/4 h-3/4 bg-white/5 rounded-xl border border-white/10 flex items-center justify-center">
-            <Smartphone className="w-6 h-6 text-white/20" />
-          </div>
-        </div>
+      <div className="relative w-full aspect-video rounded-2xl overflow-hidden mb-12 border border-white/5">
+        <Image
+          src={`/images/work/${projectKey}-preview.jpg`}
+          alt={altText}
+          fill
+          style={{ objectPosition }}
+          className="object-cover transition-transform duration-500 group-hover:scale-105"
+          sizes="(max-width: 768px) 100vw, 50vw"
+          priority={false}
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent pointer-events-none" />
 
         {/* Overlay */}
-        <div className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-[2px]">
+        <div className="absolute inset-0 flex items-center justify-center pointer-events-none">
           <div className="px-4 py-2 rounded-full bg-white/10 backdrop-blur-md border border-white/20 flex items-center gap-2">
             <Construction className="w-4 h-4 text-amber-500" />
             <span className="text-xs font-mono font-bold uppercase tracking-widest text-white">

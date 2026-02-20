@@ -1118,6 +1118,9 @@
     "compare_all_features": "Comparar todas las funciones →",
     "back_to_pricing": "← Volver a precios",
     "feature_comparison": {
+      "mobile_title": "¿Cómo se comparan?",
+      "mobile_subtitle": "Desliza para comparar opciones",
+      "mobile_cta": "Agendar consulta gratuita →",
       "recommended_badge": "Recomendado ★",
       "columns": [
         { "id": "wix", "name": "Wix / Squarespace", "subtitle": "No-code básico" },
@@ -1165,8 +1168,8 @@
         {
           "criteria": "Costo real a 2 años",
           "values": [
-            "$15k–40k MXN (suscripciones + apps + tu tiempo)",
-            "$20k–50k MXN (plan + plugins + aprendizaje)",
+            "$15k–40k MXN + tu tiempo (5–10 hrs/semana × 2 años)",
+            "$20k–50k MXN + curva de aprendizaje de 2–3 meses",
             "$80k–200k MXN (proyecto + mantenimiento WordPress)",
             "✓ Desde $20k MXN + IVA proyecto + soporte opcional"
           ]
@@ -1184,10 +1187,20 @@
           "criteria": "Escalabilidad",
           "values": [
             "Limitada (techo bajo)",
-            "Media",
+            "Alta (requiere conocimiento técnico)",
             "Requiere rehacer el sitio",
             "✓ Código propio, crece contigo"
           ]
+        },
+        {
+          "criteria": "",
+          "values": [
+            "—",
+            "—",
+            "—",
+            "CTA_AGENDAR"
+          ],
+          "isCtaRow": true
         }
       ]
     },
@@ -2042,6 +2055,7 @@
           "woodax": {
             "name": "Woodax Design",
             "type": "Carpintería premium customizada · Querétaro",
+            "alt_text": "Proyecto Woodax Design — carpintería premium en Querétaro",
             "challenge": "Woodax crea muebles a medida de alta gama, pero su presencia digital no reflejaba la calidad de su craftsmanship. Necesitaban un sitio que mostrara su trabajo sin depender de Instagram.",
             "solution": "Portfolio visual enfocado en conversión, sistema de cotizaciones que califica proyectos antes de contacto, y optimización para 'carpintería custom Querétaro'.",
             "deliverables": [
@@ -2102,7 +2116,8 @@
           },
           "dyma": {
             "name": "Dyma Group",
-            "type": "Grupo empresarial multi-industria · Querétaro",
+            "type": "Grupo empresarial industrial · El Marqués",
+            "alt_text": "Proyecto Dyma Group — grupo empresarial multi-industria en Querétaro",
             "challenge": "Presencia corporativa que refleje su solidez como grupo consolidado. Necesitaban centralizar información de sus empresas sin perder identidad individual.",
             "solution": "Sitio corporativo con arquitectura escalable, portal de clientes para seguimiento de proyectos, y sistema que pueden actualizar sin depender de nosotros.",
             "deliverables": [
@@ -2163,7 +2178,8 @@
           },
           "valtru": {
             "name": "Valtru Interiorismo",
-            "type": "Estudio de Diseño de Interiores · Querétaro",
+            "type": "Estudio de diseño y arquitectura · Zibatá",
+            "alt_text": "Proyecto Valtru Interiorismo — estudio de diseño de interiores",
             "challenge": "Un estudio que busca institucionalizar su presencia digital y atraer proyectos residenciales premium a través de una experiencia visual inmersiva.",
             "solution": "Portafolio visual de alto impacto, motor de storytelling de proyectos, y generación de leads enfocado en despachos de arquitectura.",
             "deliverables": [
