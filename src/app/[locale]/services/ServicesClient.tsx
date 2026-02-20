@@ -73,6 +73,282 @@ const ICON_MAP: Record<string, any> = {
   "🛡️": ShieldCheck,
 };
 
+const MobileServicesSlider = ({
+  phases,
+  activePhase,
+  setActivePhase,
+  t,
+}: any) => {
+  const [touchStart, setTouchStart] = useState<number | null>(null);
+  const [touchEnd, setTouchEnd] = useState<number | null>(null);
+  const [showHint, setShowHint] = useState(true);
+
+  // Minimum swipe distance (in px)
+  const minSwipeDistance = 40;
+
+  const activeIdx = phases.findIndex((p: any) => p.id === activePhase);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setShowHint(false);
+    }, 4000);
+    return () => clearTimeout(timer);
+  }, []);
+
+  const onTouchStart = (e: React.TouchEvent) => {
+    setTouchEnd(null);
+    setTouchStart(e.targetTouches[0].clientX);
+    setShowHint(false); // Hide hint on first interaction
+  };
+
+  const onTouchMove = (e: React.TouchEvent) => {
+    setTouchEnd(e.targetTouches[0].clientX);
+  };
+
+  const onTouchEnd = () => {
+    if (!touchStart || !touchEnd) return;
+    const distance = touchStart - touchEnd;
+    const isLeftSwipe = distance > minSwipeDistance;
+    const isRightSwipe = distance < -minSwipeDistance;
+
+    if (isLeftSwipe && activeIdx < phases.length - 1) {
+      goTo(activeIdx + 1);
+    }
+    if (isRightSwipe && activeIdx > 0) {
+      goTo(activeIdx - 1);
+    }
+  };
+
+  const goTo = (idx: number) => {
+    const newPhase = phases[idx].id;
+    setActivePhase(newPhase);
+
+    // Scroll tab into view
+    const tabEl = document.getElementById(`mobile-tab-${newPhase}`);
+    if (tabEl) {
+      tabEl.scrollIntoView({
+        behavior: "smooth",
+        inline: "center",
+        block: "nearest",
+      });
+    }
+  };
+
+  return (
+    <div className="w-full flex md:hidden flex-col mb-16 overflow-hidden pt-8">
+      {/* 1. PILL TABS */}
+      <div className="w-full px-6 mb-8">
+        <div className="flex overflow-x-auto scrollbar-none gap-3 pb-4 -mx-6 px-6 snap-x">
+          {phases.map((phase: any, idx: number) => {
+            const isActive = phase.id === activePhase;
+            return (
+              <button
+                key={phase.id}
+                id={`mobile-tab-${phase.id}`}
+                onClick={() => goTo(idx)}
+                className={cn(
+                  "flex-shrink-0 flex items-center gap-2 px-4 rounded-full transition-colors snap-center min-h-[44px]",
+                  isActive
+                    ? "bg-emerald-500/20 border-[1.5px] border-emerald-500"
+                    : "bg-neutral-900 border border-neutral-800 text-neutral-400",
+                )}>
+                <span
+                  className={cn(
+                    "text-xs font-mono font-bold",
+                    isActive ? "text-emerald-500" : "text-neutral-500",
+                  )}>
+                  0{idx + 1}
+                </span>
+                <span
+                  className={cn(
+                    "text-xs font-black uppercase tracking-widest",
+                    isActive ? "text-white" : "",
+                  )}>
+                  {phase.label}
+                </span>
+              </button>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 2. SWIPEABLE CARDS */}
+      <div
+        className="w-full relative overflow-hidden px-6"
+        onTouchStart={onTouchStart}
+        onTouchMove={onTouchMove}
+        onTouchEnd={onTouchEnd}>
+        <div
+          className="flex flex-row transition-transform duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
+          style={{ transform: `translateX(-${activeIdx * 100}%)` }}>
+          {phases.map((phase: any) => {
+            const serviceKey = phase.id;
+            const industriesRaw = t.raw(`best_for.${serviceKey}`);
+            const industries = Array.isArray(industriesRaw)
+              ? industriesRaw.slice(0, 5)
+              : []; // Limit features
+
+            const isCustomSystem = serviceKey === "ai";
+            const isSEO = serviceKey === "seo";
+            const isOngoing = serviceKey === "ongoing";
+
+            let priceValue = t(`${serviceKey}.pricing_label`);
+            try {
+              if (isCustomSystem) {
+                priceValue = t("pricing_breakdown.ai.investment_notes.1").split(
+                  ": ",
+                )[1];
+              } else if (isSEO) {
+                priceValue = t("pricing_breakdown.seo.investment.0.value");
+              } else if (isOngoing) {
+                priceValue = t("pricing_breakdown.ongoing.investment.1.value");
+              }
+            } catch (e) {
+              console.error(e);
+            }
+
+            return (
+              <div
+                key={phase.id}
+                className="w-full flex-shrink-0 pr-4 last:pr-0"
+                style={{ width: "100%" }}>
+                <div className="bg-[#161616] border border-neutral-800 rounded-[20px] overflow-hidden flex flex-col h-full">
+                  {/* Image Zone (160px) */}
+                  <div className="relative h-[160px] w-full overflow-hidden">
+                    <NextImage
+                      src={
+                        SERVICE_IMAGES[
+                          serviceKey as keyof typeof SERVICE_IMAGES
+                        ]
+                      }
+                      alt={t(`${serviceKey}.title`)}
+                      fill
+                      className="object-cover grayscale contrast-125 brightness-75 mix-blend-overlay"
+                    />
+                    <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-20" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-[#161616]/50 to-transparent" />
+
+                    {/* Badge inferior izquierdo */}
+                    <div className="absolute bottom-4 left-4">
+                      <span className="inline-block px-2 py-1 bg-emerald-500 text-black text-[9px] font-black uppercase tracking-widest rounded-sm">
+                        {t(`${serviceKey}.image_label`)}
+                      </span>
+                    </div>
+
+                    {/* Price tag superior derecho */}
+                    <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg">
+                      <Tag className="w-3 h-3 text-emerald-400" />
+                      <span className="text-white font-bold text-xs uppercase tracking-wider">
+                        {priceValue}
+                      </span>
+                    </div>
+                  </div>
+
+                  {/* Content Zone */}
+                  <div className="p-6 flex flex-col flex-1">
+                    <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+                      {t(`${serviceKey}.title`)}
+                    </h3>
+                    <p className="text-sm text-neutral-400 line-clamp-2 mb-6 leading-relaxed">
+                      {t(`${serviceKey}.focus`)}
+                    </p>
+
+                    {/* Feature Pills (Max 5, first 2 highlight) */}
+                    <div className="flex flex-wrap gap-2 mb-8">
+                      {industries.map((ind: any, i: number) => {
+                        const isHighlight = i < 2;
+                        return (
+                          <div
+                            key={i}
+                            className={cn(
+                              "px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5",
+                              isHighlight
+                                ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
+                                : "bg-neutral-800 text-neutral-400 border border-neutral-700",
+                            )}>
+                            {isHighlight && <Check className="w-3 h-3" />}
+                            {ind.text}
+                          </div>
+                        );
+                      })}
+                    </div>
+
+                    {/* CTAs */}
+                    <div className="mt-auto flex gap-3">
+                      <Link
+                        href={{
+                          pathname: "/contact",
+                          query: { focus: serviceKey },
+                        }}
+                        className="flex-1 bg-emerald-500 text-black text-sm font-black uppercase tracking-widest rounded-xl py-3.5 flex justify-center items-center gap-2 transition-transform active:scale-95">
+                        {t("start_project")} <ArrowRight className="w-4 h-4" />
+                      </Link>
+                      <button
+                        onClick={() => {
+                          const element = document.getElementById("comparison");
+                          element?.scrollIntoView({ behavior: "smooth" });
+                        }}
+                        className="w-12 h-[52px] bg-neutral-800 rounded-xl flex items-center justify-center text-neutral-400 active:scale-95 transition-transform shrink-0">
+                        <Settings className="w-5 h-5" />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+
+      {/* 4. PROGRESS DOTS */}
+      <div className="flex justify-center items-center gap-2 mt-8 mb-4">
+        {phases.map((phase: any, idx: number) => {
+          const isActive = idx === activeIdx;
+          return (
+            <div
+              key={phase.id}
+              className={cn(
+                "h-1.5 rounded-full transition-all duration-300",
+                isActive ? "w-6 bg-emerald-500" : "w-1.5 bg-neutral-800",
+              )}
+            />
+          );
+        })}
+      </div>
+
+      {/* 5. SWIPE HINT */}
+      <div className="h-6 flex justify-center">
+        <AnimatePresence>
+          {showHint && (
+            <motion.div
+              initial={{ opacity: 0, y: 5 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, scale: 0.95 }}
+              className="text-[10px] font-mono text-neutral-500 flex items-center gap-2">
+              &larr; desliza para ver m&aacute;s &rarr;
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
+
+      {/* 6. BOTTOM STRIP CTA */}
+      <div className="mt-8 mx-6 bg-[#111111] border border-[#1e1e1e] rounded-[16px] p-4 flex items-center justify-between">
+        <div className="flex flex-col">
+          <span className="text-white font-bold text-sm">¿No sabes cuál?</span>
+          <span className="text-neutral-500 text-[10px] uppercase tracking-wider">
+            Te asesoramos gratis
+          </span>
+        </div>
+        <Link
+          href={{ pathname: "/contact", query: { intent: "discovery" } }}
+          className="bg-emerald-500 text-black text-[10px] font-black uppercase tracking-widest px-4 py-3 rounded-xl hover:bg-emerald-400 transition-colors">
+          Hablar con un experto
+        </Link>
+      </div>
+    </div>
+  );
+};
+
 // Custom Illustrated Icons for Standards
 const StandardIcons = {
   Performance: () => (
@@ -712,25 +988,38 @@ export default function ServicesClient() {
       </section>
 
       {/* Interactive Phase Selector */}
-      <PhaseSelector
+      <div className="hidden md:block">
+        <PhaseSelector
+          phases={phases}
+          activePhase={activeTab}
+          setActivePhase={setActiveTab}
+        />
+      </div>
+
+      {/* Main Experience Display */}
+      <div className="hidden md:block">
+        <section
+          id="experience"
+          className="mb-32 min-h-[800px] scroll-mt-48 w-full max-w-7xl mx-auto px-6 md:px-8">
+          <AnimatePresence mode="wait">
+            <ServiceSection
+              key={activeTab}
+              serviceKey={activeTab}
+              index={phases.findIndex((p) => p.id === activeTab)}
+              image={SERVICE_IMAGES[activeTab as keyof typeof SERVICE_IMAGES]}
+            />
+          </AnimatePresence>
+        </section>
+      </div>
+
+      {/* Mobile Services Slider Layout */}
+      <MobileServicesSlider
         phases={phases}
         activePhase={activeTab}
         setActivePhase={setActiveTab}
+        t={t}
+        SERVICE_IMAGES={SERVICE_IMAGES}
       />
-
-      {/* Main Experience Display */}
-      <section
-        id="experience"
-        className="mb-32 min-h-[800px] scroll-mt-48 w-full max-w-7xl mx-auto px-6 md:px-8">
-        <AnimatePresence mode="wait">
-          <ServiceSection
-            key={activeTab}
-            serviceKey={activeTab}
-            index={phases.findIndex((p) => p.id === activeTab)}
-            image={SERVICE_IMAGES[activeTab as keyof typeof SERVICE_IMAGES]}
-          />
-        </AnimatePresence>
-      </section>
 
       {/* Standards Break */}
       <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-950 py-32 border-y border-neutral-800 mb-32">

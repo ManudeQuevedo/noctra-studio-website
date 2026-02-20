@@ -8,7 +8,8 @@
       "Bash(find:*)",
       "Bash(node:*)",
       "Bash(npx next build:*)",
-      "Bash(npm ls:*)"
+      "Bash(npm ls:*)",
+      "Bash(npm why:*)"
     ],
     "deny": [],
     "ask": []
