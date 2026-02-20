@@ -90,7 +90,7 @@ export default function ProposalsClient({
   const getStatusColor = (status: string) => {
     switch (status) {
       case "draft":
-        return "text-neutral-500 bg-neutral-500/10 border-neutral-500/20";
+        return "text-neutral-300 bg-neutral-500/10 border-neutral-500/20";
       case "sent":
         return "text-blue-400 bg-blue-400/10 border-blue-400/20";
       case "viewed":
@@ -100,7 +100,7 @@ export default function ProposalsClient({
       case "rejected":
         return "text-red-400 bg-red-400/10 border-red-400/20";
       default:
-        return "text-neutral-500 bg-neutral-500/10 border-neutral-500/20";
+        return "text-neutral-300 bg-neutral-500/10 border-neutral-500/20";
     }
   };
 
@@ -112,7 +112,7 @@ export default function ProposalsClient({
         {/* Header */}
         <header className="px-8 py-6 border-b border-white/5 flex items-center justify-between shrink-0 bg-[#050505]/50 backdrop-blur-xl sticky top-0 z-10">
           <div>
-            <h2 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500 mb-1">
+            <h2 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-300 mb-1">
               Propuestas
             </h2>
             <h1 className="text-xl font-bold tracking-tight text-white">
@@ -133,13 +133,13 @@ export default function ProposalsClient({
         {/* Toolbar */}
         <div className="px-8 py-4 border-b border-white/5 flex items-center gap-4 shrink-0 overflow-x-auto bg-[#050505]">
           <div className="relative flex-1 max-w-md min-w-[200px]">
-            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-500" />
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-300" />
             <input
               type="text"
               placeholder="Buscar por cliente, título o folio..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
-              className="w-full bg-white/[0.03] border border-white/10 px-9 py-2 text-[11px] font-mono text-white placeholder:text-neutral-600 focus:outline-none focus:border-emerald-500/50 transition-colors"
+              className="w-full bg-white/[0.03] border border-white/10 px-9 py-2 text-[11px] font-mono text-white placeholder:text-neutral-400 focus:outline-none focus:border-emerald-500/50 transition-colors"
             />
           </div>
 
@@ -147,7 +147,7 @@ export default function ProposalsClient({
             {["all", "draft", "sent", "accepted"].map((status) => (
               <button
                 key={status}
-                className="px-3 py-1.5 border border-white/5 bg-white/[0.02] text-[9px] font-mono uppercase tracking-widest text-neutral-500 hover:text-white hover:border-white/20 transition-all capitalize">
+                className="px-3 py-1.5 border border-white/5 bg-white/[0.02] text-[9px] font-mono uppercase tracking-widest text-neutral-300 hover:text-white hover:border-white/20 transition-all capitalize">
                 {status}
               </button>
             ))}
@@ -159,22 +159,22 @@ export default function ProposalsClient({
           <table className="w-full border-collapse min-w-[1000px]">
             <thead>
               <tr className="border-b border-white/5">
-                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-medium">
+                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
                   Folio
                 </th>
-                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-medium">
+                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
                   Cliente
                 </th>
-                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-medium">
+                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
                   Servicio / Título
                 </th>
-                <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-medium">
+                <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
                   Inversión
                 </th>
-                <th className="text-center py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-medium">
+                <th className="text-center py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
                   Estatus
                 </th>
-                <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-500 font-medium">
+                <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
                   Fecha
                 </th>
                 <th className="py-4 px-4 w-10"></th>
@@ -184,7 +184,7 @@ export default function ProposalsClient({
               {filteredProposals.length === 0 ? (
                 <tr>
                   <td colSpan={7} className="py-20 text-center">
-                    <div className="text-neutral-600 font-mono text-[10px] uppercase tracking-[0.2em] mb-4">
+                    <div className="text-neutral-400 font-mono text-[10px] uppercase tracking-[0.2em] mb-4">
                       No se encontraron propuestas
                     </div>
                   </td>
@@ -204,7 +204,7 @@ export default function ProposalsClient({
                         <span className="text-xs font-bold text-neutral-200">
                           {proposal.lead?.name || "Cliente Manual"}
                         </span>
-                        <span className="text-[10px] font-mono text-neutral-600">
+                        <span className="text-[10px] font-mono text-neutral-400">
                           {proposal.lead?.email || "—"}
                         </span>
                       </div>
@@ -217,7 +217,7 @@ export default function ProposalsClient({
                     <td className="py-5 px-4 text-right">
                       <span className="font-mono text-[11px] font-bold text-white">
                         ${proposal.total?.toLocaleString("es-MX")}
-                        <span className="text-[9px] text-neutral-600 ml-1">
+                        <span className="text-[9px] text-neutral-400 ml-1">
                           MXN
                         </span>
                       </span>
@@ -260,7 +260,7 @@ export default function ProposalsClient({
                           </button>
                         )}
                         <button className="p-2 hover:bg-white/5 rounded-full transition-colors opacity-0 group-hover:opacity-100">
-                          <MoreHorizontal className="w-4 h-4 text-neutral-500" />
+                          <MoreHorizontal className="w-4 h-4 text-neutral-300" />
                         </button>
                       </div>
                     </td>

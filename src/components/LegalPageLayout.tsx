@@ -31,7 +31,7 @@ export function LegalPageLayout({
       <div className="max-w-7xl mx-auto px-6 md:px-8">
         <div className="max-w-4xl mx-auto">
           {/* BREADCRUMB */}
-          <nav className="flex items-center gap-2 text-sm text-neutral-500 mb-8" aria-label="Breadcrumb">
+          <nav className="flex items-center gap-2 text-sm text-neutral-300 mb-8" aria-label="Breadcrumb">
             <Link href="/" className="hover:text-neutral-900 dark:hover:text-white transition-colors">{t("breadcrumb_home")}</Link>
             <ChevronRight className="w-4 h-4" />
             <span className="text-neutral-900 dark:text-neutral-300 font-medium" aria-current="page">{title}</span>
@@ -42,7 +42,7 @@ export function LegalPageLayout({
             <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-neutral-950 dark:text-white mb-6">
               {title}
             </h1>
-            <div className="inline-block bg-neutral-100 dark:bg-neutral-900 px-4 py-2 rounded-xl text-sm font-mono text-neutral-500 dark:text-neutral-400">
+            <div className="inline-block bg-neutral-100 dark:bg-neutral-900 px-4 py-2 rounded-xl text-sm font-mono text-neutral-300 dark:text-neutral-400">
               {t("last_updated", { date: lastUpdated })}
             </div>
           </header>
@@ -60,7 +60,7 @@ export function LegalPageLayout({
                       <a 
                         key={item.href} 
                         href={item.href}
-                        className="text-sm text-neutral-500 hover:text-black dark:hover:text-white transition-colors py-1 border-l-2 border-transparent hover:border-neutral-200 dark:hover:border-neutral-800 pl-4"
+                        className="text-sm text-neutral-300 hover:text-black dark:hover:text-white transition-colors py-1 border-l-2 border-transparent hover:border-neutral-200 dark:hover:border-neutral-800 pl-4"
                       >
                         {item.title}
                       </a>
@@ -88,7 +88,7 @@ export function LegalPageLayout({
               <h4 className="text-xl font-bold text-neutral-900 dark:text-white">
                 {t("footer.title")}
               </h4>
-              <p className="text-neutral-500">
+              <p className="text-neutral-300">
                 {t("footer.subtitle")}
               </p>
             </div>

@@ -17,6 +17,8 @@ export const WhatsAppFloatingButton = () => {
   return (
     <LazyMotion features={domAnimation}>
       <m.div
+        role="region"
+        aria-label="WhatsApp Contact Widget"
         initial={{ opacity: 0, scale: 0.5 }}
         animate={{ opacity: 1, scale: 1 }}
         className="fixed bottom-6 left-6 z-[100] group">

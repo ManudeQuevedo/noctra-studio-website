@@ -54,12 +54,12 @@ export function OperationalDirectives() {
           <div
             key={protocol.id}
             className="p-4 flex gap-4 group hover:bg-neutral-900/30 transition-colors">
-            <div className="mt-1 text-neutral-500 group-hover:text-white transition-colors">
+            <div className="mt-1 text-neutral-300 group-hover:text-white transition-colors">
               <protocol.icon className="w-4 h-4" />
             </div>
             <div className="space-y-1">
               <div className="flex items-center gap-2">
-                <span className="text-xs font-mono text-neutral-600">
+                <span className="text-xs font-mono text-neutral-400">
                   0{index + 1} {"//"}
                 </span>
                 <h4 className="text-sm font-bold text-neutral-300 group-hover:text-white transition-colors">
@@ -67,7 +67,7 @@ export function OperationalDirectives() {
                 </h4>
                 <CheckCircle2 className="w-3 h-3 text-green-900/50 group-hover:text-green-500 transition-colors ml-auto opacity-0 group-hover:opacity-100" />
               </div>
-              <p className="text-xs text-neutral-500 leading-relaxed">
+              <p className="text-xs text-neutral-300 leading-relaxed">
                 {protocol.desc}
               </p>
             </div>
@@ -77,7 +77,7 @@ export function OperationalDirectives() {
 
       {/* Footer Disclaimer */}
       <div className="px-4 py-3 bg-neutral-900/30 border-t border-neutral-800">
-        <p className="text-[10px] font-mono text-neutral-600 text-center uppercase tracking-wide">
+        <p className="text-[10px] font-mono text-neutral-400 text-center uppercase tracking-wide">
           {t("disclaimer")}
         </p>
       </div>

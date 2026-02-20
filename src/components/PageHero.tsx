@@ -55,7 +55,7 @@ export function PageHero() {
       </div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-600 animate-bounce">
+      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-400 animate-bounce">
         <ChevronDown className="w-8 h-8" />
       </div>
     </section>

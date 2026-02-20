@@ -86,7 +86,7 @@ export function ForgeSidebar() {
       </div>
 
       <div className="flex-1 px-4 py-8 space-y-2">
-        <h2 className="px-3 text-[10px] font-mono uppercase tracking-widest text-neutral-500 mb-4">
+        <h2 className="px-3 text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-4">
           Navigation
         </h2>
         {navItems.map((item) => {
@@ -98,7 +98,7 @@ export function ForgeSidebar() {
               className={`flex items-center gap-3 px-3 py-3 rounded-md transition-all text-sm font-medium ${
                 isActive
                   ? "bg-white/[0.05] text-white border-l-2 border-emerald-500"
-                  : "text-neutral-500 hover:text-white hover:bg-white/[0.02] border-l-2 border-transparent"
+                  : "text-neutral-300 hover:text-white hover:bg-white/[0.02] border-l-2 border-transparent"
               }`}>
               <item.icon
                 className={`w-4 h-4 ${isActive ? "text-emerald-400" : ""}`}
@@ -117,7 +117,7 @@ export function ForgeSidebar() {
       <div className="p-4 border-t border-neutral-900">
         <button
           onClick={handleSignOut}
-          className="w-full text-left px-3 py-2 text-[10px] font-mono text-neutral-600 hover:text-neutral-400 uppercase tracking-widest flex items-center justify-between transition-colors">
+          className="w-full text-left px-3 py-2 text-[10px] font-mono text-neutral-400 hover:text-neutral-400 uppercase tracking-widest flex items-center justify-between transition-colors">
           Sign out <LogOut className="w-3 h-3" />
         </button>
       </div>

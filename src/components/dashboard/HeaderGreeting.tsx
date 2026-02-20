@@ -43,7 +43,7 @@ export default function HeaderGreeting({
         <h1 className="text-3xl font-bold text-white mb-1">
           {greeting}, {name}
         </h1>
-        <p className="text-sm text-neutral-500">{date}</p>
+        <p className="text-sm text-neutral-300">{date}</p>
       </div>
       <LanguageSwitcher />
     </div>

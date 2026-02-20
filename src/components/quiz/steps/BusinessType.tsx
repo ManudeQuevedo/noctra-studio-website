@@ -86,7 +86,7 @@ export const BusinessType = () => {
                 <h3 className="text-base font-bold text-neutral-200 group-hover:text-white transition-colors">
                   {option.label}
                 </h3>
-                <p className="text-sm text-neutral-500 group-hover:text-neutral-400 transition-colors">
+                <p className="text-sm text-neutral-300 group-hover:text-neutral-400 transition-colors">
                   {option.desc}
                 </p>
               </div>

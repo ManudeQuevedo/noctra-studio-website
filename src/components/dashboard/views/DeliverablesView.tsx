@@ -46,7 +46,7 @@ export default function DeliverablesView() {
       <div className="max-w-6xl mx-auto">
         <div className="mb-6">
           <h2 className="text-2xl font-bold text-white mb-2">Deliverables</h2>
-          <p className="text-neutral-500">
+          <p className="text-neutral-300">
             All project deliverables and assets
           </p>
         </div>
@@ -63,14 +63,14 @@ export default function DeliverablesView() {
                   </div>
                   <div className="flex-1">
                     <p className="font-medium text-white">{item.name}</p>
-                    <p className="text-sm text-neutral-500">
+                    <p className="text-sm text-neutral-300">
                       {item.description}
                     </p>
                   </div>
                 </div>
                 <div className="flex items-center gap-4">
                   <div className="text-right hidden md:block">
-                    <p className="text-xs text-neutral-500">{item.date}</p>
+                    <p className="text-xs text-neutral-300">{item.date}</p>
                   </div>
                   <span
                     className={`px-3 py-1 rounded-full text-xs font-medium whitespace-nowrap ${
@@ -93,7 +93,7 @@ export default function DeliverablesView() {
                       </span>
                     )}
                   </span>
-                  <ExternalLink className="w-4 h-4 text-neutral-600 group-hover:text-white transition-colors" />
+                  <ExternalLink className="w-4 h-4 text-neutral-400 group-hover:text-white transition-colors" />
                 </div>
               </div>
             ))}

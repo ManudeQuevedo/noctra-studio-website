@@ -82,7 +82,7 @@ export default function ProposalBuilderClient({
             <Link
               href="/forge/proposals"
               className="p-2 hover:bg-white/5 rounded-full transition-colors group">
-              <ChevronLeft className="w-5 h-5 text-neutral-500 group-hover:text-white" />
+              <ChevronLeft className="w-5 h-5 text-neutral-300 group-hover:text-white" />
             </Link>
 
             <div className="flex flex-col">
@@ -94,14 +94,14 @@ export default function ProposalBuilderClient({
                   {proposal.title}
                 </h1>
               </div>
-              <p className="text-[10px] font-mono text-neutral-500">
+              <p className="text-[10px] font-mono text-neutral-300">
                 Cliente: {proposal.lead?.name || "Desconocido"}
               </p>
             </div>
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2 text-[10px] font-mono text-neutral-600 mr-4">
+            <div className="hidden md:flex items-center gap-2 text-[10px] font-mono text-neutral-400 mr-4">
               {isSaving ? (
                 <>
                   <Loader2 className="w-3 h-3 animate-spin" />
@@ -142,14 +142,14 @@ export default function ProposalBuilderClient({
           <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-8 space-y-12">
             <section className="space-y-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                   Información General
                 </h3>
               </div>
 
               <div className="grid grid-cols-1 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Título de la Propuesta
                   </label>
                   <input
@@ -161,7 +161,7 @@ export default function ProposalBuilderClient({
                 </div>
 
                 <div className="space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Resumen Ejecutivo
                   </label>
                   <textarea
@@ -179,7 +179,7 @@ export default function ProposalBuilderClient({
 
             <section className="space-y-6">
               <div className="flex items-center justify-between">
-                <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                   Servicios y Entregables
                 </h3>
               </div>
@@ -202,12 +202,12 @@ export default function ProposalBuilderClient({
             </section>
 
             <section className="space-y-6">
-              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                 Inversión y Términos
               </h3>
               <div className="grid grid-cols-2 gap-6">
                 <div className="space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Validez (Vence el)
                   </label>
                   <input
@@ -220,7 +220,7 @@ export default function ProposalBuilderClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Duración Estimada
                   </label>
                   <input
@@ -255,7 +255,7 @@ export default function ProposalBuilderClient({
                   <h2 className="text-4xl font-black uppercase tracking-tighter mb-2">
                     Propuesta
                   </h2>
-                  <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                  <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                     Folio: {proposal.proposal_number || "PENDIENTE"}
                   </p>
                 </div>
@@ -284,7 +284,7 @@ export default function ProposalBuilderClient({
                       "MMMM d, yyyy",
                     )}
                   </p>
-                  <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mt-1">
+                  <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mt-1">
                     Válido hasta:{" "}
                     {proposal.valid_until
                       ? format(new Date(proposal.valid_until), "MMMM d, yyyy")
@@ -317,7 +317,7 @@ export default function ProposalBuilderClient({
                           <h5 className="font-black text-lg uppercase tracking-tight mb-2 italic group-hover:text-emerald-600 transition-colors">
                             {item.name}
                           </h5>
-                          <p className="text-sm text-neutral-600 leading-relaxed max-w-xl">
+                          <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">
                             {item.description}
                           </p>
                         </div>
@@ -358,7 +358,7 @@ export default function ProposalBuilderClient({
                     <h4 className="text-[9px] font-mono uppercase text-neutral-400 mb-1 tracking-[0.2em]">
                       Inversión Total
                     </h4>
-                    <p className="text-sm text-neutral-500 italic">
+                    <p className="text-sm text-neutral-300 italic">
                       Términos sugeridos: 50% anticipo, 50% al finalizar.
                     </p>
                   </div>

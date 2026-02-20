@@ -43,7 +43,7 @@ function CategoryCard({ category }: { category: { title: string; items: { label:
   return (
     <div className="flex flex-col h-full border-b border-r border-neutral-200 dark:border-neutral-800">
       <div className="px-6 py-4 border-b border-neutral-200 dark:border-neutral-800 bg-neutral-50 dark:bg-neutral-900">
-        <h3 className="text-xs font-mono text-neutral-500 dark:text-neutral-400 uppercase tracking-widest">
+        <h3 className="text-xs font-mono text-neutral-300 dark:text-neutral-400 uppercase tracking-widest">
           {category.title}
         </h3>
       </div>

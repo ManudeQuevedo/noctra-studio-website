@@ -69,7 +69,7 @@ export function ClientsClient({
             <UserCheck className="w-5 h-5 text-emerald-500" />
             Clientes Activos
           </h1>
-          <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mt-1">
+          <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mt-1">
             Gestión de relaciones y proyectos cerrados
           </p>
         </div>
@@ -78,7 +78,7 @@ export function ClientsClient({
       {/* Toolbar */}
       <div className="px-8 py-4 border-b border-white/5 flex items-center gap-4 shrink-0 bg-[#080808]">
         <div className="relative flex-1 max-w-md">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-600" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
           <input
             type="text"
             placeholder="Buscar por nombre, empresa o contrato..."
@@ -89,7 +89,7 @@ export function ClientsClient({
         </div>
 
         <div className="flex items-center gap-2">
-          <Filter className="w-3.5 h-3.5 text-neutral-500" />
+          <Filter className="w-3.5 h-3.5 text-neutral-300" />
           <select
             value={filter}
             onChange={(e) => setFilter(e.target.value as any)}
@@ -115,7 +115,7 @@ export function ClientsClient({
                   <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors tracking-tight uppercase italic underline decoration-transparent group-hover:decoration-emerald-500/30 underline-offset-4">
                     {client.client_name}
                   </h3>
-                  <p className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest mt-1">
+                  <p className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest mt-1">
                     {client.client_company || "Persona Física"}
                   </p>
                 </div>
@@ -128,7 +128,7 @@ export function ClientsClient({
               {/* Card Info Grid */}
               <div className="p-6 grid grid-cols-2 gap-y-6">
                 <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-neutral-600 uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
                     <ShieldCheck className="w-3 h-3 text-emerald-500/50" />{" "}
                     Contrato
                   </span>
@@ -137,19 +137,19 @@ export function ClientsClient({
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-neutral-600 uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
                     <DollarSign className="w-3 h-3 text-neutral-700" />{" "}
                     Inversión
                   </span>
                   <p className="text-xs font-bold text-emerald-500/80">
                     ${client.total_price.toLocaleString("es-MX")}{" "}
-                    <span className="text-[9px] text-neutral-600 font-mono">
+                    <span className="text-[9px] text-neutral-400 font-mono">
                       MXN
                     </span>
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-neutral-600 uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
                     <Calendar className="w-3 h-3 text-neutral-700" /> Firmado
                   </span>
                   <p className="text-xs font-bold text-neutral-300">
@@ -159,7 +159,7 @@ export function ClientsClient({
                   </p>
                 </div>
                 <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-neutral-600 uppercase tracking-widest flex items-center gap-1.5">
+                  <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
                     <ExternalLink className="w-3 h-3 text-neutral-700" />{" "}
                     Servicio
                   </span>
@@ -171,7 +171,7 @@ export function ClientsClient({
 
               {/* Card Footer */}
               <div className="px-6 py-4 bg-white/[0.01] border-t border-white/5 flex items-center justify-between group-hover:bg-emerald-500/[0.02] transition-colors">
-                <span className="text-[10px] font-bold text-neutral-600 group-hover:text-emerald-500 transition-colors uppercase tracking-widest">
+                <span className="text-[10px] font-bold text-neutral-400 group-hover:text-emerald-500 transition-colors uppercase tracking-widest">
                   Ver expediente completo
                 </span>
                 <ChevronRight className="w-4 h-4 text-neutral-800 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all" />
@@ -189,7 +189,7 @@ export function ClientsClient({
               <div className="w-12 h-12 bg-white/[0.02] rounded-full flex items-center justify-center mb-4">
                 <Search className="w-6 h-6 text-neutral-700" />
               </div>
-              <p className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest">
+              <p className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest">
                 No se encontraron clientes activos
               </p>
             </div>

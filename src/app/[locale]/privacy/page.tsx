@@ -19,7 +19,7 @@ export default function PrivacyPage() {
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
           {t("title")}
         </h1>
-        <p className="text-neutral-500 dark:text-neutral-400 mb-12">
+        <p className="text-neutral-300 dark:text-neutral-400 mb-12">
           {t("last_updated", { date: new Date().toLocaleDateString() })}
         </p>
 
@@ -28,7 +28,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.intro.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.intro.content")}
             </p>
           </section>
@@ -37,10 +37,10 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.collection.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed mb-4">
               {t("sections.collection.content")}
             </p>
-            <ul className="list-disc pl-6 text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="list-disc pl-6 text-neutral-400 dark:text-neutral-400 space-y-2">
               <li>
                 <strong>{t("sections.collection.list.identity")}</strong>
               </li>
@@ -60,10 +60,10 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.purpose.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed mb-4">
               {t("sections.purpose.content")}
             </p>
-            <ul className="list-disc pl-6 text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="list-disc pl-6 text-neutral-400 dark:text-neutral-400 space-y-2">
               <li>{t("sections.purpose.list.service")}</li>
               <li>{t("sections.purpose.list.communication")}</li>
               <li>{t("sections.purpose.list.improvement")}</li>
@@ -75,10 +75,10 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.rights.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mb-4">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed mb-4">
               {t("sections.rights.content")}
             </p>
-            <ul className="list-disc pl-6 text-neutral-600 dark:text-neutral-400 space-y-2">
+            <ul className="list-disc pl-6 text-neutral-400 dark:text-neutral-400 space-y-2">
               <li>
                 <strong>{t("sections.rights.list.access")}</strong>
               </li>
@@ -92,7 +92,7 @@ export default function PrivacyPage() {
                 <strong>{t("sections.rights.list.opposition")}</strong>
               </li>
             </ul>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed mt-4">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed mt-4">
               {t("sections.rights.contact_text")}{" "}
               <a
                 href="mailto:hello@noctra.studio"
@@ -107,7 +107,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.cookies.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.cookies.content")}
             </p>
           </section>
@@ -116,7 +116,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.changes.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.changes.content")}
             </p>
           </section>
@@ -125,7 +125,7 @@ export default function PrivacyPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.contact.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.contact.content")}
               <br />
               <a

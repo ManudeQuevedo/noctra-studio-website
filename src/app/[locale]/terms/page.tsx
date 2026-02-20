@@ -19,7 +19,7 @@ export default function TermsPage() {
         <h1 className="text-4xl md:text-5xl font-bold tracking-tight mb-8">
           {t("title")}
         </h1>
-        <p className="text-neutral-500 dark:text-neutral-400 mb-12">
+        <p className="text-neutral-300 dark:text-neutral-400 mb-12">
           {t("last_updated", { date: new Date().toLocaleDateString() })}
         </p>
 
@@ -28,7 +28,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.acceptance.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.acceptance.content")}
             </p>
           </section>
@@ -37,7 +37,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.services.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.services.content")}
             </p>
           </section>
@@ -46,7 +46,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.ip.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.ip.content")}
             </p>
           </section>
@@ -55,7 +55,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.obligations.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.obligations.content")}
             </p>
           </section>
@@ -64,7 +64,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.liability.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.liability.content")}
             </p>
           </section>
@@ -73,7 +73,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.governing.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.governing.content")}
             </p>
           </section>
@@ -82,7 +82,7 @@ export default function TermsPage() {
             <h2 className="text-2xl font-bold mb-4">
               {t("sections.contact.title")}
             </h2>
-            <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
               {t("sections.contact.content")}
               <br />
               <a

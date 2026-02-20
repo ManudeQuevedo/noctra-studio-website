@@ -65,7 +65,7 @@ export function ClientContractClient({
               <h1 className="text-2xl font-black uppercase tracking-tight mb-4">
                 CONTRATO DE SERVICIOS DIGITALES
               </h1>
-              <div className="text-[11px] font-bold uppercase italic text-neutral-500">
+              <div className="text-[11px] font-bold uppercase italic text-neutral-300">
                 Celebrado entre:
                 <p className="text-neutral-900 mt-1">
                   Noctra Studio (Proveedor)
@@ -86,7 +86,7 @@ export function ClientContractClient({
                 <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400 border-b border-neutral-100 pb-2">
                   PROVEEDOR
                 </h4>
-                <div className="text-[13px] space-y-1 text-neutral-600">
+                <div className="text-[13px] space-y-1 text-neutral-400">
                   <p className="font-bold text-neutral-900">Noctra Studio</p>
                   <p>Querétaro, México</p>
                   <p>hola@noctra.studio</p>
@@ -97,7 +97,7 @@ export function ClientContractClient({
                 <h4 className="text-[10px] font-black uppercase tracking-[0.2em] text-neutral-400 border-b border-neutral-100 pb-2">
                   CLIENTE
                 </h4>
-                <div className="text-[13px] space-y-1 text-neutral-600">
+                <div className="text-[13px] space-y-1 text-neutral-400">
                   <p className="font-bold text-neutral-900">
                     {contract.client_name}
                   </p>
@@ -138,7 +138,7 @@ export function ClientContractClient({
                       <p className="font-bold text-sm uppercase italic tracking-tight">
                         {item.name}
                       </p>
-                      <p className="text-xs text-neutral-500 leading-relaxed mt-1">
+                      <p className="text-xs text-neutral-300 leading-relaxed mt-1">
                         {item.description}
                       </p>
                     </div>
@@ -197,7 +197,7 @@ export function ClientContractClient({
                       <p className="text-[11px] font-black uppercase tracking-wider mb-4">
                         Cláusula {idx + 1}. {clause.name}
                       </p>
-                      <p className="text-[13px] text-neutral-600 leading-relaxed text-justify italic opacity-90">
+                      <p className="text-[13px] text-neutral-400 leading-relaxed text-justify italic opacity-90">
                         {clause.text}
                       </p>
                     </div>

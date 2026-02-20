@@ -79,7 +79,7 @@ export function ServicesGrid({ images }: ServicesGridProps) {
         viewport={{ once: true, margin: "-80px" }}
         transition={{ duration: 0.5, ease: "easeOut" }}
         className="text-center mb-16 space-y-4">
-        <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+        <span className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
           {tHome("services_section.label")}
         </span>
         <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white">

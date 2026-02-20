@@ -89,7 +89,7 @@ export default function LoginPage() {
           className="flex items-center justify-between">
           <Link
             href="/"
-            className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors group">
+            className="flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors group">
             <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
             <AnimatePresence mode="wait">
               <motion.span
@@ -142,7 +142,7 @@ export default function LoginPage() {
                     </motion.span>
                   </AnimatePresence>
                 </h1>
-                <p className="text-neutral-500 text-lg min-h-[3.5rem]">
+                <p className="text-neutral-300 text-lg min-h-[3.5rem]">
                   <AnimatePresence mode="wait">
                     <motion.span
                       key={lang}
@@ -162,7 +162,7 @@ export default function LoginPage() {
               <div className="space-y-2">
                 <label
                   htmlFor="email"
-                  className="text-xs font-medium text-neutral-500 uppercase tracking-wider ml-1">
+                  className="text-xs font-medium text-neutral-300 uppercase tracking-wider ml-1">
                   {t.emailLabel}
                 </label>
                 <div className="relative group">
@@ -197,7 +197,7 @@ export default function LoginPage() {
                 disabled={isLoading}
                 className={`w-full py-5 rounded-xl font-medium text-black text-base transition-all flex items-center justify-center gap-2 group relative overflow-hidden ${
                   isLoading
-                    ? "bg-neutral-800 cursor-not-allowed text-neutral-500"
+                    ? "bg-neutral-800 cursor-not-allowed text-neutral-300"
                     : "bg-white hover:scale-[1.02] active:scale-[0.98]"
                 }`}>
                 {isLoading ? (
@@ -232,7 +232,7 @@ export default function LoginPage() {
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
           transition={{ duration: 1, delay: 0.5 }}
-          className="mt-12 lg:mt-0 flex flex-col gap-1 text-xs text-neutral-500 font-medium">
+          className="mt-12 lg:mt-0 flex flex-col gap-1 text-xs text-neutral-300 font-medium">
           <p>
             &copy; {new Date().getFullYear()} Noctra Studio. All rights
             reserved.

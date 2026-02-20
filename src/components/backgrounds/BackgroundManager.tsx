@@ -48,19 +48,21 @@ export function BackgroundManager() {
 
   return (
     <LazyMotion features={domAnimation}>
-    <div className="fixed inset-0 z-[-1] pointer-events-none bg-neutral-950">
-      <AnimatePresence mode="wait">
-        <m.div
-          key={pathname}
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          exit={{ opacity: 0 }}
-          transition={{ duration: 1.5, ease: "easeInOut" }}
-          className="absolute inset-0">
-          {getBackground()}
-        </m.div>
-      </AnimatePresence>
-    </div>
+      <div
+        className="fixed inset-0 z-[-1] pointer-events-none bg-neutral-950"
+        aria-hidden="true">
+        <AnimatePresence mode="wait">
+          <m.div
+            key={pathname}
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            transition={{ duration: 1.5, ease: "easeInOut" }}
+            className="absolute inset-0">
+            {getBackground()}
+          </m.div>
+        </AnimatePresence>
+      </div>
     </LazyMotion>
   );
 }

@@ -198,14 +198,14 @@ export function FAQSection() {
           {/* Search Bar */}
           <div className="mb-12 relative max-w-2xl mx-auto">
             <div className="absolute inset-y-0 left-5 flex items-center pointer-events-none">
-              <Search className="w-4 h-4 text-neutral-500" />
+              <Search className="w-4 h-4 text-neutral-300" />
             </div>
             <input
               type="text"
               placeholder={t("search.placeholder")}
               value={searchTerm}
               onChange={(e) => setSearchTerm(e.target.value)}
-              className="w-full bg-neutral-900/50 border border-neutral-800 rounded-2xl py-4 pl-12 pr-6 text-white text-sm focus:outline-none focus:border-emerald-500/50 transition-all placeholder:text-neutral-600 shadow-inner"
+              className="w-full bg-neutral-900/50 border border-neutral-800 rounded-2xl py-4 pl-12 pr-6 text-white text-sm focus:outline-none focus:border-emerald-500/50 transition-all placeholder:text-neutral-400 shadow-inner"
             />
           </div>
 
@@ -293,7 +293,7 @@ export function FAQSection() {
                               "w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors",
                               isOpen
                                 ? "bg-emerald-500/15 text-emerald-500"
-                                : "bg-neutral-900 text-neutral-500",
+                                : "bg-neutral-900 text-neutral-300",
                             )}>
                             {CATEGORY_ICONS[item.category]}
                           </span>
@@ -303,7 +303,7 @@ export function FAQSection() {
                         </div>
                         <ChevronDown
                           className={cn(
-                            "w-5 h-5 flex-shrink-0 text-neutral-500 transition-transform duration-300",
+                            "w-5 h-5 flex-shrink-0 text-neutral-300 transition-transform duration-300",
                             isOpen && "rotate-180 text-emerald-500",
                           )}
                         />

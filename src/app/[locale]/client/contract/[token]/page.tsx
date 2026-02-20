@@ -33,7 +33,7 @@ export default async function ClientContractPage({
         <h1 className="text-2xl font-black uppercase tracking-tighter mb-2 italic">
           Contrato no encontrado
         </h1>
-        <p className="text-neutral-500 text-xs font-mono uppercase tracking-[0.2em]">
+        <p className="text-neutral-300 text-xs font-mono uppercase tracking-[0.2em]">
           Verifica el enlace o contacta a Noctra Studio.
         </p>
       </div>

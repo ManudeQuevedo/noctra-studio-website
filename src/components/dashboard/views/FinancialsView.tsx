@@ -48,7 +48,7 @@ export default function FinancialsView() {
       <div className="max-w-6xl mx-auto space-y-8">
         <div>
           <h2 className="text-2xl font-bold text-white mb-2">Financials</h2>
-          <p className="text-neutral-500">
+          <p className="text-neutral-300">
             Invoices, contracts, and payment history
           </p>
         </div>
@@ -71,7 +71,7 @@ export default function FinancialsView() {
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-white">{invoice.id}</p>
-                      <p className="text-sm text-neutral-500">
+                      <p className="text-sm text-neutral-300">
                         {invoice.description}
                       </p>
                     </div>
@@ -81,7 +81,7 @@ export default function FinancialsView() {
                       <p className="text-sm font-medium text-white">
                         {invoice.amount}
                       </p>
-                      <p className="text-xs text-neutral-500">{invoice.date}</p>
+                      <p className="text-xs text-neutral-300">{invoice.date}</p>
                     </div>
                     <span
                       className={`px-3 py-1 rounded-full text-xs font-medium ${
@@ -104,7 +104,7 @@ export default function FinancialsView() {
                       )}
                     </span>
                     <button className="p-2 rounded-lg hover:bg-neutral-800 transition-colors">
-                      <Download className="w-4 h-4 text-neutral-600 group-hover:text-white" />
+                      <Download className="w-4 h-4 text-neutral-400 group-hover:text-white" />
                     </button>
                   </div>
                 </div>
@@ -131,7 +131,7 @@ export default function FinancialsView() {
                     </div>
                     <div className="flex-1">
                       <p className="font-medium text-white">{contract.name}</p>
-                      <p className="text-sm text-neutral-500">
+                      <p className="text-sm text-neutral-300">
                         {contract.date}
                       </p>
                     </div>
@@ -142,7 +142,7 @@ export default function FinancialsView() {
                       {contract.status}
                     </span>
                     <button className="p-2 rounded-lg hover:bg-neutral-800 transition-colors">
-                      <Download className="w-4 h-4 text-neutral-600 group-hover:text-white" />
+                      <Download className="w-4 h-4 text-neutral-400 group-hover:text-white" />
                     </button>
                   </div>
                 </div>

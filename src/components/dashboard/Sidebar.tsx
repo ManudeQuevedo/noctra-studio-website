@@ -160,7 +160,7 @@ export default function Sidebar({
               <p className="text-sm font-medium text-white truncate">
                 {displayName}
               </p>
-              <p className="text-xs text-neutral-500">Client Account</p>
+              <p className="text-xs text-neutral-300">Client Account</p>
             </div>
           </div>
         )}

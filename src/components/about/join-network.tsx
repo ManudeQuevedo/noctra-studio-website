@@ -61,7 +61,7 @@ export function JoinNetwork() {
             <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-6 text-neutral-900 dark:text-white">
               {t("title")}
             </h2>
-            <p className="text-xl text-neutral-600 dark:text-neutral-400 max-w-2xl leading-relaxed">
+            <p className="text-xl text-neutral-400 dark:text-neutral-400 max-w-2xl leading-relaxed">
               {t("subtitle")}
             </p>
           </FadeIn>
@@ -119,7 +119,7 @@ export function JoinNetwork() {
                           {role.title}
                         </span>
                       </div>
-                      <div className="flex items-center gap-2 text-xs font-mono text-neutral-500 uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
+                      <div className="flex items-center gap-2 text-xs font-mono text-neutral-300 uppercase tracking-wider opacity-0 group-hover:opacity-100 transition-opacity -translate-x-2 group-hover:translate-x-0 duration-300">
                         {t("roles.apply")} <ArrowRight className="w-3 h-3" />
                       </div>
                     </div>
@@ -140,7 +140,7 @@ export function JoinNetwork() {
                     {t("cta.button")}
                     <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
                   </button>
-                  <p className="text-xs text-neutral-500 font-mono uppercase tracking-wide">
+                  <p className="text-xs text-neutral-300 font-mono uppercase tracking-wide">
                     {t("cta.disclaimer")}
                   </p>
                 </div>

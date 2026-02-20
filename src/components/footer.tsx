@@ -87,7 +87,7 @@ export function Footer() {
             <div className="pt-4 space-y-4">
               <div className="flex items-center gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center border border-neutral-800 group-hover:border-neutral-700 transition-colors">
-                  <MapPin className="h-4 w-4 text-neutral-500 group-hover:text-white" />
+                  <MapPin className="h-4 w-4 text-neutral-300 group-hover:text-white" />
                 </div>
                 <span className="text-sm text-neutral-400">
                   Querétaro, México
@@ -97,7 +97,7 @@ export function Footer() {
                 href="mailto:hello@noctra.studio"
                 className="flex items-center gap-3 group">
                 <div className="w-8 h-8 rounded-lg bg-neutral-900 flex items-center justify-center border border-neutral-800 group-hover:border-neutral-700 transition-colors">
-                  <Mail className="h-4 w-4 text-neutral-500 group-hover:text-white" />
+                  <Mail className="h-4 w-4 text-neutral-300 group-hover:text-white" />
                 </div>
                 <span className="text-sm text-neutral-400 group-hover:text-white transition-colors">
                   hello@noctra.studio
@@ -117,35 +117,35 @@ export function Footer() {
                 <li>
                   <Link
                     href="/"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.home")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/about"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.about")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/work"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.work")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/careers"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {tNav("careers")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/contact"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.contact")}
                   </Link>
                 </li>
@@ -161,35 +161,35 @@ export function Footer() {
                 <li>
                   <Link
                     href="/services/professional-websites"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.websites")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/services/ecommerce"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.ecommerce")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/services/custom-systems"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.systems")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href={"/services#visual-identity" as any}
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.branding")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/services/optimization"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.seo")}
                   </Link>
                 </li>
@@ -205,21 +205,21 @@ export function Footer() {
                 <li>
                   <Link
                     href="/blog"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.blog")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/guarantee"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.guarantee")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/technology-explained"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.technology")}
                   </Link>
                 </li>
@@ -229,14 +229,14 @@ export function Footer() {
                       pathname: "/contact" as any,
                       query: { tipo: "consulta" },
                     }}
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("links.consultation")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href={"/#roi-calculator" as any}
-                    className="text-sm text-neutral-500 hover:text-white transition-colors font-bold text-emerald-500/80 hover:text-emerald-400 underline decoration-emerald-500/20 underline-offset-4">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors font-bold text-emerald-500/80 hover:text-emerald-400 underline decoration-emerald-500/20 underline-offset-4">
                     {t("links.roi_calculator")}
                   </Link>
                 </li>
@@ -252,21 +252,21 @@ export function Footer() {
                 <li>
                   <Link
                     href="/terms-and-conditions"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("terms_of_service")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/privacy-policy"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("privacy_policy")}
                   </Link>
                 </li>
                 <li>
                   <Link
                     href="/cookie-policy"
-                    className="text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors">
                     {t("cookie_policy")}
                   </Link>
                 </li>
@@ -280,7 +280,7 @@ export function Footer() {
           <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
             {/* Left: Metadata & Status */}
             <div className="flex flex-col items-center lg:items-start gap-4">
-              <div className="flex flex-wrap justify-center lg:justify-start items-center gap-x-4 gap-y-2 text-xs text-neutral-500 font-medium">
+              <div className="flex flex-wrap justify-center lg:justify-start items-center gap-x-4 gap-y-2 text-xs text-neutral-300 font-medium">
                 <span>{t("copyright", { year: year.toString() })}</span>
                 <span className="hidden sm:inline text-neutral-800">•</span>
                 <span>{t("location")}</span>
@@ -296,7 +296,7 @@ export function Footer() {
                     </span>
                   </div>
                   <div className="w-px h-3 bg-neutral-800" />
-                  <span className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold">
+                  <span className="text-[10px] uppercase tracking-widest text-neutral-300 font-bold">
                     {t("status.uptime")}
                   </span>
                 </div>
@@ -305,7 +305,7 @@ export function Footer() {
 
             {/* Center: Casual Tagline (Visible on Desktop) */}
             <div className="hidden xl:block">
-              <p className="text-xs text-neutral-600 font-medium tracking-tight">
+              <p className="text-xs text-neutral-400 font-medium tracking-tight">
                 {t("made_with")}
               </p>
             </div>
@@ -330,7 +330,7 @@ export function Footer() {
                   target="_blank"
                   rel="noopener noreferrer"
                   aria-label={social.label}
-                  className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-500 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300">
+                  className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300">
                   <social.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
                 </Link>
               ))}
@@ -339,7 +339,7 @@ export function Footer() {
 
           {/* Mobile Only Casual Tagline */}
           <div className="mt-12 xl:hidden text-center">
-            <p className="text-[10px] text-neutral-600 uppercase tracking-[0.2em] font-bold">
+            <p className="text-[10px] text-neutral-400 uppercase tracking-[0.2em] font-bold">
               {t("made_with")}
             </p>
           </div>

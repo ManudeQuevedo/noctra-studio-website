@@ -161,7 +161,7 @@ export const Results = () => {
       <div className="text-center mb-6 shrink-0 relative">
         <button
           onClick={closeQuiz}
-          className="absolute right-0 top-0 p-2 text-neutral-500 hover:text-white md:hidden">
+          className="absolute right-0 top-0 p-2 text-neutral-300 hover:text-white md:hidden">
           <X className="w-5 h-5" />
         </button>
         <div className="inline-flex items-center gap-3 justify-center mb-2">
@@ -206,7 +206,7 @@ export const Results = () => {
 
               <div className="flex items-center gap-4 py-3 border-y border-white/5">
                 <div>
-                  <div className="text-[9px] uppercase text-neutral-500 font-bold tracking-widest mb-0.5">
+                  <div className="text-[9px] uppercase text-neutral-300 font-bold tracking-widest mb-0.5">
                     Investment
                   </div>
                   <div className="text-white font-mono font-bold text-sm">
@@ -215,7 +215,7 @@ export const Results = () => {
                 </div>
                 <div className="w-px h-8 bg-white/10" />
                 <div>
-                  <div className="text-[9px] uppercase text-neutral-500 font-bold tracking-widest mb-0.5">
+                  <div className="text-[9px] uppercase text-neutral-300 font-bold tracking-widest mb-0.5">
                     Timeline
                   </div>
                   <div className="text-white font-mono font-bold text-sm">
@@ -241,7 +241,7 @@ export const Results = () => {
             {/* Right Column: Features & Actions */}
             <div className="flex flex-col gap-4">
               <div className="bg-white/5 rounded-xl p-4 flex-1">
-                <h4 className="text-[10px] uppercase text-neutral-500 font-bold tracking-widest mb-3">
+                <h4 className="text-[10px] uppercase text-neutral-300 font-bold tracking-widest mb-3">
                   Included Features
                 </h4>
                 <ul className="space-y-2">

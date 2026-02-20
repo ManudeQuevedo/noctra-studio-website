@@ -108,7 +108,7 @@ export const MainGoals = () => {
                   {option.label}
                 </div>
                 <div
-                  className={`text-sm mt-0.5 ${isSelected ? "text-neutral-600" : "text-neutral-500 group-hover:text-neutral-400"}`}>
+                  className={`text-sm mt-0.5 ${isSelected ? "text-neutral-400" : "text-neutral-300 group-hover:text-neutral-400"}`}>
                   {option.desc}
                 </div>
               </div>
@@ -125,7 +125,7 @@ export const MainGoals = () => {
             px-8 py-4 rounded-xl font-bold text-sm uppercase tracking-widest flex items-center gap-2 transition-all
             ${
               !answers.mainGoals || answers.mainGoals.length === 0
-                ? "bg-neutral-800 text-neutral-600 cursor-not-allowed"
+                ? "bg-neutral-800 text-neutral-400 cursor-not-allowed"
                 : "bg-white text-black hover:bg-neutral-200 active:scale-95"
             }
           `}>

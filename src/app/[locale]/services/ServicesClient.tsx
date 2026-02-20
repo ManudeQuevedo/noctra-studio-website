@@ -161,7 +161,7 @@ const MobileServicesSlider = ({
                 <span
                   className={cn(
                     "text-xs font-mono font-bold",
-                    isActive ? "text-emerald-500" : "text-neutral-500",
+                    isActive ? "text-emerald-500" : "text-neutral-300",
                   )}>
                   0{idx + 1}
                 </span>
@@ -340,7 +340,7 @@ const MobileServicesSlider = ({
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="text-[10px] font-mono text-neutral-500 flex items-center gap-2">
+              className="text-[10px] font-mono text-neutral-300 flex items-center gap-2">
               &larr; desliza para ver m&aacute;s &rarr;
             </m.div>
           )}
@@ -559,7 +559,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
           {/* Left: Included & Deliverables */}
           <div className="space-y-12">
             <div>
-              <h5 className="text-[10px] font-black text-neutral-500 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
                 <Package className="w-3.5 h-3.5 text-emerald-500" />
                 {labels.included}
               </h5>
@@ -576,7 +576,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
             </div>
 
             <div>
-              <h5 className="text-[10px] font-black text-neutral-500 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
                 <LayoutPanelLeft className="w-3.5 h-3.5 text-emerald-500" />
                 {labels.deliverables}
               </h5>
@@ -596,7 +596,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
           {/* Right: Timeline & Investment */}
           <div className="space-y-12">
             <div>
-              <h5 className="text-[10px] font-black text-neutral-500 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
                 <Clock className="w-3.5 h-3.5 text-emerald-500" />
                 {labels.timeline}
               </h5>
@@ -615,7 +615,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
             </div>
 
             <div className="pt-8 border-t border-neutral-800">
-              <h5 className="text-[10px] font-black text-neutral-500 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
+              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
                 <CircleDollarSign className="w-3.5 h-3.5 text-emerald-500" />
                 {labels.investment}
               </h5>
@@ -628,7 +628,7 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
                       <div
                         key={inv.label}
                         className="flex justify-between text-sm py-1 border-b border-white/[0.03]">
-                        <span className="text-neutral-500">{inv.label}</span>
+                        <span className="text-neutral-300">{inv.label}</span>
                         <span className="text-white font-mono">
                           {inv.value}
                         </span>
@@ -778,7 +778,7 @@ const ServiceSection = ({
                         : t(`${serviceKey}.pricing_label`)}
                 </span>
                 {(isCustomSystem || isSEO || isOngoing) && (
-                  <span className="text-sm text-neutral-500 italic">
+                  <span className="text-sm text-neutral-300 italic">
                     {isCustomSystem
                       ? `(${t("pricing_breakdown.ai.investment_notes.2")})`
                       : isSEO
@@ -858,7 +858,7 @@ const ServiceSection = ({
                         </li>
                       ))}
                   </ul>
-                  <p className="text-[10px] text-neutral-600 font-black uppercase tracking-[0.3em] pt-2">
+                  <p className="text-[10px] text-neutral-400 font-black uppercase tracking-[0.3em] pt-2">
                     {t("scoping_call_box.footer")}
                   </p>
                 </div>
@@ -872,7 +872,7 @@ const ServiceSection = ({
 
           {/* Best For section */}
           <div className="pt-8 border-t border-neutral-800">
-            <h4 className="text-[10px] font-black text-neutral-500 uppercase tracking-widest mb-8">
+            <h4 className="text-[10px] font-black text-neutral-300 uppercase tracking-widest mb-8">
               {t("best_for.label")}
             </h4>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
@@ -899,12 +899,12 @@ const ServiceSection = ({
             <button
               onClick={() => setShowExamples(!showExamples)}
               className="w-full flex items-center justify-between text-left group">
-              <h4 className="text-[10px] font-black text-neutral-500 uppercase tracking-widest group-hover:text-white transition-colors">
+              <h4 className="text-[10px] font-black text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">
                 {t("real_examples.title")}
               </h4>
               <ChevronDown
                 className={cn(
-                  "w-4 h-4 text-neutral-500 transition-transform",
+                  "w-4 h-4 text-neutral-300 transition-transform",
                   showExamples && "rotate-180 text-emerald-500",
                 )}
               />
@@ -932,7 +932,7 @@ const ServiceSection = ({
                   </div>
                   <Link
                     href="/work"
-                    className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-neutral-500 hover:text-emerald-500 transition-all uppercase tracking-widest">
+                    className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-neutral-300 hover:text-emerald-500 transition-all uppercase tracking-widest">
                     {t("real_examples.view_more")}{" "}
                     <ExternalLink className="w-3 h-3" />
                   </Link>

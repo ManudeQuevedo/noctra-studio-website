@@ -60,7 +60,7 @@ const TestimonialSidebar = () => {
   return (
     <div className="space-y-8 lg:sticky lg:top-40 h-fit">
       <div className="space-y-6">
-        <h3 className="text-xs font-mono text-neutral-500 uppercase tracking-widest px-4 border-l border-neutral-800">
+        <h3 className="text-xs font-mono text-neutral-300 uppercase tracking-widest px-4 border-l border-neutral-800">
           {t("testimonials_title")}
         </h3>
         <div className="grid grid-cols-1 gap-4">
@@ -101,7 +101,7 @@ const TestimonialSidebar = () => {
         {[0, 1, 2].map((i) => (
           <div
             key={t(`hero.trust_badges.${i}`)}
-            className="flex items-center gap-2 text-[10px] text-neutral-500 font-mono uppercase tracking-tight">
+            className="flex items-center gap-2 text-[10px] text-neutral-300 font-mono uppercase tracking-tight">
             <Check className="w-3 h-3 text-emerald-500" />
             {t(`hero.trust_badges.${i}`)}
           </div>
@@ -124,7 +124,7 @@ const ExpectationsCard = () => {
             <div className="mt-1 shrink-0 w-4 h-4 rounded-full bg-emerald-500/10 flex items-center justify-center">
               <Check className="w-2.5 h-2.5 text-emerald-500" />
             </div>
-            <p className="text-xs text-neutral-500 leading-relaxed">{item}</p>
+            <p className="text-xs text-neutral-300 leading-relaxed">{item}</p>
           </div>
         ))}
       </div>
@@ -514,7 +514,7 @@ function ContactForm() {
                             {currentStep === 1 && (
                               <div className="space-y-12">
                                 <div className="group relative">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 group-focus-within:text-emerald-500 transition-colors">
                                     {t("form.name_label")}
                                   </label>
                                   <div className="relative">
@@ -528,7 +528,7 @@ function ContactForm() {
                                 </div>
 
                                 <div className="group relative">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 group-focus-within:text-emerald-500 transition-colors">
                                     {t("form.email_label")}
                                   </label>
                                   <div className="relative">
@@ -558,7 +558,7 @@ function ContactForm() {
                                         ? "text-red-500"
                                         : phoneValid === true
                                           ? "text-emerald-500"
-                                          : "text-neutral-500 group-focus-within:text-emerald-500",
+                                          : "text-neutral-300 group-focus-within:text-emerald-500",
                                     )}>
                                     {t("form.phone_label")}
                                   </label>
@@ -585,7 +585,7 @@ function ContactForm() {
                             {currentStep === 2 && (
                               <div className="space-y-12">
                                 <div className="space-y-4">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                                     {t("form.service_label")}
                                   </label>
                                   <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -620,7 +620,7 @@ function ContactForm() {
                                 </div>
 
                                 <div className="space-y-4">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                                     {t("form.budget_label")}
                                   </label>
                                   <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
@@ -662,7 +662,7 @@ function ContactForm() {
                             {currentStep === 3 && (
                               <div className="space-y-12">
                                 <div className="group relative">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 group-focus-within:text-emerald-500 transition-colors">
                                     {t("form.message_label")}
                                   </label>
                                   <div className="relative">

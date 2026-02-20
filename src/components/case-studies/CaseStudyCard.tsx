@@ -86,7 +86,7 @@ export function CaseStudyCard({
       {/* Content Section */}
       <div className="w-full md:w-1/2 space-y-6">
         <div>
-          <p className="text-xs uppercase tracking-widest text-neutral-500 font-mono mb-2">
+          <p className="text-xs uppercase tracking-widest text-neutral-300 font-mono mb-2">
             {concept}
           </p>
           <h3 className="text-4xl md:text-5xl font-bold tracking-tight text-white">

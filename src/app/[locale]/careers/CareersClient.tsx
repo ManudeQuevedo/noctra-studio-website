@@ -128,7 +128,7 @@ export function CareersClient() {
                 <a href="#pricing">{t("hero.cta_secondary")}</a>
               </Button>
             </div>
-            <p className="text-sm text-neutral-500 font-medium tracking-wide">
+            <p className="text-sm text-neutral-300 font-medium tracking-wide">
               {t("hero.micro_copy")}
             </p>
           </m.div>
@@ -161,7 +161,7 @@ export function CareersClient() {
                     <h3 className="font-bold text-base mb-2">
                       {t(`how_it_works.steps.${i}.title`)}
                     </h3>
-                    <p className="text-sm md:text-base text-neutral-500 leading-relaxed">
+                    <p className="text-sm md:text-base text-neutral-300 leading-relaxed">
                       {t(`how_it_works.steps.${i}.description`)}
                     </p>
                   </div>
@@ -193,7 +193,7 @@ export function CareersClient() {
                 <FadeIn key={t(`roles.items.${i}.role_name`)} delay={i * 0.05}>
                   <div className="h-full p-8 rounded-2xl border border-neutral-800 bg-black hover:border-neutral-700 transition-all group flex flex-col">
                     <div className="flex flex-wrap gap-2 mb-4">
-                      <span className="text-[10px] py-1 px-3 rounded-full border border-neutral-800 text-neutral-500 uppercase tracking-widest font-bold">
+                      <span className="text-[10px] py-1 px-3 rounded-full border border-neutral-800 text-neutral-300 uppercase tracking-widest font-bold">
                         {t("roles.badge_freelance")}
                       </span>
                       {highDemand && (
@@ -222,7 +222,7 @@ export function CareersClient() {
 
                     <div className="pt-6 border-t border-neutral-800 space-y-4">
                       <div>
-                        <p className="text-[10px] text-neutral-600 uppercase tracking-widest mb-1.5 font-bold">
+                        <p className="text-[10px] text-neutral-400 uppercase tracking-widest mb-1.5 font-bold">
                           {t("compensation.title")}
                         </p>
                         <p className="text-base font-bold text-emerald-500">
@@ -231,16 +231,16 @@ export function CareersClient() {
                       </div>
 
                       <div className="space-y-2">
-                        <p className="text-xs text-neutral-500 italic leading-relaxed">
+                        <p className="text-xs text-neutral-300 italic leading-relaxed">
                           {t(`roles.items.${i}.typical_example`)}
                         </p>
-                        <p className="text-xs text-neutral-500 italic leading-relaxed">
+                        <p className="text-xs text-neutral-300 italic leading-relaxed">
                           {t(`roles.items.${i}.complex_example`)}
                         </p>
                       </div>
 
                       <div className="flex items-center gap-2 text-xs text-neutral-400 font-medium bg-neutral-900/50 p-2.5 rounded-lg border border-neutral-800/50">
-                        <TrendingUp className="w-3 h-3 text-neutral-600" />
+                        <TrendingUp className="w-3 h-3 text-neutral-400" />
                         {t(`roles.items.${i}.demand`)}
                       </div>
                     </div>
@@ -282,7 +282,7 @@ export function CareersClient() {
                 </div>
 
                 <div className="pt-8 border-t border-neutral-800/50">
-                  <p className="text-sm text-neutral-500 italic max-w-2xl mx-auto md:mx-0">
+                  <p className="text-sm text-neutral-300 italic max-w-2xl mx-auto md:mx-0">
                     {t("roles.current_needs.closing_note")}
                   </p>
                 </div>
@@ -312,7 +312,7 @@ export function CareersClient() {
                     <h3 className="font-bold text-base">
                       {t(`benefits.items.${i}.title`)}
                     </h3>
-                    <p className="text-sm md:text-base text-neutral-500 leading-relaxed">
+                    <p className="text-sm md:text-base text-neutral-300 leading-relaxed">
                       {t(`benefits.items.${i}.description`)}
                     </p>
                   </div>
@@ -347,7 +347,7 @@ export function CareersClient() {
                     <h3 className="font-bold text-lg mb-1">
                       {t(`expectations.items.${i}.title`)}
                     </h3>
-                    <p className="text-sm md:text-base text-neutral-500 leading-relaxed">
+                    <p className="text-sm md:text-base text-neutral-300 leading-relaxed">
                       {t(`expectations.items.${i}.description`)}
                     </p>
                   </div>
@@ -398,10 +398,10 @@ export function CareersClient() {
                   <div className="text-4xl font-bold mb-2 text-neutral-400">
                     {t("pricing_model.diagram.step_2.amount")}
                   </div>
-                  <div className="text-base font-medium text-neutral-500 mb-4">
+                  <div className="text-base font-medium text-neutral-300 mb-4">
                     {t("pricing_model.diagram.step_2.label")}
                   </div>
-                  <p className="text-xs text-neutral-600 leading-relaxed max-w-[220px] mx-auto">
+                  <p className="text-xs text-neutral-400 leading-relaxed max-w-[220px] mx-auto">
                     {t("pricing_model.diagram.step_2.breakdown")}
                   </p>
                 </div>
@@ -443,13 +443,13 @@ export function CareersClient() {
                   <div className="absolute top-0 right-0 p-4 opacity-5 group-hover:opacity-10 transition-opacity">
                     <Coins className="w-24 h-24" />
                   </div>
-                  <h4 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-6">
+                  <h4 className="text-xs font-bold text-neutral-300 uppercase tracking-widest mb-6">
                     {t("pricing_model.example.title")}
                   </h4>
                   <div className="space-y-6">
                     <div className="flex justify-between items-end border-b border-neutral-900 pb-4">
                       <div>
-                        <p className="text-xs text-neutral-600 uppercase font-bold mb-1">
+                        <p className="text-xs text-neutral-400 uppercase font-bold mb-1">
                           {t("pricing_model.example.label_client_pays")}
                         </p>
                         <p className="text-2xl font-bold text-neutral-300">
@@ -457,7 +457,7 @@ export function CareersClient() {
                         </p>
                       </div>
                       <div className="text-right">
-                        <p className="text-xs text-neutral-600 uppercase font-bold mb-1">
+                        <p className="text-xs text-neutral-400 uppercase font-bold mb-1">
                           {t("pricing_model.example.label_your_gain")}
                         </p>
                         <p className="text-2xl font-bold text-emerald-500">
@@ -494,7 +494,7 @@ export function CareersClient() {
                   <span className="font-bold text-neutral-300 group-hover:text-white transition-colors">
                     {t("pricing_model.comparison.button_text")}
                   </span>
-                  <ChevronDown className="w-5 h-5 text-neutral-600" />
+                  <ChevronDown className="w-5 h-5 text-neutral-400" />
                 </button>
 
                 <div
@@ -513,13 +513,13 @@ export function CareersClient() {
                     <table className="w-full text-left text-sm">
                       <thead>
                         <tr className="border-b border-neutral-800">
-                          <th className="py-4 font-bold text-neutral-500 uppercase tracking-widest">
+                          <th className="py-4 font-bold text-neutral-300 uppercase tracking-widest">
                             {t("pricing_model.comparison.table.headers.0")}
                           </th>
-                          <th className="py-4 font-bold text-neutral-500 uppercase tracking-widest">
+                          <th className="py-4 font-bold text-neutral-300 uppercase tracking-widest">
                             {t("pricing_model.comparison.table.headers.1")}
                           </th>
-                          <th className="py-4 font-bold text-neutral-500 uppercase tracking-widest">
+                          <th className="py-4 font-bold text-neutral-300 uppercase tracking-widest">
                             {t("pricing_model.comparison.table.headers.2")}
                           </th>
                         </tr>
@@ -543,7 +543,7 @@ export function CareersClient() {
                                   `pricing_model.comparison.table.rows.${i}.earnings`,
                                 )}
                               </td>
-                              <td className="py-4 text-xs text-neutral-500 leading-relaxed max-w-[220px]">
+                              <td className="py-4 text-xs text-neutral-300 leading-relaxed max-w-[220px]">
                                 {t(
                                   `pricing_model.comparison.table.rows.${i}.time`,
                                 )}
@@ -570,7 +570,7 @@ export function CareersClient() {
                       {t("pricing_model.comparison.effective_rate.title")}
                     </h5>
                     <div className="space-y-4">
-                      <p className="text-sm font-bold text-neutral-500 mb-4">
+                      <p className="text-sm font-bold text-neutral-300 mb-4">
                         {t(
                           "pricing_model.comparison.effective_rate.scenario_title",
                         )}
@@ -581,7 +581,7 @@ export function CareersClient() {
                           className={`p-4 rounded-2xl border ${i === 2 ? "border-emerald-500/20 bg-emerald-500/5 shadow-[0_0_20px_rgba(16,185,129,0.03)]" : "border-neutral-900 bg-neutral-900/30"}`}>
                           <div className="flex justify-between items-start mb-2">
                             <span
-                              className={`text-xs font-bold uppercase tracking-widest ${i === 2 ? "text-emerald-500" : "text-neutral-500"}`}>
+                              className={`text-xs font-bold uppercase tracking-widest ${i === 2 ? "text-emerald-500" : "text-neutral-300"}`}>
                               {t(
                                 `pricing_model.comparison.effective_rate.scenarios.${i}.type`,
                               )}
@@ -592,7 +592,7 @@ export function CareersClient() {
                               )}
                             </span>
                           </div>
-                          <div className="flex justify-between text-xs text-neutral-500">
+                          <div className="flex justify-between text-xs text-neutral-300">
                             <span>
                               {t(
                                 `pricing_model.comparison.effective_rate.scenarios.${i}.earnings`,
@@ -621,7 +621,7 @@ export function CareersClient() {
                         </div>
                       ))}
                     </div>
-                    <p className="mt-8 text-sm text-neutral-500 italic leading-relaxed bg-neutral-900/30 p-4 rounded-2xl border border-neutral-900">
+                    <p className="mt-8 text-sm text-neutral-300 italic leading-relaxed bg-neutral-900/30 p-4 rounded-2xl border border-neutral-900">
                       {t("pricing_model.comparison.closing_note")}
                     </p>
                   </div>
@@ -681,7 +681,7 @@ export function CareersClient() {
                   <div className="space-y-12">
                     {/* Section 1: Next Steps */}
                     <div className="space-y-6">
-                      <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-500 flex items-center gap-2">
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-300 flex items-center gap-2">
                         <span className="w-8 h-px bg-neutral-800" />
                         {t("application.success.section_1.title")}
                       </h3>
@@ -696,7 +696,7 @@ export function CareersClient() {
                                 {[3, 4, 5, 6].map((idx) => (
                                   <p
                                     key={t(`application.success.section_1.steps.${idx}`)}
-                                    className="text-neutral-500 text-base">
+                                    className="text-neutral-300 text-base">
                                     {t(
                                       `application.success.section_1.steps.${idx}`,
                                     )}
@@ -718,7 +718,7 @@ export function CareersClient() {
 
                     {/* Section 3: In the meantime */}
                     <div className="space-y-6">
-                      <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-500 flex items-center gap-2">
+                      <h3 className="text-sm font-bold uppercase tracking-widest text-neutral-300 flex items-center gap-2">
                         <span className="w-8 h-px bg-neutral-800" />
                         {t("application.success.section_3.title")}
                       </h3>
@@ -732,7 +732,7 @@ export function CareersClient() {
                             target="_blank"
                             rel="noopener noreferrer"
                             className="group p-5 bg-neutral-900/50 rounded-2xl border border-neutral-800 hover:border-emerald-500/50 transition-all flex flex-col justify-between gap-4">
-                            <p className="text-sm text-neutral-500 leading-relaxed group-hover:text-neutral-400 transition-colors">
+                            <p className="text-sm text-neutral-300 leading-relaxed group-hover:text-neutral-400 transition-colors">
                               {t(
                                 `application.success.section_3.actions.${i}.text`,
                               )}
@@ -750,7 +750,7 @@ export function CareersClient() {
 
                     {/* Closing */}
                     <div className="pt-12 border-t border-neutral-900 text-center">
-                      <p className="text-xs font-bold text-neutral-500 uppercase tracking-[0.2em]">
+                      <p className="text-xs font-bold text-neutral-300 uppercase tracking-[0.2em]">
                         {t("application.success.closing.content")}
                       </p>
                     </div>
@@ -765,7 +765,7 @@ export function CareersClient() {
                   <h2 className="text-3xl md:text-5xl font-bold tracking-tight mb-4">
                     {t("application.title")}
                   </h2>
-                  <p className="text-neutral-600 text-lg">
+                  <p className="text-neutral-400 text-lg">
                     {t("application.intro")}
                   </p>
                 </div>
@@ -776,7 +776,7 @@ export function CareersClient() {
                   <form onSubmit={handleSubmit} className="space-y-6">
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                           {t("application.fields.name")}
                         </label>
                         <input
@@ -786,7 +786,7 @@ export function CareersClient() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                           {t("application.fields.email")}
                         </label>
                         <input
@@ -799,7 +799,7 @@ export function CareersClient() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                           {t("application.fields.phone")}
                         </label>
                         <input
@@ -808,7 +808,7 @@ export function CareersClient() {
                         />
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                           {t("application.fields.location")}
                         </label>
                         <input
@@ -822,7 +822,7 @@ export function CareersClient() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                         {t("application.fields.specialization")}
                       </label>
                       <select
@@ -842,7 +842,7 @@ export function CareersClient() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                         {t("application.fields.portfolio_url")}
                       </label>
                       <input
@@ -857,7 +857,7 @@ export function CareersClient() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                         {t("application.fields.best_work")}
                       </label>
                       <textarea
@@ -871,7 +871,7 @@ export function CareersClient() {
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
                       <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                           {t("application.fields.availability")}
                         </label>
                         <select className="w-full bg-neutral-50 border border-neutral-200 rounded-lg p-3.5 text-base focus:outline-none focus:border-black transition-colors appearance-none">
@@ -885,7 +885,7 @@ export function CareersClient() {
                         </select>
                       </div>
                       <div className="space-y-2">
-                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                        <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                           {t("application.fields.rate_expectation")}
                         </label>
                         <input
@@ -899,7 +899,7 @@ export function CareersClient() {
                     </div>
 
                     <div className="space-y-2">
-                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-500">
+                      <label className="text-sm font-bold uppercase tracking-widest text-neutral-300">
                         {t("application.fields.why_interested")}
                       </label>
                       <textarea
@@ -969,7 +969,7 @@ export function CareersClient() {
 
       {/* Legal Disclaimer */}
       <section className="py-16 px-6 md:px-8 bg-black relative z-10">
-        <div className="max-w-4xl mx-auto text-xs text-neutral-600 space-y-4 text-center lowercase tracking-widest">
+        <div className="max-w-4xl mx-auto text-xs text-neutral-400 space-y-4 text-center lowercase tracking-widest">
           <p>{t("legal.contractor_status")}</p>
           <p>{t("legal.ip_ownership")}</p>
         </div>

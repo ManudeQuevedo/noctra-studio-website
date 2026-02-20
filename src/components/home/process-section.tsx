@@ -141,10 +141,10 @@ export function ProcessSection() {
                   <div className="grid grid-cols-2 gap-3 sm:gap-6 pt-8 border-t border-neutral-900">
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center border border-neutral-800 shrink-0">
-                        <Clock className="w-5 h-5 text-neutral-500" />
+                        <Clock className="w-5 h-5 text-neutral-300" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-widest text-neutral-600">
+                        <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">
                           {labels.timeline}
                         </div>
                         <div className="text-sm text-neutral-300 font-medium">
@@ -155,10 +155,10 @@ export function ProcessSection() {
 
                     <div className="flex items-center gap-4">
                       <div className="w-10 h-10 rounded-xl bg-neutral-900 flex items-center justify-center border border-neutral-800 shrink-0">
-                        <User className="w-5 h-5 text-neutral-500" />
+                        <User className="w-5 h-5 text-neutral-300" />
                       </div>
                       <div>
-                        <div className="text-xs font-bold uppercase tracking-widest text-neutral-600">
+                        <div className="text-xs font-bold uppercase tracking-widest text-neutral-400">
                           {labels.involvement}
                         </div>
                         <div className="text-sm text-neutral-300 font-medium">

@@ -69,7 +69,7 @@ export function ProjectedImpact({ projectKey }: ProjectedImpactProps) {
                 <div className="text-xs font-mono text-neutral-400 uppercase tracking-wide mt-0.5">
                   {item.metric}
                 </div>
-                <p className="text-xs text-neutral-500 leading-snug mt-1">
+                <p className="text-xs text-neutral-300 leading-snug mt-1">
                   {item.description}
                 </p>
               </div>
@@ -78,7 +78,7 @@ export function ProjectedImpact({ projectKey }: ProjectedImpactProps) {
         })}
       </div>
 
-      <p className="text-[11px] italic text-neutral-600 mt-4">
+      <p className="text-[11px] italic text-neutral-400 mt-4">
         {impact.methodology_note}
       </p>
     </div>

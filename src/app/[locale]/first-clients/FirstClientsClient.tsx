@@ -147,7 +147,7 @@ export default function FirstClientsClient() {
                       : "bg-amber-500/20 border border-amber-500/40"
                   }`}>
                   {i < 3 ? (
-                    <Check className="w-4 h-4 text-neutral-600" />
+                    <Check className="w-4 h-4 text-neutral-400" />
                   ) : (
                     <span className="w-2 h-2 rounded-full bg-amber-400 animate-pulse" />
                   )}
@@ -170,7 +170,7 @@ export default function FirstClientsClient() {
                 {t("cta")}
               </Link>
             </Button>
-            <p className="text-neutral-500 text-sm mt-4">{t("cta_subtitle")}</p>
+            <p className="text-neutral-300 text-sm mt-4">{t("cta_subtitle")}</p>
           </FadeIn>
         </div>
       </section>

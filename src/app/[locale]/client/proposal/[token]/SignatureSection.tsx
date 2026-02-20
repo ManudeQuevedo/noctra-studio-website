@@ -140,7 +140,7 @@ export function SignatureForm({
         <h3 className="text-[10px] font-mono text-neutral-400 uppercase tracking-[0.4em] font-black">
           ACEPTACIÓN Y FIRMA
         </h3>
-        <p className="text-sm text-neutral-500 leading-relaxed max-w-xl">
+        <p className="text-sm text-neutral-300 leading-relaxed max-w-xl">
           Al completar los campos y firmar en el recuadro, confirmas tu
           intención de proceder con el proyecto bajo los términos detallados en
           este documento.

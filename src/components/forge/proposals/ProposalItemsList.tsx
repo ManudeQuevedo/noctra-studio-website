@@ -54,7 +54,7 @@ export function ProposalItemsList({
             <div className="flex-1 space-y-4">
               <div className="grid grid-cols-12 gap-4">
                 <div className="col-span-8 space-y-2">
-                  <label className="text-[8px] font-mono text-neutral-600 uppercase">
+                  <label className="text-[8px] font-mono text-neutral-400 uppercase">
                     Nombre del Servicio
                   </label>
                   <input
@@ -66,7 +66,7 @@ export function ProposalItemsList({
                   />
                 </div>
                 <div className="col-span-2 space-y-2">
-                  <label className="text-[8px] font-mono text-neutral-600 uppercase">
+                  <label className="text-[8px] font-mono text-neutral-400 uppercase">
                     Cant.
                   </label>
                   <input
@@ -83,11 +83,11 @@ export function ProposalItemsList({
                   />
                 </div>
                 <div className="col-span-2 space-y-2 text-right">
-                  <label className="text-[8px] font-mono text-neutral-600 uppercase">
+                  <label className="text-[8px] font-mono text-neutral-400 uppercase">
                     Precio Unit.
                   </label>
                   <div className="relative">
-                    <span className="absolute left-0 top-1 text-neutral-600 text-[10px]">
+                    <span className="absolute left-0 top-1 text-neutral-400 text-[10px]">
                       $
                     </span>
                     <input
@@ -107,7 +107,7 @@ export function ProposalItemsList({
               </div>
 
               <div className="space-y-2">
-                <label className="text-[8px] font-mono text-neutral-600 uppercase">
+                <label className="text-[8px] font-mono text-neutral-400 uppercase">
                   Descripción / Detalles
                 </label>
                 <textarea
@@ -133,7 +133,7 @@ export function ProposalItemsList({
 
       <button
         onClick={addItem}
-        className="w-full py-4 border border-dashed border-white/5 hover:border-white/20 hover:bg-white/[0.02] flex items-center justify-center gap-2 text-[10px] font-mono uppercase tracking-widest text-neutral-500 transition-all">
+        className="w-full py-4 border border-dashed border-white/5 hover:border-white/20 hover:bg-white/[0.02] flex items-center justify-center gap-2 text-[10px] font-mono uppercase tracking-widest text-neutral-300 transition-all">
         <Plus className="w-3.5 h-3.5" />
         Agregar Item de Servicio
       </button>

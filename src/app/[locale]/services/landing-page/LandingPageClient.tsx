@@ -135,7 +135,7 @@ export default function LandingPageClient() {
               return (
                 <FadeIn key={item.title} delay={i * 0.1}>
                   <div className="p-8 rounded-2xl border border-neutral-800 bg-neutral-900/30 hover:border-neutral-700 transition-all hover:bg-neutral-900/50 group h-full">
-                    <Icon className="w-8 h-8 text-neutral-500 mb-6 group-hover:text-white transition-colors" />
+                    <Icon className="w-8 h-8 text-neutral-300 mb-6 group-hover:text-white transition-colors" />
                     <h3 className="text-xl font-bold mb-3">{item.title}</h3>
                     <p className="text-neutral-400 leading-relaxed">{item.description}</p>
                   </div>

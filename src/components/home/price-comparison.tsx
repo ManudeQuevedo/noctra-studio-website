@@ -104,16 +104,16 @@ function ExpandableSection({
         className="flex items-center justify-between w-full group transition-colors hover:text-white">
         <div className="flex items-center gap-2">
           {Icon && (
-            <Icon className="w-3.5 h-3.5 text-neutral-500 group-hover:text-emerald-500 transition-colors" />
+            <Icon className="w-3.5 h-3.5 text-neutral-300 group-hover:text-emerald-500 transition-colors" />
           )}
-          <span className="text-[10px] uppercase tracking-widest text-neutral-500 font-bold group-hover:text-neutral-300">
+          <span className="text-[10px] uppercase tracking-widest text-neutral-300 font-bold group-hover:text-neutral-300">
             {title}
           </span>
         </div>
         {isOpen ? (
-          <ChevronUp className="w-3.5 h-3.5 text-neutral-600 group-hover:text-emerald-500" />
+          <ChevronUp className="w-3.5 h-3.5 text-neutral-400 group-hover:text-emerald-500" />
         ) : (
-          <ChevronDown className="w-3.5 h-3.5 text-neutral-600 group-hover:text-emerald-500" />
+          <ChevronDown className="w-3.5 h-3.5 text-neutral-400 group-hover:text-emerald-500" />
         )}
       </button>
       <AnimatePresence>
@@ -270,7 +270,7 @@ export function PriceComparison() {
       {/* Step 1: Industry Selector */}
       {!selectedIndustry ? (
         <div className="max-w-6xl mx-auto mb-24">
-          <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-500 font-bold mb-8 text-center bg-neutral-900/50 py-2 border-y border-neutral-800/50">
+          <p className="text-[10px] uppercase tracking-[0.3em] text-neutral-300 font-bold mb-8 text-center bg-neutral-900/50 py-2 border-y border-neutral-800/50">
             {industryLabels.select}
           </p>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -290,11 +290,11 @@ export function PriceComparison() {
                   <h4 className="text-xl font-bold text-white mb-2 group-hover:text-emerald-400 transition-colors">
                     {industry.label}
                   </h4>
-                  <p className="text-sm text-neutral-500 leading-relaxed">
+                  <p className="text-sm text-neutral-300 leading-relaxed">
                     {industry.sub}
                   </p>
 
-                  <div className="mt-8 flex items-center gap-2 text-xs font-bold text-neutral-600 group-hover:text-emerald-500 transition-all">
+                  <div className="mt-8 flex items-center gap-2 text-xs font-bold text-neutral-400 group-hover:text-emerald-500 transition-all">
                     {industryLabels.select_button}{" "}
                     <ChevronRight className="w-4 h-4" />
                   </div>
@@ -323,7 +323,7 @@ export function PriceComparison() {
                 )}
             </div>
             <div>
-              <p className="text-[10px] font-black text-neutral-500 uppercase tracking-widest leading-none mb-1">
+              <p className="text-[10px] font-black text-neutral-300 uppercase tracking-widest leading-none mb-1">
                 {industryLabels.selected_badge}
               </p>
               <h4 className="text-xl font-bold text-white">
@@ -400,7 +400,7 @@ export function PriceComparison() {
                         </span>
 
                         {opt.info && (
-                          <span className="text-[10px] text-neutral-500 leading-relaxed mb-2 block">
+                          <span className="text-[10px] text-neutral-300 leading-relaxed mb-2 block">
                             {opt.info}
                           </span>
                         )}
@@ -411,7 +411,7 @@ export function PriceComparison() {
                               "text-[10px] font-black tracking-widest",
                               isSelected
                                 ? "text-emerald-500/70"
-                                : "text-neutral-600",
+                                : "text-neutral-400",
                             )}>
                             ${opt.min.toLocaleString()} - $
                             {opt.max.toLocaleString()}
@@ -433,7 +433,7 @@ export function PriceComparison() {
 
               <div className="relative p-8 rounded-[2.5rem] bg-neutral-900/60 border border-neutral-800/50 backdrop-blur-md overflow-hidden">
                 <div className="flex items-center justify-between mb-8">
-                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-neutral-500">
+                  <h4 className="text-xs font-black uppercase tracking-[0.2em] text-neutral-300">
                     {columns.current.title}
                   </h4>
                 </div>
@@ -441,9 +441,9 @@ export function PriceComparison() {
                 {selectedOptions.size === 0 ? (
                   <div className="py-12 text-center">
                     <div className="w-16 h-16 bg-neutral-800/50 rounded-full flex items-center justify-center mx-auto mb-4 border border-dashed border-neutral-700">
-                      <ArrowRight className="w-6 h-6 text-neutral-600" />
+                      <ArrowRight className="w-6 h-6 text-neutral-400" />
                     </div>
-                    <p className="text-sm text-neutral-500 italic max-w-[200px] mx-auto">
+                    <p className="text-sm text-neutral-300 italic max-w-[200px] mx-auto">
                       {columns.current.empty_state}
                     </p>
                   </div>
@@ -453,11 +453,11 @@ export function PriceComparison() {
                       <div className="text-3xl md:text-4xl font-black text-white mb-1">
                         ${costs.min.toLocaleString()} - $
                         {costs.max.toLocaleString()}
-                        <span className="text-sm font-medium text-neutral-500 ml-2">
+                        <span className="text-sm font-medium text-neutral-300 ml-2">
                           MXN
                         </span>
                       </div>
-                      <p className="text-[10px] font-bold text-neutral-500 uppercase tracking-widest">
+                      <p className="text-[10px] font-bold text-neutral-300 uppercase tracking-widest">
                         {columns.current.total_label}
                       </p>
                     </div>
@@ -478,7 +478,7 @@ export function PriceComparison() {
                     {/* VS Element */}
                     <div className="flex items-center gap-4 py-2">
                       <div className="h-px bg-neutral-800 flex-1" />
-                      <div className="px-3 py-1 rounded-full border border-neutral-700 text-[10px] font-black text-neutral-500 uppercase tracking-widest">
+                      <div className="px-3 py-1 rounded-full border border-neutral-700 text-[10px] font-black text-neutral-300 uppercase tracking-widest">
                         VS
                       </div>
                       <div className="h-px bg-neutral-800 flex-1" />
@@ -534,7 +534,7 @@ export function PriceComparison() {
                         animate={{ scale: 1, opacity: 1 }}
                         className="p-5 rounded-2xl bg-neutral-950 border-2 border-emerald-500/50 flex items-center justify-between group/savings">
                         <div>
-                          <div className="text-[10px] font-black text-neutral-500 uppercase tracking-widest mb-1">
+                          <div className="text-[10px] font-black text-neutral-300 uppercase tracking-widest mb-1">
                             {savingsCard.title}
                           </div>
                           <div className="text-2xl font-black text-emerald-400 group-hover/savings:scale-105 transition-transform origin-left">
@@ -542,7 +542,7 @@ export function PriceComparison() {
                           </div>
                         </div>
                         <div className="text-right">
-                          <div className="text-[10px] font-black text-neutral-500 uppercase tracking-widest mb-1">
+                          <div className="text-[10px] font-black text-neutral-300 uppercase tracking-widest mb-1">
                             {savingsCard.roi_label}
                           </div>
                           <div className="text-xl font-bold text-white">
@@ -569,7 +569,7 @@ export function PriceComparison() {
                       (item: string, i: number) => (
                         <li
                           key={item}
-                          className="text-[10px] text-neutral-500 flex items-start gap-2">
+                          className="text-[10px] text-neutral-300 flex items-start gap-2">
                           <span className="text-red-500">•</span> {item}
                         </li>
                       ),
@@ -586,7 +586,7 @@ export function PriceComparison() {
                       (item: string, i: number) => (
                         <li
                           key={item}
-                          className="text-[10px] text-neutral-500 flex items-start gap-2">
+                          className="text-[10px] text-neutral-300 flex items-start gap-2">
                           <span className="text-emerald-500">•</span> {item}
                         </li>
                       ),
@@ -615,9 +615,9 @@ export function PriceComparison() {
             </span>
           </div>
           {showBreakdown ? (
-            <ChevronUp className="w-5 h-5 text-neutral-500" />
+            <ChevronUp className="w-5 h-5 text-neutral-300" />
           ) : (
-            <ChevronDown className="w-5 h-5 text-neutral-500" />
+            <ChevronDown className="w-5 h-5 text-neutral-300" />
           )}
         </button>
 
@@ -637,16 +637,16 @@ export function PriceComparison() {
                   <table className="w-full text-left">
                     <thead>
                       <tr className="border-b border-neutral-800">
-                        <th className="py-4 text-[10px] font-black text-neutral-500 uppercase tracking-widest">
+                        <th className="py-4 text-[10px] font-black text-neutral-300 uppercase tracking-widest">
                           Item
                         </th>
-                        <th className="py-4 px-4 text-[10px] font-black text-neutral-500 uppercase tracking-widest">
+                        <th className="py-4 px-4 text-[10px] font-black text-neutral-300 uppercase tracking-widest">
                           {breakdownTranslations.year_1}
                         </th>
-                        <th className="py-4 px-4 text-[10px] font-black text-neutral-500 uppercase tracking-widest">
+                        <th className="py-4 px-4 text-[10px] font-black text-neutral-300 uppercase tracking-widest">
                           {breakdownTranslations.year_2}
                         </th>
-                        <th className="py-4 px-4 text-right text-[10px] font-black text-neutral-500 uppercase tracking-widest">
+                        <th className="py-4 px-4 text-right text-[10px] font-black text-neutral-300 uppercase tracking-widest">
                           Total
                         </th>
                       </tr>
@@ -660,7 +660,7 @@ export function PriceComparison() {
                             <span className="text-[11px] font-bold text-neutral-300 block">
                               {item.label}
                             </span>
-                            <span className="text-[9px] text-neutral-500 leading-tight block mt-1">
+                            <span className="text-[9px] text-neutral-300 leading-tight block mt-1">
                               {item.info}
                             </span>
                           </td>
@@ -723,7 +723,7 @@ export function PriceComparison() {
                         (h: string, i: number) => (
                           <li
                             key={h}
-                            className="text-neutral-500 flex items-start gap-2">
+                            className="text-neutral-300 flex items-start gap-2">
                             <span className="text-amber-500/50">•</span> {h}
                           </li>
                         ),
@@ -735,15 +735,15 @@ export function PriceComparison() {
                       <Sparkles className="w-3 h-3" /> Beneficios Adicionales
                     </h5>
                     <ul className="space-y-2">
-                      <li className="text-neutral-500 flex items-start gap-2">
+                      <li className="text-neutral-300 flex items-start gap-2">
                         <span className="text-emerald-500/50">•</span> Todo
                         integrado en una sola plataforma
                       </li>
-                      <li className="text-neutral-500 flex items-start gap-2">
+                      <li className="text-neutral-300 flex items-start gap-2">
                         <span className="text-emerald-500/50">•</span> Un solo
                         punto de contacto para todo
                       </li>
-                      <li className="text-neutral-500 flex items-start gap-2">
+                      <li className="text-neutral-300 flex items-start gap-2">
                         <span className="text-emerald-500/50">•</span>{" "}
                         Optimización continua de performance
                       </li>
@@ -773,7 +773,7 @@ export function PriceComparison() {
             </h4>
             <div className="text-5xl md:text-7xl font-black text-emerald-500 mb-6 relative z-10 tracking-tight">
               ${savings.toLocaleString()}
-              <span className="text-lg font-medium text-neutral-500 ml-4 tracking-normal uppercase">
+              <span className="text-lg font-medium text-neutral-300 ml-4 tracking-normal uppercase">
                 en 2 años
               </span>
             </div>
@@ -805,7 +805,7 @@ export function PriceComparison() {
       <div className="max-w-4xl mx-auto border-t border-neutral-800/50 pt-12 px-4 pb-24">
         <button
           onClick={() => setShowMethodology(!showMethodology)}
-          className="flex items-center gap-2 text-[11px] font-bold text-neutral-500 hover:text-neutral-300 transition-colors mx-auto uppercase tracking-[0.2em]">
+          className="flex items-center gap-2 text-[11px] font-bold text-neutral-300 hover:text-neutral-300 transition-colors mx-auto uppercase tracking-[0.2em]">
           <Code2 className="w-3.5 h-3.5" />
           {methodologyData.title}
           {showMethodology ? (
@@ -839,7 +839,7 @@ export function PriceComparison() {
                               {section.items?.map((item: string, i: number) => (
                                 <li
                                   key={item}
-                                  className="text-[11px] text-neutral-500 flex items-start gap-2 leading-relaxed">
+                                  className="text-[11px] text-neutral-300 flex items-start gap-2 leading-relaxed">
                                   <span className="text-emerald-500/50 mt-1">
                                     •
                                   </span>
@@ -860,7 +860,7 @@ export function PriceComparison() {
                       <h5 className="text-[10px] font-black text-white uppercase tracking-widest mb-3">
                         CONVERSIÓN Y MONEDA
                       </h5>
-                      <p className="text-[11px] text-neutral-500 leading-relaxed">
+                      <p className="text-[11px] text-neutral-300 leading-relaxed">
                         {methodologyData.currency}
                       </p>
                     </div>
@@ -868,7 +868,7 @@ export function PriceComparison() {
                       <h5 className="text-[10px] font-black text-white uppercase tracking-widest mb-3">
                         VARIACIONES
                       </h5>
-                      <p className="text-[11px] text-neutral-500 leading-relaxed">
+                      <p className="text-[11px] text-neutral-300 leading-relaxed">
                         {methodologyData.variations}
                       </p>
                     </div>
@@ -876,12 +876,12 @@ export function PriceComparison() {
                       <h5 className="text-[10px] font-black text-white uppercase tracking-widest mb-3">
                         COMPROMISO
                       </h5>
-                      <p className="text-[11px] text-neutral-500 leading-relaxed">
+                      <p className="text-[11px] text-neutral-300 leading-relaxed">
                         {methodologyData.commitment}
                       </p>
                     </div>
                     <div className="pt-4 border-t border-neutral-800 flex justify-between items-center">
-                      <span className="text-[9px] text-neutral-600 font-bold italic">
+                      <span className="text-[9px] text-neutral-400 font-bold italic">
                         {methodologyData.last_updated}
                       </span>
                       <a

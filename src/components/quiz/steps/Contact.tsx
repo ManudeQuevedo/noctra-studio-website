@@ -188,7 +188,7 @@ export const Contact = () => {
         </button>
 
         <div className="text-center">
-          <p className="text-xs text-neutral-500 flex items-center justify-center gap-1.5">
+          <p className="text-xs text-neutral-300 flex items-center justify-center gap-1.5">
             <Lock className="w-3 h-3" />
             Your information is secure. We never share your data.
           </p>

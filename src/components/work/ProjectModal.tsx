@@ -106,7 +106,7 @@ function ModalV2({ projectId }: { projectId: string }) {
         </div>
         <div className="grid grid-cols-2 gap-4">
           <div className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-800">
-            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-1">
+            <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mb-1">
               Cliente
             </div>
             <div className="text-sm font-medium text-neutral-200">
@@ -114,7 +114,7 @@ function ModalV2({ projectId }: { projectId: string }) {
             </div>
           </div>
           <div className="p-4 rounded-xl bg-neutral-900/50 border border-neutral-800">
-            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-1">
+            <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mb-1">
               Industria
             </div>
             <div className="text-sm font-medium text-neutral-200">
@@ -171,11 +171,11 @@ function ModalV2({ projectId }: { projectId: string }) {
               <div className="space-y-1">
                 <h5 className="font-bold text-neutral-200">{step.title}</h5>
                 <div className="text-sm text-neutral-400">
-                  <span className="text-neutral-500 italic">Acción:</span>{" "}
+                  <span className="text-neutral-300 italic">Acción:</span>{" "}
                   {step.what_we_did}
                 </div>
                 <div className="text-sm text-blue-400/80">
-                  <span className="text-neutral-500 italic">Hallazgo:</span>{" "}
+                  <span className="text-neutral-300 italic">Hallazgo:</span>{" "}
                   {step.what_we_learned}
                 </div>
               </div>
@@ -199,7 +199,7 @@ function ModalV2({ projectId }: { projectId: string }) {
               key={item.problem}
               className="grid grid-cols-1 md:grid-cols-2 gap-4 p-6 rounded-2xl bg-emerald-500/5 border border-emerald-500/10">
               <div className="space-y-2">
-                <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                   Problema
                 </div>
                 <h5 className="font-bold text-neutral-200">{item.problem}</h5>
@@ -480,7 +480,7 @@ function VaultraDualVersion({ projectId }: { projectId: string }) {
                         </code>
                         <button
                           onClick={() => handleCopy(tech, i)}
-                          className="text-neutral-600 hover:text-cyan-400 transition-colors p-1"
+                          className="text-neutral-400 hover:text-cyan-400 transition-colors p-1"
                           title="Copy">
                           {copiedIndex === i ? (
                             <Check className="w-3.5 h-3.5 text-emerald-400" />
@@ -785,7 +785,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                               key={result.label}
                               className="bg-neutral-900/50 border border-neutral-800 p-6 rounded-lg flex flex-col gap-3 text-left">
                               <div>
-                                <div className="text-xs font-mono text-neutral-500 uppercase tracking-wider mb-1">
+                                <div className="text-xs font-mono text-neutral-300 uppercase tracking-wider mb-1">
                                   {result.label}
                                 </div>
                                 <div className="text-3xl font-bold text-white">
@@ -797,7 +797,7 @@ export function ProjectModal({ projectId, onClose }: ProjectModalProps) {
                                 <p className="text-sm text-neutral-300 leading-snug">
                                   {result.context}
                                 </p>
-                                <p className="text-xs text-neutral-500 leading-snug">
+                                <p className="text-xs text-neutral-300 leading-snug">
                                   <span className="text-emerald-500/80">
                                     {tLabels("action")}:
                                   </span>{" "}

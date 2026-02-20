@@ -49,11 +49,11 @@ export default function CookiePolicyPage() {
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6 my-8 not-prose">
             <div className="p-6 rounded-2xl border border-neutral-100 dark:border-neutral-900">
               <h4 className="font-bold mb-2">Esenciales</h4>
-              <p className="text-sm text-neutral-500">Necesarias para el funcionamiento básico del sitio y seguridad.</p>
+              <p className="text-sm text-neutral-300">Necesarias para el funcionamiento básico del sitio y seguridad.</p>
             </div>
             <div className="p-6 rounded-2xl border border-neutral-100 dark:border-neutral-900">
               <h4 className="font-bold mb-2">Analíticas</h4>
-              <p className="text-sm text-neutral-500">Nos ayudan a entender cómo interactúas con el sitio de forma anónima.</p>
+              <p className="text-sm text-neutral-300">Nos ayudan a entender cómo interactúas con el sitio de forma anónima.</p>
             </div>
           </div>
         </section>

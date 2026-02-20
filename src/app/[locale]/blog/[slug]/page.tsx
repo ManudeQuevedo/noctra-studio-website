@@ -138,7 +138,7 @@ export default async function BlogPostPage({
       <div className="relative z-10 max-w-4xl mx-auto">
         <Link
           href="/blog"
-          className="inline-flex items-center gap-2 text-neutral-500 hover:text-white transition-colors mb-12 group text-sm font-medium">
+          className="inline-flex items-center gap-2 text-neutral-300 hover:text-white transition-colors mb-12 group text-sm font-medium">
           <ArrowLeft className="w-4 h-4 transition-transform group-hover:-translate-x-1" />
           Back to Articles
         </Link>
@@ -160,7 +160,7 @@ export default async function BlogPostPage({
               {post.title}
             </h1>
 
-            <div className="flex flex-wrap items-center gap-8 text-neutral-500 text-sm border-y border-white/5 py-6">
+            <div className="flex flex-wrap items-center gap-8 text-neutral-300 text-sm border-y border-white/5 py-6">
               <div className="flex items-center gap-3">
                 {post.author?.image && (
                   <div className="relative w-8 h-8 rounded-full overflow-hidden border border-white/10">
@@ -178,7 +178,7 @@ export default async function BlogPostPage({
                 </span>
               </div>
               <div className="flex items-center gap-2">
-                <Calendar className="w-4 h-4 text-neutral-600" />
+                <Calendar className="w-4 h-4 text-neutral-400" />
                 <time dateTime={post.publishedAt}>
                   {new Date(post.publishedAt).toLocaleDateString(undefined, {
                     year: "numeric",

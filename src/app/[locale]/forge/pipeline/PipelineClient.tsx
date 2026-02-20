@@ -197,7 +197,7 @@ export default function PipelineClient({
           <div className="flex items-center gap-4">
             <h1 className="text-xl font-black tracking-tight flex items-center gap-3">
               PIPELINE
-              <span className="text-[10px] font-mono text-neutral-600 bg-white/[0.03] px-2 py-0.5 border border-white/[0.05]">
+              <span className="text-[10px] font-mono text-neutral-400 bg-white/[0.03] px-2 py-0.5 border border-white/[0.05]">
                 {leads.length} LEADS
               </span>
             </h1>
@@ -205,7 +205,7 @@ export default function PipelineClient({
 
           <div className="flex items-center gap-3">
             <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-600" />
+              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
               <input
                 type="text"
                 placeholder="Search leads..."
@@ -251,7 +251,7 @@ export default function PipelineClient({
                   className="w-[280px] flex flex-col shrink-0">
                   {/* Column Header */}
                   <div className="flex items-center justify-between mb-4 group px-2">
-                    <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 flex items-center gap-2">
+                    <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 flex items-center gap-2">
                       <span
                         className={`w-1.5 h-1.5 rounded-full ${STAGE_COLORS[stage.id]?.split(" ")[0] || "bg-neutral-500"}`}
                       />
@@ -353,7 +353,7 @@ export default function PipelineClient({
               <h3 className="text-sm font-bold text-white uppercase tracking-widest">
                 Razón de pérdida
               </h3>
-              <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+              <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                 Opcional: ¿Por qué se perdió este lead?
               </p>
             </div>
@@ -466,7 +466,7 @@ function LeadCard({
               </div>
             )}
 
-            <div className="flex items-center gap-1.5 text-neutral-600">
+            <div className="flex items-center gap-1.5 text-neutral-400">
               <Clock className="w-2.5 h-2.5" />
               <span className="text-[9px] font-mono uppercase">
                 {formatDistanceToNow(new Date(lead.created_at), {
@@ -480,7 +480,7 @@ function LeadCard({
             <div
               className={`mt-2 p-2 border border-white/[0.03] space-y-1 ${isOverdue(lead.next_action_date) ? "bg-red-500/5" : "bg-white/[0.01]"}`}>
               <div className="flex items-center justify-between">
-                <span className="text-[8px] font-mono text-neutral-600 uppercase tracking-widest">
+                <span className="text-[8px] font-mono text-neutral-400 uppercase tracking-widest">
                   Next Action
                 </span>
                 {lead.next_action_date && (

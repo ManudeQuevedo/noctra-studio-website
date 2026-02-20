@@ -36,7 +36,7 @@ export function ComparisonTable() {
           <table className="w-full text-left border-collapse">
             <thead>
               <tr className="border-b border-neutral-800 bg-neutral-900/50">
-                <th className="p-8 text-xs font-black text-neutral-500 uppercase tracking-widest w-1/4">
+                <th className="p-8 text-xs font-black text-neutral-300 uppercase tracking-widest w-1/4">
                   Feature
                 </th>
                 {labels.map((label, i) => (
@@ -71,7 +71,7 @@ export function ComparisonTable() {
                             {t("cta_consult")}
                           </Link>
                         ) : (
-                          <span className="text-neutral-600 font-medium">
+                          <span className="text-neutral-400 font-medium">
                             {val}
                           </span>
                         )
@@ -116,7 +116,7 @@ export function ComparisonTable() {
                   <span className="font-bold text-white">{feature.name}</span>
                   <ChevronDown
                     className={cn(
-                      "w-5 h-5 text-neutral-500 transition-transform",
+                      "w-5 h-5 text-neutral-300 transition-transform",
                       openRow === i && "rotate-180 text-emerald-500",
                     )}
                   />
@@ -133,7 +133,7 @@ export function ComparisonTable() {
                           <div
                             key={label}
                             className="flex items-center justify-between text-sm py-1">
-                            <span className="text-neutral-500 font-medium uppercase tracking-widest text-[10px]">
+                            <span className="text-neutral-300 font-medium uppercase tracking-widest text-[10px]">
                               {label}
                             </span>
                             <span className="text-white font-bold text-right max-w-[65%]">
@@ -155,7 +155,7 @@ export function ComparisonTable() {
 
         {/* Footer CTA */}
         <div className="mt-12 text-center">
-          <p className="text-neutral-500 text-sm mb-6">{t("footer_text")}</p>
+          <p className="text-neutral-300 text-sm mb-6">{t("footer_text")}</p>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
             <Link
               href="/contact"

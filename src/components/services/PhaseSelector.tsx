@@ -49,7 +49,7 @@ export function PhaseSelector({
                           ? "border-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
                           : isPast
                             ? "border-emerald-500/50 bg-emerald-500/5 text-emerald-500"
-                            : "border-neutral-800 text-neutral-600 group-hover:border-neutral-600",
+                            : "border-neutral-800 text-neutral-400 group-hover:border-neutral-600",
                       )}>
                       <span
                         className={cn(
@@ -74,7 +74,7 @@ export function PhaseSelector({
                         "text-[10px] font-black uppercase tracking-[0.2em] transition-colors",
                         isActive
                           ? "text-white"
-                          : "text-neutral-500 group-hover:text-neutral-400",
+                          : "text-neutral-300 group-hover:text-neutral-400",
                       )}>
                       {phase.label}
                     </span>

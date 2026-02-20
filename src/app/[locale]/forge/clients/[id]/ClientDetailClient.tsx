@@ -80,7 +80,7 @@ export function ClientDetailClient({
         <div className="flex items-center gap-6">
           <Link
             href="/forge/clients"
-            className="p-2 hover:bg-white/5 text-neutral-500 hover:text-white transition-colors">
+            className="p-2 hover:bg-white/5 text-neutral-300 hover:text-white transition-colors">
             <ArrowLeft className="w-5 h-5" />
           </Link>
           <div>
@@ -92,7 +92,7 @@ export function ClientDetailClient({
                 {contract.service_type || "Activo"}
               </div>
             </div>
-            <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-[0.2em] mt-1">
+            <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-[0.2em] mt-1">
               {contract.client_company || "Persona Física"}
             </p>
           </div>
@@ -114,7 +114,7 @@ export function ClientDetailClient({
               className={`py-4 text-[10px] font-mono uppercase tracking-[0.3em] transition-all relative ${
                 activeTab === tab
                   ? "text-white"
-                  : "text-neutral-600 hover:text-neutral-400"
+                  : "text-neutral-400 hover:text-neutral-400"
               }`}>
               {tab}
               {activeTab === tab && (
@@ -150,13 +150,13 @@ export function ClientDetailClient({
                 <div className="w-8 h-8 rounded-full bg-blue-500/10 flex items-center justify-center text-blue-500">
                   <Clock className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                   Tiempo Transcurrido
                 </span>
               </div>
               <div className="flex items-end gap-2 text-3xl font-black text-white italic">
                 {stats?.daysElapsed}{" "}
-                <span className="text-xs text-neutral-600 mb-1 not-italic">
+                <span className="text-xs text-neutral-400 mb-1 not-italic">
                   DÍAS
                 </span>
               </div>
@@ -171,13 +171,13 @@ export function ClientDetailClient({
                 <div className="w-8 h-8 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-500">
                   <DollarSign className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                   Inversión del Contrato
                 </span>
               </div>
               <div className="flex items-end gap-2 text-3xl font-black text-white italic">
                 ${contract.total_price?.toLocaleString("es-MX")}{" "}
-                <span className="text-xs text-neutral-600 mb-1 not-italic">
+                <span className="text-xs text-neutral-400 mb-1 not-italic">
                   MXN
                 </span>
               </div>
@@ -191,13 +191,13 @@ export function ClientDetailClient({
                 <div className="w-8 h-8 rounded-full bg-purple-500/10 flex items-center justify-center text-purple-500">
                   <TrendingUp className="w-4 h-4" />
                 </div>
-                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                <span className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                   Entrega Estimada
                 </span>
               </div>
               <div className="flex items-end gap-2 text-3xl font-black text-white italic">
                 {stats?.daysRemaining}{" "}
-                <span className="text-xs text-neutral-600 mb-1 not-italic">
+                <span className="text-xs text-neutral-400 mb-1 not-italic">
                   DÍAS RESTANTES
                 </span>
               </div>
@@ -218,9 +218,9 @@ export function ClientDetailClient({
               </h3>
               <div className="grid grid-cols-1 gap-4">
                 <div className="flex items-center gap-4 bg-white/[0.02] border border-white/5 p-4 group">
-                  <Mail className="w-4 h-4 text-neutral-600 group-hover:text-emerald-500 transition-colors" />
+                  <Mail className="w-4 h-4 text-neutral-400 group-hover:text-emerald-500 transition-colors" />
                   <div>
-                    <p className="text-[9px] font-mono text-neutral-600 uppercase">
+                    <p className="text-[9px] font-mono text-neutral-400 uppercase">
                       Email Comercial
                     </p>
                     <p className="text-sm font-bold text-neutral-300">
@@ -229,9 +229,9 @@ export function ClientDetailClient({
                   </div>
                 </div>
                 <div className="flex items-center gap-4 bg-white/[0.02] border border-white/5 p-4 group">
-                  <Phone className="w-4 h-4 text-neutral-600 group-hover:text-emerald-500 transition-colors" />
+                  <Phone className="w-4 h-4 text-neutral-400 group-hover:text-emerald-500 transition-colors" />
                   <div>
-                    <p className="text-[9px] font-mono text-neutral-600 uppercase">
+                    <p className="text-[9px] font-mono text-neutral-400 uppercase">
                       Teléfono / WhatsApp
                     </p>
                     <p className="text-sm font-bold text-neutral-300">
@@ -240,9 +240,9 @@ export function ClientDetailClient({
                   </div>
                 </div>
                 <div className="flex items-center gap-4 bg-white/[0.02] border border-white/5 p-4 group">
-                  <Building2 className="w-4 h-4 text-neutral-600 group-hover:text-emerald-500 transition-colors" />
+                  <Building2 className="w-4 h-4 text-neutral-400 group-hover:text-emerald-500 transition-colors" />
                   <div>
-                    <p className="text-[9px] font-mono text-neutral-600 uppercase">
+                    <p className="text-[9px] font-mono text-neutral-400 uppercase">
                       RFC / Registro Fiscal
                     </p>
                     <p className="text-sm font-bold text-neutral-300 font-mono text-emerald-500/80">
@@ -272,7 +272,7 @@ export function ClientDetailClient({
         <div
           className={`${activeTab === "PROPUESTA" ? "block" : "hidden print:block"} max-w-4xl mx-auto`}>
           <div className="mb-8 flex items-center justify-between print:hidden">
-            <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest italic">
+            <span className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest italic">
               Visión técnica del proyecto
             </span>
             <a
@@ -334,7 +334,7 @@ export function ClientDetailClient({
                         <p className="text-xs font-black uppercase italic tracking-tight">
                           {item.name}
                         </p>
-                        <p className="text-[10px] text-neutral-500 leading-relaxed mt-1 italic">
+                        <p className="text-[10px] text-neutral-300 leading-relaxed mt-1 italic">
                           {item.description}
                         </p>
                       </div>
@@ -360,7 +360,7 @@ export function ClientDetailClient({
           className={`${activeTab === "CONTRATO" ? "block" : "hidden print:block"} max-w-4xl mx-auto`}>
           <div className="mb-8 flex items-center justify-between print:hidden">
             <div className="flex items-center gap-6">
-              <span className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest italic tracking-tight">
+              <span className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest italic tracking-tight">
                 Instrumento legal vinculante
               </span>
               <button
@@ -417,7 +417,7 @@ export function ClientDetailClient({
                         <p className="text-[11px] font-black uppercase mb-3">
                           Cláusula {idx + 1}. {clause.name}
                         </p>
-                        <p className="text-[12px] text-neutral-600 leading-relaxed text-justify italic opacity-80">
+                        <p className="text-[12px] text-neutral-400 leading-relaxed text-justify italic opacity-80">
                           {clause.text}
                         </p>
                       </div>
@@ -466,7 +466,7 @@ export function ClientDetailClient({
                 <p className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest mb-1 italic">
                   Vínculo Digital Inalterable
                 </p>
-                <p className="text-[10px] font-mono text-neutral-600 break-all">
+                <p className="text-[10px] font-mono text-neutral-400 break-all">
                   {contract.client_signature_hash}
                 </p>
               </div>
@@ -486,7 +486,7 @@ export function ClientDetailClient({
                 <h4 className="text-lg font-black uppercase italic tracking-tight text-white">
                   Centro de Control
                 </h4>
-                <p className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest leading-relaxed">
+                <p className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest leading-relaxed">
                   Gestión operativa del proyecto en curso
                 </p>
               </div>
@@ -497,7 +497,7 @@ export function ClientDetailClient({
                   <div className="space-y-8">
                     <div className="flex items-center justify-between">
                       <div className="space-y-1">
-                        <span className="text-[10px] font-mono text-neutral-600 uppercase">
+                        <span className="text-[10px] font-mono text-neutral-400 uppercase">
                           Estatus de Producción
                         </span>
                         <div className="flex items-center gap-3">
@@ -508,7 +508,7 @@ export function ClientDetailClient({
                         </div>
                       </div>
                       <div className="text-right space-y-1">
-                        <span className="text-[10px] font-mono text-neutral-600 uppercase">
+                        <span className="text-[10px] font-mono text-neutral-400 uppercase">
                           URL de Pruebas
                         </span>
                         <p className="text-sm font-bold text-emerald-500/80 hover:underline cursor-pointer flex items-center gap-2">
@@ -518,14 +518,14 @@ export function ClientDetailClient({
                     </div>
 
                     <div className="space-y-4 pt-8 border-t border-white/5">
-                      <div className="flex items-center gap-4 text-neutral-500">
+                      <div className="flex items-center gap-4 text-neutral-300">
                         <AlertCircle className="w-4 h-4 text-blue-500" />
                         <p className="text-xs font-medium">
                           Fase de descrubrimiento y arquitectura de marca
                           activa.
                         </p>
                       </div>
-                      <div className="flex items-center gap-4 text-neutral-500">
+                      <div className="flex items-center gap-4 text-neutral-300">
                         <Check className="w-4 h-4 text-emerald-500" />
                         <p className="text-xs font-medium">
                           Contrato legal y propuesta técnica firmada (Auditoría
@@ -609,8 +609,8 @@ export function ClientDetailClient({
           }
           .text-neutral-300,
           .text-neutral-400,
-          .text-neutral-500,
-          .text-neutral-600 {
+          .text-neutral-300,
+          .text-neutral-400 {
             color: #444 !important;
           }
           .border-white\/5 {

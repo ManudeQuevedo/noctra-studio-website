@@ -73,11 +73,11 @@ export function TargetAudienceSection() {
                   {t(`${audience.key}.headline`)}
                 </h3>
 
-                <div className="text-sm font-mono text-neutral-500 uppercase tracking-wider mb-4">
+                <div className="text-sm font-mono text-neutral-300 uppercase tracking-wider mb-4">
                   {t(`${audience.key}.target`)}
                 </div>
 
-                <p className="text-neutral-500 dark:text-neutral-400 leading-relaxed flex-1">
+                <p className="text-neutral-300 dark:text-neutral-400 leading-relaxed flex-1">
                   {t(`${audience.key}.copy`)}
                 </p>
               </div>

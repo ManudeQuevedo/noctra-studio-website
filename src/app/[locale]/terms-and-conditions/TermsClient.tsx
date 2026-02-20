@@ -32,7 +32,7 @@ export default function TermsClient() {
           <Scale className="w-6 h-6 text-neutral-900 dark:text-white mt-1 shrink-0" />
           <div className="space-y-1">
             <h4 className="font-bold text-neutral-900 dark:text-white">Resumen para Humanos</h4>
-            <p className="text-sm text-neutral-600 dark:text-neutral-400 leading-relaxed">
+            <p className="text-sm text-neutral-400 dark:text-neutral-400 leading-relaxed">
               Estamos aquí para construir tecnología increíble para ti. Tú eres dueño de tu código una vez pagado, nosotros somos expertos en lo que hacemos, y ambos nos comprometemos a una comunicación clara y pagos a tiempo.
             </p>
           </div>

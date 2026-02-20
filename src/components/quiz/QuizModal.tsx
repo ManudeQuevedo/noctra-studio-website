@@ -81,7 +81,7 @@ export function QuizModal() {
                   )}
                   {currentStep > 0 && (
                     <div className="flex flex-col">
-                      <span className="text-xs font-medium text-neutral-500 uppercase tracking-wider">
+                      <span className="text-xs font-medium text-neutral-300 uppercase tracking-wider">
                         Question {currentStep} of {totalSteps - 1}
                       </span>
                       <div className="w-32 h-1 bg-neutral-800 rounded-full mt-2 overflow-hidden">

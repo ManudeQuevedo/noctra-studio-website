@@ -76,6 +76,7 @@ export function Cursor() {
     <LazyMotion features={domAnimation}>
       {/* Spotlight Cursor */}
       <m.div
+        aria-hidden="true"
         className="fixed top-0 left-0 bg-white rounded-full pointer-events-none z-[9999] mix-blend-difference backdrop-grayscale backdrop-contrast-200"
         style={{
           x: cursorXSpring,

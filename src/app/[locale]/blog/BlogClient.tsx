@@ -147,7 +147,7 @@ export default function BlogClient() {
                     <h2 className="text-2xl font-bold leading-tight group-hover:text-emerald-400 transition-colors duration-300 line-clamp-3 md:line-clamp-2">
                       {post.title}
                     </h2>
-                    <p className="text-neutral-500 text-sm leading-relaxed line-clamp-3 flex-1 font-medium">
+                    <p className="text-neutral-300 text-sm leading-relaxed line-clamp-3 flex-1 font-medium">
                       {post.description}
                     </p>
 
@@ -169,7 +169,7 @@ export default function BlogClient() {
                           {post.author?.name}
                         </span>
                       </div>
-                      <time className="text-[10px] font-bold uppercase tracking-widest text-neutral-600">
+                      <time className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">
                         {new Date(post.publishedAt).toLocaleDateString(
                           undefined,
                           {
@@ -187,7 +187,7 @@ export default function BlogClient() {
           </div>
         ) : (
           <div className="text-center py-32 border border-dashed border-white/5 rounded-3xl">
-            <p className="text-neutral-500 font-mono text-sm tracking-widest uppercase">
+            <p className="text-neutral-300 font-mono text-sm tracking-widest uppercase">
               // NO_POSTS_FOUND_IN_DATA_STREAM
             </p>
           </div>

@@ -25,9 +25,9 @@ export function HeroTextSection() {
           transition={{ duration: 0.8, ease: "easeOut", delay: 0.4 }}
           className="text-3xl md:text-5xl lg:text-6xl tracking-tight text-center leading-relaxed md:leading-tight max-w-3xl mx-auto">
           <span className="text-white font-bold">{t("part1")}</span>
-          <span className="text-neutral-600 font-medium">{t("part2")}</span>
+          <span className="text-neutral-400 font-medium">{t("part2")}</span>
           <span className="text-white font-bold">{t("part3")}</span>
-          <span className="text-neutral-600 font-medium">{t("part4")}</span>
+          <span className="text-neutral-400 font-medium">{t("part4")}</span>
         </m.h2>
       </div>
     </section>

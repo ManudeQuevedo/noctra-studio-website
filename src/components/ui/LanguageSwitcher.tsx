@@ -19,7 +19,7 @@ export default function LanguageSwitcher() {
         className={`transition-colors ${
           locale === "en"
             ? "text-white"
-            : "text-neutral-600 hover:text-neutral-400"
+            : "text-neutral-400 hover:text-neutral-400"
         }`}>
         EN
       </button>
@@ -29,7 +29,7 @@ export default function LanguageSwitcher() {
         className={`transition-colors ${
           locale === "es"
             ? "text-white"
-            : "text-neutral-600 hover:text-neutral-400"
+            : "text-neutral-400 hover:text-neutral-400"
         }`}>
         ES
       </button>

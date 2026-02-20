@@ -93,14 +93,14 @@ export function PricingSection() {
                   )}
 
                   <div className="mb-8">
-                    <h3 className="text-xs font-bold text-neutral-500 uppercase tracking-widest mb-2">
+                    <h3 className="text-xs font-bold text-neutral-300 uppercase tracking-widest mb-2">
                       {t(`${tier.key}.name`)}
                     </h3>
                     <div className="mb-4">
                       <div className="text-3xl font-bold text-white">
                         {t(`${tier.key}.price`)}
                       </div>
-                      <div className="text-xs text-neutral-500 mt-2 font-medium leading-relaxed max-w-[200px] border-l border-neutral-800 pl-3">
+                      <div className="text-xs text-neutral-300 mt-2 font-medium leading-relaxed max-w-[200px] border-l border-neutral-800 pl-3">
                         {t(`${tier.key}.roi_indicator`)}
                       </div>
                     </div>
@@ -164,10 +164,10 @@ export function PricingSection() {
               <div
                 key={mod.name}
                 className="flex items-center gap-3 p-4 rounded-xl border border-neutral-800 bg-neutral-900/30">
-                <Plus className="w-4 h-4 text-neutral-500 shrink-0" />
+                <Plus className="w-4 h-4 text-neutral-300 shrink-0" />
                 <div>
                   <span className="text-sm text-white">{mod.name}</span>
-                  <span className="block text-xs text-neutral-500 font-mono">
+                  <span className="block text-xs text-neutral-300 font-mono">
                     {mod.price}
                   </span>
                 </div>
@@ -186,7 +186,7 @@ export function PricingSection() {
           {additionalText.map((text, i) => (
             <div
               key={text}
-              className="flex items-center gap-2 text-sm text-neutral-500">
+              className="flex items-center gap-2 text-sm text-neutral-300">
               <span className="w-1 h-1 rounded-full bg-neutral-700" />
               {text}
             </div>

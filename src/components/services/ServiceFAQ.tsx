@@ -46,7 +46,7 @@ export function ServiceFAQ() {
                   {item.question}
                 </span>
                 <ChevronDown className={cn(
-                  "w-5 h-5 text-neutral-500 transition-transform duration-300",
+                  "w-5 h-5 text-neutral-300 transition-transform duration-300",
                   openIndex === i && "rotate-180 text-emerald-400"
                 )} />
               </button>

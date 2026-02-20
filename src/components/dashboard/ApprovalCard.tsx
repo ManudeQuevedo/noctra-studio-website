@@ -142,7 +142,7 @@ export default function ApprovalCard({ deliverable }: ApprovalCardProps) {
                         </label>
                         <button
                           onClick={() => setIsFeedbackOpen(false)}
-                          className="text-xs text-neutral-500 hover:text-white transition-colors">
+                          className="text-xs text-neutral-300 hover:text-white transition-colors">
                           Cancel
                         </button>
                       </div>
@@ -242,7 +242,7 @@ export default function ApprovalCard({ deliverable }: ApprovalCardProps) {
                 </div>
                 {feedback && (
                   <div className="bg-zinc-950/50 border border-zinc-800 rounded-lg p-4">
-                    <p className="text-xs text-neutral-500 mb-2">
+                    <p className="text-xs text-neutral-300 mb-2">
                       Your feedback:
                     </p>
                     <p className="text-sm text-white">{feedback}</p>

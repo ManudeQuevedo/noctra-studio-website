@@ -140,7 +140,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
           <section className="py-24 px-6 border-t border-neutral-900 bg-black">
             <div className="max-w-6xl mx-auto">
               <div className="mb-16">
-                <h2 className="text-xs font-mono uppercase tracking-widest text-neutral-500 mb-4 border-b border-white/5 pb-4 inline-block pr-12">
+                <h2 className="text-xs font-mono uppercase tracking-widest text-neutral-300 mb-4 border-b border-white/5 pb-4 inline-block pr-12">
                   {locale === "es"
                     ? "Proyectos Finalizados"
                     : "Finished Projects"}
@@ -190,7 +190,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-8 md:mb-16">
                   {/* Left Side - Why Act Now */}
                   <div className="space-y-8">
-                    <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-[0.2em] border-b border-white/5 pb-4">
+                    <h3 className="text-sm font-mono text-neutral-300 uppercase tracking-[0.2em] border-b border-white/5 pb-4">
                       {t("sections.conversion_cta.left_title")}
                     </h3>
                     <ul className="space-y-4">
@@ -213,7 +213,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
 
                   {/* Right Side - What Happens Next */}
                   <div className="space-y-8">
-                    <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-[0.2em] border-b border-white/5 pb-4">
+                    <h3 className="text-sm font-mono text-neutral-300 uppercase tracking-[0.2em] border-b border-white/5 pb-4">
                       {t("sections.conversion_cta.right_title")}
                     </h3>
                     <div className="space-y-6">
@@ -317,7 +317,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                             "w-6 h-6 transition-colors",
                             isActive
                               ? "text-emerald-500"
-                              : "text-neutral-500 group-hover:text-blue-400",
+                              : "text-neutral-300 group-hover:text-blue-400",
                           )}
                         />
                       </div>
@@ -327,7 +327,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                       </h3>
 
                       {industry.example && (
-                        <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest mb-4">
+                        <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mb-4">
                           {industry.example}
                         </p>
                       )}
@@ -481,7 +481,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                               "w-16 h-16 rounded-full bg-black border-2 flex items-center justify-center text-lg font-bold transition-all duration-500 relative",
                               isCurrent
                                 ? "border-emerald-500 text-emerald-500 shadow-[0_0_20px_-5px_rgba(16,185,129,0.5)]"
-                                : "border-neutral-800 text-neutral-500 group-hover:border-emerald-500 group-hover:text-emerald-500",
+                                : "border-neutral-800 text-neutral-300 group-hover:border-emerald-500 group-hover:text-emerald-500",
                             )}>
                             {isCurrent && (
                               <m.div
@@ -500,7 +500,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                               "mt-4 text-[10px] font-mono uppercase tracking-[0.2em] transition-colors hidden md:block",
                               isCurrent
                                 ? "text-emerald-500 font-bold"
-                                : "text-neutral-500 group-hover:text-emerald-500",
+                                : "text-neutral-300 group-hover:text-emerald-500",
                             )}>
                             {phase.weeks}
                           </span>
@@ -534,7 +534,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500 group-hover:bg-emerald-500 group-hover:text-black transition-all duration-500">
                         <Icon className="w-6 h-6" />
                       </div>
-                      <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-neutral-500 uppercase tracking-widest">
+                      <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-neutral-300 uppercase tracking-widest">
                         {locale === "es" ? "Fase" : "Phase"} {i + 1}
                       </div>
                     </div>
@@ -557,7 +557,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                     <div className="space-y-6 pt-6 border-t border-white/5">
                       {/* Deliverables as Checklist */}
                       <div className="space-y-3">
-                        <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                        <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                           {step.deliverables_label.split(":")[0]}
                         </p>
                         <ul className="space-y-2">
@@ -578,7 +578,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                       </div>
 
                       <div className="p-4 rounded-xl bg-white/5 border border-white/5">
-                        <p className="text-[9px] font-mono text-neutral-600 uppercase tracking-widest mb-1">
+                        <p className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest mb-1">
                           {step.user_time.split(":")[0]}
                         </p>
                         <p className="text-[11px] text-white/80 font-medium leading-tight">
@@ -640,7 +640,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                           "w-12 h-12 rounded-xl border flex items-center justify-center shrink-0 transition-all duration-500",
                           isFAQExpanded
                             ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-500"
-                            : "bg-white/5 border-white/10 text-neutral-500 group-hover:border-white/20 group-hover:text-neutral-300",
+                            : "bg-white/5 border-white/10 text-neutral-300 group-hover:border-white/20 group-hover:text-neutral-300",
                         )}>
                         <Icon className="w-5 h-5" />
                       </div>
@@ -652,7 +652,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                               "px-2 py-0.5 rounded-full text-[8px] font-mono font-bold uppercase tracking-widest border transition-colors",
                               isFAQExpanded
                                 ? "bg-emerald-500/10 border-emerald-500/20 text-emerald-500"
-                                : "bg-white/5 border-white/10 text-neutral-500",
+                                : "bg-white/5 border-white/10 text-neutral-300",
                             )}>
                             {item.category}
                           </span>
@@ -671,7 +671,7 @@ export default function WorkClient({ projects }: { projects: Project[] }) {
                           "mt-4 w-6 h-6 rounded-full border border-white/10 flex items-center justify-center shrink-0 transition-all duration-300",
                           isFAQExpanded ? "rotate-180 bg-white/5" : "",
                         )}>
-                        <ChevronDown className="w-3.5 h-3.5 text-neutral-500" />
+                        <ChevronDown className="w-3.5 h-3.5 text-neutral-300" />
                       </div>
                     </button>
 

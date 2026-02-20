@@ -18,7 +18,7 @@ export default function SettingsView() {
       <div className="max-w-4xl mx-auto space-y-8">
         <div>
           <h2 className="text-2xl font-bold text-white mb-2">Settings</h2>
-          <p className="text-neutral-500">
+          <p className="text-neutral-300">
             Manage your profile and preferences
           </p>
         </div>
@@ -44,11 +44,11 @@ export default function SettingsView() {
                     accept="image/*"
                   />
                   <div className="text-center">
-                    <Camera className="w-6 h-6 text-neutral-500 mx-auto mb-1" />
-                    <p className="text-xs text-neutral-500">Upload</p>
+                    <Camera className="w-6 h-6 text-neutral-300 mx-auto mb-1" />
+                    <p className="text-xs text-neutral-300">Upload</p>
                   </div>
                 </div>
-                <div className="text-sm text-neutral-500">
+                <div className="text-sm text-neutral-300">
                   <p>Drag & drop or click to upload</p>
                   <p className="text-xs mt-1">PNG, JPG up to 5MB</p>
                 </div>
@@ -103,11 +103,11 @@ export default function SettingsView() {
                   type="email"
                   value="client@example.com"
                   disabled
-                  className="w-full bg-neutral-950/50 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-500 cursor-not-allowed"
+                  className="w-full bg-neutral-950/50 border border-neutral-800 rounded-lg px-4 py-3 text-neutral-300 cursor-not-allowed"
                 />
-                <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-600" />
+                <Mail className="absolute right-3 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-400" />
               </div>
-              <p className="text-xs text-neutral-500 mt-2">
+              <p className="text-xs text-neutral-300 mt-2">
                 Email cannot be changed
               </p>
             </div>

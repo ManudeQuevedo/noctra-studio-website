@@ -81,7 +81,7 @@ export function CookieBanner() {
               {/* Botón cerrar */}
               <button
                 onClick={handleEssentialOnly}
-                className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors p-1"
+                className="absolute top-4 right-4 text-neutral-300 hover:text-white transition-colors p-1"
                 aria-label="Cerrar">
                 <X className="h-5 w-5" />
               </button>

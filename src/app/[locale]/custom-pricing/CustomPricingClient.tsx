@@ -172,7 +172,7 @@ export default function CustomPricingClient() {
                 </div>
                 <button
                   onClick={() => setStep(0)}
-                  className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors">
+                  className="flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors">
                   <ArrowLeft className="w-4 h-4" /> Back
                 </button>
               </m.div>
@@ -201,7 +201,7 @@ export default function CustomPricingClient() {
                         {t(`step3_options.${i}.label`)}
                       </span>
                       <div className="flex items-center gap-3">
-                        <span className="text-sm text-neutral-500">
+                        <span className="text-sm text-neutral-300">
                           {t(`step3_options.${i}.price`)}
                         </span>
                         {selectedModules.includes(i) && (
@@ -214,7 +214,7 @@ export default function CustomPricingClient() {
                 <div className="flex items-center justify-between">
                   <button
                     onClick={() => setStep(1)}
-                    className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors">
+                    className="flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors">
                     <ArrowLeft className="w-4 h-4" /> Back
                   </button>
                   <button
@@ -256,7 +256,7 @@ export default function CustomPricingClient() {
                 </div>
                 <button
                   onClick={() => setStep(2)}
-                  className="flex items-center gap-2 text-sm text-neutral-500 hover:text-white transition-colors">
+                  className="flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors">
                   <ArrowLeft className="w-4 h-4" /> Back
                 </button>
               </m.div>
@@ -280,7 +280,7 @@ export default function CustomPricingClient() {
                       MXN
                     </span>
                   </p>
-                  <p className="text-sm text-neutral-500 max-w-md mx-auto">
+                  <p className="text-sm text-neutral-300 max-w-md mx-auto">
                     {t("result_note")}
                   </p>
                 </div>
@@ -297,7 +297,7 @@ export default function CustomPricingClient() {
                       {t("cta")}
                     </Link>
                   </Button>
-                  <p className="text-neutral-500 text-sm">
+                  <p className="text-neutral-300 text-sm">
                     {t("cta_subtitle")}
                   </p>
                   <button
@@ -308,7 +308,7 @@ export default function CustomPricingClient() {
                       setSelectedModules([]);
                       setTimeline("");
                     }}
-                    className="text-sm text-neutral-500 hover:text-white transition-colors mt-4 block mx-auto">
+                    className="text-sm text-neutral-300 hover:text-white transition-colors mt-4 block mx-auto">
                     Start over
                   </button>
                 </div>

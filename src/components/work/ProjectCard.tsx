@@ -91,7 +91,7 @@ export function ProjectCard({
             </span>
           )}
         </div>
-        <p className="text-sm text-neutral-500 font-mono uppercase tracking-wider">
+        <p className="text-sm text-neutral-300 font-mono uppercase tracking-wider">
           {project.industry}
         </p>
         <p className="text-neutral-400 mt-2">{project.tagline}</p>
@@ -101,7 +101,7 @@ export function ProjectCard({
 
       <div className="space-y-8 flex-grow">
         <div className="space-y-4">
-          <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
             {locale === "es" ? "El reto" : "The challenge"}
           </h4>
           <p className="text-neutral-400 leading-relaxed">
@@ -110,7 +110,7 @@ export function ProjectCard({
         </div>
 
         <div className="space-y-4">
-          <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
             {locale === "es" ? "Nuestra solución" : "Our solution"}
           </h4>
           <p className="text-white leading-relaxed">
@@ -120,7 +120,7 @@ export function ProjectCard({
 
         {/* Visual Timeline Implementation */}
         <div className="pt-8 border-t border-white/5 pb-4">
-          <h4 className="text-xs font-mono text-neutral-500 uppercase tracking-widest mb-8">
+          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest mb-8">
             {locale === "es" ? "Estado del proyecto" : "Project Status"}
           </h4>
 
@@ -187,7 +187,7 @@ export function ProjectCard({
                           ? "text-emerald-500/80 font-bold"
                           : state === "active"
                             ? "text-emerald-500 font-bold"
-                            : "text-neutral-600",
+                            : "text-neutral-400",
                       )}>
                       {label}
                     </span>

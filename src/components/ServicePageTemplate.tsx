@@ -149,7 +149,7 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
                     {i + 1}
                   </div>
                   <div className="mt-4">
-                    <span className="block text-xs font-mono text-neutral-500 uppercase tracking-widest mb-1">{step.duration}</span>
+                    <span className="block text-xs font-mono text-neutral-300 uppercase tracking-widest mb-1">{step.duration}</span>
                     <h3 className="text-lg font-bold">{step.label}</h3>
                   </div>
                 </div>
@@ -171,7 +171,7 @@ export default function ServicePageTemplate({ namespace, interestId }: ServicePa
                   <CheckCircle2 className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                   <span>{t("investment.includes")}</span>
                 </div>
-                <div className="flex gap-2 text-sm text-neutral-500">
+                <div className="flex gap-2 text-sm text-neutral-300">
                   <PlusCircle className="w-4 h-4 shrink-0 mt-0.5" />
                   <span>{t("investment.not_includes")}</span>
                 </div>

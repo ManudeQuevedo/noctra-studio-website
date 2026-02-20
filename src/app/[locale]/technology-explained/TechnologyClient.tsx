@@ -102,7 +102,7 @@ export default function TechnologyClient() {
                           </p>
                         </div>
                       </div>
-                      <div className="flex items-center gap-2 text-sm text-neutral-500">
+                      <div className="flex items-center gap-2 text-sm text-neutral-300">
                         <span className="font-mono text-xs">💡</span>
                         {t(`comparison.${i}.business_impact`)}
                       </div>
@@ -158,7 +158,7 @@ export default function TechnologyClient() {
             </FadeIn>
           </div>
           <FadeIn delay={0.3}>
-            <p className="text-center text-neutral-500 mt-8 text-sm">
+            <p className="text-center text-neutral-300 mt-8 text-sm">
               {t("cost_note")}
             </p>
           </FadeIn>
@@ -181,7 +181,7 @@ export default function TechnologyClient() {
                 {t("cta")}
               </Link>
             </Button>
-            <p className="text-neutral-500 text-sm mt-4">{t("cta_subtitle")}</p>
+            <p className="text-neutral-300 text-sm mt-4">{t("cta_subtitle")}</p>
           </FadeIn>
         </div>
       </section>

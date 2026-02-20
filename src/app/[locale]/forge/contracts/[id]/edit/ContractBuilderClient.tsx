@@ -234,7 +234,7 @@ export default function ContractBuilderClient({
             <Link
               href="/forge/contracts"
               className="p-2 hover:bg-white/5 rounded-full transition-colors group">
-              <ChevronLeft className="w-5 h-5 text-neutral-500 group-hover:text-white" />
+              <ChevronLeft className="w-5 h-5 text-neutral-300 group-hover:text-white" />
             </Link>
             <div className="flex flex-col">
               <div className="flex items-center gap-3">
@@ -249,7 +249,7 @@ export default function ContractBuilderClient({
           </div>
 
           <div className="flex items-center gap-4">
-            <div className="hidden md:flex items-center gap-2 text-[10px] font-mono text-neutral-600 mr-4">
+            <div className="hidden md:flex items-center gap-2 text-[10px] font-mono text-neutral-400 mr-4">
               {isSaving ? (
                 <>
                   <Loader2 className="w-3 h-3 animate-spin" /> Guardando...
@@ -275,12 +275,12 @@ export default function ContractBuilderClient({
           {/* LEFT PANEL: Editing */}
           <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-8 space-y-12">
             <section className="space-y-6">
-              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                 Datos del Cliente
               </h3>
               <div className="grid grid-cols-2 gap-4">
                 <div className="col-span-2 space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Nombre Completo
                   </label>
                   <input
@@ -293,7 +293,7 @@ export default function ContractBuilderClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Email
                   </label>
                   <input
@@ -306,7 +306,7 @@ export default function ContractBuilderClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Empresa
                   </label>
                   <input
@@ -319,7 +319,7 @@ export default function ContractBuilderClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     RFC / ID Fiscal
                   </label>
                   <input
@@ -330,7 +330,7 @@ export default function ContractBuilderClient({
                   />
                 </div>
                 <div className="col-span-2 space-y-2">
-                  <label className="text-[9px] font-mono text-neutral-500 uppercase">
+                  <label className="text-[9px] font-mono text-neutral-300 uppercase">
                     Dirección Legal
                   </label>
                   <textarea
@@ -346,7 +346,7 @@ export default function ContractBuilderClient({
             </section>
 
             <section className="space-y-6">
-              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                 Servicio y Entregables
               </h3>
               <ProposalItemsList
@@ -366,7 +366,7 @@ export default function ContractBuilderClient({
             </section>
 
             <section className="space-y-6">
-              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+              <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                 Cláusulas del Contrato
               </h3>
               <div className="space-y-4">
@@ -378,7 +378,7 @@ export default function ContractBuilderClient({
                       <div className="flex items-center gap-3">
                         <button
                           onClick={() => toggleClause(clause.id)}
-                          className={`px-2 py-1 text-[9px] font-bold uppercase tracking-widest border transition-all ${clause.included ? "bg-emerald-500 border-emerald-500 text-black" : "bg-transparent border-white/10 text-neutral-500"}`}>
+                          className={`px-2 py-1 text-[9px] font-bold uppercase tracking-widest border transition-all ${clause.included ? "bg-emerald-500 border-emerald-500 text-black" : "bg-transparent border-white/10 text-neutral-300"}`}>
                           {clause.included ? "Incluida" : "Excluida"}
                         </button>
                         <span className="text-xs font-bold uppercase tracking-tight">
@@ -388,7 +388,7 @@ export default function ContractBuilderClient({
                       <div className="flex items-center gap-2">
                         <button
                           onClick={() => resetClause(clause.id)}
-                          className="p-1.5 hover:bg-white/5 rounded text-neutral-600 hover:text-white transition-colors"
+                          className="p-1.5 hover:bg-white/5 rounded text-neutral-400 hover:text-white transition-colors"
                           title="Restaurar predeterminado">
                           <RotateCcw className="w-3.5 h-3.5" />
                         </button>
@@ -412,7 +412,7 @@ export default function ContractBuilderClient({
             <section className="space-y-6 border-t border-white/5 pt-10 pb-20">
               <div className="flex items-center gap-2">
                 <Shield className="w-4 h-4 text-emerald-500" />
-                <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                   Firma de Noctra Studio
                 </h3>
               </div>
@@ -420,12 +420,12 @@ export default function ContractBuilderClient({
               {!contract.noctra_signed ? (
                 <div className="space-y-4">
                   <div className="flex items-center justify-between">
-                    <p className="text-[10px] text-neutral-500 uppercase font-mono tracking-widest">
+                    <p className="text-[10px] text-neutral-300 uppercase font-mono tracking-widest">
                       Dibujar firma interna
                     </p>
                     <button
                       onClick={clearCanvas}
-                      className="text-[9px] text-neutral-600 hover:text-red-500 flex items-center gap-1 uppercase tracking-widest">
+                      className="text-[9px] text-neutral-400 hover:text-red-500 flex items-center gap-1 uppercase tracking-widest">
                       <Eraser className="w-3 h-3" /> Limpiar
                     </button>
                   </div>
@@ -464,7 +464,7 @@ export default function ContractBuilderClient({
                     <p className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest font-black">
                       DOCUMENTO FIRMADO INTERNAMENTE
                     </p>
-                    <p className="text-[9px] font-mono text-neutral-600 uppercase">
+                    <p className="text-[9px] font-mono text-neutral-400 uppercase">
                       {format(
                         new Date(contract.noctra_signed_at),
                         "dd MMMM yyyy HH:mm",
@@ -484,7 +484,7 @@ export default function ContractBuilderClient({
                 <h1 className="text-2xl font-bold uppercase tracking-widest border-b-2 border-neutral-900 pb-4 mb-4">
                   Contrato de Prestación de Servicios
                 </h1>
-                <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-relaxed">
+                <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest leading-relaxed">
                   Studio de Diseño & Desarrollo Digital
                   <br />
                   Folio Digital: {contract.contract_number}
@@ -579,7 +579,7 @@ export default function ContractBuilderClient({
                       <p className="text-[11px] font-bold uppercase tracking-tight">
                         Manuel de Quevedo
                       </p>
-                      <p className="text-[9px] text-neutral-500 uppercase font-mono tracking-widest">
+                      <p className="text-[9px] text-neutral-300 uppercase font-mono tracking-widest">
                         Noctra Studio (EL PROVEEDOR)
                       </p>
                     </div>
@@ -599,7 +599,7 @@ export default function ContractBuilderClient({
                       <p className="text-[11px] font-bold uppercase tracking-tight">
                         {contract.client_name}
                       </p>
-                      <p className="text-[9px] text-neutral-500 uppercase font-mono tracking-widest">
+                      <p className="text-[9px] text-neutral-300 uppercase font-mono tracking-widest">
                         EL CLIENTE
                       </p>
                     </div>

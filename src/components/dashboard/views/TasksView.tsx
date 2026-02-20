@@ -62,7 +62,7 @@ function TaskColumn({ title, tasks, icon, color }: TaskColumnProps) {
       <div className={`flex items-center gap-2 mb-4 pb-3 border-b ${color}`}>
         {icon}
         <h3 className="font-semibold text-white">{title}</h3>
-        <span className="ml-auto text-sm text-neutral-500">{tasks.length}</span>
+        <span className="ml-auto text-sm text-neutral-300">{tasks.length}</span>
       </div>
       <div className="space-y-3">
         {tasks.map((task) => (
@@ -79,7 +79,7 @@ function TaskColumn({ title, tasks, icon, color }: TaskColumnProps) {
                 }`}>
                 {task.priority}
               </span>
-              <span className="text-xs text-neutral-500">
+              <span className="text-xs text-neutral-300">
                 • {task.assignee}
               </span>
             </div>
@@ -99,7 +99,7 @@ export default function TasksView() {
             <ListTodo className="w-6 h-6 text-white" />
             <h2 className="text-2xl font-bold text-white">Tasks</h2>
           </div>
-          <p className="text-neutral-500">
+          <p className="text-neutral-300">
             Track and manage project deliverables
           </p>
         </div>

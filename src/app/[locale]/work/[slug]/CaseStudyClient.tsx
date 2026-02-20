@@ -43,7 +43,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
 
           <div className="space-y-4">
             <div className="flex items-center gap-4">
-              <span className="text-xs font-mono uppercase tracking-widest text-neutral-500">
+              <span className="text-xs font-mono uppercase tracking-widest text-neutral-300">
                 {project.industry}
               </span>
               <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-mono">
@@ -69,7 +69,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="pl-6 border-l-2 border-orange-500/50">
-              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500 mb-6">
+              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-300 mb-6">
                 The Challenge
               </h2>
               <div className="text-lg md:text-xl text-neutral-300 leading-relaxed whitespace-pre-wrap">
@@ -85,7 +85,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               className="pl-6 border-l-2 border-emerald-500/50">
-              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500 mb-6">
+              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-300 mb-6">
                 Our Solution
               </h2>
               <div className="text-lg md:text-xl text-neutral-300 leading-relaxed whitespace-pre-wrap">
@@ -101,7 +101,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}>
-              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500 mb-6">
+              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-300 mb-6">
                 The Results
               </h2>
               {project.results && (
@@ -116,7 +116,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
                     <div
                       key={i}
                       className="p-6 rounded-2xl bg-neutral-900/50 border border-white/5 space-y-2">
-                      <h3 className="text-xs font-mono uppercase tracking-widest text-neutral-500">
+                      <h3 className="text-xs font-mono uppercase tracking-widest text-neutral-300">
                         {metric.label}
                       </h3>
                       <div className="text-3xl font-bold tracking-tight text-white">
@@ -140,7 +140,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}>
-              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-500 mb-6">
+              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-300 mb-6">
                 The Website
               </h2>
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">

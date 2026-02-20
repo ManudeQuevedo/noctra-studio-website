@@ -279,7 +279,7 @@ export default function ForgeProjectsClient({
       {/* Projects Secondary Sidebar */}
       <aside className="w-full md:w-[280px] bg-[#0a0a0a] border-r border-neutral-900 flex flex-col shrink-0 flex-none h-[30vh] md:h-full z-10">
         <div className="p-6 pb-2">
-          <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+          <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
             Projects
           </h2>
         </div>
@@ -310,7 +310,7 @@ export default function ForgeProjectsClient({
                 </div>
               </div>
               {p.start_date && (
-                <div className="text-[10px] text-neutral-500 font-mono uppercase tracking-wider">
+                <div className="text-[10px] text-neutral-300 font-mono uppercase tracking-wider">
                   {p.start_date}
                 </div>
               )}
@@ -332,7 +332,7 @@ export default function ForgeProjectsClient({
         className="flex-1 overflow-y-auto relative outline-none flex flex-col"
         data-lenis-prevent>
         {!selectedProject ? (
-          <div className="flex-1 flex items-center justify-center text-neutral-600 font-mono text-xs uppercase tracking-widest">
+          <div className="flex-1 flex items-center justify-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
             Select a project
           </div>
         ) : (
@@ -346,7 +346,7 @@ export default function ForgeProjectsClient({
                     {selectedProject.status}
                   </div>
                   {!selectedProject.visible && (
-                    <div className="px-2 py-0.5 border border-neutral-800 text-neutral-500 text-[10px] font-mono uppercase tracking-widest">
+                    <div className="px-2 py-0.5 border border-neutral-800 text-neutral-300 text-[10px] font-mono uppercase tracking-widest">
                       Hidden
                     </div>
                   )}
@@ -381,7 +381,7 @@ export default function ForgeProjectsClient({
               ) : (
                 <button
                   onClick={() => setDeleteConfirmId(selectedProject.id)}
-                  className="text-neutral-600 hover:text-red-400 transition-colors p-2 shrink-0">
+                  className="text-neutral-400 hover:text-red-400 transition-colors p-2 shrink-0">
                   <Trash2 className="w-4 h-4" />
                 </button>
               )}
@@ -389,12 +389,12 @@ export default function ForgeProjectsClient({
 
             {/* SECTION 1: GENERAL */}
             <section className="space-y-8">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 border-b border-neutral-900 pb-2">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 border-b border-neutral-900 pb-2">
                 1. General
               </h3>
               <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Slug
                   </label>
                   <input
@@ -407,7 +407,7 @@ export default function ForgeProjectsClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Industry
                   </label>
                   <input
@@ -424,7 +424,7 @@ export default function ForgeProjectsClient({
                   />
                 </div>
                 <div className="space-y-2 md:col-span-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Tagline
                   </label>
                   <input
@@ -459,12 +459,12 @@ export default function ForgeProjectsClient({
 
             {/* SECTION 2: TIMELINE */}
             <section className="space-y-8">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 border-b border-neutral-900 pb-2">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 border-b border-neutral-900 pb-2">
                 2. Timeline
               </h3>
 
               <div className="space-y-4">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Phase
                 </label>
                 <div className="flex flex-wrap gap-2">
@@ -478,7 +478,7 @@ export default function ForgeProjectsClient({
                     <button
                       key={phase}
                       onClick={() => handleStatusChange(selectedProject, phase)}
-                      className={`px-4 py-2 text-[10px] font-mono uppercase tracking-widest border transition-all ${selectedProject.status === phase ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "bg-transparent border-neutral-800 text-neutral-500 hover:border-neutral-600"}`}>
+                      className={`px-4 py-2 text-[10px] font-mono uppercase tracking-widest border transition-all ${selectedProject.status === phase ? "bg-emerald-500/10 border-emerald-500/30 text-emerald-400" : "bg-transparent border-neutral-800 text-neutral-300 hover:border-neutral-600"}`}>
                       {phase}
                     </button>
                   ))}
@@ -487,7 +487,7 @@ export default function ForgeProjectsClient({
 
               <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Start Date
                   </label>
                   <input
@@ -504,7 +504,7 @@ export default function ForgeProjectsClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Launch Date
                   </label>
                   <input
@@ -522,7 +522,7 @@ export default function ForgeProjectsClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Deadline
                   </label>
                   <input
@@ -545,10 +545,10 @@ export default function ForgeProjectsClient({
             <section className="space-y-4">
               <div className="border-b border-neutral-900 pb-2 flex justify-between items-center">
                 <div>
-                  <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     3. Internal Notes
                   </h3>
-                  <p className="text-[10px] text-neutral-600 mt-1">
+                  <p className="text-[10px] text-neutral-400 mt-1">
                     Only visible to you. Never shown on the website. Auto-saves
                     on blur.
                   </p>
@@ -572,7 +572,7 @@ export default function ForgeProjectsClient({
 
             {/* SECTION 4: SPECIAL FEATURES */}
             <section className="space-y-8">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 border-b border-neutral-900 pb-2">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 border-b border-neutral-900 pb-2">
                 4. Special Features
               </h3>
               <div className="space-y-6">
@@ -596,7 +596,7 @@ export default function ForgeProjectsClient({
                 </div>
                 {selectedProject.has_ai_form && (
                   <div className="pl-13 space-y-2">
-                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                       Form Description
                     </label>
                     <textarea
@@ -620,7 +620,7 @@ export default function ForgeProjectsClient({
             {/* SECTION 5: CASE STUDY */}
             {selectedProject.status === "completed" && (
               <section className="space-y-8">
-                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 border-b border-neutral-900 pb-2">
+                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 border-b border-neutral-900 pb-2">
                   5. Case Study
                 </h3>
                 <div className="flex items-center gap-4 mb-6">
@@ -644,7 +644,7 @@ export default function ForgeProjectsClient({
 
                 <div className="space-y-6">
                   <div className="space-y-2">
-                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                       The Challenge
                     </label>
                     <textarea
@@ -661,7 +661,7 @@ export default function ForgeProjectsClient({
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                       Our Solution
                     </label>
                     <textarea
@@ -678,7 +678,7 @@ export default function ForgeProjectsClient({
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                    <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                       The Results
                     </label>
                     <textarea
@@ -700,7 +700,7 @@ export default function ForgeProjectsClient({
                   <>
                     <div className="space-y-4 pt-6">
                       <div className="flex justify-between items-center">
-                        <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                        <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                           Metrics
                         </label>
                         <button
@@ -780,7 +780,7 @@ export default function ForgeProjectsClient({
 
                     <div className="space-y-4 pt-6">
                       <div className="flex justify-between items-center">
-                        <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                        <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                           Gallery
                         </label>
                         <button
@@ -850,7 +850,7 @@ export default function ForgeProjectsClient({
 
             {/* SECTION 6: STATUS HISTORY */}
             <section className="space-y-4 pt-12">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 border-b border-neutral-900 pb-2">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-400 border-b border-neutral-900 pb-2">
                 6. Status History
               </h3>
               <div className="space-y-3 pl-2 border-l border-neutral-900">
@@ -862,8 +862,8 @@ export default function ForgeProjectsClient({
                       className={`uppercase tracking-widest w-24 ${getStatusColor(h.status).replace("bg-", "text-")}`}>
                       {h.status}
                     </span>
-                    <span className="text-neutral-600">→</span>
-                    <span className="text-neutral-500">
+                    <span className="text-neutral-400">→</span>
+                    <span className="text-neutral-300">
                       {new Date(h.created_at).toLocaleString()}
                     </span>
                   </div>
@@ -902,13 +902,13 @@ export default function ForgeProjectsClient({
               </h2>
               <button
                 onClick={() => setIsCreating(false)}
-                className="text-neutral-500 hover:text-white">
+                className="text-neutral-300 hover:text-white">
                 <X className="w-5 h-5" />
               </button>
             </div>
             <div className="space-y-6">
               <div className="space-y-2">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Name *
                 </label>
                 <input
@@ -927,7 +927,7 @@ export default function ForgeProjectsClient({
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Slug *
                 </label>
                 <input
@@ -940,7 +940,7 @@ export default function ForgeProjectsClient({
                 />
               </div>
               <div className="space-y-2">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Industry
                 </label>
                 <input
@@ -954,7 +954,7 @@ export default function ForgeProjectsClient({
               </div>
               <div className="grid grid-cols-2 gap-4">
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Start Date
                   </label>
                   <input
@@ -970,7 +970,7 @@ export default function ForgeProjectsClient({
                   />
                 </div>
                 <div className="space-y-2">
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Launch Date
                   </label>
                   <input

@@ -78,13 +78,13 @@ export function CookieConfigModal({
             className="p-2 hover:bg-neutral-100 dark:hover:bg-neutral-900 rounded-full transition-colors"
             aria-label="Close"
           >
-            <X className="h-5 w-5 text-neutral-500" />
+            <X className="h-5 w-5 text-neutral-300" />
           </button>
         </div>
 
         {/* CONTENT */}
         <div className="p-6 md:p-8 space-y-6 max-h-[60vh] overflow-y-auto custom-scrollbar">
-          <p className="text-neutral-500 dark:text-neutral-400 text-sm leading-relaxed">
+          <p className="text-neutral-300 dark:text-neutral-400 text-sm leading-relaxed">
             {t("description")}{' '}
             <Link href="/cookie-policy" className="text-neutral-950 dark:text-white font-bold underline hover:no-underline">
               {t("policy_link")}
@@ -106,7 +106,7 @@ export function CookieConfigModal({
                     {t("essential.badge")}
                   </span>
                 </div>
-                <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-3 leading-relaxed">
+                <p className="text-xs text-neutral-300 dark:text-neutral-400 mb-3 leading-relaxed">
                   {t("essential.description")}
                 </p>
                 <ul className="grid grid-cols-1 md:grid-cols-2 gap-2">
@@ -134,12 +134,12 @@ export function CookieConfigModal({
                   </h3>
                   <Toggle enabled={analytics} onChange={setAnalytics} />
                 </div>
-                <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-3 leading-relaxed">
+                <p className="text-xs text-neutral-300 dark:text-neutral-400 mb-3 leading-relaxed">
                   {t("analytics.description")}
                 </p>
                 <ul className="space-y-1.5 opacity-60">
                   {(t.raw("analytics.items") as string[]).map((item, i) => (
-                    <li key={item} className="text-[10px] text-neutral-500 uppercase tracking-tight">• {item}</li>
+                    <li key={item} className="text-[10px] text-neutral-300 uppercase tracking-tight">• {item}</li>
                   ))}
                 </ul>
               </div>
@@ -159,12 +159,12 @@ export function CookieConfigModal({
                   </h3>
                   <Toggle enabled={marketing} onChange={setMarketing} />
                 </div>
-                <p className="text-xs text-neutral-500 dark:text-neutral-400 mb-3 leading-relaxed">
+                <p className="text-xs text-neutral-300 dark:text-neutral-400 mb-3 leading-relaxed">
                   {t("marketing.description")}
                 </p>
                 <ul className="space-y-1.5 opacity-60">
                   {(t.raw("marketing.items") as string[]).map((item, i) => (
-                    <li key={item} className="text-[10px] text-neutral-500 uppercase tracking-tight">• {item}</li>
+                    <li key={item} className="text-[10px] text-neutral-300 uppercase tracking-tight">• {item}</li>
                   ))}
                 </ul>
               </div>

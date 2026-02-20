@@ -205,7 +205,7 @@ export function NewProposalModal({
         {/* Header */}
         <div className="p-6 border-b border-white/5 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
               Paso {step} de 2
             </span>
             <h3 className="text-lg font-bold text-white">
@@ -215,7 +215,7 @@ export function NewProposalModal({
           <button
             onClick={onClose}
             className="p-2 hover:bg-white/5 transition-colors">
-            <X className="w-5 h-5 text-neutral-500" />
+            <X className="w-5 h-5 text-neutral-300" />
           </button>
         </div>
 
@@ -225,11 +225,11 @@ export function NewProposalModal({
             <div className="p-8 space-y-8">
               {/* Search Lead */}
               <div className="space-y-4">
-                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Seleccionar Lead Existente
                 </label>
                 <div className="relative">
-                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-600" />
+                  <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
                   <input
                     type="text"
                     placeholder="Buscar por nombre o email..."
@@ -253,12 +253,12 @@ export function NewProposalModal({
                         <p className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">
                           {lead.name}
                         </p>
-                        <p className="text-[10px] font-mono text-neutral-500">
+                        <p className="text-[10px] font-mono text-neutral-300">
                           {lead.email}
                         </p>
                       </div>
                       <ChevronRight
-                        className={`w-4 h-4 text-neutral-600 ${selectedLead?.id === lead.id ? "text-emerald-500" : ""}`}
+                        className={`w-4 h-4 text-neutral-400 ${selectedLead?.id === lead.id ? "text-emerald-500" : ""}`}
                       />
                     </button>
                   ))}
@@ -277,15 +277,15 @@ export function NewProposalModal({
                   <div className="w-full border-t border-white/5"></div>
                 </div>
                 <div className="relative flex justify-center text-[10px] font-mono uppercase tracking-widest leading-none">
-                  <span className="bg-[#0a0a0a] px-4 text-neutral-600">o</span>
+                  <span className="bg-[#0a0a0a] px-4 text-neutral-400">o</span>
                 </div>
               </div>
 
               {/* Manual Entry */}
               <div className="space-y-4">
                 <div className="flex items-center gap-2">
-                  <UserPlus className="w-4 h-4 text-neutral-600" />
-                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                  <UserPlus className="w-4 h-4 text-neutral-400" />
+                  <label className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                     Entrada Manual
                   </label>
                 </div>
@@ -321,14 +321,14 @@ export function NewProposalModal({
                   onClick={() => handleCreate(service.id)}
                   disabled={isCreating}
                   className="group relative flex items-center gap-6 p-6 bg-white/[0.02] border border-white/10 hover:border-emerald-500/50 hover:bg-emerald-500/[0.02] transition-all text-left overflow-hidden active:scale-[0.99]">
-                  <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-neutral-500 group-hover:text-emerald-400 group-hover:scale-110 transition-all shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-neutral-300 group-hover:text-emerald-400 group-hover:scale-110 transition-all shrink-0">
                     <service.icon className="w-5 h-5" />
                   </div>
                   <div className="flex-1 min-w-0">
                     <h4 className="font-bold text-white mb-1 tracking-tight group-hover:text-emerald-400 transition-colors uppercase italic">
                       {service.name}
                     </h4>
-                    <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                    <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest">
                       {service.description}
                     </p>
                   </div>

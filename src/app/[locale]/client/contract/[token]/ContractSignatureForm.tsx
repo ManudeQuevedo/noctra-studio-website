@@ -156,7 +156,7 @@ export function ContractSignatureForm({
           <h3 className="text-sm font-black uppercase tracking-widest">
             Ejecución del Contrato
           </h3>
-          <p className="text-[12px] text-neutral-500 leading-relaxed font-serif italic">
+          <p className="text-[12px] text-neutral-300 leading-relaxed font-serif italic">
             Al firmar este documento, aceptas los términos legales y el alcance
             del proyecto descrito anteriormente. Tu firma será registrada con un
             sello de tiempo y dirección IP para validez legal.

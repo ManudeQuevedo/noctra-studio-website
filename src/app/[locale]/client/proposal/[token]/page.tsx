@@ -49,7 +49,7 @@ export default async function ClientProposalPage({
         <h1 className="text-2xl font-black uppercase tracking-tighter mb-2">
           Propuesta no encontrada
         </h1>
-        <p className="text-neutral-500 text-sm font-mono uppercase tracking-widest">
+        <p className="text-neutral-300 text-sm font-mono uppercase tracking-widest">
           Verifica el enlace o contacta a Noctra Studio.
         </p>
       </div>
@@ -107,7 +107,7 @@ export default async function ClientProposalPage({
               </span>
             )}
             <button
-              className="hidden md:flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-neutral-500 hover:text-black transition-colors"
+              className="hidden md:flex items-center gap-2 px-4 py-2 text-[10px] font-bold uppercase tracking-widest text-neutral-300 hover:text-black transition-colors"
               onClick={() => window.print()}>
               <Download className="w-3.5 h-3.5" /> PDF
             </button>
@@ -186,7 +186,7 @@ export default async function ClientProposalPage({
             <h3 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold border-l-2 border-emerald-500 pl-4">
               NUESTRA PROPUESTA
             </h3>
-            <p className="text-lg leading-relaxed text-neutral-600">
+            <p className="text-lg leading-relaxed text-neutral-400">
               {proposal.proposed_solution ||
                 "Implementaremos una arquitectura moderna basada en Next.js, enfocada en la velocidad extrema y una experiencia de usuario sin fricciones, asegurando que su marca destaque en un mercado saturado."}
             </p>
@@ -211,7 +211,7 @@ export default async function ClientProposalPage({
                     <h4 className="font-black text-sm uppercase tracking-tight mb-2 italic">
                       {item.name}
                     </h4>
-                    <p className="text-xs text-neutral-500 leading-relaxed">
+                    <p className="text-xs text-neutral-300 leading-relaxed">
                       {item.description}
                     </p>
                   </div>
@@ -279,7 +279,7 @@ export default async function ClientProposalPage({
         <section className="mb-24 py-16 border-y-2 border-neutral-900">
           <div className="max-w-[500px] mx-auto space-y-6">
             <div className="flex justify-between items-center text-sm">
-              <span className="text-neutral-500 uppercase tracking-widest text-[10px] font-mono">
+              <span className="text-neutral-300 uppercase tracking-widest text-[10px] font-mono">
                 Servicio Base
               </span>
               <span className="font-mono">
@@ -344,7 +344,7 @@ export default async function ClientProposalPage({
               </p>
             ) : (
               <div className="space-y-1">
-                <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest font-bold">
+                <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest font-bold">
                   Respuesta solicitada en
                 </p>
                 <p className="text-2xl font-black italic tracking-tighter uppercase">
@@ -380,7 +380,7 @@ export default async function ClientProposalPage({
               <h3 className="text-2xl font-black uppercase tracking-tighter">
                 Propuesta Firmada
               </h3>
-              <p className="text-neutral-500 text-sm italic">
+              <p className="text-neutral-300 text-sm italic">
                 Recibimos la aceptación por parte de{" "}
                 <span className="font-bold text-neutral-900 uppercase tracking-tight">
                   {proposal.signed_name}

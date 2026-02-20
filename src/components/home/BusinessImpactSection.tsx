@@ -61,7 +61,7 @@ export function BusinessImpactSection() {
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: index * 0.1 }}
                 className="p-6 bg-neutral-900/50 border border-neutral-800 rounded-lg hover:border-neutral-700 transition-colors">
-                <metric.icon className="w-6 h-6 text-neutral-500 mb-4" />
+                <metric.icon className="w-6 h-6 text-neutral-300 mb-4" />
                 <div className="text-3xl md:text-4xl font-bold text-white mb-2">
                   {metric.value}
                 </div>

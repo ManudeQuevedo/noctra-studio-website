@@ -75,7 +75,7 @@ export default function PrivacyPolicyClient() {
             ].map((item) => (
               <div key={item.id} className="p-4 rounded-xl border border-neutral-100 dark:border-neutral-900 bg-neutral-50 dark:bg-neutral-900/50">
                 <h4 className="font-bold text-neutral-950 dark:text-white mb-1">{item.label}</h4>
-                <p className="text-xs text-neutral-500 leading-normal">{t(`sections.rights.list.${item.id}`)}</p>
+                <p className="text-xs text-neutral-300 leading-normal">{t(`sections.rights.list.${item.id}`)}</p>
               </div>
             ))}
           </div>

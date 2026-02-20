@@ -26,18 +26,18 @@ export function LanguageSwitcher({ className }: { className?: string }) {
         disabled={isPending}
         className={cn(
           "text-sm font-medium transition-colors font-mono",
-          locale === "en" ? "text-white" : "text-neutral-500 hover:text-white",
+          locale === "en" ? "text-white" : "text-neutral-300 hover:text-white",
           isPending && "opacity-50 cursor-not-allowed"
         )}>
         EN
       </button>
-      <span className="text-neutral-600">/</span>
+      <span className="text-neutral-400">/</span>
       <button
         onClick={() => handleLocaleChange("es")}
         disabled={isPending}
         className={cn(
           "text-sm font-medium transition-colors font-mono",
-          locale === "es" ? "text-white" : "text-neutral-500 hover:text-white",
+          locale === "es" ? "text-white" : "text-neutral-300 hover:text-white",
           isPending && "opacity-50 cursor-not-allowed"
         )}>
         ES

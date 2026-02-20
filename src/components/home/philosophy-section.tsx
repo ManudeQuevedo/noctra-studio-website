@@ -49,7 +49,7 @@ export function PhilosophySection() {
             viewport={{ once: true }}
             transition={{ duration: 0.6 }}
             className="space-y-6">
-            <span className="text-xs font-mono text-neutral-500 uppercase tracking-widest">
+            <span className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
               {t("label")}
             </span>
             <h2 className="text-5xl md:text-7xl font-bold tracking-tight text-white leading-none">
@@ -126,7 +126,7 @@ export function PhilosophySection() {
 
               {/* Terminal Typing Effect */}
               <div className="pt-4 border-t border-white/10">
-                <div className="text-neutral-500 text-xs">
+                <div className="text-neutral-300 text-xs">
                   {terminalText}
                   <span className="animate-pulse">_</span>
                 </div>
@@ -134,7 +134,7 @@ export function PhilosophySection() {
             </div>
 
             {/* System Monitor - Mobile */}
-            <div className="block md:hidden mt-12 w-full border-y border-neutral-200 dark:border-white/10 py-4 font-mono text-xs text-neutral-500 text-center">
+            <div className="block md:hidden mt-12 w-full border-y border-neutral-200 dark:border-white/10 py-4 font-mono text-xs text-neutral-300 text-center">
               <span className="flex items-center justify-center gap-2">
                 <span className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
                 {t("system_monitor.mobile_status")}

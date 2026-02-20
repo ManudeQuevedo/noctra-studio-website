@@ -77,7 +77,7 @@ export default function ForgeLoginPage() {
         <div className="w-full max-w-[380px] space-y-16">
           {/* Title */}
           <div className="text-center space-y-4">
-            <h1 className="text-sm font-mono uppercase tracking-widest text-neutral-500">
+            <h1 className="text-sm font-mono uppercase tracking-widest text-neutral-300">
               Forge
             </h1>
             {reasonMessage && (
@@ -91,7 +91,7 @@ export default function ForgeLoginPage() {
             <div className="space-y-10">
               {/* Email Field */}
               <div className="space-y-3">
-                <label className="block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                <label className="block text-xs font-mono uppercase tracking-widest text-neutral-300">
                   Email
                 </label>
                 <input
@@ -106,7 +106,7 @@ export default function ForgeLoginPage() {
 
               {/* Password Field */}
               <div className="space-y-3">
-                <label className="block text-xs font-mono uppercase tracking-widest text-neutral-500">
+                <label className="block text-xs font-mono uppercase tracking-widest text-neutral-300">
                   Password
                 </label>
                 <input

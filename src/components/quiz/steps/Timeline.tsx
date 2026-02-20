@@ -70,7 +70,7 @@ export const Timeline = () => {
                 </div>
                 <div className="text-left">
                   <h3 className="font-bold text-neutral-200 group-hover:text-white transition-colors">{option.label}</h3>
-                  <p className="text-sm text-neutral-500 group-hover:text-neutral-400">{option.desc}</p>
+                  <p className="text-sm text-neutral-300 group-hover:text-neutral-400">{option.desc}</p>
                 </div>
               </div>
 

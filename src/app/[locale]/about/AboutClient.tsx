@@ -91,7 +91,7 @@ export default function AboutClient() {
                   {t("history.intro")}
                 </p>
                 <div className="pt-8 space-y-8">
-                  <h3 className="text-sm font-mono text-neutral-500 uppercase tracking-widest">
+                  <h3 className="text-sm font-mono text-neutral-300 uppercase tracking-widest">
                     {t("history.approach_title")}
                   </h3>
                   <div className="grid grid-cols-1 gap-8">
@@ -148,7 +148,7 @@ export default function AboutClient() {
           </div>
 
           <FadeIn delay={0.4}>
-            <p className="mt-12 text-sm font-mono text-neutral-500 text-center italic">
+            <p className="mt-12 text-sm font-mono text-neutral-300 text-center italic">
               {t("team.footer")}
             </p>
           </FadeIn>
@@ -183,7 +183,7 @@ export default function AboutClient() {
           <div className="flex flex-wrap justify-center gap-6">
             {(t.raw("tech.summary_labels") as string[]).map((label, i) => (
               <FadeIn key={label} delay={0.5 + i * 0.1}>
-                <div className="flex items-center gap-2 text-neutral-500 text-xs font-mono uppercase tracking-[0.2em]">
+                <div className="flex items-center gap-2 text-neutral-300 text-xs font-mono uppercase tracking-[0.2em]">
                   <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                   {label}
                 </div>
@@ -235,7 +235,7 @@ export default function AboutClient() {
                 {t("trust.cta_button")}
                 <ArrowRight className="w-5 h-5" />
               </Link>
-              <p className="text-neutral-500 font-mono text-xs uppercase tracking-widest">
+              <p className="text-neutral-300 font-mono text-xs uppercase tracking-widest">
                 {t("trust.cta_footer")}
               </p>
             </div>
@@ -259,7 +259,7 @@ export default function AboutClient() {
                 {t("cta.button")}
                 <ArrowRight className="w-7 h-7 group-hover:translate-x-1 transition-transform" />
               </Link>
-              <p className="text-neutral-500 font-mono text-sm uppercase tracking-widest">
+              <p className="text-neutral-300 font-mono text-sm uppercase tracking-widest">
                 {t("cta.footer")}
               </p>
             </div>

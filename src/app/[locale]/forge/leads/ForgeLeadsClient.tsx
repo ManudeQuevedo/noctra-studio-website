@@ -79,7 +79,7 @@ export default function ForgeLeadsClient({
 
       <aside className="w-full md:w-[320px] bg-[#080808] border-r border-neutral-900 flex flex-col shrink-0 h-[40vh] md:h-full">
         <div className="p-6 border-b border-neutral-900">
-          <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+          <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
             Recent Leads
           </h2>
         </div>
@@ -94,10 +94,10 @@ export default function ForgeLeadsClient({
                   : "hover:bg-white/[0.02] border-l-2 border-transparent"
               }`}>
               <div className="flex items-center justify-between mb-1">
-                <span className="text-[10px] font-mono text-neutral-600 bg-white/[0.03] px-1.5 py-0.5 border border-white/[0.05]">
+                <span className="text-[10px] font-mono text-neutral-400 bg-white/[0.03] px-1.5 py-0.5 border border-white/[0.05]">
                   {lead.request_id || "NOC-XXXX"}
                 </span>
-                <span className="text-[9px] font-mono text-neutral-500 uppercase">
+                <span className="text-[9px] font-mono text-neutral-300 uppercase">
                   {format(new Date(lead.created_at), "MMM d")}
                 </span>
               </div>
@@ -111,7 +111,7 @@ export default function ForgeLeadsClient({
                   {lead.service_interest}
                 </span>
                 {lead.locale && (
-                  <span className="text-[10px] text-neutral-600 font-mono uppercase">
+                  <span className="text-[10px] text-neutral-400 font-mono uppercase">
                     [{lead.locale}]
                   </span>
                 )}
@@ -123,7 +123,7 @@ export default function ForgeLeadsClient({
 
       <main className="flex-1 overflow-y-auto bg-[#050505]">
         {!selectedLead ? (
-          <div className="h-full flex items-center justify-center text-neutral-600 font-mono text-xs uppercase tracking-widest">
+          <div className="h-full flex items-center justify-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
             Select a lead to view details
           </div>
         ) : (
@@ -147,7 +147,7 @@ export default function ForgeLeadsClient({
                 <h1 className="text-4xl md:text-6xl font-black text-white tracking-tight">
                   {selectedLead.name}
                 </h1>
-                <p className="text-neutral-500 font-mono text-sm">
+                <p className="text-neutral-300 font-mono text-sm">
                   Received on{" "}
                   {format(new Date(selectedLead.created_at), "PPPP 'at' p")}
                 </p>
@@ -157,7 +157,7 @@ export default function ForgeLeadsClient({
             {/* Quick Actions/Info Grid */}
             <div className="grid grid-cols-1 md:grid-cols-2 gap-12">
               <section className="space-y-8">
-                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Contact Information
                 </h3>
                 <div className="space-y-6">
@@ -166,7 +166,7 @@ export default function ForgeLeadsClient({
                       <Mail className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-mono uppercase text-neutral-600">
+                      <p className="text-[10px] font-mono uppercase text-neutral-400">
                         Email
                       </p>
                       <a
@@ -182,7 +182,7 @@ export default function ForgeLeadsClient({
                       <Phone className="w-4 h-4" />
                     </div>
                     <div>
-                      <p className="text-[10px] font-mono uppercase text-neutral-600">
+                      <p className="text-[10px] font-mono uppercase text-neutral-400">
                         Phone
                       </p>
                       <a
@@ -196,14 +196,14 @@ export default function ForgeLeadsClient({
               </section>
 
               <section className="space-y-8">
-                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Source Tracking
                 </h3>
                 <div className="space-y-4">
                   <div className="flex items-start gap-4">
-                    <Globe className="w-4 h-4 text-neutral-600 mt-1" />
+                    <Globe className="w-4 h-4 text-neutral-400 mt-1" />
                     <div>
-                      <p className="text-[10px] font-mono uppercase text-neutral-600">
+                      <p className="text-[10px] font-mono uppercase text-neutral-400">
                         Origin CTA
                       </p>
                       <p className="text-sm font-mono text-emerald-400">
@@ -212,9 +212,9 @@ export default function ForgeLeadsClient({
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Calendar className="w-4 h-4 text-neutral-600 mt-1" />
+                    <Calendar className="w-4 h-4 text-neutral-400 mt-1" />
                     <div>
-                      <p className="text-[10px] font-mono uppercase text-neutral-600">
+                      <p className="text-[10px] font-mono uppercase text-neutral-400">
                         Locale
                       </p>
                       <p className="text-sm font-mono text-white uppercase">
@@ -223,9 +223,9 @@ export default function ForgeLeadsClient({
                     </div>
                   </div>
                   <div className="flex items-start gap-4">
-                    <Globe className="w-4 h-4 text-neutral-600 mt-1" />
+                    <Globe className="w-4 h-4 text-neutral-400 mt-1" />
                     <div className="overflow-hidden">
-                      <p className="text-[10px] font-mono uppercase text-neutral-600">
+                      <p className="text-[10px] font-mono uppercase text-neutral-400">
                         Source Page
                       </p>
                       <p className="text-xs font-mono text-neutral-400 truncate max-w-xs">
@@ -241,7 +241,7 @@ export default function ForgeLeadsClient({
             <section className="space-y-6 pt-12 border-t border-neutral-900">
               <div className="flex items-center gap-2">
                 <MessageSquare className="w-4 h-4 text-emerald-500" />
-                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                   Inquiry Message
                 </h3>
               </div>
@@ -259,7 +259,7 @@ export default function ForgeLeadsClient({
                   <h4 className="text-sm font-bold text-white mb-1">
                     Response Automation
                   </h4>
-                  <p className="text-xs text-neutral-500">
+                  <p className="text-xs text-neutral-300">
                     Status of the automated email response triggered upon
                     submission.
                   </p>
@@ -270,7 +270,7 @@ export default function ForgeLeadsClient({
                       <p className="text-[10px] font-mono uppercase text-emerald-500 font-bold">
                         SENT SUCCESSFULLY
                       </p>
-                      <p className="text-[10px] font-mono text-neutral-600 uppercase">
+                      <p className="text-[10px] font-mono text-neutral-400 uppercase">
                         {format(new Date(selectedLead.email_sent_at), "PPp")}
                       </p>
                     </div>

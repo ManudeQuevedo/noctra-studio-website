@@ -46,7 +46,7 @@ function ComparisonCard({ col, rows, recommendedBadge, t }: any) {
           )}>
           {col.name}
         </h3>
-        <p className="text-sm text-neutral-500 font-medium mt-1">
+        <p className="text-sm text-neutral-300 font-medium mt-1">
           {col.subtitle}
         </p>
       </div>
@@ -58,7 +58,7 @@ function ComparisonCard({ col, rows, recommendedBadge, t }: any) {
 
           return (
             <div key={row.criteria} className="flex justify-between items-start gap-4">
-              <span className="text-xs text-neutral-500 leading-snug w-2/5">
+              <span className="text-xs text-neutral-300 leading-snug w-2/5">
                 {row.criteria}
               </span>
               <div className="w-3/5 flex flex-col text-right">
@@ -143,7 +143,7 @@ function MobileTableSlider({ columns, rows, recommendedBadge, t }: any) {
         <h3 className="text-3xl font-black text-white">{t("mobile_title")}</h3>
         <p className="text-neutral-400 text-sm flex items-center justify-center gap-2 mt-2">
           {t("mobile_subtitle")}{" "}
-          <MoveRight className="w-4 h-4 text-neutral-500" />
+          <MoveRight className="w-4 h-4 text-neutral-300" />
         </p>
       </div>
 
@@ -251,7 +251,7 @@ export function FeatureComparisonTable() {
         className="hidden lg:block w-full overflow-hidden rounded-3xl border border-neutral-800 bg-neutral-900/20 backdrop-blur-sm shadow-2xl">
         {/* Table label */}
         <div className="px-6 pt-6 pb-4 border-b border-neutral-800/60">
-          <p className="text-xs font-bold text-neutral-500 uppercase tracking-widest">
+          <p className="text-xs font-bold text-neutral-300 uppercase tracking-widest">
             {/* Compare options at a glance */}
           </p>
         </div>
@@ -286,7 +286,7 @@ export function FeatureComparisonTable() {
                       )}>
                       {col.name}
                     </div>
-                    <div className="text-[11px] text-neutral-500 mt-1 font-medium">
+                    <div className="text-[11px] text-neutral-300 mt-1 font-medium">
                       {col.subtitle}
                     </div>
                   </th>

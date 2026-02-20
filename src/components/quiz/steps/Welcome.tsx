@@ -84,7 +84,7 @@ export const Welcome = () => {
           Start Quiz{" "}
           <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
         </button>
-        <p className="text-xs text-neutral-500 font-medium">
+        <p className="text-xs text-neutral-300 font-medium">
           No commitment required
         </p>
       </m.div>

@@ -62,7 +62,7 @@ export function ImpactSection() {
 
                 <div className="mt-auto">
                   <div className="bg-neutral-900 border border-neutral-800 p-4 rounded-sm mb-6">
-                    <p className="text-xs font-mono text-neutral-500 leading-relaxed">
+                    <p className="text-xs font-mono text-neutral-300 leading-relaxed">
                       <strong className="text-neutral-400">
                         {t("volunteering.note_label")}
                       </strong>{" "}
@@ -97,7 +97,7 @@ export function ImpactSection() {
 
                 <div className="mt-auto">
                   <div className="bg-neutral-900 border border-neutral-800 p-4 rounded-sm mb-6">
-                    <p className="text-xs font-mono text-neutral-500 leading-relaxed">
+                    <p className="text-xs font-mono text-neutral-300 leading-relaxed">
                       <strong className="text-neutral-400">
                         {t("mentorship.note_label")}
                       </strong>{" "}

@@ -90,7 +90,7 @@ export const CurrentSituation = () => {
                   {option.label}
                 </div>
                 <div
-                  className={`text-sm mt-0.5 ${isSelected ? "text-neutral-600" : "text-neutral-500 group-hover:text-neutral-400"}`}>
+                  className={`text-sm mt-0.5 ${isSelected ? "text-neutral-400" : "text-neutral-300 group-hover:text-neutral-400"}`}>
                   {option.desc}
                 </div>
               </div>

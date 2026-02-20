@@ -107,7 +107,7 @@ export function AIAutomationShowcase() {
 
                   <div className="space-y-4 flex-grow">
                     <div>
-                      <p className="text-neutral-500 text-xs uppercase font-mono tracking-widest mb-1">
+                      <p className="text-neutral-300 text-xs uppercase font-mono tracking-widest mb-1">
                         {t("problem_label")}
                       </p>
                       <p className="text-neutral-300">{item.problem}</p>
@@ -121,7 +121,7 @@ export function AIAutomationShowcase() {
                     </div>
 
                     <div>
-                      <p className="text-neutral-500 text-xs uppercase font-mono tracking-widest mb-1">
+                      <p className="text-neutral-300 text-xs uppercase font-mono tracking-widest mb-1">
                         {t("result_label")}
                       </p>
                       <p className="text-white font-bold text-lg">

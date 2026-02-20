@@ -26,7 +26,7 @@ export function Hero() {
               {t("hero.trust_badge.guarantee")}
             </span>
             <div className="w-px h-3 bg-neutral-800" />
-            <span className="text-[10px] font-medium text-neutral-500 uppercase tracking-widest">
+            <span className="text-[10px] font-medium text-neutral-300 uppercase tracking-widest">
               {t("hero.trust_badge.founder")}
             </span>
           </div>
@@ -67,7 +67,7 @@ export function Hero() {
           opacity: { delay: 1, duration: 1 },
           y: { repeat: Infinity, duration: 2, ease: "easeInOut" },
         }}
-        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-600">
+        className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-400">
         <ChevronDown className="w-8 h-8" />
       </motion.div>
     </section>

@@ -50,7 +50,7 @@ export function ModernStackSection() {
               <h3 className="text-xl font-bold text-neutral-900 dark:text-white mb-4">
                 {item.title}
               </h3>
-              <p className="text-neutral-600 dark:text-neutral-400 leading-relaxed">
+              <p className="text-neutral-400 dark:text-neutral-400 leading-relaxed">
                 {item.desc}
               </p>
             </m.div>

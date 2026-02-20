@@ -78,7 +78,7 @@ export default function GuaranteeClient() {
                       <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center">
                         <Icon className="w-5 h-5 text-white" />
                       </div>
-                      <span className="text-xs font-mono text-neutral-500">
+                      <span className="text-xs font-mono text-neutral-300">
                         STEP {i + 1}
                       </span>
                     </div>
@@ -181,7 +181,7 @@ export default function GuaranteeClient() {
             <ul className="space-y-4">
               {(t.raw("fine_print") as string[]).map((text, i) => (
                 <li key={text} className="flex items-start gap-3 text-neutral-400">
-                  <span className="text-neutral-600 font-mono text-xs mt-1">
+                  <span className="text-neutral-400 font-mono text-xs mt-1">
                     {i + 1}.
                   </span>
                   {text}
@@ -205,7 +205,7 @@ export default function GuaranteeClient() {
                 {t("cta")}
               </Link>
             </Button>
-            <p className="text-neutral-500 text-sm mt-4">{t("cta_subtitle")}</p>
+            <p className="text-neutral-300 text-sm mt-4">{t("cta_subtitle")}</p>
           </FadeIn>
         </div>
       </section>

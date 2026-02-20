@@ -191,7 +191,7 @@ export function Header() {
       {/* Always visible, outside animations, mix-blend-difference for visibility on all backgrounds */}
       {/* Pixel Perfect Alignment: h-12 flex items-center guarantees vertical center sharing */}
       <div className="fixed top-6 left-6 z-[60] h-12 flex items-center md:hidden mix-blend-difference">
-        <Link href="/" className="block">
+        <Link href="/" className="block" aria-label="Noctra Studio Home">
           <BrandLogo className="w-[120px] h-auto text-white" />
         </Link>
       </div>
@@ -295,7 +295,7 @@ export function Header() {
                   <span
                     className={cn(
                       "text-xs font-bold uppercase tracking-widest transition-colors duration-300",
-                      isOpen ? "text-neutral-500" : "text-white",
+                      isOpen ? "text-neutral-300" : "text-white",
                     )}>
                     {isOpen ? "CLOSE" : "MENU"}
                   </span>
@@ -366,7 +366,7 @@ export function Header() {
                                   : "opacity-40 hover:opacity-100",
                               )}
                               onClick={() => setIsOpen(false)}>
-                              <span className="text-xs font-mono text-neutral-500 group-hover:text-neutral-300 transition-colors">
+                              <span className="text-xs font-mono text-neutral-300 group-hover:text-neutral-300 transition-colors">
                                 0{index + 1}
                               </span>
 
@@ -394,7 +394,7 @@ export function Header() {
                   <div className="w-[300px] border-l border-neutral-800/50 pl-16 py-4 flex flex-col justify-between h-full bg-gradient-to-b from-transparent to-black/20">
                     <div className="space-y-12">
                       <div className="space-y-6">
-                        <h4 className="text-xs font-bold uppercase text-neutral-500 tracking-widest">
+                        <h4 className="text-xs font-bold uppercase text-neutral-300 tracking-widest">
                           {t("system_capabilities")}
                         </h4>
                         <ul className="space-y-4">
@@ -427,7 +427,7 @@ export function Header() {
                             {t("all_systems_operational")}
                           </span>
                         </div>
-                        <p className="text-xs font-mono text-neutral-600 pl-4">
+                        <p className="text-xs font-mono text-neutral-400 pl-4">
                           {t("location", { defaultValue: "Querétaro, MX" })}
                         </p>
                       </div>
@@ -440,7 +440,7 @@ export function Header() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="Instagram"
-                            className="text-neutral-600 hover:text-white transition-colors">
+                            className="text-neutral-400 hover:text-white transition-colors">
                             <Instagram className="w-5 h-5" />
                           </a>
                           <a
@@ -448,7 +448,7 @@ export function Header() {
                             target="_blank"
                             rel="noopener noreferrer"
                             aria-label="X (formerly Twitter)"
-                            className="text-neutral-600 hover:text-white transition-colors">
+                            className="text-neutral-400 hover:text-white transition-colors">
                             <XIcon className="w-5 h-5" />
                           </a>
                         </div>
@@ -501,7 +501,7 @@ export function Header() {
                           "flex items-center justify-center gap-3 text-3xl font-bold tracking-tight transition-colors duration-300",
                           isActive
                             ? "text-white"
-                            : "text-neutral-500 hover:text-white",
+                            : "text-neutral-300 hover:text-white",
                         )}
                         onClick={() => setIsOpen(false)}>
                         {isActive && (
@@ -535,7 +535,7 @@ export function Header() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="Instagram"
-                        className="text-neutral-500 hover:text-white transition-colors p-2">
+                        className="text-neutral-300 hover:text-white transition-colors p-2">
                         <Instagram className="w-5 h-5" />
                       </a>
                       <a
@@ -543,7 +543,7 @@ export function Header() {
                         target="_blank"
                         rel="noopener noreferrer"
                         aria-label="X (formerly Twitter)"
-                        className="text-neutral-500 hover:text-white transition-colors p-2">
+                        className="text-neutral-300 hover:text-white transition-colors p-2">
                         <XIcon className="w-5 h-5" />
                       </a>
                     </div>

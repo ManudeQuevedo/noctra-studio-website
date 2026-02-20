@@ -148,7 +148,7 @@ export function NewContractModal({
         {/* Header */}
         <div className="p-6 border-b border-white/5 flex items-center justify-between">
           <div>
-            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+            <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
               Manual / Paso {step} de 2
             </span>
             <h3 className="text-lg font-bold text-white uppercase italic">
@@ -158,7 +158,7 @@ export function NewContractModal({
           <button
             onClick={onClose}
             className="p-2 hover:bg-white/5 transition-colors">
-            <X className="w-5 h-5 text-neutral-500" />
+            <X className="w-5 h-5 text-neutral-300" />
           </button>
         </div>
 
@@ -166,7 +166,7 @@ export function NewContractModal({
           {step === 1 ? (
             <div className="p-8 space-y-8">
               <div className="space-y-4">
-                <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-600">
+                <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-400">
                   Buscar Lead Existente
                 </label>
                 <div className="relative">
@@ -196,7 +196,7 @@ export function NewContractModal({
                         <p className="text-sm font-bold text-white group-hover:text-emerald-400 transition-colors">
                           {lead.name}
                         </p>
-                        <p className="text-[10px] font-mono text-neutral-600">
+                        <p className="text-[10px] font-mono text-neutral-400">
                           {lead.email}
                         </p>
                       </div>
@@ -219,7 +219,7 @@ export function NewContractModal({
               <div className="space-y-4">
                 <div className="grid grid-cols-2 gap-4">
                   <div className="space-y-2">
-                    <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-600">
+                    <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-400">
                       Nombre
                     </label>
                     <input
@@ -237,7 +237,7 @@ export function NewContractModal({
                     />
                   </div>
                   <div className="space-y-2">
-                    <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-600">
+                    <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-400">
                       Email
                     </label>
                     <input
@@ -259,7 +259,7 @@ export function NewContractModal({
             </div>
           ) : (
             <div className="p-8 grid grid-cols-1 gap-3">
-              <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-600 mb-2">
+              <label className="text-[9px] font-mono uppercase tracking-widest text-neutral-400 mb-2">
                 Seleccionar Plantilla de Servicio
               </label>
               {SERVICES.map((service) => (
@@ -268,14 +268,14 @@ export function NewContractModal({
                   onClick={() => handleCreate(service.id)}
                   disabled={isCreating}
                   className="group relative flex items-center gap-6 p-6 bg-white/[0.01] border border-white/5 hover:border-emerald-500/30 hover:bg-emerald-500/[0.02] transition-all text-left overflow-hidden">
-                  <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-neutral-600 group-hover:text-emerald-400 transition-all shrink-0">
+                  <div className="w-12 h-12 rounded-full bg-neutral-900 flex items-center justify-center text-neutral-400 group-hover:text-emerald-400 transition-all shrink-0">
                     <service.icon className="w-5 h-5" />
                   </div>
                   <div className="flex-1">
                     <h4 className="font-bold text-white mb-1 uppercase italic tracking-tight group-hover:text-emerald-400 transition-colors">
                       {service.name}
                     </h4>
-                    <p className="text-[10px] font-mono text-neutral-600 uppercase tracking-widest leading-relaxed">
+                    <p className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest leading-relaxed">
                       {service.description}
                     </p>
                   </div>

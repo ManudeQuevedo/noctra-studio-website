@@ -39,51 +39,52 @@ export function IntroLoader() {
 
   return (
     <LazyMotion features={domAnimation}>
-    <m.div
-      className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none"
-      initial="initial">
-      {/* Background Curtain */}
       <m.div
-        className="absolute inset-0 bg-[#050505] z-0 pointer-events-auto"
-        initial={{ opacity: 1 }}
-        animate={{ opacity: step === 4 ? 0 : 1 }}
-        transition={{ duration: 0.8, ease: "easeInOut" }}
-      />
+        aria-hidden="true"
+        className="fixed inset-0 z-[9999] flex items-center justify-center overflow-hidden pointer-events-none"
+        initial="initial">
+        {/* Background Curtain */}
+        <m.div
+          className="absolute inset-0 bg-[#050505] z-0 pointer-events-auto"
+          initial={{ opacity: 1 }}
+          animate={{ opacity: step === 4 ? 0 : 1 }}
+          transition={{ duration: 0.8, ease: "easeInOut" }}
+        />
 
-      {/* Phase 1: Text Sequence */}
-      <AnimatePresence mode="wait">
-        {step === 1 && (
-          <m.div
-            key="text"
-            initial={{ opacity: 1, x: 0 }}
-            exit={{ opacity: 0, x: 0 }}
-            transition={{ duration: 0.5 }}
-            className="absolute inset-0 z-10 flex items-center justify-center">
-            <TextSequence />
-          </m.div>
-        )}
-      </AnimatePresence>
+        {/* Phase 1: Text Sequence */}
+        <AnimatePresence mode="wait">
+          {step === 1 && (
+            <m.div
+              key="text"
+              initial={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: 0 }}
+              transition={{ duration: 0.5 }}
+              className="absolute inset-0 z-10 flex items-center justify-center">
+              <TextSequence />
+            </m.div>
+          )}
+        </AnimatePresence>
 
-      {/* Phase 2 & 3: Logo Reveal & Exit */}
-      <AnimatePresence>
-        {step === 2 && (
-          <m.div
-            key="logo"
-            initial={{ opacity: 0, filter: "blur(10px)", x: 0 }}
-            animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
-            exit={{
-              opacity: 0,
-              filter: "blur(10px)",
-              x: 0,
-              transition: { duration: 0.8 },
-            }}
-            transition={{ duration: 0.8, ease: "easeInOut" }}
-            className="absolute inset-0 z-20 flex items-center justify-center">
-            <BrandLogo className="text-white w-64 md:w-96 h-auto" />
-          </m.div>
-        )}
-      </AnimatePresence>
-    </m.div>
+        {/* Phase 2 & 3: Logo Reveal & Exit */}
+        <AnimatePresence>
+          {step === 2 && (
+            <m.div
+              key="logo"
+              initial={{ opacity: 0, filter: "blur(10px)", x: 0 }}
+              animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+              exit={{
+                opacity: 0,
+                filter: "blur(10px)",
+                x: 0,
+                transition: { duration: 0.8 },
+              }}
+              transition={{ duration: 0.8, ease: "easeInOut" }}
+              className="absolute inset-0 z-20 flex items-center justify-center">
+              <BrandLogo className="text-white w-64 md:w-96 h-auto" />
+            </m.div>
+          )}
+        </AnimatePresence>
+      </m.div>
     </LazyMotion>
   );
 }

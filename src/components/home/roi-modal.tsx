@@ -118,7 +118,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                 <h3 className="text-lg font-bold text-white leading-tight">
                   {t("title")}
                 </h3>
-                <p className="text-neutral-500 text-xs">{t("intro")}</p>
+                <p className="text-neutral-300 text-xs">{t("intro")}</p>
               </div>
             </div>
 
@@ -128,7 +128,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
               <div className="md:col-span-5 p-7 space-y-5">
                 {/* Current Clients */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-neutral-300">
                     {t("inputs.current_clients.label")}
                   </label>
                   <input
@@ -141,18 +141,18 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                     className="w-full bg-neutral-900 border border-neutral-800 rounded-xl py-3 px-4 text-lg font-bold text-white focus:outline-none focus:ring-1 focus:ring-emerald-500/30 focus:border-emerald-500/40 transition-all"
                     placeholder={t("inputs.current_clients.placeholder")}
                   />
-                  <p className="text-[9px] text-neutral-600 italic">
+                  <p className="text-[9px] text-neutral-400 italic">
                     {t("inputs.current_clients.helper")}
                   </p>
                 </div>
 
                 {/* Avg Ticket */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-neutral-300">
                     {t("inputs.avg_ticket.label")}
                   </label>
                   <div className="relative">
-                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-600 pointer-events-none">
+                    <div className="absolute left-4 top-1/2 -translate-y-1/2 text-neutral-400 pointer-events-none">
                       <DollarSign className="w-4 h-4" />
                     </div>
                     <input
@@ -165,18 +165,18 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                       className="w-full bg-neutral-900 border border-neutral-800 rounded-xl py-3 pl-9 pr-14 text-lg font-bold text-white focus:outline-none focus:ring-1 focus:ring-emerald-500/30 focus:border-emerald-500/40 transition-all"
                       placeholder={t("inputs.avg_ticket.placeholder")}
                     />
-                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[9px] font-bold text-neutral-600 uppercase tracking-widest pointer-events-none">
+                    <div className="absolute right-4 top-1/2 -translate-y-1/2 text-[9px] font-bold text-neutral-400 uppercase tracking-widest pointer-events-none">
                       MXN
                     </div>
                   </div>
-                  <p className="text-[9px] text-neutral-600 italic">
+                  <p className="text-[9px] text-neutral-400 italic">
                     {t("inputs.avg_ticket.helper")}
                   </p>
                 </div>
 
                 {/* Investment Tier */}
                 <div className="space-y-1.5">
-                  <label className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                  <label className="text-[10px] font-bold uppercase tracking-widest text-neutral-300">
                     {t("inputs.investment_tier.label")}
                   </label>
                   <div className="relative">
@@ -197,7 +197,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                       </option>
                     </select>
                     <div className="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none">
-                      <ChevronDown className="w-4 h-4 text-neutral-600" />
+                      <ChevronDown className="w-4 h-4 text-neutral-400" />
                     </div>
                   </div>
                 </div>
@@ -228,7 +228,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                   {/* Secondary Metrics Row */}
                   <div className="grid grid-cols-3 gap-3">
                     <div className="p-4 bg-neutral-900/80 border border-neutral-800/60 rounded-xl text-center">
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-neutral-500 mb-1">
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-neutral-300 mb-1">
                         {t("outputs.monthly_new_revenue.label")}
                       </div>
                       <div className="text-lg font-bold text-white leading-tight">
@@ -240,7 +240,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                     </div>
 
                     <div className="p-4 bg-neutral-900/80 border border-neutral-800/60 rounded-xl text-center">
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-neutral-500 mb-1">
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-neutral-300 mb-1">
                         {t("outputs.annual_roi.label")}
                       </div>
                       <div className="text-lg font-bold text-white leading-tight">
@@ -249,7 +249,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                     </div>
 
                     <div className="p-4 bg-neutral-900/80 border border-neutral-800/60 rounded-xl text-center">
-                      <div className="text-[9px] font-bold uppercase tracking-widest text-neutral-500 mb-1">
+                      <div className="text-[9px] font-bold uppercase tracking-widest text-neutral-300 mb-1">
                         {t("outputs.three_year_revenue.label")}
                       </div>
                       <div className="text-lg font-bold text-white leading-tight">
@@ -269,7 +269,7 @@ export function RoiModal({ isOpen, onClose }: RoiModalProps) {
                     {t("cta")}
                     <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                   </Link>
-                  <p className="text-[9px] text-neutral-600 text-center leading-relaxed italic">
+                  <p className="text-[9px] text-neutral-400 text-center leading-relaxed italic">
                     {t("disclaimer")}
                   </p>
                 </div>

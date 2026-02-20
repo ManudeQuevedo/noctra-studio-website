@@ -64,7 +64,7 @@ export function OngoingPlans() {
             )}
 
             <div className="mb-8">
-              <h3 className="text-[10px] font-black text-neutral-500 uppercase tracking-widest mb-4 flex items-center gap-2">
+              <h3 className="text-[10px] font-black text-neutral-300 uppercase tracking-widest mb-4 flex items-center gap-2">
                 <div
                   className={cn(
                     "w-1.5 h-1.5 rounded-full",
@@ -88,7 +88,7 @@ export function OngoingPlans() {
                   <Check
                     className={cn(
                       "w-5 h-5 shrink-0 mt-0.5",
-                      plan.popular ? "text-emerald-500" : "text-neutral-600",
+                      plan.popular ? "text-emerald-500" : "text-neutral-400",
                     )}
                   />
                   <span>{feature}</span>

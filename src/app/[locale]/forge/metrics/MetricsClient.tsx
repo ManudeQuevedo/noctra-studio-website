@@ -142,7 +142,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
 
       <main className="flex-1 overflow-y-auto min-w-0">
         <header className="p-8 border-b border-neutral-900 bg-[#080808]">
-          <h1 className="text-[10px] font-mono uppercase tracking-[0.4em] text-neutral-500 mb-2">
+          <h1 className="text-[10px] font-mono uppercase tracking-[0.4em] text-neutral-300 mb-2">
             Metrics Dashboard
           </h1>
           <h2 className="text-3xl font-black tracking-tighter">
@@ -186,7 +186,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
 
           {/* Row 2: Funnel Visualization */}
           <section className="bg-[#111111] border border-neutral-900 p-8">
-            <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 mb-8">
+            <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-8">
               Pipeline Funnel
             </h3>
             <div className="flex items-end h-48 gap-px">
@@ -211,7 +211,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                     className="flex-1 flex flex-col justify-end group">
                     <div className="flex flex-col items-center mb-4 transition-transform group-hover:-translate-y-1">
                       <span className="text-xl font-black">{count}</span>
-                      <span className="text-[9px] font-mono text-neutral-600 uppercase tracking-tighter">
+                      <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-tighter">
                         {totalPct.toFixed(0)}% del total
                       </span>
                     </div>
@@ -222,7 +222,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                         opacity: 0.3 + idx * 0.15,
                       }}
                     />
-                    <div className="mt-4 text-[9px] font-mono text-neutral-500 uppercase tracking-widest text-center truncate px-2">
+                    <div className="mt-4 text-[9px] font-mono text-neutral-300 uppercase tracking-widest text-center truncate px-2">
                       {stage.replace("_", " ")}
                     </div>
                   </div>
@@ -235,7 +235,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Leads by Service */}
             <section className="bg-[#111111] border border-neutral-900 p-8">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 mb-8">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-8">
                 Leads por Servicio
               </h3>
               <div className="space-y-6">
@@ -265,7 +265,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
 
             {/* Monthly Growth */}
             <section className="bg-[#111111] border border-neutral-900 p-8 flex flex-col">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 mb-8">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-8">
                 Leads por Mes (Últimos 6m)
               </h3>
               <div className="flex-1 flex items-end justify-between gap-4 h-48">
@@ -285,7 +285,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                         className="w-full bg-emerald-500 scale-y-0 origin-bottom transition-transform duration-1000"
                         style={{ height: `${height}%`, transform: "scaleY(1)" }}
                       />
-                      <span className="text-[10px] font-mono text-neutral-600 uppercase">
+                      <span className="text-[10px] font-mono text-neutral-400 uppercase">
                         {m.label}
                       </span>
                     </div>
@@ -298,7 +298,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
           {/* Row 4: Lost Leads Table */}
           <section className="bg-[#111111] border border-neutral-900 overflow-hidden">
             <div className="p-8 border-b border-neutral-900">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                 Leads Perdidos
               </h3>
             </div>
@@ -313,16 +313,16 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                 <table className="w-full text-left border-collapse">
                   <thead>
                     <tr className="bg-[#0d0d0d] border-b border-neutral-900">
-                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-600">
+                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-400">
                         Nombre
                       </th>
-                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-600">
+                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-400">
                         Servicio
                       </th>
-                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-600">
+                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-400">
                         Valor Est.
                       </th>
-                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-600">
+                      <th className="px-8 py-4 text-[9px] font-mono uppercase tracking-widest text-neutral-400">
                         Razón Perdida
                       </th>
                     </tr>
@@ -336,7 +336,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                           {lead.name}
                         </td>
                         <td className="px-8 py-4">
-                          <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 bg-white/[0.03] px-2 py-1 border border-white/[0.05]">
+                          <span className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 bg-white/[0.03] px-2 py-1 border border-white/[0.05]">
                             {lead.service_interest}
                           </span>
                         </td>
@@ -346,7 +346,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                             : "---"}
                         </td>
                         <td className="px-8 py-4">
-                          <p className="text-xs text-neutral-500 italic max-w-xs truncate">
+                          <p className="text-xs text-neutral-300 italic max-w-xs truncate">
                             {lead.lost_reason || "No se especificó razón"}
                           </p>
                         </td>
@@ -379,7 +379,7 @@ function KPICard({
   return (
     <div className="bg-[#111111] border border-neutral-900 p-6 space-y-4">
       <div className="flex items-center justify-between">
-        <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-600">
+        <span className="text-[9px] font-mono uppercase tracking-[0.2em] text-neutral-400">
           {label}
         </span>
         <Icon className="w-4 h-4 text-neutral-700" />

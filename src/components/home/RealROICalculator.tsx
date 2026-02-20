@@ -441,7 +441,7 @@ export function RealROICalculator() {
             <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white print:text-black">
               {t("title")}
             </h2>
-            <p className="text-neutral-400 max-w-2xl print:text-neutral-600">
+            <p className="text-neutral-400 max-w-2xl print:text-neutral-400">
               {t("subtitle")}
             </p>
           </div>
@@ -455,7 +455,7 @@ export function RealROICalculator() {
                   "px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all",
                   currency === "MXN"
                     ? "bg-emerald-500 text-black"
-                    : "text-neutral-500 hover:text-white",
+                    : "text-neutral-300 hover:text-white",
                 )}>
                 MXN
               </button>
@@ -465,12 +465,12 @@ export function RealROICalculator() {
                   "px-4 py-2 rounded-lg text-xs font-mono font-bold transition-all",
                   currency === "USD"
                     ? "bg-emerald-500 text-black"
-                    : "text-neutral-500 hover:text-white",
+                    : "text-neutral-300 hover:text-white",
                 )}>
                 USD
               </button>
             </div>
-            <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest text-right">
+            <div className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest text-right">
               1 USD = {formatCur(CONFIG.EXCHANGE_RATE, "MXN")} |{" "}
               {CONFIG.LAST_UPDATED}
             </div>
@@ -486,14 +486,14 @@ export function RealROICalculator() {
                   "w-8 h-8 rounded-full border-2 flex items-center justify-center text-xs font-bold transition-all duration-500",
                   step >= s
                     ? "bg-emerald-500 border-emerald-500 text-black shadow-[0_0_15px_rgba(16,185,129,0.5)]"
-                    : "border-neutral-800 text-neutral-600",
+                    : "border-neutral-800 text-neutral-400",
                 )}>
                 {s}
               </div>
               <span
                 className={cn(
                   "text-[9px] font-mono uppercase tracking-widest transition-colors",
-                  step === s ? "text-emerald-500" : "text-neutral-600",
+                  step === s ? "text-emerald-500" : "text-neutral-400",
                 )}>
                 {t(`steps.${Object.keys(t.raw("steps"))[s - 1]}`)}
               </span>
@@ -539,7 +539,7 @@ export function RealROICalculator() {
                       <h3 className="text-sm font-bold text-white text-center mb-2 uppercase tracking-wider">
                         {t(`business_types.${type.id}.label`)}
                       </h3>
-                      <p className="text-[10px] text-neutral-500 text-center leading-relaxed font-medium">
+                      <p className="text-[10px] text-neutral-300 text-center leading-relaxed font-medium">
                         {t(`business_types.${type.id}.sub`)}
                       </p>
 
@@ -576,7 +576,7 @@ export function RealROICalculator() {
                     <h3 className="text-xl font-bold text-white uppercase tracking-tight">
                       {t("universal_inputs.revenue")}
                     </h3>
-                    <p className="text-xs text-neutral-500">
+                    <p className="text-xs text-neutral-300">
                       Configure your business baseline
                     </p>
                   </div>
@@ -591,7 +591,7 @@ export function RealROICalculator() {
                           <label htmlFor="roi-revenue" className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
                             Monthly Revenue
                           </label>
-                          <p className="text-[10px] text-neutral-500">
+                          <p className="text-[10px] text-neutral-300">
                             Average monthly income from your business
                           </p>
                         </div>
@@ -601,7 +601,7 @@ export function RealROICalculator() {
                       </div>
                       <div className="relative group">
                         <div className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-neutral-800 flex items-center justify-center border border-neutral-700 group-focus-within:border-emerald-500/50 transition-colors">
-                          <DollarSign className="w-4 h-4 text-neutral-500" />
+                          <DollarSign className="w-4 h-4 text-neutral-300" />
                         </div>
                         <Input
                           type="text"
@@ -643,14 +643,14 @@ export function RealROICalculator() {
                           <label htmlFor="roi-avg-ticket" className="text-xs font-mono uppercase tracking-[0.2em] text-neutral-400">
                             Average Transaction
                           </label>
-                          <p className="text-[10px] text-neutral-500">
+                          <p className="text-[10px] text-neutral-300">
                             Typical amount per sale or project
                           </p>
                         </div>
                       </div>
                       <div className="relative group">
                         <div className="absolute left-4 top-1/2 -translate-y-1/2 w-8 h-8 rounded-lg bg-neutral-800 flex items-center justify-center border border-neutral-700 group-focus-within:border-emerald-500/50 transition-colors">
-                          <ShoppingBag className="w-4 h-4 text-neutral-500" />
+                          <ShoppingBag className="w-4 h-4 text-neutral-300" />
                         </div>
                         <Input
                           type="text"
@@ -676,7 +676,7 @@ export function RealROICalculator() {
                           className="bg-neutral-800/30 border-neutral-800 h-14 pl-16 text-lg font-bold focus:ring-1 focus:ring-emerald-500/20"
                         />
                       </div>
-                      <p className="text-[9px] text-neutral-600 font-mono italic">
+                      <p className="text-[9px] text-neutral-400 font-mono italic">
                         e.g., {formatCur(currency === "MXN" ? 2500 : 139)} for
                         services | {formatCur(currency === "MXN" ? 450 : 25)}{" "}
                         retail
@@ -687,12 +687,12 @@ export function RealROICalculator() {
                     <div className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/50 flex items-center justify-between opacity-80">
                       <div className="space-y-1">
                         <div className="flex items-center gap-2">
-                          <Users className="w-3.5 h-3.5 text-neutral-500" />
-                          <span className="text-[10px] uppercase font-bold text-neutral-500 tracking-widest">
+                          <Users className="w-3.5 h-3.5 text-neutral-300" />
+                          <span className="text-[10px] uppercase font-bold text-neutral-300 tracking-widest">
                             Monthly Clients
                           </span>
                         </div>
-                        <p className="text-[9px] text-neutral-600 font-mono">
+                        <p className="text-[9px] text-neutral-400 font-mono">
                           {formatCur(state.revenue)} ÷{" "}
                           {formatCur(state.avgTicket)}
                         </p>
@@ -713,7 +713,7 @@ export function RealROICalculator() {
                               Conversion Rate
                             </span>
                             <button className="group relative">
-                              <HelpCircle className="w-3.5 h-3.5 text-neutral-500 hover:text-emerald-500 transition-colors" />
+                              <HelpCircle className="w-3.5 h-3.5 text-neutral-300 hover:text-emerald-500 transition-colors" />
                               <div className="absolute left-1/2 -translate-x-1/2 bottom-full mb-4 w-[280px] p-4 bg-neutral-900 border border-neutral-800 rounded-2xl shadow-2xl opacity-0 scale-95 pointer-events-none group-hover:opacity-100 group-hover:scale-100 transition-all z-50 text-left">
                                 <h4 className="text-xs font-bold text-white mb-2 uppercase tracking-tight flex items-center gap-2">
                                   <Activity className="w-3 h-3 text-emerald-500" />
@@ -725,7 +725,7 @@ export function RealROICalculator() {
                                 </p>
                                 <div className="space-y-2 border-t border-neutral-800 pt-3">
                                   <div className="flex justify-between text-[9px] font-mono">
-                                    <span className="text-neutral-500 uppercase tracking-tight">
+                                    <span className="text-neutral-300 uppercase tracking-tight">
                                       E-commerce
                                     </span>
                                     <span className="text-emerald-500">
@@ -733,7 +733,7 @@ export function RealROICalculator() {
                                     </span>
                                   </div>
                                   <div className="flex justify-between text-[9px] font-mono">
-                                    <span className="text-neutral-500 uppercase tracking-tight">
+                                    <span className="text-neutral-300 uppercase tracking-tight">
                                       B2B / Services
                                     </span>
                                     <span className="text-emerald-500">
@@ -823,7 +823,7 @@ export function RealROICalculator() {
                                 )}>
                                 {preset.label}
                               </div>
-                              <p className="text-[9px] text-neutral-600 line-clamp-1">
+                              <p className="text-[9px] text-neutral-400 line-clamp-1">
                                 {preset.sub}
                               </p>
                             </div>
@@ -1085,7 +1085,7 @@ export function RealROICalculator() {
                               }
                             />
                             <div className="space-y-4">
-                              <label className="text-[10px] uppercase font-bold text-neutral-500">
+                              <label className="text-[10px] uppercase font-bold text-neutral-300">
                                 {t("fields.admin_hours")}
                               </label>
                               <Input
@@ -1107,7 +1107,7 @@ export function RealROICalculator() {
                           <>
                             <div className="space-y-4">
                               <div className="flex justify-between">
-                                <label className="text-[10px] uppercase font-bold text-neutral-500">
+                                <label className="text-[10px] uppercase font-bold text-neutral-300">
                                   {t("fields.cogs")}
                                 </label>
                                 <span className="text-xs font-bold text-white">
@@ -1143,7 +1143,7 @@ export function RealROICalculator() {
                               }
                             />
                             <div className="space-y-4">
-                              <label className="text-[10px] uppercase font-bold text-neutral-500">
+                              <label className="text-[10px] uppercase font-bold text-neutral-300">
                                 {t("fields.labor_hours")}
                               </label>
                               <Input
@@ -1164,7 +1164,7 @@ export function RealROICalculator() {
                           <>
                             <div className="space-y-4">
                               <div className="flex justify-between">
-                                <label className="text-[10px] uppercase font-bold text-neutral-500">
+                                <label className="text-[10px] uppercase font-bold text-neutral-300">
                                   {t("fields.freelance")}
                                 </label>
                                 <span className="text-xs font-bold text-white">
@@ -1187,7 +1187,7 @@ export function RealROICalculator() {
                           <>
                             <div className="space-y-4">
                               <div className="flex justify-between">
-                                <label className="text-[10px] uppercase font-bold text-neutral-500">
+                                <label className="text-[10px] uppercase font-bold text-neutral-300">
                                   {t("fields.churn")}
                                 </label>
                                 <span className="text-xs font-bold text-white">
@@ -1224,17 +1224,17 @@ export function RealROICalculator() {
                     </div>
 
                     <div className="p-6 rounded-[24px] bg-neutral-900 border border-neutral-800 space-y-4">
-                      <h5 className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-500 text-center">
+                      <h5 className="text-[10px] font-mono font-bold uppercase tracking-widest text-neutral-300 text-center">
                         Owner Admin Load
                       </h5>
                       <div className="flex items-end justify-center gap-2 text-3xl font-bold text-white">
                         {Math.round(metrics.timeSpent)}{" "}
-                        <span className="text-sm font-normal text-neutral-500 mb-1">
+                        <span className="text-sm font-normal text-neutral-300 mb-1">
                           hrs/mo
                         </span>
                       </div>
                       <div className="pt-2 border-t border-neutral-800">
-                        <p className="text-[9px] text-neutral-600 text-center uppercase tracking-widest">
+                        <p className="text-[9px] text-neutral-400 text-center uppercase tracking-widest">
                           Value of admin time:{" "}
                           <span className="text-neutral-400">
                             {formatCur(metrics.timeSpent * 500)}
@@ -1285,7 +1285,7 @@ export function RealROICalculator() {
                   {/* Current State Column */}
                   <div className="p-8 md:p-10 rounded-[40px] border border-neutral-800 bg-neutral-900/40 space-y-8 relative overflow-hidden group print:bg-white print:border-black/10">
                     <div className="relative z-10">
-                      <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-500 font-bold mb-8">
+                      <h4 className="text-xs font-mono uppercase tracking-[0.3em] text-neutral-300 font-bold mb-8">
                         {t("labels.current_state")}
                       </h4>
                       <div className="space-y-6">
@@ -1353,29 +1353,29 @@ export function RealROICalculator() {
                       <div className="text-4xl font-black text-emerald-500 tracking-tight">
                         +{formatCur(metrics.monthlyGain)}
                       </div>
-                      <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">
+                      <div className="text-[10px] text-neutral-300 uppercase font-bold tracking-widest">
                         {t("labels.per_month")}
                       </div>
                     </div>
                     <div className="space-y-3">
-                      <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500 font-bold">
+                      <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-300 font-bold">
                         {t("labels.payback_period")}
                       </div>
                       <div className="text-4xl font-black text-white tracking-tight print:text-black">
                         {metrics.payback.toFixed(1)}
                       </div>
-                      <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">
+                      <div className="text-[10px] text-neutral-300 uppercase font-bold tracking-widest">
                         {t("labels.months")}
                       </div>
                     </div>
                     <div className="space-y-3">
-                      <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500 font-bold">
+                      <div className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-300 font-bold">
                         {t("labels.annual_roi")}
                       </div>
                       <div className="text-4xl font-black text-white tracking-tight print:text-black">
                         {Math.round(metrics.roiYear)}%
                       </div>
-                      <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">
+                      <div className="text-[10px] text-neutral-300 uppercase font-bold tracking-widest">
                         Year 1 Projection
                       </div>
                     </div>
@@ -1386,7 +1386,7 @@ export function RealROICalculator() {
                       <div className="text-4xl font-black text-emerald-500 tracking-tight">
                         {Math.round(metrics.timeSaved)}
                       </div>
-                      <div className="text-[10px] text-neutral-500 uppercase font-bold tracking-widest">
+                      <div className="text-[10px] text-neutral-300 uppercase font-bold tracking-widest">
                         {t("labels.hours_month")}
                       </div>
                     </div>
@@ -1396,11 +1396,11 @@ export function RealROICalculator() {
                 {/* CTAs & Legal */}
                 <div className="flex flex-col md:flex-row items-center justify-between gap-8 pt-8 print:hidden">
                   <div className="space-y-2 max-w-lg">
-                    <p className="text-[10px] text-neutral-500 leading-relaxed uppercase tracking-wider font-mono">
+                    <p className="text-[10px] text-neutral-300 leading-relaxed uppercase tracking-wider font-mono">
                       <ShieldCheck className="w-3 h-3 inline mr-1 text-emerald-500/50" />
                       {t("labels.disclaimer_text")}
                     </p>
-                    <p className="text-[10px] text-neutral-500 leading-relaxed opacity-60 italic">
+                    <p className="text-[10px] text-neutral-300 leading-relaxed opacity-60 italic">
                       {t("labels.market_note")} • {t("labels.privacy_note")} •{" "}
                       {t("vat_note")}
                     </p>
@@ -1427,7 +1427,7 @@ export function RealROICalculator() {
                 <div className="flex justify-center print:hidden">
                   <button
                     onClick={() => setStep(1)}
-                    className="text-[10px] font-mono uppercase tracking-widest text-neutral-500 hover:text-emerald-500 transition-colors">
+                    className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 hover:text-emerald-500 transition-colors">
                     Re-calculate with different business type
                   </button>
                 </div>
@@ -1462,11 +1462,11 @@ function ExpenseInput({
 
   return (
     <div className="space-y-3">
-      <label className="text-[10px] uppercase font-bold text-neutral-500 tracking-widest line-clamp-1">
+      <label className="text-[10px] uppercase font-bold text-neutral-300 tracking-widest line-clamp-1">
         {label}
       </label>
       <div className="relative group">
-        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-mono font-bold text-neutral-600">
+        <div className="absolute left-3 top-1/2 -translate-y-1/2 text-[10px] font-mono font-bold text-neutral-400">
           $
         </div>
         <Input
@@ -1502,10 +1502,10 @@ function MetricRow({
   return (
     <div className="flex items-center justify-between gap-4">
       <div className="space-y-1">
-        <div className="text-[11px] font-mono text-neutral-500 uppercase tracking-widest">
+        <div className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest">
           {label}
         </div>
-        <div className="text-[10px] text-neutral-600 italic">{detail}</div>
+        <div className="text-[10px] text-neutral-400 italic">{detail}</div>
       </div>
       <div
         className={cn(
