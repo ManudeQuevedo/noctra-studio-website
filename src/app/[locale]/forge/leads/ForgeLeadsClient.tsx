@@ -121,7 +121,7 @@ export default function ForgeLeadsClient({
         </div>
       </aside>
 
-      <main className="flex-1 overflow-y-auto bg-[#050505]">
+      <main className="flex-1 overflow-y-auto bg-[#050505] pb-24 md:pb-0">
         {!selectedLead ? (
           <div className="h-full flex items-center justify-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
             Select a lead to view details

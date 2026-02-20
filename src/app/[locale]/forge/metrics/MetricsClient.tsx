@@ -140,7 +140,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
     <div className="flex h-screen bg-[#050505] text-white overflow-hidden flex-col md:flex-row">
       <ForgeSidebar />
 
-      <main className="flex-1 overflow-y-auto min-w-0">
+      <main className="flex-1 overflow-y-auto min-w-0 pb-24 md:pb-0 w-full max-w-full overflow-x-hidden">
         <header className="p-8 border-b border-neutral-900 bg-[#080808]">
           <h1 className="text-[10px] font-mono uppercase tracking-[0.4em] text-neutral-300 mb-2">
             Metrics Dashboard
@@ -185,11 +185,13 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
           </div>
 
           {/* Row 2: Funnel Visualization */}
-          <section className="bg-[#111111] border border-neutral-900 p-8">
-            <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-8">
+          <section className="bg-[#111111] border border-neutral-900 p-4 md:p-8 w-full max-w-full overflow-hidden">
+            <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-4 md:mb-8">
               Pipeline Funnel
             </h3>
-            <div className="flex items-end h-48 gap-px">
+
+            {/* Desktop Funnel */}
+            <div className="hidden md:flex items-end h-48 gap-px w-full max-w-full">
               {[
                 "nuevo",
                 "contactado",
@@ -208,22 +210,59 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                 return (
                   <div
                     key={stage}
-                    className="flex-1 flex flex-col justify-end group">
+                    className="flex-1 flex flex-col justify-end group min-w-0">
                     <div className="flex flex-col items-center mb-4 transition-transform group-hover:-translate-y-1">
                       <span className="text-xl font-black">{count}</span>
-                      <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-tighter">
+                      <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-tighter truncate max-w-full px-1">
                         {totalPct.toFixed(0)}% del total
                       </span>
                     </div>
                     <div
-                      className={`${STAGE_COLORS[stage]} border-t border-white/10 transition-all group-hover:brightness-110`}
+                      className={`${STAGE_COLORS[stage]} border-t border-white/10 transition-all w-full group-hover:brightness-110`}
                       style={{
                         height: `${Math.max(10, totalPct)}%`,
                         opacity: 0.3 + idx * 0.15,
                       }}
                     />
-                    <div className="mt-4 text-[9px] font-mono text-neutral-300 uppercase tracking-widest text-center truncate px-2">
+                    <div className="mt-4 text-[9px] font-mono text-neutral-300 uppercase tracking-widest text-center truncate px-2 w-full">
                       {stage.replace("_", " ")}
+                    </div>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* Mobile Funnel */}
+            <div className="flex flex-col md:hidden gap-3 w-full">
+              {[
+                "nuevo",
+                "contactado",
+                "propuesta_enviada",
+                "en_negociacion",
+                "cerrado",
+              ].map((stage) => {
+                const count = stats.stageDistribution[stage] || 0;
+                const totalPct = (count / stats.total) * 100 || 0;
+
+                return (
+                  <div
+                    key={stage}
+                    className="flex justify-between items-center bg-[#1a1a1a] p-3 rounded-md border border-neutral-800 w-full">
+                    <div className="flex items-center gap-3 min-w-0">
+                      <div
+                        className={`w-2 h-8 rounded-full shrink-0 ${STAGE_COLORS[stage]}`}
+                      />
+                      <div className="flex flex-col min-w-0">
+                        <span className="text-xs font-mono uppercase tracking-widest text-neutral-300 truncate">
+                          {stage.replace("_", " ")}
+                        </span>
+                        <span className="text-[10px] text-neutral-500">
+                          {totalPct.toFixed(0)}% del total
+                        </span>
+                      </div>
+                    </div>
+                    <div className="text-xl font-black shrink-0 ml-2">
+                      {count}
                     </div>
                   </div>
                 );
@@ -234,8 +273,8 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
           {/* Row 3: Service & Monthly Charts */}
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
             {/* Leads by Service */}
-            <section className="bg-[#111111] border border-neutral-900 p-8">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-8">
+            <section className="bg-[#111111] border border-neutral-900 p-4 md:p-8 w-full max-w-full overflow-hidden">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-4 md:mb-8">
                 Leads por Servicio
               </h3>
               <div className="space-y-6">
@@ -264,11 +303,11 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
             </section>
 
             {/* Monthly Growth */}
-            <section className="bg-[#111111] border border-neutral-900 p-8 flex flex-col">
-              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-8">
+            <section className="bg-[#111111] border border-neutral-900 p-4 md:p-8 flex flex-col w-full max-w-full overflow-hidden">
+              <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-4 md:mb-8">
                 Leads por Mes (Últimos 6m)
               </h3>
-              <div className="flex-1 flex items-end justify-between gap-4 h-48">
+              <div className="flex-1 flex items-end justify-between gap-1 sm:gap-2 h-48 w-full max-w-full overflow-hidden">
                 {stats.monthlyLeads.map((m) => {
                   const maxCount = Math.max(
                     ...stats.monthlyLeads.map((ml) => ml.count),
@@ -277,15 +316,15 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
                   return (
                     <div
                       key={m.label}
-                      className="flex-1 flex flex-col items-center gap-4">
-                      <span className="text-[10px] font-mono text-neutral-400">
+                      className="flex-1 flex flex-col items-center gap-2 md:gap-4 min-w-0">
+                      <span className="text-[9px] md:text-[10px] font-mono text-neutral-400 shrink-0">
                         {m.count}
                       </span>
                       <div
-                        className="w-full bg-emerald-500 scale-y-0 origin-bottom transition-transform duration-1000"
+                        className="w-full max-w-[40px] bg-emerald-500 scale-y-0 origin-bottom transition-transform duration-1000"
                         style={{ height: `${height}%`, transform: "scaleY(1)" }}
                       />
-                      <span className="text-[10px] font-mono text-neutral-400 uppercase">
+                      <span className="text-[8px] sm:text-[10px] font-mono text-neutral-400 uppercase truncate px-0.5 max-w-full text-center">
                         {m.label}
                       </span>
                     </div>
@@ -296,7 +335,7 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
           </div>
 
           {/* Row 4: Lost Leads Table */}
-          <section className="bg-[#111111] border border-neutral-900 overflow-hidden">
+          <section className="bg-[#111111] border border-neutral-900 overflow-hidden w-full max-w-full">
             <div className="p-8 border-b border-neutral-900">
               <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
                 Leads Perdidos

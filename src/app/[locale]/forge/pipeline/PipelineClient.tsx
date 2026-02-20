@@ -191,7 +191,7 @@ export default function PipelineClient({
     <div className="flex h-screen bg-[#050505] text-white overflow-hidden flex-col md:flex-row">
       <ForgeSidebar />
 
-      <main className="flex-1 flex flex-col min-w-0">
+      <main className="flex-1 flex flex-col min-w-0 pb-24 md:pb-0">
         {/* Sub-Header */}
         <header className="p-6 border-b border-neutral-900 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#080808]">
           <div className="flex items-center gap-4">

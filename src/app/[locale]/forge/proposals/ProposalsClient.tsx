@@ -108,7 +108,7 @@ export default function ProposalsClient({
     <div className="flex h-screen bg-[#050505] text-white overflow-hidden">
       <ForgeSidebar />
 
-      <main className="flex-1 overflow-y-auto bg-[#050505] flex flex-col">
+      <main className="flex-1 overflow-y-auto bg-[#050505] flex flex-col pb-24 md:pb-0">
         {/* Header */}
         <header className="px-8 py-6 border-b border-white/5 flex items-center justify-between shrink-0 bg-[#050505]/50 backdrop-blur-xl sticky top-0 z-10">
           <div>

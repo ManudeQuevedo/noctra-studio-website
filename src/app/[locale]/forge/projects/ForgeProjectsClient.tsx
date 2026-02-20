@@ -329,7 +329,7 @@ export default function ForgeProjectsClient({
 
       {/* Main Detail Panel */}
       <main
-        className="flex-1 overflow-y-auto relative outline-none flex flex-col"
+        className="flex-1 overflow-y-auto relative outline-none flex flex-col pb-24 md:pb-0"
         data-lenis-prevent>
         {!selectedProject ? (
           <div className="flex-1 flex items-center justify-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
