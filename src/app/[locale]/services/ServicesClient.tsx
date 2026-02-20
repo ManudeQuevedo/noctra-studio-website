@@ -1,7 +1,13 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { LazyMotion, m, domAnimation, AnimatePresence, useInView } from "framer-motion";
+import {
+  LazyMotion,
+  m,
+  domAnimation,
+  AnimatePresence,
+  useInView,
+} from "framer-motion";
 import { Link } from "@/i18n/routing";
 import NextImage from "next/image";
 import {
@@ -278,7 +284,17 @@ const MobileServicesSlider = ({
                       <Link
                         href={{
                           pathname: "/contact",
-                          query: { focus: serviceKey },
+                          query: {
+                            intent:
+                              serviceKey === "web_dev"
+                                ? "web_presence"
+                                : serviceKey === "ecommerce"
+                                  ? "ecommerce"
+                                  : serviceKey === "ai"
+                                    ? "custom_system"
+                                    : "general",
+                            cta: `services_${serviceKey}`,
+                          },
                         }}
                         className="flex-1 bg-emerald-500 text-black text-sm font-black uppercase tracking-widest rounded-xl py-3.5 flex justify-center items-center gap-2 transition-transform active:scale-95">
                         {t("start_project")} <ArrowRight className="w-4 h-4" />
@@ -584,7 +600,9 @@ const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
               </h5>
               <div className="space-y-4">
                 {data.timeline.map((step: string, i: number) => (
-                  <div key={step} className="flex items-center gap-4 group/step">
+                  <div
+                    key={step}
+                    className="flex items-center gap-4 group/step">
                     <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/30 group-last:bg-emerald-500" />
                     <span className="text-sm text-neutral-400 group-last:text-white group-last:font-bold">
                       {step}
@@ -770,7 +788,20 @@ const ServiceSection = ({
 
               <div className="flex flex-wrap items-center gap-6">
                 <Link
-                  href={{ pathname: "/contact", query: { focus: serviceKey } }}
+                  href={{
+                    pathname: "/contact",
+                    query: {
+                      intent:
+                        serviceKey === "web_dev"
+                          ? "web_presence"
+                          : serviceKey === "ecommerce"
+                            ? "ecommerce"
+                            : serviceKey === "ai"
+                              ? "custom_system"
+                              : "general",
+                      cta: `services_${serviceKey}`,
+                    },
+                  }}
                   className="px-8 py-5 rounded-xl bg-emerald-500 text-black font-black text-sm uppercase tracking-widest flex items-center gap-3 hover:bg-emerald-400 transition-all active:scale-95 shadow-[0_15px_30px_-10px_rgba(16,185,129,0.4)]">
                   {isCustomSystem ? (
                     <Calendar className="w-5 h-5" />
@@ -937,173 +968,173 @@ export default function ServicesClient() {
 
   return (
     <LazyMotion features={domAnimation}>
-    <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0 selection:bg-emerald-500/30">
-      {/* Header */}
-      <section className="w-full max-w-7xl mx-auto px-6 md:px-8 mb-24 text-center">
-        <m.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}>
-          <h1 className="text-6xl md:text-[9.5rem] font-black tracking-tight mb-8 leading-none bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
-            {t("title")}
-          </h1>
-          <p className="text-xl md:text-3xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-medium px-4">
-            {t("subtitle")}
-          </p>
+      <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0 selection:bg-emerald-500/30">
+        {/* Header */}
+        <section className="w-full max-w-7xl mx-auto px-6 md:px-8 mb-24 text-center">
+          <m.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}>
+            <h1 className="text-6xl md:text-[9.5rem] font-black tracking-tight mb-8 leading-none bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+              {t("title")}
+            </h1>
+            <p className="text-xl md:text-3xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-medium px-4">
+              {t("subtitle")}
+            </p>
 
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10">
-            <m.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}>
-              <Button
-                asChild
-                size="lg"
-                className="rounded-full h-12 px-8 text-base bg-white text-black hover:bg-neutral-200 transition-colors duration-300">
-                <Link
-                  href={{
-                    pathname: "/contact",
-                    query: { intent: "discovery" },
-                  }}>
-                  {t("hero_cta_consult")}
-                </Link>
-              </Button>
-            </m.div>
-            <m.div
-              whileHover={{ scale: 1.02 }}
-              whileTap={{ scale: 0.98 }}
-              transition={{ duration: 0.15, ease: "easeOut" }}>
-              <Button
-                variant="outline"
-                size="lg"
-                onClick={() => {
-                  const element = document.getElementById("comparison");
-                  element?.scrollIntoView({ behavior: "smooth" });
-                }}
-                className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
-                {t("hero_cta_pricing")}
-              </Button>
-            </m.div>
-          </div>
-        </m.div>
-      </section>
+            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10">
+              <m.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}>
+                <Button
+                  asChild
+                  size="lg"
+                  className="rounded-full h-12 px-8 text-base bg-white text-black hover:bg-neutral-200 transition-colors duration-300">
+                  <Link
+                    href={{
+                      pathname: "/contact",
+                      query: { intent: "discovery" },
+                    }}>
+                    {t("hero_cta_consult")}
+                  </Link>
+                </Button>
+              </m.div>
+              <m.div
+                whileHover={{ scale: 1.02 }}
+                whileTap={{ scale: 0.98 }}
+                transition={{ duration: 0.15, ease: "easeOut" }}>
+                <Button
+                  variant="outline"
+                  size="lg"
+                  onClick={() => {
+                    const element = document.getElementById("comparison");
+                    element?.scrollIntoView({ behavior: "smooth" });
+                  }}
+                  className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
+                  {t("hero_cta_pricing")}
+                </Button>
+              </m.div>
+            </div>
+          </m.div>
+        </section>
 
-      {/* Interactive Phase Selector */}
-      <div className="hidden md:block">
-        <PhaseSelector
+        {/* Interactive Phase Selector */}
+        <div className="hidden md:block">
+          <PhaseSelector
+            phases={phases}
+            activePhase={activeTab}
+            setActivePhase={setActiveTab}
+          />
+        </div>
+
+        {/* Main Experience Display */}
+        <div className="hidden md:block">
+          <section
+            id="experience"
+            className="mb-32 min-h-[800px] scroll-mt-48 w-full max-w-7xl mx-auto px-6 md:px-8">
+            <AnimatePresence mode="wait">
+              <ServiceSection
+                key={activeTab}
+                serviceKey={activeTab}
+                index={phases.findIndex((p) => p.id === activeTab)}
+                image={SERVICE_IMAGES[activeTab as keyof typeof SERVICE_IMAGES]}
+              />
+            </AnimatePresence>
+          </section>
+        </div>
+
+        {/* Mobile Services Slider Layout */}
+        <MobileServicesSlider
           phases={phases}
           activePhase={activeTab}
           setActivePhase={setActiveTab}
+          t={t}
+          SERVICE_IMAGES={SERVICE_IMAGES}
         />
-      </div>
 
-      {/* Main Experience Display */}
-      <div className="hidden md:block">
-        <section
-          id="experience"
-          className="mb-32 min-h-[800px] scroll-mt-48 w-full max-w-7xl mx-auto px-6 md:px-8">
-          <AnimatePresence mode="wait">
-            <ServiceSection
-              key={activeTab}
-              serviceKey={activeTab}
-              index={phases.findIndex((p) => p.id === activeTab)}
-              image={SERVICE_IMAGES[activeTab as keyof typeof SERVICE_IMAGES]}
-            />
-          </AnimatePresence>
-        </section>
-      </div>
-
-      {/* Mobile Services Slider Layout */}
-      <MobileServicesSlider
-        phases={phases}
-        activePhase={activeTab}
-        setActivePhase={setActiveTab}
-        t={t}
-        SERVICE_IMAGES={SERVICE_IMAGES}
-      />
-
-      {/* Standards Break */}
-      <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-950 py-32 border-y border-neutral-800 mb-32">
-        <div className="max-w-7xl mx-auto px-6 md:px-8">
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
-            <div className="space-y-4 group">
-              <StandardIcons.Performance />
-              <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
-                STANDARD 01
-              </span>
-              <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                {t("metrics.lighthouse")}
+        {/* Standards Break */}
+        <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-950 py-32 border-y border-neutral-800 mb-32">
+          <div className="max-w-7xl mx-auto px-6 md:px-8">
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
+              <div className="space-y-4 group">
+                <StandardIcons.Performance />
+                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
+                  STANDARD 01
+                </span>
+                <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+                  {t("metrics.lighthouse")}
+                </div>
               </div>
-            </div>
-            <div className="space-y-4 group">
-              <StandardIcons.Worldwide />
-              <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
-                STANDARD 02
-              </span>
-              <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                {t("metrics.latency")}
+              <div className="space-y-4 group">
+                <StandardIcons.Worldwide />
+                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
+                  STANDARD 02
+                </span>
+                <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+                  {t("metrics.latency")}
+                </div>
               </div>
-            </div>
-            <div className="space-y-4 group">
-              <StandardIcons.Secure />
-              <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
-                STANDARD 03
-              </span>
-              <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                {t("metrics.uptime")}
+              <div className="space-y-4 group">
+                <StandardIcons.Secure />
+                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
+                  STANDARD 03
+                </span>
+                <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
+                  {t("metrics.uptime")}
+                </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
 
-      {/* Additional Interactive Sections */}
-      <div
-        id="comparison"
-        className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8">
-        <ComparisonTable />
-      </div>
+        {/* Additional Interactive Sections */}
+        <div
+          id="comparison"
+          className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8">
+          <ComparisonTable />
+        </div>
 
-      <div id="faq" className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8">
-        <ServiceFAQ />
-      </div>
+        <div id="faq" className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8">
+          <ServiceFAQ />
+        </div>
 
-      <div
-        id="contact"
-        ref={contactRef}
-        className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8 pb-32">
-        <SmartCTA activePhase={activeTab} />
-      </div>
+        <div
+          id="contact"
+          ref={contactRef}
+          className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8 pb-32">
+          <SmartCTA activePhase={activeTab} />
+        </div>
 
-      {/* Mobile Sticky CTA Bar */}
-      <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 z-50 pointer-events-none">
-        <m.div
-          initial={{ y: 100 }}
-          animate={{ y: isContactInView ? 150 : 0 }}
-          transition={{ duration: 0.4, ease: "easeOut" }}
-          className="w-full p-4 rounded-2xl bg-neutral-900/90 backdrop-blur-xl border border-white/10 shadow-2xl pointer-events-auto flex items-center justify-between gap-4">
-          <div className="flex flex-col">
-            <span className="text-[8px] font-black text-emerald-500 uppercase tracking-widest">
-              {activeTab.toUpperCase()}
-            </span>
-            <span className="text-xs font-bold text-white">
-              {activeTab === "ai"
-                ? t("pricing_breakdown.ai.investment_notes.1").split(": ")[1]
-                : activeTab === "seo"
-                  ? t("pricing_breakdown.seo.investment.0.value")
-                  : activeTab === "ongoing"
-                    ? t("pricing_breakdown.ongoing.investment.1.value")
-                    : t(`${activeTab}.pricing_label`)}
-            </span>
-          </div>
-          <Link
-            href="/contact"
-            className="px-6 py-3 rounded-xl bg-white text-black font-black text-xs uppercase tracking-widest flex items-center gap-2">
-            {t("start_project")} <ArrowRight className="w-3 h-3" />
-          </Link>
-        </m.div>
-      </div>
-    </main>
+        {/* Mobile Sticky CTA Bar */}
+        <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 z-50 pointer-events-none">
+          <m.div
+            initial={{ y: 100 }}
+            animate={{ y: isContactInView ? 150 : 0 }}
+            transition={{ duration: 0.4, ease: "easeOut" }}
+            className="w-full p-4 rounded-2xl bg-neutral-900/90 backdrop-blur-xl border border-white/10 shadow-2xl pointer-events-auto flex items-center justify-between gap-4">
+            <div className="flex flex-col">
+              <span className="text-[8px] font-black text-emerald-500 uppercase tracking-widest">
+                {activeTab.toUpperCase()}
+              </span>
+              <span className="text-xs font-bold text-white">
+                {activeTab === "ai"
+                  ? t("pricing_breakdown.ai.investment_notes.1").split(": ")[1]
+                  : activeTab === "seo"
+                    ? t("pricing_breakdown.seo.investment.0.value")
+                    : activeTab === "ongoing"
+                      ? t("pricing_breakdown.ongoing.investment.1.value")
+                      : t(`${activeTab}.pricing_label`)}
+              </span>
+            </div>
+            <Link
+              href="/contact"
+              className="px-6 py-3 rounded-xl bg-white text-black font-black text-xs uppercase tracking-widest flex items-center gap-2">
+              {t("start_project")} <ArrowRight className="w-3 h-3" />
+            </Link>
+          </m.div>
+        </div>
+      </main>
     </LazyMotion>
   );
 }

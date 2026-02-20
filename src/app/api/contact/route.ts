@@ -1,114 +1,210 @@
+import { NextResponse } from "next/server";
+import { createClient } from "@/utils/supabase/server";
+import { resend } from "@/lib/resend";
+import { validateCsrfToken } from "@/lib/csrf";
+import validator from "validator";
+import sanitizeHtml from "sanitize-html";
 
-import { type NextRequest, NextResponse } from "next/server";
-import { Client } from "@hubspot/api-client";
-import { Resend } from "resend";
-import { FilterOperatorEnum } from "@hubspot/api-client/lib/codegen/crm/contacts";
-import { ContactPayload } from "@/types/hubspot";
+const SECURITY_HEADERS = {
+  "X-Content-Type-Options": "nosniff",
+  "X-Frame-Options": "DENY",
+  "Cache-Control": "no-store",
+};
 
-const hubspotClient = new Client({
-  accessToken: process.env.HUBSPOT_ACCESS_TOKEN,
-});
-
-const resend = new Resend(process.env.RESEND_API_KEY);
-
-export async function POST(req: NextRequest) {
+export async function POST(req: Request) {
   try {
     const body = await req.json();
-    const { name, email, company, service, message } = body as ContactPayload;
+    const supabase = await createClient();
 
-    if (!email || !name || !service) {
+    // 1. CSRF Token Validation
+    const csrfToken = body.csrf_token;
+    if (!csrfToken || !validateCsrfToken(csrfToken)) {
       return NextResponse.json(
-        { error: "Missing required fields" },
-        { status: 400 }
+        { error: "invalid_csrf" },
+        { status: 403, headers: SECURITY_HEADERS }
       );
     }
 
-    // 1. Search for existing contact in HubSpot
-    const searchResponse = await hubspotClient.crm.contacts.searchApi.doSearch({
-      filterGroups: [
-        {
-          filters: [
-            {
-              propertyName: "email",
-              operator: FilterOperatorEnum.Eq,
-              value: email,
-            },
-          ],
-        },
-      ],
-      sorts: ["email"],
-      properties: ["email", "firstname", "lastname", "company", "lifecyclestage"],
-      limit: 1,
-    });
-
-    let contactId;
-    const existingContact = searchResponse.results[0];
-
-    // Split name strictly for HubSpot (first/last)
-    const nameParts = name.trim().split(" ");
-    const firstName = nameParts[0];
-    const lastName = nameParts.length > 1 ? nameParts.slice(1).join(" ") : "";
-
-    const contactProperties = {
-      email,
-      firstname: firstName,
-      lastname: lastName,
-      company: company || "",
-      message: message, // Assuming a custom property or description
-      service_interested: service, // Assuming a custom property
-    };
-
-    if (existingContact) {
-      // Update existing contact
-      contactId = existingContact.id;
-      await hubspotClient.crm.contacts.basicApi.update(contactId, {
-        properties: contactProperties,
-      });
-      console.log(`Updated contact: ${contactId}`);
-    } else {
-      // Create new contact
-      const createResponse = await hubspotClient.crm.contacts.basicApi.create({
-        properties: {
-          ...contactProperties,
-          lifecyclestage: "lead",
-        },
-        associations: [],
-      });
-      contactId = createResponse.id;
-      console.log(`Created new contact: ${contactId}`);
+    // 2. Honeypot Check (Silent Reject)
+    const honeypot = body.website;
+    if (honeypot && honeypot.trim() !== "") {
+      console.log("Honeypot triggered");
+      return NextResponse.json({ success: true }, { status: 200, headers: SECURITY_HEADERS });
     }
 
-    // 2. Send notification email via Resend
-    const { data: emailData, error: emailError } = await resend.emails.send({
-      from: "Noctra Studio <onboarding@resend.dev>", // Or verified domain
-      to: ["manu@noctrastudio.com"], // Replace with admin email
-      subject: `New Lead: ${name} - ${service}`,
+    // 3. Timing Check (Silent Reject)
+    const formLoadTime = body.form_load_time;
+    const elapsed = Date.now() - Number(formLoadTime);
+    if (!formLoadTime || elapsed < 3000) {
+      console.log(`Timing check failed: ${elapsed}ms`);
+      return NextResponse.json({ success: true }, { status: 200, headers: SECURITY_HEADERS });
+    }
+
+    // 4. IP Rate Limit Check
+    const ip = req.headers.get("x-forwarded-for")?.split(",")[0].trim() || 
+               req.headers.get("x-real-ip") || 
+               "unknown";
+
+    const RATE_LIMIT = 3;
+    const WINDOW_MINUTES = 60;
+    const windowStart = new Date(Date.now() - WINDOW_MINUTES * 60 * 1000).toISOString();
+
+    // Check rate limit (gracefully handles missing table)
+    const { data: rateLimit, error: rateError } = await supabase
+      .from("rate_limits")
+      .select("*")
+      .eq("ip", ip)
+      .gte("first_attempt_at", windowStart)
+      .maybeSingle();
+
+    if (rateLimit && rateLimit.attempts >= RATE_LIMIT) {
+      return NextResponse.json(
+        { error: "rate_limited" },
+        { status: 429, headers: SECURITY_HEADERS }
+      );
+    }
+
+    // 5. Input Sanitization & Validation
+    const { name, email, phone, service, budget, timeline, details, intent, cta, locale } = body;
+
+    if (!email || !validator.isEmail(email)) {
+      return NextResponse.json(
+        { error: "invalid_email" },
+        { status: 400, headers: SECURITY_HEADERS }
+      );
+    }
+
+    const clean = (str: string, maxLen: number) =>
+      sanitizeHtml(str || "", { allowedTags: [] }).trim().slice(0, maxLen);
+
+    const safeName = clean(name, 100);
+    const safeMessage = clean(details, 2000);
+    const safePhone = phone?.replace(/[^0-9+\-\s()]/g, "").slice(0, 20);
+    const safeEmail = validator.normalizeEmail(email) || email;
+    const safeService = clean(service, 50);
+    const safeBudget = clean(budget, 50);
+    const safeTimeline = clean(timeline, 50);
+    const safeIntent = clean(intent, 50);
+    const safeCta = clean(cta, 50);
+    const safeLocale = clean(locale, 5);
+
+    // 6. Duplicate Email Check
+    const { data: existing } = await supabase
+      .from("contact_submissions")
+      .select("id")
+      .eq("email", safeEmail)
+      .maybeSingle();
+
+    if (existing) {
+      return NextResponse.json(
+        { error: "duplicate_email" },
+        { status: 409, headers: SECURITY_HEADERS }
+      );
+    }
+
+    // Upsert rate limit record (handles missing table)
+    if (!rateError) {
+      if (rateLimit) {
+        await supabase
+          .from("rate_limits")
+          .update({
+            attempts: rateLimit.attempts + 1,
+            last_attempt_at: new Date().toISOString(),
+          })
+          .eq("id", rateLimit.id);
+      } else {
+        await supabase.from("rate_limits").insert({ ip, attempts: 1 });
+      }
+    }
+
+    // 7. Insert into contact_submissions (Removed columns missing from DB)
+    // Get next value from sequence for Request ID
+    const { data: seqData, error: seqError } = await supabase.rpc('get_next_request_id');
+    const requestId = seqError 
+      ? `NOC-${Math.floor(Math.random() * 9000 + 1000)}` // Fallback if RPC fails
+      : `NOC-${String(seqData).padStart(4, '0')}`;
+
+    const { data: submission, error: dbError } = await supabase
+      .from("contact_submissions")
+      .insert({
+        name: safeName,
+        email: safeEmail,
+        phone: safePhone,
+        message: safeMessage,
+        service_interest: safeService,
+        request_id: requestId,
+        // locale, source_page, source_cta are missing from DB schema
+      })
+      .select()
+      .single();
+
+    if (dbError) throw dbError;
+
+    // 8. Send Email via Resend (Bilingual Logic)
+    const { discoveryTemplate } = await import("@/lib/email-templates/discovery-call");
+    const { webPresenceTemplate } = await import("@/lib/email-templates/web-presence");
+    const { ecommerceTemplate } = await import("@/lib/email-templates/ecommerce");
+    const { customSystemTemplate } = await import("@/lib/email-templates/custom-system");
+    const { generalTemplate } = await import("@/lib/email-templates/general");
+
+    const templates: Record<string, any> = {
+      discovery_call: discoveryTemplate,
+      website: webPresenceTemplate,
+      ecommerce: ecommerceTemplate,
+      custom_system: customSystemTemplate,
+      general: generalTemplate,
+    };
+
+    const selectedTemplate = templates[safeIntent] || generalTemplate;
+    const lang = (safeLocale === "es" ? "es" : "en") as "es" | "en";
+    const template = selectedTemplate[lang];
+
+    await resend.emails.send({
+      from: "Noctra Studio <hello@noctra.studio>",
+      to: [safeEmail],
+      replyTo: "hello@noctra.studio",
+      subject: template.subject,
+      html: template.html(safeName),
+    });
+
+    // Admin Notification
+    await resend.emails.send({
+      from: "Noctra System <hello@noctra.studio>",
+      to: ["hello@noctra.studio"],
+      replyTo: "hello@noctra.studio",
+      subject: `New Lead: ${safeName} (${safeIntent})`,
       html: `
-        <h1>New Lead: ${name}</h1>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Company:</strong> ${company || "N/A"}</p>
-        <p><strong>Service:</strong> ${service}</p>
-        <p><strong>Message:</strong> ${message}</p>
-        <br/>
-        <a href="https://app.hubspot.com/contacts/${process.env.NEXT_PUBLIC_HUBSPOT_PORTAL_ID}/contact/${contactId}">View in HubSpot</a>
+        <h1>New Lead Received</h1>
+        <p><strong>Request ID:</strong> ${requestId}</p>
+        <p><strong>Name:</strong> ${safeName}</p>
+        <p><strong>Email:</strong> ${safeEmail}</p>
+        <p><strong>Phone:</strong> ${safePhone}</p>
+        <p><strong>Intent:</strong> ${safeIntent}</p>
+        <p><strong>CTA:</strong> ${safeCta}</p>
+        <p><strong>Service:</strong> ${safeService}</p>
+        <p><strong>Budget:</strong> ${safeBudget}</p>
+        <p><strong>Timeline:</strong> ${safeTimeline}</p>
+        <p><strong>Locale:</strong> ${safeLocale}</p>
+        <p><strong>Message:</strong></p>
+        <p>${safeMessage}</p>
       `,
     });
 
-    if (emailError) {
-      console.error("Resend Error:", emailError);
-      // We don't fail the request if email fails but HubSpot succeeded, just log it.
-    }
+    // 9. Update email_sent status
+    await supabase
+      .from("contact_submissions")
+      .update({ email_sent: true, email_sent_at: new Date().toISOString() })
+      .eq("id", submission.id);
 
-    return NextResponse.json({
-      success: true,
-      message: existingContact ? "Contact updated" : "Contact created",
-      contactId,
-    });
-  } catch (error: any) {
-    console.error("HubSpot API Error:", error);
     return NextResponse.json(
-      { error: error.message || "Internal Server Error" },
-      { status: 500 }
+      { success: true, requestId, submissionId: submission.id },
+      { headers: SECURITY_HEADERS }
+    );
+  } catch (error) {
+    console.error("Contact API Error:", error);
+    return NextResponse.json(
+      { error: "internal_error" },
+      { status: 500, headers: SECURITY_HEADERS }
     );
   }
 }

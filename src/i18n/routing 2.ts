@@ -3,16 +3,14 @@ import {defineRouting} from 'next-intl/routing';
 
 export const routing = defineRouting({
   // A list of all locales that are supported
-  locales: ['es', 'en'],
+  locales: ['en', 'es'],
  
   // Used when no locale matches
-  defaultLocale: 'es',
-
-  // Disable automatic locale detection based on browser language
-  localeDetection: false,
+  defaultLocale: 'en',
   
-  // Use 'always' to ensure the locale prefix is always present in the URL
-  localePrefix: 'always',
+  // Use 'as-needed' to hide default locale from URL
+  // This reduces navigation and keeps URLs cleaner
+  localePrefix: 'as-needed',
   pathnames: {
     '/': '/',
     '/about': '/about',
@@ -32,12 +30,9 @@ export const routing = defineRouting({
       en: '/cookie-policy',
       es: '/politica-de-cookies'
     },
-    '/centro-comando': '/centro-comando',
     '/studio': '/studio',
     '/dashboard': '/dashboard',
-    '/forge': '/forge',
-    '/forge/login': '/forge/login',
-    '/forge/projects': '/forge/projects',
+    '/admin': '/admin',
     '/login': '/login',
     '/guarantee': {
       en: '/guarantee',

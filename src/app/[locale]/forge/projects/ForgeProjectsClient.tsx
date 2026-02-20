@@ -5,7 +5,8 @@ import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import type { Project } from "@/lib/projects";
 import { BrandLogo } from "@/components/ui/BrandLogo";
-import { Trash2, Plus, LogOut, CheckCircle2, Save, X } from "lucide-react";
+import { Trash2, Plus, CheckCircle2, Save, X } from "lucide-react";
+import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
 
 type StatusHistory = {
   id: string;
@@ -243,11 +244,6 @@ export default function ForgeProjectsClient({
     }
   };
 
-  const handleSignOut = async () => {
-    await supabase.auth.signOut();
-    router.push("/en/forge/login");
-  };
-
   const getStatusColor = (status: string) => {
     switch (status) {
       case "discovery":
@@ -278,10 +274,10 @@ export default function ForgeProjectsClient({
       )}
 
       {/* Sidebar */}
+      <ForgeSidebar />
+
+      {/* Projects Secondary Sidebar */}
       <aside className="w-full md:w-[280px] bg-[#0a0a0a] border-r border-neutral-900 flex flex-col shrink-0 flex-none h-[30vh] md:h-full z-10">
-        <div className="p-6 border-b border-neutral-900 flex justify-between items-center">
-          <BrandLogo className="h-5 w-auto text-white" showText={true} />
-        </div>
         <div className="p-6 pb-2">
           <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
             Projects
@@ -327,11 +323,6 @@ export default function ForgeProjectsClient({
             onClick={() => setIsCreating(true)}
             className="w-full py-2.5 bg-white border border-white text-black text-[10px] font-mono uppercase tracking-widest hover:bg-transparent hover:text-white transition-colors">
             + New Project
-          </button>
-          <button
-            onClick={handleSignOut}
-            className="w-full text-left px-2 text-[10px] font-mono text-neutral-600 hover:text-neutral-400 uppercase tracking-widest flex items-center justify-between">
-            Sign out <LogOut className="w-3 h-3" />
           </button>
         </div>
       </aside>

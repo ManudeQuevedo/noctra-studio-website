@@ -46,7 +46,7 @@ export function Footer() {
                 <Link
                   href={{
                     pathname: "/contact",
-                    query: { intent: "consultation" },
+                    query: { intent: "general", cta: "footer_cta" },
                   }}
                   className="inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-neutral-200 transition-all hover:scale-[1.02] active:scale-[0.98]">
                   {t("cta.button_primary")}

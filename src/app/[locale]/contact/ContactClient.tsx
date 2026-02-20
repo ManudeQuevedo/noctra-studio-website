@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, Suspense, useMemo } from "react";
+import { useState, useEffect, Suspense, useMemo, useRef } from "react";
 import { useForm } from "react-hook-form";
 import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { useTranslations, useLocale } from "next-intl";
@@ -26,6 +26,7 @@ import {
   Target,
 } from "lucide-react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
+import flags from "react-phone-number-input/flags";
 import "react-phone-number-input/style.css";
 import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 
@@ -39,9 +40,13 @@ type FormData = {
   service: string;
   currency: "mxn" | "usd";
   budget: string;
+  message: string;
   source: string;
   timeline: string;
-  details: string;
+  intent: string;
+  cta: string;
+  locale: string;
+  website?: string;
 };
 
 const TestimonialSidebar = () => {
@@ -132,6 +137,8 @@ function ContactForm() {
   const [currentStep, setCurrentStep] = useState(1);
   const [time, setTime] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState(false);
+  const [requestId, setRequestId] = useState("");
+  const [submittedName, setSubmittedName] = useState("");
   const [direction, setDirection] = useState(0);
   const [phoneValid, setPhoneValid] = useState<boolean | null>(null);
 
@@ -154,19 +161,37 @@ function ContactForm() {
       budget: "",
       source: "",
       timeline: "",
-      details: "",
+      message: "",
+      intent: "",
+      cta: "",
+      locale: "",
     },
   });
 
   const watchAll = watch();
   const searchParams = useSearchParams();
+  const locale = useLocale();
+  const csrfToken = useRef<string>("");
+  const formLoadTime = useRef<number>(0);
+  const [securityError, setSecurityError] = useState<{
+    type: "duplicate_email" | "rate_limited" | "invalid_csrf" | "generic";
+    message: string;
+  } | null>(null);
+
+  // Derived variables
+  const budgetScope = useMemo(() => {
+    if (!watchAll.budget) return null;
+    return t(`budget_scopes.${watchAll.budget}`);
+  }, [watchAll.budget, t]);
+
   const interest = searchParams.get("interest");
-  // New params
   const tipo = searchParams.get("tipo");
   const planParam = searchParams.get("plan");
   const descuento = searchParams.get("descuento");
   const servicioParam = searchParams.get("servicio");
   const precioParam = searchParams.get("precio");
+  const intentParam = searchParams.get("intent") || "general";
+  const ctaParam = searchParams.get("cta") || "direct";
 
   // Phone handler for react-phone-number-input
   const handlePhoneChange = (value: string | undefined) => {
@@ -179,10 +204,29 @@ function ContactForm() {
     }
   };
 
-  const budgetScope = useMemo(() => {
-    if (!watchAll.budget) return null;
-    return t(`budget_scopes.${watchAll.budget}`);
-  }, [watchAll.budget, t]);
+  useEffect(() => {
+    formLoadTime.current = Date.now();
+    fetch("/api/csrf")
+      .then((r) => r.json())
+      .then((d) => {
+        csrfToken.current = d.token;
+      })
+      .catch((err) => console.error("Failed to fetch CSRF token:", err));
+
+    const updateTime = () => {
+      setTime(
+        new Date().toLocaleTimeString("en-US", {
+          hour: "2-digit",
+          minute: "2-digit",
+          hour12: true,
+          timeZone: "America/Mexico_City",
+        }),
+      );
+    };
+    updateTime();
+    const interval = setInterval(updateTime, 1000);
+    return () => clearInterval(interval);
+  }, []);
 
   useEffect(() => {
     // 1. Handle "interest" (legacy)
@@ -199,7 +243,6 @@ function ContactForm() {
 
     // 2. Handle new "tipo" and "servicio" params
     if (servicioParam) {
-      // Try to find exact match or close match
       const opts = ["website", "ecommerce", "custom_system", "optimization"];
       const s = servicioParam.toLowerCase();
       if (opts.includes(s)) {
@@ -222,12 +265,17 @@ function ContactForm() {
     }
 
     if (detailsParts.length > 0) {
-      setValue("details", detailsParts.join("\n"));
+      setValue("message", detailsParts.join("\n"));
     }
 
     if (tipo === "automatizacion") {
       setValue("service", "custom_system");
     }
+
+    // Set origin tracking fields
+    setValue("intent", intentParam);
+    setValue("cta", ctaParam);
+    setValue("locale", locale);
   }, [
     interest,
     servicioParam,
@@ -235,37 +283,73 @@ function ContactForm() {
     precioParam,
     descuento,
     tipo,
+    intentParam,
+    ctaParam,
+    locale,
     setValue,
   ]);
 
-  useEffect(() => {
-    const updateTime = () => {
-      setTime(
-        new Date().toLocaleTimeString("en-US", {
-          hour: "2-digit",
-          minute: "2-digit",
-          hour12: true,
-          timeZone: "America/Mexico_City",
-        }),
-      );
-    };
-    updateTime();
-    const interval = setInterval(updateTime, 1000);
-    return () => clearInterval(interval);
-  }, []);
-
   const onSubmit = async (data: FormData) => {
     try {
-      const response = await fetch("/api/send", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          csrf_token: csrfToken.current,
+          form_load_time: formLoadTime.current,
+        }),
       });
-      if (!response.ok) throw new Error("Failed");
+
+      if (!response.ok) {
+        if (response.status === 409) {
+          setSecurityError({
+            type: "duplicate_email",
+            message:
+              locale === "es"
+                ? "◆ Ya tenemos tu correo registrado. Te contactaremos a la brevedad."
+                : "◆ We already have your email on file. We'll be in touch shortly.",
+          });
+          return;
+        }
+        if (response.status === 429) {
+          setSecurityError({
+            type: "rate_limited",
+            message:
+              locale === "es"
+                ? "⚠ Demasiados intentos. Intenta de nuevo en 60 minutos."
+                : "⚠ Too many attempts. Please try again in 60 minutes.",
+          });
+          return;
+        }
+        if (response.status === 403) {
+          setSecurityError({
+            type: "invalid_csrf",
+            message:
+              locale === "es"
+                ? "Sesión expirada. Recarga la página e intenta de nuevo."
+                : "Session expired. Please reload the page and try again.",
+          });
+          return;
+        }
+        throw new Error("Submission failed");
+      }
+      const responseData = await response.json();
       setIsSuccess(true);
+      setRequestId(responseData.requestId || "NOC-0000");
+      setSubmittedName(watchAll.name);
       reset();
-    } catch (e) {
-      alert("Error sending message.");
+    } catch (error) {
+      console.error(error);
+      setSecurityError({
+        type: "generic",
+        message:
+          locale === "es"
+            ? "Algo salió mal. Intenta de nuevo."
+            : "Something went wrong. Please try again.",
+      });
+    } finally {
+      // setIsSubmitting(false); // isSubmitting is managed by react-hook-form
     }
   };
 
@@ -314,479 +398,412 @@ function ContactForm() {
 
   return (
     <LazyMotion features={domAnimation}>
-    <main className="min-h-screen text-white pt-32 pb-24 relative overflow-hidden">
-      <RouteScopedBackground />
-      <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-          {/* Main Info Column */}
-          <div className="lg:col-span-4 space-y-12">
-            <div>
-              <m.h1
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                className="text-6xl md:text-7xl font-black tracking-tight mb-8 leading-none">
-                {tipo === "socio-fundador" ? "Socio Fundador" : t("hero.title")}
-              </m.h1>
-
-              {tipo === "socio-fundador" && (
-                <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-2xl">
-                  <p className="text-emerald-500 font-bold text-sm">
-                    🚀 Estás aplicando para el precio especial de Socio Fundador
-                    (25% OFF).
-                  </p>
-                </div>
-              )}
-
-              {tipo === "automatizacion" && (
-                <div className="mb-8 p-4 bg-blue-500/10 border border-blue-500/20 rounded-2xl">
-                  <p className="text-blue-400 font-bold text-sm">
-                    🤖 Consulta especializada en Automatización con IA.
-                  </p>
-                </div>
-              )}
-
-              <p className="text-xl text-neutral-400 font-medium leading-relaxed">
-                {t("hero.subtitle")}
-              </p>
-            </div>
-
-            <div className="hidden lg:block">
-              <TestimonialSidebar />
-            </div>
-          </div>
-
-          {/* Form Column */}
-          <div className="lg:col-span-8 flex flex-col pt-8 lg:pt-0">
+      <main className="min-h-screen text-white pt-32 pb-24 relative overflow-hidden">
+        <RouteScopedBackground />
+        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
             {isSuccess ? (
-              <SuccessState t={t} onReset={() => setIsSuccess(false)} />
+              <div className="lg:col-span-12">
+                <SuccessState
+                  t={t}
+                  requestId={requestId}
+                  name={submittedName}
+                  locale={locale}
+                  onReset={() => {
+                    setIsSuccess(false);
+                    setCurrentStep(1);
+                  }}
+                />
+              </div>
             ) : (
-              <div className="flex flex-col h-full bg-neutral-950/20 backdrop-blur-sm border border-white/[0.03] rounded-[2.5rem] p-8 md:p-12">
-                {/* Progress Header */}
-                <div className="flex items-center justify-between mb-16">
-                  <div className="flex flex-col gap-1">
-                    <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest font-bold">
-                      {t(`steps.step_${currentStep}.label`)}
+              <>
+                {/* Main Info Column */}
+                <div className="lg:col-span-4 space-y-8">
+                  <m.h1
+                    initial={{ y: 20, opacity: 0 }}
+                    animate={{ y: 0, opacity: 1 }}
+                    className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9]">
+                    {t("hero.title_part1")}
+                    <span className="block text-emerald-500">
+                      {t("hero.title_part2")}
                     </span>
-                    <h2 className="text-2xl font-black text-white">
-                      {t(`steps.step_${currentStep}.title`)}
-                    </h2>
-                  </div>
-                  <div className="flex gap-2">
-                    {[1, 2, 3].map((s) => (
-                      <div
-                        key={s}
-                        className={cn(
-                          "w-2.4 h-2 rounded-full transition-all duration-500",
-                          s === currentStep
-                            ? "w-8 bg-emerald-500"
-                            : s < currentStep
-                              ? "bg-emerald-900"
-                              : "bg-neutral-800",
-                        )}
-                      />
-                    ))}
+                  </m.h1>
+
+                  {tipo === "socio-fundador" && (
+                    <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/20">
+                      <p className="text-emerald-500 font-bold text-sm">
+                        🚀 Estás aplicando para el precio especial de Socio
+                        Fundador (25% OFF).
+                      </p>
+                    </div>
+                  )}
+
+                  {tipo === "automatizacion" && (
+                    <div className="mb-8 p-4 bg-blue-500/10 border border-blue-500/20">
+                      <p className="text-blue-400 font-bold text-sm">
+                        🤖 Consulta especializada en Automatización con IA.
+                      </p>
+                    </div>
+                  )}
+
+                  <p className="text-xl text-neutral-400 font-medium leading-relaxed">
+                    {t("hero.subtitle")}
+                  </p>
+
+                  <div className="hidden lg:block pt-12">
+                    <TestimonialSidebar />
                   </div>
                 </div>
 
-                <form
-                  onSubmit={handleSubmit(onSubmit)}
-                  className="flex-1 flex flex-col">
-                  <div className="relative overflow-hidden flex-1 min-h-[400px]">
-                    <AnimatePresence mode="wait" custom={direction}>
-                      <m.div
-                        key={currentStep}
-                        custom={direction}
-                        variants={stepVariants}
-                        initial="enter"
-                        animate="center"
-                        exit="exit"
-                        transition={{ duration: 0.4, ease: "easeInOut" }}
-                        className="w-full">
-                        {currentStep === 1 && (
-                          <div className="space-y-12">
-                            <div className="group relative">
-                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
-                                {t("form.name_label")}
-                              </label>
-                              <div className="relative">
-                                <User className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
-                                <input
-                                  {...register("name", { required: true })}
-                                  placeholder={t("form.name_placeholder")}
-                                  className={inputClasses("name")}
-                                />
-                              </div>
-                            </div>
+                {/* Form Column */}
+                <div className="lg:col-span-8 flex flex-col pt-8 lg:pt-0">
+                  <div className="flex flex-col h-full bg-neutral-950/20 backdrop-blur-sm border border-white/[0.03] p-8 md:p-12">
+                    {/* Progress Header */}
+                    <div className="flex items-center justify-between mb-16">
+                      <div className="flex flex-col gap-1">
+                        <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest font-bold">
+                          {t(`steps.step_${currentStep}.label`)}
+                        </span>
+                        <h2 className="text-2xl font-black text-white">
+                          {t(`steps.step_${currentStep}.title`)}
+                        </h2>
+                      </div>
+                      <div className="flex gap-2">
+                        {[1, 2, 3].map((s) => (
+                          <div
+                            key={s}
+                            className={cn(
+                              "w-2.4 h-2 rounded-full transition-all duration-500",
+                              s === currentStep
+                                ? "w-8 bg-emerald-500"
+                                : s < currentStep
+                                  ? "bg-emerald-900"
+                                  : "bg-neutral-800",
+                            )}
+                          />
+                        ))}
+                      </div>
+                    </div>
 
-                            <div className="group relative">
-                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
-                                {t("form.email_label")}
-                              </label>
-                              <div className="relative">
-                                {watchAll.email &&
-                                !errors.email &&
-                                /^\S+@\S+$/i.test(watchAll.email) ? (
-                                  <Check className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
-                                ) : (
-                                  <Mail className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
-                                )}
-                                <input
-                                  {...register("email", {
-                                    required: true,
-                                    pattern: /^\S+@\S+$/i,
-                                  })}
-                                  placeholder={t("form.email_placeholder")}
-                                  className={inputClasses("email")}
-                                />
-                              </div>
-                            </div>
+                    <form
+                      onSubmit={handleSubmit(onSubmit)}
+                      className="flex-1 flex flex-col">
+                      {securityError && (
+                        <div
+                          className={`p-4 bg-[#111111] border-l-2 font-mono text-sm tracking-tight transition-all duration-300 mb-8 ${
+                            securityError.type === "duplicate_email"
+                              ? "border-emerald-500 text-emerald-500"
+                              : securityError.type === "rate_limited"
+                                ? "border-amber-500 text-amber-500"
+                                : "border-red-500 text-red-500"
+                          }`}>
+                          {securityError.message}
+                        </div>
+                      )}
+                      <div className="relative overflow-hidden flex-1">
+                        <AnimatePresence mode="wait" custom={direction}>
+                          <m.div
+                            key={currentStep}
+                            custom={direction}
+                            variants={stepVariants}
+                            initial="enter"
+                            animate="center"
+                            exit="exit"
+                            transition={{ duration: 0.4, ease: "easeInOut" }}
+                            className="w-full">
+                            {currentStep === 1 && (
+                              <div className="space-y-12">
+                                <div className="group relative">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                    {t("form.name_label")}
+                                  </label>
+                                  <div className="relative">
+                                    <User className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
+                                    <input
+                                      {...register("name", { required: true })}
+                                      placeholder={t("form.name_placeholder")}
+                                      className={inputClasses("name")}
+                                    />
+                                  </div>
+                                </div>
 
-                            <div className="group relative">
-                              <label
-                                className={cn(
-                                  "text-[10px] font-mono uppercase tracking-[0.2em] transition-colors",
-                                  phoneValid === false
-                                    ? "text-red-500"
-                                    : phoneValid === true
-                                      ? "text-emerald-500"
-                                      : "text-neutral-500 group-focus-within:text-emerald-500",
-                                )}>
-                                {t("form.phone_label")}
-                              </label>
-                              <div className="relative">
-                                <PhoneInput
-                                  defaultCountry="MX"
-                                  value={watchAll.phone}
-                                  onChange={handlePhoneChange}
-                                  className={cn(
-                                    "phone-input-container",
-                                    phoneValid === true && "valid",
-                                    phoneValid === false && "invalid",
-                                  )}
-                                  placeholder={t("form.phone_placeholder")}
-                                  international
-                                  countryCallingCodeEditable={false}
-                                />
-                                {phoneValid === false && (
-                                  <p className="text-red-500 text-[10px] font-mono mt-2 absolute -bottom-5 left-0">
-                                    Número inválido para el país seleccionado
-                                  </p>
-                                )}
-                              </div>
-                            </div>
-                          </div>
-                        )}
+                                <div className="group relative">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                    {t("form.email_label")}
+                                  </label>
+                                  <div className="relative">
+                                    {watchAll.email &&
+                                    !errors.email &&
+                                    /^\S+@\S+$/i.test(watchAll.email) ? (
+                                      <Check className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
+                                    ) : (
+                                      <Mail className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
+                                    )}
+                                    <input
+                                      {...register("email", {
+                                        required: true,
+                                        pattern: /^\S+@\S+$/i,
+                                      })}
+                                      placeholder={t("form.email_placeholder")}
+                                      className={inputClasses("email")}
+                                    />
+                                  </div>
+                                </div>
 
-                        {currentStep === 2 && (
-                          <div className="space-y-12">
-                            <div className="group relative">
-                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
-                                {t("form.service_label")}
-                              </label>
-                              <select
-                                {...register("service", { required: true })}
-                                className={cn(
-                                  inputClasses("service"),
-                                  "appearance-none cursor-pointer",
-                                )}>
-                                <option
-                                  value=""
-                                  disabled
-                                  className="bg-neutral-900">
-                                  {t("form.service_placeholder")}
-                                </option>
-                                {[
-                                  "website",
-                                  "ecommerce",
-                                  "custom_system",
-                                  "optimization",
-                                  "not_sure",
-                                ].map((opt) => (
-                                  <option
-                                    key={opt}
-                                    value={opt}
-                                    className="bg-neutral-900">
-                                    {t(`form.service_options.${opt}`)}
-                                  </option>
-                                ))}
-                              </select>
-                              <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
-                            </div>
-
-                            <div className="space-y-4">
-                              <div className="flex items-center justify-between">
-                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
-                                  {t("form.budget_label")}
-                                </label>
-                                <div className="flex gap-1 p-0.5 bg-white/5 rounded-full border border-white/10">
-                                  {(["mxn", "usd"] as const).map((curr) => (
-                                    <button
-                                      key={curr}
-                                      type="button"
-                                      onClick={() => setValue("currency", curr)}
+                                <div className="group relative">
+                                  <label
+                                    className={cn(
+                                      "text-[10px] font-mono uppercase tracking-[0.2em] transition-colors",
+                                      phoneValid === false
+                                        ? "text-red-500"
+                                        : phoneValid === true
+                                          ? "text-emerald-500"
+                                          : "text-neutral-500 group-focus-within:text-emerald-500",
+                                    )}>
+                                    {t("form.phone_label")}
+                                  </label>
+                                  <div className="relative">
+                                    <PhoneInput
+                                      defaultCountry="MX"
+                                      value={watchAll.phone}
+                                      onChange={handlePhoneChange}
+                                      flags={flags}
                                       className={cn(
-                                        "px-2 py-0.5 text-[9px] font-bold uppercase rounded-full transition-all",
-                                        watchAll.currency === curr
-                                          ? "bg-white text-black"
-                                          : "text-neutral-500",
-                                      )}>
-                                      {curr}
-                                    </button>
-                                  ))}
+                                        "phone-input-container",
+                                        phoneValid === true && "valid",
+                                        phoneValid === false && "invalid",
+                                      )}
+                                      placeholder={t("form.phone_placeholder")}
+                                      international
+                                      countryCallingCodeEditable={false}
+                                    />
+                                  </div>
                                 </div>
                               </div>
-                              <div className="grid grid-cols-1 sm:grid-cols-2 gap-2">
-                                {[
-                                  "20-35k",
-                                  "35-50k",
-                                  "50-80k",
-                                  "80-120k",
-                                  "120k+",
-                                  "monthly",
-                                  "discuss",
-                                ].map((key) => (
-                                  <button
-                                    key={key}
-                                    type="button"
-                                    onClick={() =>
-                                      setValue("budget", key, {
-                                        shouldValidate: true,
-                                      })
-                                    }
-                                    className={cn(
-                                      "p-3 rounded-xl border text-left transition-all text-xs font-bold",
-                                      watchAll.budget === key
-                                        ? "bg-emerald-500/10 border-emerald-500/50 text-white shadow-[0_0_15px_rgba(16,185,129,0.1)]"
-                                        : "bg-white/5 border-white/5 text-neutral-400 hover:border-white/10",
-                                    )}>
-                                    {t(
-                                      `form.budget_options.${watchAll.currency}.${key}`,
+                            )}
+
+                            {currentStep === 2 && (
+                              <div className="space-y-12">
+                                <div className="space-y-4">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                    {t("form.service_label")}
+                                  </label>
+                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+                                    {[
+                                      "website",
+                                      "ecommerce",
+                                      "custom_system",
+                                      "discovery_call",
+                                    ].map((service) => (
+                                      <button
+                                        key={service}
+                                        type="button"
+                                        onClick={() =>
+                                          setValue("service", service as any, {
+                                            shouldValidate: true,
+                                          })
+                                        }
+                                        className={cn(
+                                          "p-4 border text-left transition-all duration-300",
+                                          watchAll.service === service
+                                            ? "bg-emerald-500/10 border-emerald-500 text-white"
+                                            : "bg-transparent border-neutral-800 text-neutral-400 hover:border-neutral-700",
+                                        )}>
+                                        <div className="text-sm font-bold uppercase tracking-wider">
+                                          {t(`form.services.${service}`)}
+                                        </div>
+                                      </button>
+                                    ))}
+                                  </div>
+                                </div>
+
+                                <div className="space-y-4">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                    {t("form.budget_label")}
+                                  </label>
+                                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    {["low", "medium", "high", "premium"].map(
+                                      (budget) => (
+                                        <button
+                                          key={budget}
+                                          type="button"
+                                          onClick={() =>
+                                            setValue("budget", budget as any, {
+                                              shouldValidate: true,
+                                            })
+                                          }
+                                          className={cn(
+                                            "p-4 border text-center transition-all duration-300",
+                                            watchAll.budget === budget
+                                              ? "bg-emerald-500/10 border-emerald-500 text-white"
+                                              : "bg-transparent border-neutral-800 text-neutral-400 hover:border-neutral-700",
+                                          )}>
+                                          <div className="text-xs font-bold uppercase tracking-widest">
+                                            {t(`form.budgets.${budget}`)}
+                                          </div>
+                                        </button>
+                                      ),
                                     )}
-                                  </button>
-                                ))}
+                                  </div>
+                                </div>
                               </div>
-                              <AnimatePresence>
-                                {budgetScope && (
-                                  <m.p
-                                    initial={{ opacity: 0, height: 0 }}
-                                    animate={{ opacity: 1, height: "auto" }}
-                                    className="text-[10px] font-mono text-emerald-500/80 bg-emerald-500/5 p-3 rounded-lg border border-emerald-500/10">
-                                    <Zap className="inline w-3 h-3 mr-2 -mt-0.5" />
-                                    Scope: {budgetScope}
-                                  </m.p>
-                                )}
-                              </AnimatePresence>
-                            </div>
+                            )}
 
-                            <div className="group relative">
-                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
-                                {t("form.timeline_label")}
-                              </label>
-                              <select
-                                {...register("timeline", { required: true })}
-                                className={cn(
-                                  inputClasses("timeline"),
-                                  "appearance-none cursor-pointer",
-                                )}>
-                                <option
-                                  value=""
-                                  disabled
-                                  className="bg-neutral-900">
-                                  {t("form.timeline_placeholder")}
-                                </option>
-                                {["asap", "3_months", "6_months", "future"].map(
-                                  (opt) => (
-                                    <option
-                                      key={opt}
-                                      value={opt}
-                                      className="bg-neutral-900">
-                                      {t(`form.timeline_options.${opt}`)}
-                                    </option>
-                                  ),
-                                )}
-                              </select>
-                              <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
-                            </div>
-                          </div>
+                            {currentStep === 3 && (
+                              <div className="space-y-12">
+                                <div className="group relative">
+                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
+                                    {t("form.message_label")}
+                                  </label>
+                                  <div className="relative">
+                                    <MessageSquare className="absolute right-0 top-4 w-4 h-4 text-neutral-700" />
+                                    <textarea
+                                      {...register("message", {
+                                        required: true,
+                                      })}
+                                      placeholder={t(
+                                        "form.message_placeholder",
+                                      )}
+                                      rows={4}
+                                      className={cn(
+                                        inputClasses("message"),
+                                        "resize-none",
+                                      )}
+                                    />
+                                  </div>
+                                </div>
+                              </div>
+                            )}
+                          </m.div>
+                        </AnimatePresence>
+                      </div>
+
+                      {/* Honeypot Field - Truly Hidden */}
+                      <div
+                        style={{
+                          position: "absolute",
+                          left: "-9999px",
+                          height: 0,
+                          overflow: "hidden",
+                        }}>
+                        <input
+                          type="text"
+                          {...register("website")}
+                          defaultValue=""
+                          tabIndex={-1}
+                          autoComplete="off"
+                          aria-hidden="true"
+                        />
+                      </div>
+
+                      {/* Navigation Buttons */}
+                      <div className="mt-12 flex gap-4">
+                        {currentStep > 1 && (
+                          <button
+                            type="button"
+                            onClick={prevStep}
+                            className="flex-1 lg:flex-none px-8 py-5 rounded-full border border-neutral-800 hover:bg-white/5 transition-all text-sm font-bold flex items-center justify-center gap-2">
+                            <ChevronLeft className="w-4 h-4" />
+                            {t("steps.back")}
+                          </button>
                         )}
 
-                        {currentStep === 3 && (
-                          <div className="space-y-12">
-                            <div className="group relative">
-                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
-                                {t("form.source_label")}
-                              </label>
-                              <select
-                                {...register("source")}
-                                className={cn(
-                                  inputClasses("source"),
-                                  "appearance-none cursor-pointer",
-                                )}>
-                                <option value="" className="bg-neutral-900">
-                                  {t("form.source_placeholder")}
-                                </option>
-                                {[
-                                  "google",
-                                  "referral",
-                                  "linkedin",
-                                  "social",
-                                  "other",
-                                ].map((opt) => (
-                                  <option
-                                    key={opt}
-                                    value={opt}
-                                    className="bg-neutral-900">
-                                    {t(`form.source_options.${opt}`)}
-                                  </option>
-                                ))}
-                              </select>
-                              <ChevronRight className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700 pointer-events-none rotate-90" />
-                            </div>
-
-                            <div className="group relative">
-                              <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500 group-focus-within:text-emerald-500 transition-colors">
-                                {tipo === "automatizacion"
-                                  ? "Cuéntanos sobre los procesos que quieres automatizar"
-                                  : t("form.details_label")}
-                              </label>
-                              <textarea
-                                {...register("details")}
-                                placeholder={
-                                  tipo === "automatizacion"
-                                    ? "Ej: Atención al cliente, gestión de inventarios, etc."
-                                    : t("form.details_placeholder")
-                                }
-                                rows={4}
-                                className={cn(
-                                  inputClasses("details"),
-                                  "resize-none h-auto max-h-48 scrollbar-hide",
-                                )}
-                              />
-                            </div>
-
-                            <ExpectationsCard />
-                          </div>
+                        {currentStep < 3 ? (
+                          <button
+                            type="button"
+                            onClick={nextStep}
+                            disabled={currentStep === 1 && phoneValid !== true}
+                            className="flex-1 bg-white text-black py-5 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all disabled:opacity-50">
+                            {t("steps.next")}
+                            <ChevronRight className="w-4 h-4" />
+                          </button>
+                        ) : (
+                          <button
+                            disabled={
+                              isSubmitting || !isValid || phoneValid !== true
+                            }
+                            type="submit"
+                            className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black py-5 rounded-full text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all disabled:opacity-50">
+                            {isSubmitting
+                              ? t("form.sending")
+                              : t("form.submit")}
+                            <ArrowRight className="w-4 h-4" />
+                          </button>
                         )}
-                      </m.div>
-                    </AnimatePresence>
+                      </div>
+                    </form>
                   </div>
-
-                  {/* Navigation Buttons */}
-                  <div className="mt-12 flex gap-4">
-                    {currentStep > 1 && (
-                      <button
-                        type="button"
-                        onClick={prevStep}
-                        className="flex-1 lg:flex-none px-8 py-5 rounded-full border border-neutral-800 hover:bg-white/5 transition-all text-sm font-bold flex items-center justify-center gap-2">
-                        <ChevronLeft className="w-4 h-4" />
-                        {t("steps.back")}
-                      </button>
-                    )}
-
-                    {currentStep < 3 ? (
-                      <button
-                        type="button"
-                        onClick={nextStep}
-                        disabled={currentStep === 1 && phoneValid !== true}
-                        className="flex-1 bg-white text-black py-5 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all disabled:opacity-50">
-                        {t("steps.next")}
-                        <ChevronRight className="w-4 h-4" />
-                      </button>
-                    ) : (
-                      <button
-                        disabled={
-                          isSubmitting || !isValid || phoneValid !== true
-                        }
-                        type="submit"
-                        className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black py-5 rounded-full text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all disabled:opacity-50">
-                        {isSubmitting ? t("form.sending") : t("form.submit")}
-                        <ArrowRight className="w-4 h-4" />
-                      </button>
-                    )}
-                  </div>
-                </form>
-              </div>
+                </div>
+              </>
             )}
-
-            {/* Mobile Testimonials */}
-            <div className="mt-16 lg:hidden">
-              <TestimonialSidebar />
-            </div>
           </div>
         </div>
-      </div>
-
-      {/* Footer Info */}
-      <div className="max-w-7xl mx-auto px-6 md:px-8 mt-48 grid grid-cols-1 md:grid-cols-3 gap-12 border-t border-neutral-900 pt-16">
-        <div className="space-y-4">
-          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
-            WhatsApp
-          </span>
-          <a
-            href="https://wa.me/524463731451?text=Hola%20Manu%2C%20me%20interesa%20hablar%20sobre%20mi%20proyecto"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="flex items-center gap-3 hover:opacity-70 transition-opacity group w-fit">
-            <FaWhatsapp className="w-5 h-5 text-emerald-500 group-hover:scale-110 transition-transform" />
-            <span className="text-xl font-bold">
-              {t("details.whatsapp_number")}
-            </span>
-          </a>
-        </div>
-        <div className="space-y-4">
-          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
-            Location
-          </span>
-          <div className="flex items-center gap-3 text-xl font-bold">
-            <MapPin className="w-5 h-5 text-emerald-500" />
-            {t("details.location_value")}
-          </div>
-        </div>
-        <div className="space-y-4">
-          <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest leading-none">
-            Timezone
-          </span>
-          <div className="flex items-center gap-3 text-xl font-bold tabular-nums">
-            <Clock className="w-5 h-5 text-emerald-500" />
-            {time}
-          </div>
-        </div>
-      </div>
-    </main>
+      </main>
     </LazyMotion>
   );
 }
 
-const SuccessState = ({ t, onReset }: { t: any; onReset: () => void }) => (
-  <m.div
-    initial={{ scale: 0.9, opacity: 0 }}
-    animate={{ scale: 1, opacity: 1 }}
-    className="w-full max-w-md mx-auto text-center space-y-8">
-    <div className="bg-white text-black p-12 rounded-[2.5rem] relative overflow-hidden shadow-2xl">
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-32 h-1 bg-emerald-500" />
-      <div className="w-16 h-16 bg-emerald-100 rounded-full flex items-center justify-center mx-auto mb-8">
-        <Check className="w-8 h-8 text-emerald-600" />
-      </div>
-      <h3 className="text-3xl font-black tracking-tight mb-4">
-        {t("success.title")}
-      </h3>
-      <p className="text-neutral-600 font-medium mb-12">
-        {t("success.message")}
-      </p>
+const SuccessState = ({
+  t,
+  requestId,
+  name,
+  locale,
+  onReset,
+}: {
+  t: any;
+  requestId: string;
+  name: string;
+  locale: string;
+  onReset: () => void;
+}) => {
+  const firstName = name.split(" ")[0];
 
-      <div className="space-y-6 pt-8 border-t border-neutral-100">
-        <div className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">
-          Request ID: #NOC-7777
+  return (
+    <m.div
+      initial={{ opacity: 0, y: 20 }}
+      animate={{ opacity: 1, y: 0 }}
+      className="fixed inset-0 z-[100] bg-[#0a0a0a] flex items-center justify-center p-6">
+      <div className="w-full max-w-[480px] flex flex-col items-center text-center">
+        <span className="text-[11px] font-mono text-[#666666] uppercase tracking-[0.2em] mb-6">
+          {locale === "es" ? "MENSAJE ENVIADO" : "MESSAGE SENT"}
+        </span>
+
+        <h2 className="text-4xl md:text-[42px] font-black text-white tracking-tight leading-none mb-4">
+          {locale === "es"
+            ? `Lo recibimos, ${firstName}.`
+            : `Got it, ${firstName}.`}
+        </h2>
+
+        <p className="text-base text-[#666666] leading-relaxed mb-12 max-w-[380px]">
+          {locale === "es"
+            ? "Revisaremos tu solicitud y te contactaremos en menos de 24 horas."
+            : "We'll review your request and get back to you within 24 hours."}
+        </p>
+
+        <div className="w-full h-px bg-[#1f1f1f] mb-8" />
+
+        <div className="flex flex-col gap-1 mb-12">
+          <span className="text-[10px] font-mono text-[#444444] tracking-[0.15em] uppercase">
+            REQUEST ID
+          </span>
+          <span className="text-sm font-bold text-white tracking-[0.1em] font-mono">
+            {requestId}
+          </span>
         </div>
+
         <button
           onClick={onReset}
-          className="text-sm font-bold text-neutral-400 hover:text-black transition-colors">
-          {t("success.action")}
+          className="text-[13px] text-[#444444] underline hover:text-white transition-colors cursor-pointer">
+          {locale === "es" ? "Enviar otro mensaje" : "Send another message"}
         </button>
+
+        <div className="mt-16 text-[11px] font-mono text-[#1f1f1f] tracking-[0.2em] uppercase">
+          ◆ NOCTRA STUDIO
+        </div>
       </div>
-    </div>
-  </m.div>
-);
+    </m.div>
+  );
+};
 
 export default function ContactClient() {
   return (
