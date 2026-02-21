@@ -19,20 +19,15 @@ import { es } from "date-fns/locale";
 
 type ClientCardData = {
   id: string;
-  client_name: string;
-  client_company: string | null;
-  service_type: string | null;
-  contract_number: string;
-  total_price: number;
-  client_signed_at: string;
-  project?: {
-    id: string;
-    status: string;
-    name: string;
-  };
-  has_metadata: boolean;
-  is_from_project?: boolean;
-  is_from_contract_only?: boolean;
+  name: string;
+  email: string | null;
+  company: string | null;
+  serviceType: string | null;
+  status: string | null;
+  phase: string | null;
+  source: string;
+  projectId: string | null;
+  createdAt: string;
 };
 
 export function ClientsClient({
@@ -47,49 +42,33 @@ export function ClientsClient({
 
   const filteredClients = initialClients.filter((c) => {
     const matchesSearch =
-      c.client_name.toLowerCase().includes(search.toLowerCase()) ||
-      c.client_company?.toLowerCase().includes(search.toLowerCase()) ||
-      c.contract_number.toLowerCase().includes(search.toLowerCase());
+      (c.name || "").toLowerCase().includes(search.toLowerCase()) ||
+      (c.company || "").toLowerCase().includes(search.toLowerCase()) ||
+      (c.email || "").toLowerCase().includes(search.toLowerCase());
 
     if (filter === "all") return matchesSearch;
-    if (filter === "active") return matchesSearch && c.is_from_project;
+    if (filter === "active") return matchesSearch && c.source === "project";
     if (filter === "contract_only")
-      return matchesSearch && c.is_from_contract_only;
+      return matchesSearch && c.source === "contract";
     return matchesSearch;
   });
 
-  const getStatusColor = (status?: string) => {
+  const getStatusColor = (status?: string | null) => {
     switch (status) {
-      case "discovery":
-        return "bg-blue-500/10 text-blue-400 border-blue-500/20";
-      case "design":
-        return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
-      case "development":
-        return "bg-amber-500/10 text-amber-400 border-amber-500/20";
-      case "launch":
-        return "bg-purple-500/10 text-purple-400 border-purple-500/20";
+      case "active":
       case "completed":
         return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+      case "pending_project":
+        return "bg-amber-500/10 text-amber-400 border-amber-500/20";
       default:
         return "bg-neutral-500/10 text-neutral-400 border-neutral-500/20";
     }
   };
 
-  const getPhaseLabel = (status?: string) => {
-    switch (status) {
-      case "discovery":
-        return "Discovery";
-      case "design":
-        return "Design";
-      case "development":
-        return "Development";
-      case "launch":
-        return "Launch";
-      case "completed":
-        return "Finalizado";
-      default:
-        return status || "Sin proyecto";
-    }
+  const getPhaseLabel = (client: ClientCardData) => {
+    if (client.source === "contract") return "PDTE. PROYECTO";
+    if (client.phase) return client.phase.toUpperCase();
+    return client.status?.toUpperCase() || "ACTIVO";
   };
 
   return (
@@ -113,7 +92,7 @@ export function ClientsClient({
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
           <input
             type="text"
-            placeholder="Buscar por nombre, empresa o proyecto..."
+            placeholder="Buscar por nombre, empresa o email..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full bg-white/[0.02] border border-white/10 px-10 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
@@ -144,30 +123,25 @@ export function ClientsClient({
               <div className="p-6 border-b border-white/5 flex justify-between items-start">
                 <div>
                   <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors tracking-tight uppercase italic underline decoration-transparent group-hover:decoration-emerald-500/30 underline-offset-4">
-                    {client.client_name}
+                    {client.name}
                   </h3>
                   <div className="flex items-center gap-2 mt-1">
                     <p className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest">
-                      {client.client_company || "Empresa no especificada"}
+                      {client.company || "Empresa no especificada"}
                     </p>
-                    {!client.has_metadata && (
-                      <span className="flex items-center gap-1 text-[8px] font-bold text-amber-500 border border-amber-500/20 px-1 rounded-sm uppercase tracking-tighter bg-amber-500/5">
-                        <AlertCircle className="w-2 h-2" />
-                        Datos incompletos
-                      </span>
-                    )}
+                  </div>
+                  {/* INLINE CONTACT INFO */}
+                  <div className="mt-2 flex items-center gap-3">
+                    <span className="text-[10px] font-mono text-neutral-500 lowercase">
+                      {client.email || "sin email"}
+                    </span>
                   </div>
                 </div>
                 <div className="flex flex-col items-end gap-2">
                   <div
-                    className={`px-2 py-1 border text-[9px] font-black uppercase tracking-widest rounded-sm ${getStatusColor(client.project?.status)}`}>
-                    {getPhaseLabel(client.project?.status)}
+                    className={`px-2 py-1 border text-[9px] font-black uppercase tracking-widest rounded-sm ${getStatusColor(client.status)}`}>
+                    {getPhaseLabel(client)}
                   </div>
-                  {client.is_from_contract_only && (
-                    <span className="text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
-                      Proyecto pendiente
-                    </span>
-                  )}
                 </div>
               </div>
 
@@ -175,24 +149,14 @@ export function ClientsClient({
               <div className="p-6 grid grid-cols-2 gap-y-6">
                 <div className="space-y-1">
                   <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
-                    <ShieldCheck className="w-3 h-3 text-emerald-500/50" />{" "}
-                    Contrato
+                    <ExternalLink className="w-3 h-3 text-neutral-700" />{" "}
+                    Servicio
                   </span>
-                  <p className="text-xs font-bold text-neutral-300">
-                    {client.contract_number !== "N/A"
-                      ? client.contract_number
-                      : "—"}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
-                    <DollarSign className="w-3 h-3 text-neutral-700" />{" "}
-                    Inversión
-                  </span>
-                  <p className="text-xs font-bold text-emerald-500/80">
-                    {client.total_price > 0
-                      ? `$${client.total_price.toLocaleString("es-MX")} MXN`
-                      : "—"}
+                  <p className="text-xs font-bold text-neutral-300 truncate pr-4 uppercase">
+                    {(client.serviceType || "No especificado").replace(
+                      "_",
+                      " ",
+                    )}
                   </p>
                 </div>
                 <div className="space-y-1">
@@ -200,25 +164,11 @@ export function ClientsClient({
                     <Calendar className="w-3 h-3 text-neutral-700" /> Inicio
                   </span>
                   <p className="text-xs font-bold text-neutral-300">
-                    {client.client_signed_at
-                      ? format(
-                          new Date(client.client_signed_at),
-                          "dd MMM yyyy",
-                          { locale: es },
-                        )
+                    {client.createdAt
+                      ? format(new Date(client.createdAt), "dd MMM yyyy", {
+                          locale: es,
+                        })
                       : "—"}
-                  </p>
-                </div>
-                <div className="space-y-1">
-                  <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
-                    <ExternalLink className="w-3 h-3 text-neutral-700" />{" "}
-                    Servicio
-                  </span>
-                  <p className="text-xs font-bold text-neutral-300 truncate pr-4 uppercase">
-                    {(client.service_type || "No especificado").replace(
-                      "_",
-                      " ",
-                    )}
                   </p>
                 </div>
               </div>
@@ -226,23 +176,12 @@ export function ClientsClient({
               {/* Card Footer Actions */}
               <div className="px-6 py-4 bg-white/[0.01] border-t border-white/5 flex items-center justify-between group-hover:bg-emerald-500/[0.02] transition-colors">
                 <div className="flex gap-4">
-                  {client.project && (
+                  {client.projectId && (
                     <Link
-                      href={`/forge/projects?id=${client.project.id}`}
+                      href={`/forge/projects?id=${client.projectId}`}
                       className="text-[9px] font-bold text-neutral-400 hover:text-emerald-500 transition-colors uppercase tracking-widest flex items-center gap-1.5">
                       Ver Proyecto <ChevronRight className="w-3 h-3" />
                     </Link>
-                  )}
-                  {!client.has_metadata && (
-                    <button
-                      onClick={() =>
-                        alert(
-                          "Abrir formulario para completar datos del cliente",
-                        )
-                      }
-                      className="text-[9px] font-bold text-amber-500/80 hover:text-amber-400 transition-colors uppercase tracking-widest flex items-center gap-1.5">
-                      <UserPlus className="w-3 h-3" /> Completar datos
-                    </button>
                   )}
                 </div>
 

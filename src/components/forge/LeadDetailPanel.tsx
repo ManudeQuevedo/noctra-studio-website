@@ -24,6 +24,20 @@ import { LeadScoreBadge } from "./LeadScoreBadge";
 import { LeadScoreBreakdownTable } from "./LeadScoreBreakdownTable";
 import { recalculateLeadScoreAction } from "@/app/actions/leads";
 
+const STAGE_LABELS: Record<string, string> = {
+  nuevo: "NUEVO",
+  contactado: "CONTACTADO",
+  propuesta_enviada: "PROPUESTA ENVIADA",
+  "propuesta enviada": "PROPUESTA ENVIADA",
+  en_negociacion: "EN NEGOCIACIÓN",
+  "en negociacion": "EN NEGOCIACIÓN",
+  cerrado: "CERRADO",
+  perdido: "PERDIDO",
+};
+
+const getStageLabel = (stage: string) =>
+  STAGE_LABELS[stage.toLowerCase()] ?? stage.replace(/_/g, " ").toUpperCase();
+
 type Activity = {
   id: string;
   lead_id: string;
@@ -259,7 +273,7 @@ export function LeadDetailPanel({
                     className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 border ${getStatusColor(
                       lead.pipeline_status,
                     )}`}>
-                    {lead.pipeline_status.replace("_", " ")}
+                    {getStageLabel(lead.pipeline_status)}
                   </span>
                 </div>
               </div>
@@ -395,7 +409,7 @@ export function LeadDetailPanel({
                       Service Interest
                     </label>
                     <span className="px-2 py-1 bg-emerald-500/5 border border-emerald-500/20 text-emerald-500 text-[10px] font-mono uppercase tracking-widest">
-                      {lead.service_interest}
+                      {getStageLabel(lead.service_interest)}
                     </span>
                   </div>
                   <div>
@@ -517,7 +531,7 @@ export function LeadDetailPanel({
                         ? "border-emerald-500 text-emerald-500 bg-emerald-500/10"
                         : "bg-white/[0.02] border-white/5 text-neutral-500 hover:text-neutral-300 hover:border-neutral-700"
                     }`}>
-                    {status.replace("_", " ")}
+                    {getStageLabel(status)}
                   </button>
                 ))}
               </div>

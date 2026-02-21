@@ -27,6 +27,8 @@ import { FollowUpSuggestion } from "@/app/actions/followup";
 import { createContractFromProposalAction } from "@/app/actions/contracts";
 import { deleteProposalAction } from "@/app/actions/proposals";
 
+import { createPortal } from "react-dom";
+
 type Proposal = {
   id: string;
   proposal_number: string;
@@ -35,6 +37,7 @@ type Proposal = {
   total: number;
   valid_until: string;
   created_at: string;
+  client_token?: string;
   lead: {
     name: string;
     email: string;
@@ -42,6 +45,111 @@ type Proposal = {
     lead_score_breakdown?: any;
   };
 };
+
+function ProposalActionsDropdown({
+  proposal,
+  onDelete,
+  onConvertToContract,
+}: {
+  proposal: Proposal;
+  onDelete: (id: string) => void;
+  onConvertToContract: (p: Proposal) => void;
+}) {
+  const [open, setOpen] = useState(false);
+  const [position, setPosition] = useState({ top: 0, left: 0 });
+  const triggerRef = useRef<HTMLButtonElement>(null);
+  const router = useRouter();
+
+  useEffect(() => {
+    if (open && triggerRef.current) {
+      const rect = triggerRef.current.getBoundingClientRect();
+      setPosition({
+        top: rect.bottom + window.scrollY + 4,
+        left: rect.right + window.scrollX - 160,
+      });
+    }
+  }, [open]);
+
+  useEffect(() => {
+    if (!open) return;
+    const close = () => setOpen(false);
+    // Use timeout to avoid immediate closure if click triggered this
+    const timeout = setTimeout(() => {
+      document.addEventListener("click", close);
+    }, 0);
+    return () => {
+      clearTimeout(timeout);
+      document.removeEventListener("click", close);
+    };
+  }, [open]);
+
+  const dropdown = open ? (
+    <div
+      style={{
+        position: "absolute",
+        top: position.top,
+        left: position.left,
+        zIndex: 9999,
+      }}
+      className="w-40 bg-[#111] border border-[#1f1f1f] shadow-xl rounded-sm py-1"
+      onClick={(e) => e.stopPropagation()}>
+      {/* EDITAR — draft, sent, viewed */}
+      {["draft", "sent", "viewed"].includes(proposal.status) && (
+        <button
+          onClick={() => router.push(`/forge/proposals/${proposal.id}/edit`)}
+          className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-white hover:bg-[#1a1a1a] transition-colors text-left">
+          <Edit3 className="w-3.5 h-3.5" />
+          EDITAR
+        </button>
+      )}
+
+      {/* PREVISUALIZAR — always */}
+      <button
+        onClick={() =>
+          window.open(`/client/proposal/${proposal.client_token}`, "_blank")
+        }
+        className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-white hover:bg-[#1a1a1a] transition-colors text-left">
+        <Eye className="w-3.5 h-3.5" />
+        PREVISUALIZAR
+      </button>
+
+      {/* CONVERT TO CONTRACT - accepted */}
+      {proposal.status === "accepted" && (
+        <button
+          onClick={() => onConvertToContract(proposal)}
+          className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-emerald-400 hover:bg-[#1a1a1a] transition-colors text-left">
+          <FileText className="w-3.5 h-3.5" />
+          CONTRATO
+        </button>
+      )}
+
+      {/* ELIMINAR — draft only */}
+      {proposal.status === "draft" && (
+        <button
+          onClick={() => onDelete(proposal.id)}
+          className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-[#1a1a1a] transition-colors text-left border-t border-[#1f1f1f]">
+          <Trash2 className="w-3.5 h-3.5" />
+          ELIMINAR
+        </button>
+      )}
+    </div>
+  ) : null;
+
+  return (
+    <>
+      <button
+        ref={triggerRef}
+        onClick={(e) => {
+          e.stopPropagation();
+          setOpen(!open);
+        }}
+        className="p-2 hover:bg-white/5 rounded-full transition-colors opacity-0 group-hover:opacity-100">
+        <MoreHorizontal className="w-4 h-4 text-neutral-300" />
+      </button>
+      {typeof window !== "undefined" && createPortal(dropdown, document.body)}
+    </>
+  );
+}
 
 export default function ProposalsClient({
   initialProposals,
@@ -88,7 +196,8 @@ export default function ProposalsClient({
   };
 
   const handleDelete = async (proposalId: string) => {
-    if (!confirm("¿Eliminar esta propuesta? Esta acción no se puede deshacer.")) return;
+    if (!confirm("¿Eliminar esta propuesta? Esta acción no se puede deshacer."))
+      return;
     try {
       await deleteProposalAction(proposalId);
       setProposals((prev) => prev.filter((p) => p.id !== proposalId));
@@ -223,7 +332,9 @@ export default function ProposalsClient({
               filteredProposals.map((proposal) => (
                 <tr
                   key={proposal.id}
-                  onClick={() => router.push(`/forge/proposals/${proposal.id}/edit`)}
+                  onClick={() =>
+                    router.push(`/forge/proposals/${proposal.id}/edit`)
+                  }
                   className="group hover:bg-white/[0.02] transition-colors cursor-pointer border-b border-transparent">
                   <td className="py-5 px-4">
                     <span className="font-mono text-[11px] text-white/40 group-hover:text-emerald-500 transition-colors">
@@ -284,50 +395,11 @@ export default function ProposalsClient({
                   </td>
                   <td className="py-5 px-4">
                     <div className="flex justify-end gap-2 pr-4 relative">
-                      {proposal.status === "accepted" && (
-                        <button
-                          onClick={(e) => {
-                            e.stopPropagation();
-                            handleConvertToContract(proposal);
-                          }}
-                          className="bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 px-3 py-1.5 text-[9px] font-mono uppercase tracking-widest hover:bg-emerald-500 hover:text-black transition-all flex items-center gap-2 group/btn">
-                          <FileText className="w-3.5 h-3.5" />
-                          Convertir a Contrato
-                        </button>
-                      )}
-                      <button
-                        onClick={(e) => {
-                          e.stopPropagation();
-                          setOpenMenuId(openMenuId === proposal.id ? null : proposal.id);
-                        }}
-                        className="p-2 hover:bg-white/5 rounded-full transition-colors opacity-0 group-hover:opacity-100">
-                        <MoreHorizontal className="w-4 h-4 text-neutral-300" />
-                      </button>
-                      {openMenuId === proposal.id && (
-                        <div
-                          ref={menuRef}
-                          className="absolute right-4 top-full mt-1 z-50 bg-[#111] border border-white/10 rounded-md shadow-xl min-w-[160px] py-1">
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              setOpenMenuId(null);
-                              router.push(`/forge/proposals/${proposal.id}/edit`);
-                            }}
-                            className="w-full text-left px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-neutral-300 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-3">
-                            <Edit3 className="w-3.5 h-3.5" />
-                            Editar
-                          </button>
-                          <button
-                            onClick={(e) => {
-                              e.stopPropagation();
-                              handleDelete(proposal.id);
-                            }}
-                            className="w-full text-left px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500/10 transition-colors flex items-center gap-3">
-                            <Trash2 className="w-3.5 h-3.5" />
-                            Eliminar
-                          </button>
-                        </div>
-                      )}
+                      <ProposalActionsDropdown
+                        proposal={proposal}
+                        onDelete={handleDelete}
+                        onConvertToContract={handleConvertToContract}
+                      />
                     </div>
                   </td>
                 </tr>

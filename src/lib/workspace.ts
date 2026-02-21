@@ -3,7 +3,6 @@ import { cookies } from 'next/headers'
 import { cache } from 'react'
 
 export const getWorkspace = cache(async () => {
-  console.log('[getWorkspace] starting...')
   
   const cookieStore = await cookies()
   const supabase = createServerClient(
@@ -16,19 +15,18 @@ export const getWorkspace = cache(async () => {
     }
   )
 
-  const { data: { user }, error: userError } = await supabase.auth.getUser()
-  
-  console.log('[getWorkspace] user:', user?.id, 
-              'error:', userError?.message)
-  
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
+
   if (!user) {
-    console.log('[getWorkspace] no user, returning null')
-    return null
+    return null;
   }
 
-  const { data: membership, error: membershipError } = await supabase
-    .from('workspace_members')
-    .select(`
+  const { data: membership } = await supabase
+    .from("workspace_members")
+    .select(
+      `
       workspace_id,
       role,
       workspaces (
@@ -41,18 +39,13 @@ export const getWorkspace = cache(async () => {
         currency,
         country
       )
-    `)
-    .eq('user_id', user.id)
-    .single()
-
-  console.log('[getWorkspace] membership:', 
-              JSON.stringify(membership),
-              'error:', membershipError?.message,
-              'code:', membershipError?.code)
+    `,
+    )
+    .eq("user_id", user.id)
+    .single();
 
   if (!membership) {
-    console.log('[getWorkspace] no membership, returning null')
-    return null
+    return null;
   }
 
   return {

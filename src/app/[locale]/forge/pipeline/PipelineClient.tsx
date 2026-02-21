@@ -61,6 +61,20 @@ const FALLBACK_STAGE_COLORS: Record<string, string> = {
   perdido: "bg-red-500/20 text-red-400 border-red-500/30",
 };
 
+const STAGE_LABELS: Record<string, string> = {
+  nuevo: "NUEVO",
+  contactado: "CONTACTADO",
+  propuesta_enviada: "PROPUESTA ENVIADA",
+  "propuesta enviada": "PROPUESTA ENVIADA",
+  en_negociacion: "EN NEGOCIACIÓN",
+  "en negociacion": "EN NEGOCIACIÓN",
+  cerrado: "CERRADO",
+  perdido: "PERDIDO",
+};
+
+const getStageLabel = (stage: string) =>
+  STAGE_LABELS[stage.toLowerCase()] ?? stage.replace(/_/g, " ").toUpperCase();
+
 const getStageColor = (stageId: string) => {
   return FALLBACK_STAGE_COLORS[stageId] || FALLBACK_STAGE_COLORS.nuevo;
 };
@@ -84,7 +98,7 @@ export default function PipelineClient({
     ]
   ).map((s: string) => ({
     id: s.toLowerCase().replace(/ /g, "_"),
-    label: s.toUpperCase(),
+    label: getStageLabel(s),
   }));
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
@@ -488,7 +502,7 @@ function LeadCard({
             <div className="flex items-center gap-2">
               <span
                 className={`text-[8px] font-mono font-black uppercase tracking-widest px-1.5 py-0.5 border text-neutral-400 bg-neutral-400/10 border-neutral-400/20`}>
-                {lead.service_interest}
+                {getStageLabel(lead.service_interest)}
               </span>
               <span className="text-[8px] font-mono text-neutral-700">
                 {lead.request_id}

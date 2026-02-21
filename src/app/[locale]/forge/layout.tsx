@@ -15,15 +15,8 @@ export default async function ForgeLayout({
     console.error("[ForgeLayout] getWorkspace error:", error);
   }
 
-  console.log(
-    "[ForgeLayout] ctx:",
-    ctx ? `workspace=${ctx.workspaceId}` : "NULL",
-  );
-
   if (!ctx) {
-    console.log(
-      "[ForgeLayout] rendering without workspace ctx (security bypass enabled for debug)",
-    );
+    redirect("/forge/login");
   }
 
   return (

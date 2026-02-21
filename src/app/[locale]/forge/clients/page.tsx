@@ -62,53 +62,38 @@ export default async function ForgeClientsPage() {
   // Merge and deduplicate by email
   const mergedClients = new Map();
 
-  // Add project-based clients first (priority)
-  (projectClients || []).forEach((project) => {
-    const email = project.client_email || `temp-${project.id}`;
+  // 1. Project-based clients (Active/Completed)
+  (projectClients || []).forEach((p) => {
+    const email = p.client_email || `p-${p.id}`;
     mergedClients.set(email, {
-      id: project.id,
-      client_name: project.client_name || project.name,
-      client_company: project.client_company,
-      service_type: project.service_type,
-      contract_number: "N/A", // fallback
-      total_price: 0, // will be updated if contract found
-      client_signed_at: project.created_at,
-      project: {
-        id: project.id,
-        status: project.status,
-        name: project.name,
-      },
-      has_metadata: !!project.client_email,
-      is_from_project: true,
+      id: p.id,
+      name: p.client_name ?? p.name,
+      email: p.client_email,
+      company: p.client_company,
+      serviceType: p.service_type,
+      status: p.status,
+      phase: (p as any).phase, // Need to make sure project table has phase or map it
+      source: "project",
+      projectId: p.id,
+      createdAt: p.created_at,
     });
   });
 
-  // Add contract-based clients if not already in list or to enrich
-  (contractClients || []).forEach((contract) => {
-    const email = contract.client_email;
-    if (mergedClients.has(email)) {
-      // Enrich existing project client with contract data
-      const existing = mergedClients.get(email);
+  // 2. Contract-only clients (Signed but no project yet)
+  (contractClients || []).forEach((c) => {
+    const email = c.client_email || `c-${c.id}`;
+    if (!mergedClients.has(email)) {
       mergedClients.set(email, {
-        ...existing,
-        contract_id: contract.id,
-        contract_number: contract.contract_number,
-        total_price: contract.total_price,
-        client_signed_at:
-          contract.client_signed_at || existing.client_signed_at,
-      });
-    } else {
-      // New client from contract only
-      mergedClients.set(email, {
-        id: contract.id,
-        client_name: contract.client_name,
-        client_company: contract.client_company,
-        service_type: contract.service_type,
-        contract_number: contract.contract_number,
-        total_price: contract.total_price,
-        client_signed_at: contract.client_signed_at,
-        has_metadata: true,
-        is_from_contract_only: true,
+        id: c.id,
+        name: c.client_name,
+        email: c.client_email,
+        company: c.client_company,
+        serviceType: c.service_type,
+        status: "pending_project",
+        phase: null,
+        source: "contract",
+        projectId: null,
+        createdAt: c.created_at,
       });
     }
   });
