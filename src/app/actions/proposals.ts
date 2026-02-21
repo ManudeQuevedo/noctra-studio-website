@@ -79,3 +79,25 @@ export async function updateProposalAction(proposalId: string, data: any) {
   revalidatePath("/forge/proposals");
   revalidatePath(`/forge/proposals/${proposalId}/edit`);
 }
+
+export async function deleteProposalAction(proposalId: string) {
+  const supabase = await createClient();
+
+  const { data: { user } } = await supabase.auth.getUser();
+  if (!user) throw new Error("No autenticado");
+
+  // Delete related items first
+  await supabase
+    .from("proposal_items")
+    .delete()
+    .eq("proposal_id", proposalId);
+
+  const { error } = await supabase
+    .from("proposals")
+    .delete()
+    .eq("id", proposalId);
+
+  if (error) throw error;
+
+  revalidatePath("/forge/proposals");
+}

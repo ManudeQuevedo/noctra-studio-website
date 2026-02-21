@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
 import { format } from "date-fns";
 import {
@@ -13,6 +13,7 @@ import {
   FileText,
   ExternalLink,
   ChevronRight,
+  Trash2,
 } from "lucide-react";
 import { LeadScoreBadge } from "@/components/forge/LeadScoreBadge";
 import Link from "next/link";
@@ -24,6 +25,7 @@ import { FollowUpBanner } from "@/components/forge/FollowUpBanner";
 import { FollowUpModal } from "@/components/forge/FollowUpModal";
 import { FollowUpSuggestion } from "@/app/actions/followup";
 import { createContractFromProposalAction } from "@/app/actions/contracts";
+import { deleteProposalAction } from "@/app/actions/proposals";
 
 type Proposal = {
   id: string;
@@ -46,14 +48,27 @@ export default function ProposalsClient({
 }: {
   initialProposals: any[];
 }) {
-  const [proposals] = useState<Proposal[]>(initialProposals);
+  const [proposals, setProposals] = useState<Proposal[]>(initialProposals);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [openMenuId, setOpenMenuId] = useState<string | null>(null);
   const [selectedFollowUp, setSelectedFollowUp] =
     useState<FollowUpSuggestion | null>(null);
   const { suggestions, dismiss, refresh } = useFollowUps();
   const router = useRouter();
   const supabase = createClient();
+  const menuRef = useRef<HTMLDivElement>(null);
+
+  // Close dropdown on outside click
+  useEffect(() => {
+    const handleClickOutside = (e: MouseEvent) => {
+      if (menuRef.current && !menuRef.current.contains(e.target as Node)) {
+        setOpenMenuId(null);
+      }
+    };
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => document.removeEventListener("mousedown", handleClickOutside);
+  }, []);
 
   const proposalSuggestions = suggestions.filter(
     (s) => s.type === "proposal_viewed_3d" || s.type === "proposal_sent_5d",
@@ -69,6 +84,18 @@ export default function ProposalsClient({
         "Error al convertir a contrato: " +
           (err.message || "Error desconocido"),
       );
+    }
+  };
+
+  const handleDelete = async (proposalId: string) => {
+    if (!confirm("¿Eliminar esta propuesta? Esta acción no se puede deshacer.")) return;
+    try {
+      await deleteProposalAction(proposalId);
+      setProposals((prev) => prev.filter((p) => p.id !== proposalId));
+      setOpenMenuId(null);
+    } catch (err: any) {
+      console.error(err);
+      alert("Error al eliminar: " + (err.message || "Error desconocido"));
     }
   };
 
@@ -196,6 +223,7 @@ export default function ProposalsClient({
               filteredProposals.map((proposal) => (
                 <tr
                   key={proposal.id}
+                  onClick={() => router.push(`/forge/proposals/${proposal.id}/edit`)}
                   className="group hover:bg-white/[0.02] transition-colors cursor-pointer border-b border-transparent">
                   <td className="py-5 px-4">
                     <span className="font-mono text-[11px] text-white/40 group-hover:text-emerald-500 transition-colors">
@@ -267,9 +295,39 @@ export default function ProposalsClient({
                           Convertir a Contrato
                         </button>
                       )}
-                      <button className="p-2 hover:bg-white/5 rounded-full transition-colors opacity-0 group-hover:opacity-100">
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          setOpenMenuId(openMenuId === proposal.id ? null : proposal.id);
+                        }}
+                        className="p-2 hover:bg-white/5 rounded-full transition-colors opacity-0 group-hover:opacity-100">
                         <MoreHorizontal className="w-4 h-4 text-neutral-300" />
                       </button>
+                      {openMenuId === proposal.id && (
+                        <div
+                          ref={menuRef}
+                          className="absolute right-4 top-full mt-1 z-50 bg-[#111] border border-white/10 rounded-md shadow-xl min-w-[160px] py-1">
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              setOpenMenuId(null);
+                              router.push(`/forge/proposals/${proposal.id}/edit`);
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-neutral-300 hover:bg-white/5 hover:text-white transition-colors flex items-center gap-3">
+                            <Edit3 className="w-3.5 h-3.5" />
+                            Editar
+                          </button>
+                          <button
+                            onClick={(e) => {
+                              e.stopPropagation();
+                              handleDelete(proposal.id);
+                            }}
+                            className="w-full text-left px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-red-500/10 transition-colors flex items-center gap-3">
+                            <Trash2 className="w-3.5 h-3.5" />
+                            Eliminar
+                          </button>
+                        </div>
+                      )}
                     </div>
                   </td>
                 </tr>
