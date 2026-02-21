@@ -643,7 +643,7 @@ export default function ForgeProjectsClient({
   const selectedProject = projects.find((p) => p.id === selectedId);
 
   return (
-    <div className="flex flex-col md:flex-row h-full">
+    <div className="flex flex-col md:flex-row min-h-full">
       {/* Toast */}
       {toast && (
         <div
@@ -653,16 +653,14 @@ export default function ForgeProjectsClient({
       )}
 
       {/* Projects Secondary Sidebar */}
-      <aside className="w-full md:w-[280px] bg-[#0a0a0a] border-r border-neutral-900 flex flex-col shrink-0 flex-none h-[30vh] md:h-full z-10">
+      <aside className="w-full md:w-[280px] bg-[#0a0a0a] border-r border-neutral-900 flex flex-col shrink-0 flex-none z-10">
         <div className="p-6 pb-2">
           <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
             Projects
           </h2>
         </div>
 
-        <div
-          className="flex-1 overflow-y-auto px-4 space-y-1"
-          data-lenis-prevent>
+        <div className="px-4 space-y-1">
           {projects.map((p) => (
             <button
               key={p.id}
@@ -704,9 +702,7 @@ export default function ForgeProjectsClient({
       </aside>
 
       {/* Main Detail Panel */}
-      <div
-        className="flex-1 overflow-y-auto relative outline-none flex flex-col pb-24 md:pb-0"
-        data-lenis-prevent>
+      <div className="flex-1 relative outline-none flex flex-col pb-24 md:pb-0">
         {!selectedProject ? (
           <div className="flex-1 flex items-center justify-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
             Select a project

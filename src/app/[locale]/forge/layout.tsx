@@ -59,16 +59,19 @@ export default function ForgeLayout({
       {isLoginPage ? (
         children
       ) : (
-        <div className="flex h-screen bg-[#050505] text-white overflow-hidden">
+        <div className="flex h-screen overflow-hidden bg-[#050505] text-white">
           {/* Sidebar - Independent Scroll */}
-          <aside className="hidden md:flex w-[280px] h-screen overflow-y-auto overflow-x-hidden border-r border-neutral-900 shrink-0">
+          <aside className="hidden md:flex flex-col w-[280px] h-screen overflow-y-auto overflow-x-hidden border-r border-[#1f1f1f] shrink-0 forge-scroll">
             <ForgeSidebar />
           </aside>
 
           {/* Main Content - Independent Scroll */}
-          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pb-24 md:pb-0 min-w-0 forge-main">
+          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pb-24 md:pb-0 min-w-0 forge-scroll">
             <ForgeContentWrapper>{children}</ForgeContentWrapper>
           </main>
+
+          {/* Mobile Bottom Navigation - Handled inside ForgeSidebar for shared state, 
+              but it's fixed/absolute so it sits outside the flex flow naturally */}
         </div>
       )}
     </>

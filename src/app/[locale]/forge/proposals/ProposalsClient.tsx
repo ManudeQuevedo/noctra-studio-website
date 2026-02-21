@@ -158,7 +158,7 @@ export default function ProposalsClient({
       )}
 
       {/* Table View */}
-      <div className="flex-1 overflow-x-auto px-8 py-6">
+      <div className="overflow-x-auto px-8 py-6 forge-scroll">
         <table className="w-full border-collapse min-w-[1000px]">
           <thead>
             <tr className="border-b border-white/5">

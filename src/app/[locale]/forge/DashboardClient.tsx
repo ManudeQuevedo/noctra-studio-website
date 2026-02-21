@@ -88,9 +88,7 @@ export default function DashboardClient({
   });
 
   return (
-    <div
-      className="p-6 md:p-12 space-y-12 max-w-7xl mx-auto w-full"
-      data-lenis-prevent>
+    <div className="p-6 md:p-12 space-y-12 max-w-7xl mx-auto w-full">
       {/* Header */}
       <header className="px-6 md:px-12 pt-12 pb-8 border-b border-neutral-900 bg-[#080808] -mx-6 md:-mx-12 -mt-6 md:-mt-12 mb-12">
         <h1 className="text-3xl font-black tracking-tighter mb-2">
@@ -436,7 +434,7 @@ function RecentActivity({ leads, proposals, contracts, projects }: any) {
           Actividad Reciente
         </h3>
       </div>
-      <div className="flex-1 overflow-y-auto p-6 space-y-6" data-lenis-prevent>
+      <div className="flex-1 overflow-y-auto p-6 space-y-6 forge-scroll">
         {recentEvents.length === 0 ? (
           <p className="text-xs font-mono text-neutral-600">
             No hay actividad reciente.
@@ -490,7 +488,7 @@ function UpcomingActions({ leads }: any) {
           Próximas Acciones
         </h3>
       </div>
-      <div className="flex-1 overflow-y-auto p-6 space-y-4" data-lenis-prevent>
+      <div className="flex-1 overflow-y-auto p-6 space-y-4 forge-scroll">
         {actions.length === 0 ? (
           <p className="text-[10px] font-mono uppercase tracking-widest text-neutral-600 leading-tight">
             Sin acciones programadas esta semana.

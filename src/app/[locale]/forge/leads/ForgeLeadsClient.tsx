@@ -91,8 +91,8 @@ export default function ForgeLeadsClient({
   };
 
   return (
-    <div className="flex flex-col md:flex-row h-full">
-      <aside className="w-full md:w-[320px] bg-[#080808] border-r border-neutral-900 flex flex-col shrink-0 h-[40vh] md:h-full">
+    <div className="flex flex-col md:flex-row min-h-full">
+      <aside className="w-full md:w-[320px] bg-[#080808] border-r border-neutral-900 flex flex-col shrink-0">
         <div className="p-6 border-b border-neutral-900">
           <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
             Recent Leads
@@ -118,7 +118,7 @@ export default function ForgeLeadsClient({
             </button>
           </div>
         </div>
-        <div className="flex-1 overflow-y-auto px-2 py-4 space-y-1">
+        <div className="px-2 py-4 space-y-1">
           {sortedLeads.map((lead) => (
             <button
               key={lead.id}
@@ -161,7 +161,7 @@ export default function ForgeLeadsClient({
         </div>
       </aside>
 
-      <div className="flex-1 overflow-y-auto bg-[#050505] pb-24 md:pb-0">
+      <div className="flex-1 bg-[#050505] pb-24 md:pb-0">
         {!selectedLead ? (
           <div className="h-full flex items-center justify-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
             Select a lead to view details

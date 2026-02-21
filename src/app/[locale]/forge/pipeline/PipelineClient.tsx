@@ -282,13 +282,11 @@ export default function PipelineClient({
       )}
 
       {/* Kanban Board */}
-      <div className="flex-1 overflow-x-auto p-6 bg-[#050505] min-h-0">
+      <div className="overflow-x-auto p-6 bg-[#050505] forge-scroll">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="flex gap-4 h-full min-w-max pb-4">
             {STAGES.map((stage) => (
-              <div
-                key={stage.id}
-                className="w-[280px] flex flex-col shrink-0 h-full max-h-[calc(100vh-200px)]">
+              <div key={stage.id} className="w-[280px] flex flex-col shrink-0">
                 {/* Column Header */}
                 <div className="flex items-center justify-between mb-4 group px-2">
                   <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 flex items-center gap-2">
@@ -313,8 +311,7 @@ export default function PipelineClient({
                           <div
                             {...provided.droppableProps}
                             ref={provided.innerRef}
-                            style={{ overflowY: "auto" }}
-                            className={`flex-1 min-h-0 p-3 space-y-3 transition-colors custom-scrollbar ${snapshot.isDraggingOver ? "bg-emerald-500/5" : ""}`}>
+                            className={`flex-1 min-h-[200px] p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-emerald-500/5" : ""}`}>
                             <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
                               WON / CERRADO
                             </div>
@@ -339,8 +336,7 @@ export default function PipelineClient({
                           <div
                             {...provided.droppableProps}
                             ref={provided.innerRef}
-                            style={{ overflowY: "auto" }}
-                            className={`h-[40%] border-t border-neutral-900 p-3 space-y-3 transition-colors custom-scrollbar ${snapshot.isDraggingOver ? "bg-red-500/5" : ""}`}>
+                            className={`h-[40%] min-h-[150px] border-t border-neutral-900 p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-red-500/5" : ""}`}>
                             <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
                               LOST / PERDIDO
                             </div>
@@ -365,8 +361,7 @@ export default function PipelineClient({
                         <div
                           {...provided.droppableProps}
                           ref={provided.innerRef}
-                          style={{ overflowY: "auto" }}
-                          className={`flex-1 p-3 space-y-3 transition-colors custom-scrollbar ${snapshot.isDraggingOver ? "bg-white/[0.02]" : ""}`}>
+                          className={`flex-1 min-h-[400px] p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-white/[0.02]" : ""}`}>
                           {getLeadsByStage(stage.id).map((lead, index) => (
                             <LeadCard
                               key={lead.id}

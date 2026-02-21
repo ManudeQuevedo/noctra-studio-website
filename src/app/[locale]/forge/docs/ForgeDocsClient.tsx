@@ -109,9 +109,9 @@ export default function ForgeDocsClient() {
           </button>
         </header>
 
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 flex items-start gap-0">
           {/* Sidebar TOC */}
-          <aside className="w-[260px] border-r border-white/5 bg-[#050505] overflow-y-auto hidden lg:block p-8 space-y-8 print:hidden">
+          <aside className="hidden lg:block w-[260px] flex-shrink-0 sticky top-[64px] self-start max-h-[calc(100vh-64px)] overflow-y-auto border-r border-white/5 bg-[#050505] p-8 space-y-8 print:hidden custom-scrollbar forge-scroll">
             <div className="space-y-4">
               <span className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-500">
                 Contenido
@@ -137,7 +137,7 @@ export default function ForgeDocsClient() {
           </aside>
 
           {/* Content Area */}
-          <div className="flex-1 overflow-y-auto scroll-smooth custom-scrollbar bg-[#050505] p-8 lg:p-16 pb-32">
+          <div className="flex-1 min-w-0 bg-[#050505] p-8 lg:p-16 pb-32">
             <div className="max-w-4xl mx-auto space-y-24">
               {/* 1. INTRODUCCIÓN */}
               <section id="intro" className="space-y-8 scroll-mt-24">

@@ -274,7 +274,7 @@ export function LeadDetailPanel({
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-10">
+            <div className="flex-1 overflow-y-auto p-6 space-y-10 forge-scroll">
               {/* Section 1: Contact Info */}
               <section
                 className={`space-y-4 ${activeTab === "DETALLES" ? "block" : "hidden"}`}>

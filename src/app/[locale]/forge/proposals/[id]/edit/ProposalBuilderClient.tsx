@@ -127,9 +127,9 @@ export default function ProposalBuilderClient({
       </header>
 
       {/* Builder Layout */}
-      <div className="flex-1 flex overflow-hidden">
+      <div className="flex-1 flex min-h-[calc(100vh-64px)]">
         {/* Left Panel: Editing Forms (60% or scrollable) */}
-        <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-8 space-y-12">
+        <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-8 space-y-12 forge-scroll h-[calc(100vh-64px)]">
           <section className="space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
@@ -224,7 +224,7 @@ export default function ProposalBuilderClient({
         </div>
 
         {/* Right Panel: Live Preview (40% - sticky or fixed) */}
-        <div className="hidden lg:block lg:flex-1 bg-white/[0.02] overflow-y-auto p-12">
+        <div className="hidden lg:block lg:flex-1 bg-white/[0.02] overflow-y-auto p-12 forge-scroll h-[calc(100vh-64px)]">
           <div className="max-w-3xl mx-auto bg-white text-black shadow-2xl min-h-[1000px] p-16 flex flex-col">
             {/* Proposal Header */}
             <div className="flex justify-between items-start mb-20">

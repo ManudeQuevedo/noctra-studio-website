@@ -226,7 +226,7 @@ export default function ContractBuilderClient({
   };
 
   return (
-    <div className="flex h-screen bg-[#050505] text-white overflow-hidden">
+    <div className="flex bg-[#050505] text-white">
       <ForgeSidebar />
       <div className="flex-1 flex flex-col min-w-0">
         <header className="h-16 border-b border-white/5 flex items-center justify-between px-8 bg-[#080808]">
@@ -271,9 +271,9 @@ export default function ContractBuilderClient({
           </div>
         </header>
 
-        <div className="flex-1 flex overflow-hidden">
+        <div className="flex-1 flex min-h-[calc(100vh-64px)]">
           {/* LEFT PANEL: Editing */}
-          <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-8 space-y-12">
+          <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-8 space-y-12 forge-scroll h-[calc(100vh-64px)]">
             <section className="space-y-6">
               <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
                 Datos del Cliente
@@ -477,7 +477,7 @@ export default function ContractBuilderClient({
           </div>
 
           {/* RIGHT PANEL: Live Preview */}
-          <div className="hidden lg:block lg:flex-1 bg-[#080808] overflow-y-auto p-12">
+          <div className="hidden lg:block lg:flex-1 bg-[#080808] overflow-y-auto p-12 forge-scroll h-[calc(100vh-64px)]">
             <div className="max-w-3xl mx-auto bg-white text-neutral-900 shadow-2xl min-h-[1000px] p-16 flex flex-col font-serif">
               {/* Contract Header */}
               <div className="text-center mb-16">

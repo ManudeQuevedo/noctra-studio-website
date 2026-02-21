@@ -85,6 +85,7 @@
 @layer base {
   html {
     scroll-behavior: smooth;
+    height: 100%;
   }
 
   * {
@@ -93,6 +94,8 @@
 
   body {
     @apply bg-background text-foreground select-none;
+    min-height: 100%;
+    overflow-x: hidden;
   }
 
   /* Re-enable selection for content */
@@ -279,6 +282,12 @@
     .forge-page-enter {
       animation: none;
     }
+  }
+
+  /* Apply to all scroll containers in /forge */
+  .forge-scroll {
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
   }
 
   /* Forge Optimized Scroll */

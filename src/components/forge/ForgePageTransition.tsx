@@ -31,7 +31,10 @@ export function ForgePageTransition({
   }, [pathname]);
 
   return (
-    <div ref={ref} className="forge-page-enter w-full min-h-full">
+    <div
+      ref={ref}
+      className="forge-page-enter"
+      style={{ minHeight: "100%", width: "100%" }}>
       {children}
     </div>
   );

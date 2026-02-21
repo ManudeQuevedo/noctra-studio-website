@@ -102,7 +102,7 @@ export function ClientsClient({
       </div>
 
       {/* Grid */}
-      <div className="flex-1 overflow-y-auto p-8 custom-scrollbar">
+      <div className="p-8">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredClients.map((client) => (
             <Link
@@ -196,18 +196,6 @@ export function ClientsClient({
           )}
         </div>
       </div>
-
-      <style jsx>{`
-        .custom-scrollbar::-webkit-scrollbar {
-          width: 4px;
-        }
-        .custom-scrollbar::-webkit-scrollbar-track {
-          background: transparent;
-        }
-        .custom-scrollbar::-webkit-scrollbar-thumb {
-          background: rgba(255, 255, 255, 0.05);
-        }
-      `}</style>
     </div>
   );
 }
