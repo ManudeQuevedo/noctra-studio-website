@@ -241,6 +241,55 @@
     animation-duration: 0.01ms !important;
     animation-iteration-count: 1 !important;
     transition-duration: 0.01ms !important;
-    scroll-behavior: auto !important;
   }
+}
+
+/* Forge Page Transitions */
+  @keyframes forge-exit {
+    from {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+    to {
+      opacity: 0;
+      transform: translateY(-12px);
+      filter: blur(4px);
+    }
+  }
+
+  @keyframes forge-enter {
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+      filter: blur(4px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+      filter: blur(0px);
+    }
+  }
+
+  .forge-page-enter {
+    animation: forge-enter 220ms ease-out forwards;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .forge-page-enter {
+      animation: none;
+    }
+  }
+
+  /* Forge Optimized Scroll */
+  .forge-main {
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+    overscroll-behavior-y: contain;
+    scrollbar-gutter: stable;
+  }
+
+/* Ensure no global overflow-hidden blocks scroll */
+body {
+  overflow-x: hidden;
 }

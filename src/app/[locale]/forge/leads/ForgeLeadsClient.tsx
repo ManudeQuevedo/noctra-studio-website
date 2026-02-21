@@ -91,9 +91,7 @@ export default function ForgeLeadsClient({
   };
 
   return (
-    <div className="flex h-screen bg-[#050505] text-white overflow-hidden flex-col md:flex-row">
-      <ForgeSidebar />
-
+    <div className="flex flex-col md:flex-row h-full">
       <aside className="w-full md:w-[320px] bg-[#080808] border-r border-neutral-900 flex flex-col shrink-0 h-[40vh] md:h-full">
         <div className="p-6 border-b border-neutral-900">
           <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
@@ -163,7 +161,7 @@ export default function ForgeLeadsClient({
         </div>
       </aside>
 
-      <main className="flex-1 overflow-y-auto bg-[#050505] pb-24 md:pb-0">
+      <div className="flex-1 overflow-y-auto bg-[#050505] pb-24 md:pb-0">
         {!selectedLead ? (
           <div className="h-full flex items-center justify-center text-neutral-400 font-mono text-xs uppercase tracking-widest">
             Select a lead to view details
@@ -334,7 +332,7 @@ export default function ForgeLeadsClient({
             </section>
           </div>
         )}
-      </main>
+      </div>
     </div>
   );
 }

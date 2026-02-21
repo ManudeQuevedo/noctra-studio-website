@@ -1,9 +1,11 @@
 "use client";
 
 import { useEffect } from "react";
-import { useRouter } from "next/navigation";
+import { useRouter, usePathname } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useInactivityTimeout } from "@/hooks/useInactivityTimeout";
+import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
+import { ForgeContentWrapper } from "@/components/forge/ForgeContentWrapper";
 
 export default function ForgeLayout({
   children,
@@ -12,7 +14,10 @@ export default function ForgeLayout({
 }) {
   const supabase = createClient(false); // Disable session persistence for forge
   const router = useRouter();
+  const pathname = usePathname();
   const { showWarning, timeLeft, staySignedIn } = useInactivityTimeout();
+
+  const isLoginPage = pathname.includes("/forge/login");
 
   useEffect(() => {
     const {
@@ -50,7 +55,22 @@ export default function ForgeLayout({
           </button>
         </div>
       )}
-      {children}
+
+      {isLoginPage ? (
+        children
+      ) : (
+        <div className="flex h-screen bg-[#050505] text-white overflow-hidden">
+          {/* Sidebar - Independent Scroll */}
+          <aside className="hidden md:flex w-[280px] h-screen overflow-y-auto overflow-x-hidden border-r border-neutral-900 shrink-0">
+            <ForgeSidebar />
+          </aside>
+
+          {/* Main Content - Independent Scroll */}
+          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pb-24 md:pb-0 min-w-0 forge-main">
+            <ForgeContentWrapper>{children}</ForgeContentWrapper>
+          </main>
+        </div>
+      )}
     </>
   );
 }

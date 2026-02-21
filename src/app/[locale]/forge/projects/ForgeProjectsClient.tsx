@@ -643,7 +643,7 @@ export default function ForgeProjectsClient({
   const selectedProject = projects.find((p) => p.id === selectedId);
 
   return (
-    <div className="flex h-screen bg-[#050505] text-white overflow-hidden flex-col md:flex-row">
+    <div className="flex flex-col md:flex-row h-full">
       {/* Toast */}
       {toast && (
         <div
@@ -651,9 +651,6 @@ export default function ForgeProjectsClient({
           {toast.message}
         </div>
       )}
-
-      {/* Sidebar */}
-      <ForgeSidebar />
 
       {/* Projects Secondary Sidebar */}
       <aside className="w-full md:w-[280px] bg-[#0a0a0a] border-r border-neutral-900 flex flex-col shrink-0 flex-none h-[30vh] md:h-full z-10">
@@ -707,7 +704,7 @@ export default function ForgeProjectsClient({
       </aside>
 
       {/* Main Detail Panel */}
-      <main
+      <div
         className="flex-1 overflow-y-auto relative outline-none flex flex-col pb-24 md:pb-0"
         data-lenis-prevent>
         {!selectedProject ? (
@@ -1392,7 +1389,7 @@ export default function ForgeProjectsClient({
             </button>
           </div>
         )}
-      </main>
+      </div>
 
       {/* New Project Modal */}
       {isCreating && (

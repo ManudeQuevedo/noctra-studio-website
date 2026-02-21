@@ -86,12 +86,13 @@ export function ForgeSidebar() {
   return (
     <>
       {/* DESKTOP SIDEBAR */}
-      <aside className="hidden md:flex w-[280px] bg-[#0a0a0a] border-r border-neutral-900 flex-col shrink-0 flex-none h-full z-10">
+      {/* DESKTOP SIDEBAR CONTENT */}
+      <div className="flex flex-col h-full bg-[#0a0a0a]">
         <div className="p-6 border-b border-neutral-900 flex justify-between items-center">
           <BrandLogo className="h-5 w-auto text-white" showText={true} />
         </div>
 
-        <div className="flex-1 px-4 py-8 space-y-2 overflow-y-auto">
+        <div className="flex-1 px-4 py-8 space-y-2 overflow-y-auto custom-scrollbar">
           <h2 className="px-3 text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-4">
             Navigation
           </h2>
@@ -141,7 +142,7 @@ export function ForgeSidebar() {
             Sign out <LogOut className="w-3 h-3" />
           </button>
         </div>
-      </aside>
+      </div>
 
       {/* MOBILE TOP HEADER */}
       <header className="md:hidden sticky top-0 z-40 h-12 w-full bg-[#0a0a0a] border-b border-[#1f1f1f] flex items-center justify-between px-4 shrink-0 flex-none">

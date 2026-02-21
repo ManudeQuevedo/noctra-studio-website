@@ -88,85 +88,75 @@ export default function DashboardClient({
   });
 
   return (
-    <div className="flex h-screen bg-[#050505] text-white overflow-hidden flex-col md:flex-row">
-      <ForgeSidebar />
-
-      <main
-        className="flex-1 overflow-y-auto bg-[#050505] flex flex-col pb-24 md:pb-0 min-w-0"
-        data-lenis-prevent>
-        {/* Header */}
-        <header className="px-6 md:px-12 pt-12 pb-8 border-b border-neutral-900 bg-[#080808]">
-          <h1 className="text-3xl font-black tracking-tighter mb-2">
-            {getGreeting()}, Manu.
-          </h1>
-          <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
-            <p className="text-xs font-mono uppercase tracking-widest text-neutral-400 capitalize">
-              {formattedDate}
-            </p>
-            <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-400">
-              Aquí está lo que necesitas saber hoy.
-            </p>
-          </div>
-        </header>
-
-        <div className="p-6 md:p-12 space-y-12 max-w-7xl mx-auto w-full">
-          {/* Follow-up Smart Suggestions */}
-          {suggestions.length > 0 && (
-            <div className="bg-amber-500/10 border border-amber-500/20 p-4 rounded-lg flex items-center justify-between gap-4">
-              <div className="flex items-center gap-3">
-                <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500">
-                  <MessageSquare className="w-4 h-4" />
-                </div>
-                <div>
-                  <p className="text-[10px] font-mono text-amber-500 uppercase tracking-widest font-black">
-                    Seguimiento Sugerido
-                  </p>
-                  <p className="text-sm font-bold text-white">
-                    Tienes {suggestions.length} cliente
-                    {suggestions.length > 1 ? "s" : ""} que requiere
-                    {suggestions.length > 1 ? "n" : ""} atención inmediata.
-                  </p>
-                </div>
-              </div>
-              <Link
-                href="/forge/proposals"
-                className="px-4 py-2 bg-amber-500 text-black text-[10px] font-black uppercase tracking-widest hover:bg-amber-400 transition-all">
-                Revisar sugerencias
-              </Link>
-            </div>
-          )}
-
-          {/* Row 1: Alertas del Día */}
-          <AlertsRow
-            leads={leads}
-            proposals={proposals}
-            contracts={contracts}
-          />
-
-          {/* Row 2: KPIs Rápidos */}
-          <KpiRow
-            leads={leads}
-            proposals={proposals}
-            projects={projects}
-            contracts={contracts}
-            forecast={forecast}
-          />
-
-          {/* Row 3: Actividad Reciente & Próximas acciones */}
-          <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
-            <RecentActivity
-              leads={leads}
-              proposals={proposals}
-              contracts={contracts}
-              projects={projects}
-            />
-            <UpcomingActions leads={leads} />
-          </div>
-
-          {/* Row 4: Pipeline Snapshot */}
-          <PipelineSnapshot leads={leads} />
+    <div
+      className="p-6 md:p-12 space-y-12 max-w-7xl mx-auto w-full"
+      data-lenis-prevent>
+      {/* Header */}
+      <header className="px-6 md:px-12 pt-12 pb-8 border-b border-neutral-900 bg-[#080808] -mx-6 md:-mx-12 -mt-6 md:-mt-12 mb-12">
+        <h1 className="text-3xl font-black tracking-tighter mb-2">
+          {getGreeting()}, Manu.
+        </h1>
+        <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
+          <p className="text-xs font-mono uppercase tracking-widest text-neutral-400 capitalize">
+            {formattedDate}
+          </p>
+          <p className="text-[10px] font-mono uppercase tracking-widest text-emerald-400">
+            Aquí está lo que necesitas saber hoy.
+          </p>
         </div>
-      </main>
+      </header>
+
+      {/* Follow-up Smart Suggestions */}
+      {suggestions.length > 0 && (
+        <div className="bg-amber-500/10 border border-amber-500/20 p-4 rounded-lg flex items-center justify-between gap-4">
+          <div className="flex items-center gap-3">
+            <div className="w-8 h-8 rounded-full bg-amber-500/20 flex items-center justify-center text-amber-500">
+              <MessageSquare className="w-4 h-4" />
+            </div>
+            <div>
+              <p className="text-[10px] font-mono text-amber-500 uppercase tracking-widest font-black">
+                Seguimiento Sugerido
+              </p>
+              <p className="text-sm font-bold text-white">
+                Tienes {suggestions.length} cliente
+                {suggestions.length > 1 ? "s" : ""} que requiere
+                {suggestions.length > 1 ? "n" : ""} atención inmediata.
+              </p>
+            </div>
+          </div>
+          <Link
+            href="/forge/proposals"
+            className="px-4 py-2 bg-amber-500 text-black text-[10px] font-black uppercase tracking-widest hover:bg-amber-400 transition-all">
+            Revisar sugerencias
+          </Link>
+        </div>
+      )}
+
+      {/* Row 1: Alertas del Día */}
+      <AlertsRow leads={leads} proposals={proposals} contracts={contracts} />
+
+      {/* Row 2: KPIs Rápidos */}
+      <KpiRow
+        leads={leads}
+        proposals={proposals}
+        projects={projects}
+        contracts={contracts}
+        forecast={forecast}
+      />
+
+      {/* Row 3: Actividad Reciente & Próximas acciones */}
+      <div className="grid grid-cols-1 lg:grid-cols-5 gap-8">
+        <RecentActivity
+          leads={leads}
+          proposals={proposals}
+          contracts={contracts}
+          projects={projects}
+        />
+        <UpcomingActions leads={leads} />
+      </div>
+
+      {/* Row 4: Pipeline Snapshot */}
+      <PipelineSnapshot leads={leads} />
     </div>
   );
 }

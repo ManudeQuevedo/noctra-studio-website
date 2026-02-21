@@ -130,7 +130,7 @@ export default function SecuritySettingsPage() {
   }
 
   return (
-    <main className="min-h-screen bg-[#050505] text-white p-6 md:p-12">
+    <>
       <div className="max-w-xl mx-auto space-y-12">
         {/* HEADER */}
         <div className="space-y-4">
@@ -323,6 +323,6 @@ export default function SecuritySettingsPage() {
           </div>
         </div>
       )}
-    </main>
+    </>
   );
 }

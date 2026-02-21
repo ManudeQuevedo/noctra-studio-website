@@ -80,10 +80,8 @@ export default function ForgeDocsClient() {
   };
 
   return (
-    <div className="flex h-screen bg-[#050505] text-white overflow-hidden">
-      <ForgeSidebar />
-
-      <main className="flex-1 flex flex-col min-w-0 bg-[#050505]">
+    <>
+      <div className="flex-1 flex flex-col min-w-0 bg-[#050505]">
         {/* Header */}
         <header className="h-16 border-b border-white/5 flex items-center justify-between px-8 bg-[#080808] shrink-0 print:hidden sticky top-0 z-20">
           <div className="flex items-center gap-4">
@@ -838,7 +836,7 @@ export default function ForgeDocsClient() {
             </div>
           </div>
         </div>
-      </main>
+      </div>
 
       <style jsx>{`
         .custom-scrollbar::-webkit-scrollbar {
@@ -893,6 +891,6 @@ export default function ForgeDocsClient() {
           }
         }
       `}</style>
-    </div>
+    </>
   );
 }

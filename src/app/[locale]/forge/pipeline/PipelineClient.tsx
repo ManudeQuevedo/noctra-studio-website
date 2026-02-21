@@ -216,177 +216,176 @@ export default function PipelineClient({
   };
 
   return (
-    <div className="flex h-screen bg-[#050505] text-white overflow-hidden flex-col md:flex-row">
-      <ForgeSidebar />
+    <>
+      {/* Sub-Header */}
+      <header className="p-6 border-b border-neutral-900 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#080808]">
+        <div className="flex items-center gap-4">
+          <h1 className="text-xl font-black tracking-tight flex items-center gap-3">
+            PIPELINE
+            <span className="text-[10px] font-mono text-neutral-400 bg-white/[0.03] px-2 py-0.5 border border-white/[0.05]">
+              {leads.length} LEADS
+            </span>
+          </h1>
+        </div>
 
-      <main className="flex-1 flex flex-col min-w-0 pb-24 md:pb-0">
-        {/* Sub-Header */}
-        <header className="p-6 border-b border-neutral-900 flex flex-col md:flex-row md:items-center justify-between gap-4 bg-[#080808]">
+        <div className="flex items-center gap-3">
+          <div className="relative">
+            <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+            <input
+              type="text"
+              placeholder="Search leads..."
+              value={searchTerm}
+              onChange={(e) => setSearchTerm(e.target.value)}
+              className="bg-[#0b0b0b] border border-neutral-900 px-10 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500/50 transition-colors w-full md:w-64"
+            />
+          </div>
+          <button className="p-2.5 bg-[#0b0b0b] border border-neutral-900 text-neutral-400 hover:text-white transition-colors">
+            <Filter className="w-4 h-4" />
+          </button>
+        </div>
+      </header>
+
+      {/* Follow-up Banners */}
+      {pipelineSuggestions.length > 0 && (
+        <div className="px-6 pt-4">
+          {pipelineSuggestions.map((s) => (
+            <FollowUpBanner
+              key={s.id}
+              suggestion={s}
+              onOpenModal={setSelectedFollowUp}
+              onDismiss={dismiss}
+              onActionComplete={refresh}
+            />
+          ))}
+        </div>
+      )}
+
+      {/* Alert Banner */}
+      {alerts.length > 0 && (
+        <div className="bg-[#1a1200] border-b border-amber-900/30 p-4 flex items-center justify-between animate-in fade-in duration-500">
           <div className="flex items-center gap-4">
-            <h1 className="text-xl font-black tracking-tight flex items-center gap-3">
-              PIPELINE
-              <span className="text-[10px] font-mono text-neutral-400 bg-white/[0.03] px-2 py-0.5 border border-white/[0.05]">
-                {leads.length} LEADS
-              </span>
-            </h1>
+            <AlertCircle className="w-4 h-4 text-amber-500" />
+            <p className="text-[10px] font-mono uppercase tracking-widest text-amber-200">
+              {alerts.length} leads sin actividad en los últimos 3 días (o
+              acciones vencidas)
+            </p>
           </div>
+          <button
+            onClick={() => {
+              const firstAlertId = alerts[0].id;
+              setSelectedLeadId(firstAlertId);
+            }}
+            className="text-[10px] font-mono uppercase tracking-widest text-amber-500 hover:text-amber-400 underline underline-offset-4">
+            Atender primer lead →
+          </button>
+        </div>
+      )}
 
-          <div className="flex items-center gap-3">
-            <div className="relative">
-              <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
-              <input
-                type="text"
-                placeholder="Search leads..."
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                className="bg-[#0b0b0b] border border-neutral-900 px-10 py-2.5 text-xs text-white focus:outline-none focus:border-emerald-500/50 transition-colors w-full md:w-64"
-              />
-            </div>
-            <button className="p-2.5 bg-[#0b0b0b] border border-neutral-900 text-neutral-400 hover:text-white transition-colors">
-              <Filter className="w-4 h-4" />
-            </button>
-          </div>
-        </header>
+      {/* Kanban Board */}
+      <div className="flex-1 overflow-x-auto p-6 bg-[#050505] min-h-0">
+        <DragDropContext onDragEnd={onDragEnd}>
+          <div className="flex gap-4 h-full min-w-max pb-4">
+            {STAGES.map((stage) => (
+              <div
+                key={stage.id}
+                className="w-[280px] flex flex-col shrink-0 h-full max-h-[calc(100vh-200px)]">
+                {/* Column Header */}
+                <div className="flex items-center justify-between mb-4 group px-2">
+                  <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 flex items-center gap-2">
+                    <span
+                      className={`w-1.5 h-1.5 rounded-full ${STAGE_COLORS[stage.id]?.split(" ")[0] || "bg-neutral-500"}`}
+                    />
+                    {stage.label}
+                  </h3>
+                  <span className="text-[9px] font-mono text-neutral-700 bg-white/[0.02] px-1.5 py-0.5">
+                    {getLeadsByStage(stage.id).length}
+                  </span>
+                </div>
 
-        {/* Follow-up Banners */}
-        {pipelineSuggestions.length > 0 && (
-          <div className="px-6 pt-4">
-            {pipelineSuggestions.map((s) => (
-              <FollowUpBanner
-                key={s.id}
-                suggestion={s}
-                onOpenModal={setSelectedFollowUp}
-                onDismiss={dismiss}
-                onActionComplete={refresh}
-              />
-            ))}
-          </div>
-        )}
-
-        {/* Alert Banner */}
-        {alerts.length > 0 && (
-          <div className="bg-[#1a1200] border-b border-amber-900/30 p-4 flex items-center justify-between animate-in fade-in duration-500">
-            <div className="flex items-center gap-4">
-              <AlertCircle className="w-4 h-4 text-amber-500" />
-              <p className="text-[10px] font-mono uppercase tracking-widest text-amber-200">
-                {alerts.length} leads sin actividad en los últimos 3 días (o
-                acciones vencidas)
-              </p>
-            </div>
-            <button
-              onClick={() => {
-                const firstAlertId = alerts[0].id;
-                setSelectedLeadId(firstAlertId);
-              }}
-              className="text-[10px] font-mono uppercase tracking-widest text-amber-500 hover:text-amber-400 underline underline-offset-4">
-              Atender primer lead →
-            </button>
-          </div>
-        )}
-
-        {/* Kanban Board */}
-        <div className="flex-1 overflow-x-auto p-6 bg-[#050505]">
-          <DragDropContext onDragEnd={onDragEnd}>
-            <div className="flex gap-4 h-full min-w-max pb-4">
-              {STAGES.map((stage) => (
-                <div
-                  key={stage.id}
-                  className="w-[280px] flex flex-col shrink-0">
-                  {/* Column Header */}
-                  <div className="flex items-center justify-between mb-4 group px-2">
-                    <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 flex items-center gap-2">
-                      <span
-                        className={`w-1.5 h-1.5 rounded-full ${STAGE_COLORS[stage.id]?.split(" ")[0] || "bg-neutral-500"}`}
-                      />
-                      {stage.label}
-                    </h3>
-                    <span className="text-[9px] font-mono text-neutral-700 bg-white/[0.02] px-1.5 py-0.5">
-                      {getLeadsByStage(stage.id).length}
-                    </span>
-                  </div>
-
-                  {/* Column Content */}
-                  <div className="flex-1 bg-[#0d0d0d] border border-[#1f1f1f] flex flex-col min-h-0">
-                    {/* Special Handling for the 5th column split */}
-                    {stage.id === "cerrado" ? (
-                      <div className="flex-1 flex flex-col min-h-0">
-                        {/* Won Drop Zone */}
-                        <Droppable droppableId="resolution_cerrado">
-                          {(provided, snapshot) => (
-                            <div
-                              {...provided.droppableProps}
-                              ref={provided.innerRef}
-                              className={`flex-1 overflow-y-auto p-3 space-y-3 transition-colors ${snapshot.isDraggingOver ? "bg-emerald-500/5" : ""}`}>
-                              <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
-                                WON / CERRADO
-                              </div>
-                              {getLeadsByStage("cerrado")
-                                .filter((l) => l.pipeline_status === "cerrado")
-                                .map((lead, index) => (
-                                  <LeadCard
-                                    key={lead.id}
-                                    lead={lead}
-                                    index={index}
-                                    onClick={() => setSelectedLeadId(lead.id)}
-                                  />
-                                ))}
-                              {provided.placeholder}
-                            </div>
-                          )}
-                        </Droppable>
-
-                        {/* Lost Drop Zone */}
-                        <Droppable droppableId="resolution_perdido">
-                          {(provided, snapshot) => (
-                            <div
-                              {...provided.droppableProps}
-                              ref={provided.innerRef}
-                              className={`h-[40%] border-t border-neutral-900 overflow-y-auto p-3 space-y-3 transition-colors ${snapshot.isDraggingOver ? "bg-red-500/5" : ""}`}>
-                              <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
-                                LOST / PERDIDO
-                              </div>
-                              {getLeadsByStage("cerrado")
-                                .filter((l) => l.pipeline_status === "perdido")
-                                .map((lead, index) => (
-                                  <LeadCard
-                                    key={lead.id}
-                                    lead={lead}
-                                    index={index}
-                                    onClick={() => setSelectedLeadId(lead.id)}
-                                  />
-                                ))}
-                              {provided.placeholder}
-                            </div>
-                          )}
-                        </Droppable>
-                      </div>
-                    ) : (
-                      <Droppable droppableId={stage.id}>
+                {/* Column Content */}
+                <div className="flex-1 bg-[#0d0d0d] border border-[#1f1f1f] flex flex-col min-h-0">
+                  {/* Special Handling for the 5th column split */}
+                  {stage.id === "cerrado" ? (
+                    <div className="flex-1 flex flex-col min-h-0">
+                      {/* Won Drop Zone */}
+                      <Droppable droppableId="resolution_cerrado">
                         {(provided, snapshot) => (
                           <div
                             {...provided.droppableProps}
                             ref={provided.innerRef}
-                            className={`flex-1 overflow-y-auto p-3 space-y-3 transition-colors ${snapshot.isDraggingOver ? "bg-white/[0.02]" : ""}`}>
-                            {getLeadsByStage(stage.id).map((lead, index) => (
-                              <LeadCard
-                                key={lead.id}
-                                lead={lead}
-                                index={index}
-                                onClick={() => setSelectedLeadId(lead.id)}
-                              />
-                            ))}
+                            style={{ overflowY: "auto" }}
+                            className={`flex-1 min-h-0 p-3 space-y-3 transition-colors custom-scrollbar ${snapshot.isDraggingOver ? "bg-emerald-500/5" : ""}`}>
+                            <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
+                              WON / CERRADO
+                            </div>
+                            {getLeadsByStage("cerrado")
+                              .filter((l) => l.pipeline_status === "cerrado")
+                              .map((lead, index) => (
+                                <LeadCard
+                                  key={lead.id}
+                                  lead={lead}
+                                  index={index}
+                                  onClick={() => setSelectedLeadId(lead.id)}
+                                />
+                              ))}
                             {provided.placeholder}
                           </div>
                         )}
                       </Droppable>
-                    )}
-                  </div>
+
+                      {/* Lost Drop Zone */}
+                      <Droppable droppableId="resolution_perdido">
+                        {(provided, snapshot) => (
+                          <div
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}
+                            style={{ overflowY: "auto" }}
+                            className={`h-[40%] border-t border-neutral-900 p-3 space-y-3 transition-colors custom-scrollbar ${snapshot.isDraggingOver ? "bg-red-500/5" : ""}`}>
+                            <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
+                              LOST / PERDIDO
+                            </div>
+                            {getLeadsByStage("cerrado")
+                              .filter((l) => l.pipeline_status === "perdido")
+                              .map((lead, index) => (
+                                <LeadCard
+                                  key={lead.id}
+                                  lead={lead}
+                                  index={index}
+                                  onClick={() => setSelectedLeadId(lead.id)}
+                                />
+                              ))}
+                            {provided.placeholder}
+                          </div>
+                        )}
+                      </Droppable>
+                    </div>
+                  ) : (
+                    <Droppable droppableId={stage.id}>
+                      {(provided, snapshot) => (
+                        <div
+                          {...provided.droppableProps}
+                          ref={provided.innerRef}
+                          style={{ overflowY: "auto" }}
+                          className={`flex-1 p-3 space-y-3 transition-colors custom-scrollbar ${snapshot.isDraggingOver ? "bg-white/[0.02]" : ""}`}>
+                          {getLeadsByStage(stage.id).map((lead, index) => (
+                            <LeadCard
+                              key={lead.id}
+                              lead={lead}
+                              index={index}
+                              onClick={() => setSelectedLeadId(lead.id)}
+                            />
+                          ))}
+                          {provided.placeholder}
+                        </div>
+                      )}
+                    </Droppable>
+                  )}
                 </div>
-              ))}
-            </div>
-          </DragDropContext>
-        </div>
-      </main>
+              </div>
+            ))}
+          </div>
+        </DragDropContext>
+      </div>
 
       {/* Lost Reason Prompt */}
       {lostPromptId && (
@@ -424,7 +423,6 @@ export default function PipelineClient({
         </div>
       )}
 
-      {/* Detail Panel */}
       <LeadDetailPanel
         leadId={selectedLeadId}
         onClose={() => setSelectedLeadId(null)}
@@ -442,7 +440,7 @@ export default function PipelineClient({
           onSent={refresh}
         />
       )}
-    </div>
+    </>
   );
 }
 
