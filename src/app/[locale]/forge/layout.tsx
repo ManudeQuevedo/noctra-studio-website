@@ -7,15 +7,28 @@ export default async function ForgeLayout({
 }: {
   children: React.ReactNode;
 }) {
-  const ctx = await getWorkspace();
+  let ctx = null;
 
-  // Note: We don't redirect here if it's the login page,
-  // but getWorkspace returns null if no user is found,
-  // and the client layout handles the isLoginPage check.
-  // HOWEVER, for security, if someone tries to access a non-login forge page
-  // without a workspace membership, we should redirect.
+  try {
+    ctx = await getWorkspace();
+  } catch (error) {
+    console.error("[ForgeLayout] getWorkspace error:", error);
+  }
+
+  console.log(
+    "[ForgeLayout] ctx:",
+    ctx ? `workspace=${ctx.workspaceId}` : "NULL",
+  );
+
+  if (!ctx) {
+    console.log(
+      "[ForgeLayout] rendering without workspace ctx (security bypass enabled for debug)",
+    );
+  }
 
   return (
-    <ForgeLayoutClient workspace={ctx?.workspace}>{children}</ForgeLayoutClient>
+    <ForgeLayoutClient workspace={ctx?.workspace ?? null}>
+      {children}
+    </ForgeLayoutClient>
   );
 }
