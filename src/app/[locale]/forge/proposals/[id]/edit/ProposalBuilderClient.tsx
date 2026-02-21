@@ -18,6 +18,7 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { ProposalItemsList } from "@/components/forge/proposals/ProposalItemsList";
 import { format } from "date-fns";
+import { updateProposalAction } from "@/app/actions/proposals";
 
 export default function ProposalBuilderClient({
   initialProposal,
@@ -35,20 +36,15 @@ export default function ProposalBuilderClient({
   const handleAutoSave = async (data: any) => {
     setIsSaving(true);
     try {
-      const { error: metaError } = await supabase
-        .from("proposals")
-        .update({
-          title: data.title,
-          description: data.description,
-          valid_until: data.valid_until,
-          estimated_duration: data.estimated_duration,
-          subtotal: data.subtotal,
-          total: data.total,
-          updated_at: new Date().toISOString(),
-        })
-        .eq("id", data.id);
+      await updateProposalAction(data.id, {
+        title: data.title,
+        description: data.description,
+        valid_until: data.valid_until,
+        estimated_duration: data.estimated_duration,
+        subtotal: data.subtotal,
+        total: data.total,
+      });
 
-      if (metaError) throw metaError;
       setLastSaved(new Date());
     } catch (err) {
       console.error("Auto-save failed:", err);

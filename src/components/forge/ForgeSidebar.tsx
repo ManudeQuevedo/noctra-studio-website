@@ -17,7 +17,10 @@ import {
   Home,
   FolderOpen,
   MoreHorizontal,
+  Shield,
+  BookOpen,
 } from "lucide-react";
+import { useFollowUps } from "@/hooks/useFollowUps";
 
 export function ForgeSidebar() {
   const pathname = usePathname();
@@ -27,6 +30,9 @@ export function ForgeSidebar() {
   const [alertCount, setAlertCount] = useState(0);
   const [docsSheetOpen, setDocsSheetOpen] = useState(false);
   const [moreSheetOpen, setMoreSheetOpen] = useState(false);
+  const [is2FAEnabled, setIs2FAEnabled] = useState<boolean | null>(null);
+
+  const { suggestions } = useFollowUps();
 
   useEffect(() => {
     const fetchAlerts = async () => {
@@ -36,6 +42,13 @@ export function ForgeSidebar() {
       }
     };
     fetchAlerts();
+    const fetchMFAStatus = async () => {
+      const { data, error } = await supabase.auth.mfa.listFactors();
+      if (!error && data) {
+        setIs2FAEnabled(data.totp.some((f) => f.status === "verified"));
+      }
+    };
+    fetchMFAStatus();
     const interval = setInterval(fetchAlerts, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, [supabase]);
@@ -46,6 +59,7 @@ export function ForgeSidebar() {
   };
 
   const navItems = [
+    { label: "Inicio", href: "/forge", icon: Home },
     { label: "Projects", href: "/forge/projects", icon: LayoutDashboard },
     { label: "Pipeline", href: "/forge/pipeline", icon: Kanban },
     { label: "Propuestas", href: "/forge/proposals", icon: StickyNote },
@@ -53,6 +67,8 @@ export function ForgeSidebar() {
     { label: "Clientes", href: "/forge/clients", icon: UserCheck },
     { label: "Leads", href: "/forge/leads", icon: Users },
     { label: "Métricas", href: "/forge/metrics", icon: BarChart3 },
+    { label: "Docs", href: "/forge/docs", icon: BookOpen },
+    { label: "Seguridad", href: "/forge/settings/security", icon: Shield },
   ];
 
   const docsItems = [
@@ -80,7 +96,10 @@ export function ForgeSidebar() {
             Navigation
           </h2>
           {navItems.map((item) => {
-            const isActive = pathname.includes(item.href);
+            const isActive =
+              item.href === "/forge"
+                ? pathname === "/forge"
+                : pathname.includes(item.href);
             return (
               <Link
                 key={item.href}
@@ -97,6 +116,17 @@ export function ForgeSidebar() {
                 {item.label === "Pipeline" && alertCount > 0 && (
                   <span className="ml-auto w-4 h-4 rounded-full bg-red-500 text-black text-[9px] font-black flex items-center justify-center animate-pulse">
                     {alertCount}
+                  </span>
+                )}
+                {item.label === "Propuestas" && suggestions.length > 0 && (
+                  <span className="ml-auto w-4 h-4 rounded-full bg-amber-500 text-black text-[9px] font-black flex items-center justify-center animate-pulse">
+                    {suggestions.length}
+                  </span>
+                )}
+                {item.label === "Seguridad" && is2FAEnabled !== null && (
+                  <span
+                    className={`ml-auto px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-tight rounded-sm ${is2FAEnabled ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"}`}>
+                    {is2FAEnabled ? "2FA ✓" : "2FA ⚠"}
                   </span>
                 )}
               </Link>
@@ -128,12 +158,10 @@ export function ForgeSidebar() {
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a] border-t border-[#1f1f1f] pb-[env(safe-area-inset-bottom)]">
         <div className="flex justify-around items-center h-16 px-1">
           <MobileTabItem
-            href="/forge/projects"
+            href="/forge"
             icon={Home}
             label="Inicio"
-            isActive={
-              pathname === "/forge" || pathname.includes("/forge/projects")
-            }
+            isActive={pathname === "/forge"}
             onClick={closeSheets}
           />
           <MobileTabItem

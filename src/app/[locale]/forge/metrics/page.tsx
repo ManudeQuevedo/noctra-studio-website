@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import MetricsClient from "./MetricsClient";
 import { redirect } from "next/navigation";
+import { getRevenueForecast, getRevenueTrend } from "@/app/actions/metrics";
 
 export const dynamic = "force-dynamic";
 export const revalidate = 60; // Revalidate every 60 seconds
@@ -31,5 +32,15 @@ export default async function MetricsPage() {
     );
   }
 
-  return <MetricsClient leads={leads || []} />;
+  // Fetch initial forecast and trend
+  const initialForecast = await getRevenueForecast();
+  const initialTrend = await getRevenueTrend();
+
+  return (
+    <MetricsClient
+      leads={leads || []}
+      initialForecast={initialForecast}
+      initialTrend={initialTrend}
+    />
+  );
 }

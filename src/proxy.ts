@@ -28,37 +28,50 @@ export default async function middleware(request: NextRequest) {
     const result = await updateSession(request, response);
     finalResponse = result.response;
     user = result.user;
-  } catch (error) {
-    console.error("Middleware error:", error);
-  }
+    const aal = (result as any).aal;
 
-  // 3. Handle Forge Route Protection (migrated from middleware.ts)
-  const isForgeRoute = pathname.includes('/forge');
-  const isLoginPage = pathname.endsWith('/forge/login');
+    // Handle Forge Route Protection
+    const isForgeRoute = pathname.includes('/forge');
+    const isLoginPage = pathname.endsWith('/forge/login');
 
-  // Block unauthenticated access to all forge routes except login
-  if (isForgeRoute && !isLoginPage && !user) {
-    const loginUrl = request.nextUrl.clone();
-    // Preserve locale if present
-    if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
-        const locale = pathname.split('/')[1];
-        loginUrl.pathname = `/${locale}/forge/login`;
-    } else {
-        loginUrl.pathname = '/forge/login';
+    if (isForgeRoute && !isLoginPage) {
+      if (!user) {
+        const loginUrl = request.nextUrl.clone();
+        if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
+          const locale = pathname.split('/')[1];
+          loginUrl.pathname = `/${locale}/forge/login`;
+        } else {
+          loginUrl.pathname = '/forge/login';
+        }
+        return NextResponse.redirect(loginUrl);
+      }
+
+      // MFA check
+      if (aal?.nextLevel === 'aal2' && aal?.currentLevel !== 'aal2') {
+        const loginUrl = request.nextUrl.clone();
+        if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
+          const locale = pathname.split('/')[1];
+          loginUrl.pathname = `/${locale}/forge/login`;
+        } else {
+          loginUrl.pathname = '/forge/login';
+        }
+        return NextResponse.redirect(loginUrl);
+      }
     }
-    return NextResponse.redirect(loginUrl);
-  }
 
-  // Redirect authenticated users away from login page
-  if (isLoginPage && user) {
-    const adminUrl = request.nextUrl.clone();
-    if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
+    // Redirect authenticated users away from login page
+    if (isLoginPage && user && !(aal?.nextLevel === 'aal2' && aal?.currentLevel !== 'aal2')) {
+      const adminUrl = request.nextUrl.clone();
+      if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
         const locale = pathname.split('/')[1];
         adminUrl.pathname = `/${locale}/forge/projects`;
-    } else {
+      } else {
         adminUrl.pathname = '/forge/projects';
+      }
+      return NextResponse.redirect(adminUrl);
     }
-    return NextResponse.redirect(adminUrl);
+  } catch (error) {
+    console.error("Middleware error:", error);
   }
 
   // 4. Add Security Headers

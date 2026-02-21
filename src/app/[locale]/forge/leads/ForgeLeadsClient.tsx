@@ -10,7 +10,10 @@ import {
   Globe,
   Send,
   MessageSquare,
+  ArrowUpAz,
+  Clock,
 } from "lucide-react";
+import { LeadScoreBadge } from "@/components/forge/LeadScoreBadge";
 
 type Lead = {
   id: string;
@@ -26,6 +29,8 @@ type Lead = {
   email_sent_at: string;
   locale: string;
   created_at: string;
+  lead_score?: number;
+  lead_score_breakdown?: any;
 };
 
 export default function ForgeLeadsClient({
@@ -34,8 +39,20 @@ export default function ForgeLeadsClient({
   initialLeads: Lead[];
 }) {
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
-  const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
+  const [selectedLeadId, setSelectedLeadId] = useState<string | null>(
+    initialLeads[0]?.id || null,
+  );
   const [isRetrying, setIsRetrying] = useState(false);
+  const [sortOrder, setSortOrder] = useState<"date" | "score">("score");
+
+  const sortedLeads = [...leads].sort((a, b) => {
+    if (sortOrder === "score") {
+      const scoreA = a.lead_score || 0;
+      const scoreB = b.lead_score || 0;
+      if (scoreB !== scoreA) return scoreB - scoreA;
+    }
+    return new Date(b.created_at).getTime() - new Date(a.created_at).getTime();
+  });
 
   const selectedLead = leads.find((l) => l.id === selectedLeadId);
 
@@ -82,9 +99,29 @@ export default function ForgeLeadsClient({
           <h2 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
             Recent Leads
           </h2>
+          <div className="flex items-center gap-2 mt-4">
+            <button
+              onClick={() => setSortOrder("score")}
+              className={`flex-1 py-2 px-3 rounded text-[9px] font-mono uppercase tracking-widest border transition-all flex items-center justify-center gap-2 ${
+                sortOrder === "score"
+                  ? "bg-white text-black border-white"
+                  : "bg-white/[0.03] text-neutral-400 border-white/10 hover:border-white/20"
+              }`}>
+              <ArrowUpAz className="w-3 h-3" /> Score
+            </button>
+            <button
+              onClick={() => setSortOrder("date")}
+              className={`flex-1 py-2 px-3 rounded text-[9px] font-mono uppercase tracking-widest border transition-all flex items-center justify-center gap-2 ${
+                sortOrder === "date"
+                  ? "bg-white text-black border-white"
+                  : "bg-white/[0.03] text-neutral-400 border-white/10 hover:border-white/20"
+              }`}>
+              <Clock className="w-3 h-3" /> Date
+            </button>
+          </div>
         </div>
         <div className="flex-1 overflow-y-auto px-2 py-4 space-y-1">
-          {leads.map((lead) => (
+          {sortedLeads.map((lead) => (
             <button
               key={lead.id}
               onClick={() => setSelectedLeadId(lead.id)}
@@ -116,6 +153,11 @@ export default function ForgeLeadsClient({
                   </span>
                 )}
               </div>
+              {lead.lead_score !== undefined && (
+                <div className="mt-1">
+                  <LeadScoreBadge score={lead.lead_score} />
+                </div>
+              )}
             </button>
           ))}
         </div>

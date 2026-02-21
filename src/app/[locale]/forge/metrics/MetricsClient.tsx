@@ -12,15 +12,21 @@ import {
   CheckCircle2,
 } from "lucide-react";
 import {
-  format,
-  differenceInDays,
-  subMonths,
-  isAfter,
-  isBefore,
   startOfMonth,
   endOfMonth,
+  isAfter,
+  isBefore,
+  subMonths,
+  format,
+  differenceInDays,
 } from "date-fns";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
+import { useState, useEffect } from "react";
+import { RevenueForecast, getRevenueForecast } from "@/app/actions/metrics";
+import { MonthSelector } from "@/components/forge/metrics/MonthSelector";
+import { ForecastCard } from "@/components/forge/metrics/ForecastCard";
+import { RevenueTrendChart } from "@/components/forge/metrics/RevenueTrendChart";
+import { ForecastBreakdownTable } from "@/components/forge/metrics/ForecastBreakdownTable";
 
 type Lead = {
   id: string;
@@ -49,9 +55,46 @@ const SERVICE_COLORS: Record<string, string> = {
   custom_system: "bg-emerald-500",
   discovery_call: "bg-amber-500",
   general: "bg-neutral-500",
+  perdido: "bg-red-500",
 };
 
-export default function MetricsClient({ leads }: { leads: Lead[] }) {
+interface MetricsClientProps {
+  leads: Lead[];
+  initialForecast: RevenueForecast;
+  initialTrend: any[];
+}
+
+export default function MetricsClient({
+  leads,
+  initialForecast,
+  initialTrend,
+}: MetricsClientProps) {
+  const [currentDate, setCurrentDate] = useState(new Date());
+  const [forecast, setForecast] = useState<RevenueForecast>(initialForecast);
+  const [trend, setTrend] = useState(initialTrend);
+  const [isUpdating, setIsUpdating] = useState(false);
+
+  useEffect(() => {
+    async function updateData() {
+      // Don't fetch if it's the initial month (already provided)
+      if (format(currentDate, "MM yyyy") === format(new Date(), "MM yyyy")) {
+        setForecast(initialForecast);
+        return;
+      }
+
+      setIsUpdating(true);
+      try {
+        const newForecast = await getRevenueForecast(currentDate);
+        setForecast(newForecast);
+      } catch (err) {
+        console.error("Error updating forecast:", err);
+      } finally {
+        setIsUpdating(false);
+      }
+    }
+    updateData();
+  }, [currentDate, initialForecast]);
+
   const stats = useMemo(() => {
     const total = leads.length;
     const closed = leads.filter((l) => l.pipeline_status === "cerrado").length;
@@ -150,7 +193,42 @@ export default function MetricsClient({ leads }: { leads: Lead[] }) {
           </h2>
         </header>
 
-        <div className="p-8 space-y-8 max-w-7xl mx-auto">
+        <div className="p-8 space-y-12 max-w-7xl mx-auto">
+          {/* Row 0: Forecast & Trend */}
+          <section className="space-y-8">
+            <div className="flex flex-col md:flex-row md:items-center justify-between gap-6">
+              <div className="space-y-1">
+                <h2 className="text-xl font-bold text-white tracking-tight">
+                  Revenue Projection
+                </h2>
+                <p className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
+                  Visualización de ingresos confirmados y proyectados
+                </p>
+              </div>
+              <MonthSelector
+                currentDate={currentDate}
+                onChange={setCurrentDate}
+              />
+            </div>
+
+            <div
+              className={`grid grid-cols-1 lg:grid-cols-5 gap-6 transition-opacity duration-300 ${isUpdating ? "opacity-50" : "opacity-100"}`}>
+              <div className="lg:col-span-2">
+                <ForecastCard forecast={forecast} />
+              </div>
+              <div className="lg:col-span-3">
+                <RevenueTrendChart data={trend} />
+              </div>
+            </div>
+
+            <div
+              className={`transition-opacity duration-300 ${isUpdating ? "opacity-50" : "opacity-100"}`}>
+              <ForecastBreakdownTable items={forecast.items} />
+            </div>
+          </section>
+
+          <div className="h-px bg-white/5 w-full" />
+
           {/* Row 1: KPI Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
             <KPICard

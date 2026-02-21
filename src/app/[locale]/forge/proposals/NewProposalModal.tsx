@@ -14,6 +14,7 @@ import {
   UserPlus,
 } from "lucide-react";
 import { useRouter } from "next/navigation";
+import { createProposalAction } from "@/app/actions/proposals";
 
 type Lead = {
   id: string;
@@ -147,47 +148,23 @@ export function NewProposalModal({
     const service = SERVICES.find((s) => s.id === serviceId);
 
     try {
-      // 1. Ensure lead exists in contact_submissions if manual?
-      // For now, let's assume we use the lead_id we have or we handle manual as a text field in proposals
-      // The schema I created uses lead_id REFERENCES contact_submissions.
-      // So if manual, I should probably create a lead first or allow NULL lead_id.
+      const result = await createProposalAction({
+        lead_id: selectedLead?.id,
+        manual_lead:
+          !selectedLead?.id && manualEntry.name
+            ? {
+                name: manualEntry.name,
+                email: manualEntry.email,
+                service_interest: service?.name || "Manual",
+              }
+            : undefined,
+        service: {
+          name: service?.name || "Manual",
+          basePrice: service?.basePrice || 0,
+        },
+      });
 
-      let leadId = selectedLead?.id;
-
-      if (!leadId && manualEntry.name) {
-        // Create manual lead first
-        const { data: newLead } = await supabase
-          .from("contact_submissions")
-          .insert({
-            name: manualEntry.name,
-            email: manualEntry.email,
-            service_interest: service?.name || "Manual",
-          })
-          .select("id")
-          .single();
-        leadId = newLead?.id;
-      }
-
-      if (!leadId) throw new Error("Missing client information");
-
-      // 2. Create proposal
-      const { data: proposal, error } = await supabase
-        .from("proposals")
-        .insert({
-          lead_id: leadId,
-          title: `Propuesta - ${service?.name}`,
-          status: "draft",
-          subtotal: service?.basePrice || 0,
-          total: service?.basePrice || 0,
-          currency: "MXN",
-          // Items will be added in the builder
-        })
-        .select("id")
-        .single();
-
-      if (error) throw error;
-
-      router.push(`/forge/proposals/${proposal.id}/edit`);
+      router.push(`/forge/proposals/${result.id}/edit`);
     } catch (err: any) {
       console.error("Proposal creation failed:", err);
       const detail = err?.message || "Error desconocido";

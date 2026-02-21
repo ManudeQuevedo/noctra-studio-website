@@ -21,6 +21,12 @@ import {
 import { createClient } from "@/utils/supabase/client";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
 import { LeadDetailPanel } from "@/components/forge/LeadDetailPanel";
+import { updateLeadStatusWithScoring } from "@/app/actions/leads";
+import { LeadScoreBadge } from "@/components/forge/LeadScoreBadge";
+import { useFollowUps } from "@/hooks/useFollowUps";
+import { FollowUpBanner } from "@/components/forge/FollowUpBanner";
+import { FollowUpModal } from "@/components/forge/FollowUpModal";
+import { FollowUpSuggestion } from "@/app/actions/followup";
 
 type Lead = {
   id: string;
@@ -40,6 +46,8 @@ type Lead = {
   created_at: string;
   lost_reason?: string;
   closed_at?: string;
+  lead_score?: number;
+  lead_score_breakdown?: any;
 };
 
 const STAGES = [
@@ -81,6 +89,13 @@ export default function PipelineClient({
   const [alerts, setAlerts] = useState<
     { id: string; name: string; days_inactive: number }[]
   >([]);
+  const { suggestions, dismiss, refresh } = useFollowUps();
+  const [selectedFollowUp, setSelectedFollowUp] =
+    useState<FollowUpSuggestion | null>(null);
+
+  const pipelineSuggestions = suggestions.filter(
+    (s) => s.type === "lead_no_contact_3d" || s.type === "contract_sent_3d",
+  );
 
   const supabase = createClient();
 
@@ -101,13 +116,24 @@ export default function PipelineClient({
   );
 
   const getLeadsByStage = (stageId: string) => {
+    let stageLeads = [];
     if (stageId === "cerrado") {
-      return filteredLeads.filter(
+      stageLeads = filteredLeads.filter(
         (l) =>
           l.pipeline_status === "cerrado" || l.pipeline_status === "perdido",
       );
+    } else {
+      stageLeads = filteredLeads.filter((l) => l.pipeline_status === stageId);
     }
-    return filteredLeads.filter((l) => l.pipeline_status === stageId);
+
+    // Sort NUEVO column by lead_score descending
+    if (stageId === "nuevo") {
+      return stageLeads.sort(
+        (a, b) => (b.lead_score || 0) - (a.lead_score || 0),
+      );
+    }
+
+    return stageLeads;
   };
 
   const onDragEnd = async (result: DropResult) => {
@@ -154,12 +180,14 @@ export default function PipelineClient({
       if (status === "perdido" && lostReasonText)
         updates.lost_reason = lostReasonText;
 
-      const { error } = await supabase
-        .from("contact_submissions")
-        .update(updates)
-        .eq("id", leadId);
+      const result = await updateLeadStatusWithScoring(
+        leadId,
+        status,
+        lostReasonText,
+      );
 
-      if (error) throw error;
+      if (!result.success)
+        throw new Error((result as any).error || "Unknown error");
 
       // Log activity
       await supabase.from("lead_activities").insert({
@@ -219,6 +247,21 @@ export default function PipelineClient({
             </button>
           </div>
         </header>
+
+        {/* Follow-up Banners */}
+        {pipelineSuggestions.length > 0 && (
+          <div className="px-6 pt-4">
+            {pipelineSuggestions.map((s) => (
+              <FollowUpBanner
+                key={s.id}
+                suggestion={s}
+                onOpenModal={setSelectedFollowUp}
+                onDismiss={dismiss}
+                onActionComplete={refresh}
+              />
+            ))}
+          </div>
+        )}
 
         {/* Alert Banner */}
         {alerts.length > 0 && (
@@ -391,6 +434,14 @@ export default function PipelineClient({
           );
         }}
       />
+
+      {selectedFollowUp && (
+        <FollowUpModal
+          suggestion={selectedFollowUp}
+          onClose={() => setSelectedFollowUp(null)}
+          onSent={refresh}
+        />
+      )}
     </div>
   );
 }
@@ -443,6 +494,11 @@ function LeadCard({
                 {lead.request_id}
               </span>
             </div>
+            {lead.lead_score !== undefined && (
+              <div className="pt-1">
+                <LeadScoreBadge score={lead.lead_score} />
+              </div>
+            )}
           </div>
 
           <div className="flex items-center justify-between mt-1">

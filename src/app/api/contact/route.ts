@@ -4,6 +4,7 @@ import { resend } from "@/lib/resend";
 import { validateCsrfToken } from "@/lib/csrf";
 import validator from "validator";
 import sanitizeHtml from "sanitize-html";
+import { calculateLeadScore } from "@/lib/scoring";
 
 const SECURITY_HEADERS = {
   "X-Content-Type-Options": "nosniff",
@@ -121,7 +122,20 @@ export async function POST(req: Request) {
       }
     }
 
-    // 7. Insert into contact_submissions (Removed columns missing from DB)
+    // 7. Calculate Lead Score
+    const leadForScoring = {
+      service_interest: safeService,
+      intent: safeIntent,
+      message: safeMessage,
+      phone: safePhone,
+      source_cta: safeCta,
+      pipeline_status: 'nuevo',
+      created_at: new Date().toISOString()
+    };
+
+    const { score, breakdown } = calculateLeadScore(leadForScoring);
+
+    // 8. Insert into contact_submissions (Removed columns missing from DB)
     // Get next value from sequence for Request ID
     const { data: seqData, error: seqError } = await supabase.rpc('get_next_request_id');
     const requestId = seqError 
@@ -137,6 +151,8 @@ export async function POST(req: Request) {
         message: safeMessage,
         service_interest: safeService,
         request_id: requestId,
+        lead_score: score,
+        lead_score_breakdown: breakdown
       })
       .select("id")
       .single();

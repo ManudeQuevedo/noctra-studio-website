@@ -14,10 +14,16 @@ import {
   ExternalLink,
   ChevronRight,
 } from "lucide-react";
+import { LeadScoreBadge } from "@/components/forge/LeadScoreBadge";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { NewProposalModal } from "./NewProposalModal";
+import { useFollowUps } from "@/hooks/useFollowUps";
+import { FollowUpBanner } from "@/components/forge/FollowUpBanner";
+import { FollowUpModal } from "@/components/forge/FollowUpModal";
+import { FollowUpSuggestion } from "@/app/actions/followup";
+import { createContractFromProposalAction } from "@/app/actions/contracts";
 
 type Proposal = {
   id: string;
@@ -30,6 +36,8 @@ type Proposal = {
   lead: {
     name: string;
     email: string;
+    lead_score?: number;
+    lead_score_breakdown?: any;
   };
 };
 
@@ -41,43 +49,27 @@ export default function ProposalsClient({
   const [proposals] = useState<Proposal[]>(initialProposals);
   const [searchQuery, setSearchQuery] = useState("");
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedFollowUp, setSelectedFollowUp] =
+    useState<FollowUpSuggestion | null>(null);
+  const { suggestions, dismiss, refresh } = useFollowUps();
   const router = useRouter();
   const supabase = createClient();
 
+  const proposalSuggestions = suggestions.filter(
+    (s) => s.type === "proposal_viewed_3d" || s.type === "proposal_sent_5d",
+  );
+
   const handleConvertToContract = async (proposal: Proposal) => {
-    const { data: fullProposal } = await supabase
-      .from("proposals")
-      .select("*, items:proposal_items(*), lead:contact_submissions(*)")
-      .eq("id", proposal.id)
-      .single();
-
-    if (!fullProposal) return;
-
-    const { data: contract, error } = await supabase
-      .from("contracts")
-      .insert({
-        proposal_id: fullProposal.id,
-        client_name: fullProposal.lead?.name || "",
-        client_email: fullProposal.lead?.email || "",
-        client_company: fullProposal.lead?.company_name || "",
-        total_price: fullProposal.total,
-        payment_terms: fullProposal.payment_terms,
-        items: fullProposal.items.map((i: any) => ({
-          name: i.name,
-          description: i.description,
-        })),
-        status: "draft",
-      })
-      .select()
-      .single();
-
-    if (error) {
-      console.error(error);
-      alert("Error al convertir a contrato");
-      return;
+    try {
+      const result = await createContractFromProposalAction(proposal.id);
+      router.push(`/forge/contracts/${result.id}/edit`);
+    } catch (err: any) {
+      console.error(err);
+      alert(
+        "Error al convertir a contrato: " +
+          (err.message || "Error desconocido"),
+      );
     }
-
-    router.push(`/forge/contracts/${contract.id}/edit`);
   };
 
   const filteredProposals = proposals.filter(
@@ -154,6 +146,21 @@ export default function ProposalsClient({
           </div>
         </div>
 
+        {/* Follow-up Banners */}
+        {proposalSuggestions.length > 0 && (
+          <div className="px-8 pt-6">
+            {proposalSuggestions.map((s) => (
+              <FollowUpBanner
+                key={s.id}
+                suggestion={s}
+                onOpenModal={setSelectedFollowUp}
+                onDismiss={dismiss}
+                onActionComplete={refresh}
+              />
+            ))}
+          </div>
+        )}
+
         {/* Table View */}
         <div className="flex-1 overflow-x-auto px-8 py-6">
           <table className="w-full border-collapse min-w-[1000px]">
@@ -201,9 +208,14 @@ export default function ProposalsClient({
                     </td>
                     <td className="py-5 px-4">
                       <div className="flex flex-col">
-                        <span className="text-xs font-bold text-neutral-200">
-                          {proposal.lead?.name || "Cliente Manual"}
-                        </span>
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-neutral-200">
+                            {proposal.lead?.name || "Cliente Manual"}
+                          </span>
+                          {proposal.lead?.lead_score !== undefined && (
+                            <LeadScoreBadge score={proposal.lead.lead_score} />
+                          )}
+                        </div>
                         <span className="text-[10px] font-mono text-neutral-400">
                           {proposal.lead?.email || "—"}
                         </span>
@@ -276,6 +288,14 @@ export default function ProposalsClient({
           onClose={() => setIsModalOpen(false)}
         />
       </main>
+
+      {selectedFollowUp && (
+        <FollowUpModal
+          suggestion={selectedFollowUp}
+          onClose={() => setSelectedFollowUp(null)}
+          onSent={refresh}
+        />
+      )}
     </div>
   );
 }

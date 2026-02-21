@@ -21,6 +21,18 @@ export type Project = {
   start_date: string | null
   deadline: string | null
   internal_notes: string | null
+  budget: number
+  hourly_rate: number
+  total_hours: number
+  total_expenses: number
+  service_type?: 'web_presence' | 'ecommerce' | 'custom_system'
+  report_token?: string
+  report_config?: {
+    custom_message: string
+    include_tasks: boolean
+    include_deliverables: boolean
+  }
+  report_generated_at?: string
 }
 
 export async function getProjects(): Promise<Project[]> {

@@ -21,8 +21,9 @@ import {
 import Link from "next/link";
 import { format, differenceInDays, addWeeks } from "date-fns";
 import { es } from "date-fns/locale";
+import { HistorialTab } from "@/components/forge/HistorialTab";
 
-type Tab = "RESUMEN" | "PROPUESTA" | "CONTRATO" | "PROYECTO";
+type Tab = "RESUMEN" | "PROPUESTA" | "CONTRATO" | "PROYECTO" | "HISTORIAL";
 
 export function ClientDetailClient({
   contract,
@@ -71,7 +72,13 @@ export function ClientDetailClient({
     setIsVerifying(false);
   };
 
-  const tabs: Tab[] = ["RESUMEN", "PROPUESTA", "CONTRATO", "PROYECTO"];
+  const tabs: Tab[] = [
+    "RESUMEN",
+    "HISTORIAL",
+    "PROPUESTA",
+    "CONTRATO",
+    "PROYECTO",
+  ];
 
   return (
     <div className="flex-1 flex flex-col min-h-0 bg-[#050505]">
@@ -553,6 +560,26 @@ export function ClientDetailClient({
                 </div>
               )}
             </div>
+          </div>
+        </div>
+
+        {/* TAB 5: HISTORIAL */}
+        <div
+          className={`${activeTab === "HISTORIAL" ? "block" : "hidden print:block"} max-w-4xl mx-auto`}>
+          <div className="mb-8 print:hidden">
+            <span className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest italic tracking-tight">
+              Bitácora cronológica del cliente
+            </span>
+          </div>
+          <div className="bg-white/[0.01] border border-white/5 p-12 relative font-sans print:shadow-none print:p-0">
+            {contract.proposal?.request_id ? (
+              <HistorialTab leadId={contract.proposal.request_id} />
+            ) : (
+              <div className="py-12 text-center text-[10px] font-mono uppercase tracking-widest text-neutral-500">
+                No es posible vincular el historial (lead original no
+                encontrado)
+              </div>
+            )}
           </div>
         </div>
       </div>

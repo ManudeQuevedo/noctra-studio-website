@@ -54,5 +54,7 @@ export async function updateSession(request: NextRequest, response: NextResponse
     data: { user },
   } = await supabase.auth.getUser()
 
-  return { response: supabaseResponse, user }
+  const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
+
+  return { response: supabaseResponse, user, aal }
 }
