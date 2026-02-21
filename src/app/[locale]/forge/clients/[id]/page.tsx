@@ -5,8 +5,9 @@ import { ClientDetailClient } from "./ClientDetailClient";
 export default async function ClientDetailPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const supabase = await createClient();
 
   // 1. Fetch main contract
@@ -18,7 +19,7 @@ export default async function ClientDetailPage({
       proposal:proposals(*)
     `,
     )
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   if (contractError || !contract) {

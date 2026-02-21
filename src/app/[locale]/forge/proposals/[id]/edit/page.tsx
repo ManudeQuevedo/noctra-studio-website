@@ -7,8 +7,9 @@ export const dynamic = "force-dynamic";
 export default async function ProposalEditPage({
   params,
 }: {
-  params: { id: string };
+  params: Promise<{ id: string }>;
 }) {
+  const { id } = await params;
   const supabase = await createClient();
   const {
     data: { session },
@@ -28,7 +29,7 @@ export default async function ProposalEditPage({
       items:proposal_items(*)
     `,
     )
-    .eq("id", params.id)
+    .eq("id", id)
     .single();
 
   if (error || !proposal) {
