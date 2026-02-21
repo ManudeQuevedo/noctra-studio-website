@@ -15,9 +15,7 @@ export default async function ForgeLayout({
     console.error("[ForgeLayout] getWorkspace error:", error);
   }
 
-  if (!ctx) {
-    redirect("/forge/login");
-  }
+  // Protection is now handled in middleware.ts
 
   return (
     <ForgeLayoutClient workspace={ctx?.workspace ?? null}>
