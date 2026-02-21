@@ -70,7 +70,7 @@ export async function POST(req: Request) {
     }
 
     // 5. Input Sanitization & Validation
-    const { name, email, phone, service, budget, timeline, details, intent, cta, locale } = body;
+    const { name, email, phone, service, budget, timeline, message, intent, cta, locale } = body;
 
     if (!email || !validator.isEmail(email)) {
       return NextResponse.json(
@@ -83,7 +83,7 @@ export async function POST(req: Request) {
       sanitizeHtml(str || "", { allowedTags: [] }).trim().slice(0, maxLen);
 
     const safeName = clean(name, 100);
-    const safeMessage = clean(details, 2000);
+    const safeMessage = clean(message, 2000);
     const safePhone = phone?.replace(/[^0-9+\-\s()]/g, "").slice(0, 20);
     const safeEmail = validator.normalizeEmail(email) || email;
     const safeService = clean(service, 50);
@@ -135,10 +135,10 @@ export async function POST(req: Request) {
 
     const { score, breakdown } = calculateLeadScore(leadForScoring);
 
-    // 8. Insert into contact_submissions (Removed columns missing from DB)
+    // 8. Insert into contact_submissions
     // Get next value from sequence for Request ID
     const { data: seqData, error: seqError } = await supabase.rpc('get_next_request_id');
-    const requestId = seqError 
+    const requestId = seqError
       ? `NOC-${Math.floor(Math.random() * 9000 + 1000)}` // Fallback if RPC fails
       : `NOC-${String(seqData).padStart(4, '0')}`;
 
@@ -150,6 +150,10 @@ export async function POST(req: Request) {
         phone: safePhone,
         message: safeMessage,
         service_interest: safeService,
+        source_cta: safeCta,
+        source_page: body.source || null,
+        locale: safeLocale || "es",
+        intent: safeIntent,
         request_id: requestId,
         lead_score: score,
         lead_score_breakdown: breakdown

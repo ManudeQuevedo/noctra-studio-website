@@ -49,32 +49,9 @@ export async function POST(req: Request) {
       general: generalTemplate,
     };
 
-    // We need to determine the template from lead data
-    // Note: safeIntent was derived from safeIntent in the original route
-    // Here we might need to store intent or infer it.
-    // Looking at the original route, safeIntent was derived from body.intent
-    // The lead table stores 'service_interest' but not 'intent' (source tracking).
-    // Let's check the ForgeLeadsClient to see what it shows.
-    // It shows 'lead.service_interest'.
-    
-    // In our original route:
-    // const selectedTemplate = templates[safeIntent] || generalTemplate;
-    // safeIntent was clean(intent, 50).
-    
-    // If the intent is not stored in DB, we'll try to map it from service_interest
-    const serviceToIntent: Record<string, string> = {
-      website: "website",
-      ecommerce: "ecommerce",
-      custom_system: "custom_system",
-      optimization: "general",
-      discovery_call: "discovery_call",
-    };
-
-    const intent = serviceToIntent[lead.service_interest] || "general";
-    const selectedTemplate = templates[intent] || generalTemplate;
-    
-    // Since locale isn't in DB yet (per comments in route.ts), we'll default to ES or check metadata if any
-    const lang = "es"; // Defaulting to ES for now or can be inferred
+    // Use the stored intent directly (now saved during lead creation)
+    const selectedTemplate = templates[lead.intent] || generalTemplate;
+    const lang = (lead.locale === "en" ? "en" : "es") as "es" | "en";
     const template = selectedTemplate[lang];
 
     // 3. Resend email
