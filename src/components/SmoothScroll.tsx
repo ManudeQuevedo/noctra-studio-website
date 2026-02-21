@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect } from "react";
+import { usePathname } from "next/navigation";
 import Lenis from "lenis";
 
 // Expose Lenis instance globally so modals can stop/start it
@@ -11,7 +12,13 @@ declare global {
 }
 
 export function SmoothScroll() {
+  const pathname = usePathname();
+  const isForge = pathname.startsWith("/forge") || pathname.includes("/forge");
+
   useEffect(() => {
+    // Forge uses its own native scroll containers — skip Lenis entirely
+    if (isForge) return;
+
     let lenis: Lenis;
     let animationFrameId: number;
 
@@ -43,7 +50,7 @@ export function SmoothScroll() {
         delete window.__lenis;
       }
     };
-  }, []);
+  }, [isForge]);
 
   return null;
 }
