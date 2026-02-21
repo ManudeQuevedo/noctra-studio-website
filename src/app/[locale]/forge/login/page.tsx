@@ -46,7 +46,7 @@ export default function ForgeLoginPage() {
           }
         }
 
-        router.push("/forge/projects");
+        router.push("/forge");
       }
     };
     checkUser();
@@ -85,7 +85,7 @@ export default function ForgeLoginPage() {
       // Store absolute session start time
       sessionStorage.setItem("session_start", Date.now().toString());
 
-      router.push("/forge/projects");
+      router.push("/forge");
       router.refresh();
     } catch (err: any) {
       setError(err.message);
@@ -119,7 +119,7 @@ export default function ForgeLoginPage() {
 
       // Success
       sessionStorage.setItem("session_start", Date.now().toString());
-      router.push("/forge/projects");
+      router.push("/forge");
       router.refresh();
     } catch (err: any) {
       setMfaError("Código incorrecto. Intenta de nuevo.");
