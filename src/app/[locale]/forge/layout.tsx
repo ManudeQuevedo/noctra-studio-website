@@ -15,7 +15,7 @@ export default async function ForgeLayout({
     console.error("[ForgeLayout] getWorkspace error:", error);
   }
 
-  // Protection is now handled in middleware.ts
+  // Protection is now handled in proxy.ts
 
   return (
     <ForgeLayoutClient workspace={ctx?.workspace ?? null}>

@@ -5,7 +5,7 @@ import { NextRequest, NextResponse } from "next/server";
 
 const intlMiddleware = createMiddleware(routing);
 
-export default async function middleware(request: NextRequest) {
+export default async function proxy(request: NextRequest) {
   const { pathname } = request.nextUrl;
 
   // Sanity Studio must be served from the root /studio route without any
@@ -71,7 +71,7 @@ export default async function middleware(request: NextRequest) {
       return NextResponse.redirect(adminUrl);
     }
   } catch (error) {
-    console.error("Middleware error:", error);
+    console.error("Proxy error:", error);
   }
 
   // 4. Add Security Headers
