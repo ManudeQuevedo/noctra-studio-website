@@ -22,7 +22,15 @@ import {
 } from "lucide-react";
 import { useFollowUps } from "@/hooks/useFollowUps";
 
-export function ForgeSidebar() {
+interface ForgeSidebarProps {
+  workspace?: {
+    name: string;
+    logo_url: string | null;
+    primary_color: string;
+  };
+}
+
+export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const supabase = createClient();
@@ -89,7 +97,17 @@ export function ForgeSidebar() {
       {/* DESKTOP SIDEBAR CONTENT */}
       <div className="flex flex-col h-full bg-[#0a0a0a]">
         <div className="p-6 border-b border-neutral-900 flex justify-between items-center">
-          <BrandLogo className="h-5 w-auto text-white" showText={true} />
+          {workspace?.logo_url ? (
+            <img
+              src={workspace.logo_url}
+              alt={workspace.name}
+              className="h-5 w-auto"
+            />
+          ) : (
+            <span className="text-xs tracking-widest uppercase font-black text-white">
+              ◆ {workspace?.name || "NOCTRA"}
+            </span>
+          )}
         </div>
 
         <div className="flex-1 px-4 py-8 space-y-2 overflow-y-auto custom-scrollbar">
@@ -147,7 +165,15 @@ export function ForgeSidebar() {
       {/* MOBILE TOP HEADER */}
       <header className="md:hidden sticky top-0 z-40 h-12 w-full bg-[#0a0a0a] border-b border-[#1f1f1f] flex items-center justify-between px-4 shrink-0 flex-none">
         <div className="text-[12px] font-bold tracking-widest uppercase flex items-center gap-2 text-white">
-          ◆ NOCTRA
+          {workspace?.logo_url ? (
+            <img
+              src={workspace.logo_url}
+              alt={workspace.name}
+              className="h-4 w-auto"
+            />
+          ) : (
+            <>◆ {workspace?.name || "NOCTRA"}</>
+          )}
         </div>
         <div className="text-[12px] font-mono text-neutral-500 uppercase tracking-widest truncate max-w-[150px]">
           {navItems.find((n) => pathname.includes(n.href))?.label ||

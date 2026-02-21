@@ -1,17 +1,15 @@
 import { createClient } from "@/utils/supabase/server";
 import PipelineClient from "./PipelineClient";
 import { redirect } from "next/navigation";
+import { getWorkspace } from "@/lib/workspace";
 
 export const dynamic = "force-dynamic";
 
 export default async function PipelinePage() {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
 
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
-
-  if (!session) {
+  if (!ctx) {
     redirect("/forge/login");
   }
 
@@ -19,6 +17,7 @@ export default async function PipelinePage() {
   const { data: leads, error } = await supabase
     .from("contact_submissions")
     .select("*")
+    .eq("workspace_id", ctx.workspaceId)
     .order("created_at", { ascending: false });
 
   if (error) {
@@ -30,5 +29,17 @@ export default async function PipelinePage() {
     );
   }
 
-  return <PipelineClient initialLeads={leads || []} />;
+  const { data: config } = await supabase
+    .from("workspace_config")
+    .select("*")
+    .eq("workspace_id", ctx.workspaceId)
+    .single();
+
+  return (
+    <PipelineClient
+      initialLeads={leads || []}
+      workspaceId={ctx.workspaceId}
+      config={config}
+    />
+  );
 }

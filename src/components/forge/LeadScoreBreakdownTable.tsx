@@ -1,10 +1,10 @@
 "use client";
 
-import { LeadScoreBreakdown } from "@/lib/scoring";
+import { ScoreBreakdown } from "@/lib/lead-scoring";
 
 interface LeadScoreBreakdownTableProps {
   score: number;
-  breakdown: LeadScoreBreakdown;
+  breakdown: ScoreBreakdown;
 }
 
 export function LeadScoreBreakdownTable({

@@ -11,6 +11,8 @@ import {
 
 export default function ReportPortalClient({ data }: { data: any }) {
   const { project, tasks, deliverables } = data;
+  const workspace = project.workspace;
+  const primaryColor = workspace?.primary_color || "#000000";
   const config = project.report_config || {
     include_tasks: true,
     include_deliverables: true,
@@ -67,16 +69,30 @@ export default function ReportPortalClient({ data }: { data: any }) {
       <header className="border-b-4 border-black py-12 px-6">
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-end gap-8">
           <div className="space-y-6">
-            <span className="text-2xl font-black tracking-tighter">
-              ◆ NOCTRA STUDIO
-            </span>
+            {workspace?.logo_url ? (
+              <img
+                src={workspace.logo_url}
+                alt={workspace.name}
+                className="h-6 w-auto"
+              />
+            ) : (
+              <span className="text-2xl font-black tracking-tighter">
+                ◆ {workspace?.name?.toUpperCase() || "NOCTRA STUDIO"}
+              </span>
+            )}
             <div className="space-y-1">
               <h1 className="text-4xl md:text-6xl font-black tracking-tight uppercase">
                 Reporte de Avance
               </h1>
               <p className="text-xl font-light text-neutral-500">
                 Proyecto:{" "}
-                <span className="font-bold text-black">{project.name}</span>
+                <span
+                  className="font-bold text-black"
+                  style={{
+                    color: primaryColor === "#000000" ? "black" : primaryColor,
+                  }}>
+                  {project.name}
+                </span>
               </p>
             </div>
           </div>
@@ -118,7 +134,9 @@ export default function ReportPortalClient({ data }: { data: any }) {
             <h2 className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-300">
               Estado del proyecto
             </h2>
-            <div className="bg-black text-white px-6 py-2 text-xs font-black uppercase tracking-[0.2em]">
+            <div
+              className="text-white px-6 py-2 text-xs font-black uppercase tracking-[0.2em]"
+              style={{ backgroundColor: primaryColor }}>
               Fase Actual: {project.status.replace("_", " ")}
             </div>
           </div>
@@ -136,8 +154,22 @@ export default function ReportPortalClient({ data }: { data: any }) {
                     key={p}
                     className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
                     <div
-                      className={`w-8 h-8 rounded-full flex items-center justify-center z-10 
-                      ${isCompleted ? "bg-black text-white" : isCurrent ? "bg-white border-2 border-black text-black" : "bg-neutral-50 text-neutral-300 border border-neutral-100"}`}>
+                      className={`w-8 h-8 rounded-full flex items-center justify-center z-10 transition-colors mb-2`}
+                      style={
+                        isCompleted
+                          ? { backgroundColor: primaryColor, color: "white" }
+                          : isCurrent
+                            ? {
+                                border: `2px solid ${primaryColor}`,
+                                color: primaryColor,
+                                backgroundColor: "white",
+                              }
+                            : {
+                                backgroundColor: "#f9fafb",
+                                color: "#d1d5db",
+                                border: "1px solid #f3f4f6",
+                              }
+                      }>
                       {isCompleted ? (
                         <Check className="w-4 h-4" />
                       ) : (
@@ -176,8 +208,11 @@ export default function ReportPortalClient({ data }: { data: any }) {
               </div>
               <div className="w-full h-4 bg-neutral-100 rounded-none overflow-hidden">
                 <div
-                  className="h-full bg-black transition-all duration-1000"
-                  style={{ width: `${progressPercentage}%` }}
+                  className="h-full transition-all duration-1000"
+                  style={{
+                    width: `${progressPercentage}%`,
+                    backgroundColor: primaryColor,
+                  }}
                 />
               </div>
               <p className="text-[10px] text-neutral-400 font-mono uppercase tracking-widest text-right">
@@ -193,7 +228,9 @@ export default function ReportPortalClient({ data }: { data: any }) {
                   <div
                     key={phase}
                     className="space-y-6 print-break-inside-avoid">
-                    <h3 className="text-xs font-black uppercase tracking-widest border-b border-black pb-2 inline-block">
+                    <h3
+                      className="text-xs font-black uppercase tracking-widest pb-2 inline-block border-b-2"
+                      style={{ borderBottomColor: primaryColor }}>
                       {phase.replace("_", " ")}
                     </h3>
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-4">
@@ -230,7 +267,10 @@ export default function ReportPortalClient({ data }: { data: any }) {
               {deliverables.map((d: any) => (
                 <div
                   key={d.id}
-                  className="group border border-neutral-100 p-6 flex flex-col md:flex-row justify-between items-center gap-6 hover:border-black transition-colors">
+                  className="group border border-neutral-100 p-6 flex flex-col md:flex-row justify-between items-center gap-6 transition-colors hover:border-black"
+                  style={
+                    { "--hover-border": primaryColor } as React.CSSProperties
+                  }>
                   <div className="space-y-2 flex-1">
                     <div className="flex items-center gap-3">
                       <h4 className="text-lg font-black uppercase tracking-tight">
@@ -252,7 +292,10 @@ export default function ReportPortalClient({ data }: { data: any }) {
                     href={d.file_url}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="flex items-center gap-2 px-6 py-3 bg-neutral-50 text-[10px] font-bold uppercase tracking-widest hover:bg-black hover:text-white transition-all no-print">
+                    className="flex items-center gap-2 px-6 py-3 bg-neutral-50 text-[10px] font-bold uppercase tracking-widest hover:text-white transition-all no-print hover:grayscale-0"
+                    style={
+                      { "--hover-bg": primaryColor } as React.CSSProperties
+                    }>
                     Ver Archivo
                     <ExternalLink className="w-3 h-3" />
                   </a>
@@ -274,8 +317,8 @@ export default function ReportPortalClient({ data }: { data: any }) {
               </h3>
               <p className="text-xl text-neutral-500 font-light max-w-2xl leading-relaxed">
                 Estamos preparándonos para iniciar la siguiente etapa. Nos
-                enfocaremos en asegurar que la transición sea fluida y
-                transparente.
+                enfocaríamos en asegurar que la transición sea fluida y
+                transparente para {workspace?.name || "el equipo"}.
               </p>
             </div>
             {project.deadline && (
@@ -295,10 +338,10 @@ export default function ReportPortalClient({ data }: { data: any }) {
         <div className="max-w-5xl mx-auto flex flex-col md:flex-row justify-between items-center gap-12 text-center md:text-left">
           <div className="space-y-2">
             <span className="text-xl font-black tracking-tighter">
-              ◆ NOCTRA STUDIO
+              ◆ {workspace?.name?.toUpperCase() || "NOCTRA STUDIO"}
             </span>
             <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-400">
-              Design & Strategy Excellence
+              {workspace?.tagline || "Design & Strategy Excellence"}
             </p>
           </div>
           <div className="space-y-4">
@@ -306,9 +349,10 @@ export default function ReportPortalClient({ data }: { data: any }) {
               ¿Tienes dudas sobre los avances?
             </p>
             <a
-              href="mailto:hola@noctra.studio"
-              className="inline-block text-lg font-black tracking-tight border-b-2 border-black pb-1 hover:text-neutral-600 transition-colors">
-              hola@noctra.studio
+              href={`mailto:${workspace?.email || "hola@noctra.studio"}`}
+              className="inline-block text-lg font-black tracking-tight border-b-2 border-black pb-1 hover:text-neutral-600 transition-colors"
+              style={{ borderBottomColor: primaryColor }}>
+              {workspace?.email || "hola@noctra.studio"}
             </a>
           </div>
         </div>

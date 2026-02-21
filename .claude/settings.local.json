@@ -9,7 +9,8 @@
       "Bash(node:*)",
       "Bash(npx next build:*)",
       "Bash(npm ls:*)",
-      "Bash(npm why:*)"
+      "Bash(npm why:*)",
+      "Bash(pgrep:*)"
     ],
     "deny": [],
     "ask": []

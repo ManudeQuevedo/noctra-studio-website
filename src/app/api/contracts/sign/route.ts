@@ -1,6 +1,7 @@
 import { createClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
+import { populateProjectTasks } from "@/lib/populate-tasks";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -71,13 +72,20 @@ export async function POST(req: Request) {
 
     if (profile) {
       const projectName = `${contract.client_name} — ${contract.service_type || 'Nuevo Proyecto'}`;
-      await supabase
+      const { data: newProject, error: projectError } = await supabase
         .from("projects")
         .insert({
           client_id: profile.id,
           name: projectName,
-          status: 'discovery'
-        });
+          status: 'discovery',
+          service_type: contract.service_type || 'web_presence'
+        })
+        .select()
+        .single();
+
+      if (!projectError && newProject) {
+        await populateProjectTasks(supabase, newProject.id, contract.service_type);
+      }
     } else {
       console.warn(`No profile found for ${contract.client_email}. Skipping project creation.`);
     }

@@ -26,15 +26,15 @@ export default async function ClientProposalPage({
 }) {
   const supabase = await createClient();
 
-  // Fetch proposal by client_token (using client_token column from migration 005)
-  // If migration hasn't run yet, this might error, but we plan for the correct schema
+  // Fetch proposal by client_token with workspace info
   const { data: proposal, error } = await supabase
     .from("proposals")
     .select(
       `
       *,
       lead:contact_submissions(*),
-      items:proposal_items(*)
+      items:proposal_items(*),
+      workspace:workspaces(*)
     `,
     )
     .eq("client_token", params.token)
@@ -50,11 +50,13 @@ export default async function ClientProposalPage({
           Propuesta no encontrada
         </h1>
         <p className="text-neutral-300 text-sm font-mono uppercase tracking-widest">
-          Verifica el enlace o contacta a Noctra Studio.
+          Verifica el enlace o contacta con nosotros.
         </p>
       </div>
     );
   }
+
+  const workspace = proposal.workspace;
 
   // Tracking Logic (On Load)
   if (proposal.status === "sent") {
@@ -85,15 +87,25 @@ export default async function ClientProposalPage({
   const start_date = new Date(proposal.created_at);
   const estimated_delivery = addWeeks(start_date, 6); // Hardcoded 6 weeks as per timeline
 
+  const primaryColor = workspace?.primary_color || "#10b981"; // Default emerald-600
+
   return (
     <div className="min-h-screen bg-[#fafafa] text-neutral-900 selection:bg-emerald-100 pb-32">
       {/* Top Navigation / Status */}
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-100 print:hidden">
         <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] italic">
-              Noctra<span className="text-emerald-600">.</span>
-            </span>
+            {workspace?.logo_url ? (
+              <img
+                src={workspace.logo_url}
+                alt={workspace.name}
+                className="h-4 w-auto"
+              />
+            ) : (
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] italic">
+                {workspace?.name || "Noctra"}
+              </span>
+            )}
             <div className="h-4 w-px bg-neutral-200"></div>
             <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
               {proposal.proposal_number}
@@ -102,7 +114,13 @@ export default async function ClientProposalPage({
 
           <div className="flex items-center gap-4">
             {isSigned && (
-              <span className="text-[10px] font-mono bg-emerald-50 content-center px-3 py-1 text-emerald-600 font-bold uppercase tracking-widest border border-emerald-100">
+              <span
+                className="text-[10px] font-mono bg-emerald-50 content-center px-3 py-1 text-emerald-600 font-bold uppercase tracking-widest border border-emerald-100"
+                style={{
+                  color: primaryColor,
+                  backgroundColor: `${primaryColor}10`,
+                  borderColor: `${primaryColor}20`,
+                }}>
                 Propuesta Aceptada
               </span>
             )}
@@ -114,7 +132,8 @@ export default async function ClientProposalPage({
             {!isSigned && !isExpired && (
               <a
                 href="#signature"
-                className="bg-neutral-900 text-white px-6 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-neutral-800 transition-all shadow-xl shadow-black/10">
+                className="bg-neutral-900 text-white px-6 py-2 text-[10px] font-black uppercase tracking-widest hover:bg-neutral-800 transition-all shadow-xl shadow-black/10"
+                style={{ backgroundColor: primaryColor }}>
                 Firmar Ahora
               </a>
             )}
@@ -124,13 +143,23 @@ export default async function ClientProposalPage({
 
       <main className="max-w-[800px] mx-auto bg-white mt-12 shadow-2xl shadow-black/[0.02] border border-neutral-100 min-h-screen flex flex-col p-12 md:p-20 relative overflow-hidden">
         {/* Background Decorative Element */}
-        <div className="absolute -top-20 -right-20 w-64 h-64 bg-emerald-500/5 blur-[100px] rounded-full"></div>
+        <div
+          className="absolute -top-20 -right-20 w-64 h-64 blur-[100px] rounded-full"
+          style={{ backgroundColor: `${primaryColor}15` }}></div>
 
         {/* SECTION 1: PORTADA */}
         <section className="mb-24">
           <div className="flex justify-between items-start mb-20">
             <div className="text-xl font-black tracking-tighter uppercase italic">
-              Noctra<span className="text-emerald-600">.</span>
+              {workspace?.logo_url ? (
+                <img
+                  src={workspace.logo_url}
+                  alt={workspace.name}
+                  className="h-6 w-auto"
+                />
+              ) : (
+                workspace?.name || "Noctra"
+              )}
             </div>
             <div className="text-right">
               <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-[0.3em]">
@@ -183,7 +212,9 @@ export default async function ClientProposalPage({
             </p>
           </div>
           <div className="space-y-6">
-            <h3 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold border-l-2 border-emerald-500 pl-4">
+            <h3
+              className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold border-l-2 pl-4"
+              style={{ borderLeftColor: primaryColor }}>
               NUESTRA PROPUESTA
             </h3>
             <p className="text-lg leading-relaxed text-neutral-400">
@@ -204,7 +235,9 @@ export default async function ClientProposalPage({
                 key={idx}
                 className="group p-6 border border-neutral-50 hover:border-emerald-100 transition-all bg-neutral-50/50">
                 <div className="flex items-start gap-4">
-                  <div className="mt-1 w-5 h-5 rounded-full bg-emerald-500 flex items-center justify-center shrink-0">
+                  <div
+                    className="mt-1 w-5 h-5 rounded-full flex items-center justify-center shrink-0"
+                    style={{ backgroundColor: primaryColor }}>
                     <Check className="w-3 h-3 text-white" />
                   </div>
                   <div>
@@ -241,8 +274,11 @@ export default async function ClientProposalPage({
                 <div
                   key={idx}
                   className="flex flex-col items-center text-center relative z-10">
-                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-100 flex items-center justify-center mb-4 group hover:border-emerald-500 transition-colors shadow-sm">
-                    <phase.icon className="w-4 h-4 text-neutral-400 group-hover:text-emerald-500" />
+                  <div className="w-10 h-10 rounded-full bg-white border border-neutral-100 flex items-center justify-center mb-4 group transition-colors shadow-sm">
+                    <phase.icon
+                      className="w-4 h-4 text-neutral-400 group-hover:text-emerald-500"
+                      style={{ color: "var(--primary-hover-color)" }}
+                    />
                   </div>
                   <h4 className="text-[10px] font-black uppercase tracking-tight mb-1">
                     {phase.name}
@@ -268,7 +304,9 @@ export default async function ClientProposalPage({
               <p className="text-[8px] font-mono text-neutral-400 uppercase mb-2">
                 ENTREGA ESTIMADA
               </p>
-              <p className="text-sm font-bold uppercase tracking-tight text-emerald-600">
+              <p
+                className="text-sm font-bold uppercase tracking-tight"
+                style={{ color: primaryColor }}>
                 {format(estimated_delivery, "MMMM d, yyyy")}
               </p>
             </div>
@@ -312,7 +350,8 @@ export default async function ClientProposalPage({
         {/* SECTION 6: LO QUE INCLUYE SIEMPRE */}
         <section className="mb-24">
           <h3 className="text-[10px] font-mono uppercase tracking-[0.3em] text-neutral-400 font-bold mb-10 text-center">
-            EL ESTÁNDAR NOCTRA
+            EL ESTÁNDAR{" "}
+            {workspace?.name?.split(" ")[0].toUpperCase() || "NOCTRA"}
           </h3>
           <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
             {[
@@ -328,7 +367,9 @@ export default async function ClientProposalPage({
               <div
                 key={idx}
                 className="flex items-center gap-2 text-[9px] font-mono uppercase tracking-widest font-bold">
-                <div className="w-1.5 h-1.5 bg-emerald-500 rotate-45"></div>
+                <div
+                  className="w-1.5 h-1.5 rotate-45"
+                  style={{ backgroundColor: primaryColor }}></div>
                 {feature}
               </div>
             ))}
@@ -340,7 +381,7 @@ export default async function ClientProposalPage({
           <div className="inline-block p-4 bg-emerald-50 border border-emerald-100 rounded-sm">
             {isExpired ? (
               <p className="text-sm font-bold text-red-600 uppercase tracking-tighter">
-                Esta propuesta ha vencido. Contacta a Noctra para renovarla.
+                Esta propuesta ha vencido. Contacta con nosotros para renovarla.
               </p>
             ) : (
               <div className="space-y-1">

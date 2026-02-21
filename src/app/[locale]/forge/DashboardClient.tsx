@@ -415,12 +415,63 @@ function RecentActivity({ leads, proposals, contracts, projects }: any) {
   });
 
   proposals.forEach((p: any) => {
+    const label = p.proposal_number || p.title || "Propuesta sin nombre";
+    const client = p.client_name || p.company_name || "Cliente";
+
+    const statusMap: Record<string, string> = {
+      draft: "creada",
+      sent: "enviada",
+      viewed: "vista",
+      accepted: "firmada",
+      rejected: "rechazada",
+      expired: "expirada",
+    };
+
     events.push({
       id: `p-${p.id}`,
       date: new Date(p.updated_at || p.created_at),
       type: "proposal",
-      desc: `Propuesta ${p.status === "signed" ? "firmada" : p.status}: ${p.company_name}`,
+      desc: `Propuesta ${statusMap[p.status] || "actualizada"}: ${label} (${client})`,
       link: `/forge/proposals`,
+    });
+  });
+
+  contracts.forEach((c: any) => {
+    const label = c.contract_number || "Contrato";
+    const client = c.client_name || "Cliente";
+
+    const statusMap: Record<string, string> = {
+      pending: "pendiente",
+      signed: "firmado",
+      expired: "expirado",
+    };
+
+    events.push({
+      id: `c-${c.id}`,
+      date: new Date(c.updated_at || c.created_at),
+      type: "contract",
+      desc: `Contrato ${statusMap[c.status] || "actualizado"}: ${label} (${client})`,
+      link: `/forge/contracts`,
+    });
+  });
+
+  projects.forEach((prj: any) => {
+    const label = prj.name || "Proyecto sin nombre";
+
+    const statusMap: Record<string, string> = {
+      active: "activo",
+      on_hold: "en pausa",
+      completed: "completado",
+      cancelled: "cancelado",
+      maintenance: "mantenimiento",
+    };
+
+    events.push({
+      id: `prj-${prj.id}`,
+      date: new Date(prj.updated_at || prj.created_at),
+      type: "project",
+      desc: `Proyecto ${statusMap[prj.status] || "actualizado"}: ${label}`,
+      link: `/forge/projects`,
     });
   });
 

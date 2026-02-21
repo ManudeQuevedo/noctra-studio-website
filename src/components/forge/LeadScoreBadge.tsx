@@ -1,6 +1,6 @@
 "use client";
 
-import { LeadScoreResult } from "@/lib/scoring";
+import { ScoreBreakdown } from "@/lib/lead-scoring";
 
 interface LeadScoreBadgeProps {
   score: number;

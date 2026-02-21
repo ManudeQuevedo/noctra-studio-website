@@ -15,6 +15,8 @@ export default function DeliverablePortalClient({
 }: {
   deliverable: any;
 }) {
+  const workspace = deliverable.projects?.workspace;
+  const primaryColor = workspace?.primary_color || "#000000";
   const [status, setStatus] = useState(deliverable.status);
   const [comment, setComment] = useState("");
   const [showRejectForm, setShowRejectForm] = useState(false);
@@ -61,9 +63,17 @@ export default function DeliverablePortalClient({
       <header className="border-b border-neutral-100 bg-white/80 backdrop-blur-md sticky top-0 z-50">
         <div className="max-w-5xl mx-auto px-6 py-6 flex justify-between items-center">
           <div className="flex items-center gap-4">
-            <span className="text-xl font-black tracking-tighter">
-              ◆ NOCTRA STUDIO
-            </span>
+            {workspace?.logo_url ? (
+              <img
+                src={workspace.logo_url}
+                alt={workspace.name}
+                className="h-5 w-auto"
+              />
+            ) : (
+              <span className="text-xl font-black tracking-tighter">
+                ◆ {workspace?.name?.toUpperCase() || "NOCTRA STUDIO"}
+              </span>
+            )}
             <div className="w-[1px] h-4 bg-neutral-200" />
             <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-400">
               Revisión de entregable
@@ -97,7 +107,8 @@ export default function DeliverablePortalClient({
               href={deliverable.file_url}
               target="_blank"
               rel="noopener noreferrer"
-              className="group inline-flex items-center gap-3 bg-neutral-900 text-white px-8 py-5 rounded-none font-bold uppercase tracking-widest text-xs hover:bg-neutral-800 transition-all hover:gap-5 shadow-2xl shadow-neutral-200">
+              className="group inline-flex items-center gap-3 text-white px-8 py-5 rounded-none font-bold uppercase tracking-widest text-xs hover:gap-5 shadow-2xl shadow-neutral-200 transition-all"
+              style={{ backgroundColor: primaryColor }}>
               Ver entregable
               <ExternalLink className="w-4 h-4" />
             </a>
@@ -110,7 +121,12 @@ export default function DeliverablePortalClient({
             <div className="bg-neutral-50 p-12 rounded-none space-y-6 text-center">
               {status === "approved" ? (
                 <>
-                  <div className="w-16 h-16 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto">
+                  <div
+                    className="w-16 h-16 rounded-full flex items-center justify-center mx-auto"
+                    style={{
+                      backgroundColor: `${primaryColor}15`,
+                      color: primaryColor,
+                    }}>
                     <Check className="w-8 h-8 stroke-[3]" />
                   </div>
                   <div className="space-y-2">
@@ -161,7 +177,8 @@ export default function DeliverablePortalClient({
                 <button
                   disabled={isSubmitting}
                   onClick={handleApprove}
-                  className="flex items-center justify-center gap-3 border-2 border-emerald-600 text-emerald-600 p-6 font-black uppercase tracking-widest text-xs hover:bg-emerald-50 transition-all disabled:opacity-50">
+                  className="flex items-center justify-center gap-3 border-2 p-6 font-black uppercase tracking-widest text-xs transition-all disabled:opacity-50"
+                  style={{ borderColor: primaryColor, color: primaryColor }}>
                   <CheckCircle className="w-5 h-5" />
                   Aprobar
                 </button>
@@ -206,7 +223,7 @@ export default function DeliverablePortalClient({
       <footer className="border-t border-neutral-100 py-12 bg-neutral-50/50">
         <div className="max-w-5xl mx-auto px-6 text-center space-y-4">
           <p className="text-[10px] font-bold uppercase tracking-[0.3em] text-neutral-400">
-            Design & Strategy by Noctra Studio
+            Design & Strategy by {workspace?.name || "Noctra Studio"}
           </p>
         </div>
       </footer>

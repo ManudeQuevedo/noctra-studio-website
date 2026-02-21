@@ -35,8 +35,10 @@ type Lead = {
 
 export default function ForgeLeadsClient({
   initialLeads,
+  config,
 }: {
   initialLeads: Lead[];
+  config: any;
 }) {
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(

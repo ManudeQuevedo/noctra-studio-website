@@ -33,6 +33,7 @@ import {
   updateDeliverableStatusInternalAction,
 } from "@/app/actions/deliverables";
 import type { Deliverable } from "@/app/actions/deliverables";
+import { populateProjectTasks } from "@/lib/populate-tasks";
 
 type StatusHistory = {
   id: string;
@@ -376,226 +377,11 @@ export default function ForgeProjectsClient({
       if (error) throw error;
 
       // Auto-populate tasks
-      const serviceType = newProject.service_type || "web_presence";
-      let initialTasks: any[] = [];
-      if (serviceType === "web_presence") {
-        initialTasks = [
-          {
-            project_id: data.id,
-            phase: "Discovery",
-            title: "Brief inicial completado",
-            sort_order: 10,
-          },
-          {
-            project_id: data.id,
-            phase: "Discovery",
-            title: "Accesos recibidos (hosting, dominio, analytics)",
-            sort_order: 20,
-          },
-          {
-            project_id: data.id,
-            phase: "Discovery",
-            title: "Moodboard aprobado",
-            sort_order: 30,
-          },
-          {
-            project_id: data.id,
-            phase: "Diseño",
-            title: "Wireframes aprobados",
-            sort_order: 40,
-          },
-          {
-            project_id: data.id,
-            phase: "Diseño",
-            title: "Diseño desktop aprobado",
-            sort_order: 50,
-          },
-          {
-            project_id: data.id,
-            phase: "Diseño",
-            title: "Diseño mobile aprobado",
-            sort_order: 60,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Ambiente de desarrollo configurado",
-            sort_order: 70,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Homepage desarrollada",
-            sort_order: 80,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Páginas internas desarrolladas",
-            sort_order: 90,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Formularios funcionando",
-            sort_order: 100,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "SEO técnico implementado",
-            sort_order: 110,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Analytics configurado",
-            sort_order: 120,
-          },
-          {
-            project_id: data.id,
-            phase: "Lanzamiento",
-            title: "QA en múltiples dispositivos",
-            sort_order: 130,
-          },
-          {
-            project_id: data.id,
-            phase: "Lanzamiento",
-            title: "Velocidad < 1.5s verificada",
-            sort_order: 140,
-          },
-          {
-            project_id: data.id,
-            phase: "Lanzamiento",
-            title: "DNS configurado",
-            sort_order: 150,
-          },
-          {
-            project_id: data.id,
-            phase: "Lanzamiento",
-            title: "SSL activo",
-            sort_order: 160,
-          },
-          {
-            project_id: data.id,
-            phase: "Lanzamiento",
-            title: "Entrega al cliente",
-            sort_order: 170,
-          },
-          {
-            project_id: data.id,
-            phase: "Post-lanzamiento",
-            title: "Capacitación al cliente",
-            sort_order: 180,
-          },
-          {
-            project_id: data.id,
-            phase: "Post-lanzamiento",
-            title: "Documentación entregada",
-            sort_order: 190,
-          },
-          {
-            project_id: data.id,
-            phase: "Post-lanzamiento",
-            title: "Período de soporte iniciado",
-            sort_order: 200,
-          },
-        ];
-      } else if (serviceType === "ecommerce") {
-        initialTasks = [
-          {
-            project_id: data.id,
-            phase: "Discovery",
-            title: "Brief inicial completado",
-            sort_order: 10,
-          },
-          {
-            project_id: data.id,
-            phase: "Discovery",
-            title: "Catálogo de productos recibido",
-            sort_order: 20,
-          },
-          {
-            project_id: data.id,
-            phase: "Diseño",
-            title: "Diseño de tienda y producto aprobado",
-            sort_order: 30,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Pasarela de pagos configurada",
-            sort_order: 40,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Carrito y checkout funcionando",
-            sort_order: 50,
-          },
-          {
-            project_id: data.id,
-            phase: "Lanzamiento",
-            title: "Prueba de compra exitosa",
-            sort_order: 60,
-          },
-          {
-            project_id: data.id,
-            phase: "Post-lanzamiento",
-            title: "Capacitación de gestión de inventario",
-            sort_order: 70,
-          },
-        ];
-      } else if (serviceType === "custom_system") {
-        initialTasks = [
-          {
-            project_id: data.id,
-            phase: "Discovery",
-            title: "Levantamiento de requerimientos",
-            sort_order: 10,
-          },
-          {
-            project_id: data.id,
-            phase: "Discovery",
-            title: "Arquitectura de base de datos definida",
-            sort_order: 20,
-          },
-          {
-            project_id: data.id,
-            phase: "Diseño",
-            title: "Mockups de sistema aprobados",
-            sort_order: 30,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Autenticación roles/permisos",
-            sort_order: 40,
-          },
-          {
-            project_id: data.id,
-            phase: "Desarrollo",
-            title: "Módulos core desarrollados",
-            sort_order: 50,
-          },
-          {
-            project_id: data.id,
-            phase: "Lanzamiento",
-            title: "UAT (User Acceptance Testing) completado",
-            sort_order: 60,
-          },
-          {
-            project_id: data.id,
-            phase: "Post-lanzamiento",
-            title: "Pase a producción y monitorización",
-            sort_order: 70,
-          },
-        ];
-      }
-
-      if (initialTasks.length > 0) {
-        await supabase.from("project_tasks").insert(initialTasks);
-      }
+      await populateProjectTasks(
+        supabase,
+        data.id,
+        newProject.service_type || "web_presence"
+      );
 
       await supabase
         .from("project_status_history")
@@ -2100,7 +1886,36 @@ function TareasTab({ project, tasks, setTasks, supabase, showToast }: any) {
   return (
     <div className="space-y-12">
       {/* OVERALL PROGRESS */}
-      <div className="bg-[#111111] border border-neutral-900 p-6 flex flex-col gap-4">
+      {totalTasks === 0 ? (
+        <div className="bg-[#111111] border border-neutral-900 p-12 flex flex-col items-center justify-center gap-6 text-center">
+          <div className="space-y-2">
+            <p className="text-neutral-500 text-sm font-mono uppercase tracking-widest">
+              No hay tareas en este proyecto
+            </p>
+            <p className="text-neutral-700 text-[10px] font-mono uppercase tracking-widest">
+              ¿Deseas cargar la plantilla estándar para {project.service_type}?
+            </p>
+          </div>
+          <button
+            onClick={async () => {
+              await populateProjectTasks(
+                supabase,
+                project.id,
+                project.service_type
+              );
+              // Simple way to refresh: call parent's fetchTasks or just use the local state update
+              // Since we are in TareasTab, we'd need to re-fetch.
+              // We'll pass fetchTasks as a prop or just let the user re-select the project for now.
+              // Actually, better to pass fetchTasks. 
+              // But looking at the code, it's safer to just trigger a re-mount or similar.
+              window.location.reload(); // Quick fix for now to ensure data sync
+            }}
+            className="px-6 py-3 bg-white text-black text-[10px] font-black uppercase tracking-widest hover:bg-neutral-200 transition-colors">
+            Cargar tareas del proyecto
+          </button>
+        </div>
+      ) : (
+        <div className="bg-[#111111] border border-neutral-900 p-6 flex flex-col gap-4">
         <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-neutral-300">
           <span>
             Progreso general: {completedTasks}/{totalTasks} tareas
@@ -2114,6 +1929,7 @@ function TareasTab({ project, tasks, setTasks, supabase, showToast }: any) {
           />
         </div>
       </div>
+    )}
 
       {/* PHASES */}
       <div className="space-y-12">

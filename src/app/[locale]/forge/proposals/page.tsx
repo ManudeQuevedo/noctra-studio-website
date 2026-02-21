@@ -1,16 +1,15 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
+import { getWorkspace } from "@/lib/workspace";
 import ProposalsClient from "./ProposalsClient";
 
 export const dynamic = "force-dynamic";
 
 export default async function ProposalsPage() {
   const supabase = await createClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const ctx = await getWorkspace();
 
-  if (!session) {
+  if (!ctx) {
     redirect("/forge/login");
   }
 
@@ -23,6 +22,7 @@ export default async function ProposalsPage() {
       lead:contact_submissions(id, name, email)
     `,
     )
+    .eq("workspace_id", ctx.workspaceId)
     .order("created_at", { ascending: false });
 
   if (error) {

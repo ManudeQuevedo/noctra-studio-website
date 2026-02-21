@@ -37,10 +37,10 @@ export async function generateReportAction(projectId: string, config: ReportConf
 export async function getReportByTokenAction(token: string) {
   const supabase = await createClient();
 
-  // Fetch project basic info
+  // Fetch project basic info with workspace info
   const { data: project, error: pError } = await supabase
     .from("projects")
-    .select("*")
+    .select("*, workspace:workspaces(*)")
     .eq("report_token", token)
     .single();
 

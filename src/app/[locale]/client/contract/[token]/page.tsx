@@ -12,13 +12,14 @@ export default async function ClientContractPage({
 }) {
   const supabase = await createClient();
 
-  // 1. Fetch contract by client_token
+  // 1. Fetch contract by client_token with workspace info
   const { data: contract, error } = await supabase
     .from("contracts")
     .select(
       `
       *,
-      proposal:proposals(proposal_number)
+      proposal:proposals(proposal_number),
+      workspace:workspaces(*)
     `,
     )
     .eq("client_token", params.token)
@@ -34,7 +35,7 @@ export default async function ClientContractPage({
           Contrato no encontrado
         </h1>
         <p className="text-neutral-300 text-xs font-mono uppercase tracking-[0.2em]">
-          Verifica el enlace o contacta a Noctra Studio.
+          Verifica el enlace o contacta con nosotros.
         </p>
       </div>
     );

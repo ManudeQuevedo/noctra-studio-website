@@ -2,6 +2,8 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { startOfMonth, endOfMonth, subMonths, format, isWithinInterval } from "date-fns";
+import { getWorkspace } from "@/lib/workspace";
+import { redirect } from "next/navigation";
 
 export type ForecastItem = {
   id: string;
@@ -24,6 +26,9 @@ export type RevenueForecast = {
 
 export async function getRevenueForecast(monthDate: Date = new Date()): Promise<RevenueForecast> {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
+  if (!ctx) redirect("/forge/login");
+
   const start = startOfMonth(monthDate);
   const end = endOfMonth(monthDate);
 
@@ -31,6 +36,7 @@ export async function getRevenueForecast(monthDate: Date = new Date()): Promise<
   const { data: signedContracts } = await supabase
     .from("contracts")
     .select("id, client_name, total_price, client_signed_at")
+    .eq("workspace_id", ctx.workspaceId)
     .eq("client_signed", true)
     .gte("client_signed_at", start.toISOString())
     .lte("client_signed_at", end.toISOString());
@@ -51,6 +57,7 @@ export async function getRevenueForecast(monthDate: Date = new Date()): Promise<
   const { data: viewedProposals } = await supabase
     .from("proposals")
     .select("id, total, status, lead_id, contact_submissions(name)")
+    .eq("workspace_id", ctx.workspaceId)
     .eq("status", "viewed");
 
   const probableItems: ForecastItem[] = (viewedProposals || []).map((p: any) => ({
@@ -65,15 +72,26 @@ export async function getRevenueForecast(monthDate: Date = new Date()): Promise<
 
   const probableTotal = probableItems.reduce((acc, i) => acc + i.contribution, 0);
 
-  // 3. Possible (25%): Proposals sent (not viewed) + Leads in 'propuesta_enviada'
+  // 3. Possible (25%): Proposals sent (not viewed) + Leads in a 'proposal sent' style stage
   // Strategy: Get proposals with status 'sent'
   const { data: sentProposals } = await supabase
     .from("proposals")
     .select("id, total, status, lead_id, contact_submissions(name)")
+    .eq("workspace_id", ctx.workspaceId)
     .eq("status", "sent");
 
-  // Get leads in 'propuesta_enviada' that DON'T have a proposal records yet
-  // We'll filter them by checking if the request_id is in any of the above
+  // Get workspace config to find the correct stage name
+  const { data: config } = await supabase
+    .from("workspace_config")
+    .select("pipeline_stages")
+    .eq("workspace_id", ctx.workspaceId)
+    .single();
+
+  const proposalSentStage = (config?.pipeline_stages || []).find((s: string) => 
+    s.toLowerCase().includes("propuesta") || s.toLowerCase().includes("enviada")
+  ) || "propuesta_enviada";
+
+  // Get leads in that stage that DON'T have a proposal records yet
   const proposalLeadIds = new Set([
     ...(viewedProposals || []).map((p: any) => p.lead_id),
     ...(sentProposals || []).map((p: any) => p.lead_id)
@@ -82,7 +100,8 @@ export async function getRevenueForecast(monthDate: Date = new Date()): Promise<
   const { data: leadsInStage } = await supabase
     .from("contact_submissions")
     .select("id, name, estimated_value")
-    .eq("pipeline_status", "propuesta_enviada");
+    .eq("workspace_id", ctx.workspaceId)
+    .eq("pipeline_status", proposalSentStage);
 
   const possibleItems: ForecastItem[] = [
     ...(sentProposals || []).map((p: any) => ({
@@ -121,6 +140,9 @@ export async function getRevenueForecast(monthDate: Date = new Date()): Promise<
 
 export async function getRevenueTrend() {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
+  if (!ctx) redirect("/forge/login");
+
   const months = Array.from({ length: 6 }).map((_, i) => subMonths(new Date(), 5 - i));
 
   const trend = await Promise.all(months.map(async (m) => {
@@ -140,6 +162,7 @@ export async function getRevenueTrend() {
       const { data: signedInRange } = await supabase
         .from("contracts")
         .select("total_price")
+        .eq("workspace_id", ctx.workspaceId)
         .eq("client_signed", true)
         .gte("client_signed_at", start.toISOString())
         .lte("client_signed_at", end.toISOString());

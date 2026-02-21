@@ -1,5 +1,6 @@
 import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
+import { getWorkspace } from "@/lib/workspace";
 import ForgeProjectsClient from "./ForgeProjectsClient";
 import type { Project } from "@/lib/projects";
 
@@ -8,17 +9,16 @@ export const dynamic = "force-dynamic";
 
 export default async function ForgeProjectsPage() {
   const supabase = await createClient();
-  const {
-    data: { session },
-  } = await supabase.auth.getSession();
+  const ctx = await getWorkspace();
 
-  if (!session) {
+  if (!ctx) {
     redirect("/forge/login");
   }
 
   const { data: projects, error } = await supabase
     .from("projects")
     .select("*")
+    .eq("workspace_id", ctx.workspaceId)
     .order("sort_order", { ascending: true });
 
   if (error) {

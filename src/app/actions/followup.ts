@@ -3,6 +3,8 @@
 import { createClient } from "@/utils/supabase/server";
 import { differenceInDays, subDays } from "date-fns";
 import { Resend } from "resend";
+import { getWorkspace } from "@/lib/workspace";
+import { redirect } from "next/navigation";
 
 const resend = new Resend(process.env.RESEND_API_KEY);
 
@@ -26,6 +28,9 @@ export type FollowUpTemplate = {
 
 export async function getPendingFollowUps(): Promise<FollowUpSuggestion[]> {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
+  if (!ctx) redirect("/forge/login");
+
   const suggestions: FollowUpSuggestion[] = [];
   const now = new Date();
 
@@ -34,6 +39,7 @@ export async function getPendingFollowUps(): Promise<FollowUpSuggestion[]> {
   const { data: newLeads } = await supabase
     .from("contact_submissions")
     .select("*")
+    .eq("workspace_id", ctx.workspaceId)
     .eq("pipeline_status", "nuevo")
     .lt("created_at", subDays(now, 3).toISOString());
 
@@ -57,6 +63,7 @@ export async function getPendingFollowUps(): Promise<FollowUpSuggestion[]> {
   const { data: proposals } = await supabase
     .from("proposals")
     .select("*, contact_submissions(name, email, locale)")
+    .eq("workspace_id", ctx.workspaceId)
     .eq("signed", false);
 
   if (proposals) {
@@ -102,6 +109,7 @@ export async function getPendingFollowUps(): Promise<FollowUpSuggestion[]> {
   const { data: contracts } = await supabase
     .from("contracts")
     .select("*, proposals(contact_submissions(name, email, locale), lead_id)")
+    .eq("workspace_id", ctx.workspaceId)
     .eq("status", "sent")
     .is("client_signed_at", null)
     .lt("created_at", subDays(now, 3).toISOString());
@@ -131,9 +139,13 @@ export async function getPendingFollowUps(): Promise<FollowUpSuggestion[]> {
 
 export async function getFollowUpTemplates(): Promise<FollowUpTemplate[]> {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
+  if (!ctx) redirect("/forge/login");
+
   const { data } = await supabase
     .from("followup_templates")
-    .select("type, locale, subject, body");
+    .select("type, locale, subject, body")
+    .eq("workspace_id", ctx.workspaceId);
   
   return data || [];
 }
@@ -144,11 +156,13 @@ export async function sendFollowUpEmail(
   body: string
 ) {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
+  if (!ctx) redirect("/forge/login");
 
   try {
     // 1. Send via Resend
     const { error: resendError } = await resend.emails.send({
-      from: "Noctra Studio <manu@noctra.studio>",
+      from: `${ctx.workspace.name} <${ctx.workspace.email}>`,
       to: [suggestion.clientEmail],
       subject: subject,
       text: body,
@@ -159,6 +173,7 @@ export async function sendFollowUpEmail(
     // 2. Log activity
     await supabase.from("lead_activities").insert({
       lead_id: suggestion.leadId,
+      workspace_id: ctx.workspaceId,
       type: 'email',
       content: `Follow-up enviado (${suggestion.type}):\n\nAsunto: ${subject}\n\n${body}`
     });
@@ -168,7 +183,8 @@ export async function sendFollowUpEmail(
       await supabase
         .from("contact_submissions")
         .update({ pipeline_status: 'contactado' })
-        .eq("id", suggestion.leadId);
+        .eq("id", suggestion.leadId)
+        .eq("workspace_id", ctx.workspaceId);
     }
 
     return { success: true };
@@ -180,11 +196,14 @@ export async function sendFollowUpEmail(
 
 export async function markAsContacted(suggestion: FollowUpSuggestion) {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
+  if (!ctx) redirect("/forge/login");
 
   try {
     // 1. Log "call" activity
     await supabase.from("lead_activities").insert({
       lead_id: suggestion.leadId,
+      workspace_id: ctx.workspaceId,
       type: 'call',
       content: `Follow-up realizado manualmente (Marked as contacted).`
     });
@@ -194,7 +213,8 @@ export async function markAsContacted(suggestion: FollowUpSuggestion) {
       await supabase
         .from("contact_submissions")
         .update({ pipeline_status: 'contactado' })
-        .eq("id", suggestion.leadId);
+        .eq("id", suggestion.leadId)
+        .eq("workspace_id", ctx.workspaceId);
     }
 
     return { success: true };

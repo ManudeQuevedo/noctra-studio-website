@@ -4,7 +4,7 @@ import { resend } from "@/lib/resend";
 import { validateCsrfToken } from "@/lib/csrf";
 import validator from "validator";
 import sanitizeHtml from "sanitize-html";
-import { calculateLeadScore } from "@/lib/scoring";
+import { calculateLeadScore } from "@/lib/lead-scoring";
 
 const SECURITY_HEADERS = {
   "X-Content-Type-Options": "nosniff",
@@ -123,19 +123,27 @@ export async function POST(req: Request) {
     }
 
     // 7. Calculate Lead Score
-    const leadForScoring = {
-      service_interest: safeService,
-      intent: safeIntent,
+    const { score, ...breakdown } = calculateLeadScore({
+      service_type: safeIntent,
       message: safeMessage,
       phone: safePhone,
+      company: body.company_name || body.company || null,
       source_cta: safeCta,
       pipeline_status: 'nuevo',
       created_at: new Date().toISOString()
-    };
-
-    const { score, breakdown } = calculateLeadScore(leadForScoring);
+    });
 
     // 8. Insert into contact_submissions
+    // Default workspace ID for new public leads (Noctra)
+    const DEFAULT_WORKSPACE_ID = "596024fa-0855-45b7-b1bd-00e43ccb9dfa";
+    
+    // Fetch workspace info for branding
+    const { data: workspaceInfo } = await supabase
+      .from("workspaces")
+      .select("name, email")
+      .eq("id", DEFAULT_WORKSPACE_ID)
+      .single();
+
     // Get next value from sequence for Request ID
     const { data: seqData, error: seqError } = await supabase.rpc('get_next_request_id');
     const requestId = seqError
@@ -156,7 +164,8 @@ export async function POST(req: Request) {
         intent: safeIntent,
         request_id: requestId,
         lead_score: score,
-        lead_score_breakdown: breakdown
+        lead_score_breakdown: breakdown,
+        workspace_id: DEFAULT_WORKSPACE_ID
       })
       .select("id")
       .single();
@@ -183,13 +192,14 @@ export async function POST(req: Request) {
       const lang = (safeLocale === "es" ? "es" : "en") as "es" | "en";
       const template = selectedTemplate[lang];
 
-      // Use verified domain or test dev email
-      const fromAddress = "Noctra Studio <hello@noctra.studio>";
+      // Use workspace branding for email
+      const fromAddress = `${workspaceInfo?.name || "Noctra Studio"} <${workspaceInfo?.email || "hello@noctra.studio"}>`;
+      const replyToAddress = workspaceInfo?.email || "hello@noctra.studio";
 
       const emailResult = await resend.emails.send({
         from: fromAddress,
         to: [safeEmail],
-        replyTo: "hello@noctra.studio",
+        replyTo: replyToAddress,
         subject: template.subject,
         html: template.html(safeName),
       });
@@ -209,9 +219,9 @@ export async function POST(req: Request) {
 
       // Admin Notification
       const adminResult = await resend.emails.send({
-        from: "Noctra System <hello@noctra.studio>",
-        to: ["hello@noctra.studio"],
-        replyTo: "hello@noctra.studio",
+        from: `Noctra System <${replyToAddress}>`,
+        to: [replyToAddress],
+        replyTo: replyToAddress,
         subject: `New Lead: ${safeName} (${safeIntent})`,
         html: `
           <h1>New Lead Received</h1>

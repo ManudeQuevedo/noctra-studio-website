@@ -66,7 +66,7 @@ export async function getDeliverableByTokenAction(token: string) {
   
   const { data, error } = await supabase
     .from("project_deliverables")
-    .select("*, projects(name)")
+    .select("*, projects(name, workspace:workspaces(*))")
     .eq("client_token", token)
     .single();
 

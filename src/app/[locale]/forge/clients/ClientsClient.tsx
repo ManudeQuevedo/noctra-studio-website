@@ -10,6 +10,8 @@ import {
   ShieldCheck,
   ChevronRight,
   Filter,
+  UserPlus,
+  AlertCircle,
 } from "lucide-react";
 import Link from "next/link";
 import { format } from "date-fns";
@@ -24,9 +26,13 @@ type ClientCardData = {
   total_price: number;
   client_signed_at: string;
   project?: {
+    id: string;
     status: string;
     name: string;
   };
+  has_metadata: boolean;
+  is_from_project?: boolean;
+  is_from_contract_only?: boolean;
 };
 
 export function ClientsClient({
@@ -35,7 +41,9 @@ export function ClientsClient({
   initialClients: ClientCardData[];
 }) {
   const [search, setSearch] = useState("");
-  const [filter, setFilter] = useState<"all" | "build" | "discovery">("all");
+  const [filter, setFilter] = useState<"all" | "active" | "contract_only">(
+    "all",
+  );
 
   const filteredClients = initialClients.filter((c) => {
     const matchesSearch =
@@ -44,19 +52,43 @@ export function ClientsClient({
       c.contract_number.toLowerCase().includes(search.toLowerCase());
 
     if (filter === "all") return matchesSearch;
-    return matchesSearch && c.project?.status === filter;
+    if (filter === "active") return matchesSearch && c.is_from_project;
+    if (filter === "contract_only")
+      return matchesSearch && c.is_from_contract_only;
+    return matchesSearch;
   });
 
   const getStatusColor = (status?: string) => {
     switch (status) {
       case "discovery":
         return "bg-blue-500/10 text-blue-400 border-blue-500/20";
-      case "build":
-        return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
+      case "design":
+        return "bg-cyan-500/10 text-cyan-400 border-cyan-500/20";
+      case "development":
+        return "bg-amber-500/10 text-amber-400 border-amber-500/20";
       case "launch":
         return "bg-purple-500/10 text-purple-400 border-purple-500/20";
+      case "completed":
+        return "bg-emerald-500/10 text-emerald-400 border-emerald-500/20";
       default:
         return "bg-neutral-500/10 text-neutral-400 border-neutral-500/20";
+    }
+  };
+
+  const getPhaseLabel = (status?: string) => {
+    switch (status) {
+      case "discovery":
+        return "Discovery";
+      case "design":
+        return "Design";
+      case "development":
+        return "Development";
+      case "launch":
+        return "Launch";
+      case "completed":
+        return "Finalizado";
+      default:
+        return status || "Sin proyecto";
     }
   };
 
@@ -70,7 +102,7 @@ export function ClientsClient({
             Clientes Activos
           </h1>
           <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mt-1">
-            Gestión de relaciones y proyectos cerrados
+            Gestión de relaciones y proyectos en curso
           </p>
         </div>
       </header>
@@ -81,7 +113,7 @@ export function ClientsClient({
           <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
           <input
             type="text"
-            placeholder="Buscar por nombre, empresa o contrato..."
+            placeholder="Buscar por nombre, empresa o proyecto..."
             value={search}
             onChange={(e) => setSearch(e.target.value)}
             className="w-full bg-white/[0.02] border border-white/10 px-10 py-2.5 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-colors"
@@ -95,19 +127,18 @@ export function ClientsClient({
             onChange={(e) => setFilter(e.target.value as any)}
             className="bg-transparent text-[10px] font-mono text-neutral-400 uppercase tracking-widest focus:outline-none cursor-pointer">
             <option value="all">Estatus: Todos</option>
-            <option value="discovery">Fase: Discovery</option>
-            <option value="build">Fase: Build</option>
+            <option value="active">Con Proyecto Activo</option>
+            <option value="contract_only">Solo Contrato</option>
           </select>
         </div>
       </div>
 
       {/* Grid */}
-      <div className="p-8">
+      <div className="p-8 overflow-y-auto">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6">
           {filteredClients.map((client) => (
-            <Link
+            <div
               key={client.id}
-              href={`/forge/clients/${client.id}`}
               className="group block bg-[#0a0a0a] border border-white/5 hover:border-emerald-500/30 transition-all overflow-hidden relative">
               {/* Card Header */}
               <div className="p-6 border-b border-white/5 flex justify-between items-start">
@@ -115,13 +146,28 @@ export function ClientsClient({
                   <h3 className="text-lg font-bold text-white group-hover:text-emerald-400 transition-colors tracking-tight uppercase italic underline decoration-transparent group-hover:decoration-emerald-500/30 underline-offset-4">
                     {client.client_name}
                   </h3>
-                  <p className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest mt-1">
-                    {client.client_company || "Persona Física"}
-                  </p>
+                  <div className="flex items-center gap-2 mt-1">
+                    <p className="text-[11px] font-mono text-neutral-300 uppercase tracking-widest">
+                      {client.client_company || "Empresa no especificada"}
+                    </p>
+                    {!client.has_metadata && (
+                      <span className="flex items-center gap-1 text-[8px] font-bold text-amber-500 border border-amber-500/20 px-1 rounded-sm uppercase tracking-tighter bg-amber-500/5">
+                        <AlertCircle className="w-2 h-2" />
+                        Datos incompletos
+                      </span>
+                    )}
+                  </div>
                 </div>
-                <div
-                  className={`px-2 py-1 border text-[9px] font-black uppercase tracking-widest rounded-sm ${getStatusColor(client.project?.status)}`}>
-                  {client.project?.status || "Sin Proyecto"}
+                <div className="flex flex-col items-end gap-2">
+                  <div
+                    className={`px-2 py-1 border text-[9px] font-black uppercase tracking-widest rounded-sm ${getStatusColor(client.project?.status)}`}>
+                    {getPhaseLabel(client.project?.status)}
+                  </div>
+                  {client.is_from_contract_only && (
+                    <span className="text-[8px] font-mono text-neutral-500 uppercase tracking-widest">
+                      Proyecto pendiente
+                    </span>
+                  )}
                 </div>
               </div>
 
@@ -133,7 +179,9 @@ export function ClientsClient({
                     Contrato
                   </span>
                   <p className="text-xs font-bold text-neutral-300">
-                    {client.contract_number}
+                    {client.contract_number !== "N/A"
+                      ? client.contract_number
+                      : "—"}
                   </p>
                 </div>
                 <div className="space-y-1">
@@ -142,20 +190,23 @@ export function ClientsClient({
                     Inversión
                   </span>
                   <p className="text-xs font-bold text-emerald-500/80">
-                    ${client.total_price.toLocaleString("es-MX")}{" "}
-                    <span className="text-[9px] text-neutral-400 font-mono">
-                      MXN
-                    </span>
+                    {client.total_price > 0
+                      ? `$${client.total_price.toLocaleString("es-MX")} MXN`
+                      : "—"}
                   </p>
                 </div>
                 <div className="space-y-1">
                   <span className="text-[9px] font-mono text-neutral-400 uppercase tracking-widest flex items-center gap-1.5">
-                    <Calendar className="w-3 h-3 text-neutral-700" /> Firmado
+                    <Calendar className="w-3 h-3 text-neutral-700" /> Inicio
                   </span>
                   <p className="text-xs font-bold text-neutral-300">
-                    {format(new Date(client.client_signed_at), "dd MMM yyyy", {
-                      locale: es,
-                    })}
+                    {client.client_signed_at
+                      ? format(
+                          new Date(client.client_signed_at),
+                          "dd MMM yyyy",
+                          { locale: es },
+                        )
+                      : "—"}
                   </p>
                 </div>
                 <div className="space-y-1">
@@ -163,25 +214,50 @@ export function ClientsClient({
                     <ExternalLink className="w-3 h-3 text-neutral-700" />{" "}
                     Servicio
                   </span>
-                  <p className="text-xs font-bold text-neutral-300 truncate pr-4">
-                    {client.service_type || "No especificado"}
+                  <p className="text-xs font-bold text-neutral-300 truncate pr-4 uppercase">
+                    {(client.service_type || "No especificado").replace(
+                      "_",
+                      " ",
+                    )}
                   </p>
                 </div>
               </div>
 
-              {/* Card Footer */}
+              {/* Card Footer Actions */}
               <div className="px-6 py-4 bg-white/[0.01] border-t border-white/5 flex items-center justify-between group-hover:bg-emerald-500/[0.02] transition-colors">
-                <span className="text-[10px] font-bold text-neutral-400 group-hover:text-emerald-500 transition-colors uppercase tracking-widest">
-                  Ver expediente completo
-                </span>
-                <ChevronRight className="w-4 h-4 text-neutral-800 group-hover:text-emerald-500 group-hover:translate-x-1 transition-all" />
+                <div className="flex gap-4">
+                  {client.project && (
+                    <Link
+                      href={`/forge/projects?id=${client.project.id}`}
+                      className="text-[9px] font-bold text-neutral-400 hover:text-emerald-500 transition-colors uppercase tracking-widest flex items-center gap-1.5">
+                      Ver Proyecto <ChevronRight className="w-3 h-3" />
+                    </Link>
+                  )}
+                  {!client.has_metadata && (
+                    <button
+                      onClick={() =>
+                        alert(
+                          "Abrir formulario para completar datos del cliente",
+                        )
+                      }
+                      className="text-[9px] font-bold text-amber-500/80 hover:text-amber-400 transition-colors uppercase tracking-widest flex items-center gap-1.5">
+                      <UserPlus className="w-3 h-3" /> Completar datos
+                    </button>
+                  )}
+                </div>
+
+                <Link
+                  href={`/forge/clients/${client.id}`}
+                  className="text-[10px] font-bold text-neutral-400 group-hover:text-emerald-500 transition-colors uppercase tracking-widest">
+                  Expediente completo
+                </Link>
               </div>
 
               {/* Background Accent */}
               <div className="absolute top-0 right-0 p-4 opacity-[0.01] group-hover:opacity-[0.03] transition-opacity pointer-events-none">
                 <UserCheck className="w-32 h-32 -mr-16 -mt-16" />
               </div>
-            </Link>
+            </div>
           ))}
 
           {filteredClients.length === 0 && (

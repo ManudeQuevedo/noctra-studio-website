@@ -1,5 +1,5 @@
 import { createClient } from "@supabase/supabase-js";
-import { calculateLeadScore } from "./src/lib/scoring";
+import { calculateLeadScore } from "./src/lib/lead-scoring";
 
 // Run this script with environment variables set:
 // NEXT_PUBLIC_SUPABASE_URL=... NEXT_PUBLIC_SUPABASE_ANON_KEY=... npx ts-node backfill-scores.ts
@@ -24,7 +24,15 @@ async function backfillScores() {
   console.log(`Processing ${leads.length} leads...`);
 
   for (const lead of leads) {
-    const { score, breakdown } = calculateLeadScore(lead);
+    const { score, ...breakdown } = calculateLeadScore({
+      service_type: lead.intent || lead.service_interest,
+      message: lead.message,
+      phone: lead.phone,
+      company: lead.company_name,
+      source_cta: lead.source_cta,
+      created_at: lead.created_at,
+      pipeline_status: lead.pipeline_status
+    }, lead.contacted_at ? new Date(lead.contacted_at) : null);
     
     const { error: updateError } = await supabase
       .from("contact_submissions")

@@ -12,6 +12,8 @@ export function ClientContractClient({
   params: { token: string };
 }) {
   const isSigned = contract.signed_by_client;
+  const workspace = contract.workspace;
+  const primaryColor = workspace?.primary_color || "#10b981";
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-neutral-900 selection:bg-neutral-100 pb-32">
@@ -19,9 +21,17 @@ export function ClientContractClient({
       <nav className="sticky top-0 z-50 bg-white/80 backdrop-blur-md border-b border-neutral-100 print:hidden">
         <div className="max-w-4xl mx-auto px-6 h-16 flex items-center justify-between">
           <div className="flex items-center gap-4">
-            <span className="text-[10px] font-black uppercase tracking-[0.3em] italic">
-              Noctra<span className="text-emerald-600">.</span>
-            </span>
+            {workspace?.logo_url ? (
+              <img
+                src={workspace.logo_url}
+                alt={workspace.name}
+                className="h-4 w-auto"
+              />
+            ) : (
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] italic">
+                {workspace?.name || "Noctra"}
+              </span>
+            )}
             <div className="h-4 w-px bg-neutral-200"></div>
             <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
               {contract.contract_number}
@@ -30,9 +40,17 @@ export function ClientContractClient({
 
           <div className="flex items-center gap-4">
             {isSigned && (
-              <div className="flex items-center gap-2 bg-emerald-50 px-3 py-1.5 border border-emerald-100 rounded-sm">
-                <div className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse"></div>
-                <span className="text-[10px] font-mono text-emerald-600 font-bold uppercase tracking-widest">
+              <div
+                className="flex items-center gap-2 px-3 py-1.5 border rounded-sm"
+                style={{
+                  color: primaryColor,
+                  backgroundColor: `${primaryColor}10`,
+                  borderColor: `${primaryColor}20`,
+                }}>
+                <div
+                  className="w-2 h-2 rounded-full animate-pulse"
+                  style={{ backgroundColor: primaryColor }}></div>
+                <span className="text-[10px] font-mono font-bold uppercase tracking-widest">
                   Contrato Firmado
                 </span>
               </div>
@@ -52,7 +70,15 @@ export function ClientContractClient({
           <div className="flex justify-between items-start mb-20 relative z-10">
             <div className="space-y-4">
               <div className="text-xl font-black tracking-tighter uppercase italic">
-                Noctra<span className="text-emerald-600">.</span> STUDIO
+                {workspace?.logo_url ? (
+                  <img
+                    src={workspace.logo_url}
+                    alt={workspace.name}
+                    className="h-6 w-auto"
+                  />
+                ) : (
+                  <>(workspace?.name || "Noctra") STUDIO</>
+                )}
               </div>
               <div className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest space-y-1">
                 <p>Folio: {contract.contract_number}</p>
@@ -68,7 +94,7 @@ export function ClientContractClient({
               <div className="text-[11px] font-bold uppercase italic text-neutral-300">
                 Celebrado entre:
                 <p className="text-neutral-900 mt-1">
-                  Noctra Studio (Proveedor)
+                  {workspace?.name || "Noctra Studio"} (Proveedor)
                 </p>
                 <p className="text-neutral-900">
                   & {contract.client_company || contract.client_name} (Cliente)
@@ -87,10 +113,14 @@ export function ClientContractClient({
                   PROVEEDOR
                 </h4>
                 <div className="text-[13px] space-y-1 text-neutral-400">
-                  <p className="font-bold text-neutral-900">Noctra Studio</p>
-                  <p>Querétaro, México</p>
-                  <p>hola@noctra.studio</p>
-                  <p className="font-mono text-[11px]">noctra.studio</p>
+                  <p className="font-bold text-neutral-900">
+                    {workspace?.name || "Noctra Studio"}
+                  </p>
+                  <p>{workspace?.address || "México"}</p>
+                  <p>{workspace?.email || "hola@noctra.studio"}</p>
+                  <p className="font-mono text-[11px]">
+                    {workspace?.website_url || "noctra.studio"}
+                  </p>
                 </div>
               </div>
               <div className="space-y-6 text-right">
@@ -133,7 +163,10 @@ export function ClientContractClient({
                   <div
                     key={idx}
                     className="flex items-start gap-4 bg-neutral-50/50 p-4 border border-neutral-100">
-                    <Check className="w-4 h-4 text-emerald-600 mt-1 shrink-0" />
+                    <Check
+                      className="w-4 h-4 mt-1 shrink-0"
+                      style={{ color: primaryColor }}
+                    />
                     <div>
                       <p className="font-bold text-sm uppercase italic tracking-tight">
                         {item.name}
@@ -224,7 +257,7 @@ export function ClientContractClient({
                 </div>
                 <div className="space-y-1">
                   <p className="text-xs font-black uppercase italic tracking-tighter">
-                    ◆ Noctra Studio
+                    ◆ {workspace?.name || "Noctra Studio"}
                   </p>
                   <p className="text-[9px] font-mono text-neutral-400 uppercase">
                     {contract.noctra_signed_at
@@ -287,7 +320,8 @@ export function ClientContractClient({
           </div>
 
           <footer className="mt-40 pt-10 border-t border-neutral-100 text-[8px] font-mono text-neutral-300 text-center uppercase tracking-[0.5em] italic">
-            Precision Crafted by Noctra Studio &copy; {new Date().getFullYear()}
+            Precision Crafted by {workspace?.name || "Noctra Studio"} &copy;{" "}
+            {new Date().getFullYear()}
           </footer>
         </main>
       </div>

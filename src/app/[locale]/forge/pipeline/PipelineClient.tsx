@@ -50,15 +50,9 @@ type Lead = {
   lead_score_breakdown?: any;
 };
 
-const STAGES = [
-  { id: "nuevo", label: "NUEVO", color: "neutral" },
-  { id: "contactado", label: "CONTACTADO", color: "blue" },
-  { id: "propuesta_enviada", label: "PROPUESTA ENVIADA", color: "amber" },
-  { id: "en_negociacion", label: "EN NEGOCIACIÓN", color: "purple" },
-  { id: "cerrado", label: "CERRADO / PERDIDO", color: "emerald" }, // We'll handle the split here
-];
+// Placeholder if STAGES is deleted, we will derive from config
 
-const STAGE_COLORS: Record<string, string> = {
+const FALLBACK_STAGE_COLORS: Record<string, string> = {
   nuevo: "bg-neutral-500/20 text-neutral-400 border-neutral-500/30",
   contactado: "bg-blue-500/20 text-blue-400 border-blue-500/30",
   propuesta_enviada: "bg-amber-500/20 text-amber-400 border-amber-500/30",
@@ -67,19 +61,31 @@ const STAGE_COLORS: Record<string, string> = {
   perdido: "bg-red-500/20 text-red-400 border-red-500/30",
 };
 
-const SERVICE_COLORS: Record<string, string> = {
-  website: "text-blue-400 bg-blue-400/10 border-blue-400/20",
-  ecommerce: "text-purple-400 bg-purple-400/10 border-purple-400/20",
-  custom_system: "text-emerald-400 bg-emerald-400/10 border-emerald-400/20",
-  discovery_call: "text-amber-400 bg-amber-400/10 border-amber-400/20",
-  general: "text-neutral-400 bg-neutral-400/10 border-neutral-400/20",
+const getStageColor = (stageId: string) => {
+  return FALLBACK_STAGE_COLORS[stageId] || FALLBACK_STAGE_COLORS.nuevo;
 };
 
 export default function PipelineClient({
   initialLeads,
+  workspaceId,
+  config,
 }: {
   initialLeads: Lead[];
+  workspaceId: string;
+  config: any;
 }) {
+  const STAGES = (
+    config?.pipeline_stages || [
+      "nuevo",
+      "contactado",
+      "propuesta_enviada",
+      "en_negociacion",
+      "cerrado",
+    ]
+  ).map((s: string) => ({
+    id: s.toLowerCase().replace(/ /g, "_"),
+    label: s.toUpperCase(),
+  }));
   const [leads, setLeads] = useState<Lead[]>(initialLeads);
   const [selectedLeadId, setSelectedLeadId] = useState<string | null>(null);
   const [searchTerm, setSearchTerm] = useState("");
@@ -192,6 +198,7 @@ export default function PipelineClient({
       // Log activity
       await supabase.from("lead_activities").insert({
         lead_id: leadId,
+        workspace_id: workspaceId,
         type: "status_change",
         content: `Status changed to ${status}${lostReasonText ? `. Reason: ${lostReasonText}` : ""}`,
       });
@@ -285,13 +292,13 @@ export default function PipelineClient({
       <div className="overflow-x-auto p-6 bg-[#050505] forge-scroll">
         <DragDropContext onDragEnd={onDragEnd}>
           <div className="flex gap-4 h-full min-w-max pb-4">
-            {STAGES.map((stage) => (
+            {STAGES.map((stage: any) => (
               <div key={stage.id} className="w-[280px] flex flex-col shrink-0">
                 {/* Column Header */}
                 <div className="flex items-center justify-between mb-4 group px-2">
                   <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 flex items-center gap-2">
                     <span
-                      className={`w-1.5 h-1.5 rounded-full ${STAGE_COLORS[stage.id]?.split(" ")[0] || "bg-neutral-500"}`}
+                      className={`w-1.5 h-1.5 rounded-full ${getStageColor(stage.id).split(" ")[0]}`}
                     />
                     {stage.label}
                   </h3>
@@ -480,7 +487,7 @@ function LeadCard({
             </h4>
             <div className="flex items-center gap-2">
               <span
-                className={`text-[8px] font-mono font-black uppercase tracking-widest px-1.5 py-0.5 border ${SERVICE_COLORS[lead.service_interest] || SERVICE_COLORS.general}`}>
+                className={`text-[8px] font-mono font-black uppercase tracking-widest px-1.5 py-0.5 border text-neutral-400 bg-neutral-400/10 border-neutral-400/20`}>
                 {lead.service_interest}
               </span>
               <span className="text-[8px] font-mono text-neutral-700">

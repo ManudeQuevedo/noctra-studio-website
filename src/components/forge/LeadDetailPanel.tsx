@@ -77,12 +77,17 @@ export function LeadDetailPanel({
   const supabase = createClient();
 
   useEffect(() => {
+    const handleEsc = (e: KeyboardEvent) => {
+      if (e.key === "Escape") onClose();
+    };
     if (leadId) {
+      window.addEventListener("keydown", handleEsc);
       fetchLeadData();
     } else {
       setLead(null);
       setActivities([]);
     }
+    return () => window.removeEventListener("keydown", handleEsc);
   }, [leadId]);
 
   const fetchLeadData = async () => {
@@ -214,38 +219,59 @@ export function LeadDetailPanel({
   if (!leadId) return null;
 
   return (
-    <div
-      className={`fixed inset-y-0 right-0 w-full md:w-[480px] bg-[#0a0a0a] border-l border-neutral-900 z-50 transform transition-transform duration-300 shadow-2xl ${lead ? "translate-x-0" : "translate-x-full"}`}>
-      {isLoading ? (
-        <div className="h-full flex items-center justify-center text-neutral-400 font-mono text-[10px] uppercase tracking-widest">
-          Loading Lead Details...
-        </div>
-      ) : lead ? (
-        <div className="h-full flex flex-col">
-          {/* Header */}
-          <div className="p-6 border-b border-neutral-900 flex items-center justify-between bg-[#080808]">
-            <div className="space-y-1">
-              <h2 className="text-xl font-bold text-white tracking-tight">
-                {lead.name}
-              </h2>
-              <div className="flex items-center gap-2">
-                <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest bg-white/[0.03] px-2 py-0.5 border border-white/[0.05]">
-                  {lead.request_id}
-                </span>
-                <span
-                  className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 border ${getStatusColor(lead.pipeline_status)}`}>
-                  {lead.pipeline_status.replace("_", " ")}
-                </span>
+    <>
+      {/* Backdrop Overlay */}
+      <div
+        className={`fixed inset-0 bg-black/60 z-[60] transition-opacity duration-300 ${
+          leadId
+            ? "opacity-100 pointer-events-auto"
+            : "opacity-0 pointer-events-none"
+        }`}
+        onClick={onClose}
+      />
+
+      <div
+        className={`fixed z-[70] bg-[#0a0a0a] border-neutral-900 shadow-2xl transform transition-transform duration-300 ease-out flex flex-col
+          /* Mobile: Bottom Sheet */
+          bottom-0 left-0 right-0 h-[85vh] rounded-t-[20px] translate-y-full border-t
+          /* Desktop: Right Drawer */
+          md:top-0 md:bottom-0 md:right-0 md:left-auto md:h-screen md:rounded-none md:translate-y-0 md:translate-x-full md:border-l
+          md:w-[420px] lg:w-[450px] xl:w-[500px]
+          ${leadId ? (lead ? "translate-y-0 md:translate-x-0" : "") : ""}
+        `}>
+        {isLoading ? (
+          <div className="h-full flex items-center justify-center text-neutral-400 font-mono text-[10px] uppercase tracking-widest">
+            Loading Lead Details...
+          </div>
+        ) : lead ? (
+          <div className="flex flex-col h-full">
+            {/* 1. Header (Fixed) */}
+            <div className="flex-shrink-0 p-6 border-b border-neutral-900 flex items-center justify-between bg-[#080808] md:rounded-none rounded-t-[20px]">
+              <div className="space-y-1">
+                <h2 className="text-xl font-bold text-white tracking-tight">
+                  {lead.name}
+                </h2>
+                <div className="flex items-center gap-2">
+                  <span className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest bg-white/[0.03] px-2 py-0.5 border border-white/[0.05]">
+                    {lead.request_id}
+                  </span>
+                  <span
+                    className={`text-[9px] font-mono uppercase tracking-widest px-2 py-0.5 border ${getStatusColor(
+                      lead.pipeline_status,
+                    )}`}>
+                    {lead.pipeline_status.replace("_", " ")}
+                  </span>
+                </div>
               </div>
               <button
                 onClick={onClose}
-                className="p-2 text-neutral-300 hover:text-white transition-colors">
+                className="p-2 text-neutral-400 hover:text-white transition-colors bg-white/5 rounded-full">
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            {/* TABS MENU */}
-            <div className="px-6 border-b border-neutral-900 bg-[#080808] shrink-0">
+            {/* 2. Tabs Menu (Fixed) */}
+            <div className="flex-shrink-0 px-6 border-b border-neutral-900 bg-[#080808]">
               <div className="flex gap-6">
                 <button
                   onClick={() => setActiveTab("DETALLES")}
@@ -274,11 +300,14 @@ export function LeadDetailPanel({
               </div>
             </div>
 
-            <div className="flex-1 overflow-y-auto p-6 space-y-10 forge-scroll">
+            {/* 3. Main Content (Scrollable) */}
+            <div className="flex-1 overflow-y-auto p-6 space-y-10 forge-scroll scroll-smooth">
               {/* Section 1: Contact Info */}
               <section
-                className={`space-y-4 ${activeTab === "DETALLES" ? "block" : "hidden"}`}>
-                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
+                className={`space-y-4 ${
+                  activeTab === "DETALLES" ? "block" : "hidden"
+                }`}>
+                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
                   Contact Information
                 </h3>
                 <div className="grid grid-cols-1 gap-4">
@@ -315,9 +344,11 @@ export function LeadDetailPanel({
 
               {/* Section 1.5: Lead Scoring */}
               <section
-                className={`space-y-4 pt-6 border-t border-neutral-900 ${activeTab === "DETALLES" ? "block" : "hidden"}`}>
+                className={`space-y-4 pt-6 border-t border-neutral-900 ${
+                  activeTab === "DETALLES" ? "block" : "hidden"
+                }`}>
                 <div className="flex items-center justify-between mb-2">
-                  <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
+                  <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
                     Lead Quality
                   </h3>
                   <button
@@ -352,13 +383,15 @@ export function LeadDetailPanel({
 
               {/* Section 2: Lead Details */}
               <section
-                className={`space-y-4 ${activeTab === "DETALLES" ? "block" : "hidden"}`}>
-                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
+                className={`space-y-4 ${
+                  activeTab === "DETALLES" ? "block" : "hidden"
+                }`}>
+                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
                   Lead Details
                 </h3>
                 <div className="space-y-6">
                   <div>
-                    <label className="text-[10px] font-mono uppercase text-neutral-400 block mb-2">
+                    <label className="text-[10px] font-mono uppercase text-neutral-500 block mb-2">
                       Service Interest
                     </label>
                     <span className="px-2 py-1 bg-emerald-500/5 border border-emerald-500/20 text-emerald-500 text-[10px] font-mono uppercase tracking-widest">
@@ -366,7 +399,7 @@ export function LeadDetailPanel({
                     </span>
                   </div>
                   <div>
-                    <label className="text-[10px] font-mono uppercase text-neutral-400 block mb-2">
+                    <label className="text-[10px] font-mono uppercase text-neutral-500 block mb-2">
                       Original Message
                     </label>
                     <p className="text-sm text-neutral-400 leading-relaxed italic border-l-2 border-neutral-800 pl-4 py-1">
@@ -374,7 +407,7 @@ export function LeadDetailPanel({
                     </p>
                   </div>
                   <div>
-                    <label className="text-[10px] font-mono uppercase text-neutral-400 block mb-2">
+                    <label className="text-[10px] font-mono uppercase text-neutral-500 block mb-2">
                       Valor Estimado (MXN)
                     </label>
                     <div className="relative">
@@ -409,13 +442,15 @@ export function LeadDetailPanel({
 
               {/* Section 3: Next Action */}
               <section
-                className={`space-y-4 pt-4 border-t border-neutral-900 ${activeTab === "DETALLES" ? "block" : "hidden"}`}>
-                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-300">
+                className={`space-y-4 pt-4 border-t border-neutral-900 ${
+                  activeTab === "DETALLES" ? "block" : "hidden"
+                }`}>
+                <h3 className="text-[10px] font-mono uppercase tracking-widest text-neutral-500">
                   Next Action
                 </h3>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
                   <div>
-                    <label className="text-[10px] font-mono uppercase text-neutral-400 block mb-2">
+                    <label className="text-[10px] font-mono uppercase text-neutral-500 block mb-2">
                       Próxima Acción
                     </label>
                     <input
@@ -432,7 +467,7 @@ export function LeadDetailPanel({
                     />
                   </div>
                   <div>
-                    <label className="text-[10px] font-mono uppercase text-neutral-400 block mb-2">
+                    <label className="text-[10px] font-mono uppercase text-neutral-500 block mb-2">
                       Fecha
                     </label>
                     <input
@@ -453,15 +488,17 @@ export function LeadDetailPanel({
 
               {/* TAB 2: HISTORIAL */}
               <section
-                className={`pt-4 border-t border-neutral-900 ${activeTab === "HISTORIAL" ? "block" : "hidden"}`}>
+                className={`pt-4 border-t border-neutral-900 ${
+                  activeTab === "HISTORIAL" ? "block" : "hidden"
+                }`}>
                 <HistorialTab leadId={leadId} />
               </section>
             </div>
 
-            {/* Section 6: Pipeline Status */}
-            <div className="p-6 bg-[#080808] border-t border-neutral-900">
-              <label className="text-[10px] font-mono uppercase text-neutral-400 block mb-4">
-                Pipeline Status
+            {/* 4. Footer: Pipeline Status Selector (Fixed) */}
+            <div className="flex-shrink-0 p-6 bg-[#080808] border-t border-neutral-900">
+              <label className="text-[10px] font-mono uppercase text-neutral-500 block mb-4 tracking-tighter">
+                Actualizar Estado del Pipeline
               </label>
               <div className="flex flex-wrap gap-2">
                 {[
@@ -477,12 +514,8 @@ export function LeadDetailPanel({
                     onClick={() => handleUpdateLead("pipeline_status", status)}
                     className={`px-3 py-1.5 text-[9px] font-mono uppercase tracking-widest border transition-all ${
                       lead.pipeline_status === status
-                        ? getStatusColor(status)
-                            .replace("/20", "/40")
-                            .replace("/30", "/60") +
-                          " border-" +
-                          getStatusColor(status).split(" ")[1].split("/")[0]
-                        : "bg-white/[0.02] border-white/5 text-neutral-400 hover:text-neutral-400"
+                        ? "border-emerald-500 text-emerald-500 bg-emerald-500/10"
+                        : "bg-white/[0.02] border-white/5 text-neutral-500 hover:text-neutral-300 hover:border-neutral-700"
                     }`}>
                     {status.replace("_", " ")}
                   </button>
@@ -490,8 +523,8 @@ export function LeadDetailPanel({
               </div>
             </div>
           </div>
-        </div>
-      ) : null}
-    </div>
+        ) : null}
+      </div>
+    </>
   );
 }
