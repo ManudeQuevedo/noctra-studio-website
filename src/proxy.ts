@@ -118,5 +118,5 @@ export default async function proxy(request: NextRequest) {
 }
 
 export const config = {
-  matcher: ["/((?!api|_next|_vercel|monitoring|.*/forge/login|forge/login|.*\\..*).*)"],
+  matcher: ["/((?!api|_next|_vercel|monitoring|.*\\..*).*)"],
 };

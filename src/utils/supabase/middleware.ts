@@ -52,7 +52,14 @@ export async function updateSession(request: NextRequest, response: NextResponse
 
   const {
     data: { user },
+    error,
   } = await supabase.auth.getUser()
+
+  // If the refresh token is invalid/stale, sign out to clear bad cookies
+  if (error) {
+    await supabase.auth.signOut()
+    return { response: supabaseResponse, user: null, aal: null }
+  }
 
   const { data: aal } = await supabase.auth.mfa.getAuthenticatorAssuranceLevel()
 

@@ -8,7 +8,6 @@ export function FooterWrapper() {
   const isHidden =
     pathname?.includes("/forge") ||
     pathname?.includes("/studio") ||
-    pathname?.includes("/centro-comando") ||
     pathname?.includes("/dashboard");
 
   if (isHidden) return null;

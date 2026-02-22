@@ -4,15 +4,15 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import Link from "next/link";
-import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
-import { CheckCircle2, Lock, ArrowRight, Loader2, Mail } from "lucide-react";
+import { Lock, Mail, ArrowRight, Loader2, Eye, EyeOff } from "lucide-react";
 
 export default function ForgeLoginPage() {
   const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
-  const [isOtpSent, setIsOtpSent] = useState(false);
   const [showMFA, setShowMFA] = useState(false);
   const [mfaFactorId, setMfaFactorId] = useState<string | null>(null);
   const [otpCode, setOtpCode] = useState(["", "", "", "", "", ""]);
@@ -60,18 +60,27 @@ export default function ForgeLoginPage() {
     setError(null);
 
     try {
-      // Transitioned to Magic Link as per redesign request
-      const { error: otpError } = await supabase.auth.signInWithOtp({
+      const { error: loginError } = await supabase.auth.signInWithPassword({
         email,
-        options: {
-          emailRedirectTo: `${window.location.origin}/auth/callback?next=/forge`,
-        },
+        password,
       });
 
-      if (otpError) throw otpError;
+      if (loginError) {
+        if (loginError.message === "Invalid login credentials") {
+          throw new Error(
+            "Credenciales inválidas. Verifica tu email y contraseña.",
+          );
+        }
+        throw loginError;
+      }
 
-      setIsOtpSent(true);
-      setLoading(false);
+      const {
+        data: { session },
+      } = await supabase.auth.getSession();
+      if (session) {
+        sessionStorage.setItem("session_start", Date.now().toString());
+        router.push("/forge");
+      }
     } catch (err: any) {
       setError(err.message);
       setLoading(false);
@@ -102,10 +111,8 @@ export default function ForgeLoginPage() {
 
       if (verifyError) throw verifyError;
 
-      // Success
       sessionStorage.setItem("session_start", Date.now().toString());
       router.push("/forge");
-      router.refresh();
     } catch (err: any) {
       setMfaError("Código incorrecto. Intenta de nuevo.");
       setShake(true);
@@ -146,222 +153,151 @@ export default function ForgeLoginPage() {
     }
   };
 
-  useEffect(() => {
-    if (otpCode.every((digit) => digit !== "") && showMFA) {
-      handleMFAVerify();
-    }
-  }, [otpCode]);
-
-  const getReasonMessage = () => {
-    if (reason === "inactivity") return "Sesión cerrada por inactividad.";
-    if (reason === "expired")
-      return "Tu sesión ha expirado. Por favor ingresa de nuevo.";
-    return null;
-  };
-
-  const reasonMessage = getReasonMessage();
+  const reasonMessage =
+    reason === "inactivity"
+      ? "Sesión cerrada por inactividad."
+      : reason === "expired"
+        ? "Tu sesión ha expirado. Por favor ingresa de nuevo."
+        : null;
 
   return (
-    <main className="min-h-screen flex flex-col md:flex-row bg-[#000000] text-white">
-      {/* LEFT PANEL - Branding/Hero (Desktop Only) */}
-      <div className="hidden md:flex md:w-1/2 relative overflow-hidden bg-[#050505] border-r border-white/5">
-        {/* Hero Image */}
-        <Image
-          src="/images/login-client-portal.jpg"
-          alt="Noctra Forge Client Portal"
-          fill
-          priority
-          className="object-cover opacity-50 transition-opacity duration-700"
-        />
-
-        {/* Subtle Overlays */}
-        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-transparent" />
-        <div className="absolute inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
-
-        {/* Content */}
-        <div className="relative z-10 flex flex-col items-center justify-center p-12 w-full h-full">
-          <div className="mb-12">
-            <BrandLogo className="h-10 text-white" showText={true} />
-            <p className="mt-4 text-white/40 text-sm tracking-widest font-mono uppercase text-center">
-              The Digital Forge
-            </p>
-          </div>
-
-          <div className="space-y-6 max-w-sm">
-            {[
-              "Acceso seguro a tus entregables",
-              "Actualizaciones en tiempo real",
-              "Comunicación directa con tu equipo",
-            ].map((text, i) => (
-              <div
-                key={i}
-                className="flex items-center gap-4 text-sm font-medium text-white/70">
-                <CheckCircle2 className="w-5 h-5 text-emerald-500 shrink-0" />
-                <span>{text}</span>
-              </div>
-            ))}
-          </div>
-
-          <div className="absolute bottom-12 flex items-center gap-2 px-4 py-2 border border-white/5 rounded-full bg-white/2">
-            <Lock className="w-3.5 h-3.5 text-emerald-500" />
-            <span className="text-[10px] font-mono text-white/30 uppercase tracking-[0.15em]">
-              Conexión cifrada SSL
-            </span>
-          </div>
-        </div>
-      </div>
-
-      {/* RIGHT PANEL - Form */}
-      <div className="flex-1 flex flex-col relative">
-        {/* Top Controls (Back to site + Language) */}
-        <div className="absolute top-6 left-6 md:left-auto md:right-8 z-50 flex items-center gap-6">
-          <Link
-            href="/"
-            className="text-[10px] font-mono text-white/30 hover:text-white/60 transition-colors uppercase tracking-widest">
-            ← Back to Site
+    <main className="min-h-screen bg-black text-white flex items-center justify-center p-6 selection:bg-white selection:text-black">
+      <div className="w-full max-w-[340px] space-y-12">
+        {/* Minimal Header */}
+        <div className="flex flex-col items-center space-y-6">
+          <Link href="/" className="hover:opacity-80 transition-opacity">
+            <BrandLogo className="h-8 text-white" showText={true} />
           </Link>
-          <button className="text-[10px] font-mono text-white/30 hover:text-white/60 transition-colors uppercase tracking-widest">
-            ES
-          </button>
+          <div className="space-y-1 text-center">
+            <h1 className="text-sm font-mono uppercase tracking-[0.3em] text-white/40">
+              Forge Security Portal
+            </h1>
+          </div>
         </div>
 
-        <div className="flex-1 flex items-center justify-center p-8">
-          <div className="w-full max-w-[340px] space-y-8 animate-in fade-in slide-in-from-bottom-4 duration-700">
-            {/* Mobile Only Logo */}
-            <div className="md:hidden flex justify-center mb-12">
-              <BrandLogo className="h-8 text-white" showText={true} />
+        {reasonMessage && !showMFA && (
+          <div className="p-3 border border-white/10 bg-white/5 rounded text-white/60 text-[10px] font-mono uppercase tracking-widest text-center">
+            {reasonMessage}
+          </div>
+        )}
+
+        {!showMFA ? (
+          <form onSubmit={handleLogin} className="space-y-8">
+            <div className="space-y-6">
+              <div className="space-y-2">
+                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 ml-1">
+                  Identity (Email)
+                </label>
+                <div className="relative group">
+                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20 group-focus-within:text-white transition-colors" />
+                  <input
+                    type="email"
+                    value={email}
+                    onChange={(e) => setEmail(e.target.value)}
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded px-10 py-3.5 text-sm text-white focus:outline-none focus:border-white/30 transition-all placeholder:text-white/10"
+                    placeholder="name@company.com"
+                  />
+                </div>
+              </div>
+
+              <div className="space-y-2">
+                <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 ml-1">
+                  Credential (Password)
+                </label>
+                <div className="relative group">
+                  <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20 group-focus-within:text-white transition-colors" />
+                  <input
+                    type={showPassword ? "text" : "password"}
+                    value={password}
+                    onChange={(e) => setPassword(e.target.value)}
+                    required
+                    className="w-full bg-white/5 border border-white/10 rounded px-10 py-3.5 text-sm text-white focus:outline-none focus:border-white/30 transition-all placeholder:text-white/10"
+                    placeholder="••••••••"
+                  />
+                  <button
+                    type="button"
+                    onClick={() => setShowPassword(!showPassword)}
+                    className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 hover:text-white/40 transition-colors">
+                    {showPassword ? (
+                      <EyeOff className="w-4 h-4" />
+                    ) : (
+                      <Eye className="w-4 h-4" />
+                    )}
+                  </button>
+                </div>
+              </div>
             </div>
 
-            <div className="space-y-2">
-              <h1 className="text-3xl font-bold tracking-tight">
-                Client Portal
-              </h1>
-              <p className="text-sm text-white/50 leading-relaxed">
-                {isOtpSent
-                  ? "Hemos enviado un enlace de acceso a tu bandeja de entrada."
-                  : "Ingresa tu email de trabajo para recibir tu enlace de acceso seguro."}
+            {error && (
+              <div className="p-4 rounded border border-red-500/20 bg-red-500/5 text-red-500 text-[10px] font-mono uppercase tracking-widest text-center">
+                {error}
+              </div>
+            )}
+
+            <button
+              type="submit"
+              disabled={loading}
+              className="w-full bg-white text-black font-bold uppercase tracking-widest text-[10px] py-4 rounded hover:bg-neutral-200 transition-all flex items-center justify-center gap-2 group disabled:opacity-50">
+              {loading ? (
+                <Loader2 className="w-4 h-4 animate-spin" />
+              ) : (
+                "Verify & Access"
+              )}
+            </button>
+          </form>
+        ) : (
+          <div className={`space-y-8 ${shake ? "animate-shake" : ""}`}>
+            <div className="space-y-2 text-center">
+              <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
+                MFA Verification
+              </h2>
+              <p className="text-[9px] text-white/40 font-mono tracking-widest uppercase">
+                6-digit security code
               </p>
             </div>
 
-            {reasonMessage && !showMFA && !isOtpSent && (
-              <div className="p-3 border border-amber-500/20 bg-amber-500/5 rounded-lg text-amber-500/80 text-xs font-mono uppercase tracking-widest text-center">
-                {reasonMessage}
+            <div className="flex justify-between gap-2 px-2">
+              {otpCode.map((digit, i) => (
+                <input
+                  key={i}
+                  id={`otp-${i}`}
+                  type="text"
+                  inputMode="numeric"
+                  maxLength={1}
+                  value={digit}
+                  onChange={(e) => handleOtpChange(i, e.target.value)}
+                  onKeyDown={(e) => handleOtpKeyDown(i, e)}
+                  className="w-full h-12 bg-white/5 border border-white/10 rounded text-center text-lg font-mono text-white focus:outline-none focus:border-white/40 transition-all"
+                  autoFocus={i === 0}
+                />
+              ))}
+            </div>
+
+            {mfaError && (
+              <div className="p-3 rounded border border-red-500/20 bg-red-500/5 text-red-500 text-[9px] font-mono uppercase tracking-widest text-center">
+                {mfaError}
               </div>
             )}
 
-            {!showMFA ? (
-              !isOtpSent ? (
-                <form onSubmit={handleLogin} className="space-y-6">
-                  <div className="space-y-2">
-                    <label className="block text-[10px] font-bold uppercase tracking-[0.2em] text-white/40 ml-1">
-                      Work Email
-                    </label>
-                    <div className="relative group">
-                      <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-white/20 group-focus-within:text-emerald-500 transition-colors" />
-                      <input
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        required
-                        className="w-full bg-white/5 border border-white/10 rounded-xl px-11 py-3.5 text-white placeholder-white/20 focus:outline-none focus:border-emerald-500/50 focus:ring-4 focus:ring-emerald-500/5 transition-all"
-                        placeholder="name@company.com"
-                      />
-                    </div>
-                  </div>
-
-                  {error && (
-                    <div className="p-4 rounded-xl border border-red-500/20 bg-red-500/5 text-red-500 text-xs font-mono text-center">
-                      {error}
-                    </div>
-                  )}
-
-                  <button
-                    type="submit"
-                    disabled={loading}
-                    className="w-full bg-white text-black font-bold text-sm py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all duration-300 flex items-center justify-center gap-2 group disabled:opacity-50 disabled:hover:scale-100">
-                    {loading ? (
-                      <Loader2 className="w-4 h-4 animate-spin" />
-                    ) : (
-                      <>
-                        Enviar Magic Link
-                        <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-                      </>
-                    )}
-                  </button>
-                </form>
-              ) : (
-                <div className="space-y-8 py-4">
-                  <div className="flex justify-center">
-                    <div className="w-16 h-16 rounded-full bg-emerald-500/10 flex items-center justify-center">
-                      <Mail className="w-8 h-8 text-emerald-500" />
-                    </div>
-                  </div>
-                  <button
-                    onClick={() => setIsOtpSent(false)}
-                    className="w-full text-[10px] font-mono text-white/30 hover:text-white/60 transition-colors uppercase tracking-widest text-center">
-                    ← Intentar con otro email
-                  </button>
-                </div>
-              )
-            ) : (
-              <div className={`space-y-8 ${shake ? "animate-shake" : ""}`}>
-                <div className="space-y-4">
-                  <h2 className="text-xl font-bold text-center">
-                    Verificación MFA
-                  </h2>
-                  <p className="text-xs text-center text-white/50 font-mono tracking-widest uppercase">
-                    Ingresa el código de 6 dígitos
-                  </p>
-                </div>
-
-                <div className="flex justify-between gap-2 px-2">
-                  {otpCode.map((digit, i) => (
-                    <input
-                      key={i}
-                      id={`otp-${i}`}
-                      type="text"
-                      inputMode="numeric"
-                      maxLength={1}
-                      value={digit}
-                      onChange={(e) => handleOtpChange(i, e.target.value)}
-                      onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                      className="w-full h-14 bg-white/5 border border-white/10 rounded-lg text-center text-xl font-mono text-white focus:outline-none focus:border-emerald-500 focus:bg-emerald-500/5 transition-all"
-                      autoFocus={i === 0}
-                    />
-                  ))}
-                </div>
-
-                {mfaError && (
-                  <div className="p-3 rounded-lg border border-red-500/20 bg-red-500/5 text-red-500 text-[10px] font-mono uppercase tracking-widest text-center">
-                    {mfaError}
-                  </div>
-                )}
-
-                <div className="space-y-6">
-                  <button
-                    onClick={() => handleMFAVerify()}
-                    disabled={isVerifyingMFA || otpCode.some((d) => d === "")}
-                    className="w-full bg-white text-black font-bold text-sm py-4 rounded-xl hover:scale-[1.02] active:scale-[0.98] transition-all disabled:opacity-50">
-                    {isVerifyingMFA ? "Verificando..." : "Verificar Acceso"}
-                  </button>
-                  <button
-                    onClick={() => {
-                      setShowMFA(false);
-                      setError(null);
-                    }}
-                    className="w-full text-[10px] font-mono text-white/30 hover:text-white/60 transition-colors uppercase tracking-widest text-center">
-                    ← Volver al inicio de sesión
-                  </button>
-                </div>
-              </div>
-            )}
+            <div className="space-y-4">
+              <button
+                onClick={() => handleMFAVerify()}
+                disabled={isVerifyingMFA || otpCode.some((d) => d === "")}
+                className="w-full bg-white text-black font-bold uppercase tracking-widest text-[10px] py-4 rounded hover:bg-neutral-200 transition-all disabled:opacity-50">
+                {isVerifyingMFA ? "Verifying..." : "Confirm Identity"}
+              </button>
+              <button
+                onClick={() => setShowMFA(false)}
+                className="w-full text-[9px] font-mono text-white/20 hover:text-white/40 transition-colors uppercase tracking-[0.2em] text-center">
+                ← Back to Login
+              </button>
+            </div>
           </div>
-        </div>
+        )}
 
-        {/* Footer */}
-        <div className="p-8 flex items-center justify-between text-[10px] font-mono text-white/20 uppercase tracking-widest">
-          <span>© 2026 Noctra Studio</span>
-          <span>By the Forge</span>
+        <div className="pt-12 text-center text-[9px] font-mono text-white/10 uppercase tracking-[0.3em]">
+          &copy; 2026 Noctra Studio Forge
         </div>
       </div>
     </main>

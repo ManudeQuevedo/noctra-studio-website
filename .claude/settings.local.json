@@ -10,7 +10,12 @@
       "Bash(npx next build:*)",
       "Bash(npm ls:*)",
       "Bash(npm why:*)",
-      "Bash(pgrep:*)"
+      "Bash(pgrep:*)",
+      "Bash(git log:*)",
+      "Bash(curl:*)",
+      "Bash(kill:*)",
+      "Bash(lsof:*)",
+      "WebFetch(domain:community.vercel.com)"
     ],
     "deny": [],
     "ask": []

@@ -104,18 +104,22 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
     <>
       {/* DESKTOP SIDEBAR */}
       <div className="hidden md:flex flex-col h-full bg-[#0a0a0a] w-[280px]">
-        <div className="p-6 border-b border-neutral-900 flex justify-between items-center">
-          {workspace?.logo_url ? (
+        <div className="p-6 border-b border-neutral-900">
+          <div className="flex items-center gap-3">
             <img
-              src={workspace.logo_url}
-              alt={workspace.name}
-              className="h-5 w-auto"
+              src="/images/noctra-logo-white.png"
+              alt="Noctra Studio"
+              className="h-4 w-auto"
             />
-          ) : (
-            <span className="text-xs tracking-widest uppercase font-black text-white">
-              ◆ {workspace?.name || "NOCTRA"}
-            </span>
-          )}
+            {workspace && workspace.name !== "Noctra Studio" && (
+              <>
+                <div className="h-4 w-px bg-neutral-800" />
+                <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest truncate">
+                  {workspace.name}
+                </span>
+              </>
+            )}
+          </div>
         </div>
 
         <div className="flex-1 px-4 py-8 space-y-2 overflow-y-auto custom-scrollbar">
@@ -182,17 +186,19 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
           )}
         </button>
 
-        <div className="flex items-center gap-2">
-          {workspace?.logo_url ? (
-            <img
-              src={workspace.logo_url}
-              alt={workspace.name}
-              className="h-4 w-auto"
-            />
-          ) : (
-            <span className="text-[12px] font-bold tracking-widest uppercase text-white">
-              ◆ {workspace?.name || "NOCTRA"}
-            </span>
+        <div className="flex items-center gap-3">
+          <img
+            src="/images/noctra-logo-white.png"
+            alt="Noctra Studio"
+            className="h-3.5 w-auto"
+          />
+          {workspace && workspace.name !== "Noctra Studio" && (
+            <>
+              <div className="h-3 w-px bg-neutral-800" />
+              <span className="text-[9px] font-mono text-neutral-500 uppercase tracking-widest truncate max-w-[100px]">
+                {workspace.name}
+              </span>
+            </>
           )}
         </div>
 
@@ -212,17 +218,21 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
         <div
           className={`absolute top-0 left-0 w-[280px] h-full bg-[#0a0a0a] border-r border-[#1f1f1f] z-[70] transition-transform duration-300 ease-out flex flex-col ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
           <div className="p-6 border-b border-neutral-900 flex justify-between items-center">
-            {workspace?.logo_url ? (
+            <div className="flex items-center gap-3">
               <img
-                src={workspace.logo_url}
-                alt={workspace.name}
-                className="h-5 w-auto"
+                src="/images/noctra-logo-white.png"
+                alt="Noctra Studio"
+                className="h-4 w-auto"
               />
-            ) : (
-              <span className="text-xs tracking-widest uppercase font-black text-white">
-                ◆ {workspace?.name || "NOCTRA"}
-              </span>
-            )}
+              {workspace && workspace.name !== "Noctra Studio" && (
+                <>
+                  <div className="h-4 w-px bg-neutral-800" />
+                  <span className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest truncate">
+                    {workspace.name}
+                  </span>
+                </>
+              )}
+            </div>
             <button
               onClick={() => setIsMobileMenuOpen(false)}
               className="p-2 -mr-2 text-neutral-400 hover:text-white transition-colors">
