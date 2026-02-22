@@ -19,6 +19,8 @@ import {
   MoreHorizontal,
   Shield,
   BookOpen,
+  Menu,
+  X,
 } from "lucide-react";
 import { useFollowUps } from "@/hooks/useFollowUps";
 
@@ -38,9 +40,15 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
   const [alertCount, setAlertCount] = useState(0);
   const [docsSheetOpen, setDocsSheetOpen] = useState(false);
   const [moreSheetOpen, setMoreSheetOpen] = useState(false);
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const [is2FAEnabled, setIs2FAEnabled] = useState<boolean | null>(null);
 
   const { suggestions } = useFollowUps();
+
+  // Close mobile menu on path change
+  useEffect(() => {
+    setIsMobileMenuOpen(false);
+  }, [pathname]);
 
   useEffect(() => {
     const fetchAlerts = async () => {
@@ -89,13 +97,13 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
   const closeSheets = () => {
     setDocsSheetOpen(false);
     setMoreSheetOpen(false);
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <>
       {/* DESKTOP SIDEBAR */}
-      {/* DESKTOP SIDEBAR CONTENT */}
-      <div className="flex flex-col h-full bg-[#0a0a0a]">
+      <div className="hidden md:flex flex-col h-full bg-[#0a0a0a] w-[280px]">
         <div className="p-6 border-b border-neutral-900 flex justify-between items-center">
           {workspace?.logo_url ? (
             <img
@@ -155,7 +163,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
 
         <div className="p-4 border-t border-neutral-900">
           <button
-            onClick={handleSignOut}
+            onClick={closeSheets}
             className="w-full text-left px-3 py-2 text-[10px] font-mono text-neutral-400 hover:text-neutral-400 uppercase tracking-widest flex items-center justify-between transition-colors">
             Sign out <LogOut className="w-3 h-3" />
           </button>
@@ -163,8 +171,18 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
       </div>
 
       {/* MOBILE TOP HEADER */}
-      <header className="md:hidden sticky top-0 z-40 h-12 w-full bg-[#0a0a0a] border-b border-[#1f1f1f] flex items-center justify-between px-4 shrink-0 flex-none">
-        <div className="text-[12px] font-bold tracking-widest uppercase flex items-center gap-2 text-white">
+      <header className="md:hidden fixed top-0 left-0 right-0 z-40 h-14 w-full bg-[#0a0a0a] border-b border-[#1f1f1f] flex items-center justify-between px-4">
+        <button
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          className="p-2 -ml-2 text-neutral-400 hover:text-white transition-colors">
+          {isMobileMenuOpen ? (
+            <X className="w-5 h-5" />
+          ) : (
+            <Menu className="w-5 h-5" />
+          )}
+        </button>
+
+        <div className="flex items-center gap-2">
           {workspace?.logo_url ? (
             <img
               src={workspace.logo_url}
@@ -172,14 +190,84 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
               className="h-4 w-auto"
             />
           ) : (
-            <>◆ {workspace?.name || "NOCTRA"}</>
+            <span className="text-[12px] font-bold tracking-widest uppercase text-white">
+              ◆ {workspace?.name || "NOCTRA"}
+            </span>
           )}
         </div>
-        <div className="text-[12px] font-mono text-neutral-500 uppercase tracking-widest truncate max-w-[150px]">
-          {navItems.find((n) => pathname.includes(n.href))?.label ||
-            "Dashboard"}
-        </div>
+
+        <div className="w-9" />
       </header>
+
+      {/* MOBILE DRAWER */}
+      <div
+        className={`md:hidden fixed inset-0 z-[60] transition-all duration-300 ${isMobileMenuOpen ? "visible" : "invisible"}`}>
+        {/* Overlay */}
+        <div
+          className={`absolute inset-0 bg-black/60 transition-opacity duration-300 ${isMobileMenuOpen ? "opacity-100" : "opacity-0"}`}
+          onClick={() => setIsMobileMenuOpen(false)}
+        />
+
+        {/* Drawer Content */}
+        <div
+          className={`absolute top-0 left-0 w-[280px] h-full bg-[#0a0a0a] border-r border-[#1f1f1f] z-[70] transition-transform duration-300 ease-out flex flex-col ${isMobileMenuOpen ? "translate-x-0" : "-translate-x-full"}`}>
+          <div className="p-6 border-b border-neutral-900 flex justify-between items-center">
+            {workspace?.logo_url ? (
+              <img
+                src={workspace.logo_url}
+                alt={workspace.name}
+                className="h-5 w-auto"
+              />
+            ) : (
+              <span className="text-xs tracking-widest uppercase font-black text-white">
+                ◆ {workspace?.name || "NOCTRA"}
+              </span>
+            )}
+            <button
+              onClick={() => setIsMobileMenuOpen(false)}
+              className="p-2 -mr-2 text-neutral-400 hover:text-white transition-colors">
+              <X className="w-5 h-5" />
+            </button>
+          </div>
+
+          <div className="flex-1 px-4 py-8 space-y-2 overflow-y-auto">
+            <h2 className="px-3 text-[10px] font-mono uppercase tracking-widest text-neutral-300 mb-4">
+              Navigation
+            </h2>
+            {navItems.map((item) => {
+              const isActive =
+                item.href === "/forge"
+                  ? pathname === "/forge"
+                  : pathname.includes(item.href);
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className={`flex items-center gap-3 px-3 py-3 rounded-md transition-all text-sm font-medium ${
+                    isActive
+                      ? "bg-white/[0.05] text-white border-l-2 border-emerald-500"
+                      : "text-neutral-300 hover:text-white hover:bg-white/[0.02] border-l-2 border-transparent"
+                  }`}>
+                  <item.icon
+                    className={`w-4 h-4 ${isActive ? "text-emerald-400" : ""}`}
+                  />
+                  {item.label}
+                </Link>
+              );
+            })}
+          </div>
+
+          <div className="p-4 border-t border-neutral-900">
+            <button
+              onClick={handleSignOut}
+              className="w-full text-left px-4 py-4 rounded-xl text-xs font-mono text-red-400 hover:bg-neutral-900 uppercase tracking-widest flex items-center gap-4 transition-colors">
+              <LogOut className="w-5 h-5" />
+              Cerrar sesión
+            </button>
+          </div>
+        </div>
+      </div>
 
       {/* MOBILE BOTTOM TAB BAR */}
       <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-[#0a0a0a] border-t border-[#1f1f1f] pb-[env(safe-area-inset-bottom)]">
@@ -334,6 +422,7 @@ function MobileSheet({ isOpen, onClose, children }: any) {
         </div>
         <div className="px-4 pb-4 max-h-[70vh] overflow-y-auto">{children}</div>
       </div>
+      <div className="md:hidden h-14 w-full" />
     </>
   );
 }

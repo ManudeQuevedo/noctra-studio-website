@@ -62,13 +62,13 @@ export default function ForgeLayoutClient({
         children
       ) : (
         <div className="flex h-screen overflow-hidden bg-[#050505] text-white">
-          {/* Sidebar - Independent Scroll */}
-          <aside className="hidden md:flex flex-col w-[280px] h-screen overflow-y-auto overflow-x-hidden border-r border-[#1f1f1f] shrink-0 forge-scroll">
+          {/* Sidebar container - ForgeSidebar handles its own visibility internaly */}
+          <aside className="flex-none h-screen border-r border-[#1f1f1f] md:w-[280px]">
             <ForgeSidebar workspace={workspace} />
           </aside>
 
           {/* Main Content - Independent Scroll */}
-          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pb-24 md:pb-0 min-w-0 forge-scroll">
+          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 md:pt-0 pb-24 md:pb-0 min-w-0 forge-scroll">
             <ForgeContentWrapper>{children}</ForgeContentWrapper>
           </main>
         </div>
