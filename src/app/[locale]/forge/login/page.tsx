@@ -54,8 +54,8 @@ export default function ForgeLoginPage() {
     checkUser();
   }, [supabase, router]);
 
-  const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleLogin = async (e?: React.FormEvent | React.KeyboardEvent) => {
+    if (e) e.preventDefault();
     setLoading(true);
     setError(null);
 
@@ -232,6 +232,7 @@ export default function ForgeLoginPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleLogin(e)}
                     required
                     className={`w-full bg-white/5 border ${error ? "border-red-500/50 focus:border-red-500/50" : "border-white/10 focus:border-emerald-500/50"} rounded-lg px-4 py-3 text-white placeholder:text-white/15 focus:outline-none focus:ring-0 transition-colors duration-200`}
                     placeholder="nombre@empresa.com"
@@ -247,6 +248,7 @@ export default function ForgeLoginPage() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
+                      onKeyDown={(e) => e.key === "Enter" && handleLogin(e)}
                       required
                       className={`w-full bg-white/5 border ${error ? "border-red-500/50 focus:border-red-500/50" : "border-white/10 focus:border-emerald-500/50"} rounded-lg px-4 py-3 text-white placeholder:text-white/15 focus:outline-none focus:ring-0 transition-colors duration-200`}
                       placeholder="••••••••"
@@ -277,7 +279,10 @@ export default function ForgeLoginPage() {
                   disabled={loading}
                   className="w-full bg-white text-black font-semibold rounded-lg py-3 hover:bg-white/90 hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2 disabled:opacity-50 disabled:scale-100">
                   {loading ? (
-                    <Loader2 className="w-4 h-4 animate-spin" />
+                    <span className="flex items-center gap-2">
+                      <Loader2 className="w-4 h-4 animate-spin" />{" "}
+                      Verificando...
+                    </span>
                   ) : (
                     <>
                       Iniciar Sesión

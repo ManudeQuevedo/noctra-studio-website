@@ -1,4 +1,4 @@
-import ForgeDocsClient from "./ForgeDocsClient";
+import DocsClient from "@/components/forge/docs/DocsClient";
 
 export const metadata = {
   title: "Docs | Noctra Forge",
@@ -6,5 +6,5 @@ export const metadata = {
 };
 
 export default function ForgeDocsPage() {
-  return <ForgeDocsClient />;
+  return <DocsClient />;
 }

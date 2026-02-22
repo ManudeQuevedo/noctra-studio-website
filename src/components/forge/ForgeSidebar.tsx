@@ -2,6 +2,7 @@
 
 import { useState, useEffect } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useFollowUps } from "@/hooks/useFollowUps";
@@ -79,11 +80,15 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
   };
 
   const handleSignOut = async () => {
-    await supabase.auth.signOut();
+    const { error } = await supabase.auth.signOut();
+    if (error) {
+      console.error("Logout error:", error);
+      return;
+    }
     router.push("/forge/login");
   };
 
-  const navItems = [
+  const mainNavItems = [
     { label: "Inicio", href: "/forge", icon: Home },
     { label: "Projects", href: "/forge/projects", icon: LayoutDashboard },
     { label: "Pipeline", href: "/forge/pipeline", icon: Kanban },
@@ -92,6 +97,9 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
     { label: "Clientes", href: "/forge/clients", icon: UserCheck },
     { label: "Leads", href: "/forge/leads", icon: Users },
     { label: "Métricas", href: "/forge/metrics", icon: BarChart3 },
+  ];
+
+  const bottomNavItems = [
     { label: "Docs", href: "/forge/docs", icon: BookOpen },
     { label: "Seguridad", href: "/forge/settings/security", icon: Shield },
   ];
@@ -105,10 +113,14 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
         className={`hidden md:flex flex-col h-full bg-[#0a0a0a] transition-all duration-200 ease-in-out ${
           isCollapsed ? "w-16" : "w-64"
         }`}>
-        <div
-          className={`p-4 border-b border-neutral-900 flex items-center ${isCollapsed ? "justify-center" : "justify-between"} h-[72px]`}>
-          {!isCollapsed ? (
-            <div className="flex items-center gap-3 overflow-hidden">
+        <div className="px-6 border-b border-white/5 flex items-center relative h-16 shrink-0 overflow-hidden">
+          {/* Logo container area */}
+          <div className="flex-1 relative h-8 flex items-center">
+            {/* Full Logo (Visible when NOT collapsed) */}
+            <div
+              className={`absolute left-0 flex items-center gap-3 overflow-hidden transition-opacity duration-300 ${
+                isCollapsed ? "opacity-0 pointer-events-none" : "opacity-100"
+              }`}>
               <img
                 src="/images/noctra-logo-white.png"
                 alt="Noctra Studio"
@@ -123,20 +135,30 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
                 </>
               )}
             </div>
-          ) : (
-            // Just the isotropic mark/icon when collapsed
-            <div className="flex-none p-1 flex items-center justify-center">
-              <img
-                src="/images/noctra-logo-white.png"
-                alt="Noctra Logo"
-                className="h-6 w-auto object-left object-none max-w-[24px]"
+
+            {/* Icon Logo (Visible when collapsed) */}
+            <div
+              className={`absolute inset-0 flex items-center justify-center transition-opacity duration-300 ${
+                isCollapsed ? "opacity-100" : "opacity-0 pointer-events-none"
+              }`}>
+              <Image
+                src="/favicon-light.svg"
+                alt="Noctra"
+                width={28}
+                height={28}
+                className="object-contain"
               />
             </div>
-          )}
+          </div>
 
+          {/* Collapse Button */}
           <button
             onClick={toggleCollapse}
-            className={`p-1 rounded hover:bg-white/5 text-neutral-400 hover:text-white transition-colors flex-none ${isCollapsed ? "hidden" : "block"}`}
+            className={`p-1 rounded hover:bg-white/5 text-neutral-400 hover:text-white transition-all duration-300 flex-none absolute right-4 bg-[#0a0a0a] z-10 ${
+              isCollapsed
+                ? "opacity-0 pointer-events-none translate-x-4"
+                : "opacity-100 translate-x-0"
+            }`}
             title="Contraer menú">
             <ChevronLeft className="w-4 h-4" />
           </button>
@@ -155,16 +177,11 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
         )}
 
         <div
-          className={`flex-1 overflow-y-auto custom-scrollbar ${isCollapsed ? "py-4" : "px-4 py-8"} space-y-2`}>
-          {!isCollapsed && (
-            <h2 className="px-3 text-[10px] font-mono uppercase tracking-widest text-neutral-500 mb-4">
-              Navigation
-            </h2>
-          )}
-
+          className={`flex-1 overflow-y-auto custom-scrollbar ${isCollapsed ? "py-4" : "p-4"} space-y-2`}>
           <div
             className={`flex flex-col ${isCollapsed ? "gap-4 px-2" : "gap-1"}`}>
-            {navItems.map((item) => {
+            {/* Main Nav Items */}
+            {mainNavItems.map((item) => {
               const isActive =
                 item.href === "/forge"
                   ? pathname === "/forge"
@@ -175,12 +192,12 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
                   key={item.href}
                   href={item.href}
                   title={isCollapsed ? item.label : undefined}
-                  className={`flex items-center ${isCollapsed ? "justify-center p-2" : "gap-3 px-3 py-3"} rounded-md transition-all text-sm font-medium group relative ${
+                  className={`flex items-center ${isCollapsed ? "justify-center p-2" : "gap-3 px-3 py-2.5"} rounded-md transition-all duration-150 text-sm font-medium group relative ${
                     isActive
                       ? isCollapsed
                         ? "text-emerald-500 border-l-2 border-emerald-500 bg-white/[0.05]"
-                        : "bg-white/[0.05] text-white border-l-2 border-emerald-500"
-                      : "text-neutral-300 hover:text-white hover:bg-white/[0.02] border-l-2 border-transparent"
+                        : "bg-white/[0.05] text-white"
+                      : "text-neutral-400 hover:text-white hover:bg-white/[0.02]"
                   }`}>
                   <item.icon
                     className={`w-4 h-4 flex-none ${isActive ? "text-emerald-400" : ""}`}
@@ -190,7 +207,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
                     <span className="truncate">{item.label}</span>
                   )}
 
-                  {/* Badges - Hidden when collapsed, or shown as simple dot */}
+                  {/* Badges */}
                   {item.label === "Pipeline" &&
                     alertCount > 0 &&
                     (isCollapsed ? (
@@ -211,6 +228,44 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
                       </span>
                     ))}
 
+                  {/* Tooltip */}
+                  {isCollapsed && (
+                    <div className="absolute left-full ml-4 hidden group-hover:block bg-neutral-800 text-white text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded shadow-xl whitespace-nowrap z-50">
+                      {item.label}
+                    </div>
+                  )}
+                </Link>
+              );
+            })}
+
+            {/* Divider 1 */}
+            <div className="border-t border-white/5 my-2" />
+
+            {/* Bottom Nav Items */}
+            {bottomNavItems.map((item) => {
+              const isActive = pathname.includes(item.href);
+
+              return (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  title={isCollapsed ? item.label : undefined}
+                  className={`flex items-center ${isCollapsed ? "justify-center p-2" : "gap-3 px-3 py-2.5"} rounded-md transition-all duration-150 text-sm font-medium group relative ${
+                    isActive
+                      ? isCollapsed
+                        ? "text-emerald-500 border-l-2 border-emerald-500 bg-white/[0.05]"
+                        : "bg-white/[0.05] text-white"
+                      : "text-neutral-400 hover:text-white hover:bg-white/[0.02]"
+                  }`}>
+                  <item.icon
+                    className={`w-4 h-4 flex-none ${isActive ? "text-emerald-400" : ""}`}
+                  />
+
+                  {!isCollapsed && (
+                    <span className="truncate">{item.label}</span>
+                  )}
+
+                  {/* Security Badge */}
                   {item.label === "Seguridad" &&
                     is2FAEnabled !== null &&
                     !isCollapsed && (
@@ -225,7 +280,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
                       <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500 animate-pulse" />
                     )}
 
-                  {/* Tooltip for collapsed state */}
+                  {/* Tooltip */}
                   {isCollapsed && (
                     <div className="absolute left-full ml-4 hidden group-hover:block bg-neutral-800 text-white text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded shadow-xl whitespace-nowrap z-50">
                       {item.label}
@@ -238,11 +293,11 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
         </div>
 
         <div
-          className={`p-4 border-t border-neutral-900 ${isCollapsed ? "flex justify-center" : ""}`}>
+          className={`p-4 border-t border-white/5 ${isCollapsed ? "flex justify-center" : ""}`}>
           <button
             onClick={handleSignOut}
             title={isCollapsed ? "Cerrar sesión" : undefined}
-            className={`w-full ${isCollapsed ? "justify-center p-2" : "text-left px-3 py-3"} rounded-xl text-xs font-mono text-red-500 hover:bg-neutral-900 uppercase tracking-widest flex items-center gap-3 transition-colors group relative`}>
+            className={`w-full ${isCollapsed ? "justify-center p-2" : "text-left px-3 py-2.5"} rounded-md text-xs font-mono text-white/20 hover:text-red-400 hover:bg-red-500/10 uppercase tracking-widest flex items-center gap-3 transition-colors duration-150 group relative`}>
             <LogOut className="w-4 h-4 flex-none" />
             {!isCollapsed && <span>Cerrar sesión</span>}
 

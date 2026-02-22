@@ -1,12 +1,14 @@
 "use client";
 
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useRouter, usePathname } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useInactivityTimeout } from "@/hooks/useInactivityTimeout";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
 import { ForgeContentWrapper } from "@/components/forge/ForgeContentWrapper";
 import { MobileBottomNav } from "@/components/forge/MobileBottomNav";
+import { CommandBar } from "@/components/forge/CommandBar";
+import { Plus } from "lucide-react";
 
 export default function ForgeLayoutClient({
   children,
@@ -19,6 +21,7 @@ export default function ForgeLayoutClient({
   const router = useRouter();
   const pathname = usePathname();
   const { showWarning, timeLeft, staySignedIn } = useInactivityTimeout();
+  const [commandBarOpen, setCommandBarOpen] = useState(false);
 
   const isLoginPage = pathname.includes("/forge/login");
 
@@ -36,6 +39,17 @@ export default function ForgeLayoutClient({
       subscription.unsubscribe();
     };
   }, [supabase, router]);
+
+  useEffect(() => {
+    const handler = (e: KeyboardEvent) => {
+      if ((e.metaKey || e.ctrlKey) && e.key === "k") {
+        e.preventDefault();
+        setCommandBarOpen(true);
+      }
+    };
+    window.addEventListener("keydown", handler);
+    return () => window.removeEventListener("keydown", handler);
+  }, []);
 
   const minutes = Math.floor(timeLeft / 60000);
   const seconds = Math.floor((timeLeft % 60000) / 1000);
@@ -62,24 +76,43 @@ export default function ForgeLayoutClient({
       {isLoginPage ? (
         children
       ) : (
-        <div className="flex h-screen overflow-hidden bg-[#050505] text-white">
-          {/* Sidebar container - Width is natively controlled by ForgeSidebar */}
-          <aside className="hidden md:block flex-none h-screen border-r border-[#1f1f1f]">
-            <ForgeSidebar workspace={workspace} />
-          </aside>
+        <>
+          {/* DESKTOP LAYOUT - STRICT FLEX */}
+          <div className="hidden md:flex h-screen overflow-hidden bg-[#050505] text-white">
+            <aside className="border-r border-white/5 shrink-0 flex flex-col">
+              <ForgeSidebar workspace={workspace} />
+            </aside>
 
-          {/* Main Content - Independent Scroll */}
-          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 md:pt-0 pb-[calc(env(safe-area-inset-bottom)+4rem)] md:pb-0 min-w-0 forge-scroll">
-            <div className="md:hidden">
-              <ForgeSidebar workspace={workspace} />{" "}
-              {/* Renders the mobile header */}
-            </div>
-            <ForgeContentWrapper>{children}</ForgeContentWrapper>
-          </main>
+            <main className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden forge-scroll flex flex-col">
+              <ForgeContentWrapper>{children}</ForgeContentWrapper>
+            </main>
+          </div>
+
+          {/* MOBILE LAYOUT */}
+          <div className="md:hidden flex h-screen overflow-hidden bg-[#050505] text-white">
+            <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 pb-[calc(env(safe-area-inset-bottom)+4rem)] min-w-0 forge-scroll">
+              <ForgeSidebar workspace={workspace} />
+              <ForgeContentWrapper>{children}</ForgeContentWrapper>
+            </main>
+          </div>
 
           {/* Render new Mobile Bottom Nav layout */}
           <MobileBottomNav />
-        </div>
+
+          {/* Quick Actions FAB (Mobile Only) */}
+          <button
+            onClick={() => setCommandBarOpen(true)}
+            className="md:hidden fixed bottom-24 right-4 w-12 h-12 bg-emerald-500 text-black rounded-full flex items-center justify-center shadow-xl z-50 hover:bg-emerald-400 transition-all active:scale-95"
+            aria-label="Abrir acciones rápidas">
+            <Plus className="w-6 h-6" />
+          </button>
+
+          {/* Global Command Bar */}
+          <CommandBar
+            isOpen={commandBarOpen}
+            onClose={() => setCommandBarOpen(false)}
+          />
+        </>
       )}
     </>
   );

@@ -64,8 +64,9 @@ function ProposalActionsDropdown({
     if (open && triggerRef.current) {
       const rect = triggerRef.current.getBoundingClientRect();
       setPosition({
-        top: rect.bottom + window.scrollY + 4,
-        left: rect.right + window.scrollX - 160,
+        // Use fixed positioning relative to viewport
+        top: rect.bottom + 4,
+        left: rect.right - 160,
       });
     }
   }, [open]);
@@ -76,20 +77,23 @@ function ProposalActionsDropdown({
     // Use timeout to avoid immediate closure if click triggered this
     const timeout = setTimeout(() => {
       document.addEventListener("click", close);
+      // Close on scroll to prevent detached floating dropdowns
+      document.addEventListener("scroll", close, true);
     }, 0);
     return () => {
       clearTimeout(timeout);
       document.removeEventListener("click", close);
+      document.removeEventListener("scroll", close, true);
     };
   }, [open]);
 
   const dropdown = open ? (
     <div
       style={{
-        position: "absolute",
+        position: "fixed",
         top: position.top,
         left: position.left,
-        zIndex: 9999,
+        zIndex: 99999, // Ensure it's above everything including sidebar
       }}
       className="w-40 bg-[#111] border border-[#1f1f1f] shadow-xl rounded-sm py-1"
       onClick={(e) => e.stopPropagation()}>
