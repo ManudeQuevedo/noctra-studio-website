@@ -119,7 +119,13 @@ export default function ProposalBuilderClient({
             Previsualizar
           </button>
 
-          <button className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest transition-all">
+          <button
+            disabled={
+              !proposal.title ||
+              !proposal.items?.length ||
+              !proposal.valid_until
+            }
+            className="flex items-center gap-2 px-6 py-2.5 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-30 disabled:cursor-not-allowed disabled:hover:bg-emerald-600">
             <Send className="w-3.5 h-3.5" />
             Enviar Propuesta
           </button>
@@ -137,21 +143,21 @@ export default function ProposalBuilderClient({
               </h3>
             </div>
 
-            <div className="grid grid-cols-1 gap-6">
-              <div className="space-y-2">
-                <label className="text-[9px] font-mono text-neutral-300 uppercase">
+            <div className="grid grid-cols-1 gap-8">
+              <div className="space-y-3">
+                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
                   Título de la Propuesta
                 </label>
                 <input
                   type="text"
                   value={proposal.title}
                   onChange={(e) => handleUpdate("title", e.target.value)}
-                  className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
                 />
               </div>
 
-              <div className="space-y-2">
-                <label className="text-[9px] font-mono text-neutral-300 uppercase">
+              <div className="space-y-3">
+                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
                   Resumen Ejecutivo
                 </label>
                 <textarea
@@ -159,7 +165,7 @@ export default function ProposalBuilderClient({
                   value={proposal.description || ""}
                   onChange={(e) => handleUpdate("description", e.target.value)}
                   placeholder="Describe los objetivos principales del proyecto..."
-                  className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 transition-colors resize-none"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200 resize-y min-h-[100px]"
                 />
               </div>
             </div>
@@ -193,20 +199,20 @@ export default function ProposalBuilderClient({
             <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
               Inversión y Términos
             </h3>
-            <div className="grid grid-cols-2 gap-6">
-              <div className="space-y-2">
-                <label className="text-[9px] font-mono text-neutral-300 uppercase">
+            <div className="grid grid-cols-2 gap-8">
+              <div className="space-y-3">
+                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
                   Validez (Vence el)
                 </label>
                 <input
                   type="date"
                   value={proposal.valid_until || ""}
                   onChange={(e) => handleUpdate("valid_until", e.target.value)}
-                  className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
                 />
               </div>
-              <div className="space-y-2">
-                <label className="text-[9px] font-mono text-neutral-300 uppercase">
+              <div className="space-y-3">
+                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
                   Duración Estimada
                 </label>
                 <input
@@ -216,7 +222,7 @@ export default function ProposalBuilderClient({
                   onChange={(e) =>
                     handleUpdate("estimated_duration", e.target.value)
                   }
-                  className="w-full bg-white/[0.03] border border-white/10 px-4 py-3 text-sm focus:outline-none focus:border-emerald-500/50 transition-colors"
+                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
                 />
               </div>
             </div>
@@ -224,15 +230,17 @@ export default function ProposalBuilderClient({
         </div>
 
         {/* Right Panel: Live Preview (40% - sticky or fixed) */}
-        <div className="hidden lg:block lg:flex-1 bg-white/[0.02] overflow-y-auto p-12 forge-scroll h-[calc(100vh-64px)]">
-          <div className="max-w-3xl mx-auto bg-white text-black shadow-2xl min-h-[1000px] p-16 flex flex-col">
+        <div className="hidden lg:block lg:flex-1 bg-white/[0.02] overflow-y-auto p-12 forge-scroll h-[calc(100vh-64px)] selection:bg-emerald-500/20">
+          <div className="max-w-3xl mx-auto bg-white text-black shadow-[0_20px_60px_rgba(0,0,0,0.5)] min-h-[1000px] p-20 flex flex-col">
             {/* Proposal Header */}
-            <div className="flex justify-between items-start mb-20">
-              <div className="space-y-2">
-                <div className="text-2xl font-black tracking-tighter uppercase italic">
-                  Noctra<span className="text-emerald-600">.</span>
-                </div>
-                <p className="text-[10px] font-mono text-neutral-400 uppercase tracking-widest leading-relaxed">
+            <div className="flex justify-between items-start mb-24">
+              <div className="space-y-6">
+                <img
+                  src="/images/noctra-logo-dark.png"
+                  alt="Noctra Studio"
+                  className="w-[120px] h-auto grayscale brightness-0 opacity-90"
+                />
+                <p className="text-[10px] font-mono text-neutral-400 uppercase tracking-[0.2em] leading-relaxed">
                   Studio de Diseño &<br />
                   Desarrollo Digital
                 </p>
@@ -248,45 +256,55 @@ export default function ProposalBuilderClient({
             </div>
 
             {/* Client & Date */}
-            <div className="grid grid-cols-2 gap-20 mb-20 border-t border-black/5 pt-12">
+            <div className="grid grid-cols-2 gap-20 mb-24 border-t border-black/5 pt-16">
               <div>
-                <h4 className="text-[9px] font-mono uppercase text-neutral-400 mb-4 tracking-[0.2em]">
+                <h4 className="text-[9px] font-mono uppercase text-neutral-400 mb-5 tracking-[0.2em]">
                   Preparado para
                 </h4>
-                <p className="font-black text-xl leading-tight uppercase">
+                <p className="font-black text-2xl leading-tight uppercase tracking-tight">
                   {proposal.lead?.name}
                 </p>
-                <p className="text-sm border-b border-black/10 pb-1 mt-1">
+                <p className="text-sm border-b border-black/10 pb-1 mt-2 text-neutral-500">
                   {proposal.lead?.email}
                 </p>
               </div>
               <div className="text-right">
-                <h4 className="text-[9px] font-mono uppercase text-neutral-400 mb-4 tracking-[0.2em]">
+                <h4 className="text-[9px] font-mono uppercase text-neutral-400 mb-5 tracking-[0.2em]">
                   Fecha de emisión
                 </h4>
                 <p className="font-bold text-lg">
-                  {format(
-                    new Date(proposal.created_at || Date.now()),
-                    "MMMM d, yyyy",
-                  )}
+                  {new Date(
+                    proposal.created_at || Date.now(),
+                  ).toLocaleDateString("es-MX", {
+                    day: "numeric",
+                    month: "long",
+                    year: "numeric",
+                  })}
                 </p>
-                <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mt-1">
+                <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-[0.1em] mt-2">
                   Válido hasta:{" "}
                   {proposal.valid_until
-                    ? format(new Date(proposal.valid_until), "MMMM d, yyyy")
-                    : "—"}
+                    ? new Date(proposal.valid_until).toLocaleDateString(
+                        "es-MX",
+                        {
+                          day: "numeric",
+                          month: "long",
+                          year: "numeric",
+                        },
+                      )
+                    : "— PENDIENTE —"}
                 </p>
               </div>
             </div>
 
             {/* Summary */}
-            <div className="mb-20">
-              <h4 className="text-[9px] font-mono uppercase text-neutral-400 mb-6 tracking-[0.2em]">
+            <div className="mb-24">
+              <h4 className="text-[9px] font-mono uppercase text-neutral-400 mb-8 tracking-[0.2em]">
                 Resumen Ejecutivo
               </h4>
-              <p className="text-lg leading-relaxed text-neutral-800 italic">
+              <p className="text-xl leading-relaxed text-neutral-800 italic font-serif">
                 {proposal.description ||
-                  "Su visión merece una presencia digital de clase mundial. Esta propuesta detalla el camino estratégico para transformar sus objetivos en una realidad tangible y de alto impacto."}
+                  "Describe los objetivos principales del proyecto en el panel izquierdo para verlos reflejados aquí..."}
               </p>
             </div>
 
@@ -303,9 +321,24 @@ export default function ProposalBuilderClient({
                         <h5 className="font-black text-lg uppercase tracking-tight mb-2 italic group-hover:text-emerald-600 transition-colors">
                           {item.name}
                         </h5>
-                        <p className="text-sm text-neutral-400 leading-relaxed max-w-xl">
-                          {item.description}
-                        </p>
+                        <div className="space-y-2 max-w-xl">
+                          {item.description
+                            ?.split("\n")
+                            .filter((line: string) => line.trim())
+                            .map((line: string, i: number) => (
+                              <div key={i} className="flex items-start gap-2">
+                                <div className="mt-1.5 w-1 h-1 rounded-full bg-emerald-500 flex-none" />
+                                <p className="text-sm text-neutral-500 leading-relaxed">
+                                  {line.trim()}
+                                </p>
+                              </div>
+                            ))}
+                          {!item.description && (
+                            <p className="text-sm text-neutral-300 italic">
+                              Sin descripción de servicios.
+                            </p>
+                          )}
+                        </div>
                       </div>
                       <div className="text-right">
                         <p className="font-mono text-xs font-bold">

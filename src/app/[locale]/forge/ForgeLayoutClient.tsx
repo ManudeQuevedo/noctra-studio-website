@@ -6,6 +6,7 @@ import { createClient } from "@/utils/supabase/client";
 import { useInactivityTimeout } from "@/hooks/useInactivityTimeout";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
 import { ForgeContentWrapper } from "@/components/forge/ForgeContentWrapper";
+import { MobileBottomNav } from "@/components/forge/MobileBottomNav";
 
 export default function ForgeLayoutClient({
   children,
@@ -62,15 +63,22 @@ export default function ForgeLayoutClient({
         children
       ) : (
         <div className="flex h-screen overflow-hidden bg-[#050505] text-white">
-          {/* Sidebar container - ForgeSidebar handles its own visibility internaly */}
-          <aside className="flex-none h-screen border-r border-[#1f1f1f] md:w-[280px]">
+          {/* Sidebar container - Width is natively controlled by ForgeSidebar */}
+          <aside className="hidden md:block flex-none h-screen border-r border-[#1f1f1f]">
             <ForgeSidebar workspace={workspace} />
           </aside>
 
           {/* Main Content - Independent Scroll */}
-          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 md:pt-0 pb-24 md:pb-0 min-w-0 forge-scroll">
+          <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 md:pt-0 pb-[calc(env(safe-area-inset-bottom)+4rem)] md:pb-0 min-w-0 forge-scroll">
+            <div className="md:hidden">
+              <ForgeSidebar workspace={workspace} />{" "}
+              {/* Renders the mobile header */}
+            </div>
             <ForgeContentWrapper>{children}</ForgeContentWrapper>
           </main>
+
+          {/* Render new Mobile Bottom Nav layout */}
+          <MobileBottomNav />
         </div>
       )}
     </>

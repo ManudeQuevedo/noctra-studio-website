@@ -6,6 +6,7 @@ import {
   GripVertical,
   ChevronDown,
   ChevronUp,
+  FileText,
 } from "lucide-react";
 
 type Item = {
@@ -42,6 +43,15 @@ export function ProposalItemsList({
 
   return (
     <div className="space-y-4">
+      {items.length === 0 && (
+        <div className="py-12 border border-dashed border-white/5 rounded-lg flex flex-col items-center justify-center gap-3 bg-white/[0.01]">
+          <FileText className="w-8 h-8 text-white/10" />
+          <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-white/20">
+            Sin servicios agregados aún
+          </p>
+        </div>
+      )}
+
       {items.map((item, index) => (
         <div
           key={index}
