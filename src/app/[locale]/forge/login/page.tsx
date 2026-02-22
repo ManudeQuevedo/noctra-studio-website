@@ -4,6 +4,7 @@ import { useState, useEffect } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import Link from "next/link";
+import Image from "next/image";
 import { createClient } from "@/utils/supabase/client";
 import { CheckCircle2, Lock, ArrowRight, Loader2, Mail } from "lucide-react";
 
@@ -164,9 +165,18 @@ export default function ForgeLoginPage() {
     <main className="min-h-screen flex flex-col md:flex-row bg-[#000000] text-white">
       {/* LEFT PANEL - Branding/Hero (Desktop Only) */}
       <div className="hidden md:flex md:w-1/2 relative overflow-hidden bg-[#050505] border-r border-white/5">
-        {/* Subtle CSS Background Pattern */}
-        <div className="absolute inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
-        <div className="absolute inset-0 bg-gradient-to-br from-emerald-500/5 via-transparent to-transparent" />
+        {/* Hero Image */}
+        <Image
+          src="/images/login-client-portal.jpg"
+          alt="Noctra Forge Client Portal"
+          fill
+          priority
+          className="object-cover opacity-50 transition-opacity duration-700"
+        />
+
+        {/* Subtle Overlays */}
+        <div className="absolute inset-0 bg-gradient-to-br from-black/80 via-black/40 to-transparent" />
+        <div className="absolute inset-0 bg-[radial-gradient(#1a1a1a_1px,transparent_1px)] [background-size:24px_24px] opacity-20" />
 
         {/* Content */}
         <div className="relative z-10 flex flex-col items-center justify-center p-12 w-full h-full">
