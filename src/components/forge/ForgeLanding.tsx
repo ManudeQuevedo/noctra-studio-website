@@ -27,6 +27,7 @@ import {
 } from "lucide-react";
 import NextImage from "next/image";
 import { PricingWithROI } from "./PricingWithROI";
+import { PricingComparison } from "./PricingComparison";
 import { MarketComparison } from "./MarketComparison";
 import { UnifiedStack } from "./UnifiedStack";
 import { ForgeNavbar } from "./ForgeNavbar";
@@ -467,7 +468,7 @@ export default function ForgeLanding() {
 
       {/* --- SECTION 5: FEATURES --- */}
       <section className="py-20 md:py-28 px-6 border-t border-white/5 bg-white/[0.01]">
-        <div className="max-w-5xl mx-auto">
+        <div className="max-w-6xl mx-auto">
           <p className="text-[10px] sm:text-xs uppercase tracking-widest text-[#10b981] font-bold text-center mb-4">
             Todo incluido
           </p>
@@ -475,59 +476,112 @@ export default function ForgeLanding() {
             Todas las herramientas que necesitas.
             <br className="hidden md:block" /> Ninguna que no.
           </h2>
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {features.map((feature, idx) => {
-              const isHeroFeature = feature.title === "Noctra AI";
 
-              return (
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+            {/* COLUMN 1: AI (Hero Height) + 2 Standard */}
+            <div className="flex flex-col gap-6">
+              {[features[0], features[4], features[7]].map((feature, idx) => {
+                const isHeroFeature = feature.title === "Noctra AI";
+
+                return (
+                  <div
+                    key={feature.title}
+                    className={cn(
+                      "border border-white/5 rounded-3xl p-8 transition-all cursor-default group hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(16,185,129,0.05)] relative overflow-hidden flex flex-col items-start justify-center text-left",
+                      isHeroFeature
+                        ? "bg-gradient-to-br from-[#10b981]/10 via-[#10b981]/[0.02] to-transparent hover:border-[#10b981]/30 md:min-h-[420px]"
+                        : "bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#10b981]/20 md:min-h-[220px]",
+                    )}>
+                    <div className="absolute inset-0 bg-gradient-to-br from-[#10b981]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+                    <div
+                      className={cn(
+                        "w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors relative z-10",
+                        isHeroFeature
+                          ? "bg-[#10b981]/20 text-[#10b981]"
+                          : "bg-white/5 group-hover:bg-[#10b981]/10",
+                      )}>
+                      <DynamicIcon
+                        name={feature.icon}
+                        size={24}
+                        className={cn(
+                          "transition-colors",
+                          isHeroFeature
+                            ? "text-[#10b981]"
+                            : "text-white/60 group-hover:text-[#10b981]",
+                        )}
+                      />
+                    </div>
+                    <h3
+                      className={cn(
+                        "font-bold text-white mb-3 relative z-10",
+                        isHeroFeature ? "text-2xl" : "text-lg",
+                      )}>
+                      {feature.title}
+                    </h3>
+                    <p
+                      className={cn(
+                        "leading-relaxed relative z-10",
+                        isHeroFeature
+                          ? "text-neutral-300 text-base md:text-lg max-w-sm"
+                          : "text-neutral-400 text-sm md:text-base",
+                      )}>
+                      {feature.desc}
+                    </p>
+                  </div>
+                );
+              })}
+            </div>
+
+            {/* COLUMN 2: 3 Standard Features */}
+            <div className="flex flex-col gap-6">
+              {[features[1], features[2], features[3]].map((feature) => (
                 <div
                   key={feature.title}
-                  className={cn(
-                    "border border-white/5 rounded-2xl p-8 transition-all cursor-default group hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(16,185,129,0.05)] relative overflow-hidden",
-                    isHeroFeature
-                      ? "lg:col-span-2 bg-gradient-to-br from-[#10b981]/10 via-[#10b981]/[0.02] to-transparent hover:border-[#10b981]/30"
-                      : "bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#10b981]/20",
-                  )}>
-                  {/* Inner Glow on Hover */}
+                  className="border border-white/5 rounded-3xl p-8 transition-all cursor-default group hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(16,185,129,0.05)] relative overflow-hidden flex flex-col justify-center text-left bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#10b981]/20 md:min-h-[280px]">
                   <div className="absolute inset-0 bg-gradient-to-br from-[#10b981]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
 
-                  <div
-                    className={cn(
-                      "w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors relative z-10",
-                      isHeroFeature
-                        ? "bg-[#10b981]/20 text-[#10b981]"
-                        : "bg-white/5 group-hover:bg-[#10b981]/10",
-                    )}>
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors relative z-10 bg-white/5 group-hover:bg-[#10b981]/10">
                     <DynamicIcon
                       name={feature.icon}
                       size={24}
-                      className={cn(
-                        "transition-colors",
-                        isHeroFeature
-                          ? "text-[#10b981]"
-                          : "text-white/60 group-hover:text-[#10b981]",
-                      )}
+                      className="transition-colors text-white/60 group-hover:text-[#10b981]"
                     />
                   </div>
-                  <h3
-                    className={cn(
-                      "font-bold text-white mb-3 relative z-10",
-                      isHeroFeature ? "text-2xl" : "text-lg",
-                    )}>
+                  <h3 className="font-bold text-white mb-3 relative z-10 text-lg">
                     {feature.title}
                   </h3>
-                  <p
-                    className={cn(
-                      "leading-relaxed relative z-10",
-                      isHeroFeature
-                        ? "text-neutral-300 text-base md:text-lg max-w-md"
-                        : "text-neutral-400 text-sm md:text-base",
-                    )}>
+                  <p className="leading-relaxed relative z-10 text-neutral-400 text-sm md:text-base">
                     {feature.desc}
                   </p>
                 </div>
-              );
-            })}
+              ))}
+            </div>
+
+            {/* COLUMN 3: 3 Standard Features */}
+            <div className="flex flex-col gap-6">
+              {[features[5], features[6], features[8]].map((feature) => (
+                <div
+                  key={feature.title}
+                  className="border border-white/5 rounded-3xl p-8 transition-all cursor-default group hover:-translate-y-1 hover:shadow-[0_10px_40px_rgba(16,185,129,0.05)] relative overflow-hidden flex flex-col justify-center text-left bg-white/[0.02] hover:bg-white/[0.04] hover:border-[#10b981]/20 md:min-h-[280px]">
+                  <div className="absolute inset-0 bg-gradient-to-br from-[#10b981]/5 to-transparent opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none" />
+
+                  <div className="w-12 h-12 rounded-xl flex items-center justify-center mb-6 transition-colors relative z-10 bg-white/5 group-hover:bg-[#10b981]/10">
+                    <DynamicIcon
+                      name={feature.icon}
+                      size={24}
+                      className="transition-colors text-white/60 group-hover:text-[#10b981]"
+                    />
+                  </div>
+                  <h3 className="font-bold text-white mb-3 relative z-10 text-lg">
+                    {feature.title}
+                  </h3>
+                  <p className="leading-relaxed relative z-10 text-neutral-400 text-sm md:text-base">
+                    {feature.desc}
+                  </p>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -625,8 +679,8 @@ export default function ForgeLanding() {
         </div>
       </section>
 
-      {/* --- SECTION 5.7: MARKET COMPARISON --- */}
-      <MarketComparison />
+      {/* --- SECTION 5.7: MARKET COMPARISON (UPDATED) --- */}
+      <PricingComparison />
 
       {/* --- SECTION 5.8: UNIFIED STACK BENTO --- */}
       <UnifiedStack />
