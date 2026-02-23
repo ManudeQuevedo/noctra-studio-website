@@ -68,7 +68,10 @@ export function DocsSidebar({
   return (
     <aside className="w-64 shrink-0 sticky top-16 h-[calc(100vh-4rem)] overflow-y-auto border-r border-white/5 py-8 px-4 custom-scrollbar lg:block hidden">
       <div className="relative mb-8">
-        <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-500" />
+        <Search
+          className="absolute left-3 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-neutral-500"
+          strokeWidth={1.5}
+        />
         <input
           type="text"
           placeholder="Buscar en docs..."

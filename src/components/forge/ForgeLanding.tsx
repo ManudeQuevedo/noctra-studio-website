@@ -20,6 +20,10 @@ import {
   UserPlus,
   Menu,
   X,
+  Clock,
+  Brain,
+  Layers,
+  SearchCode,
 } from "lucide-react";
 import { ForgePricing } from "./ForgePricing";
 import { ForgeNavbar } from "./ForgeNavbar";
@@ -48,9 +52,13 @@ const DynamicIcon = ({
     Shield,
     Smartphone,
     UserPlus,
+    Clock,
+    Brain,
+    Layers,
+    SearchCode,
   };
   const Icon = icons[name] || Sparkles;
-  return <Icon size={size} className={className} />;
+  return <Icon size={size} className={className} strokeWidth={1.5} />;
 };
 
 // --- FAQ COMPONENT ---
@@ -71,9 +79,9 @@ const FAQItem = ({
           {question}
         </span>
         {isOpen ? (
-          <Minus size={18} className="text-white/40" />
+          <Minus size={18} className="text-white/40" strokeWidth={1.5} />
         ) : (
-          <Plus size={18} className="text-white/40" />
+          <Plus size={18} className="text-white/40" strokeWidth={1.5} />
         )}
       </button>
       {isOpen && (
@@ -88,32 +96,32 @@ const FAQItem = ({
 export default function ForgeLanding() {
   const painPoints = [
     {
-      emoji: "📄",
+      icon: "FileText",
       pain: "Propuestas en Word que se pierden en el email",
       fix: "Crea y envía propuestas profesionales en minutos",
     },
     {
-      emoji: "🤷",
+      icon: "SearchCode",
       pain: "No sabes en qué etapa está cada cliente",
       fix: "Pipeline visual con el estado de cada oportunidad",
     },
     {
-      emoji: "⏰",
+      icon: "Clock",
       pain: "Horas perdidas actualizando clientes manualmente",
       fix: "Portal del cliente con actualizaciones en tiempo real",
     },
     {
-      emoji: "🗂️",
+      icon: "Layers",
       pain: "4 herramientas distintas para lo que debería ser 1",
       fix: "Todo en un solo lugar — desde el lead hasta el cierre",
     },
     {
-      emoji: "🧠",
+      icon: "Brain",
       pain: "Se te olvidan los follow-ups y pierdes oportunidades",
       fix: "Noctra AI te recuerda cuándo actuar y qué hacer",
     },
     {
-      emoji: "📊",
+      icon: "BarChart2",
       pain: "No tienes visibilidad real de tus ingresos futuros",
       fix: "Forecast de ingresos calculado automáticamente",
     },
@@ -227,7 +235,7 @@ export default function ForgeLanding() {
       <ForgeNavbar />
 
       {/* --- SECTION 1: HERO --- */}
-      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden pt-16">
+      <section className="min-h-screen flex flex-col items-center justify-center text-center px-6 relative overflow-hidden pt-36 md:pt-32">
         {/* Subtle radial gradient background */}
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_center,rgba(16,185,129,0.03)_0%,transparent_60%)] pointer-events-none" />
         <div
@@ -257,11 +265,13 @@ export default function ForgeLanding() {
         </p>
         <div className="flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500">
           <div className="flex flex-col sm:flex-row items-center gap-4 flex-wrap justify-center w-full">
-            <Link
-              href="/forge/login"
-              className="flex items-center justify-center gap-2 bg-white text-black font-bold rounded-full h-12 px-8 text-base hover:bg-neutral-200 transition-colors duration-300 shadow-[0_0_40px_rgba(255,255,255,0.1)] w-full sm:w-auto">
-              Empezar gratis <ArrowRight size={18} />
-            </Link>
+            {/* Beta Coming Soon - Temporarily Disabled */}
+            <button
+              disabled
+              className="flex items-center justify-center gap-2 bg-white/10 text-white/40 font-bold rounded-full h-12 px-8 text-base cursor-not-allowed border border-white/10 w-full sm:w-auto">
+              Beta Próximamente <ArrowRight size={18} />
+            </button>
+            {/* Original Link: /forge/login */}
             <a
               href="#demo"
               className="flex items-center justify-center gap-2 rounded-full h-12 px-8 text-base border border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300 font-bold w-full sm:w-auto">
@@ -312,7 +322,13 @@ export default function ForgeLanding() {
               <div
                 key={item.pain}
                 className="border border-white/5 rounded-xl p-5 hover:border-white/10 transition-all group bg-white/[0.01]">
-                <span className="text-2xl mb-3 block">{item.emoji}</span>
+                <div className="w-10 h-10 rounded-lg bg-white/5 flex items-center justify-center mb-4 group-hover:bg-emerald-500/10 transition-colors">
+                  <DynamicIcon
+                    name={item.icon}
+                    size={20}
+                    className="text-neutral-500 group-hover:text-emerald-500 transition-colors"
+                  />
+                </div>
                 <p className="text-sm text-neutral-400 line-through mb-1 group-hover:text-neutral-500 transition-colors">
                   {item.pain}
                 </p>
@@ -508,11 +524,13 @@ export default function ForgeLanding() {
             Organiza tu pipeline. Entrega proyectos a tiempo. Escala tu
             operación hoy.
           </p>
-          <Link
-            href="/forge/login"
-            className="flex items-center justify-center gap-2 bg-white text-black font-bold h-12 rounded-full px-10 text-base shadow-[0_0_40px_rgba(255,255,255,0.15)] hover:scale-105 active:scale-95 transition-all">
-            Empezar prueba gratis <ArrowRight size={18} />
-          </Link>
+          {/* Beta Coming Soon - Temporarily Disabled */}
+          <button
+            disabled
+            className="flex items-center justify-center gap-2 bg-white/10 text-white/40 font-bold h-12 rounded-full px-10 text-base cursor-not-allowed border border-white/10">
+            Beta Próximamente <ArrowRight size={18} />
+          </button>
+          {/* Original Link: /forge/login */}
           <p className="text-xs text-neutral-500 mt-6 tracking-wide">
             14 días gratis. Sin tarjeta. Cancela cuando quieras.
           </p>

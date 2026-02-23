@@ -287,9 +287,12 @@ export function CommandBar({
         {/* Input */}
         <div className="flex items-center px-4 border-b border-white/10 shrink-0 relative">
           {isSearching ? (
-            <Loader2 className="w-4 h-4 text-emerald-500 mr-3 animate-spin" />
+            <Loader2
+              className="w-4 h-4 text-emerald-500 mr-3 animate-spin"
+              strokeWidth={1.5}
+            />
           ) : (
-            <Search className="w-4 h-4 text-white/40 mr-3" />
+            <Search className="w-4 h-4 text-white/40 mr-3" strokeWidth={1.5} />
           )}
 
           <input
@@ -342,6 +345,7 @@ export function CommandBar({
                           <div className="flex items-center gap-3 min-w-0">
                             <Icon
                               className={`w-4 h-4 shrink-0 ${active ? "text-emerald-400" : "text-white/30"}`}
+                              strokeWidth={1.5}
                             />
                             <div className="flex flex-col min-w-0">
                               <span

@@ -70,6 +70,7 @@ export function MobileBottomNav() {
                 )}
                 <tab.icon
                   className={`w-[22px] h-[22px] ${isActive ? "text-emerald-500" : "text-white/30"}`}
+                  strokeWidth={1.5}
                 />
                 <span
                   className={`text-[9px] uppercase tracking-widest mt-1 ${isActive ? "text-emerald-500 font-bold" : "text-white/30"}`}>
@@ -85,6 +86,7 @@ export function MobileBottomNav() {
             className="flex flex-col items-center justify-center w-full h-full gap-1 pt-1 pb-1">
             <MoreHorizontal
               className={`w-[22px] h-[22px] ${moreSheetOpen ? "text-white" : "text-white/30"}`}
+              strokeWidth={1.5}
             />
             <span
               className={`text-[9px] uppercase tracking-widest mt-1 ${moreSheetOpen ? "text-white font-bold" : "text-white/30"}`}>
@@ -130,7 +132,7 @@ export function MobileBottomNav() {
                       ? "text-emerald-500"
                       : "text-white/70 hover:text-white"
                   }`}>
-                  <item.icon className="w-[22px] h-[22px]" />
+                  <item.icon className="w-[22px] h-[22px]" strokeWidth={1.5} />
                   <span className="text-[12px] uppercase tracking-widest font-medium">
                     {item.label}
                   </span>
@@ -143,7 +145,7 @@ export function MobileBottomNav() {
             <button
               onClick={handleSignOut}
               className="w-full flex items-center justify-center gap-3 py-4 rounded-xl bg-red-500/10 text-red-500 text-[10px] uppercase tracking-widest font-bold hover:bg-red-500/20 transition-colors">
-              <LogOut className="w-[18px] h-[18px]" />
+              <LogOut className="w-[18px] h-[18px]" strokeWidth={1.5} />
               Cerrar Sesión
             </button>
           </div>

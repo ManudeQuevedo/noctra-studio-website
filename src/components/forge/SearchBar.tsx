@@ -69,6 +69,7 @@ export function SearchBar() {
           <Search
             size={14}
             className="text-white/40 w-4 h-4 sm:w-3.5 sm:h-3.5"
+            strokeWidth={1.5}
           />
           <span className="text-sm text-white/30 hidden sm:inline-block truncate">
             {t("placeholderCollapsed")}
@@ -81,7 +82,7 @@ export function SearchBar() {
         /* Expanded Input */
         <div className="absolute sm:relative top-0 right-0 sm:top-auto sm:right-auto w-[calc(100vw-4rem)] sm:w-full max-w-2xl mx-auto z-50 animate-in fade-in zoom-in-95 duration-200">
           <div className="absolute inset-y-0 left-0 pl-4 flex items-center pointer-events-none">
-            <Search className="h-4 w-4 text-emerald-500" />
+            <Search className="h-4 w-4 text-emerald-500" strokeWidth={1.5} />
           </div>
           <input
             ref={inputRef}
@@ -97,7 +98,7 @@ export function SearchBar() {
             <kbd className="text-[10px] border border-white/10 rounded px-1.5 py-0.5 font-mono mr-2 bg-white/5 hidden sm:inline-block">
               ESC
             </kbd>
-            <X className="h-4 w-4" />
+            <X className="h-4 w-4" strokeWidth={1.5} />
           </button>
         </div>
       )}

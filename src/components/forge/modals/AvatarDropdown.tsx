@@ -60,7 +60,7 @@ export function AvatarDropdown({
         onClick={() => setIsOpen(!isOpen)}
         className="flex items-center gap-2 px-2 hover:bg-white/5 py-1.5 rounded-lg transition-colors border border-transparent hover:border-white/10 relative">
         <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center overflow-hidden shrink-0 relative">
-          <User className="w-4 h-4 text-white/50" />
+          <User className="w-4 h-4 text-white/50" strokeWidth={1.5} />
         </div>
 
         {/* Disconnected 2FA Warning Dot */}
@@ -76,7 +76,10 @@ export function AvatarDropdown({
             Admin
           </span>
         </div>
-        <ChevronDown className="w-3 h-3 text-white/30 hidden sm:block" />
+        <ChevronDown
+          className="w-3 h-3 text-white/30 hidden sm:block"
+          strokeWidth={1.5}
+        />
       </button>
 
       {isOpen && (
@@ -92,13 +95,13 @@ export function AvatarDropdown({
             <button
               onClick={() => handleAction(onOpenProfile)}
               className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 text-sm text-white/80 hover:text-white transition-colors text-left">
-              <User className="w-4 h-4 text-white/40" />
+              <User className="w-4 h-4 text-white/40" strokeWidth={1.5} />
               {t("verPerfil")}
             </button>
             <button
               onClick={() => handleAction(onOpenSettings)}
               className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 text-sm text-white/80 hover:text-white transition-colors text-left">
-              <Settings className="w-4 h-4 text-white/40" />
+              <Settings className="w-4 h-4 text-white/40" strokeWidth={1.5} />
               {t("configuraciones")}
 
               {/* Badge for inside Settings if no 2FA */}
@@ -109,7 +112,7 @@ export function AvatarDropdown({
             <button
               onClick={() => handleAction(onOpenSubscription)}
               className="flex items-center gap-3 px-4 py-2.5 hover:bg-white/5 text-sm text-white/80 hover:text-white transition-colors text-left">
-              <CreditCard className="w-4 h-4 text-white/40" />
+              <CreditCard className="w-4 h-4 text-white/40" strokeWidth={1.5} />
               {t("suscripcion")}
             </button>
           </div>
@@ -118,7 +121,7 @@ export function AvatarDropdown({
             <button
               onClick={handleSignOut}
               className="flex items-center gap-3 px-4 py-2.5 hover:bg-red-500/10 text-sm text-red-400 hover:text-red-300 transition-colors w-full text-left">
-              <LogOut className="w-4 h-4" />
+              <LogOut className="w-4 h-4" strokeWidth={1.5} />
               {t("cerrarSesion")}
             </button>
           </div>

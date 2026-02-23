@@ -216,17 +216,17 @@ export function LeadDetailPanel({
   const getActivityIcon = (type: string) => {
     switch (type) {
       case "note":
-        return <StickyNote className="w-3.5 h-3.5" />;
+        return <StickyNote className="w-3.5 h-3.5" strokeWidth={1.5} />;
       case "call":
-        return <PhoneCall className="w-3.5 h-3.5" />;
+        return <PhoneCall className="w-3.5 h-3.5" strokeWidth={1.5} />;
       case "email":
-        return <Send className="w-3.5 h-3.5" />;
+        return <Send className="w-3.5 h-3.5" strokeWidth={1.5} />;
       case "meeting":
-        return <Users className="w-3.5 h-3.5" />;
+        return <Users className="w-3.5 h-3.5" strokeWidth={1.5} />;
       case "status_change":
-        return <RefreshCw className="w-3.5 h-3.5" />;
+        return <RefreshCw className="w-3.5 h-3.5" strokeWidth={1.5} />;
       default:
-        return <StickyNote className="w-3.5 h-3.5" />;
+        return <StickyNote className="w-3.5 h-3.5" strokeWidth={1.5} />;
     }
   };
 
@@ -280,7 +280,7 @@ export function LeadDetailPanel({
               <button
                 onClick={onClose}
                 className="p-2 text-neutral-400 hover:text-white transition-colors bg-white/5 rounded-full">
-                <X className="w-5 h-5" />
+                <X className="w-5 h-5" strokeWidth={1.5} />
               </button>
             </div>
 
@@ -326,7 +326,10 @@ export function LeadDetailPanel({
                 </h3>
                 <div className="grid grid-cols-1 gap-4">
                   <div className="flex items-center gap-3">
-                    <Mail className="w-4 h-4 text-neutral-400" />
+                    <Mail
+                      className="w-4 h-4 text-neutral-400"
+                      strokeWidth={1.5}
+                    />
                     <a
                       href={`mailto:${lead.email}`}
                       className="text-sm text-neutral-300 hover:text-emerald-400 transition-colors">
@@ -334,20 +337,29 @@ export function LeadDetailPanel({
                     </a>
                   </div>
                   <div className="flex items-center gap-3">
-                    <Phone className="w-4 h-4 text-neutral-400" />
+                    <Phone
+                      className="w-4 h-4 text-neutral-400"
+                      strokeWidth={1.5}
+                    />
                     <span className="text-sm text-neutral-300">
                       {lead.phone || "Not provided"}
                     </span>
                   </div>
                   <div className="flex items-center gap-6 pt-2">
                     <div className="flex items-center gap-2">
-                      <Globe className="w-3.5 h-3.5 text-neutral-700" />
+                      <Globe
+                        className="w-3.5 h-3.5 text-neutral-700"
+                        strokeWidth={1.5}
+                      />
                       <span className="text-[10px] font-mono text-neutral-300 uppercase">
                         [{lead.locale || "ES"}]
                       </span>
                     </div>
                     <div className="flex items-center gap-2">
-                      <Clock className="w-3.5 h-3.5 text-neutral-700" />
+                      <Clock
+                        className="w-3.5 h-3.5 text-neutral-700"
+                        strokeWidth={1.5}
+                      />
                       <span className="text-[10px] font-mono text-neutral-300 uppercase">
                         {format(new Date(lead.created_at), "MMM d, yyyy")}
                       </span>
@@ -371,6 +383,7 @@ export function LeadDetailPanel({
                     className="text-[9px] font-mono uppercase tracking-widest text-emerald-500 hover:text-emerald-400 disabled:opacity-50 transition-colors flex items-center gap-1.5">
                     <RefreshCw
                       className={`w-3 h-3 ${isRecalculating ? "animate-spin" : ""}`}
+                      strokeWidth={1.5}
                     />
                     {isRecalculating ? "Recalculando..." : "Recalcular Score"}
                   </button>
@@ -425,7 +438,10 @@ export function LeadDetailPanel({
                       Valor Estimado (MXN)
                     </label>
                     <div className="relative">
-                      <DollarSign className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400" />
+                      <DollarSign
+                        className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-400"
+                        strokeWidth={1.5}
+                      />
                       <input
                         type="number"
                         value={lead.estimated_value || ""}

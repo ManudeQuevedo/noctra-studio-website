@@ -115,7 +115,10 @@ export function NotificationsDropdown({
       <button
         onClick={() => setIsOpen(!isOpen)}
         className="relative p-2 rounded-lg hover:bg-white/5 transition-colors group">
-        <Bell className="w-4 h-4 text-white/60 group-hover:text-white transition-colors" />
+        <Bell
+          className="w-4 h-4 text-white/60 group-hover:text-white transition-colors"
+          strokeWidth={1.5}
+        />
         {unreadCount > 0 && (
           <span className="absolute -top-1 -right-1 w-4 h-4 bg-emerald-500 text-black text-[9px] font-black rounded-full flex items-center justify-center border-2 border-[#050505]">
             {unreadCount > 9 ? "9+" : unreadCount}
@@ -139,7 +142,10 @@ export function NotificationsDropdown({
           <div className="max-h-[320px] overflow-y-auto forge-scroll custom-scrollbar">
             {notifications.length === 0 ? (
               <div className="p-8 text-center flex flex-col items-center">
-                <Bell className="w-6 h-6 text-white/10 mb-2" />
+                <Bell
+                  className="w-6 h-6 text-white/10 mb-2"
+                  strokeWidth={1.5}
+                />
                 <p className="text-xs text-white/30">
                   No tienes notificaciones
                 </p>

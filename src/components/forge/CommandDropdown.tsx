@@ -122,20 +122,20 @@ export function CommandDropdown({
             <button
               onClick={() => onSelect("/forge/proposals/new")}
               className="w-full flex items-center gap-3 px-3 py-2 hover:bg-white/5 rounded-md text-sm text-white/80 transition-colors text-left">
-              <StickyNote className="w-4 h-4 text-white/40" />{" "}
+              <StickyNote className="w-4 h-4 text-white/40" strokeWidth={1.5} />{" "}
               {t("acciones.nuevaPropuesta")}
             </button>
             <button
               onClick={() => onSelect("/forge/leads/new")}
               className="w-full flex items-center gap-3 px-3 py-2 hover:bg-white/5 rounded-md text-sm text-white/80 transition-colors text-left">
-              <Users className="w-4 h-4 text-white/40" />{" "}
+              <Users className="w-4 h-4 text-white/40" strokeWidth={1.5} />{" "}
               {t("acciones.nuevoLead")}
             </button>
           </div>
         </div>
       ) : loading ? (
         <div className="p-8 flex items-center justify-center text-white/40">
-          <Loader2 className="w-5 h-5 animate-spin" />
+          <Loader2 className="w-5 h-5 animate-spin" strokeWidth={1.5} />
         </div>
       ) : results.length > 0 ? (
         <div className="p-2">
@@ -155,7 +155,10 @@ export function CommandDropdown({
                 key={`${r.type}-${r.id}-${i}`}
                 onClick={() => onSelect(`${baseUrl}/${r.id}`)}
                 className="w-full flex items-center gap-3 px-3 py-2.5 hover:bg-white/5 rounded-md text-sm text-white/80 transition-colors text-left group">
-                <Icon className="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors" />
+                <Icon
+                  className="w-4 h-4 text-white/40 group-hover:text-emerald-400 transition-colors"
+                  strokeWidth={1.5}
+                />
                 <span className="truncate">{r.title}</span>
               </button>
             );

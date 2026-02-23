@@ -69,26 +69,26 @@ export function HistorialTab({ leadId, onActivityAdded }: HistorialTabProps) {
   const getIcon = (name: string) => {
     switch (name) {
       case "mail":
-        return <Mail className="w-4 h-4" />;
+        return <Mail className="w-4 h-4" strokeWidth={1.5} />;
       case "phone":
-        return <PhoneCall className="w-4 h-4" />;
+        return <PhoneCall className="w-4 h-4" strokeWidth={1.5} />;
       case "file":
-        return <FileText className="w-4 h-4" />;
+        return <FileText className="w-4 h-4" strokeWidth={1.5} />;
       case "pen":
-        return <PenTool className="w-4 h-4" />;
+        return <PenTool className="w-4 h-4" strokeWidth={1.5} />;
       case "eye":
-        return <Eye className="w-4 h-4" />;
+        return <Eye className="w-4 h-4" strokeWidth={1.5} />;
       case "check":
-        return <CheckCircle2 className="w-4 h-4" />;
+        return <CheckCircle2 className="w-4 h-4" strokeWidth={1.5} />;
       case "x":
-        return <XCircle className="w-4 h-4" />;
+        return <XCircle className="w-4 h-4" strokeWidth={1.5} />;
       case "refresh":
-        return <RefreshCw className="w-4 h-4" />;
+        return <RefreshCw className="w-4 h-4" strokeWidth={1.5} />;
       case "meeting":
-        return <Users className="w-4 h-4" />;
+        return <Users className="w-4 h-4" strokeWidth={1.5} />;
       case "note":
       default:
-        return <StickyNote className="w-4 h-4" />;
+        return <StickyNote className="w-4 h-4" strokeWidth={1.5} />;
     }
   };
 
@@ -127,7 +127,7 @@ export function HistorialTab({ leadId, onActivityAdded }: HistorialTabProps) {
                   ? "bg-emerald-500/10 border-emerald-500/50 text-emerald-400"
                   : "bg-white/[0.02] border-white/5 text-neutral-400 hover:text-white"
               }`}>
-              <btn.icon className="w-3 h-3" />
+              <btn.icon className="w-3 h-3" strokeWidth={1.5} />
               {btn.label}
             </button>
           ))}

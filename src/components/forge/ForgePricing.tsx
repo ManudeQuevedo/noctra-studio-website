@@ -109,6 +109,7 @@ export const ForgePricing = () => {
               <Sparkles
                 size={24}
                 className={isEarlyAccess ? "animate-pulse" : ""}
+                strokeWidth={1.5}
               />
             </div>
             <div className="flex-1">
@@ -203,6 +204,7 @@ export const ForgePricing = () => {
                                 ? "text-[#10b981]"
                                 : "text-white/40",
                             )}
+                            strokeWidth={1.5}
                           />
                         </div>
                         <span className="text-neutral-300 text-sm leading-snug">
@@ -223,7 +225,7 @@ export const ForgePricing = () => {
                         : "bg-white/5 text-white hover:bg-white/10 border border-white/10",
                     )}>
                     {isFree ? "Empezar Gratis" : "Elegir Plan"}
-                    <ArrowRight size={16} />
+                    <ArrowRight size={16} strokeWidth={1.5} />
                   </Link>
                 </div>
 

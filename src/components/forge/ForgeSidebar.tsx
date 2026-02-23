@@ -158,7 +158,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
                 : "opacity-100 translate-x-0"
             }`}
             title="Contraer menú">
-            <ChevronLeft className="w-4 h-4" />
+            <ChevronLeft className="w-4 h-4" strokeWidth={1.5} />
           </button>
         </div>
 
@@ -169,7 +169,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
               onClick={toggleCollapse}
               className="p-1 rounded bg-white/5 hover:bg-white/10 text-neutral-400 hover:text-white transition-colors"
               title="Expandir menú">
-              <ChevronRight className="w-4 h-4" />
+              <ChevronRight className="w-4 h-4" strokeWidth={1.5} />
             </button>
           </div>
         )}
@@ -201,6 +201,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
                       }`}>
                       <item.icon
                         className={`w-4 h-4 flex-none ${isActive ? "text-emerald-400" : ""}`}
+                        strokeWidth={1.5}
                       />
 
                       {!isCollapsed && (
@@ -256,6 +257,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
             }`}>
             <BookOpen
               className={`w-4 h-4 flex-none ${pathname.includes("/forge/docs") ? "text-emerald-400" : ""}`}
+              strokeWidth={1.5}
             />
             {!isCollapsed && (
               <span className="truncate">{t("documentacion")}</span>
@@ -281,7 +283,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
           />
         </div>
         <div className="w-8 h-8 rounded-full bg-white/5 border border-white/10 flex items-center justify-center">
-          <User className="w-4 h-4 text-white/50" />
+          <User className="w-4 h-4 text-white/50" strokeWidth={1.5} />
         </div>
       </header>
     </>
