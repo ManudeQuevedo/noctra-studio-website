@@ -20,6 +20,7 @@ import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { format } from "date-fns";
 import { ProposalItemsList } from "@/components/forge/proposals/ProposalItemsList";
+import { AccountingSyncBadge } from "@/components/forge/finance/AccountingSyncBadge";
 
 const DEFAULT_CLAUSES = [
   {
@@ -263,6 +264,21 @@ export default function ContractBuilderClient({
                 </>
               )}
             </div>
+
+            {contract.noctra_signed && contract.signed_by_client && (
+              <AccountingSyncBadge
+                invoiceId={contract.id}
+                status={contract.accounting_sync_status || "pending"}
+                syncedAt={contract.accounting_synced_at}
+                error={contract.accounting_sync_error}
+                externalId={contract.accounting_external_id}
+                onSyncComplete={() => {
+                  // A full refresh or re-fetch would be ideal here if not relying completely on Next.js revalidatePath
+                  window.location.reload();
+                }}
+              />
+            )}
+
             <button
               className="flex items-center gap-2 px-4 py-2 bg-emerald-600 hover:bg-emerald-500 text-white text-[10px] font-black uppercase tracking-widest transition-all disabled:opacity-50"
               disabled={!contract.noctra_signed}>

@@ -13,42 +13,56 @@ export default function ForgeLoginPage() {
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // MFA State
   const [showMFA, setShowMFA] = useState(false);
   const [mfaFactorId, setMfaFactorId] = useState<string | null>(null);
   const [otpCode, setOtpCode] = useState(["", "", "", "", "", ""]);
   const [isVerifyingMFA, setIsVerifyingMFA] = useState(false);
   const [mfaError, setMfaError] = useState<string | null>(null);
   const [shake, setShake] = useState(false);
+
   const router = useRouter();
   const searchParams = useSearchParams();
   const reason = searchParams.get("reason");
-  const supabase = createClient(false); // Non-persistent sessions for forge
+  const supabase = createClient(); // Nota: Eliminé el 'false' si tu cliente no lo soporta, ajustalo según tu utils
+
+  // Función auxiliar para verificar si se requiere MFA
+  const checkMfaRequirement = async () => {
+    const { data: aal } =
+      await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
+
+    // Si el usuario ya tiene una sesión pero está en nivel AAL1 y puede subir a AAL2
+    if (aal && aal.currentLevel === "aal1" && aal.nextLevel === "aal2") {
+      const { data: factors } = await supabase.auth.mfa.listFactors();
+      const verifiedFactors =
+        factors?.totp.filter((f) => f.status === "verified") || [];
+
+      if (verifiedFactors.length > 0) {
+        setMfaFactorId(verifiedFactors[0].id);
+        setShowMFA(true);
+        return true; // Requiere MFA
+      }
+    }
+    return false; // No requiere MFA o ya está verificado
+  };
 
   useEffect(() => {
-    // Check if user is already logged in
     const checkUser = async () => {
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
+      try {
+        const {
+          data: { session },
+        } = await supabase.auth.getSession();
 
-      if (session) {
-        // Check AAL
-        const { data: aal } =
-          await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
-
-        if (aal?.nextLevel === "aal2" && aal?.currentLevel !== "aal2") {
-          // User is enrolled in MFA but only at AAL1, show MFA verification
-          const { data: factors } = await supabase.auth.mfa.listFactors();
-          const verifiedFactors =
-            factors?.totp.filter((f) => f.status === "verified") || [];
-          if (verifiedFactors.length > 0) {
-            setMfaFactorId(verifiedFactors[0].id);
-            setShowMFA(true);
-            return;
+        if (session) {
+          const requiresMfa = await checkMfaRequirement();
+          if (!requiresMfa) {
+            // Solo redirigir si NO necesita MFA
+            // router.push("/forge"); // Comentado para evitar loops si el usuario vino explícitamente al login
           }
         }
-
-        router.push("/forge");
+      } catch (err) {
+        console.error("Session check error on login", err);
       }
     };
     checkUser();
@@ -74,12 +88,16 @@ export default function ForgeLoginPage() {
         throw loginError;
       }
 
-      const {
-        data: { session },
-      } = await supabase.auth.getSession();
-      if (session) {
+      // CORRECCIÓN IMPORTANTE:
+      // No redirigir inmediatamente. Verificar si se requiere MFA primero.
+      const requiresMfa = await checkMfaRequirement();
+
+      if (!requiresMfa) {
         sessionStorage.setItem("session_start", Date.now().toString());
         router.push("/forge");
+      } else {
+        // Si requiere MFA, el estado showMFA se puso en true dentro de checkMfaRequirement
+        setLoading(false);
       }
     } catch (err: any) {
       setError(err.message);
@@ -126,6 +144,8 @@ export default function ForgeLoginPage() {
   };
 
   const handleOtpChange = (index: number, value: string) => {
+    if (isNaN(Number(value))) return; // Solo permitir números
+
     if (value.length > 1) {
       const pasted = value.slice(0, 6).split("");
       const newOtp = [...otpCode];
@@ -133,6 +153,9 @@ export default function ForgeLoginPage() {
         if (index + i < 6) newOtp[index + i] = char;
       });
       setOtpCode(newOtp);
+      // Enfocar el último llenado
+      const nextIndex = Math.min(index + pasted.length, 5);
+      document.getElementById(`otp-${nextIndex}`)?.focus();
       return;
     }
 
@@ -146,7 +169,10 @@ export default function ForgeLoginPage() {
     }
   };
 
-  const handleOtpKeyDown = (index: number, e: React.KeyboardEvent) => {
+  const handleOtpKeyDown = (
+    index: number,
+    e: React.KeyboardEvent<HTMLInputElement>,
+  ) => {
     if (e.key === "Backspace" && !otpCode[index] && index > 0) {
       const prevInput = document.getElementById(`otp-${index - 1}`);
       if (prevInput) prevInput.focus();
@@ -173,7 +199,7 @@ export default function ForgeLoginPage() {
           </Link>
         </div>
 
-        {/* Cntent Container */}
+        {/* Content Container */}
         <div className="w-full max-w-md mx-auto mt-20 md:mt-0 pb-16">
           {/* Header Typography */}
           <div className="space-y-1 md:space-y-2">
@@ -232,7 +258,6 @@ export default function ForgeLoginPage() {
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
-                    onKeyDown={(e) => e.key === "Enter" && handleLogin(e)}
                     required
                     className={`w-full bg-white/5 border ${error ? "border-red-500/50 focus:border-red-500/50" : "border-white/10 focus:border-emerald-500/50"} rounded-lg px-4 py-3 text-white placeholder:text-white/15 focus:outline-none focus:ring-0 transition-colors duration-200`}
                     placeholder="nombre@empresa.com"
@@ -248,7 +273,6 @@ export default function ForgeLoginPage() {
                       type={showPassword ? "text" : "password"}
                       value={password}
                       onChange={(e) => setPassword(e.target.value)}
-                      onKeyDown={(e) => e.key === "Enter" && handleLogin(e)}
                       required
                       className={`w-full bg-white/5 border ${error ? "border-red-500/50 focus:border-red-500/50" : "border-white/10 focus:border-emerald-500/50"} rounded-lg px-4 py-3 text-white placeholder:text-white/15 focus:outline-none focus:ring-0 transition-colors duration-200`}
                       placeholder="••••••••"
@@ -362,17 +386,14 @@ export default function ForgeLoginPage() {
         </div>
       </div>
 
-      {/* Panel Derecho — Imagen (40% width on md, hidden on mobile) */}
+      {/* Panel Derecho — Imagen */}
       <div className="hidden md:flex md:w-[40%] h-screen relative border-l border-white/5">
         <img
           src="/images/login-client-portal.jpg"
           alt="Noctra Studio Portal"
           className="object-cover w-full h-full"
         />
-        {/* Dark Gradient Overlay */}
         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-
-        {/* Embedded Text */}
         <div className="absolute bottom-12 left-12 right-12">
           <p className="text-white font-bold text-xl leading-snug">
             "Diseñamos y construimos

@@ -30,8 +30,7 @@ export function ForgeFooter() {
               </div>
             </Link>
             <p className="text-sm text-neutral-400 leading-relaxed max-w-xs font-medium">
-              El CRM definitivo para agencias creativas y digitales. Diseñado
-              para que nada se pierda.
+              Construido por diseñadores, para creativos.
             </p>
           </div>
 

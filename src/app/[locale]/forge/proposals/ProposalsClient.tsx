@@ -37,7 +37,7 @@ type Proposal = {
   total: number;
   valid_until: string;
   created_at: string;
-  client_token?: string;
+  public_uuid?: string;
   lead: {
     name: string;
     email: string;
@@ -93,14 +93,17 @@ function ProposalActionsDropdown({
         position: "fixed",
         top: position.top,
         left: position.left,
-        zIndex: 99999, // Ensure it's above everything including sidebar
+        zIndex: 50, // Changed from 99999 to 50 to ensure custom cursor appears above it
       }}
       className="w-40 bg-[#111] border border-[#1f1f1f] shadow-xl rounded-sm py-1"
       onClick={(e) => e.stopPropagation()}>
       {/* EDITAR — draft, sent, viewed */}
       {["draft", "sent", "viewed"].includes(proposal.status) && (
         <button
-          onClick={() => router.push(`/forge/proposals/${proposal.id}/edit`)}
+          onClick={(e) => {
+            e.stopPropagation();
+            router.push(`/forge/proposals/${proposal.id}/edit`);
+          }}
           className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-white hover:bg-[#1a1a1a] transition-colors text-left">
           <Edit3 className="w-3.5 h-3.5" />
           EDITAR
@@ -109,9 +112,10 @@ function ProposalActionsDropdown({
 
       {/* PREVISUALIZAR — always */}
       <button
-        onClick={() =>
-          window.open(`/client/proposal/${proposal.client_token}`, "_blank")
-        }
+        onClick={(e) => {
+          e.stopPropagation();
+          window.open(`/client/proposal/${proposal.public_uuid}`, "_blank");
+        }}
         className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-white hover:bg-[#1a1a1a] transition-colors text-left">
         <Eye className="w-3.5 h-3.5" />
         PREVISUALIZAR
@@ -120,7 +124,10 @@ function ProposalActionsDropdown({
       {/* CONVERT TO CONTRACT - accepted */}
       {proposal.status === "accepted" && (
         <button
-          onClick={() => onConvertToContract(proposal)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onConvertToContract(proposal);
+          }}
           className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-emerald-400 hover:bg-[#1a1a1a] transition-colors text-left">
           <FileText className="w-3.5 h-3.5" />
           CONTRATO
@@ -130,7 +137,10 @@ function ProposalActionsDropdown({
       {/* ELIMINAR — draft only */}
       {proposal.status === "draft" && (
         <button
-          onClick={() => onDelete(proposal.id)}
+          onClick={(e) => {
+            e.stopPropagation();
+            onDelete(proposal.id);
+          }}
           className="w-full flex items-center gap-2 px-4 py-2.5 text-[10px] font-mono uppercase tracking-widest text-red-400 hover:bg-[#1a1a1a] transition-colors text-left border-t border-[#1f1f1f]">
           <Trash2 className="w-3.5 h-3.5" />
           ELIMINAR

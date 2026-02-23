@@ -95,7 +95,7 @@ export function Header() {
       }
     };
 
-    // Scroll Lock REMOVED by user request to keep scrollbar visible.
+    // Scroll Lock REMOVED to keep scrollbar visible.
     // The "Noctra Style" scrollbar now overlays or persists without shifting layout.
     if (isOpen) {
       document.addEventListener("keydown", handleKeyDown);

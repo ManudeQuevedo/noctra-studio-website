@@ -15,24 +15,30 @@ import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { useTranslations } from "next-intl";
 
-export const ForgePricing = () => {
+export const ForgePricing = ({
+  userType = "pro",
+}: {
+  userType?: "pro" | "agency";
+}) => {
   const t = useTranslations("forge.suscripcion");
   const [billing, setBilling] = useState<"monthly" | "annual">("monthly");
   const [isEarlyAccess, setIsEarlyAccess] = useState(true);
 
-  const plans = ["free", "starter", "growth", "enterprise"];
+  const plans = ["solo", "studio", "agency"];
 
   const getPrice = (planKey: string) => {
-    if (planKey === "free") return "$0";
+    const pricingData: Record<string, { monthly: number; annual: number }> = {
+      solo: { monthly: 29, annual: 24 },
+      studio: { monthly: 49, annual: 39 },
+      agency: { monthly: 99, annual: 79 },
+    };
 
-    let key = "precio";
-    if (isEarlyAccess) {
-      key = billing === "annual" ? "precioEAAnual" : "precioEA";
-    } else {
-      key = billing === "annual" ? "precioAnual" : "precio";
-    }
+    const price =
+      billing === "monthly"
+        ? pricingData[planKey].monthly
+        : pricingData[planKey].annual;
 
-    return t(`planes.${planKey}.${key}`);
+    return `$${price}`;
   };
 
   return (
@@ -48,8 +54,9 @@ export const ForgePricing = () => {
             {t("titulo")}
           </p>
           <h2 className="text-4xl md:text-6xl font-bold tracking-tight text-white mb-6">
-            Precios diseñados para <br className="hidden md:block" /> agencias
-            de todos los tamaños.
+            Precios diseñados para <br className="hidden md:block" />{" "}
+            {userType === "pro" ? "creativos" : "agencias"} de todos los
+            tamaños.
           </h2>
           <p className="text-neutral-400 text-lg max-w-2xl mx-auto leading-relaxed">
             Escala tu infraestructura a medida que crece tu equipo.{" "}
@@ -89,6 +96,10 @@ export const ForgePricing = () => {
               )}
             </button>
           </div>
+
+          <p className="text-[10px] uppercase tracking-widest text-white/30 font-bold">
+            Precios en USD
+          </p>
 
           {/* Early Access Highlight */}
           <div
@@ -138,24 +149,22 @@ export const ForgePricing = () => {
           </div>
         </div>
 
-        {/* --- PLANS GRID --- */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {plans.map((plan) => {
-            const isStarter = plan === "starter";
-            const isGrowth = plan === "growth";
-            const isEnterprise = plan === "enterprise";
-            const isFree = plan === "free";
+            const isStudio = plan === "studio";
+            const isAgency = plan === "agency";
+            const isSolo = plan === "solo";
 
             return (
               <div
                 key={plan}
                 className={cn(
                   "relative flex flex-col rounded-3xl p-8 transition-all duration-500 overflow-hidden group",
-                  isGrowth
+                  isAgency
                     ? "bg-[#10b981]/[0.03] border-[#10b981]/30 border-2 lg:-translate-y-4 shadow-[0_20px_60px_rgba(16,185,129,0.1)]"
                     : "bg-white/[0.02] border border-white/10 hover:border-white/20",
                 )}>
-                {isGrowth && (
+                {isAgency && (
                   <div className="absolute top-0 right-0">
                     <div className="bg-[#10b981] text-black text-[10px] font-black uppercase tracking-widest py-1 px-10 rotate-45 translate-x-8 translate-y-4">
                       Popular
@@ -164,55 +173,83 @@ export const ForgePricing = () => {
                 )}
 
                 <div className="mb-8 relative z-10">
-                  <h3
-                    className={cn(
-                      "text-xs font-black uppercase tracking-widest mb-4",
-                      isGrowth || isStarter
-                        ? "text-[#10b981]"
-                        : "text-white/40",
-                    )}>
-                    {t(`planes.${plan}.nombre`)}
-                  </h3>
+                  <div className="flex items-center justify-between mb-4">
+                    <h3
+                      className={cn(
+                        "text-xs font-black uppercase tracking-widest",
+                        isStudio || isAgency
+                          ? "text-[#10b981]"
+                          : "text-white/40",
+                      )}>
+                      {isSolo ? "Solo" : isStudio ? "Studio" : "Agency"}
+                    </h3>
+                    {(isStudio || isAgency) && (
+                      <span className="text-[9px] bg-[#10b981]/10 text-[#10b981] px-2 py-0.5 rounded-full font-bold uppercase tracking-tighter border border-[#10b981]/20">
+                        Reemplaza 4 apps
+                      </span>
+                    )}
+                  </div>
                   <div className="flex items-baseline gap-1 mb-2">
                     <span className="text-4xl font-bold text-white tracking-tight">
                       {getPrice(plan)}
                     </span>
                     <span className="text-white/30 text-xs font-medium">
-                      / {billing === "monthly" ? "mes" : "mes"}
+                      {isSolo ? "/mes" : "/usuario/mes"}
                     </span>
                   </div>
                   <p className="text-neutral-400 text-sm leading-relaxed">
-                    {t(`planes.${plan}.tagline`)}
+                    {isSolo
+                      ? "Para el Freelancer que no para."
+                      : isStudio
+                        ? "Para equipos con hambre."
+                        : "Para casas creativas en escala."}
                   </p>
                 </div>
 
                 <div className="flex-1 space-y-4 mb-8 relative z-10">
-                  {(t.raw(`planes.${plan}.features`) as string[]).map(
-                    (feature, i) => (
-                      <div key={i} className="flex items-start gap-3">
-                        <div
+                  {(isSolo
+                    ? [
+                        "1 Usuario (Tú)",
+                        "Proyectos Ilimitados",
+                        "CRM & Pipeline",
+                        "Proposal Builder",
+                        "Portal de Clientes",
+                      ]
+                    : isStudio
+                      ? [
+                          "Hasta 10 Usuarios",
+                          "Todo en Solo",
+                          "Haiku AI Integration",
+                          "White-Labeling Básico",
+                          "Webhooks & API",
+                        ]
+                      : [
+                          "Usuarios Ilimitados",
+                          "Todo en Studio",
+                          "Noctra AI (Sonnet 3.5)",
+                          "Métricas Financieras Avanzadas",
+                          "Soporte Prioritario 24/7",
+                        ]
+                  ).map((feature, i) => (
+                    <div key={i} className="flex items-start gap-3">
+                      <div
+                        className={cn(
+                          "mt-1 p-0.5 rounded-full shrink-0",
+                          !isSolo ? "bg-[#10b981]/20" : "bg-white/10",
+                        )}>
+                        <Check
+                          size={12}
                           className={cn(
-                            "mt-1 p-0.5 rounded-full shrink-0",
-                            isGrowth || isStarter
-                              ? "bg-[#10b981]/20"
-                              : "bg-white/10",
-                          )}>
-                          <Check
-                            size={12}
-                            className={cn(
-                              isGrowth || isStarter
-                                ? "text-[#10b981]"
-                                : "text-white/40",
-                            )}
-                            strokeWidth={1.5}
-                          />
-                        </div>
-                        <span className="text-neutral-300 text-sm leading-snug">
-                          {feature}
-                        </span>
+                            !isSolo ? "text-[#10b981]" : "text-white/40",
+                          )}
+                          strokeWidth={1.5}
+                        />
                       </div>
-                    ),
-                  )}
+                      <span className="text-neutral-300 text-sm leading-snug">
+                        {feature}
+                      </span>
+                    </div>
+                  ))}
                 </div>
 
                 <div className="relative z-10">
@@ -220,11 +257,11 @@ export const ForgePricing = () => {
                     href="/forge/login"
                     className={cn(
                       "w-full flex items-center justify-center gap-2 py-4 rounded-xl text-sm font-bold transition-all",
-                      isGrowth
+                      isAgency
                         ? "bg-white text-black hover:bg-neutral-200"
                         : "bg-white/5 text-white hover:bg-white/10 border border-white/10",
                     )}>
-                    {isFree ? "Empezar Gratis" : "Elegir Plan"}
+                    {isSolo ? "Empezar Gratis" : "Elegir Plan"}
                     <ArrowRight size={16} strokeWidth={1.5} />
                   </Link>
                 </div>

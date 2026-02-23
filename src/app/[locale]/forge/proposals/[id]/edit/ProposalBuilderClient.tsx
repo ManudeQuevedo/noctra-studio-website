@@ -13,12 +13,19 @@ import {
   Check,
   AlertCircle,
   Loader2,
+  FileSignature,
+  Link2,
+  FileCheck,
+  Info,
+  StickyNote,
 } from "lucide-react";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { ProposalItemsList } from "@/components/forge/proposals/ProposalItemsList";
 import { format } from "date-fns";
 import { updateProposalAction } from "@/app/actions/proposals";
+import { generateSigningLink } from "@/app/actions/sign-actions";
+import { AuditTrailBadge } from "@/components/sign/AuditTrailBadge";
 
 export default function ProposalBuilderClient({
   initialProposal,
@@ -28,9 +35,11 @@ export default function ProposalBuilderClient({
   const [proposal, setProposal] = useState(initialProposal);
   const [isSaving, setIsSaving] = useState(false);
   const [lastSaved, setLastSaved] = useState<Date | null>(null);
-  const [activeTab, setActiveTab] = useState<"content" | "items" | "preview">(
-    "content",
-  );
+  const [activeTab, setActiveTab] = useState<
+    "content" | "items" | "preview" | "signatures"
+  >("content");
+  const [isGeneratingLink, setIsGeneratingLink] = useState(false);
+  const [copyFeedback, setCopyFeedback] = useState(false);
   const supabase = createClient();
 
   const handleAutoSave = async (data: any) => {
@@ -118,6 +127,47 @@ export default function ProposalBuilderClient({
             <Eye className="w-3.5 h-3.5" />
             Previsualizar
           </button>
+
+          {proposal.status !== "SIGNED" && (
+            <button
+              disabled={isGeneratingLink || !proposal.title}
+              onClick={async () => {
+                setIsGeneratingLink(true);
+                try {
+                  // Pass the lead's organization_id or default if missing
+                  const orgId =
+                    proposal.lead?.organization_id ||
+                    "00000000-0000-0000-0000-000000000000";
+                  const { hash, data } = await generateSigningLink(
+                    proposal.id,
+                    "proposal",
+                    orgId,
+                  );
+
+                  // Store envelope details in local state for UI updates
+                  setProposal((prev: any) => ({
+                    ...prev,
+                    signing_hash: hash,
+                    envelope: data,
+                  }));
+                  setActiveTab("signatures");
+                } catch (err) {
+                  alert(
+                    "Error al generar link de firma. " + (err as Error).message,
+                  );
+                } finally {
+                  setIsGeneratingLink(false);
+                }
+              }}
+              className="flex items-center gap-2 px-4 py-2 bg-emerald-500/10 hover:bg-emerald-500/20 border border-emerald-500/20 text-[10px] font-mono uppercase tracking-widest text-emerald-500 transition-all">
+              {isGeneratingLink ? (
+                <Loader2 className="w-3.5 h-3.5 animate-spin" />
+              ) : (
+                <FileSignature className="w-3.5 h-3.5" />
+              )}
+              {proposal.signing_hash ? "Re-generar Link" : "Solicitar Firma"}
+            </button>
+          )}
 
           <button
             disabled={

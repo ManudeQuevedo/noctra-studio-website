@@ -25,11 +25,15 @@ import {
   Layers,
   SearchCode,
 } from "lucide-react";
-import { ForgePricing } from "./ForgePricing";
+import NextImage from "next/image";
+import { PricingWithROI } from "./PricingWithROI";
+import { MarketComparison } from "./MarketComparison";
+import { UnifiedStack } from "./UnifiedStack";
 import { ForgeNavbar } from "./ForgeNavbar";
 import { ForgeFooter } from "./ForgeFooter";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
+import { m, AnimatePresence } from "framer-motion";
 
 // --- DYNAMIC ICON HELPER ---
 const DynamicIcon = ({
@@ -94,6 +98,8 @@ const FAQItem = ({
 };
 
 export default function ForgeLanding() {
+  const [userType, setUserType] = useState<"pro" | "agency">("pro");
+
   const painPoints = [
     {
       icon: "FileText",
@@ -130,26 +136,26 @@ export default function ForgeLanding() {
   const steps = [
     {
       step: "01",
-      title: "Captura el lead",
-      desc: "Agrega contactos manualmente o conecta tu formulario web. Noctra AI te alerta cuando un lead lleva más de 48h sin contacto.",
+      title: "Nunca vuelvas a perder un lead ante el caos",
+      desc: "Captura automáticamente cada contacto. Noctra AI te alerta al instante para que ninguna oportunidad se enfríe.",
       icon: "UserPlus",
     },
     {
       step: "02",
-      title: "Envía la propuesta",
-      desc: "Crea propuestas profesionales en minutos con el Proposal Builder. El cliente la recibe con tu branding y puede aprobarla en línea.",
+      title: "Envía propuestas en 3 clics, no en 3 horas",
+      desc: "Cierra tratos a la velocidad del pensamiento. Propuestas visuales de alto impacto que tus clientes pueden aprobar desde su móvil.",
       icon: "FileText",
     },
     {
       step: "03",
-      title: "Gestiona el proyecto",
-      desc: "Una vez cerrado el trato, el proyecto queda vinculado al cliente con fechas, entregables y seguimiento de estatus en tiempo real.",
+      title: "Claridad total en cada proyecto",
+      desc: "La respuesta a '¿en qué vamos con esto?' siempre está aquí. Tu equipo sincronizado y tus clientes informados sin enviar un solo email.",
       icon: "FolderOpen",
     },
     {
       step: "04",
-      title: "Mide y crece",
-      desc: "El dashboard te muestra métricas reales: tasa de cierre, forecast de ingresos, proyectos activos y oportunidades en pipeline.",
+      title: "Deja de adivinar tus márgenes",
+      desc: "Ve exactamente cuánto estás ganando en tiempo real. Análisis profundo de rentabilidad para que escales con datos, no con suposiciones.",
       icon: "BarChart2",
     },
   ];
@@ -253,28 +259,60 @@ export default function ForgeLanding() {
           </span>
         </div>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter max-w-5xl mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-150">
-          Del primer contacto
-          <br className="hidden md:block" /> al proyecto entregado.
-          <br />
-          <span className="text-[#10b981]">En una sola herramienta.</span>
+          El Sistema Operativo
+          <br className="hidden md:block" /> para Negocios Creativos.
         </h1>
-        <p className="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed mb-10 text-balance animate-in fade-in slide-in-from-bottom-12 duration-1000 delay-300">
-          Noctra Forge es el CRM diseñado para agencias digitales. Gestiona
-          clientes, propuestas, proyectos y tu pipeline con inteligencia
-          artificial integrada.
-        </p>
-        <div className="flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500">
+
+        {/* --- PERSONA TOGGLE --- */}
+        <div className="flex bg-white/5 border border-white/10 p-1 rounded-full mb-10 relative z-10 animate-in fade-in duration-1000 delay-200">
+          <button
+            onClick={() => setUserType("pro")}
+            className={cn(
+              "px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 min-h-[44px]",
+              userType === "pro"
+                ? "bg-white/10 text-white"
+                : "text-white/40 hover:text-white/60",
+            )}>
+            Soy Freelancer
+          </button>
+          <button
+            onClick={() => setUserType("agency")}
+            className={cn(
+              "px-6 py-2 rounded-full text-xs font-bold uppercase tracking-widest transition-all duration-300 min-h-[44px]",
+              userType === "agency"
+                ? "bg-white/10 text-white"
+                : "text-white/40 hover:text-white/60",
+            )}>
+            Soy Agencia
+          </button>
+        </div>
+
+        <div className="min-h-[80px] mb-10 flex items-center justify-center">
+          <AnimatePresence mode="wait">
+            <m.p
+              key={userType}
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              exit={{ opacity: 0, y: -10 }}
+              transition={{ duration: 0.3 }}
+              className="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed text-balance">
+              {userType === "pro"
+                ? "Deja de perder tiempo en admin. Gestiona clientes, propuestas y cobros en un solo lugar."
+                : "Escala tus operaciones. Unifica tu equipo, proyectos y finanzas en una sola verdad."}
+            </m.p>
+          </AnimatePresence>
+        </div>
+
+        <div className="flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500 relative z-10">
           <div className="flex flex-col sm:flex-row items-center gap-4 flex-wrap justify-center w-full">
-            {/* Beta Coming Soon - Temporarily Disabled */}
-            <button
-              disabled
-              className="flex items-center justify-center gap-2 bg-white/10 text-white/40 font-bold rounded-full h-12 px-8 text-base cursor-not-allowed border border-white/10 w-full sm:w-auto">
-              Beta Próximamente <ArrowRight size={18} />
-            </button>
-            {/* Original Link: /forge/login */}
+            <Link
+              href="/forge/login"
+              className="flex items-center justify-center gap-2 bg-white text-black font-bold rounded-full h-12 px-8 text-base hover:bg-gray-200 transition-all duration-300 w-full sm:w-auto">
+              Empezar Gratis <ArrowRight size={18} />
+            </Link>
             <a
               href="#demo"
-              className="flex items-center justify-center gap-2 rounded-full h-12 px-8 text-base border border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300 font-bold w-full sm:w-auto">
+              className="flex items-center justify-center gap-2 rounded-full h-12 px-8 text-base border border-white/10 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300 font-bold w-full sm:w-auto">
               Ver demo <ChevronDown size={16} />
             </a>
           </div>
@@ -299,7 +337,7 @@ export default function ForgeLanding() {
 
         <div className="mt-16 text-center animate-in fade-in duration-1000 delay-700">
           <p className="text-xs text-neutral-400 uppercase tracking-widest font-semibold flex items-center justify-center gap-2">
-            ✨ Construido por una agencia, para agencias
+            ✨ Construido por diseñadores, para creativos
           </p>
           <p className="text-[10px] text-neutral-500 mt-2 max-w-sm mx-auto">
             El sistema interno que usamos en Noctra Studio, ahora disponible
@@ -383,7 +421,9 @@ export default function ForgeLanding() {
       </section>
 
       {/* --- SECTION 4: HOW IT WORKS --- */}
-      <section className="py-20 md:py-28 px-6 border-t border-white/5">
+      <section
+        id="features"
+        className="py-20 md:py-28 px-6 border-t border-white/5">
         <div className="max-w-3xl mx-auto">
           <p className="text-[10px] sm:text-xs uppercase tracking-widest text-[#10b981] font-bold text-center mb-4">
             Flujo de trabajo
@@ -492,8 +532,107 @@ export default function ForgeLanding() {
         </div>
       </section>
 
+      {/* --- SECTION 5.5: STACK KILLER --- */}
+      <section className="py-20 md:py-32 px-6 border-t border-white/5 relative overflow-hidden bg-black">
+        <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom,rgba(16,185,129,0.02)_0%,transparent_70%)] pointer-events-none" />
+        <div className="max-w-5xl mx-auto relative z-10">
+          <div className="text-center mb-16">
+            <h2 className="text-4xl md:text-5xl font-bold tracking-tight text-white mb-6">
+              Deja de pagar por 5 herramientas.
+            </h2>
+            <p className="text-neutral-400 text-lg max-w-2xl mx-auto leading-relaxed">
+              Todo tu sistema operativo por el precio de una sola de tus apps
+              actuales. No más saltar entre pestañas.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+            {/* The Fragmented Stack */}
+            <div className="bg-white/[0.02] border border-white/5 rounded-3xl p-8 relative">
+              <div className="absolute top-4 left-4">
+                <span className="text-[10px] uppercase tracking-widest text-red-500/50 font-black">
+                  El Caos Actual
+                </span>
+              </div>
+              <div className="space-y-4 mt-8">
+                {[
+                  { name: "Asana/ClickUp", use: "Proyectos", price: "$13" },
+                  { name: "Slack/Teams", use: "Comunicación", price: "$8" },
+                  {
+                    name: "Harvest/Toggl",
+                    use: "Tiempo y Cobros",
+                    price: "$12",
+                  },
+                  { name: "Pipedrive/Hubspot", use: "CRM/Leads", price: "$15" },
+                ].map((tool, i) => (
+                  <div
+                    key={i}
+                    className="flex items-center justify-between p-4 rounded-xl bg-white/5 border border-white/5 opacity-60">
+                    <div className="flex flex-col">
+                      <span className="text-white font-medium text-sm">
+                        {tool.name}
+                      </span>
+                      <span className="text-[10px] text-neutral-500 uppercase">
+                        {tool.use}
+                      </span>
+                    </div>
+                    <span className="text-white/40 font-mono text-sm">
+                      {tool.price}
+                    </span>
+                  </div>
+                ))}
+              </div>
+              <div className="mt-8 pt-6 border-t border-white/5 flex justify-between items-center px-2">
+                <span className="text-neutral-400 font-bold uppercase tracking-widest text-xs">
+                  Total aproximado
+                </span>
+                <span className="text-red-500 font-mono text-xl font-bold">
+                  $48 <span className="text-xs">/usuario</span>
+                </span>
+              </div>
+            </div>
+
+            {/* The Noctra Solution */}
+            <div className="relative group">
+              <div className="absolute -inset-1 bg-gradient-to-r from-[#10b981] to-emerald-500 rounded-[34px] blur opacity-20 group-hover:opacity-40 transition duration-1000"></div>
+              <div className="relative bg-[#050505] border border-[#10b981]/30 rounded-3xl p-10 flex flex-col items-center justify-center text-center h-full">
+                <div className="w-20 h-20 rounded-2xl bg-[#10b981]/10 flex items-center justify-center mb-8">
+                  <NextImage
+                    src="/favicon-light.svg"
+                    alt="Noctra Forge"
+                    width={40}
+                    height={40}
+                  />
+                </div>
+                <h3 className="text-2xl font-bold text-white mb-4">
+                  Noctra Forge
+                </h3>
+                <p className="text-neutral-400 text-sm leading-relaxed mb-8 max-w-xs">
+                  Centraliza tu agencia. Recupera tu enfoque. Quédate con el
+                  margen.
+                </p>
+                <div className="flex flex-col items-center">
+                  <span className="text-[#10b981] text-5xl font-black tracking-tighter mb-2">
+                    $29<span className="text-sm font-bold">/mes</span>
+                  </span>
+                  <span className="text-[10px] uppercase tracking-[0.2em] text-[#10b981] font-bold">
+                    Eficiencia Radical
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* --- SECTION 5.7: MARKET COMPARISON --- */}
+      <MarketComparison />
+
+      {/* --- SECTION 5.8: UNIFIED STACK BENTO --- */}
+      <UnifiedStack />
+
       {/* --- SECTION 6: PRICING --- */}
-      <ForgePricing />
+      <PricingWithROI />
 
       {/* --- SECTION 7: FAQ --- */}
       <section className="py-20 md:py-28 px-6 border-t border-white/5">
@@ -518,18 +657,18 @@ export default function ForgeLanding() {
         <div className="max-w-2xl mx-auto relative z-10 flex flex-col items-center">
           <h2 className="text-5xl md:text-6xl font-bold tracking-tighter text-white leading-[1.1] mb-6">
             El sistema operativo <br />
-            para tu agencia.
+            para tu negocio.
           </h2>
           <p className="text-lg md:text-xl text-neutral-400 mb-10 max-w-xl leading-relaxed">
             Organiza tu pipeline. Entrega proyectos a tiempo. Escala tu
             operación hoy.
           </p>
           {/* Beta Coming Soon - Temporarily Disabled */}
-          <button
-            disabled
-            className="flex items-center justify-center gap-2 bg-white/10 text-white/40 font-bold h-12 rounded-full px-10 text-base cursor-not-allowed border border-white/10">
-            Beta Próximamente <ArrowRight size={18} />
-          </button>
+          <Link
+            href="/forge/login"
+            className="flex items-center justify-center gap-2 bg-white text-black font-bold h-12 rounded-full px-10 text-base hover:bg-gray-200 transition-all duration-300">
+            Empezar Gratis <ArrowRight size={18} />
+          </Link>
           {/* Original Link: /forge/login */}
           <p className="text-xs text-neutral-500 mt-6 tracking-wide">
             14 días gratis. Sin tarjeta. Cancela cuando quieras.

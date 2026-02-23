@@ -34,6 +34,7 @@ import {
 } from "@/app/actions/deliverables";
 import type { Deliverable } from "@/app/actions/deliverables";
 import { populateProjectTasks } from "@/lib/populate-tasks";
+import { AIProfitabilityDashboard } from "@/components/forge/projects/AIProfitabilityDashboard";
 
 type StatusHistory = {
   id: string;
@@ -380,7 +381,7 @@ export default function ForgeProjectsClient({
       await populateProjectTasks(
         supabase,
         data.id,
-        newProject.service_type || "web_presence"
+        newProject.service_type || "web_presence",
       );
 
       await supabase
@@ -1901,12 +1902,12 @@ function TareasTab({ project, tasks, setTasks, supabase, showToast }: any) {
               await populateProjectTasks(
                 supabase,
                 project.id,
-                project.service_type
+                project.service_type,
               );
               // Simple way to refresh: call parent's fetchTasks or just use the local state update
               // Since we are in TareasTab, we'd need to re-fetch.
               // We'll pass fetchTasks as a prop or just let the user re-select the project for now.
-              // Actually, better to pass fetchTasks. 
+              // Actually, better to pass fetchTasks.
               // But looking at the code, it's safer to just trigger a re-mount or similar.
               window.location.reload(); // Quick fix for now to ensure data sync
             }}
@@ -1916,20 +1917,20 @@ function TareasTab({ project, tasks, setTasks, supabase, showToast }: any) {
         </div>
       ) : (
         <div className="bg-[#111111] border border-neutral-900 p-6 flex flex-col gap-4">
-        <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-neutral-300">
-          <span>
-            Progreso general: {completedTasks}/{totalTasks} tareas
-          </span>
-          <span className="text-emerald-400">{overallPct}%</span>
+          <div className="flex justify-between items-center text-[10px] font-mono uppercase tracking-widest text-neutral-300">
+            <span>
+              Progreso general: {completedTasks}/{totalTasks} tareas
+            </span>
+            <span className="text-emerald-400">{overallPct}%</span>
+          </div>
+          <div className="w-full h-2 bg-neutral-900 overflow-hidden">
+            <div
+              className="h-full bg-emerald-500 transition-all duration-500 ease-out"
+              style={{ width: `${overallPct}%` }}
+            />
+          </div>
         </div>
-        <div className="w-full h-2 bg-neutral-900 overflow-hidden">
-          <div
-            className="h-full bg-emerald-500 transition-all duration-500 ease-out"
-            style={{ width: `${overallPct}%` }}
-          />
-        </div>
-      </div>
-    )}
+      )}
 
       {/* PHASES */}
       <div className="space-y-12">

@@ -21,6 +21,8 @@ import {
   ChevronRight,
   User,
   Shuffle,
+  FileSignature,
+  Megaphone,
 } from "lucide-react";
 
 export interface ForgeSidebarProps {
@@ -89,6 +91,7 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
       items: [
         { label: t("propuestas"), href: "/forge/proposals", icon: StickyNote },
         { label: t("contratos"), href: "/forge/contracts", icon: Send },
+        { label: "Documentos", href: "/forge/documents", icon: FileSignature },
         { label: t("clientes"), href: "/forge/clients", icon: UserCheck },
         { label: t("leads"), href: "/forge/leads", icon: Users },
       ],
@@ -98,6 +101,16 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
       items: [
         { label: "Migración", href: "/forge/migration", icon: Shuffle },
         { label: t("metricas"), href: "/forge/metrics", icon: BarChart3 },
+      ],
+    },
+    {
+      group: "Configuración",
+      items: [
+        {
+          label: "Marketing",
+          href: "/forge/settings/marketing",
+          icon: Megaphone,
+        },
       ],
     },
   ];

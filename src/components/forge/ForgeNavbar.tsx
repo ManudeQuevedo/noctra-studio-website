@@ -1,6 +1,7 @@
 "use client";
 
 import * as React from "react";
+import { createPortal } from "react-dom";
 import {
   LazyMotion,
   m,
@@ -12,17 +13,20 @@ import {
 } from "framer-motion";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
+import { useIntro } from "@/context/IntroContext";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { useMediaQuery } from "@/hooks/use-media-query";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 
 export function ForgeNavbar() {
+  const { isIntroComplete, initialized } = useIntro();
   const pathname = usePathname();
   const t = useTranslations("forge.navbar");
 
-  const [isScrolled, setIsScrolled] = React.useState(false);
   const [isOpen, setIsOpen] = React.useState(false);
+  const [lang, setLang] = React.useState<"es" | "en">("es");
+  const [isScrolled, setIsScrolled] = React.useState(false);
   const { scrollY } = useScroll();
   const headerRef = React.useRef<HTMLDivElement>(null);
 
@@ -34,47 +38,32 @@ export function ForgeNavbar() {
     setMounted(true);
   }, []);
 
+  // Prevent flash before intro check
+  const isHomePage =
+    pathname === "/" ||
+    (pathname as string) === "/en" ||
+    (pathname as string) === "/es";
+
+  // If we are on /forge landing, we might want to match the "waiting for intro" behavior
+  const shouldHide = !initialized;
+
+  // Intro Visibility Control
+  const showNavbar = isIntroComplete;
+
   // Close menu on route change
   React.useEffect(() => {
     setIsOpen(false);
   }, [pathname]);
 
-  // Handle Escape key & click outside
-  React.useEffect(() => {
-    const handleKeyDown = (event: KeyboardEvent) => {
-      if (event.key === "Escape") {
-        setIsOpen(false);
-      }
-    };
-
-    const handleClickOutside = (event: MouseEvent) => {
-      if (isMobile) return;
-      if (
-        headerRef.current &&
-        !headerRef.current.contains(event.target as Node)
-      ) {
-        setIsOpen(false);
-      }
-    };
-
-    if (isOpen) {
-      document.addEventListener("keydown", handleKeyDown);
-      document.addEventListener("mousedown", handleClickOutside);
-    }
-
-    return () => {
-      document.removeEventListener("keydown", handleKeyDown);
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, [isOpen, isMobile]);
-
-  useMotionValueEvent(scrollY, "change", (latest) => {
-    if (latest > 30) {
+  useMotionValueEvent(scrollY, "change", (latest: any) => {
+    if (typeof latest === "number" && latest > 50) {
       setIsScrolled(true);
     } else {
       setIsScrolled(false);
     }
   });
+
+  if (!mounted || shouldHide) return null;
 
   // --- DESKTOP VARIANTS (STRICT PARITY WITH Header.tsx) ---
   const desktopVariants: Variants = {
@@ -117,10 +106,7 @@ export function ForgeNavbar() {
     },
   };
 
-  // Hydration safety
-  if (!mounted) return null;
-
-  return (
+  return createPortal(
     <LazyMotion features={domAnimation}>
       {/*
           --- MOBILE STICKY ARCHITECTURE (PARITY WITH HEADER.TSX) ---
@@ -129,12 +115,12 @@ export function ForgeNavbar() {
       <m.div
         className="fixed top-0 left-0 w-full h-24 z-40 pointer-events-none md:hidden"
         initial={{ opacity: 0 }}
-        animate={{ opacity: isScrolled || isOpen ? 1 : 0 }}
+        animate={{ opacity: isScrolled ? 1 : 0 }}
         transition={{ duration: 0.3 }}>
         <div className="absolute inset-0 bg-black/80 backdrop-blur-md border-b border-white/5" />
       </m.div>
 
-      {/* Layer 2: Mobile Controls (Z-60) - Always fixed, same as Header.tsx */}
+      {/* Layer 2: Mobile Controls (Z-[60]) - Always fixed, same as Header.tsx */}
       <div className="fixed top-6 left-6 z-[60] h-12 flex items-center md:hidden mix-blend-difference">
         <Link href="/forge" className="flex items-center gap-2">
           <BrandLogo className="w-[100px] h-auto text-white" />
@@ -192,8 +178,11 @@ export function ForgeNavbar() {
         data-fixed-header
         className="fixed z-[50] top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
         initial={{ y: -20, opacity: 0 }}
-        animate={{ y: 0, opacity: 1 }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.2 }}>
+        animate={{
+          y: showNavbar ? 0 : -20,
+          opacity: showNavbar ? 1 : 0,
+        }}
+        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
         <m.div
           ref={headerRef}
           initial="closed"
@@ -297,23 +286,23 @@ export function ForgeNavbar() {
                         Navegación
                       </h4>
                       <div className="flex flex-col gap-6">
-                        <Link
-                          href="/forge"
+                        <a
+                          href="#features"
                           className="text-4xl font-bold text-white hover:text-emerald-500 transition-colors"
                           onClick={() => setIsOpen(false)}>
-                          Dashboard
-                        </Link>
-                        <Link
-                          href="/forge/login"
+                          Producto
+                        </a>
+                        <a
+                          href="#pricing"
                           className="text-4xl font-bold text-white hover:text-emerald-500 transition-colors"
                           onClick={() => setIsOpen(false)}>
-                          Mi Cuenta
-                        </Link>
+                          Precios
+                        </a>
                         <Link
-                          href="/forge/docs"
+                          href="/blog"
                           className="text-4xl font-bold text-white hover:text-emerald-500 transition-colors"
                           onClick={() => setIsOpen(false)}>
-                          Documentación
+                          Recursos
                         </Link>
                       </div>
                     </div>
@@ -322,20 +311,13 @@ export function ForgeNavbar() {
                         Otros
                       </h4>
                       <div className="flex flex-col gap-6">
-                        <Link
-                          href="/"
-                          className="text-2xl font-bold text-white/60 hover:text-white transition-colors flex items-center gap-3"
-                          onClick={() => setIsOpen(false)}>
-                          <ExternalLink className="w-5 h-5" />
-                          Sitio Principal
-                        </Link>
-                        <Link
-                          href="/contact"
+                        <a
+                          href="mailto:hola@noctra.studio"
                           className="text-2xl font-bold text-white/60 hover:text-white transition-colors flex items-center gap-3"
                           onClick={() => setIsOpen(false)}>
                           <ExternalLink className="w-5 h-5" />
                           Soporte Técnico
-                        </Link>
+                        </a>
                       </div>
                     </div>
                   </div>
@@ -358,45 +340,69 @@ export function ForgeNavbar() {
             style={{ overscrollBehavior: "none" }}>
             <div className="flex-1 flex flex-col justify-between w-full px-6 pb-24 pt-24">
               <div className="flex-1 flex flex-col items-center justify-center gap-10">
-                <Link
-                  href="/forge"
+                <a
+                  href="#features"
                   className="text-4xl font-bold text-white"
                   onClick={() => setIsOpen(false)}>
-                  Dashboard
-                </Link>
-                <Link
-                  href="/forge/login"
+                  Producto
+                </a>
+                <a
+                  href="#pricing"
                   className="text-4xl font-bold text-white"
                   onClick={() => setIsOpen(false)}>
-                  Acceder
-                </Link>
+                  Precios
+                </a>
                 <Link
-                  href="/forge/docs"
+                  href="/blog"
                   className="text-4xl font-bold text-white"
                   onClick={() => setIsOpen(false)}>
-                  Docs
+                  Recursos
                 </Link>
 
                 <div className="w-12 h-px bg-white/10 my-4" />
 
-                <Link
-                  href="/"
+                <a
+                  href="mailto:hola@noctra.studio"
                   className="text-xl font-medium text-white/40 flex items-center gap-2"
                   onClick={() => setIsOpen(false)}>
-                  <ArrowLeft className="w-4 h-4" />
-                  Regresar al inicio
-                </Link>
+                  Soporte
+                </a>
               </div>
 
-              <div className="w-full pt-8 border-t border-white/5 text-center">
+              <div className="w-full pt-8 border-t border-white/5 flex items-center justify-between">
                 <p className="text-[10px] font-mono text-white/20 uppercase tracking-[0.2em]">
                   Noctra Forge v1.0
                 </p>
+
+                {/* Language Toggle */}
+                <div className="flex items-center bg-white/5 rounded-full p-1 border border-white/10">
+                  <button
+                    onClick={() => setLang("es")}
+                    className={cn(
+                      "px-4 py-1.5 text-[10px] font-black rounded-full transition-all",
+                      lang === "es"
+                        ? "bg-white text-black"
+                        : "text-white/40 hover:text-white",
+                    )}>
+                    ES
+                  </button>
+                  <button
+                    onClick={() => setLang("en")}
+                    className={cn(
+                      "px-4 py-1.5 text-[10px] font-black rounded-full transition-all",
+                      lang === "en"
+                        ? "bg-white text-black"
+                        : "text-white/40 hover:text-white",
+                    )}>
+                    EN
+                  </button>
+                </div>
               </div>
             </div>
           </m.div>
         )}
       </AnimatePresence>
-    </LazyMotion>
+    </LazyMotion>,
+    document.body,
   );
 }
