@@ -11,13 +11,14 @@ import { formatDistanceToNow } from "date-fns";
 import {
   DollarSign,
   Clock,
-  Calendar,
   ChevronRight,
   Search,
-  Filter,
   Plus,
+  Filter,
   AlertCircle,
+  Kanban,
 } from "lucide-react";
+import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
 import { LeadDetailPanel } from "@/components/forge/LeadDetailPanel";
@@ -303,105 +304,135 @@ export default function PipelineClient({
       )}
 
       {/* Kanban Board */}
-      <div className="overflow-x-auto p-6 bg-[#050505] forge-scroll">
-        <DragDropContext onDragEnd={onDragEnd}>
-          <div className="flex gap-4 h-full min-w-max pb-4">
-            {STAGES.map((stage: any) => (
-              <div key={stage.id} className="w-[280px] flex flex-col shrink-0">
-                {/* Column Header */}
-                <div className="flex items-center justify-between mb-4 group px-2">
-                  <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 flex items-center gap-2">
-                    <span
-                      className={`w-1.5 h-1.5 rounded-full ${getStageColor(stage.id).split(" ")[0]}`}
-                    />
-                    {stage.label}
-                  </h3>
-                  <span className="text-[9px] font-mono text-neutral-700 bg-white/[0.02] px-1.5 py-0.5">
-                    {getLeadsByStage(stage.id).length}
-                  </span>
-                </div>
+      {leads.length === 0 ? (
+        <div className="px-6 py-10">
+          <div className="flex flex-col items-center justify-center text-center py-24 px-6 bg-[#111111] border border-dashed border-neutral-800 rounded-2xl relative overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 rounded-full blur-[80px] pointer-events-none" />
 
-                {/* Column Content */}
-                <div className="flex-1 bg-[#0d0d0d] border border-[#1f1f1f] flex flex-col min-h-0">
-                  {/* Special Handling for the 5th column split */}
-                  {stage.id === "cerrado" ? (
-                    <div className="flex-1 flex flex-col min-h-0">
-                      {/* Won Drop Zone */}
-                      <Droppable droppableId="resolution_cerrado">
-                        {(provided, snapshot) => (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                            className={`flex-1 min-h-[200px] p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-emerald-500/5" : ""}`}>
-                            <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
-                              WON / CERRADO
-                            </div>
-                            {getLeadsByStage("cerrado")
-                              .filter((l) => l.pipeline_status === "cerrado")
-                              .map((lead, index) => (
-                                <LeadCard
-                                  key={lead.id}
-                                  lead={lead}
-                                  index={index}
-                                  onClick={() => setSelectedLeadId(lead.id)}
-                                />
-                              ))}
-                            {provided.placeholder}
-                          </div>
-                        )}
-                      </Droppable>
+            <div className="w-16 h-16 bg-white/[0.03] border border-white/5 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-xl shadow-black/50">
+              <Kanban className="w-8 h-8 text-emerald-500" />
+            </div>
 
-                      {/* Lost Drop Zone */}
-                      <Droppable droppableId="resolution_perdido">
-                        {(provided, snapshot) => (
-                          <div
-                            {...provided.droppableProps}
-                            ref={provided.innerRef}
-                            className={`h-[40%] min-h-[150px] border-t border-neutral-900 p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-red-500/5" : ""}`}>
-                            <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
-                              LOST / PERDIDO
-                            </div>
-                            {getLeadsByStage("cerrado")
-                              .filter((l) => l.pipeline_status === "perdido")
-                              .map((lead, index) => (
-                                <LeadCard
-                                  key={lead.id}
-                                  lead={lead}
-                                  index={index}
-                                  onClick={() => setSelectedLeadId(lead.id)}
-                                />
-                              ))}
-                            {provided.placeholder}
-                          </div>
-                        )}
-                      </Droppable>
-                    </div>
-                  ) : (
-                    <Droppable droppableId={stage.id}>
-                      {(provided, snapshot) => (
-                        <div
-                          {...provided.droppableProps}
-                          ref={provided.innerRef}
-                          className={`flex-1 min-h-[400px] p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-white/[0.02]" : ""}`}>
-                          {getLeadsByStage(stage.id).map((lead, index) => (
-                            <LeadCard
-                              key={lead.id}
-                              lead={lead}
-                              index={index}
-                              onClick={() => setSelectedLeadId(lead.id)}
-                            />
-                          ))}
-                          {provided.placeholder}
-                        </div>
-                      )}
-                    </Droppable>
-                  )}
-                </div>
-              </div>
-            ))}
+            <h3 className="text-xl font-bold text-white mb-3 relative z-10">
+              Pipeline vacío
+            </h3>
+
+            <p className="text-neutral-400 text-sm max-w-sm mx-auto mb-8 relative z-10">
+              Aún no tienes leads en tu pipeline. Agrega prospectos desde la
+              sección de Leads o importando tus contactos.
+            </p>
+
+            <Link
+              href="/forge/leads"
+              className="relative z-10 flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-neutral-200 transition-all shadow-lg hover:-translate-y-0.5 mt-2">
+              <Plus className="w-4 h-4" />
+              Nuevo Lead
+            </Link>
           </div>
-        </DragDropContext>
-      </div>
+        </div>
+      ) : (
+        <div className="overflow-x-auto p-6 bg-[#050505] forge-scroll">
+          <DragDropContext onDragEnd={onDragEnd}>
+            <div className="flex gap-4 h-full min-w-max pb-4">
+              {STAGES.map((stage: any) => (
+                <div
+                  key={stage.id}
+                  className="w-[280px] flex flex-col shrink-0">
+                  {/* Column Header */}
+                  <div className="flex items-center justify-between mb-4 group px-2">
+                    <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 flex items-center gap-2">
+                      <span
+                        className={`w-1.5 h-1.5 rounded-full ${getStageColor(stage.id).split(" ")[0]}`}
+                      />
+                      {stage.label}
+                    </h3>
+                    <span className="text-[9px] font-mono text-neutral-700 bg-white/[0.02] px-1.5 py-0.5">
+                      {getLeadsByStage(stage.id).length}
+                    </span>
+                  </div>
+
+                  {/* Column Content */}
+                  <div className="flex-1 bg-[#0d0d0d] border border-[#1f1f1f] flex flex-col min-h-0">
+                    {/* Special Handling for the 5th column split */}
+                    {stage.id === "cerrado" ? (
+                      <div className="flex-1 flex flex-col min-h-0">
+                        {/* Won Drop Zone */}
+                        <Droppable droppableId="resolution_cerrado">
+                          {(provided, snapshot) => (
+                            <div
+                              {...provided.droppableProps}
+                              ref={provided.innerRef}
+                              className={`flex-1 min-h-[200px] p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-emerald-500/5" : ""}`}>
+                              <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
+                                WON / CERRADO
+                              </div>
+                              {getLeadsByStage("cerrado")
+                                .filter((l) => l.pipeline_status === "cerrado")
+                                .map((lead, index) => (
+                                  <LeadCard
+                                    key={lead.id}
+                                    lead={lead}
+                                    index={index}
+                                    onClick={() => setSelectedLeadId(lead.id)}
+                                  />
+                                ))}
+                              {provided.placeholder}
+                            </div>
+                          )}
+                        </Droppable>
+
+                        {/* Lost Drop Zone */}
+                        <Droppable droppableId="resolution_perdido">
+                          {(provided, snapshot) => (
+                            <div
+                              {...provided.droppableProps}
+                              ref={provided.innerRef}
+                              className={`h-[40%] min-h-[150px] border-t border-neutral-900 p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-red-500/5" : ""}`}>
+                              <div className="text-[8px] font-mono text-neutral-800 uppercase tracking-widest text-center mb-2 border-b border-neutral-900 pb-2">
+                                LOST / PERDIDO
+                              </div>
+                              {getLeadsByStage("cerrado")
+                                .filter((l) => l.pipeline_status === "perdido")
+                                .map((lead, index) => (
+                                  <LeadCard
+                                    key={lead.id}
+                                    lead={lead}
+                                    index={index}
+                                    onClick={() => setSelectedLeadId(lead.id)}
+                                  />
+                                ))}
+                              {provided.placeholder}
+                            </div>
+                          )}
+                        </Droppable>
+                      </div>
+                    ) : (
+                      <Droppable droppableId={stage.id}>
+                        {(provided, snapshot) => (
+                          <div
+                            {...provided.droppableProps}
+                            ref={provided.innerRef}
+                            className={`flex-1 min-h-[400px] p-3 space-y-3 transition-colors forge-scroll ${snapshot.isDraggingOver ? "bg-white/[0.02]" : ""}`}>
+                            {getLeadsByStage(stage.id).map((lead, index) => (
+                              <LeadCard
+                                key={lead.id}
+                                lead={lead}
+                                index={index}
+                                onClick={() => setSelectedLeadId(lead.id)}
+                              />
+                            ))}
+                            {provided.placeholder}
+                          </div>
+                        )}
+                      </Droppable>
+                    )}
+                  </div>
+                </div>
+              ))}
+            </div>
+          </DragDropContext>
+        </div>
+      )}
 
       {/* Lost Reason Prompt */}
       {lostPromptId && (

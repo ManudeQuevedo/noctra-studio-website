@@ -297,121 +297,149 @@ export default function ProposalsClient({
         </div>
       )}
 
-      {/* Table View */}
-      <div className="overflow-x-auto px-8 py-6 forge-scroll">
-        <table className="w-full border-collapse min-w-[1000px]">
-          <thead>
-            <tr className="border-b border-white/5">
-              <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
-                Folio
-              </th>
-              <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
-                Cliente
-              </th>
-              <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
-                Servicio / Título
-              </th>
-              <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
-                Inversión
-              </th>
-              <th className="text-center py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
-                Estatus
-              </th>
-              <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
-                Fecha
-              </th>
-              <th className="py-4 px-4 w-10"></th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-white/5">
-            {filteredProposals.length === 0 ? (
-              <tr>
-                <td colSpan={7} className="py-20 text-center">
-                  <div className="text-neutral-400 font-mono text-[10px] uppercase tracking-[0.2em] mb-4">
-                    No se encontraron propuestas
-                  </div>
-                </td>
+      {/* Content Area */}
+      {proposals.length === 0 ? (
+        <div className="px-8 py-10">
+          <div className="flex flex-col items-center justify-center text-center py-24 px-6 bg-[#111111] border border-dashed border-neutral-800 rounded-2xl relative overflow-hidden">
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-64 h-64 bg-emerald-500/5 rounded-full blur-[80px] pointer-events-none" />
+
+            <div className="w-16 h-16 bg-white/[0.03] border border-white/5 rounded-2xl flex items-center justify-center mb-6 relative z-10 shadow-xl shadow-black/50">
+              <FileText className="w-8 h-8 text-emerald-500" />
+            </div>
+
+            <h3 className="text-xl font-bold text-white mb-3 relative z-10">
+              No tienes propuestas
+            </h3>
+
+            <p className="text-neutral-400 text-sm max-w-sm mx-auto mb-8 relative z-10">
+              Crea propuestas de diseño, desarrollo o marketing para tus leads y
+              empieza a cerrar tratos.
+            </p>
+
+            <button
+              onClick={() => setIsModalOpen(true)}
+              className="relative z-10 flex items-center gap-2 px-6 py-3 bg-white text-black font-semibold rounded-lg hover:bg-neutral-200 transition-all shadow-lg hover:-translate-y-0.5 mt-2">
+              <Plus className="w-4 h-4" />
+              Nueva Propuesta
+            </button>
+          </div>
+        </div>
+      ) : (
+        <div className="overflow-x-auto px-8 py-6 forge-scroll">
+          <table className="w-full border-collapse min-w-[1000px]">
+            <thead>
+              <tr className="border-b border-white/5">
+                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
+                  Folio
+                </th>
+                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
+                  Cliente
+                </th>
+                <th className="text-left py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
+                  Servicio / Título
+                </th>
+                <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
+                  Inversión
+                </th>
+                <th className="text-center py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
+                  Estatus
+                </th>
+                <th className="text-right py-4 px-4 text-[10px] font-mono uppercase tracking-widest text-neutral-300 font-medium">
+                  Fecha
+                </th>
+                <th className="py-4 px-4 w-10"></th>
               </tr>
-            ) : (
-              filteredProposals.map((proposal) => (
-                <tr
-                  key={proposal.id}
-                  onClick={() =>
-                    router.push(`/forge/proposals/${proposal.id}/edit`)
-                  }
-                  className="group hover:bg-white/[0.02] transition-colors cursor-pointer border-b border-transparent">
-                  <td className="py-5 px-4">
-                    <span className="font-mono text-[11px] text-white/40 group-hover:text-emerald-500 transition-colors">
-                      {proposal.proposal_number || "NOC-P-XXXX"}
-                    </span>
-                  </td>
-                  <td className="py-5 px-4">
-                    <div className="flex flex-col">
-                      <div className="flex items-center gap-2">
-                        <span className="text-xs font-bold text-neutral-200">
-                          {proposal.lead?.name || "Cliente Manual"}
-                        </span>
-                        {proposal.lead?.lead_score !== undefined && (
-                          <LeadScoreBadge score={proposal.lead.lead_score} />
-                        )}
-                      </div>
-                      <span className="text-[10px] font-mono text-neutral-400">
-                        {proposal.lead?.email || "—"}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="py-5 px-4">
-                    <span className="text-xs font-medium text-neutral-300">
-                      {proposal.title}
-                    </span>
-                  </td>
-                  <td className="py-5 px-4 text-right">
-                    <span className="font-mono text-[11px] font-bold text-white">
-                      ${proposal.total?.toLocaleString("es-MX")}
-                      <span className="text-[9px] text-neutral-400 ml-1">
-                        MXN
-                      </span>
-                    </span>
-                  </td>
-                  <td className="py-5 px-4">
-                    <div className="flex justify-center">
-                      <span
-                        className={`px-2 py-0.5 border text-[9px] font-mono uppercase tracking-widest flex items-center gap-1.5 ${getStatusColor(proposal.status)}`}>
-                        {proposal.status === "viewed" && (
-                          <Eye className="w-2.5 h-2.5" />
-                        )}
-                        {proposal.status}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="py-5 px-4 text-right">
-                    <div className="flex flex-col">
-                      <span className="text-[10px] font-mono text-neutral-400">
-                        {format(new Date(proposal.created_at), "dd/MM/yyyy")}
-                      </span>
-                      <span className="text-[9px] font-mono text-neutral-700 uppercase">
-                        Exp.{" "}
-                        {proposal.valid_until
-                          ? format(new Date(proposal.valid_until), "dd/MM")
-                          : "—"}
-                      </span>
-                    </div>
-                  </td>
-                  <td className="py-5 px-4">
-                    <div className="flex justify-end gap-2 pr-4 relative">
-                      <ProposalActionsDropdown
-                        proposal={proposal}
-                        onDelete={handleDelete}
-                        onConvertToContract={handleConvertToContract}
-                      />
+            </thead>
+            <tbody className="divide-y divide-white/5">
+              {filteredProposals.length === 0 ? (
+                <tr>
+                  <td colSpan={7} className="py-20 text-center">
+                    <div className="text-neutral-400 font-mono text-[10px] uppercase tracking-[0.2em] mb-4">
+                      No se encontraron propuestas
                     </div>
                   </td>
                 </tr>
-              ))
-            )}
-          </tbody>
-        </table>
-      </div>
+              ) : (
+                filteredProposals.map((proposal) => (
+                  <tr
+                    key={proposal.id}
+                    onClick={() =>
+                      router.push(`/forge/proposals/${proposal.id}/edit`)
+                    }
+                    className="group hover:bg-white/[0.02] transition-colors cursor-pointer border-b border-transparent">
+                    <td className="py-5 px-4">
+                      <span className="font-mono text-[11px] text-white/40 group-hover:text-emerald-500 transition-colors">
+                        {proposal.proposal_number || "NOC-P-XXXX"}
+                      </span>
+                    </td>
+                    <td className="py-5 px-4">
+                      <div className="flex flex-col">
+                        <div className="flex items-center gap-2">
+                          <span className="text-xs font-bold text-neutral-200">
+                            {proposal.lead?.name || "Cliente Manual"}
+                          </span>
+                          {proposal.lead?.lead_score !== undefined && (
+                            <LeadScoreBadge score={proposal.lead.lead_score} />
+                          )}
+                        </div>
+                        <span className="text-[10px] font-mono text-neutral-400">
+                          {proposal.lead?.email || "—"}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-4">
+                      <span className="text-xs font-medium text-neutral-300">
+                        {proposal.title}
+                      </span>
+                    </td>
+                    <td className="py-5 px-4 text-right">
+                      <span className="font-mono text-[11px] font-bold text-white">
+                        ${proposal.total?.toLocaleString("es-MX")}
+                        <span className="text-[9px] text-neutral-400 ml-1">
+                          MXN
+                        </span>
+                      </span>
+                    </td>
+                    <td className="py-5 px-4">
+                      <div className="flex justify-center">
+                        <span
+                          className={`px-2 py-0.5 border text-[9px] font-mono uppercase tracking-widest flex items-center gap-1.5 ${getStatusColor(proposal.status)}`}>
+                          {proposal.status === "viewed" && (
+                            <Eye className="w-2.5 h-2.5" />
+                          )}
+                          {proposal.status}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-4 text-right">
+                      <div className="flex flex-col">
+                        <span className="text-[10px] font-mono text-neutral-400">
+                          {format(new Date(proposal.created_at), "dd/MM/yyyy")}
+                        </span>
+                        <span className="text-[9px] font-mono text-neutral-700 uppercase">
+                          Exp.{" "}
+                          {proposal.valid_until
+                            ? format(new Date(proposal.valid_until), "dd/MM")
+                            : "—"}
+                        </span>
+                      </div>
+                    </td>
+                    <td className="py-5 px-4">
+                      <div className="flex justify-end gap-2 pr-4 relative">
+                        <ProposalActionsDropdown
+                          proposal={proposal}
+                          onDelete={handleDelete}
+                          onConvertToContract={handleConvertToContract}
+                        />
+                      </div>
+                    </td>
+                  </tr>
+                ))
+              )}
+            </tbody>
+          </table>
+        </div>
+      )}
 
       <NewProposalModal
         isOpen={isModalOpen}

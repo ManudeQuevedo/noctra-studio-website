@@ -1,17 +1,19 @@
 import { createClient } from "@/utils/supabase/server";
 import DashboardClient from "./DashboardClient";
+import ForgeLanding from "@/components/forge/ForgeLanding";
 import { getRevenueForecast } from "@/app/actions/metrics";
 import { getWorkspace } from "@/lib/workspace";
-import { redirect } from "next/navigation";
 
 export default async function ForgeIndexPage() {
   const supabase = await createClient();
   const ctx = await getWorkspace();
 
-  if (!ctx) redirect("/forge/login");
+  // If no session/user/workspace, show the landing page
+  if (!ctx) {
+    return <ForgeLanding />;
+  }
 
   // Fetch all basic objects to power the dashboard metrics
-  // Using Promise.all for parallel fetching
   const [
     { data: leads },
     { data: proposals },

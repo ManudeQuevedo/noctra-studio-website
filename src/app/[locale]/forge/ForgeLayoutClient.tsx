@@ -5,6 +5,7 @@ import { useRouter, usePathname } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useInactivityTimeout } from "@/hooks/useInactivityTimeout";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
+import { ForgeTopBar } from "@/components/forge/ForgeTopBar";
 import { ForgeContentWrapper } from "@/components/forge/ForgeContentWrapper";
 import { MobileBottomNav } from "@/components/forge/MobileBottomNav";
 import { CommandBar } from "@/components/forge/CommandBar";
@@ -24,6 +25,8 @@ export default function ForgeLayoutClient({
   const [commandBarOpen, setCommandBarOpen] = useState(false);
 
   const isLoginPage = pathname.includes("/forge/login");
+  const isForgeRoot = /^\/([a-z]{2}\/)?forge\/?$/.test(pathname);
+  const isLandingPage = isForgeRoot && !workspace;
 
   useEffect(() => {
     const {
@@ -73,24 +76,25 @@ export default function ForgeLayoutClient({
         </div>
       )}
 
-      {isLoginPage ? (
+      {isLoginPage || isLandingPage ? (
         children
       ) : (
         <>
           {/* DESKTOP LAYOUT - STRICT FLEX */}
-          <div className="hidden md:flex h-screen overflow-hidden bg-[#050505] text-white">
+          <div className="hidden md:flex h-dvh overflow-hidden bg-[#050505] text-white">
             <aside className="border-r border-white/5 shrink-0 flex flex-col">
               <ForgeSidebar workspace={workspace} />
             </aside>
 
             <main className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden forge-scroll flex flex-col">
+              <ForgeTopBar />
               <ForgeContentWrapper>{children}</ForgeContentWrapper>
             </main>
           </div>
 
           {/* MOBILE LAYOUT */}
-          <div className="md:hidden flex h-screen overflow-hidden bg-[#050505] text-white">
-            <main className="flex-1 h-screen overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 pb-[calc(env(safe-area-inset-bottom)+4rem)] min-w-0 forge-scroll">
+          <div className="md:hidden flex h-dvh overflow-hidden bg-[#050505] text-white">
+            <main className="flex-1 h-dvh overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 pb-[calc(env(safe-area-inset-bottom)+4rem)] min-w-0 forge-scroll">
               <ForgeSidebar workspace={workspace} />
               <ForgeContentWrapper>{children}</ForgeContentWrapper>
             </main>

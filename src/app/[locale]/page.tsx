@@ -44,6 +44,11 @@ const OngoingPlans = dynamic(() =>
     default: mod.OngoingPlans,
   })),
 );
+const MigrationSection = dynamic(() =>
+  import("@/components/landing/MigrationSection").then((mod) => ({
+    default: mod.MigrationSection,
+  })),
+);
 
 export async function generateMetadata({
   params,
@@ -91,6 +96,9 @@ export default async function HomePage({
 
       {/* 5. Pricing — Transparent modular pricing + optional modules */}
       <PricingSection />
+
+      {/* 5.5 Noctra CRM (Forge) Pitch */}
+      <MigrationSection />
 
       {/* 6. Process — 5-phase client journey */}
       <ProcessSection />

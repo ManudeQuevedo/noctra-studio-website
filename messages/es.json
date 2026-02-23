@@ -1,4 +1,265 @@
 {
+  "forge": {
+    "navbar": {
+      "back_to_home": "Volver al inicio",
+      "demo": "Demo",
+      "pricing": "Precios",
+      "sign_in": "Iniciar sesión",
+      "start_free": "Empezar gratis"
+    },
+    "nav": {
+      "inicio": "Inicio",
+      "projects": "Proyectos",
+      "pipeline": "Pipeline",
+      "propuestas": "Propuestas",
+      "contratos": "Contratos",
+      "clientes": "Clientes",
+      "leads": "Leads",
+      "metricas": "Métricas",
+      "documentacion": "Documentación",
+      "cerrarSesion": "Cerrar sesión"
+    },
+    "dashboard": {
+      "atencionRequerida": "Atención Requerida",
+      "propuestasEstancadas": "Tienes {count} propuesta(s) estancada(s) que requiere(n) atención inmediata.",
+      "verDetalle": "Ver detalle →",
+      "buenos_dias": "Buenos días",
+      "buenas_tardes": "Buenas tardes",
+      "buenas_noches": "Buenas noches",
+      "saludo": "{periodo}, {nombre}.",
+      "leadsEsteMes": "Leads este mes",
+      "propuestasActivas": "Propuestas activas",
+      "proyectosEnCurso": "Proyectos en curso",
+      "forecastIngresos": "Forecast ingresos",
+      "proyeccionPonderada": "Proyección ponderada",
+      "verDetalles": "Ver detalles",
+      "actividadReciente": "Actividad reciente",
+      "proximasAcciones": "Próximas acciones",
+      "sinAcciones": "Sin acciones esta semana",
+      "programarAccion": "+ Programar acción",
+      "noctaAi": "Noctra AI",
+      "actualizar": "Actualizar",
+      "ignorar": "Ignorar",
+      "mxnAcumulado": "MXN acumulado",
+      "vsMesAnterior": "vs mes anterior",
+      "pipelineSnapshot": "Pipeline Snapshot",
+      "verPipeline": "Ver pipeline",
+      "todoAlDia": "Todo al día. Sin pendientes.",
+      "leadsSinContactar": "Tienes {count} lead(s) sin contactar.",
+      "propuestasEsperando": "Tienes {count} propuesta(s) esperando respuesta.",
+      "proyectosActivosSemana": "Tienes {count} proyecto(s) activo(s) esta semana.",
+      "aquiLoQueNecesitas": "Aquí está lo que necesitas saber hoy."
+    },
+    "propuestas": {
+      "titulo": "Proposal Builder",
+      "nuevaPropuesta": "+ Nueva propuesta",
+      "buscar": "Buscar por cliente, título o folio...",
+      "folio": "Folio",
+      "cliente": "Cliente",
+      "servicioTitulo": "Servicio / Título",
+      "inversion": "Inversión",
+      "estatus": "Estatus",
+      "fecha": "Fecha",
+      "editar": "Editar",
+      "previsualizar": "Previsualizar",
+      "eliminar": "Eliminar",
+      "draft": "Borrador",
+      "sent": "Enviada",
+      "accepted": "Aceptada",
+      "rejected": "Rechazada",
+      "sinFechaVencimiento": "propuesta(s) sin fecha de vencimiento",
+      "agregarFechas": "→ Agregar fechas"
+    },
+    "clientes": {
+      "titulo": "Clientes",
+      "nuevoCliente": "+ Nuevo cliente",
+      "buscar": "Buscar cliente...",
+      "nombre": "Nombre",
+      "email": "Email",
+      "empresa": "Empresa",
+      "proyectos": "Proyectos",
+      "acciones": "Acciones"
+    },
+    "leads": {
+      "titulo": "Leads",
+      "nuevoLead": "+ Nuevo lead",
+      "estados": {
+        "nuevo": "Nuevo",
+        "contactado": "Contactado",
+        "calificado": "Calificado",
+        "convertido": "Convertido",
+        "perdido": "Perdido"
+      }
+    },
+    "common": {
+      "guardar": "Guardar cambios",
+      "cancelar": "Cancelar",
+      "eliminar": "Eliminar",
+      "editar": "Editar",
+      "buscar": "Buscar...",
+      "cargando": "Cargando...",
+      "error": "Ocurrió un error",
+      "exito": "Cambios guardados",
+      "confirmar": "Confirmar",
+      "volver": "Volver"
+    },
+    "search": {
+      "placeholder": "Buscar o escribir un comando...",
+      "placeholderCollapsed": "Buscar...",
+      "sinResultados": "Sin resultados para \"{query}\"",
+      "accionesRapidas": "Acciones rápidas",
+      "navegar": "Navegar",
+      "resultados": {
+        "propuestas": "Propuestas",
+        "clientes": "Clientes",
+        "leads": "Leads",
+        "proyectos": "Proyectos"
+      },
+      "acciones": {
+        "nuevaPropuesta": "Nueva propuesta",
+        "nuevoLead": "Nuevo lead",
+        "nuevoCliente": "Nuevo cliente",
+        "nuevoProyecto": "Nuevo proyecto"
+      },
+      "verTodos": "Ver todos los resultados →"
+    },
+    "avatar": {
+      "verPerfil": "Ver perfil",
+      "configuraciones": "Configuraciones",
+      "suscripcion": "Suscripción",
+      "cerrarSesion": "Cerrar sesión"
+    },
+    "perfil": {
+      "titulo": "Perfil",
+      "informacionPersonal": "Información personal",
+      "nombreUsuario": "Nombre de usuario",
+      "cambiarFoto": "Cambiar foto",
+      "guardar": "Guardar cambios"
+    },
+    "configuraciones": {
+      "titulo": "Configuraciones",
+      "seguridad": "Seguridad",
+      "contrasena": "Contraseña",
+      "ultimaContra": "Último cambio hace 3 meses",
+      "contrasenaActual": "Contraseña actual",
+      "nuevaContrasena": "Nueva contraseña",
+      "confirmarContrasena": "Confirmar contraseña",
+      "cambiarContrasena": "Cambiar contraseña",
+      "dosFactores": "Autenticación de dos factores",
+      "descripcion2fa": "Añade una capa extra de seguridad. Se requerirá un código de autenticación al iniciar sesión.",
+      "gestionar2fa": "Gestionar 2FA",
+      "activar2fa": "Activar 2FA",
+      "noActivado": "⚠ No activado",
+      "activado": "✓ Activado",
+      "preferencias": "Preferencias",
+      "idioma": "Idioma",
+      "zonaPeligro": "Zona de peligro",
+      "eliminarCuenta": "Eliminar cuenta",
+      "eliminarAdvertencia": "Esta acción es irreversible.",
+      "confirmarEmail": "Escribe tu email para confirmar la eliminación:"
+    },
+    "suscripcion": {
+      "titulo": "Suscripción",
+      "planActual": "Plan actual",
+      "actualizarPlan": "Actualizar plan",
+      "proximamente": "Próximamente",
+      "contactar": "Contactar ventas",
+      "earlyAccess": {
+        "badge": "Early Access",
+        "label": "Precio de fundador",
+        "description": "Los primeros 20 clientes obtienen el precio de fundador de forma permanente. Mientras mantengas tu suscripción activa, nunca pagarás el precio regular. Sin fecha de expiración. Sin letra chica."
+      },
+      "billing": {
+        "monthly": "Mensual",
+        "annual": "Anual",
+        "save": "ahorras {amount}"
+      },
+      "planes": {
+        "free": {
+          "nombre": "FREE",
+          "tagline": "Para explorar la herramienta",
+          "descripcion": "Ideal para freelancers empezando",
+          "precio": "$0",
+          "features": [
+            "1 Usuario",
+            "3 Clientes activos",
+            "2 Proyectos activos",
+            "2 Propuestas/mes",
+            "Pipeline visual",
+            "Gestión básica"
+          ]
+        },
+        "starter": {
+          "nombre": "STARTER",
+          "tagline": "Para agencias pequeñas",
+          "descripcion": "Para agencias pequeñas o freelancers",
+          "precio": "$499",
+          "precioAnual": "$399",
+          "precioEA": "$299",
+          "precioEAAnual": "$249",
+          "features": [
+            "2 Usuarios",
+            "15 Clientes activos",
+            "10 Proyectos activos",
+            "10 Propuestas/mes",
+            "Proposal Builder",
+            "Contratos digitales",
+            "Noctra AI (500K tokens/mes)",
+            "Claude Haiku"
+          ]
+        },
+        "growth": {
+          "nombre": "GROWTH",
+          "tagline": "Para agencias en crecimiento",
+          "descripcion": "Para agencias en crecimiento",
+          "precio": "$999",
+          "precioAnual": "$799",
+          "precioEA": "$649",
+          "precioEAAnual": "$549",
+          "features": [
+            "5 Usuarios",
+            "Clientes ilimitados",
+            "Proyectos ilimitados",
+            "Propuestas ilimitadas",
+            "Portal de clientes",
+            "Métricas avanzadas",
+            "Noctra AI (1.5M tokens/mes)",
+            "Haiku + Sonnet",
+            "Webhooks & API"
+          ]
+        },
+        "enterprise": {
+          "nombre": "ENTERPRISE",
+          "tagline": "Para agencias establecidas",
+          "descripcion": "Para agencias establecidas o equipos grandes",
+          "precio": "$2,199",
+          "precioAnual": "$1,799",
+          "precioEA": "$1,499",
+          "precioEAAnual": "$1,249",
+          "features": [
+            "Usuarios ilimitados",
+            "Branding white-label",
+            "Métricas completas + exportables",
+            "Onboarding personalizado",
+            "Noctra AI (5M tokens/mes)",
+            "Haiku + Sonnet + Opus",
+            "Soporte prioritario (WhatsApp)",
+            "Agente AI proactivo (Beta)"
+          ]
+        }
+      }
+    },
+    "notificaciones": {
+      "titulo": "Alertas",
+      "sinAlertas": "Sin alertas por ahora.",
+      "leadSinContactar": "Tienes {n} lead(s) sin contactar",
+      "propuestaSinFecha": "propuesta(s) sin fecha de vencimiento",
+      "propuestaSinRespuesta": "propuesta(s) esperando respuesta",
+      "proyectoSinUpdate": "proyecto(s) sin actualización esta semana",
+      "verLeads": "→ Ver leads",
+      "agregarFecha": "→ Agregar fecha"
+    }
+  },
   "WhyLocal": {
     "title": "¿Por qué empresas en México y el mundo eligen Noctra?",
     "items": [

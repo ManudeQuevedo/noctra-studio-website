@@ -1,4 +1,265 @@
 {
+  "forge": {
+    "navbar": {
+      "back_to_home": "Back to Home",
+      "demo": "Demo",
+      "pricing": "Pricing",
+      "sign_in": "Sign in",
+      "start_free": "Start free"
+    },
+    "nav": {
+      "inicio": "Home",
+      "projects": "Projects",
+      "pipeline": "Pipeline",
+      "propuestas": "Proposals",
+      "contratos": "Contracts",
+      "clientes": "Clients",
+      "leads": "Leads",
+      "metricas": "Metrics",
+      "documentacion": "Documentation",
+      "cerrarSesion": "Sign out"
+    },
+    "dashboard": {
+      "atencionRequerida": "Attention Required",
+      "propuestasEstancadas": "You have {count} stalled proposal(s) requiring immediate attention.",
+      "verDetalle": "View detail →",
+      "buenos_dias": "Good morning",
+      "buenas_tardes": "Good afternoon",
+      "buenas_noches": "Good evening",
+      "saludo": "{periodo}, {nombre}.",
+      "leadsEsteMes": "Leads this month",
+      "propuestasActivas": "Active proposals",
+      "proyectosEnCurso": "Active projects",
+      "forecastIngresos": "Revenue forecast",
+      "proyeccionPonderada": "Weighted projection",
+      "verDetalles": "View details",
+      "actividadReciente": "Recent activity",
+      "proximasAcciones": "Upcoming actions",
+      "sinAcciones": "No actions this week",
+      "programarAccion": "+ Schedule action",
+      "noctaAi": "Noctra AI",
+      "actualizar": "Refresh",
+      "ignorar": "Dismiss",
+      "mxnAcumulado": "MXN accumulated",
+      "vsMesAnterior": "vs last month",
+      "pipelineSnapshot": "Pipeline Snapshot",
+      "verPipeline": "View pipeline",
+      "todoAlDia": "All caught up. No pending items.",
+      "leadsSinContactar": "You have {count} uncontacted lead(s).",
+      "propuestasEsperando": "You have {count} proposal(s) awaiting response.",
+      "proyectosActivosSemana": "You have {count} active project(s) this week.",
+      "aquiLoQueNecesitas": "Here's what you need to know today."
+    },
+    "propuestas": {
+      "titulo": "Proposal Builder",
+      "nuevaPropuesta": "+ New proposal",
+      "buscar": "Search by client, title or folio...",
+      "folio": "Folio",
+      "cliente": "Client",
+      "servicioTitulo": "Service / Title",
+      "inversion": "Investment",
+      "estatus": "Status",
+      "fecha": "Date",
+      "editar": "Edit",
+      "previsualizar": "Preview",
+      "eliminar": "Delete",
+      "draft": "Draft",
+      "sent": "Sent",
+      "accepted": "Accepted",
+      "rejected": "Rejected",
+      "sinFechaVencimiento": "proposal(s) without expiration date",
+      "agregarFechas": "→ Add dates"
+    },
+    "clientes": {
+      "titulo": "Clients",
+      "nuevoCliente": "+ New client",
+      "buscar": "Search client...",
+      "nombre": "Name",
+      "email": "Email",
+      "empresa": "Company",
+      "proyectos": "Projects",
+      "acciones": "Actions"
+    },
+    "leads": {
+      "titulo": "Leads",
+      "nuevoLead": "+ New lead",
+      "estados": {
+        "nuevo": "New",
+        "contactado": "Contacted",
+        "calificado": "Qualified",
+        "convertido": "Converted",
+        "perdido": "Lost"
+      }
+    },
+    "common": {
+      "guardar": "Save changes",
+      "cancelar": "Cancel",
+      "eliminar": "Delete",
+      "editar": "Edit",
+      "buscar": "Search...",
+      "cargando": "Loading...",
+      "error": "An error occurred",
+      "exito": "Changes saved",
+      "confirmar": "Confirm",
+      "volver": "Back"
+    },
+    "search": {
+      "placeholder": "Search or type a command...",
+      "placeholderCollapsed": "Search...",
+      "sinResultados": "No results for \"{query}\"",
+      "accionesRapidas": "Quick actions",
+      "navegar": "Navigate",
+      "resultados": {
+        "propuestas": "Proposals",
+        "clientes": "Clients",
+        "leads": "Leads",
+        "proyectos": "Projects"
+      },
+      "acciones": {
+        "nuevaPropuesta": "New proposal",
+        "nuevoLead": "New lead",
+        "nuevoCliente": "New client",
+        "nuevoProyecto": "New project"
+      },
+      "verTodos": "View all results →"
+    },
+    "avatar": {
+      "verPerfil": "View profile",
+      "configuraciones": "Settings",
+      "suscripcion": "Subscription",
+      "cerrarSesion": "Sign out"
+    },
+    "perfil": {
+      "titulo": "Profile",
+      "informacionPersonal": "Personal information",
+      "nombreUsuario": "Display name",
+      "cambiarFoto": "Change photo",
+      "guardar": "Save changes"
+    },
+    "configuraciones": {
+      "titulo": "Settings",
+      "seguridad": "Security",
+      "contrasena": "Password",
+      "ultimaContra": "Last changed 3 months ago",
+      "contrasenaActual": "Current password",
+      "nuevaContrasena": "New password",
+      "confirmarContrasena": "Confirm password",
+      "cambiarContrasena": "Change password",
+      "dosFactores": "Two-factor authentication",
+      "descripcion2fa": "Adds an extra layer of security. An authentication code will be required upon sign in.",
+      "gestionar2fa": "Manage 2FA",
+      "activar2fa": "Enable 2FA",
+      "noActivado": "⚠ Not enabled",
+      "activado": "✓ Enabled",
+      "preferencias": "Preferences",
+      "idioma": "Language",
+      "zonaPeligro": "Danger zone",
+      "eliminarCuenta": "Delete account",
+      "eliminarAdvertencia": "This action is irreversible.",
+      "confirmarEmail": "Type your email to confirm deletion:"
+    },
+    "suscripcion": {
+      "titulo": "Subscription",
+      "planActual": "Current plan",
+      "actualizarPlan": "Upgrade plan",
+      "proximamente": "Coming soon",
+      "contactar": "Contact sales",
+      "earlyAccess": {
+        "badge": "Early Access",
+        "label": "Founder's price",
+        "description": "The first 20 customers get the founder's price permanently. As long as you keep your subscription active, you will never pay the regular price. No expiration date. No fine print."
+      },
+      "billing": {
+        "monthly": "Monthly",
+        "annual": "Annual",
+        "save": "you save {amount}"
+      },
+      "planes": {
+        "free": {
+          "nombre": "FREE",
+          "tagline": "To explore the tool",
+          "descripcion": "Ideal for freelancers starting out",
+          "precio": "$0",
+          "features": [
+            "1 User",
+            "3 Active clients",
+            "2 Active projects",
+            "2 Proposals/mo",
+            "Visual pipeline",
+            "Basic management"
+          ]
+        },
+        "starter": {
+          "nombre": "STARTER",
+          "tagline": "For small agencies",
+          "descripcion": "For small agencies or freelancers",
+          "precio": "$499",
+          "precioAnual": "$399",
+          "precioEA": "$299",
+          "precioEAAnual": "$249",
+          "features": [
+            "2 Users",
+            "15 Active clients",
+            "10 Active projects",
+            "10 Proposals/mo",
+            "Proposal Builder",
+            "Digital contracts",
+            "Noctra AI (500K tokens/mo)",
+            "Claude Haiku"
+          ]
+        },
+        "growth": {
+          "nombre": "GROWTH",
+          "tagline": "For growing agencies",
+          "descripcion": "For growing agencies",
+          "precio": "$999",
+          "precioAnual": "$799",
+          "precioEA": "$649",
+          "precioEAAnual": "$549",
+          "features": [
+            "5 Users",
+            "Unlimited clients",
+            "Unlimited projects",
+            "Unlimited proposals",
+            "Client portal",
+            "Advanced metrics",
+            "Noctra AI (1.5M tokens/mo)",
+            "Haiku + Sonnet",
+            "Webhooks & API"
+          ]
+        },
+        "enterprise": {
+          "nombre": "ENTERPRISE",
+          "tagline": "For established agencies",
+          "descripcion": "For established agencies or large teams",
+          "precio": "$2,199",
+          "precioAnual": "$1,799",
+          "precioEA": "$1,499",
+          "precioEAAnual": "$1,249",
+          "features": [
+            "Unlimited users",
+            "White-label branding",
+            "Full metrics + exportable",
+            "Custom onboarding",
+            "Noctra AI (5M tokens/mo)",
+            "Haiku + Sonnet + Opus",
+            "Priority support (WhatsApp)",
+            "Proactive AI Agent (Beta)"
+          ]
+        }
+      }
+    },
+    "notificaciones": {
+      "titulo": "Alerts",
+      "sinAlertas": "No alerts right now.",
+      "leadSinContactar": "You have {n} uncontacted lead(s)",
+      "propuestaSinFecha": "proposal(s) without expiration date",
+      "propuestaSinRespuesta": "proposal(s) awaiting response",
+      "proyectoSinUpdate": "project(s) without update this week",
+      "verLeads": "→ View leads",
+      "agregarFecha": "→ Add date"
+    }
+  },
   "WhyLocal": {
     "title": "Why do businesses in Mexico and beyond choose Noctra?",
     "items": [

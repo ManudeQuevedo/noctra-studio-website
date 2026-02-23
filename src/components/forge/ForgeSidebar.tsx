@@ -6,10 +6,10 @@ import Image from "next/image";
 import { usePathname, useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
 import { useFollowUps } from "@/hooks/useFollowUps";
+import { useTranslations } from "next-intl";
 import {
   LayoutDashboard,
   Users,
-  LogOut,
   Kanban,
   BarChart3,
   StickyNote,
@@ -17,10 +17,10 @@ import {
   UserCheck,
   Home,
   BookOpen,
-  Shield,
   ChevronLeft,
   ChevronRight,
   User,
+  Shuffle,
 } from "lucide-react";
 
 export interface ForgeSidebarProps {
@@ -36,9 +36,9 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
   const router = useRouter();
   const supabase = createClient();
   const { suggestions } = useFollowUps();
+  const t = useTranslations("forge.nav");
 
   const [alertCount, setAlertCount] = useState(0);
-  const [is2FAEnabled, setIs2FAEnabled] = useState<boolean | null>(null);
 
   // Collapsible state handling
   const [isCollapsed, setIsCollapsed] = useState(false);
@@ -61,14 +61,6 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
     };
     fetchAlerts();
 
-    const fetchMFAStatus = async () => {
-      const { data, error } = await supabase.auth.mfa.listFactors();
-      if (!error && data) {
-        setIs2FAEnabled(data.totp.some((f) => f.status === "verified"));
-      }
-    };
-    fetchMFAStatus();
-
     const interval = setInterval(fetchAlerts, 5 * 60 * 1000);
     return () => clearInterval(interval);
   }, [supabase]);
@@ -79,29 +71,35 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
     localStorage.setItem("forge-sidebar-collapsed", String(newState));
   };
 
-  const handleSignOut = async () => {
-    const { error } = await supabase.auth.signOut();
-    if (error) {
-      console.error("Logout error:", error);
-      return;
-    }
-    router.push("/forge/login");
-  };
-
-  const mainNavItems = [
-    { label: "Inicio", href: "/forge", icon: Home },
-    { label: "Projects", href: "/forge/projects", icon: LayoutDashboard },
-    { label: "Pipeline", href: "/forge/pipeline", icon: Kanban },
-    { label: "Propuestas", href: "/forge/proposals", icon: StickyNote },
-    { label: "Contratos", href: "/forge/contracts", icon: Send },
-    { label: "Clientes", href: "/forge/clients", icon: UserCheck },
-    { label: "Leads", href: "/forge/leads", icon: Users },
-    { label: "Métricas", href: "/forge/metrics", icon: BarChart3 },
-  ];
-
-  const bottomNavItems = [
-    { label: "Docs", href: "/forge/docs", icon: BookOpen },
-    { label: "Seguridad", href: "/forge/settings/security", icon: Shield },
+  const navGroups = [
+    {
+      group: "Main",
+      items: [
+        { label: t("inicio"), href: "/forge", icon: Home },
+        {
+          label: t("projects"),
+          href: "/forge/projects",
+          icon: LayoutDashboard,
+        },
+        { label: t("pipeline"), href: "/forge/pipeline", icon: Kanban },
+      ],
+    },
+    {
+      group: "CRM",
+      items: [
+        { label: t("propuestas"), href: "/forge/proposals", icon: StickyNote },
+        { label: t("contratos"), href: "/forge/contracts", icon: Send },
+        { label: t("clientes"), href: "/forge/clients", icon: UserCheck },
+        { label: t("leads"), href: "/forge/leads", icon: Users },
+      ],
+    },
+    {
+      group: "Tools",
+      items: [
+        { label: "Migración", href: "/forge/migration", icon: Shuffle },
+        { label: t("metricas"), href: "/forge/metrics", icon: BarChart3 },
+      ],
+    },
   ];
 
   if (!isMounted) return null; // Prevent hydration mismatch to visual flicker
@@ -180,133 +178,95 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
           className={`flex-1 overflow-y-auto custom-scrollbar ${isCollapsed ? "py-4" : "p-4"} space-y-2`}>
           <div
             className={`flex flex-col ${isCollapsed ? "gap-4 px-2" : "gap-1"}`}>
-            {/* Main Nav Items */}
-            {mainNavItems.map((item) => {
-              const isActive =
-                item.href === "/forge"
-                  ? pathname === "/forge"
-                  : pathname.includes(item.href);
+            {/* Grouped Nav Items */}
+            {navGroups.map((group, groupIdx) => (
+              <div key={group.group} className="flex flex-col gap-1">
+                {groupIdx > 0 && <hr className="border-white/5 my-2 mx-2" />}
 
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  title={isCollapsed ? item.label : undefined}
-                  className={`flex items-center ${isCollapsed ? "justify-center p-2" : "gap-3 px-3 py-2.5"} rounded-md transition-all duration-150 text-sm font-medium group relative ${
-                    isActive
-                      ? isCollapsed
-                        ? "text-emerald-500 border-l-2 border-emerald-500 bg-white/[0.05]"
-                        : "bg-white/[0.05] text-white"
-                      : "text-neutral-400 hover:text-white hover:bg-white/[0.02]"
-                  }`}>
-                  <item.icon
-                    className={`w-4 h-4 flex-none ${isActive ? "text-emerald-400" : ""}`}
-                  />
+                {group.items.map((item) => {
+                  const isActive =
+                    item.href === "/forge"
+                      ? pathname === "/forge"
+                      : pathname.includes(item.href);
 
-                  {!isCollapsed && (
-                    <span className="truncate">{item.label}</span>
-                  )}
+                  return (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      title={isCollapsed ? item.label : undefined}
+                      className={`flex items-center ${isCollapsed ? "justify-center p-2" : "gap-3 px-3 py-2.5"} rounded-md transition-all duration-150 text-sm font-medium group relative border-l-2 ${
+                        isActive
+                          ? "bg-white/[0.08] text-white border-emerald-500"
+                          : "border-transparent text-neutral-400 hover:text-white hover:bg-white/5"
+                      }`}>
+                      <item.icon
+                        className={`w-4 h-4 flex-none ${isActive ? "text-emerald-400" : ""}`}
+                      />
 
-                  {/* Badges */}
-                  {item.label === "Pipeline" &&
-                    alertCount > 0 &&
-                    (isCollapsed ? (
-                      <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                    ) : (
-                      <span className="ml-auto w-4 h-4 rounded-full bg-red-500 text-black text-[9px] font-black flex items-center justify-center animate-pulse">
-                        {alertCount}
-                      </span>
-                    ))}
+                      {!isCollapsed && (
+                        <span className="truncate">{item.label}</span>
+                      )}
 
-                  {item.label === "Propuestas" &&
-                    suggestions.length > 0 &&
-                    (isCollapsed ? (
-                      <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
-                    ) : (
-                      <span className="ml-auto w-4 h-4 rounded-full bg-amber-500 text-black text-[9px] font-black flex items-center justify-center animate-pulse">
-                        {suggestions.length}
-                      </span>
-                    ))}
+                      {item.label === t("pipeline") &&
+                        alertCount > 0 &&
+                        (isCollapsed ? (
+                          <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500 animate-pulse" />
+                        ) : (
+                          <span className="ml-auto w-4 h-4 rounded-full bg-red-500 text-black text-[9px] font-black flex items-center justify-center animate-pulse">
+                            {alertCount}
+                          </span>
+                        ))}
 
-                  {/* Tooltip */}
-                  {isCollapsed && (
-                    <div className="absolute left-full ml-4 hidden group-hover:block bg-neutral-800 text-white text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded shadow-xl whitespace-nowrap z-50">
-                      {item.label}
-                    </div>
-                  )}
-                </Link>
-              );
-            })}
+                      {item.label === t("propuestas") &&
+                        suggestions.length > 0 &&
+                        (isCollapsed ? (
+                          <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-amber-500 animate-pulse" />
+                        ) : (
+                          <span className="ml-auto w-4 h-4 rounded-full bg-amber-500 text-black text-[9px] font-black flex items-center justify-center animate-pulse">
+                            {suggestions.length}
+                          </span>
+                        ))}
 
-            {/* Divider 1 */}
-            <div className="border-t border-white/5 my-2" />
-
-            {/* Bottom Nav Items */}
-            {bottomNavItems.map((item) => {
-              const isActive = pathname.includes(item.href);
-
-              return (
-                <Link
-                  key={item.href}
-                  href={item.href}
-                  title={isCollapsed ? item.label : undefined}
-                  className={`flex items-center ${isCollapsed ? "justify-center p-2" : "gap-3 px-3 py-2.5"} rounded-md transition-all duration-150 text-sm font-medium group relative ${
-                    isActive
-                      ? isCollapsed
-                        ? "text-emerald-500 border-l-2 border-emerald-500 bg-white/[0.05]"
-                        : "bg-white/[0.05] text-white"
-                      : "text-neutral-400 hover:text-white hover:bg-white/[0.02]"
-                  }`}>
-                  <item.icon
-                    className={`w-4 h-4 flex-none ${isActive ? "text-emerald-400" : ""}`}
-                  />
-
-                  {!isCollapsed && (
-                    <span className="truncate">{item.label}</span>
-                  )}
-
-                  {/* Security Badge */}
-                  {item.label === "Seguridad" &&
-                    is2FAEnabled !== null &&
-                    !isCollapsed && (
-                      <span
-                        className={`ml-auto px-1.5 py-0.5 text-[8px] font-bold uppercase tracking-tight rounded-sm ${is2FAEnabled ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20" : "bg-red-500/10 text-red-400 border border-red-500/20"}`}>
-                        {is2FAEnabled ? "2FA ✓" : "2FA ⚠"}
-                      </span>
-                    )}
-                  {item.label === "Seguridad" &&
-                    is2FAEnabled === false &&
-                    isCollapsed && (
-                      <span className="absolute top-1 right-1 w-2 h-2 rounded-full bg-red-500 animate-pulse" />
-                    )}
-
-                  {/* Tooltip */}
-                  {isCollapsed && (
-                    <div className="absolute left-full ml-4 hidden group-hover:block bg-neutral-800 text-white text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded shadow-xl whitespace-nowrap z-50">
-                      {item.label}
-                    </div>
-                  )}
-                </Link>
-              );
-            })}
+                      {/* Tooltip */}
+                      {isCollapsed && (
+                        <div className="absolute left-full ml-4 hidden group-hover:block bg-neutral-800 text-white text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded shadow-xl whitespace-nowrap z-50">
+                          {item.label}
+                        </div>
+                      )}
+                    </Link>
+                  );
+                })}
+              </div>
+            ))}
           </div>
         </div>
 
+        {/* Footer Area - Documentación */}
         <div
           className={`p-4 border-t border-white/5 ${isCollapsed ? "flex justify-center" : ""}`}>
-          <button
-            onClick={handleSignOut}
-            title={isCollapsed ? "Cerrar sesión" : undefined}
-            className={`w-full ${isCollapsed ? "justify-center p-2" : "text-left px-3 py-2.5"} rounded-md text-xs font-mono text-white/20 hover:text-red-400 hover:bg-red-500/10 uppercase tracking-widest flex items-center gap-3 transition-colors duration-150 group relative`}>
-            <LogOut className="w-4 h-4 flex-none" />
-            {!isCollapsed && <span>Cerrar sesión</span>}
-
+          <Link
+            href="/forge/docs"
+            title={isCollapsed ? t("documentacion") : undefined}
+            className={`flex items-center ${isCollapsed ? "justify-center p-2" : "gap-3 px-3 py-2.5"} rounded-md transition-all duration-150 text-sm font-medium group relative ${
+              pathname.includes("/forge/docs")
+                ? isCollapsed
+                  ? "text-emerald-500 border-l-2 border-emerald-500 bg-white/[0.05]"
+                  : "bg-white/[0.05] text-white"
+                : "text-neutral-400 hover:text-white hover:bg-white/[0.02]"
+            }`}>
+            <BookOpen
+              className={`w-4 h-4 flex-none ${pathname.includes("/forge/docs") ? "text-emerald-400" : ""}`}
+            />
+            {!isCollapsed && (
+              <span className="truncate">{t("documentacion")}</span>
+            )}
+            {/* Tooltip */}
             {isCollapsed && (
               <div className="absolute left-full ml-4 hidden group-hover:block bg-neutral-800 text-white text-[10px] font-mono uppercase tracking-widest px-2 py-1 rounded shadow-xl whitespace-nowrap z-50">
-                Cerrar sesión
+                {t("documentacion")}
               </div>
             )}
-          </button>
+          </Link>
         </div>
       </div>
 

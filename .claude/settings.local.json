@@ -15,7 +15,10 @@
       "Bash(curl:*)",
       "Bash(kill:*)",
       "Bash(lsof:*)",
-      "WebFetch(domain:community.vercel.com)"
+      "WebFetch(domain:community.vercel.com)",
+      "Bash(python3:*)",
+      "mcp__Sanity__add_cors_origin",
+      "Bash(npx swc:*)"
     ],
     "deny": [],
     "ask": []

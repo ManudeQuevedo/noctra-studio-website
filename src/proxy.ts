@@ -33,8 +33,9 @@ export default async function proxy(request: NextRequest) {
     // Handle Forge Route Protection
     const isForgeRoute = pathname.includes('/forge');
     const isLoginPage = pathname.endsWith('/forge/login');
+    const isLandingPage = /^\/([a-z]{2}\/)?forge\/?$/.test(pathname);
 
-    if (isForgeRoute && !isLoginPage) {
+    if (isForgeRoute && !isLoginPage && !isLandingPage) {
       if (!user) {
         const loginUrl = request.nextUrl.clone();
         if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {

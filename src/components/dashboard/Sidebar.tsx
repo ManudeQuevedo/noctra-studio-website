@@ -11,32 +11,56 @@ import {
   LogOut,
   ListTodo,
   History,
+  Zap,
 } from "lucide-react";
 import { useLocale } from "next-intl";
-
-type TabType =
-  | "overview"
-  | "deliverables"
-  | "financials"
-  | "settings"
-  | "tasks"
-  | "activity";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 interface SidebarProps {
   isCollapsed: boolean;
   setIsCollapsed: (value: boolean) => void;
-  activeTab: TabType;
-  setActiveTab: (tab: TabType) => void;
   userEmail?: string;
 }
 
 const navItems = [
-  { id: "overview" as TabType, label: "Overview", icon: LayoutDashboard },
-  { id: "tasks" as TabType, label: "Tasks", icon: ListTodo },
-  { id: "deliverables" as TabType, label: "Deliverables", icon: FolderGit2 },
-  { id: "financials" as TabType, label: "Financials", icon: CreditCard },
-  { id: "activity" as TabType, label: "Activity", icon: History },
-  { id: "settings" as TabType, label: "Settings", icon: Settings },
+  {
+    id: "overview",
+    label: "Overview",
+    icon: LayoutDashboard,
+    href: "/dashboard",
+  },
+  { id: "tasks", label: "Tasks", icon: ListTodo, href: "/dashboard?tab=tasks" },
+  {
+    id: "deliverables",
+    label: "Deliverables",
+    icon: FolderGit2,
+    href: "/dashboard?tab=deliverables",
+  },
+  {
+    id: "financials",
+    label: "Financials",
+    icon: CreditCard,
+    href: "/dashboard?tab=financials",
+  },
+  {
+    id: "activity",
+    label: "Activity",
+    icon: History,
+    href: "/dashboard?tab=activity",
+  },
+  {
+    id: "migration",
+    label: "Migración",
+    icon: Zap,
+    href: "/forge/migration",
+  },
+  {
+    id: "settings",
+    label: "Settings",
+    icon: Settings,
+    href: "/dashboard?tab=settings",
+  },
 ];
 
 // Generate initials from email
@@ -84,11 +108,10 @@ const getCompanyName = (email?: string) => {
 export default function Sidebar({
   isCollapsed,
   setIsCollapsed,
-  activeTab,
-  setActiveTab,
   userEmail,
 }: SidebarProps) {
   const locale = useLocale();
+  const pathname = usePathname();
   const initials = getInitials(userEmail);
   const displayName = getDisplayName(userEmail);
   const companyName = getCompanyName(userEmail);
@@ -98,17 +121,17 @@ export default function Sidebar({
       initial={false}
       animate={{ width: isCollapsed ? 80 : 256 }}
       transition={{ duration: 0.3, ease: "easeInOut" }}
-      className="h-full bg-neutral-950/80 backdrop-blur-xl supports-backdrop-filter:bg-neutral-950/60 border-r border-neutral-800 flex flex-col relative">
+      className="h-full bg-neutral-950/80 backdrop-blur-xl supports-backdrop-filter:bg-neutral-950/60 border-r border-neutral-800 flex flex-col relative shrink-0">
       {/* Header with Logo and Collapse Toggle */}
       <div className="p-4 border-b border-neutral-800 flex items-center justify-between">
         {!isCollapsed && (
-          <span className="text-sm font-semibold tracking-tight text-white">
+          <span className="text-sm font-semibold tracking-tight text-white truncate pr-2">
             {companyName}
           </span>
         )}
         <button
           onClick={() => setIsCollapsed(!isCollapsed)}
-          className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:bg-neutral-800 transition-colors">
+          className="w-8 h-8 rounded-lg bg-neutral-900 border border-neutral-800 flex items-center justify-center hover:bg-neutral-800 transition-colors shrink-0">
           {isCollapsed ? (
             <ChevronRight className="w-4 h-4 text-neutral-400" />
           ) : (
@@ -118,15 +141,18 @@ export default function Sidebar({
       </div>
 
       {/* Navigation */}
-      <nav className="flex-1 p-4 space-y-2">
+      <nav className="flex-1 p-4 space-y-2 overflow-y-auto">
         {navItems.map((item) => {
           const Icon = item.icon;
-          const isActive = activeTab === item.id;
+          const fullHref = `/${locale}${item.href}`;
+          const isActive =
+            pathname === fullHref ||
+            (item.href === "/dashboard" && pathname === `/${locale}/dashboard`);
 
           return (
-            <button
+            <Link
               key={item.id}
-              onClick={() => setActiveTab(item.id)}
+              href={fullHref}
               className={`w-full flex items-center gap-3 px-3 py-3 rounded-lg transition-all ${
                 isActive
                   ? "bg-white text-black"
@@ -138,11 +164,11 @@ export default function Sidebar({
                   initial={{ opacity: 0 }}
                   animate={{ opacity: 1 }}
                   exit={{ opacity: 0 }}
-                  className="font-medium text-sm">
+                  className="font-medium text-sm truncate">
                   {item.label}
                 </motion.span>
               )}
-            </button>
+            </Link>
           );
         })}
       </nav>
@@ -152,7 +178,7 @@ export default function Sidebar({
         {!isCollapsed && (
           <div className="flex items-center gap-3 px-2" title={userEmail}>
             {/* Avatar with Initials */}
-            <div className="w-10 h-10 rounded-full bg-linear-to-br from-blue-500 to-purple-600 flex items-center justify-center shrink-0">
+            <div className="w-10 h-10 rounded-full bg-gradient-to-br from-blue-500 to-purple-600 flex items-center justify-center shrink-0">
               <span className="text-sm font-bold text-white">{initials}</span>
             </div>
             {/* User Info */}

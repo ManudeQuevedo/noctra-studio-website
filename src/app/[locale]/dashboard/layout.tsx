@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import DashboardLayoutClient from "./DashboardLayoutClient";
+import { getDashboardData } from "./actions";
 
 export const metadata: Metadata = {
   title: "Dashboard | Noctra Studio",
@@ -19,14 +21,21 @@ export const metadata: Metadata = {
   ],
 };
 
-export default function DashboardLayout({
+export default async function DashboardLayout({
   children,
+  params,
 }: {
   children: React.ReactNode;
+  params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+  const data = await getDashboardData(locale);
+
   return (
     <div className="min-h-screen bg-black text-white selection:bg-white/20">
-      {children}
+      <DashboardLayoutClient profile={data?.profile}>
+        {children}
+      </DashboardLayoutClient>
     </div>
   );
 }

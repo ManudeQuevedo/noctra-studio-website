@@ -2,6 +2,7 @@
 
 import { useMemo, useState, useEffect } from "react";
 import Link from "next/link";
+import { useTranslations } from "next-intl";
 import {
   format,
   differenceInDays,
@@ -36,8 +37,7 @@ import {
 import { useFollowUps } from "@/hooks/useFollowUps";
 import { FollowUpModal } from "@/components/forge/FollowUpModal";
 import { RevenueForecast } from "@/app/actions/metrics";
-import { NotificationsDropdown } from "@/components/forge/NotificationsDropdown";
-import { AccountSettingsModal } from "@/components/forge/AccountSettingsModal";
+import { createClient } from "@/utils/supabase/client";
 
 type Lead = any;
 type Proposal = any;
@@ -77,20 +77,10 @@ export default function DashboardClient({
   const [currentTime, setCurrentTime] = useState(new Date());
   const { suggestions, refresh } = useFollowUps();
   const [selectedSuggestion, setSelectedSuggestion] = useState<any>(null);
-  const [settingsOpen, setSettingsOpen] = useState(false);
 
-  useEffect(() => {
-    // Only used to keep the Greeting fresh if they leave the tab open
-    const interval = setInterval(() => setCurrentTime(new Date()), 60000);
-    return () => clearInterval(interval);
-  }, []);
-
-  const getGreeting = () => {
-    const hour = currentTime.getHours();
-    if (hour >= 6 && hour < 12) return "Buenos días";
-    if (hour >= 12 && hour < 19) return "Buenas tardes";
-    return "Buenas noches";
-  };
+  const t = useTranslations("forge.dashboard");
+  const tSearch = useTranslations("forge.search");
+  const supabase = createClient();
 
   const uncontactedLeadsCount = leads.filter(
     (l) => l.pipeline_status === "nuevo",
@@ -100,71 +90,24 @@ export default function DashboardClient({
     proposals.filter(
       (p) =>
         p.status === "sent" &&
-        differenceInDays(currentTime, new Date(p.updated_at)) > 3,
+        differenceInDays(new Date(), new Date(p.updated_at)) > 3,
     ).length,
   );
   const activeProjectsCount = projects.filter(
     (p) => p.status === "active",
   ).length;
 
-  let dynamicStatus = "Todo al día. Sin pendientes.";
+  let dynamicStatus = t("todoAlDia");
   if (uncontactedLeadsCount > 0) {
-    dynamicStatus = `Tienes ${uncontactedLeadsCount} lead${uncontactedLeadsCount > 1 ? "s" : ""} sin contactar`;
+    dynamicStatus = t("leadsSinContactar", { count: uncontactedLeadsCount });
   } else if (pendingProposalsCount > 0) {
-    dynamicStatus = `${pendingProposalsCount} propuesta${pendingProposalsCount > 1 ? "s" : ""} esperando respuesta`;
+    dynamicStatus = t("propuestasEsperando", { count: pendingProposalsCount });
   } else if (activeProjectsCount > 0) {
-    dynamicStatus = `${activeProjectsCount} proyecto${activeProjectsCount > 1 ? "s" : ""} activo esta semana`;
+    dynamicStatus = t("proyectosActivosSemana", { count: activeProjectsCount });
   }
-
-  const formattedDate = format(currentTime, "EEEE, d 'de' MMMM 'de' yyyy", {
-    locale: es,
-  });
 
   return (
     <div className="flex flex-col flex-1 min-w-0 transition-all duration-200 min-h-full relative w-full">
-      {/* Single Axis Header */}
-      <header className="hidden md:flex h-16 items-center justify-between px-8 border-b border-white/5 shrink-0 sticky top-0 bg-[#050505] z-40">
-        <div className="flex items-center gap-3">
-          <h1 className="text-sm font-semibold text-white">
-            {getGreeting()}, Manu
-          </h1>
-          <span className="text-white/20">·</span>
-          <p className="text-xs text-white/30 uppercase tracking-widest hidden lg:block">
-            {formattedDate}
-          </p>
-        </div>
-
-        <div className="flex items-center gap-4">
-          <NotificationsDropdown leads={leads} proposals={proposals} />
-
-          <button
-            onClick={() =>
-              window.dispatchEvent(
-                new KeyboardEvent("keydown", { key: "k", metaKey: true }),
-              )
-            }
-            className="flex items-center gap-2 bg-white/5 border border-white/10 rounded-lg px-4 py-2 hover:border-white/20 hover:bg-white/10 transition-all min-w-[200px]">
-            <Search size={14} className="text-white/40 w-3.5 h-3.5" />
-            <span className="text-sm text-white/30">Buscar...</span>
-            <kbd className="ml-auto text-[10px] text-white/20 border border-white/10 rounded px-1.5 py-0.5 font-mono bg-white/5">
-              ⌘K
-            </kbd>
-          </button>
-
-          <button
-            onClick={() => setSettingsOpen(true)}
-            className="w-7 h-7 rounded-full bg-white/5 border border-white/10 flex items-center justify-center hover:bg-white/10 transition-colors">
-            <User className="w-3.5 h-3.5 text-white/50" />
-          </button>
-        </div>
-      </header>
-
-      {/* Settings Modal */}
-      <AccountSettingsModal
-        isOpen={settingsOpen}
-        onClose={() => setSettingsOpen(false)}
-      />
-
       {/* Main Content Area */}
       <div className="px-8 py-6 space-y-8 w-full flex-1">
         {/* Follow-up Smart Suggestions */}
@@ -176,13 +119,10 @@ export default function DashboardClient({
               </div>
               <div>
                 <p className="text-[10px] font-mono text-yellow-500 uppercase tracking-widest font-black">
-                  Atención Requerida
+                  {t("atencionRequerida")}
                 </p>
                 <p className="text-sm font-bold text-white">
-                  Tienes {suggestions.length} propuesta
-                  {suggestions.length > 1 ? "s" : ""} estancada
-                  {suggestions.length > 1 ? "s" : ""} que requiere
-                  {suggestions.length > 1 ? "n" : ""} atención inmediata.
+                  {t("propuestasEstancadas", { count: suggestions.length })}
                 </p>
               </div>
             </div>
@@ -194,7 +134,7 @@ export default function DashboardClient({
                   : "/forge/pipeline"
               }
               className="px-4 py-2 bg-yellow-500 text-black text-[10px] font-black uppercase tracking-widest hover:bg-yellow-400 transition-all text-center rounded-md">
-              Ver detalle →
+              {t("verDetalle")}
             </Link>
           </div>
         )}
@@ -456,6 +396,7 @@ function SparkLine({ data, color }: { data: number[]; color: string }) {
 // ROW 2: KPIs RÁPIDOS
 // ----------------------------------------------------------------------
 function KpiRow({ leads, proposals, projects, contracts, forecast }: any) {
+  const t = useTranslations("forge.dashboard");
   const currentMonth = new Date();
   const lastMonth = subMonths(currentMonth, 1);
 
@@ -519,9 +460,9 @@ function KpiRow({ leads, proposals, projects, contracts, forecast }: any) {
   return (
     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
       <KpiCard
-        label="Leads Este Mes"
+        label={t("leadsEsteMes")}
         value={leadsThisMonth.toString()}
-        subtext={`${leadDelta > 0 ? "▲ +" : leadDelta < 0 ? "▼ " : ""}${leadDelta} vs mes anterior`}
+        subtext={`${leadDelta > 0 ? "▲ +" : leadDelta < 0 ? "▼ " : ""}${leadDelta} ${t("vsMesAnterior")}`}
         subtextColor={
           leadDelta > 0
             ? "text-emerald-400"
@@ -536,9 +477,9 @@ function KpiRow({ leads, proposals, projects, contracts, forecast }: any) {
         link="/forge/leads"
       />
       <KpiCard
-        label="Propuestas Activas"
+        label={t("propuestasActivas")}
         value={activeProposals.length.toString()}
-        subtext={`${formatCurrency(activeProposalsValue)} acumulado`}
+        subtext={`${formatCurrency(activeProposalsValue)} ${t("mxnAcumulado")}`}
         sparklineData={
           activeProposals.length > 0 ? dummyTrendProposals : placeholderArr
         }
@@ -548,24 +489,18 @@ function KpiRow({ leads, proposals, projects, contracts, forecast }: any) {
 
       {/* Ongoing Projects specialized card */}
       <div className="bg-[#111111] border border-neutral-900 hover:border-white/10 hover:bg-white/[0.03] transition-all duration-150 cursor-pointer p-6 flex flex-col justify-between relative group rounded-xl min-h-[160px]">
-        <span className="uppercase tracking-widest text-xs text-white/40 mb-2">
-          Proyectos En Curso
+        <span className="text-sm font-medium text-white/60 mb-2">
+          {t("proyectosEnCurso")}
         </span>
         <div className="text-3xl font-black">{ongoingProjects.length}</div>
 
-        {/* Placeholder SVG line instead of stats for projects to match height */}
-        <div className="mt-4 flex-1">
-          <SparkLine
-            data={ongoingProjects.length > 0 ? [5, 5, 5, 5, 5] : placeholderArr}
-            color="#10b981"
-          />
-        </div>
+        {/* Removed SparkLine to free up space */}
 
         <div className="flex justify-end mt-auto pt-4">
           <Link
             href="/forge/projects"
-            className="text-[10px] uppercase tracking-widest text-white/20 hover:text-white/50 transition-colors">
-            Ver detalles →
+            className="text-xs font-medium text-white/30 hover:text-white/60 transition-colors">
+            {t("verDetalles")} →
           </Link>
         </div>
 
@@ -585,9 +520,9 @@ function KpiRow({ leads, proposals, projects, contracts, forecast }: any) {
       </div>
 
       <KpiCard
-        label="Forecast Ingresos"
+        label={t("forecastIngresos")}
         value={formatCurrency(forecast.total)}
-        subtext="Proyección ponderada"
+        subtext={t("proyeccionPonderada")}
         valueColor="text-emerald-500"
         sparklineData={
           forecast.total > 0
@@ -613,6 +548,7 @@ function KpiCard({
   link,
   isForecast = false,
 }: any) {
+  const t = useTranslations("forge.dashboard");
   const containerClasses = isForecast
     ? "bg-emerald-500/5 border border-emerald-500/15 shadow-[0_0_20px_rgba(0,255,136,0.04)]"
     : "bg-[#111111] border border-neutral-900 hover:border-white/10 hover:bg-white/[0.03] transition-all duration-150 cursor-pointer";
@@ -621,26 +557,21 @@ function KpiCard({
     <div
       className={`${containerClasses} p-6 flex flex-col justify-between rounded-xl relative min-h-[160px]`}>
       <div className="flex-1">
-        <span className="uppercase tracking-widest text-xs text-white/40 mb-2 block">
+        <span className="text-sm font-medium text-white/60 mb-2 block">
           {label}
         </span>
         <div className={`text-3xl font-black ${valueColor}`}>{value}</div>
-        <div
-          className={`text-[10px] font-mono uppercase tracking-widest mt-2 ${subtextColor}`}>
+        <div className={`text-xs font-medium mt-2 ${subtextColor}`}>
           {subtext}
         </div>
       </div>
-
-      <div className="mt-4 flex-1">
-        {sparklineData && <SparkLine data={sparklineData} color={color} />}
-      </div>
-
+      {/* Removed SparkLine block entirely */}{" "}
       {link && (
         <div className="flex justify-end mt-auto pt-4">
           <Link
             href={link}
-            className="text-[10px] uppercase tracking-widest text-white/20 hover:text-white/50 transition-colors">
-            Ver detalles →
+            className="text-xs font-medium text-white/30 hover:text-white/60 transition-colors">
+            {t("verDetalles")} →
           </Link>
         </div>
       )}
@@ -652,6 +583,7 @@ function KpiCard({
 // NOCTRA AI COPILOT
 // ----------------------------------------------------------------------
 function NoctraAiPanel() {
+  const t = useTranslations("forge.dashboard");
   const [insights, setInsights] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
 
@@ -677,16 +609,14 @@ function NoctraAiPanel() {
   };
 
   return (
-    <div className="bg-[#0a0a0a] border border-white/5 rounded-xl p-6 relative overflow-hidden group">
+    <div className="bg-emerald-500/[0.02] border border-emerald-500/20 rounded-xl p-6 relative overflow-hidden group">
       {/* Background ambient glow */}
-      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-[100px] pointer-events-none transition-opacity duration-1000" />
+      <div className="absolute top-0 right-1/4 w-96 h-96 bg-emerald-500/10 rounded-full blur-[100px] pointer-events-none transition-opacity duration-1000" />
 
       <div className="flex items-center justify-between mb-6 relative z-10">
         <div className="flex items-center gap-2">
-          <Sparkles className="w-3.5 h-3.5 text-emerald-500" />
-          <h2 className="text-[10px] font-mono uppercase tracking-widest text-emerald-500">
-            NOCTRA AI
-          </h2>
+          <Sparkles className="w-4 h-4 text-emerald-500" />
+          <h2 className="text-sm font-semibold text-emerald-500">Noctra AI</h2>
         </div>
         {!loading && (
           <button
@@ -694,7 +624,7 @@ function NoctraAiPanel() {
               setLoading(true);
               setTimeout(() => setLoading(false), 1000);
             }}
-            className="border border-white/10 rounded px-2 py-1 text-[10px] uppercase tracking-widest text-white/40 hover:text-white hover:bg-white/5 transition-colors">
+            className="border border-white/10 rounded px-3 py-1.5 text-xs font-medium text-white/60 hover:text-white hover:bg-white/5 hover:border-white/20 transition-all">
             Actualizar
           </button>
         )}
@@ -702,36 +632,33 @@ function NoctraAiPanel() {
 
       <div className="relative z-10">
         {loading ? (
-          <div className="flex items-center gap-3 py-4 text-white/30">
-            <Loader2 className="w-4 h-4 animate-spin text-emerald-500/50" />
-            <span className="text-sm font-mono tracking-widest uppercase text-[10px]">
-              Analizando CRM...
-            </span>
+          <div className="flex items-center gap-3 py-4 text-white/50">
+            <Loader2 className="w-4 h-4 animate-spin text-emerald-500" />
+            <span className="text-sm font-medium">Analizando CRM...</span>
           </div>
         ) : insights.length === 0 ? (
-          <p className="text-white/20 text-sm py-2 italic">
-            "Todo en orden. Sin alertas por ahora."
+          <p className="text-white/40 text-sm py-2 italic font-serif">
+            "{t("todoAlDia")}"
           </p>
         ) : (
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
             {insights.map((insight, idx) => (
               <div
                 key={idx}
-                className="bg-white/[0.02] border border-white/5 rounded-xl p-5 flex flex-col justify-between">
-                <div className="flex gap-3 mb-4">
-                  <div className="w-0.5 h-auto bg-emerald-500/40 rounded-full shrink-0" />
-                  <p className="text-sm text-white/70 leading-relaxed font-serif text-balance">
+                className="bg-black/40 border-l-4 border-l-emerald-500 border-y border-y-white/5 border-r border-r-white/5 p-5 flex flex-col justify-between shadow-lg">
+                <div className="flex gap-3 mb-5">
+                  <p className="text-sm text-white font-medium leading-relaxed text-balance">
                     {insight.mensaje}
                   </p>
                 </div>
 
-                <div className="flex items-center mt-auto pt-2">
-                  <button className="border border-white/10 rounded-lg px-4 py-2 text-xs font-semibold tracking-wide text-white/80 hover:border-emerald-500/40 hover:bg-emerald-500/10 hover:text-emerald-400 transition-all w-fit">
+                <div className="flex items-center mt-auto">
+                  <button className="bg-emerald-500 text-black rounded-md px-4 py-2 text-xs font-bold hover:bg-emerald-400 transition-colors shadow-[0_0_15px_rgba(16,185,129,0.2)]">
                     {insight.accion_label}
                   </button>
                   <button
                     onClick={() => dismissInsight(idx)}
-                    className="text-[10px] font-mono uppercase tracking-widest text-white/20 hover:text-white/50 hover:bg-white/5 px-2 py-1 rounded transition-colors ml-4">
+                    className="text-xs font-medium text-white/40 hover:text-white hover:bg-white/10 px-3 py-2 rounded-md transition-colors ml-3">
                     Ignorar
                   </button>
                 </div>
@@ -748,6 +675,7 @@ function NoctraAiPanel() {
 // ROW 3: ACTIVIDAD RECIENTE & PRÓXIMAS ACCIONES
 // ----------------------------------------------------------------------
 function RecentActivity({ leads, proposals, contracts, projects }: any) {
+  const t = useTranslations("forge.dashboard");
   // Aggregate events into a unified chronological array
   const events: any[] = [];
 
@@ -859,15 +787,15 @@ function RecentActivity({ leads, proposals, contracts, projects }: any) {
   return (
     <div className="lg:col-span-3 bg-[#111111] border border-neutral-900 flex flex-col h-auto rounded-xl">
       <div className="p-6 md:p-8 flex-none border-b border-neutral-900 flex justify-between items-center bg-[#0a0a0a] rounded-t-xl">
-        <h3 className="uppercase tracking-widest text-xs text-white/40">
-          Actividad Reciente
+        <h3 className="text-sm font-medium text-white/50">
+          {t("actividadReciente")}
         </h3>
       </div>
       <div className="max-h-[280px] overflow-y-auto p-4 md:p-6 flex flex-col forge-scroll">
         {recentEvents.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-3 py-10">
             <Activity className="w-6 h-6 text-white/10" />
-            <p className="text-xs font-mono uppercase tracking-widest text-white/20">
+            <p className="text-xs font-medium text-white/20">
               Sin actividad hoy
             </p>
           </div>
@@ -904,7 +832,7 @@ function RecentActivity({ leads, proposals, contracts, projects }: any) {
         {/* Footer actions view more */}
         <Link
           href="/forge"
-          className="block text-center mt-auto pt-6 border-t border-neutral-900 text-[10px] uppercase tracking-widest text-white/20 hover:text-white/40 transition-colors">
+          className="block text-center mt-auto pt-6 border-t border-neutral-900 text-xs font-medium text-white/30 hover:text-white/60 transition-colors">
           Ver toda la actividad →
         </Link>
       </div>
@@ -913,6 +841,7 @@ function RecentActivity({ leads, proposals, contracts, projects }: any) {
 }
 
 function UpcomingActions({ leads }: any) {
+  const t = useTranslations("forge.dashboard");
   const today = new Date();
   const next7Days = addDays(today, 7);
 
@@ -933,21 +862,21 @@ function UpcomingActions({ leads }: any) {
   return (
     <div className="lg:col-span-2 bg-[#111111] border border-neutral-900 flex flex-col h-auto rounded-xl">
       <div className="p-6 md:p-8 flex-none border-b border-neutral-900 flex justify-between items-center bg-[#0a0a0a] rounded-t-xl">
-        <h3 className="uppercase tracking-widest text-xs text-white/40">
-          Próximas Acciones
+        <h3 className="text-sm font-medium text-white/50">
+          {t("proximasAcciones")}
         </h3>
       </div>
       <div className="max-h-[280px] overflow-y-auto p-4 md:p-6 flex flex-col forge-scroll">
         {actions.length === 0 ? (
           <div className="flex-1 flex flex-col items-center justify-center gap-4 py-10">
             <Calendar className="w-6 h-6 text-white/10" />
-            <p className="text-[10px] font-mono uppercase tracking-widest text-white/20 leading-tight">
-              Sin acciones esta semana
+            <p className="text-xs font-medium text-white/30 leading-tight">
+              {t("sinAcciones")}
             </p>
             <Link
               href="/forge/pipeline"
               className="mt-2 border border-white/10 rounded-lg px-3 py-1.5 text-xs text-white/40 hover:border-white/20 hover:text-white/60 transition-all font-medium">
-              + Programar acción
+              {t("programarAccion")}
             </Link>
           </div>
         ) : (
@@ -996,6 +925,7 @@ function UpcomingActions({ leads }: any) {
 // ----------------------------------------------------------------------
 
 function PipelineSnapshot({ leads }: any) {
+  const t = useTranslations("forge.dashboard");
   const STAGES = [
     "nuevo",
     "contactado",
@@ -1066,7 +996,7 @@ function PipelineSnapshot({ leads }: any) {
       <div className="flex justify-between items-start mb-8 mt-2">
         <div>
           <h3 className="uppercase tracking-widest text-xs text-white/40 mb-2">
-            Pipeline Snapshot
+            {t("pipelineSnapshot")}
           </h3>
           <p className="text-3xl font-black text-white">
             {formatCurrency(totalPipelineValue)}
@@ -1075,7 +1005,7 @@ function PipelineSnapshot({ leads }: any) {
         <Link
           href="/forge/pipeline"
           className="flex items-center gap-2 text-[10px] font-mono uppercase tracking-widest text-emerald-400 hover:text-white transition-colors border border-emerald-500/20 px-3 py-1.5 rounded-lg hover:bg-emerald-500/10">
-          Ver Pipeline <ArrowRight className="w-4 h-4" />
+          {t("verPipeline")} <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
 
