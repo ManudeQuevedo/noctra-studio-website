@@ -185,7 +185,7 @@ export default function ProposalBuilderClient({
       {/* Builder Layout */}
       <div className="flex-1 flex min-h-[calc(100vh-64px)]">
         {/* Left Panel: Editing Forms (60% or scrollable) */}
-        <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-8 space-y-12 forge-scroll h-[calc(100vh-64px)]">
+        <div className="w-full lg:w-[45%] border-r border-white/5 overflow-y-auto bg-[#050505] p-5 md:p-8 space-y-12 forge-scroll h-[calc(100vh-64px)]">
           <section className="space-y-6">
             <div className="flex items-center justify-between">
               <h3 className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
@@ -195,19 +195,19 @@ export default function ProposalBuilderClient({
 
             <div className="grid grid-cols-1 gap-8">
               <div className="space-y-3">
-                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                <label className="text-[10px] font-mono text-neutral-500 tracking-[0.2em] uppercase">
                   Título de la Propuesta
                 </label>
                 <input
                   type="text"
                   value={proposal.title}
                   onChange={(e) => handleUpdate("title", e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
+                  className="w-full min-h-[44px] bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
                 />
               </div>
 
               <div className="space-y-3">
-                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                <label className="text-[10px] font-mono text-neutral-500 tracking-[0.2em] uppercase">
                   Resumen Ejecutivo
                 </label>
                 <textarea
@@ -215,7 +215,7 @@ export default function ProposalBuilderClient({
                   value={proposal.description || ""}
                   onChange={(e) => handleUpdate("description", e.target.value)}
                   placeholder="Describe los objetivos principales del proyecto..."
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200 resize-y min-h-[100px]"
+                  className="w-full min-h-[44px] bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200 resize-y min-h-[100px] leading-relaxed"
                 />
               </div>
             </div>
@@ -251,18 +251,18 @@ export default function ProposalBuilderClient({
             </h3>
             <div className="grid grid-cols-2 gap-8">
               <div className="space-y-3">
-                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                <label className="text-[10px] font-mono text-neutral-500 tracking-[0.2em] uppercase">
                   Validez (Vence el)
                 </label>
                 <input
                   type="date"
                   value={proposal.valid_until || ""}
                   onChange={(e) => handleUpdate("valid_until", e.target.value)}
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
+                  className="w-full min-h-[44px] bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
                 />
               </div>
               <div className="space-y-3">
-                <label className="text-[10px] font-mono text-white/40 uppercase tracking-widest">
+                <label className="text-[10px] font-mono text-neutral-500 tracking-[0.2em] uppercase">
                   Duración Estimada
                 </label>
                 <input
@@ -272,7 +272,7 @@ export default function ProposalBuilderClient({
                   onChange={(e) =>
                     handleUpdate("estimated_duration", e.target.value)
                   }
-                  className="w-full bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
+                  className="w-full min-h-[44px] bg-white/5 border border-white/10 rounded-lg px-4 py-3 text-sm text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
                 />
               </div>
             </div>

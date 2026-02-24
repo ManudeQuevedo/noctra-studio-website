@@ -7,7 +7,7 @@ import { useInactivityTimeout } from "@/hooks/useInactivityTimeout";
 import { ForgeSidebar } from "@/components/forge/ForgeSidebar";
 import { ForgeTopBar } from "@/components/forge/ForgeTopBar";
 import { ForgeContentWrapper } from "@/components/forge/ForgeContentWrapper";
-import { MobileBottomNav } from "@/components/forge/MobileBottomNav";
+import { ForgeMobileHeader } from "@/components/forge/ForgeMobileHeader";
 import { CommandBar } from "@/components/forge/CommandBar";
 import { Plus } from "lucide-react";
 
@@ -107,15 +107,22 @@ export default function ForgeLayoutClient({
             </main>
           </div>
 
-          {/* MOBILE LAYOUT */}
-          <div className="md:hidden flex h-dvh overflow-hidden bg-[#050505] text-white">
-            <main className="flex-1 h-[calc(100dvh-4rem-env(safe-area-inset-bottom))] overflow-y-auto overflow-x-hidden bg-[#050505] pb-24 min-w-0 forge-scroll flex flex-col">
+          {/* MOBILE LAYOUT & FAB */}
+          <div className="md:hidden flex flex-col h-dvh overflow-hidden bg-[#050505] text-white relative">
+            <ForgeMobileHeader />
+            <main className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden pb-32 forge-scroll flex flex-col relative">
               <ForgeContentWrapper>{children}</ForgeContentWrapper>
             </main>
-          </div>
 
-          {/* Render new Mobile Bottom Nav layout */}
-          <MobileBottomNav onOpenCommandBar={() => setCommandBarOpen(true)} />
+            {/* Floating Action Button (FAB) */}
+            <button
+              onClick={() => setCommandBarOpen(true)}
+              style={{ bottom: "calc(env(safe-area-inset-bottom) + 1.5rem)" }}
+              className="fixed right-6 w-14 h-14 bg-emerald-500 text-black rounded-full flex items-center justify-center shadow-[0_4px_25px_rgba(16,185,129,0.4)] hover:bg-emerald-400 transition-all active:scale-90 z-40"
+              aria-label="Menú de creación rápida">
+              <Plus className="w-8 h-8" strokeWidth={2.5} />
+            </button>
+          </div>
 
           {/* Global Command Bar */}
           <CommandBar
