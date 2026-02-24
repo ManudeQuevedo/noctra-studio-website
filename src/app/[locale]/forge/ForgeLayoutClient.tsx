@@ -94,22 +94,14 @@ export default function ForgeLayoutClient({
 
           {/* MOBILE LAYOUT */}
           <div className="md:hidden flex h-dvh overflow-hidden bg-[#050505] text-white">
-            <main className="flex-1 h-dvh overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 pb-[calc(env(safe-area-inset-bottom)+4rem)] min-w-0 forge-scroll">
+            <main className="flex-1 h-dvh overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 pb-[calc(env(safe-area-inset-bottom)+6rem)] min-w-0 forge-scroll">
               <ForgeSidebar workspace={workspace} />
               <ForgeContentWrapper>{children}</ForgeContentWrapper>
             </main>
           </div>
 
           {/* Render new Mobile Bottom Nav layout */}
-          <MobileBottomNav />
-
-          {/* Quick Actions FAB (Mobile Only) */}
-          <button
-            onClick={() => setCommandBarOpen(true)}
-            className="md:hidden fixed bottom-24 right-4 w-12 h-12 bg-emerald-500 text-black rounded-full flex items-center justify-center shadow-xl z-50 hover:bg-emerald-400 transition-all active:scale-95"
-            aria-label="Abrir acciones rápidas">
-            <Plus className="w-6 h-6" />
-          </button>
+          <MobileBottomNav onOpenCommandBar={() => setCommandBarOpen(true)} />
 
           {/* Global Command Bar */}
           <CommandBar

@@ -8,76 +8,92 @@ import {
   Sparkles,
   Building2,
   Brain,
-  Users,
-  UserPlus,
+  MessageSquare,
   Shield,
   Server,
+  Zap,
+  Info,
 } from "lucide-react";
-import { cn } from "@/lib/utils";
 import { Link } from "@/i18n/routing";
 
 export const PricingComparison = () => {
   const features = [
     {
       category: "Precio Base",
-      competitor: "Desde $15 - $165/mo",
-      standard: "$9 / usuario",
+      starter: "$9 / usuario",
+      pro: "$29 / usuario",
       enterprise: (
         <span className="flex items-center gap-2">Custom Pricing</span>
       ),
     },
     {
-      category: "Inteligencia Artificial",
-      competitor: "Add-ons costosos o créditos limitados",
-      standard: "Nativa (Incluida) - Análisis predictivo",
+      category: "Modelos AI",
+      starter: "GPT-4o-mini / Flash",
+      pro: "Claude 3.5 Sonnet + GPT-4o",
       enterprise: (
         <span className="flex items-center gap-2">
           <Brain size={16} className="text-amber-500/80 shrink-0" />
-          Custom Model Training (Tus PDFs/Datos)
+          Custom + Router Privado
         </span>
       ),
     },
     {
-      category: "Límites",
-      competitor: "Restringidos por Tiers",
-      standard: "Roles generosos, almacenamiento estándar",
+      category: "Tokens Mensuales",
+      starter: "50k",
+      pro: "200k",
       enterprise: (
-        <span className="flex items-center gap-2">
-          <Users size={16} className="text-amber-500/80 shrink-0" />
-          Unlimited Users & Storage
+        <span className="flex items-center gap-2 group relative cursor-help">
+          <Zap size={16} className="text-amber-500/80 shrink-0" />
+          Ilimitados*
+          <div className="absolute bottom-full left-0 mb-2 w-48 p-2 bg-black border border-white/10 rounded-lg text-xs text-white/70 opacity-0 group-hover:opacity-100 transition-opacity pointer-events-none z-20 shadow-xl">
+            Sujeto a Política de Uso Justo (Fair Use Policy) para prevenir
+            explotación automatizada.
+          </div>
         </span>
       ),
+    },
+    {
+      category: "WhatsApp",
+      starter: "Add-on ($)",
+      pro: "Incluido Nativo",
+      enterprise: (
+        <span className="flex items-center gap-2">
+          <MessageSquare size={16} className="text-amber-500/80 shrink-0" />
+          Incluido Nativo + API Access
+        </span>
+      ),
+    },
+    {
+      category: "Firmas (e-Sign)",
+      starter: "5 / mes",
+      pro: "Ilimitadas (Noctra Sign)",
+      enterprise: "Ilimitadas (Advanced KYC)",
+    },
+    {
+      category: "Storage",
+      starter: "10GB",
+      pro: "100GB",
+      enterprise: "1TB+",
     },
     {
       category: "Soporte",
-      competitor: "Tickets o chat lento",
-      standard: "Email & Chat Support",
+      starter: "Email",
+      pro: "Prioritario",
       enterprise: (
         <span className="flex items-center gap-2">
-          <UserPlus size={16} className="text-amber-500/80 shrink-0" />
-          Dedicated Success Manager + SLA 99.9%
+          <Shield size={16} className="text-amber-500/80 shrink-0" />
+          Slack Connect / Dedicado
         </span>
       ),
     },
     {
       category: "Seguridad",
-      competitor: "Autenticación estándar",
-      standard: "2FA Incluido",
-      enterprise: (
-        <span className="flex items-center gap-2">
-          <Shield size={16} className="text-amber-500/80 shrink-0" />
-          SSO (SAML/Okta) & Audit Logs
-        </span>
-      ),
-    },
-    {
-      category: "Infraestructura",
-      competitor: "Cloud multi-tenant",
-      standard: "Cloud segura",
+      starter: "Autenticación estándar",
+      pro: "2FA Incluido",
       enterprise: (
         <span className="flex items-center gap-2">
           <Server size={16} className="text-amber-500/80 shrink-0" />
-          Opción On-Premise o Instancia Privada
+          SSO (SAML/Okta) & Audit Logs
         </span>
       ),
     },
@@ -95,22 +111,23 @@ export const PricingComparison = () => {
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             className="text-[10px] md:text-xs font-black uppercase tracking-[0.3em] text-emerald-500 mb-6 block">
-            Comparativa de Mercado
+            Comparativa Detallada
           </m.span>
           <m.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.1 }}
             className="text-4xl md:text-6xl font-black tracking-tighter text-white mb-6">
-            Construido para Escalar.
+            Todo lo que necesitas. <br className="hidden md:block" />
+            Nada que no.
           </m.h2>
           <m.p
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ delay: 0.2 }}
             className="text-neutral-400 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed">
-            Desde equipos ágiles hasta operaciones complejas. Encuentra el plan
-            perfecto para tu agencia.
+            Compara las capacidades exactas de cada plan y encuentra el ajuste
+            perfecto para la escala de tu agencia.
           </m.p>
         </div>
 
@@ -123,24 +140,10 @@ export const PricingComparison = () => {
               {/* Empty top-left cell for desktop */}
               <div className="hidden md:block p-8 border-r border-white/5"></div>
 
-              {/* Competitor Column Header */}
+              {/* Starter Column Header */}
               <div className="p-8 border-b md:border-b-0 md:border-r border-white/5 flex flex-col items-center justify-center text-center">
-                <div className="text-neutral-500 font-bold uppercase tracking-widest text-xs mb-2">
-                  Competencia
-                </div>
-                <div className="text-neutral-300 text-sm">
-                  HubSpot, Salesforce, etc.
-                </div>
-              </div>
-
-              {/* Standard Column Header (Highlight) */}
-              <div className="p-8 relative border-b md:border-b-0 border-white/5 md:border-r flex flex-col items-center justify-center text-center bg-emerald-500/[0.03]">
-                <div className="absolute top-0 inset-x-0 h-1 bg-emerald-500" />
-                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-emerald-500 text-black text-[10px] uppercase font-black px-3 py-1 rounded-b-lg tracking-widest shadow-lg">
-                  Recomendado
-                </div>
-                <div className="text-emerald-500 font-bold uppercase tracking-widest text-xs mt-4 mb-2">
-                  Noctra Standard
+                <div className="text-white/70 font-bold uppercase tracking-widest text-xs mb-2 mt-4">
+                  Starter
                 </div>
                 <div className="text-white text-3xl font-black tracking-tighter">
                   $9
@@ -150,18 +153,32 @@ export const PricingComparison = () => {
                 </div>
               </div>
 
-              {/* Enterprise Column Header */}
-              <div className="p-8 relative flex flex-col items-center justify-center text-center bg-white/[0.01]">
-                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-yellow-600/50 to-amber-500/50" />
-                <div className="text-white/90 font-bold uppercase tracking-widest text-xs mb-2 flex items-center gap-2">
-                  <Building2 size={14} className="text-neutral-400" />{" "}
-                  Enterprise / Agency Scale
+              {/* Pro Column Header (Highlight) */}
+              <div className="p-8 relative border-b md:border-b-0 border-white/5 md:border-r flex flex-col items-center justify-center text-center bg-emerald-500/[0.03]">
+                <div className="absolute top-0 inset-x-0 h-1 bg-emerald-500" />
+                <div className="absolute top-0 left-1/2 -translate-x-1/2 bg-emerald-500 text-black text-[10px] uppercase font-black px-3 py-1 rounded-b-lg tracking-widest shadow-lg">
+                  Recomendado
                 </div>
-                <div className="text-white text-2xl font-bold tracking-tighter">
-                  Desde $299
+                <div className="text-emerald-500 font-bold uppercase tracking-widest text-xs mt-4 mb-2">
+                  Forge Pro
+                </div>
+                <div className="text-white text-3xl font-black tracking-tighter">
+                  $29
                   <span className="text-sm font-medium text-neutral-400">
                     /mo
                   </span>
+                </div>
+              </div>
+
+              {/* Enterprise Column Header */}
+              <div className="p-8 relative flex flex-col items-center justify-center text-center bg-white/[0.01]">
+                <div className="absolute top-0 inset-x-0 h-1 bg-gradient-to-r from-yellow-600/50 to-amber-500/50" />
+                <div className="text-white/90 font-bold uppercase tracking-widest text-xs mb-2 mt-4 flex items-center gap-2">
+                  <Building2 size={14} className="text-amber-500/80" />{" "}
+                  Enterprise
+                </div>
+                <div className="text-white text-2xl font-bold tracking-tighter">
+                  Custom
                 </div>
               </div>
             </div>
@@ -179,25 +196,25 @@ export const PricingComparison = () => {
                     </span>
                   </div>
 
-                  {/* Competitor */}
-                  <div className="p-6 md:p-8 text-neutral-500 text-sm flex items-center md:border-r border-white/5 border-b md:border-b-0">
+                  {/* Starter */}
+                  <div className="p-6 md:p-8 text-white/70 text-sm flex items-center md:border-r border-white/5 border-b md:border-b-0">
                     <span className="md:hidden w-32 font-bold uppercase text-[10px] tracking-widest text-neutral-600">
-                      Competencia:
+                      Starter:
                     </span>
-                    <span className="flex-1">{row.competitor}</span>
+                    <span className="flex-1">{row.starter}</span>
                   </div>
 
-                  {/* Standard */}
+                  {/* Pro */}
                   <div className="p-6 md:p-8 text-white font-medium text-sm flex items-center md:border-r border-white/5 bg-emerald-500/[0.01] border-b md:border-b-0">
                     <span className="md:hidden w-32 font-bold uppercase text-[10px] tracking-widest text-emerald-500 mt-0.5">
-                      Standard:
+                      Pro:
                     </span>
                     <Check
                       size={16}
                       className="text-emerald-500 mr-2 shrink-0 hidden md:block"
                       strokeWidth={3}
                     />
-                    <span className="flex-1">{row.standard}</span>
+                    <span className="flex-1">{row.pro}</span>
                   </div>
 
                   {/* Enterprise */}
@@ -219,20 +236,26 @@ export const PricingComparison = () => {
             <div className="grid grid-cols-1 md:grid-cols-4 border-t border-white/10 bg-white/[0.02]">
               <div className="hidden md:block p-8 border-r border-white/5"></div>
 
-              <div className="hidden md:flex p-8 border-b md:border-b-0 md:border-r border-white/5 items-center justify-center">
-                {/* No CTA for competitors */}
-              </div>
-
-              <div className="p-6 md:p-8 border-b md:border-b-0 border-white/5 md:border-r flex items-center justify-center bg-emerald-500/[0.03]">
+              {/* Starter CTA */}
+              <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/5 flex items-center justify-center">
                 <Link
                   href="/forge/login"
-                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white text-black font-bold text-sm hover:bg-neutral-200 transition-all active:scale-[0.98]">
-                  Empezar Gratis <ArrowRight size={16} />
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white/5 text-white/70 font-bold border border-white/10 text-sm hover:bg-white/10 hover:text-white transition-all active:scale-[0.98]">
+                  Empezar Starter
                 </Link>
               </div>
 
+              {/* Pro CTA */}
+              <div className="p-6 md:p-8 border-b md:border-b-0 border-white/5 md:border-r flex items-center justify-center bg-emerald-500/[0.03]">
+                <Link
+                  href="/forge/login"
+                  className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white text-black font-black text-sm hover:bg-neutral-200 transition-all active:scale-[0.98]">
+                  Empezar Pro <ArrowRight size={16} />
+                </Link>
+              </div>
+
+              {/* Enterprise CTA */}
               <div className="p-6 md:p-8 flex items-center justify-center bg-white/[0.01]">
-                {/* Enterprise Contact CTA */}
                 <a
                   href="mailto:ventas@noctra.studio?subject=Consulta%20Plan%20Enterprise"
                   className="w-full relative flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-[#0a0a0a] border border-white/10 text-white font-bold text-sm hover:bg-white/5 hover:border-white/30 transition-all active:scale-[0.98] group/btn overflow-hidden">
