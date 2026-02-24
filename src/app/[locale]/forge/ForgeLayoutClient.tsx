@@ -109,8 +109,7 @@ export default function ForgeLayoutClient({
 
           {/* MOBILE LAYOUT */}
           <div className="md:hidden flex h-dvh overflow-hidden bg-[#050505] text-white">
-            <main className="flex-1 h-dvh overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 pb-[calc(env(safe-area-inset-bottom)+6rem)] min-w-0 forge-scroll">
-              <ForgeSidebar workspace={workspace} enabled={!!hasSession} />
+            <main className="flex-1 h-[calc(100dvh-4rem-env(safe-area-inset-bottom))] overflow-y-auto overflow-x-hidden bg-[#050505] pb-24 min-w-0 forge-scroll flex flex-col">
               <ForgeContentWrapper>{children}</ForgeContentWrapper>
             </main>
           </div>

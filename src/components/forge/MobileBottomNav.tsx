@@ -20,8 +20,8 @@ export function MobileBottomNav({
 
   return (
     <>
-      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-50 bg-black/80 backdrop-blur-xl border-t border-white/10 pb-[env(safe-area-inset-bottom)]">
-        <div className="flex justify-between items-center h-[calc(4rem+env(safe-area-inset-bottom))] px-6 pb-2">
+      <nav className="md:hidden fixed bottom-0 left-0 right-0 z-[100] bg-black/90 supports-[backdrop-filter]:bg-black/80 backdrop-blur-xl border-t border-white/10 pb-[env(safe-area-inset-bottom)]">
+        <div className="flex justify-between items-center h-16 px-6">
           {/* Home */}
           <Link
             href="/forge"

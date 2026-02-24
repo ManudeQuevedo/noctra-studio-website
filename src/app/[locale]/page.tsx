@@ -4,9 +4,9 @@ import { generatePageMetadata } from "@/lib/metadata";
 import { ServiceSchema, FAQSchema } from "@/components/seo/JsonLd";
 
 // Lazy load heavy components below the fold
-const ServicesGrid = dynamic(() =>
-  import("@/components/home/services-grid").then((mod) => ({
-    default: mod.ServicesGrid,
+const IndustrySolutions = dynamic(() =>
+  import("@/components/home/IndustrySolutions").then((mod) => ({
+    default: mod.IndustrySolutions,
   })),
 );
 const WhyDifferentSection = dynamic(() =>
@@ -85,8 +85,8 @@ export default async function HomePage({
       {/* 1. Hero — Headline + CTAs + trust badge */}
       <Hero />
 
-      {/* 2. Services — Benefit-focused 4-service grid */}
-      <ServicesGrid images={images} />
+      {/* 2. Industry Solutions — Avatar-driven tab component */}
+      <IndustrySolutions />
 
       {/* 3. Why Different — 4 differentiator cards */}
       <WhyDifferentSection />
