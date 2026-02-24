@@ -22,16 +22,27 @@ export default function ForgeLayoutClient({
   const router = useRouter();
   const pathname = usePathname();
   const { showWarning, timeLeft, staySignedIn } = useInactivityTimeout();
+  const [hasSession, setHasSession] = useState<boolean | null>(
+    workspace ? true : null,
+  );
   const [commandBarOpen, setCommandBarOpen] = useState(false);
 
   const isLoginPage = pathname.includes("/forge/login");
   const isForgeRoot = /^\/([a-z]{2}\/)?forge\/?$/.test(pathname);
-  const isLandingPage = isForgeRoot && !workspace;
+  // Only evaluate as landing page if we are certain there is no session.
+  // If hasSession is null, we assume they MIGHT be logged in to prevent flickering the Landing Page UI.
+  const isLandingPage = isForgeRoot && hasSession === false;
 
   useEffect(() => {
+    // Check real session on mount (fixes Next.js layout prop caching after login)
+    supabase.auth.getSession().then(({ data }) => {
+      setHasSession(!!data.session);
+    });
+
     const {
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
+      setHasSession(!!session);
       if (event === "SIGNED_OUT") {
         router.push("/forge/login");
         router.refresh();

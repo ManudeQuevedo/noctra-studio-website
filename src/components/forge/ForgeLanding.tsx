@@ -30,6 +30,7 @@ import { PricingWithROI } from "./PricingWithROI";
 import { PricingComparison } from "./PricingComparison";
 import { MarketComparison } from "./MarketComparison";
 import { UnifiedStack } from "./UnifiedStack";
+import { ConnectivitySection } from "./ConnectivitySection";
 import { ForgeNavbar } from "./ForgeNavbar";
 import { ForgeFooter } from "./ForgeFooter";
 import { Link } from "@/i18n/routing";
@@ -407,14 +408,14 @@ export default function ForgeLanding() {
                 noctra.studio/forge
               </div>
             </div>
-            {/* Screenshot */}
-            <Image
-              src="/images/forge-dashboard-screenshot.png"
-              alt="Noctra Forge Dashboard"
-              width={1200}
-              height={700}
+            {/* Animated Screenshot (GIF behavior) */}
+            <video
+              src="/images/forge-dashboard-animated.mov"
+              autoPlay
+              loop
+              muted
+              playsInline
               className="w-full object-cover"
-              priority
             />
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
           </div>
@@ -687,6 +688,9 @@ export default function ForgeLanding() {
 
       {/* --- SECTION 5.8: UNIFIED STACK BENTO --- */}
       <UnifiedStack />
+
+      {/* --- SECTION 5.9: CONNECTIVITY & AI --- */}
+      <ConnectivitySection />
 
       {/* --- SECTION 6: PRICING --- */}
       <PricingWithROI />
