@@ -33,7 +33,14 @@ export default async function proxy(request: NextRequest) {
     // Handle Forge Route Protection
     const isForgeRoute = pathname.includes('/forge');
     const isLoginPage = pathname.endsWith('/forge/login');
-    const isLandingPage = /^\/([a-z]{2}\/)?forge\/?$/.test(pathname);
+    
+    // Match exactly /forge or /es/forge or /en/forge (ignoring trailing slashes and preventing matches on sub-routes like /forge/projects)
+    const isLandingPage = /^\/(es|en)?\/?forge\/?$/.test(pathname);
+    
+    // DEBUG: Remove after fixing the redirect loop
+    if (isForgeRoute && !isLoginPage) {
+      console.log(`[Proxy] Checking route: ${pathname} | isLandingPage: ${isLandingPage} | hasUser: ${!!user}`);
+    }
 
     if (isForgeRoute && !isLoginPage && !isLandingPage) {
       if (!user) {

@@ -28,7 +28,10 @@ export default function ForgeLayoutClient({
   const [commandBarOpen, setCommandBarOpen] = useState(false);
 
   const isLoginPage = pathname.includes("/forge/login");
-  const isForgeRoot = /^\/([a-z]{2}\/)?forge\/?$/.test(pathname);
+  const isForgeRoot =
+    /^\/(es|en)?\/?forge\/?$/.test(pathname) ||
+    pathname === "/forge" ||
+    pathname === "/forge/";
   // Only evaluate as landing page if we are certain there is no session.
   // If hasSession is null, we assume they MIGHT be logged in to prevent flickering the Landing Page UI.
   const isLandingPage = isForgeRoot && hasSession === false;
@@ -43,7 +46,8 @@ export default function ForgeLayoutClient({
       data: { subscription },
     } = supabase.auth.onAuthStateChange((event, session) => {
       setHasSession(!!session);
-      if (event === "SIGNED_OUT") {
+      // Only redirect on SIGNED_OUT if they are inside the protected dashboard area, not the landing page
+      if (event === "SIGNED_OUT" && !isForgeRoot) {
         router.push("/forge/login");
         router.refresh();
       }
@@ -52,7 +56,7 @@ export default function ForgeLayoutClient({
     return () => {
       subscription.unsubscribe();
     };
-  }, [supabase, router]);
+  }, [supabase, router, isForgeRoot]);
 
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
@@ -94,7 +98,7 @@ export default function ForgeLayoutClient({
           {/* DESKTOP LAYOUT - STRICT FLEX */}
           <div className="hidden md:flex h-dvh overflow-hidden bg-[#050505] text-white">
             <aside className="border-r border-white/5 shrink-0 flex flex-col">
-              <ForgeSidebar workspace={workspace} />
+              <ForgeSidebar workspace={workspace} enabled={!!hasSession} />
             </aside>
 
             <main className="flex-1 min-w-0 overflow-y-auto overflow-x-hidden forge-scroll flex flex-col">
@@ -106,7 +110,7 @@ export default function ForgeLayoutClient({
           {/* MOBILE LAYOUT */}
           <div className="md:hidden flex h-dvh overflow-hidden bg-[#050505] text-white">
             <main className="flex-1 h-dvh overflow-y-auto overflow-x-hidden bg-[#050505] pt-14 pb-[calc(env(safe-area-inset-bottom)+6rem)] min-w-0 forge-scroll">
-              <ForgeSidebar workspace={workspace} />
+              <ForgeSidebar workspace={workspace} enabled={!!hasSession} />
               <ForgeContentWrapper>{children}</ForgeContentWrapper>
             </main>
           </div>

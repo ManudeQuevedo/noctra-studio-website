@@ -31,13 +31,14 @@ export interface ForgeSidebarProps {
     logo_url: string | null;
     primary_color: string;
   };
+  enabled?: boolean;
 }
 
-export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
+export function ForgeSidebar({ workspace, enabled = true }: ForgeSidebarProps) {
   const pathname = usePathname();
   const router = useRouter();
   const supabase = createClient();
-  const { suggestions } = useFollowUps();
+  const { suggestions } = useFollowUps(enabled);
   const t = useTranslations("forge.nav");
 
   const [alertCount, setAlertCount] = useState(0);
@@ -55,6 +56,8 @@ export function ForgeSidebar({ workspace }: ForgeSidebarProps) {
   }, []);
 
   useEffect(() => {
+    if (!enabled) return;
+
     const fetchAlerts = async () => {
       const { data, error } = await supabase.rpc("get_leads_needing_attention");
       if (!error && data) {

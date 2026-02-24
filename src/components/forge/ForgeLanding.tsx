@@ -409,13 +409,13 @@ export default function ForgeLanding() {
               </div>
             </div>
             {/* Animated Screenshot (GIF behavior) */}
-            <video
-              src="/images/forge-dashboard-animated.mov"
-              autoPlay
-              loop
-              muted
-              playsInline
-              className="w-full object-cover"
+            <Image
+              src="/images/forge-dashboard-animated.webp"
+              alt="Noctra Forge Dashboard"
+              width={1200}
+              height={800}
+              unoptimized
+              className="w-full object-cover aspect-video"
             />
             <div className="absolute bottom-0 left-0 right-0 h-32 bg-gradient-to-t from-black to-transparent" />
           </div>

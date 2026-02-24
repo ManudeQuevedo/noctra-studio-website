@@ -6,11 +6,15 @@ import { FollowUpSuggestion, getPendingFollowUps } from "@/app/actions/followup"
 const IGNORED_KEY = "forge_followup_ignored_ids";
 const SNOOZED_KEY = "forge_followup_snoozed";
 
-export function useFollowUps() {
+export function useFollowUps(enabled = true) {
   const [suggestions, setSuggestions] = useState<FollowUpSuggestion[]>([]);
   const [isLoading, setIsLoading] = useState(true);
 
   const fetchSuggestions = useCallback(async () => {
+    if (!enabled) {
+      setIsLoading(false);
+      return;
+    }
     setIsLoading(true);
     try {
       const data = await getPendingFollowUps();
