@@ -611,7 +611,7 @@ export default function ForgeLanding() {
               <div className="space-y-4 mt-8">
                 {[
                   { name: "Asana/ClickUp", use: "Proyectos", price: "$13" },
-                  { name: "Slack/Teams", use: "Comunicación", price: "$8" },
+                  { name: "DocuSign/PandaDoc", use: "Firmas", price: "$20" },
                   {
                     name: "Harvest/Toggl",
                     use: "Tiempo y Cobros",
@@ -641,7 +641,7 @@ export default function ForgeLanding() {
                   Total aproximado
                 </span>
                 <span className="text-red-500 font-mono text-xl font-bold">
-                  $48 <span className="text-xs">/usuario</span>
+                  ~$60 <span className="text-xs">/usuario</span>
                 </span>
               </div>
             </div>
@@ -662,12 +662,15 @@ export default function ForgeLanding() {
                   Noctra Forge
                 </h3>
                 <p className="text-neutral-400 text-sm leading-relaxed mb-8 max-w-xs">
-                  Centraliza tu agencia. Recupera tu enfoque. Quédate con el
+                  Centraliza tu operación. Recupera tu enfoque. Quédate con el
                   margen.
                 </p>
                 <div className="flex flex-col items-center">
-                  <span className="text-[#10b981] text-5xl font-black tracking-tighter mb-2">
+                  <span className="text-[#10b981] text-5xl font-black tracking-tighter mb-1">
                     $29<span className="text-sm font-bold">/mes</span>
+                  </span>
+                  <span className="text-[10px] text-neutral-500 font-medium mb-3">
+                    o comienza con el plan Starter por $9/mes
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[#10b981] font-bold">
                     Eficiencia Radical
