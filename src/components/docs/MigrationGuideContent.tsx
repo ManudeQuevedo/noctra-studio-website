@@ -77,6 +77,37 @@ const portableTextComponents: PortableTextComponents = {
         </div>
       );
     },
+
+    table: ({ value }: any) => (
+      <div className="my-8 overflow-x-auto rounded-xl border border-slate-800 bg-slate-900/30">
+        <table className="w-full text-sm text-left">
+          <thead className="bg-slate-800/50">
+            <tr>
+              {value.rows?.[0]?.cells?.map((cell: string, i: number) => (
+                <th
+                  key={i}
+                  className="py-4 px-5 text-slate-300 font-semibold border-b border-slate-800">
+                  {cell}
+                </th>
+              ))}
+            </tr>
+          </thead>
+          <tbody className="divide-y divide-slate-800/60">
+            {value.rows?.slice(1).map((row: any, i: number) => (
+              <tr key={i} className="hover:bg-slate-800/20 transition-colors">
+                {row.cells?.map((cell: string, j: number) => (
+                  <td
+                    key={j}
+                    className="py-4 px-5 text-slate-300 align-top leading-relaxed">
+                    {cell}
+                  </td>
+                ))}
+              </tr>
+            ))}
+          </tbody>
+        </table>
+      </div>
+    ),
   },
 
   block: {

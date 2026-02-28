@@ -241,19 +241,19 @@ export function MigrationSection() {
               <motion.div
                 key={platform.name}
                 variants={fadeInUp}
-                className="group relative flex flex-col items-center justify-center p-6 bg-white/[0.01] border border-white/5 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.03] transition-all duration-500">
-                <div className="relative w-12 h-12 mb-4 flex items-center justify-center">
+                className="group relative flex flex-col items-center justify-center p-6 transition-all duration-500">
+                <div className="relative w-16 h-16 mb-4 flex items-center justify-center bg-white/[0.02] border border-white/5 rounded-2xl group-hover:bg-white/5 group-hover:border-white/10 group-hover:scale-110 transition-all duration-500">
                   {platform.logoUrl ? (
                     <Image
                       src={platform.logoUrl}
                       alt={`Logo de ${platform.name}`}
-                      width={48}
-                      height={48}
-                      className="object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                      width={40}
+                      height={40}
+                      className="object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
                     />
                   ) : (
                     <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xl transition-all duration-300 shadow-lg bg-[#c6c6c6] group-hover:bg-[var(--brand-color)]"
+                      className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xl transition-all duration-300 bg-[#c6c6c6] group-hover:bg-[var(--brand-color)]"
                       style={
                         {
                           "--brand-color": platform.brandColor,
@@ -263,7 +263,7 @@ export function MigrationSection() {
                     </div>
                   )}
                 </div>
-                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors">
+                <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600 group-hover:text-white transition-colors duration-300">
                   {platform.name}
                 </span>
               </motion.div>
@@ -281,23 +281,25 @@ export function MigrationSection() {
                 <motion.div
                   key={platform.name}
                   variants={fadeInUp}
-                  className="group flex flex-col items-center justify-center w-32 h-32 bg-white/[0.01] border border-white/5 rounded-2xl active:bg-white/[0.03]">
-                  {platform.logoUrl ? (
-                    <Image
-                      src={platform.logoUrl}
-                      alt={`Logo de ${platform.name}`}
-                      width={40}
-                      height={40}
-                      className="object-contain mb-3 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
-                    />
-                  ) : (
-                    <div
-                      className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg mb-3"
-                      style={{ backgroundColor: "#c6c6c6" }}>
-                      {platform.name.charAt(0)}
-                    </div>
-                  )}
-                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                  className="group flex flex-col items-center justify-center w-36 h-36 active:scale-95 transition-transform duration-300">
+                  <div className="relative w-16 h-16 mb-4 flex items-center justify-center bg-white/[0.02] border border-white/5 rounded-2xl group-hover:bg-white/5 group-hover:border-white/10 transition-all duration-500 shadow-sm">
+                    {platform.logoUrl ? (
+                      <Image
+                        src={platform.logoUrl}
+                        alt={`Logo de ${platform.name}`}
+                        width={32}
+                        height={32}
+                        className="object-contain grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                      />
+                    ) : (
+                      <div
+                        className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg"
+                        style={{ backgroundColor: "#c6c6c6" }}>
+                        {platform.name.charAt(0)}
+                      </div>
+                    )}
+                  </div>
+                  <span className="text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-600 group-hover:text-white transition-colors duration-300">
                     {platform.name}
                   </span>
                 </motion.div>

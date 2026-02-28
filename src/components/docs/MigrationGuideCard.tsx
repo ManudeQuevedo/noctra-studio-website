@@ -2,7 +2,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Clock, BarChart, Database } from "lucide-react";
 
-export default function MigrationGuideCard({ guide }: { guide: any }) {
+export default function MigrationGuideCard({
+  guide,
+  locale,
+}: {
+  guide: any;
+  locale: string;
+}) {
   const getDifficultyStyles = (level: string) => {
     switch (level) {
       case "easy":
@@ -31,72 +37,37 @@ export default function MigrationGuideCard({ guide }: { guide: any }) {
 
   return (
     <Link
-      href={`/docs/migracion/${guide.slug.current}`}
-      className="group bg-slate-900 border border-slate-800 hover:border-violet-500/50 rounded-2xl p-5 flex flex-col transition-all duration-300 hover:shadow-[0_0_20px_rgba(139,92,246,0.1)] relative overflow-hidden">
-      <div
-        className="absolute top-0 right-0 w-32 h-32 opacity-10 blur-2xl rounded-full transition-transform group-hover:scale-150 duration-700"
-        style={{ backgroundColor: guide.platformColor?.hex || "#8b5cf6" }}
-      />
-
-      <div className="flex justify-between items-start mb-4 relative">
-        <div className="w-12 h-12 rounded-xl flex items-center justify-center shadow-lg bg-white/5 border border-white/10">
+      href={`/${locale}/docs/migracion/${guide.slug.current}`}
+      className="group flex flex-col items-center justify-center p-8 transition-all duration-300 relative overflow-hidden">
+      <div className="flex flex-col items-center gap-6 relative z-10">
+        <div className="w-20 h-20 rounded-2xl flex items-center justify-center bg-white/5 border border-white/5 transition-all duration-500 group-hover:bg-white/10 group-hover:border-white/20 group-hover:scale-110 group-hover:shadow-[0_0_30px_rgba(255,255,255,0.05)]">
           {guide.platformLogo ? (
             <Image
               src={guide.platformLogo.asset.url}
               alt={guide.platform}
-              width={28}
-              height={28}
-              className="object-contain"
+              width={40}
+              height={40}
+              className="object-contain filter grayscale group-hover:grayscale-0 transition-all duration-500"
             />
           ) : (
-            <span className="text-xl font-bold text-white">
+            <span className="text-2xl font-bold text-white/50 group-hover:text-white transition-colors">
               {guide.platform.charAt(0)}
             </span>
           )}
         </div>
 
-        <span
-          className={`text-xs px-2.5 py-1 rounded-full font-medium ${getDifficultyStyles(guide.difficulty)}`}>
-          {getDifficultyLabel(guide.difficulty)}
-        </span>
-      </div>
-
-      <h3 className="text-xl font-semibold text-white mb-2 relative">
-        {guide.platform}
-      </h3>
-
-      <div className="flex items-center gap-4 text-sm text-slate-400 mb-6 flex-grow relative">
-        <div className="flex items-center gap-1.5">
-          <Clock className="w-4 h-4 text-slate-500" />
-          {guide.estimatedTime}
-        </div>
-      </div>
-
-      <div className="border-t border-slate-800/60 pt-4 mt-auto relative">
-        <p className="text-xs text-slate-500 font-medium tracking-wide uppercase mb-3">
-          Entidades soportadas
-        </p>
-        <div className="flex flex-wrap gap-2">
-          {guide.supportedEntities?.slice(0, 4).map((entity: string) => (
-            <span
-              key={entity}
-              className="text-[11px] px-2 py-0.5 bg-slate-800 text-slate-300 rounded-md">
-              {entity}
+        <div className="text-center">
+          <h3 className="text-sm font-bold text-slate-500 group-hover:text-white uppercase tracking-[0.2em] transition-colors duration-300">
+            {guide.platform}
+          </h3>
+          <div className="mt-2 flex items-center justify-center gap-3 text-[10px] text-slate-600 font-medium tracking-wider opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+            <span className="uppercase">{guide.estimatedTime}</span>
+            <span className="w-1 h-1 bg-slate-700 rounded-full" />
+            <span className="uppercase">
+              {getDifficultyLabel(guide.difficulty)}
             </span>
-          ))}
-          {guide.supportedEntities?.length > 4 && (
-            <span className="text-[11px] px-2 py-0.5 bg-slate-800 text-slate-400 rounded-md">
-              +{guide.supportedEntities.length - 4} más
-            </span>
-          )}
+          </div>
         </div>
-      </div>
-
-      <div className="mt-5 text-sm font-medium text-violet-400 flex items-center gap-1 group-hover:text-violet-300 transition-colors relative">
-        Ver guía completa
-        <span className="transform transition-transform group-hover:translate-x-1">
-          →
-        </span>
       </div>
     </Link>
   );

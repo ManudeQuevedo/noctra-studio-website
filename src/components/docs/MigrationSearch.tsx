@@ -5,7 +5,13 @@ import Image from "next/image";
 import Link from "next/link";
 import { Search } from "lucide-react";
 
-export default function MigrationSearch({ guides }: { guides: any[] }) {
+export default function MigrationSearch({
+  guides,
+  locale,
+}: {
+  guides: any[];
+  locale: string;
+}) {
   const [query, setQuery] = useState("");
   const [isOpen, setIsOpen] = useState(false);
   const ref = useRef<HTMLDivElement>(null);
@@ -55,29 +61,29 @@ export default function MigrationSearch({ guides }: { guides: any[] }) {
               {filteredGuides.map((guide) => (
                 <li key={guide._id}>
                   <Link
-                    href={`/docs/migracion/${guide.slug.current}`}
+                    href={`/${locale}/docs/migracion/${guide.slug.current}`}
                     onClick={() => setIsOpen(false)}
-                    className="flex items-center gap-3 p-3 hover:bg-slate-700 transition-colors border-b border-slate-700/50 last:border-0">
+                    className="flex items-center gap-4 p-4 hover:bg-white/5 transition-colors group">
                     {guide.platformLogo ? (
-                      <div className="w-8 h-8 rounded shrink-0 flex items-center justify-center p-1 bg-white/5">
+                      <div className="w-10 h-10 rounded-lg shrink-0 flex items-center justify-center p-1.5 bg-white/5 border border-white/5 group-hover:border-white/10 transition-colors">
                         <Image
                           src={guide.platformLogo.asset.url}
                           alt={guide.platform}
                           width={24}
                           height={24}
-                          className="object-contain"
+                          className="object-contain filter grayscale group-hover:grayscale-0 transition-opacity"
                         />
                       </div>
                     ) : (
-                      <div className="w-8 h-8 rounded shrink-0 bg-slate-700 flex items-center justify-center text-xs">
-                        {guide.platform.substring(0, 2).toUpperCase()}
+                      <div className="w-10 h-10 rounded-lg shrink-0 bg-slate-800 flex items-center justify-center text-xs font-bold text-slate-500 uppercase">
+                        {guide.platform.substring(0, 2)}
                       </div>
                     )}
                     <div>
-                      <p className="text-sm font-medium text-white">
+                      <p className="text-sm font-bold text-slate-300 group-hover:text-white uppercase tracking-wider transition-colors">
                         {guide.platform}
                       </p>
-                      <p className="text-xs text-slate-400 capitalize">
+                      <p className="text-[10px] text-slate-500 uppercase tracking-widest mt-0.5">
                         {guide.tier === "tier1"
                           ? "Conexión directa"
                           : "Importación manual"}
@@ -92,7 +98,7 @@ export default function MigrationSearch({ guides }: { guides: any[] }) {
               No encontramos una guía específica para "{query}".
               <br />
               <Link
-                href="/docs/migracion/universal-csv"
+                href={`/${locale}/docs/migracion/universal-csv`}
                 className="text-violet-400 hover:text-violet-300 mt-2 inline-block">
                 Usa la Plantilla Universal →
               </Link>
@@ -104,7 +110,7 @@ export default function MigrationSearch({ guides }: { guides: any[] }) {
       <p className="text-sm text-slate-500 mt-3">
         ¿No encuentras tu plataforma?{" "}
         <Link
-          href="/docs/migracion/universal-csv"
+          href={`/${locale}/docs/migracion/universal-csv`}
           className="text-violet-400 hover:text-violet-300 transition-colors">
           Usa la Plantilla Universal →
         </Link>

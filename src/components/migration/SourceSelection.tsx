@@ -66,27 +66,29 @@ export function SourceSelection({
           <button
             key={source.id}
             onClick={() => onSelect(source.id)}
-            className="group flex flex-col items-center justify-center p-8 bg-white/[0.02] border border-white/5 rounded-xl hover:border-emerald-500/30 hover:bg-emerald-500/[0.02] transition-all">
-            <div className="w-12 h-12 mb-4 flex items-center justify-center bg-white/5 rounded-lg group-hover:scale-110 transition-transform">
+            className="group flex flex-col items-center justify-center p-10 transition-all duration-500">
+            <div className="w-20 h-20 mb-6 flex items-center justify-center bg-white/[0.02] border border-white/5 rounded-2xl group-hover:bg-white/5 group-hover:border-white/10 group-hover:scale-110 transition-all duration-500 shadow-sm">
               {source.tier === 1 ? (
-                <div className="w-8 h-8 bg-neutral-800 rounded-sm" /> // Placeholder for logos
+                <div className="w-10 h-10 bg-neutral-800 rounded-sm" /> // Placeholder for logos
               ) : (
-                <span className="text-xs font-mono uppercase text-neutral-500">
+                <span className="text-sm font-mono uppercase text-neutral-500 group-hover:text-white transition-colors">
                   {source.id}
                 </span>
               )}
             </div>
-            <span className="text-sm font-medium text-white mb-1">
+            <span className="text-sm font-bold text-slate-500 group-hover:text-white uppercase tracking-[0.2em] transition-colors duration-300">
               {source.name}
             </span>
-            <span
-              className={`text-[10px] uppercase tracking-widest font-mono px-2 py-0.5 rounded ${
-                source.tier === 1
-                  ? "bg-emerald-500/10 text-emerald-500"
-                  : "bg-blue-500/10 text-blue-500"
-              }`}>
-              {source.tier === 1 ? "Conexión directa" : "Importar archivo"}
-            </span>
+            <div className="mt-2 opacity-0 group-hover:opacity-100 transition-opacity duration-500">
+              <span
+                className={`text-[10px] uppercase tracking-widest font-bold px-2 py-0.5 rounded-full ${
+                  source.tier === 1
+                    ? "bg-emerald-500/10 text-emerald-500"
+                    : "bg-blue-500/10 text-blue-500"
+                }`}>
+                {source.tier === 1 ? "Conexión directa" : "Importar archivo"}
+              </span>
+            </div>
           </button>
         ))}
       </div>

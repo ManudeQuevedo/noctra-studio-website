@@ -20,6 +20,7 @@ import {
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { Project } from "@/lib/projects";
+import { getProjectOverrides } from "@/lib/project-overrides";
 
 type ProjectCardProps = {
   project: Project;
@@ -75,6 +76,8 @@ export function ProjectCard({
   const phases = ["discovery", "design", "development", "launch"];
   const currentIndex = phases.indexOf(project.status as any);
 
+  const overrides = getProjectOverrides(project.slug);
+
   return (
     <motion.div
       initial={{ opacity: 0, y: 20 }}
@@ -105,7 +108,9 @@ export function ProjectCard({
             {locale === "es" ? "El reto" : "The challenge"}
           </h4>
           <p className="text-neutral-400 leading-relaxed">
-            {project.challenge || "Conquering new heights."}
+            {overrides?.challenge ||
+              project.challenge ||
+              "Conquering new heights."}
           </p>
         </div>
 
@@ -114,7 +119,9 @@ export function ProjectCard({
             {locale === "es" ? "Nuestra solución" : "Our solution"}
           </h4>
           <p className="text-white leading-relaxed">
-            {project.solution || "Providing tailored strategies."}
+            {overrides?.solution ||
+              project.solution ||
+              "Providing tailored strategies."}
           </p>
         </div>
 

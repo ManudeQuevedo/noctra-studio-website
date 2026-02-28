@@ -102,13 +102,13 @@ export default defineType({
       name: 'exportSteps',
       title: 'Sección 1 — Cómo exportar desde la plataforma',
       type: 'array',
-      of: [{ type: 'block' }, { type: 'image' }, { type: 'codeBlock' }, { type: 'calloutBox' }],
+      of: [{ type: 'block' }, { type: 'image' }, { type: 'codeBlock' }, { type: 'calloutBox' }, { type: 'table' }],
     }),
     defineField({
       name: 'prepareFileSteps',
       title: 'Sección 2 — Cómo preparar tu archivo (solo Tier 2)',
       type: 'array',
-      of: [{ type: 'block' }, { type: 'image' }, { type: 'codeBlock' }, { type: 'calloutBox' }],
+      of: [{ type: 'block' }, { type: 'image' }, { type: 'codeBlock' }, { type: 'calloutBox' }, { type: 'table' }],
     }),
     defineField({
       name: 'commonErrors',
@@ -120,7 +120,7 @@ export default defineType({
       name: 'integrityChecks',
       title: 'Sección 4 — Validación de integridad',
       type: 'array',
-      of: [{ type: 'block' }, { type: 'image' }, { type: 'codeBlock' }, { type: 'calloutBox' }],
+      of: [{ type: 'block' }, { type: 'image' }, { type: 'codeBlock' }, { type: 'calloutBox' }, { type: 'table' }],
     }),
     defineField({
       name: 'preImportChecklist',

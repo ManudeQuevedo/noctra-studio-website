@@ -1,19 +1,8 @@
-import { createServerClient } from '@supabase/ssr'
-import { cookies } from 'next/headers'
+import { createClient } from '@/utils/supabase/server'
 import { cache } from 'react'
 
 export const getWorkspace = cache(async () => {
-  
-  const cookieStore = await cookies()
-  const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-    {
-      cookies: {
-        getAll: () => cookieStore.getAll(),
-      },
-    }
-  )
+  const supabase = await createClient()
 
   const {
     data: { user },
@@ -46,17 +35,34 @@ export const getWorkspace = cache(async () => {
     `,
     )
     .eq("user_id", user.id)
-    .single();
+    .maybeSingle();
 
-  if (!membership) {
-    return null;
+  if (membership) {
+    return {
+      workspaceId: membership.workspace_id,
+      role: membership.role,
+      workspace: (membership as any).workspaces,
+    };
   }
 
-  return {
-    workspaceId: membership.workspace_id,
-    role: membership.role,
-    workspace: (membership as any).workspaces,
+  // Fallback: Check if the user is an owner of any workspace directly
+  // This handles cases where workspace_members record creation might have failed
+  const { data: ownedWorkspace } = await supabase
+    .from("workspaces")
+    .select("*")
+    .eq("owner_id", user.id)
+    .maybeSingle();
+
+  if (ownedWorkspace) {
+    console.warn(`[getWorkspace] No membership found for user ${user.id}, but found owned workspace ${ownedWorkspace.id}. Using fallback.`);
+    return {
+      workspaceId: ownedWorkspace.id,
+      role: "owner",
+      workspace: ownedWorkspace,
+    };
   }
+
+  return null;
 })
 
 export type WorkspaceContext = NonNullable<

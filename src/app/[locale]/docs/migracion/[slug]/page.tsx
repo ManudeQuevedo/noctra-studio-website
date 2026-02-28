@@ -143,7 +143,10 @@ export default async function MigrationGuidePage({ params }: Props) {
       {guide.prepareFileSteps?.length > 0 && (
         <section id="preparar" className="mb-14 scroll-mt-24">
           <h2 className="text-2xl font-semibold text-white mb-6 border-b border-slate-800/80 pb-4">
-            2. Preparar tu archivo
+            2.{" "}
+            {guide.tier === "tier1"
+              ? "Selección de entidades a migrar"
+              : "Preparar tu archivo"}
           </h2>
           <MigrationGuideContent content={guide.prepareFileSteps} />
         </section>
@@ -267,6 +270,42 @@ export default async function MigrationGuidePage({ params }: Props) {
             Preguntas frecuentes
           </h2>
           <MigrationFAQ items={guide.faq} />
+        </section>
+      )}
+
+      {/* Guías relacionadas */}
+      {guide.relatedGuides?.length > 0 && (
+        <section className="mb-14 border-t border-slate-800/60 pt-10">
+          <h3 className="text-xl font-semibold text-white mb-6">
+            Guías relacionadas
+          </h3>
+          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+            {guide.relatedGuides.map((related: any) => (
+              <Link
+                key={related._id}
+                href={`/${locale}/docs/migracion/${related.slug.current}`}
+                className="flex items-center gap-3 p-4 bg-slate-900/50 border border-slate-800/80 hover:border-violet-500/50 hover:bg-slate-800/50 rounded-xl transition-all group">
+                {related.platformLogo ? (
+                  <div className="w-10 h-10 rounded-lg flex items-center justify-center p-1.5 bg-white/5 border border-white/10 shrink-0">
+                    <Image
+                      src={related.platformLogo.asset.url}
+                      alt={related.platform}
+                      width={24}
+                      height={24}
+                      className="object-contain"
+                    />
+                  </div>
+                ) : (
+                  <div className="w-10 h-10 rounded-lg bg-slate-800 flex items-center justify-center text-sm font-bold text-white shrink-0">
+                    {related.platform.charAt(0)}
+                  </div>
+                )}
+                <span className="text-slate-200 group-hover:text-white transition-colors font-medium">
+                  {related.platform}
+                </span>
+              </Link>
+            ))}
+          </div>
         </section>
       )}
     </div>

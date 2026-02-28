@@ -14,6 +14,7 @@ import calloutBox from "./objects/calloutBox";
 import codeBlock from "./objects/codeBlock";
 import faqItem from "./objects/faqItem";
 import seoFields from "./objects/seoFields";
+import table from "./objects/table";
 
 export const schema: { types: SchemaTypeDefinition[] } = {
   types: [
@@ -29,5 +30,6 @@ export const schema: { types: SchemaTypeDefinition[] } = {
     codeBlock,
     faqItem,
     seoFields,
+    table,
   ],
 };

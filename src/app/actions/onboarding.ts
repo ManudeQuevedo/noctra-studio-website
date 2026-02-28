@@ -12,13 +12,14 @@ export async function completeOnboardingAction(data: {
 }) {
   const supabase = await createClient();
   const ctx = await getWorkspace();
+  const { data: userData } = await supabase.auth.getUser();
 
   if (!ctx) {
-    throw new Error("No active workspace found");
+    console.error(`[completeOnboardingAction] No active workspace for user: ${userData?.user?.id || 'Unknown'}`);
+    throw new Error("No active workspace found. Please contact support.");
   }
 
-  const { data: userData, error: userError } = await supabase.auth.getUser();
-  if (userError || !userData?.user) {
+  if (!userData?.user) {
     throw new Error("Not authenticated");
   }
 
