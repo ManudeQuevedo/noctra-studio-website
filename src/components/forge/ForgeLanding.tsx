@@ -165,8 +165,8 @@ export default function ForgeLanding() {
   const features = [
     {
       icon: "Sparkles",
-      title: "Noctra AI",
-      desc: "Insights automáticos, follow-ups sugeridos y alertas inteligentes basadas en el estado real de tu negocio.",
+      title: "Cerebro Central AI",
+      desc: "Orquestación inteligente de modelos. Noctra selecciona automáticamente el procesador más eficiente según la complejidad de tu tarea para maximizar tu ROI.",
     },
     {
       icon: "FileText",
@@ -226,6 +226,10 @@ export default function ForgeLanding() {
     {
       q: "¿Es solo para agencias de diseño y desarrollo?",
       a: "Noctra Forge está optimizado para agencias creativas y digitales, pero cualquier negocio que gestione proyectos y clientes puede usarlo.",
+    },
+    {
+      q: "¿Cómo se consumen los tokens y qué modelo usa Noctra?",
+      a: "El 'Cerebro Central' de Noctra analiza cada petición. Para tareas simples usa modelos ultra-rápidos (ahorrando tokens), mientras que para análisis complejos rutea la tarea a modelos de alta potencia. Esto ocurre de forma invisible para que siempre tengas el mejor resultado al menor costo.",
     },
     {
       q: "¿Mis datos están seguros?",
@@ -308,7 +312,10 @@ export default function ForgeLanding() {
         <div className="flex flex-col items-center gap-6 animate-in fade-in slide-in-from-bottom-16 duration-1000 delay-500 relative z-10">
           <div className="flex flex-col sm:flex-row items-center gap-4 flex-wrap justify-center w-full">
             <Link
-              href="/forge/signup"
+              href={{
+                pathname: "/forge/login",
+                query: { mode: "signup", plan: "starter" },
+              }}
               className="flex items-center justify-center gap-2 bg-white text-black font-bold rounded-full h-12 px-8 text-base hover:bg-gray-200 transition-all duration-300 w-full sm:w-auto">
               Empezar Gratis <ArrowRight size={18} />
             </Link>
@@ -726,7 +733,10 @@ export default function ForgeLanding() {
           </p>
           {/* Beta Coming Soon - Temporarily Disabled */}
           <Link
-            href="/forge/signup"
+            href={{
+              pathname: "/forge/login",
+              query: { mode: "signup", plan: "starter" },
+            }}
             className="flex items-center justify-center gap-2 bg-white text-black font-bold h-12 rounded-full px-10 text-base hover:bg-gray-200 transition-all duration-300">
             Empezar Gratis <ArrowRight size={18} />
           </Link>

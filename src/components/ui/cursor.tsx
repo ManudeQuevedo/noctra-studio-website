@@ -15,7 +15,7 @@ export function Cursor() {
   const mouseX = useMotionValue(-100);
   const mouseY = useMotionValue(-100);
 
-  const springConfig = { damping: 25, stiffness: 700 };
+  const springConfig = { damping: 40, stiffness: 1200, mass: 0.5 };
   const cursorXSpring = useSpring(mouseX, springConfig);
   const cursorYSpring = useSpring(mouseY, springConfig);
 
@@ -83,8 +83,10 @@ export function Cursor() {
           y: cursorYSpring,
           translateX: "-50%",
           translateY: "-50%",
+          translateZ: 0,
           width: "32px",
           height: "32px",
+          willChange: "transform",
         }}
         animate={{
           scale: isHovered ? 2.5 : 1,

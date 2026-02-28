@@ -239,7 +239,10 @@ export const PricingComparison = () => {
               {/* Starter CTA */}
               <div className="p-6 md:p-8 border-b md:border-b-0 md:border-r border-white/5 flex items-center justify-center">
                 <Link
-                  href="/forge/login"
+                  href={{
+                    pathname: "/forge/login",
+                    query: { mode: "signup", plan: "starter" },
+                  }}
                   className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white/5 text-white/70 font-bold border border-white/10 text-sm hover:bg-white/10 hover:text-white transition-all active:scale-[0.98]">
                   Empezar Starter
                 </Link>
@@ -248,7 +251,10 @@ export const PricingComparison = () => {
               {/* Pro CTA */}
               <div className="p-6 md:p-8 border-b md:border-b-0 border-white/5 md:border-r flex items-center justify-center bg-emerald-500/[0.03]">
                 <Link
-                  href="/forge/login"
+                  href={{
+                    pathname: "/forge/login",
+                    query: { mode: "signup", plan: "pro", trial: "true" },
+                  }}
                   className="w-full flex items-center justify-center gap-2 py-3 px-6 rounded-xl bg-white text-black font-black text-sm hover:bg-neutral-200 transition-all active:scale-[0.98]">
                   Empezar Pro <ArrowRight size={16} />
                 </Link>

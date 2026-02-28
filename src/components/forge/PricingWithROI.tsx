@@ -89,7 +89,10 @@ export const PricingWithROI = () => {
             </div>
 
             <Link
-              href="/forge/login"
+              href={{
+                pathname: "/forge/login",
+                query: { mode: "signup", plan: "starter" },
+              }}
               className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all active:scale-[0.98]">
               Empezar Gratis
             </Link>
@@ -161,7 +164,10 @@ export const PricingWithROI = () => {
 
             <div className="relative z-10">
               <Link
-                href="/forge/login"
+                href={{
+                  pathname: "/forge/login",
+                  query: { mode: "signup", plan: "pro", trial: "true" },
+                }}
                 className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-white text-black font-black hover:bg-neutral-200 transition-all active:scale-[0.98]">
                 Probar 14 días <ArrowRight size={18} />
               </Link>

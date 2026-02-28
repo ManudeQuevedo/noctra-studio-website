@@ -10,21 +10,33 @@ export async function updateWorkspaceAction(data: {
   email: string;
   website_url: string;
   primary_color: string;
+  subdomain?: string;
+  custom_domain?: string;
 }) {
   const supabase = await createClient();
   const ctx = await getWorkspace();
 
   if (!ctx) throw new Error("Unauthorized");
 
+  // Backend Validation for Soft Wall
+  const isFree = ctx.workspace.tier === "free";
+  const updates: any = {
+    name: data.name,
+    logo_url: data.logo_url || null,
+    email: data.email || null,
+    website_url: data.website_url || null,
+    primary_color: data.primary_color,
+  };
+
+  // Only allow domain updates if not on free tier
+  if (!isFree) {
+    if (data.subdomain !== undefined) updates.subdomain = data.subdomain || null;
+    if (data.custom_domain !== undefined) updates.custom_domain = data.custom_domain || null;
+  }
+
   const { error } = await supabase
     .from("workspaces")
-    .update({
-      name: data.name,
-      logo_url: data.logo_url || null,
-      email: data.email || null,
-      website_url: data.website_url || null,
-      primary_color: data.primary_color,
-    })
+    .update(updates)
     .eq("id", ctx.workspaceId);
 
   if (error) throw error;

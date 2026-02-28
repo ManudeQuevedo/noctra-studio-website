@@ -10,6 +10,8 @@ import { ForgeContentWrapper } from "@/components/forge/ForgeContentWrapper";
 import { ForgeMobileHeader } from "@/components/forge/ForgeMobileHeader";
 import { CommandBar } from "@/components/forge/CommandBar";
 import { Plus } from "lucide-react";
+import { OnboardingWizard } from "@/components/forge/OnboardingWizard";
+import { ChatWidget } from "@/components/ui/ChatWidget";
 
 export default function ForgeLayoutClient({
   children,
@@ -25,9 +27,12 @@ export default function ForgeLayoutClient({
   const [hasSession, setHasSession] = useState<boolean | null>(
     workspace ? true : null,
   );
+  const [isReady, setIsReady] = useState(false);
+  const [needsOnboarding, setNeedsOnboarding] = useState(false);
   const [commandBarOpen, setCommandBarOpen] = useState(false);
 
   const isLoginPage = pathname.includes("/forge/login");
+  const isSignupPage = pathname.includes("/forge/signup");
   const isForgeRoot =
     /^\/(es|en)?\/?forge\/?$/.test(pathname) ||
     pathname === "/forge" ||
@@ -40,6 +45,13 @@ export default function ForgeLayoutClient({
     // Check real session on mount (fixes Next.js layout prop caching after login)
     supabase.auth.getSession().then(({ data }) => {
       setHasSession(!!data.session);
+      if (data.session) {
+        // Evaluate if onboarding is needed
+        const onboardingCompleted =
+          data.session.user.user_metadata?.onboarding_completed === true;
+        setNeedsOnboarding(!onboardingCompleted);
+      }
+      setIsReady(true);
     });
 
     const {
@@ -129,6 +141,16 @@ export default function ForgeLayoutClient({
             isOpen={commandBarOpen}
             onClose={() => setCommandBarOpen(false)}
           />
+
+          {/* Onboarding Wizard (Rendered Conditionally over the UI) */}
+          {isReady &&
+            needsOnboarding &&
+            !isLoginPage &&
+            !isSignupPage &&
+            !isLandingPage && <OnboardingWizard />}
+
+          {/* AI Chat Widget */}
+          {hasSession && <ChatWidget />}
         </>
       )}
     </>

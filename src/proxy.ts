@@ -2,11 +2,45 @@ import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
 import { updateSession } from "./utils/supabase/middleware";
 import { NextRequest, NextResponse } from "next/server";
+import { createClient } from "@supabase/supabase-js";
 
 const intlMiddleware = createMiddleware(routing);
 
+const MAIN_DOMAINS = ["noctra.studio", "www.noctra.studio", "localhost:3000"];
+
 export default async function proxy(request: NextRequest) {
+  const host = request.headers.get("host") || "";
   const { pathname } = request.nextUrl;
+  
+  // 0. Custom Domain & Subdomain Persistence Logic
+  let resolvedWorkspace = null;
+  const isMainDomain = MAIN_DOMAINS.some(d => host.includes(d));
+
+  if (!isMainDomain) {
+    // Determine if it's a subdomain (*.noctra.studio) or a custom domain
+    const isSubdomain = host.endsWith(".noctra.studio");
+    
+    // Initialize Supabase with service role to lookup workspace by domain
+    const supabaseAdmin = createClient(
+      process.env.NEXT_PUBLIC_SUPABASE_URL!,
+      process.env.SUPABASE_SERVICE_ROLE_KEY!
+    );
+
+    const query = isSubdomain 
+      ? supabaseAdmin.from("workspaces").select("id, tier, subdomain").eq("subdomain", host.split(".")[0]).single()
+      : supabaseAdmin.from("workspaces").select("id, tier, custom_domain").eq("custom_domain", host).single();
+
+    const { data: workspace } = await query;
+
+    if (workspace) {
+      // Validate Premium Tiers for Whitelabel
+      if (workspace.tier !== "pro" && workspace.tier !== "agency") {
+        // Block custom domain if not Premium
+        return NextResponse.redirect(new URL("https://noctra.studio/forge/settings/billing", request.url));
+      }
+      resolvedWorkspace = workspace;
+    }
+  }
 
   // Sanity Studio must be served from the root /studio route without any
   // locale redirect. Skip intl + auth entirely for /studio paths.
@@ -121,6 +155,13 @@ export default async function proxy(request: NextRequest) {
   Object.entries(securityHeaders).forEach(([key, value]) => {
     finalResponse.headers.set(key, value);
   });
+
+  // 5. Final Routing for White-label
+  if (resolvedWorkspace && !isMainDomain) {
+    // If we have a resolved workspace from a custom domain, 
+    // we can add a header to identify it in downstream components
+    finalResponse.headers.set("x-resolved-workspace-id", resolvedWorkspace.id);
+  }
 
   return finalResponse;
 }

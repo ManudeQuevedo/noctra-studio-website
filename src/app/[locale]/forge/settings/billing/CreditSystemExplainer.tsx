@@ -38,10 +38,19 @@ export function CreditSystemExplainer() {
             </p>
             <div className="bg-black/50 rounded-lg p-3 border border-white/5">
               <div className="text-xs text-neutral-500 mb-1 uppercase tracking-widest font-bold">
-                Tasa de Conversión
+                Tasa de Conversión e Interacción
               </div>
-              <div className="text-sm font-mono text-emerald-400">
-                1 Crédito ≈ 1 Token (aprox. 4 caracteres)
+              <p className="text-xs text-neutral-400 mb-2 italic">
+                Se consumen por cada ciclo de interacción: el mensaje que envías
+                (input) y la respuesta que recibes (output). Esto permite que la
+                IA mantenga el contexto de tu conversación.
+              </p>
+              <div className="text-sm font-mono text-emerald-400 mb-2">
+                1 Crédito ≈ 1 Token
+              </div>
+              <div className="text-[11px] text-neutral-300 font-semibold border-t border-white/5 pt-2">
+                Guía Visual: 1,000 tokens ≈ 750 palabras o el equivalente a 5
+                correos de seguimiento detallados.
               </div>
             </div>
           </div>

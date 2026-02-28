@@ -3,8 +3,16 @@
 import { useChat } from "@ai-sdk/react";
 import { useState, useEffect, useRef } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { MessageSquare, X, Send, Terminal } from "lucide-react";
+import {
+  MessageSquare,
+  X,
+  Send,
+  Terminal,
+  Brain,
+  Sparkles,
+} from "lucide-react";
 import ReactMarkdown from "react-markdown";
+import { CentralBrainLogo } from "@/components/ui/CentralBrainLogo";
 
 export function ChatWidget() {
   const [isOpen, setIsOpen] = useState(false);
@@ -81,8 +89,8 @@ export function ChatWidget() {
                 aiResponse += text;
                 setMessages((prev) =>
                   prev.map((m) =>
-                    m.id === aiMessage.id ? { ...m, content: aiResponse } : m
-                  )
+                    m.id === aiMessage.id ? { ...m, content: aiResponse } : m,
+                  ),
                 );
               }
             }
@@ -113,14 +121,22 @@ export function ChatWidget() {
             animate={{ opacity: 1, y: 0, scale: 1 }}
             exit={{ opacity: 0, y: 20, scale: 0.95 }}
             transition={{ duration: 0.2 }}
-            className="fixed bottom-4 right-4 w-[calc(100vw-2rem)] h-[70vh] max-w-[400px] max-h-[600px] rounded-xl bg-[#050505] border border-neutral-800 shadow-2xl flex flex-col overflow-hidden text-sm z-[9000]">
+            className="fixed bottom-4 right-4 w-[calc(100vw-2rem)] h-[70vh] max-w-[400px] max-h-[600px] rounded-xl bg-[#050505] border border-white/5 shadow-2xl flex flex-col overflow-hidden text-sm z-[9000]">
             {/* Header */}
-            <div className="flex items-center justify-between px-4 py-3 border-b border-neutral-800 bg-neutral-900/20">
-              <div className="flex items-center gap-2">
-                <div className="w-2 h-2 rounded-full bg-green-500 animate-pulse" />
-                <span className="text-neutral-400 text-xs tracking-wider">
-                  NOCTRA_SYSTEM_RELAY
-                </span>
+            <div className="flex items-center justify-between px-4 py-3 border-b border-white/5 bg-gradient-to-r from-emerald-500/10 to-blue-500/10">
+              <div className="flex items-center gap-3">
+                <div className="w-8 h-8 flex-none">
+                  <CentralBrainLogo isThinking={isLoading} />
+                </div>
+                <div className="flex flex-col">
+                  <span className="text-white text-[11px] font-bold tracking-wider flex items-center gap-1">
+                    CEREBRO CENTRAL
+                    <Sparkles className="w-2.5 h-2.5 text-emerald-500" />
+                  </span>
+                  <span className="text-neutral-500 text-[9px] uppercase tracking-tighter font-mono">
+                    Modelo Optimizado
+                  </span>
+                </div>
               </div>
               <button
                 onClick={() => setIsOpen(false)}

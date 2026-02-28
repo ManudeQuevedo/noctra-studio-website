@@ -1,20 +1,46 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useRouter, useSearchParams } from "next/navigation";
+import { useTranslations } from "next-intl";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import Link from "next/link";
 import { createClient } from "@/utils/supabase/client";
-import { ArrowRight, Loader2, Eye, EyeOff, Check } from "lucide-react";
+import {
+  ArrowRight,
+  Loader2,
+  Eye,
+  EyeOff,
+  Check,
+  AlertCircle,
+} from "lucide-react";
+import { cn } from "@/lib/utils";
+import Image from "next/image";
 
-export default function ForgeLoginPage() {
+function AuthForms() {
+  const router = useRouter();
+  const searchParams = useSearchParams();
+  const supabase = createClient();
+  const t = useTranslations("forge.auth");
+
+  const modeParam = searchParams.get("mode");
+  const plan = searchParams.get("plan");
+  const isTrial = searchParams.get("trial") === "true";
+
+  const [isLoginMode, setIsLoginMode] = useState(modeParam !== "signup");
+
+  // Shared State
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState<string | null>(null);
 
-  // MFA State
+  // Signup Specific State
+  const [fullName, setFullName] = useState("");
+  const [workspaceName, setWorkspaceName] = useState("");
+
+  // Login MFA Specific State
   const [showMFA, setShowMFA] = useState(false);
   const [mfaFactorId, setMfaFactorId] = useState<string | null>(null);
   const [otpCode, setOtpCode] = useState(["", "", "", "", "", ""]);
@@ -22,29 +48,21 @@ export default function ForgeLoginPage() {
   const [mfaError, setMfaError] = useState<string | null>(null);
   const [shake, setShake] = useState(false);
 
-  const router = useRouter();
-  const searchParams = useSearchParams();
-  const reason = searchParams.get("reason");
-  const supabase = createClient(); // Nota: Eliminé el 'false' si tu cliente no lo soporta, ajustalo según tu utils
-
-  // Función auxiliar para verificar si se requiere MFA
+  // Función auxiliar para verificar si se requiere MFA (Login)
   const checkMfaRequirement = async () => {
     const { data: aal } =
       await supabase.auth.mfa.getAuthenticatorAssuranceLevel();
-
-    // Si el usuario ya tiene una sesión pero está en nivel AAL1 y puede subir a AAL2
     if (aal && aal.currentLevel === "aal1" && aal.nextLevel === "aal2") {
       const { data: factors } = await supabase.auth.mfa.listFactors();
       const verifiedFactors =
         factors?.totp.filter((f) => f.status === "verified") || [];
-
       if (verifiedFactors.length > 0) {
         setMfaFactorId(verifiedFactors[0].id);
         setShowMFA(true);
-        return true; // Requiere MFA
+        return true;
       }
     }
-    return false; // No requiere MFA o ya está verificado
+    return false;
   };
 
   useEffect(() => {
@@ -53,13 +71,9 @@ export default function ForgeLoginPage() {
         const {
           data: { session },
         } = await supabase.auth.getSession();
-
         if (session) {
           const requiresMfa = await checkMfaRequirement();
-          if (!requiresMfa) {
-            // Solo redirigir si NO necesita MFA
-            // router.push("/forge"); // Comentado para evitar loops si el usuario vino explícitamente al login
-          }
+          // If no MFA required, we could theoretically redirect, but keeping logic as was
         }
       } catch (err) {
         console.error("Session check error on login", err);
@@ -68,8 +82,8 @@ export default function ForgeLoginPage() {
     checkUser();
   }, [supabase, router]);
 
-  const handleLogin = async (e?: React.FormEvent | React.KeyboardEvent) => {
-    if (e) e.preventDefault();
+  const handleLoginSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
     setLoading(true);
     setError(null);
 
@@ -78,94 +92,72 @@ export default function ForgeLoginPage() {
         email,
         password,
       });
-
       if (loginError) {
         if (loginError.message === "Invalid login credentials") {
-          throw new Error(
-            "Credenciales inválidas. Verifica tu email y contraseña.",
-          );
+          throw new Error(t("error_invalid_credentials"));
         }
         throw loginError;
       }
 
-      // CORRECCIÓN IMPORTANTE:
-      // No redirigir inmediatamente. Verificar si se requiere MFA primero.
       const requiresMfa = await checkMfaRequirement();
-
       if (!requiresMfa) {
         sessionStorage.setItem("session_start", Date.now().toString());
         router.push("/forge");
       } else {
-        // Si requiere MFA, el estado showMFA se puso en true dentro de checkMfaRequirement
         setLoading(false);
       }
     } catch (err: any) {
-      setError(err.message);
+      console.error(err);
+      setError(
+        t("error_login_failed", { detail: err.message || "Unknown error" }),
+      );
       setLoading(false);
     }
   };
 
-  const handleMFAVerify = async (e?: React.FormEvent) => {
-    if (e) e.preventDefault();
-    const code = otpCode.join("");
-    if (code.length !== 6) return;
-
+  const verifyOTP = async (code: string) => {
+    if (!mfaFactorId) return;
     setIsVerifyingMFA(true);
     setMfaError(null);
 
     try {
-      const { data: challenge, error: challengeError } =
-        await supabase.auth.mfa.challenge({
-          factorId: mfaFactorId!,
-        });
-
-      if (challengeError) throw challengeError;
-
-      const { error: verifyError } = await supabase.auth.mfa.verify({
-        factorId: mfaFactorId!,
-        challengeId: challenge.id,
-        code,
+      const { data, error } = await supabase.auth.mfa.challengeAndVerify({
+        factorId: mfaFactorId,
+        code: code,
       });
 
-      if (verifyError) throw verifyError;
+      if (error) throw error;
 
       sessionStorage.setItem("session_start", Date.now().toString());
       router.push("/forge");
     } catch (err: any) {
-      setMfaError("Código incorrecto. Intenta de nuevo.");
+      console.error("MFA verification error", err);
+      setMfaError(t("error_mfa_invalid_code"));
+      setOtpCode(["", "", "", "", "", ""]);
       setShake(true);
       setTimeout(() => setShake(false), 500);
-      setOtpCode(["", "", "", "", "", ""]);
-      const firstInput = document.getElementById("otp-0");
-      if (firstInput) firstInput.focus();
+      document.getElementById("otp-0")?.focus();
     } finally {
       setIsVerifyingMFA(false);
     }
   };
 
   const handleOtpChange = (index: number, value: string) => {
-    if (isNaN(Number(value))) return; // Solo permitir números
-
-    if (value.length > 1) {
-      const pasted = value.slice(0, 6).split("");
-      const newOtp = [...otpCode];
-      pasted.forEach((char, i) => {
-        if (index + i < 6) newOtp[index + i] = char;
-      });
-      setOtpCode(newOtp);
-      // Enfocar el último llenado
-      const nextIndex = Math.min(index + pasted.length, 5);
-      document.getElementById(`otp-${nextIndex}`)?.focus();
-      return;
-    }
+    if (!/^[0-9]?$/.test(value)) return;
 
     const newOtp = [...otpCode];
     newOtp[index] = value;
     setOtpCode(newOtp);
 
+    // Auto-focus next input
     if (value && index < 5) {
       const nextInput = document.getElementById(`otp-${index + 1}`);
-      if (nextInput) nextInput.focus();
+      nextInput?.focus();
+    }
+
+    // Auto-verify if all 6 digits are entered
+    if (index === 5 && value && newOtp.every((digit) => digit !== "")) {
+      verifyOTP(newOtp.join(""));
     }
   };
 
@@ -175,236 +167,416 @@ export default function ForgeLoginPage() {
   ) => {
     if (e.key === "Backspace" && !otpCode[index] && index > 0) {
       const prevInput = document.getElementById(`otp-${index - 1}`);
-      if (prevInput) prevInput.focus();
+      prevInput?.focus();
+    } else if (e.key === "Enter") {
+      e.preventDefault();
+      if (otpCode.every((digit) => digit !== "")) {
+        verifyOTP(otpCode.join(""));
+      }
     }
   };
 
-  const reasonMessage =
-    reason === "inactivity"
-      ? "Sesión cerrada por inactividad."
-      : reason === "expired"
-        ? "Tu sesión ha expirado. Por favor ingresa de nuevo."
-        : null;
+  const handleSignupSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    setLoading(true);
+    setError(null);
 
-  return (
-    <main className="min-h-screen bg-[#000000] text-white flex selection:bg-emerald-500/30 selection:text-white">
-      {/* Panel Izquierdo — Branding + Form (60% width on md) */}
-      <div className="w-full md:w-[60%] flex flex-col justify-center px-6 py-12 md:px-16 md:py-0 relative h-screen overflow-y-auto animate-in fade-in slide-in-from-bottom-4 duration-500 ease-out">
-        {/* Top: Logo */}
-        <div className="absolute top-8 left-6 md:top-12 md:left-16">
-          <Link
-            href="/"
-            className="hover:opacity-80 transition-opacity inline-block">
-            <BrandLogo className="h-7 text-white" showText={true} />
-          </Link>
+    try {
+      const { data: authData, error: signupError } = await supabase.auth.signUp(
+        {
+          email,
+          password,
+          options: {
+            data: {
+              full_name: fullName,
+              card_required_after_trial: true,
+            },
+          },
+        },
+      );
+
+      if (signupError) throw signupError;
+
+      const user = authData.user;
+      if (!user) throw new Error("No se pudo crear el usuario");
+
+      const trialEndsAt = new Date();
+      trialEndsAt.setDate(trialEndsAt.getDate() + 14);
+
+      const { data: workspace, error: workspaceError } = await supabase
+        .from("workspaces")
+        .insert({
+          name: workspaceName,
+          slug: workspaceName.toLowerCase().replace(/[^a-z0-9]+/g, "-"),
+          owner_id: user.id,
+          ai_credits_balance: 1000,
+          subscription_status: "trialing",
+          trial_ends_at: trialEndsAt.toISOString(),
+        })
+        .select()
+        .single();
+
+      if (workspaceError) throw workspaceError;
+
+      const { error: linkError } = await supabase
+        .from("workspace_members")
+        .insert({
+          workspace_id: workspace.id,
+          user_id: user.id,
+          role: "owner",
+        });
+
+      if (linkError) throw linkError;
+
+      sessionStorage.setItem("session_start", Date.now().toString());
+      router.push("/forge");
+    } catch (err: any) {
+      console.error(err);
+      setError(
+        t("error_signup_failed", { detail: err.message || "Unknown error" }),
+      );
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  if (showMFA) {
+    return (
+      <div className="w-full max-w-[360px] animate-in fade-in slide-in-from-bottom-4 duration-700 text-left">
+        <div className="mb-10">
+          <div className="w-10 h-10 bg-white/[0.03] border border-white/5 rounded-lg flex items-center justify-center mb-6 text-white/50">
+            <svg
+              className="w-5 h-5"
+              fill="none"
+              stroke="currentColor"
+              viewBox="0 0 24 24">
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={1.5}
+                d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"
+              />
+            </svg>
+          </div>
+          <h2 className="text-3xl font-bold text-white tracking-tight mb-3">
+            {t("mfa_title")}
+          </h2>
+          <p className="text-sm text-neutral-500">{t("mfa_description")}</p>
         </div>
 
-        {/* Content Container */}
-        <div className="w-full max-w-md mx-auto mt-20 md:mt-0 pb-16">
-          {/* Header Typography */}
-          <div className="space-y-1 md:space-y-2">
-            <h1 className="text-3xl md:text-4xl font-bold leading-tight">
-              Tu proyecto.
-              <br />
-              Tu portal.
-              <br />
-              Tu control.
-            </h1>
-          </div>
+        <div className="relative">
+          {mfaError && (
+            <div className="mb-6 p-4 rounded-lg bg-red-500/5 border border-red-500/10 text-red-500 text-xs font-medium flex items-center gap-3 animate-in slide-in-from-top-2">
+              <AlertCircle size={14} />
+              {mfaError}
+            </div>
+          )}
 
-          {/* Green Separator */}
-          <div className="w-8 h-[2px] bg-emerald-500 rounded-full mt-6 mb-8" />
-
-          {/* Feature List (Desktop Only) */}
-          <div className="hidden md:flex flex-col space-y-4 mb-12">
-            {[
-              "Acceso seguro a tus entregables",
-              "Actualizaciones en tiempo real",
-              "Comunicación directa con tu equipo",
-            ].map((benefit, i) => (
-              <div key={i} className="flex items-center gap-3">
-                <Check className="w-4 h-4 text-emerald-500 flex-none" />
-                <span className="text-xs uppercase tracking-widest text-white/50">
-                  {benefit}
-                </span>
-              </div>
+          <div
+            className={cn(
+              "flex justify-between gap-2 mb-8",
+              shake && "animate-shake",
+            )}>
+            {otpCode.map((digit, index) => (
+              <input
+                key={index}
+                id={`otp-${index}`}
+                type="text"
+                inputMode="numeric"
+                pattern="[0-9]*"
+                maxLength={1}
+                value={digit}
+                onChange={(e) => handleOtpChange(index, e.target.value)}
+                onKeyDown={(e) => handleOtpKeyDown(index, e)}
+                onPaste={(e) => {
+                  e.preventDefault();
+                  const pastedData = e.clipboardData
+                    .getData("text")
+                    .slice(0, 6)
+                    .replace(/[^0-9]/g, "");
+                  if (pastedData) {
+                    const newOtp = [...otpCode];
+                    for (let i = 0; i < pastedData.length; i++) {
+                      newOtp[i] = pastedData[i];
+                    }
+                    setOtpCode(newOtp);
+                    if (pastedData.length === 6) {
+                      verifyOTP(newOtp.join(""));
+                    } else {
+                      document
+                        .getElementById(`otp-${pastedData.length}`)
+                        ?.focus();
+                    }
+                  }
+                }}
+                className={cn(
+                  "w-12 h-14 bg-white/[0.02] border rounded-lg text-center text-xl font-bold text-white transition-all outline-none",
+                  digit
+                    ? "border-white/20 bg-white/[0.04]"
+                    : "border-white/10 focus:border-white/20 focus:bg-white/[0.04]",
+                  mfaError && "border-red-500/20 focus:border-red-500/20",
+                )}
+                autoComplete="one-time-code"
+              />
             ))}
           </div>
 
-          {/* Form Header */}
-          <div className="space-y-1 mb-8">
-            <h2 className="text-2xl font-bold text-white tracking-tight">
-              Bienvenido a Noctra CRM
-            </h2>
-            <p className="text-sm text-white/40">
-              Ingresa tus credenciales para acceder al panel.
-            </p>
-          </div>
+          <button
+            onClick={() => verifyOTP(otpCode.join(""))}
+            disabled={isVerifyingMFA || !otpCode.every((digit) => digit !== "")}
+            className={cn(
+              "w-full h-11 flex items-center justify-center gap-2 rounded-lg text-sm font-bold transition-all duration-300",
+              otpCode.every((digit) => digit !== "")
+                ? "bg-white text-black hover:bg-neutral-100"
+                : "bg-white/5 text-white/20 cursor-not-allowed",
+            )}>
+            {isVerifyingMFA ? (
+              <Loader2 size={16} className="animate-spin" />
+            ) : (
+              t("mfa_button")
+            )}
+          </button>
 
-          {reasonMessage && !showMFA && (
-            <div className="p-3 mb-6 border border-white/10 bg-white/5 rounded-lg text-white/60 text-[10px] font-mono uppercase tracking-widest text-center animate-in fade-in slide-in-from-top-2 duration-300">
-              {reasonMessage}
+          <div className="mt-8 pt-6 border-t border-white/5">
+            <button
+              onClick={() => {
+                setShowMFA(false);
+                setOtpCode(["", "", "", "", "", ""]);
+                setMfaError(null);
+                setLoading(false);
+              }}
+              className="text-sm font-bold text-neutral-500 hover:text-white transition-colors">
+              {t("mfa_cancel")}
+            </button>
+          </div>
+        </div>
+      </div>
+    );
+  }
+
+  return (
+    <div className="w-full max-w-[360px] animate-in fade-in slide-in-from-bottom-4 duration-700">
+      <div className="mb-10 text-left">
+        <Link href="/" className="inline-block group mb-8">
+          <BrandLogo className="w-10 h-10 text-white group-hover:scale-105 transition-transform duration-300" />
+        </Link>
+        <h1 className="text-3xl font-bold text-white tracking-tight mb-3">
+          {isLoginMode ? t("signin_title") : t("signup_title")}
+        </h1>
+        <p className="text-sm text-neutral-500">
+          {isLoginMode ? t("signin_description") : t("signup_description")}
+        </p>
+      </div>
+
+      <div className="relative">
+        <form
+          onSubmit={isLoginMode ? handleLoginSubmit : handleSignupSubmit}
+          className="space-y-6 w-full"
+          noValidate>
+          {error && (
+            <div className="p-4 rounded-xl bg-red-500/10 border border-red-500/20 text-red-500 text-sm font-medium animate-in fade-in">
+              {error}
             </div>
           )}
 
-          {!showMFA ? (
-            <form onSubmit={handleLogin} className="space-y-6">
-              <div className="space-y-5">
-                <div className="space-y-2">
-                  <label className="block text-[10px] uppercase tracking-widest text-white/40 mb-2">
-                    Email
-                  </label>
+          {!isLoginMode && (
+            <div className="space-y-6">
+              <div className="space-y-2 text-left">
+                <label className="block text-[10px] font-bold text-neutral-500 uppercase tracking-widest mb-2 font-mono">
+                  {t("full_name_label")}
+                </label>
+                <div className="relative group">
                   <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
+                    type="text"
                     required
-                    className={`w-full bg-white/5 border ${error ? "border-red-500/50 focus:border-red-500/50" : "border-white/10 focus:border-emerald-500/50"} rounded-lg px-4 py-3 text-white placeholder:text-white/15 focus:outline-none focus:ring-0 transition-colors duration-200`}
-                    placeholder="nombre@empresa.com"
+                    value={fullName}
+                    onChange={(e) => setFullName(e.target.value)}
+                    className="w-full h-11 bg-white/[0.02] border border-white/10 rounded-lg px-4 text-sm text-white focus:outline-none focus:border-white/20 transition-all placeholder:text-neutral-700"
+                    placeholder={t("full_name_placeholder")}
                   />
-                </div>
-
-                <div className="space-y-2">
-                  <label className="block text-[10px] uppercase tracking-widest text-white/40 mb-2">
-                    Contraseña
-                  </label>
-                  <div className="relative">
-                    <input
-                      type={showPassword ? "text" : "password"}
-                      value={password}
-                      onChange={(e) => setPassword(e.target.value)}
-                      required
-                      className={`w-full bg-white/5 border ${error ? "border-red-500/50 focus:border-red-500/50" : "border-white/10 focus:border-emerald-500/50"} rounded-lg px-4 py-3 text-white placeholder:text-white/15 focus:outline-none focus:ring-0 transition-colors duration-200`}
-                      placeholder="••••••••"
-                    />
-                    <button
-                      type="button"
-                      onClick={() => setShowPassword(!showPassword)}
-                      className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 hover:text-white/40 transition-colors">
-                      {showPassword ? (
-                        <EyeOff className="w-4 h-4" />
-                      ) : (
-                        <Eye className="w-4 h-4" />
-                      )}
-                    </button>
-                  </div>
                 </div>
               </div>
 
-              {error && (
-                <div className="text-red-400 text-xs mt-1 animate-in fade-in slide-in-from-top-1">
-                  {error}
+              <div className="space-y-2 text-left">
+                <label className="block text-[10px] font-bold text-neutral-500 uppercase tracking-widest mb-2 font-mono">
+                  {t("agency_name_label")}
+                </label>
+                <div className="relative group">
+                  <input
+                    type="text"
+                    required
+                    value={workspaceName}
+                    onChange={(e) => setWorkspaceName(e.target.value)}
+                    className="w-full h-11 bg-white/[0.02] border border-white/10 rounded-lg px-4 text-sm text-white focus:outline-none focus:border-white/20 transition-all placeholder:text-neutral-700"
+                    placeholder={t("agency_name_placeholder")}
+                  />
                 </div>
-              )}
+              </div>
+            </div>
+          )}
 
-              <div className="space-y-4 pt-2">
+          {/* Email Input */}
+          <div className="space-y-6">
+            <div className="space-y-2 text-left">
+              <label className="block text-[10px] font-bold text-neutral-500 uppercase tracking-widest mb-2 font-mono">
+                {t("email_label")}
+              </label>
+              <div className="relative group">
+                <input
+                  type="email"
+                  autoComplete="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  className="w-full h-11 bg-white/[0.02] border border-white/10 rounded-lg px-4 text-sm text-white focus:outline-none focus:border-white/20 transition-all placeholder:text-neutral-700"
+                  placeholder={t("email_placeholder")}
+                />
+              </div>
+            </div>
+
+            <div className="space-y-2 text-left">
+              <div className="flex items-center justify-between mb-2">
+                <label className="block text-[10px] font-bold text-neutral-500 uppercase tracking-widest font-mono">
+                  {t("password_label")}
+                </label>
+                {isLoginMode && (
+                  <button
+                    type="button"
+                    onClick={() => router.push("/forge/forgot-password")}
+                    className="text-[10px] font-bold text-neutral-600 hover:text-white transition-colors uppercase tracking-widest font-mono">
+                    {t("forgot_password")}
+                  </button>
+                )}
+              </div>
+              <div className="relative group">
+                <input
+                  id="password"
+                  name="password"
+                  type={showPassword ? "text" : "password"}
+                  autoComplete={
+                    isLoginMode ? "current-password" : "new-password"
+                  }
+                  required
+                  value={password}
+                  onChange={(e) => setPassword(e.target.value)}
+                  className="w-full h-11 bg-white/[0.02] border border-white/10 rounded-lg pl-4 pr-12 text-sm text-white focus:outline-none focus:border-white/20 transition-all placeholder:text-neutral-700"
+                  placeholder={t("password_placeholder")}
+                />
                 <button
-                  type="submit"
-                  disabled={loading}
-                  className="w-full bg-white text-black font-semibold rounded-lg py-3 hover:bg-white/90 hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 flex items-center justify-center gap-2 disabled:opacity-50 disabled:scale-100">
-                  {loading ? (
-                    <span className="flex items-center gap-2">
-                      <Loader2 className="w-4 h-4 animate-spin" />{" "}
-                      Verificando...
-                    </span>
-                  ) : (
-                    <>
-                      Iniciar Sesión
-                      <ArrowRight className="w-3.5 h-3.5" />
-                    </>
-                  )}
+                  type="button"
+                  onClick={() => setShowPassword(!showPassword)}
+                  className="absolute right-3 top-1/2 -translate-y-1/2 p-1.5 text-neutral-600 hover:text-white transition-colors">
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
+              </div>
+              {!isLoginMode && (
+                <p className="text-[10px] text-neutral-500 mt-2 px-1">
+                  {t("password_hint")}
+                </p>
+              )}
+            </div>
+          </div>
 
-                <div className="text-center mt-4">
-                  <p className="text-[10px] uppercase tracking-widest text-white/25">
-                    🔒 Conexión cifrada SSL · noctra.studio
+          <button
+            type="submit"
+            disabled={
+              loading ||
+              !email ||
+              !password ||
+              (!isLoginMode && (!fullName || !workspaceName))
+            }
+            className="w-full h-11 mt-4 bg-white hover:bg-neutral-100 text-black font-bold rounded-lg text-sm transition-all flex items-center justify-center gap-2 group disabled:opacity-50 disabled:pointer-events-none active:scale-[0.99]">
+            {loading ? (
+              <Loader2 size={16} className="animate-spin text-black/50" />
+            ) : (
+              <>
+                {isLoginMode ? t("login_button") : t("signup_button")}{" "}
+                <ArrowRight
+                  size={14}
+                  className="group-hover:translate-x-0.5 transition-transform"
+                />
+              </>
+            )}
+          </button>
+        </form>
+
+        <div className="mt-8 pt-6 border-t border-white/5">
+          <p className="text-sm text-neutral-500 mb-4">
+            {isLoginMode ? t("no_account") : t("have_account")}
+          </p>
+          <button
+            onClick={() => setIsLoginMode(!isLoginMode)}
+            className="text-sm font-bold text-white hover:text-white/80 transition-colors">
+            {isLoginMode ? t("register_now") : t("back_to_login")}
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+}
+
+export default function ForgeUnifiedAuthPage() {
+  const t = useTranslations("forge.auth");
+  return (
+    <div className="min-h-screen bg-black flex w-full relative overflow-hidden">
+      {/* LEFT PANEL - CINEMATIC IMAGE */}
+      <div className="hidden lg:flex w-[50%] relative overflow-hidden flex-col items-center justify-center">
+        <Image
+          src="/images/login-client-portal.jpg"
+          alt="Business Infrastructure"
+          fill
+          className="object-cover opacity-60 grayscale-[20%]"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-black via-black/20 to-transparent" />
+        <div className="absolute inset-0 bg-gradient-to-r from-transparent via-transparent to-black" />
+
+        {/* Feature Highlights Grid */}
+        <div className="absolute bottom-16 left-0 right-0 px-20 z-10">
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-300">
+            {[
+              {
+                title: t("feature_management_title"),
+                desc: t("feature_management_desc"),
+              },
+              {
+                title: t("feature_collaboration_title"),
+                desc: t("feature_collaboration_desc"),
+              },
+              {
+                title: t("feature_ai_title"),
+                desc: t("feature_ai_desc"),
+              },
+            ].map((f, i) => (
+              <div
+                key={i}
+                className="bg-white/[0.03] backdrop-blur-md border border-white/5 rounded-xl p-5 flex flex-col gap-2 group hover:bg-white/[0.05] transition-all duration-500">
+                <Check size={14} className="text-emerald-500/80" />
+                <div>
+                  <h4 className="text-[11px] font-bold text-white uppercase tracking-widest mb-1 font-mono">
+                    {f.title}
+                  </h4>
+                  <p className="text-[10px] text-neutral-500 leading-relaxed">
+                    {f.desc}
                   </p>
                 </div>
               </div>
-            </form>
-          ) : (
-            <div className={`space-y-8 ${shake ? "animate-shake" : ""}`}>
-              <div className="space-y-2 text-center">
-                <h2 className="text-[10px] font-bold uppercase tracking-[0.2em] text-white">
-                  Verificación MFA
-                </h2>
-                <p className="text-[9px] text-white/40 font-mono tracking-widest uppercase">
-                  Código de seguridad de 6 dígitos
-                </p>
-              </div>
-
-              <div className="flex justify-between gap-2">
-                {otpCode.map((digit, i) => (
-                  <input
-                    key={i}
-                    id={`otp-${i}`}
-                    type="text"
-                    inputMode="numeric"
-                    maxLength={1}
-                    value={digit}
-                    onChange={(e) => handleOtpChange(i, e.target.value)}
-                    onKeyDown={(e) => handleOtpKeyDown(i, e)}
-                    className="w-full h-12 bg-white/5 border border-white/10 rounded-lg text-center text-lg font-mono text-white focus:outline-none focus:border-emerald-500/50 transition-all duration-200"
-                    autoFocus={i === 0}
-                  />
-                ))}
-              </div>
-
-              {mfaError && (
-                <div className="text-red-400 text-xs mt-1 text-center animate-in fade-in slide-in-from-top-1">
-                  {mfaError}
-                </div>
-              )}
-
-              <div className="space-y-4">
-                <button
-                  onClick={() => handleMFAVerify()}
-                  disabled={isVerifyingMFA || otpCode.some((d) => d === "")}
-                  className="w-full bg-white text-black font-semibold rounded-lg py-3 hover:bg-white/90 hover:scale-[1.01] active:scale-[0.99] transition-all duration-150 disabled:opacity-50 disabled:scale-100">
-                  {isVerifyingMFA ? "Verificando..." : "Confirmar Identidad"}
-                </button>
-                <button
-                  onClick={() => setShowMFA(false)}
-                  className="w-full text-[9px] font-mono text-white/20 hover:text-white/40 transition-colors uppercase tracking-[0.2em] text-center">
-                  ← Volver al Login
-                </button>
-              </div>
-            </div>
-          )}
-        </div>
-
-        {/* Bottom Absolute Links */}
-        <div className="absolute bottom-6 md:bottom-12 left-6 md:left-16 flex flex-col gap-2">
-          <Link
-            href="/"
-            className="text-xs text-white/20 hover:text-white/40 transition-colors">
-            Volver al sitio
-          </Link>
-          <div className="hidden md:block text-white/15 text-xs">
-            &copy; 2026 Noctra Studio &middot; Querétaro, MX
+            ))}
           </div>
         </div>
       </div>
 
-      {/* Panel Derecho — Imagen */}
-      <div className="hidden md:flex md:w-[40%] h-screen relative border-l border-white/5">
-        <img
-          src="/images/login-client-portal.jpg"
-          alt="Noctra Studio Portal"
-          className="object-cover w-full h-full"
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-black/20" />
-        <div className="absolute bottom-12 left-12 right-12">
-          <p className="text-white font-bold text-xl leading-snug">
-            "Diseñamos y construimos
-            <br />
-            presencias digitales que convierten."
-          </p>
-          <p className="text-white/40 text-xs uppercase tracking-widest mt-2">
-            — Noctra Studio, Querétaro MX
-          </p>
-        </div>
+      {/* RIGHT PANEL - MINIMALIST FORM */}
+      <div className="w-full lg:w-[50%] relative z-10 flex flex-col items-center justify-center p-6 md:p-12 bg-black">
+        <Suspense
+          fallback={
+            <div className="flex flex-col items-center justify-center h-full">
+              <Loader2 className="w-8 h-8 animate-spin text-white/20" />
+            </div>
+          }>
+          <AuthForms />
+        </Suspense>
       </div>
-    </main>
+    </div>
   );
 }

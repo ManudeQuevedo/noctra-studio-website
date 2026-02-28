@@ -15,6 +15,7 @@ import {
 import Link from "next/link";
 import { useBillingData } from "@/hooks/useBillingData";
 import { useState } from "react";
+import { TokenInfoTooltip } from "../TokenInfoTooltip";
 
 interface SuscripcionModalProps {
   isOpen: boolean;
@@ -198,6 +199,7 @@ export function SuscripcionModal({ isOpen, onClose }: SuscripcionModalProps) {
                   <div className="flex justify-between items-end mb-2">
                     <span className="text-[10px] uppercase tracking-widest text-orange-500 font-bold flex items-center gap-1">
                       <Zap className="w-3 h-3" /> IA Tokens
+                      <TokenInfoTooltip />
                     </span>
                     <span className="text-xs font-mono text-white">
                       {isUnlimited

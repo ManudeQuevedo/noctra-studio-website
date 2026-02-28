@@ -2,13 +2,8 @@
 
 import React from "react";
 import { m } from "framer-motion";
-import {
-  Sparkles,
-  MessageSquare,
-  Zap,
-  Activity,
-  CheckCircle2,
-} from "lucide-react";
+import { MessageSquare, Zap, CheckCircle2 } from "lucide-react";
+import { CentralBrainLogo } from "@/components/ui/CentralBrainLogo";
 
 export const ConnectivitySection = () => {
   return (
@@ -31,7 +26,7 @@ export const ConnectivitySection = () => {
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-stretch">
           {/* BLOCK 1: REVENUE INTELLIGENCE (Left) */}
           <div className="relative p-8 md:p-12 rounded-[2.5rem] bg-white/[0.02] border border-white/5 overflow-hidden group hover:bg-white/[0.03] transition-colors flex flex-col justify-between">
-            <div className="absolute top-0 right-0 w-64 h-64 bg-purple-500/10 blur-[80px] rounded-full group-hover:bg-purple-500/20 transition-colors pointer-events-none" />
+            <div className="absolute top-0 right-0 w-64 h-64 bg-emerald-500/10 blur-[80px] rounded-full group-hover:bg-emerald-500/20 transition-colors pointer-events-none" />
 
             <div className="mb-12 relative z-10">
               <h3 className="text-2xl md:text-3xl font-bold text-white mb-4 line-clamp-2">
@@ -58,40 +53,47 @@ export const ConnectivitySection = () => {
                 </div>
               </div>
 
-              {/* Floating AI Widget Overlay */}
-              <div className="absolute -bottom-8 -right-4 md:-right-8 bg-black/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] w-[240px] animate-in slide-in-from-bottom-5 duration-700">
-                <div className="flex items-center gap-2 mb-3 border-b border-white/10 pb-2">
-                  <Sparkles size={14} className="text-purple-400" />
-                  <span className="text-[10px] uppercase font-bold tracking-widest text-neutral-400">
-                    AI Insight Radar
-                  </span>
+              {/* Floating AI Widget Overlay (Central Brain) */}
+              <div className="absolute -bottom-8 -right-4 md:-right-8 bg-black/80 backdrop-blur-xl border border-white/10 p-5 rounded-2xl shadow-[0_20px_40px_rgba(0,0,0,0.4)] w-[260px] animate-in slide-in-from-bottom-5 duration-700">
+                <div className="flex items-center gap-3 mb-3 border-b border-white/10 pb-2">
+                  <div className="w-8 h-8 flex-none">
+                    <CentralBrainLogo isThinking={true} />
+                  </div>
+                  <div className="flex flex-col">
+                    <span className="text-[10px] uppercase font-bold tracking-widest text-white">
+                      Cerebro Central
+                    </span>
+                    <span className="text-[8px] uppercase font-medium tracking-tighter text-emerald-500">
+                      Orchestrator v2.0
+                    </span>
+                  </div>
                 </div>
 
                 <div className="space-y-3">
                   <div className="flex justify-between items-center bg-white/[0.03] p-2 rounded-lg border border-white/5">
-                    <span className="text-xs text-neutral-500 font-medium">
-                      Sentiment
+                    <span className="text-[10px] text-neutral-500 font-medium">
+                      Modo de Ejecución
                     </span>
-                    <span className="text-xs text-emerald-400 font-bold flex items-center gap-1">
-                      <Activity size={12} /> Positive (92%)
+                    <span className="text-[10px] text-emerald-400 font-bold flex items-center gap-1 uppercase tracking-tighter">
+                      <Zap size={10} /> Optimized Mode
                     </span>
                   </div>
 
                   <div className="flex justify-between items-center bg-white/[0.03] p-2 rounded-lg border border-white/5">
-                    <span className="text-xs text-neutral-500 font-medium">
-                      Intent
+                    <span className="text-[10px] text-neutral-500 font-medium whitespace-nowrap">
+                      Token Efficiency
                     </span>
-                    <span className="text-[10px] font-black uppercase tracking-wider bg-purple-500/20 text-purple-300 px-2 py-0.5 rounded-full border border-purple-500/30">
-                      Closing Deal
+                    <span className="text-[10px] font-black uppercase tracking-wider bg-emerald-500/20 text-emerald-300 px-2 py-0.5 rounded-full border border-emerald-500/30">
+                      High ROI
                     </span>
                   </div>
 
                   <div className="flex flex-col gap-1.5 pt-2 border-t border-white/5">
-                    <span className="text-[10px] text-neutral-500 font-medium">
-                      Suggested Next Action
+                    <span className="text-[9px] text-neutral-500 font-medium">
+                      Acción Orquestada
                     </span>
-                    <button className="w-full py-1.5 bg-white text-black text-xs font-bold rounded-md hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5">
-                      Send Contract <Zap size={12} />
+                    <button className="w-full py-1.5 bg-white text-black text-[10px] font-bold rounded-md hover:bg-neutral-200 transition-colors flex items-center justify-center gap-1.5 uppercase tracking-wider">
+                      Generar Contrato <CheckCircle2 size={12} />
                     </button>
                   </div>
                 </div>

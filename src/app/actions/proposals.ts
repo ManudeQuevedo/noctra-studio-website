@@ -2,6 +2,7 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import { getWorkspace } from "@/lib/workspace";
 
 export async function createProposalAction(data: {
   lead_id?: string;
@@ -10,9 +11,23 @@ export async function createProposalAction(data: {
 }) {
   const supabase = await createClient();
 
-  // 1. Check Auth
-  const { data: { user } } = await supabase.auth.getUser();
-  if (!user) throw new Error("No autenticado");
+  // 1. Check Auth and Workspace
+  const ctx = await getWorkspace();
+  if (!ctx) throw new Error("No autenticado o sin workspace");
+
+  const isTrial = ctx.workspace.subscription_status === "trialing";
+
+  // 1.5 Enforce Trial Limits (max 3 proposals for free users)
+  if (isTrial) {
+    const { count } = await supabase
+      .from("proposals")
+      .select("*", { count: "exact", head: true })
+      .eq("workspace_id", ctx.workspaceId);
+
+    if (count !== null && count >= 3) {
+      throw new Error("TRIAL_LIMIT_REACHED");
+    }
+  }
 
   let leadId = data.lead_id;
 

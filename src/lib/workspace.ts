@@ -37,7 +37,11 @@ export const getWorkspace = cache(async () => {
         primary_color,
         email,
         currency,
-        country
+        country,
+        subscription_status,
+        tier,
+        custom_domain,
+        subdomain
       )
     `,
     )

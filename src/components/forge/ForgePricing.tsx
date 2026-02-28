@@ -250,11 +250,39 @@ export const ForgePricing = ({
                       </span>
                     </div>
                   ))}
+                  {/* Soft Wall Specific Features */}
+                  <div className="flex items-start gap-3 border-t border-white/5 pt-4 mt-2">
+                    <div
+                      className={cn(
+                        "mt-1 p-0.5 rounded-full shrink-0",
+                        !isSolo ? "bg-[#10b981]/20" : "bg-white/10",
+                      )}>
+                      <Check
+                        size={12}
+                        className={cn(
+                          !isSolo ? "text-[#10b981]" : "text-white/40",
+                        )}
+                        strokeWidth={1.5}
+                      />
+                    </div>
+                    <span
+                      className={cn(
+                        "text-xs leading-snug font-medium",
+                        isSolo ? "text-neutral-500 italic" : "text-[#10b981]",
+                      )}>
+                      {isSolo
+                        ? 'Incluye marca de agua "Generado por Noctra CRM" en PDFs y dominio genérico noctra.studio/p/'
+                        : "Marca de agua eliminada y soporte para Subdominio Personalizado (White-label)"}
+                    </span>
+                  </div>
                 </div>
 
                 <div className="relative z-10">
                   <Link
-                    href="/forge/login"
+                    href={{
+                      pathname: "/forge/login",
+                      query: { mode: "signup", plan: "starter" },
+                    }}
                     className={cn(
                       "w-full flex items-center justify-center gap-2 py-4 rounded-xl text-sm font-bold transition-all",
                       isAgency

@@ -17,7 +17,14 @@ interface Props {
 
 export async function generateStaticParams() {
   const guides = await client.fetch(ALL_MIGRATION_GUIDES_QUERY);
-  return guides.map((g: any) => ({ slug: g.slug.current }));
+  const locales = ["es", "en"];
+
+  return guides.flatMap((g: any) =>
+    locales.map((locale) => ({
+      locale,
+      slug: g.slug.current,
+    })),
+  );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {

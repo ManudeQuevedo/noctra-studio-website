@@ -31,6 +31,8 @@ export default async function ForgeIndexPage() {
 
   const forecast = await getRevenueForecast();
 
+  const isTrial = ctx.workspace.subscription_status === "trialing";
+
   return (
     <DashboardClient
       leads={leads || []}
@@ -38,6 +40,7 @@ export default async function ForgeIndexPage() {
       contracts={contracts || []}
       projects={projects || []}
       forecast={forecast}
+      isTrial={isTrial}
     />
   );
 }

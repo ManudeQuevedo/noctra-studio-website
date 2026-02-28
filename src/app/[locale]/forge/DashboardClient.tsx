@@ -33,11 +33,13 @@ import {
   MessageSquare,
   User,
   AlertTriangle,
+  Globe,
 } from "lucide-react";
 import { useFollowUps } from "@/hooks/useFollowUps";
 import { FollowUpModal } from "@/components/forge/FollowUpModal";
 import { RevenueForecast } from "@/app/actions/metrics";
 import { createClient } from "@/utils/supabase/client";
+import { EarlyAccessWidget } from "@/components/forge/EarlyAccessWidget";
 
 type Lead = any;
 type Proposal = any;
@@ -67,12 +69,14 @@ export default function DashboardClient({
   contracts,
   projects,
   forecast,
+  isTrial,
 }: {
   leads: Lead[];
   proposals: Proposal[];
   contracts: Contract[];
   projects: Project[];
   forecast: RevenueForecast;
+  isTrial?: boolean;
 }) {
   const [currentTime, setCurrentTime] = useState(new Date());
   const { suggestions, refresh } = useFollowUps();
@@ -139,12 +143,46 @@ export default function DashboardClient({
           </div>
         )}
 
+        {/* Upgrade Soft Wall Banner */}
+        {isTrial && (
+          <div className="bg-emerald-500/10 border border-emerald-500/20 p-5 rounded-xl flex flex-col md:flex-row md:items-center justify-between gap-6 overflow-hidden relative group animate-in slide-in-from-top-4 duration-500">
+            <div className="absolute top-0 right-0 w-32 h-32 bg-emerald-500/10 blur-[60px] pointer-events-none group-hover:bg-emerald-500/20 transition-all duration-700" />
+            <div className="flex items-center gap-4 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-500 shrink-0 border border-emerald-500/20">
+                <Globe className="w-6 h-6" />
+              </div>
+              <div>
+                <h3 className="text-sm font-bold text-white mb-1">
+                  Potencia tu Imagen Profesional
+                </h3>
+                <p className="text-xs text-neutral-400 leading-relaxed max-w-xl">
+                  Personaliza tu portal con tu propio dominio y elimina el sello
+                  de Noctra.
+                </p>
+              </div>
+            </div>
+            <Link
+              href="/forge/settings/billing"
+              className="relative z-10 px-6 py-2.5 bg-white text-black text-[11px] font-black uppercase tracking-widest hover:bg-neutral-100 transition-all text-center rounded-lg flex items-center justify-center gap-2 group/btn">
+              Mejorar a Plan Pro
+              <ArrowRight className="w-3.5 h-3.5 group-hover/btn:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        )}
+
         {/* Row 1: Alertas del Día */}
         <AlertsRow leads={leads} proposals={proposals} contracts={contracts} />
 
         <div className="md:hidden mt-6 mb-2">
           <PipelineSnapshot leads={leads} />
         </div>
+
+        {/* Early Access Widget (Conditionally shown for trials) */}
+        {isTrial && (
+          <div className="mt-6">
+            <EarlyAccessWidget />
+          </div>
+        )}
 
         <div className="mt-8 mb-8 space-y-6">
           <KpiRow

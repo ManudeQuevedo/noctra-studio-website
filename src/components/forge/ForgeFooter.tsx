@@ -65,7 +65,10 @@ export function ForgeFooter() {
                 </li>
                 <li>
                   <Link
-                    href="/forge/login"
+                    href={{
+                      pathname: "/forge/login",
+                      query: { mode: "signup", plan: "starter" },
+                    }}
                     className="text-sm text-neutral-300 hover:text-white transition-colors">
                     Crear cuenta gratis
                   </Link>

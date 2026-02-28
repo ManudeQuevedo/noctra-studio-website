@@ -1,6 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
 import { createClient } from "@/utils/supabase/server";
+import { isEarlyAccessAvailable } from "@/lib/subscriptions";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_fallback", {
   apiVersion: "2024-06-20",
@@ -72,6 +73,15 @@ export async function POST(req: Request) {
     // If it's a one-time purchase, we pass the credit amount for the webhook
     if (mode === "payment" && creditAmount) {
       checkoutParams.metadata!.credit_amount = creditAmount.toString();
+    }
+    // Dynamic Lifetime Discount Injection for Subscriptions
+    if (mode === "subscription") {
+      const earlyAccessAvailable = await isEarlyAccessAvailable();
+      if (earlyAccessAvailable && process.env.STRIPE_LIFETIME_COUPON_ID) {
+        checkoutParams.discounts = [
+          { coupon: process.env.STRIPE_LIFETIME_COUPON_ID }
+        ];
+      }
     }
 
     const stripeSession = await stripe.checkout.sessions.create(checkoutParams);

@@ -47,7 +47,6 @@ export const routing = defineRouting({
     '/forge/settings/billing': '/forge/settings/billing',
     '/forge/search': '/forge/search',
     '/login': '/login',
-    '/forge/signup': '/forge/signup',
     '/guarantee': {
       en: '/guarantee',
       es: '/garantia'

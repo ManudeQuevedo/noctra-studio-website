@@ -13,6 +13,7 @@ import { CreditSystemExplainer } from "./CreditSystemExplainer";
 // Sonner removed in favor of local toast
 
 import { useBillingData } from "@/hooks/useBillingData";
+import { TokenInfoTooltip } from "@/components/forge/TokenInfoTooltip";
 
 export default function BillingSettingsPage() {
   const { workspace, subscription, loading } = useBillingData();
@@ -151,8 +152,9 @@ export default function BillingSettingsPage() {
                 <h2 className="text-[10px] uppercase tracking-widest text-orange-500 mb-1 font-bold">
                   Consumo de IA
                 </h2>
-                <h3 className="text-2xl font-bold text-white">
+                <h3 className="text-2xl font-bold text-white flex items-center">
                   Noctra AI Tokens
+                  <TokenInfoTooltip />
                 </h3>
               </div>
               <div className="w-10 h-10 rounded-xl bg-orange-500/10 flex items-center justify-center">

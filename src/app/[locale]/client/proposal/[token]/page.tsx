@@ -88,6 +88,8 @@ export default async function ClientProposalPage({
   const estimated_delivery = addWeeks(start_date, 6); // Hardcoded 6 weeks as per timeline
 
   const primaryColor = workspace?.primary_color || "#10b981"; // Default emerald-600
+  const showWatermark =
+    workspace?.tier === "free" || workspace?.subscription_status === "trialing";
 
   return (
     <div className="min-h-screen bg-[#fafafa] text-neutral-900 selection:bg-emerald-100 pb-32">
@@ -142,6 +144,23 @@ export default async function ClientProposalPage({
       </nav>
 
       <main className="max-w-[800px] mx-auto bg-white mt-12 shadow-2xl shadow-black/[0.02] border border-neutral-100 min-h-screen flex flex-col p-12 md:p-20 relative overflow-hidden">
+        {/* Refined Watermark Overlay (Print Optimized) */}
+        {showWatermark && (
+          <>
+            {/* Central Watermark - Fixed position repeats on print pages */}
+            <div className="fixed inset-0 pointer-events-none select-none overflow-hidden z-[100] flex items-center justify-center">
+              <div className="text-neutral-400 text-[5rem] md:text-[6rem] font-black uppercase whitespace-nowrap tracking-[0.2em] -rotate-[45deg] opacity-[0.12] print:opacity-[0.15] pointer-events-none">
+                Generado por Noctra CRM
+              </div>
+            </div>
+
+            {/* Footer Identifier - Bottom Right */}
+            <div className="hidden print:block fixed bottom-8 right-8 text-neutral-400 text-[8pt] font-mono pointer-events-none">
+              Propuesta creada en noctra.studio - Plan Trial
+            </div>
+          </>
+        )}
+
         {/* Background Decorative Element */}
         <div
           className="absolute -top-20 -right-20 w-64 h-64 blur-[100px] rounded-full"

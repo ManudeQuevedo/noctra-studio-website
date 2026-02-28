@@ -8,6 +8,7 @@ import {
   Tip,
   InlineCode,
 } from "../DocsContentRenderer";
+import { ModelOrchestratorExplainer } from "@/components/forge/ModelOrchestratorExplainer";
 
 export default function NoctraAiDoc() {
   return (
@@ -53,17 +54,22 @@ export default function NoctraAiDoc() {
         </ListItem>
       </List>
 
-      <H2>El Panel Inteligente</H2>
-      <P>
-        Cuando la IA encuentra fricción, empuja de 1 a 3 cajas de alerta en tu
-        Dashboard acompañadas siempre de un Call To Action en botón directo.
-      </P>
       <Tip>
         El algoritmo de Noctra está diseñado para "Ignorarse de forma segura".
         Si lees un insight sobre un lead al que ya le hablaste en persona,
         simplemente haz clic en <strong>Ignorar</strong> y el LLM asumirá que el
         contexto externo no requiere rescate en el DOM.
       </Tip>
+
+      <H2>Cerebro Central (Model Orchestrator)</H2>
+      <P>
+        Para maximizar el retorno de inversión y la velocidad de respuesta,
+        Noctra utiliza una capa de orquestación inteligente que decide el modelo
+        adecuado para cada tarea.
+      </P>
+      <div className="mt-8">
+        <ModelOrchestratorExplainer />
+      </div>
     </div>
   );
 }
