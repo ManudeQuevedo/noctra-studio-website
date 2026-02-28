@@ -119,7 +119,6 @@ export function Header() {
   const navItems = [
     { label: t("index"), href: "/" },
     { label: t("capabilities"), href: "/services" },
-    { label: "Noctra CRM", href: "/forge" },
     { label: t("deployments"), href: "/work" },
     { label: t("studio"), href: "/about" },
     { label: t("initiate"), href: "/contact" },

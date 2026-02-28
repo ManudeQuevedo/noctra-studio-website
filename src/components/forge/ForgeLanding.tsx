@@ -33,6 +33,7 @@ import { UnifiedStack } from "./UnifiedStack";
 import { ConnectivitySection } from "./ConnectivitySection";
 import { ForgeNavbar } from "./ForgeNavbar";
 import { ForgeFooter } from "./ForgeFooter";
+import { MigrationSection } from "../landing/MigrationSection";
 import { Link } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { m, AnimatePresence } from "framer-motion";
@@ -698,6 +699,9 @@ export default function ForgeLanding() {
 
       {/* --- SECTION 5.9: CONNECTIVITY & AI --- */}
       <ConnectivitySection />
+
+      {/* --- SECTION 5.10: MIGRATION --- */}
+      <MigrationSection />
 
       {/* --- SECTION 6: PRICING --- */}
       <PricingWithROI />

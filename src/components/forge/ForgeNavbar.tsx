@@ -298,6 +298,12 @@ export function ForgeNavbar() {
                           onClick={() => setIsOpen(false)}>
                           Precios
                         </a>
+                        <a
+                          href="#migracion"
+                          className="text-4xl font-bold text-white hover:text-emerald-500 transition-colors"
+                          onClick={() => setIsOpen(false)}>
+                          Migración
+                        </a>
                         <Link
                           href="/blog"
                           className="text-4xl font-bold text-white hover:text-emerald-500 transition-colors"
@@ -351,6 +357,12 @@ export function ForgeNavbar() {
                   className="text-4xl font-bold text-white"
                   onClick={() => setIsOpen(false)}>
                   Precios
+                </a>
+                <a
+                  href="#migracion"
+                  className="text-4xl font-bold text-white"
+                  onClick={() => setIsOpen(false)}>
+                  Migración
                 </a>
                 <Link
                   href="/blog"

@@ -1,407 +1,431 @@
 "use client";
 
-import React, { useState, useRef } from "react";
-import { motion, AnimatePresence, useInView } from "framer-motion";
+import React, { useRef } from "react";
+import { motion, useInView } from "framer-motion";
 import {
-  Brain,
-  FileText,
-  BarChart3,
-  Users,
   Zap,
-  CheckCircle2,
-  X,
+  Cloud,
   ArrowRight,
-  Sparkles,
-  Loader2,
+  BookOpen,
+  CheckCircle2,
+  Settings2,
+  Rocket,
+  AlertCircle,
+  Database,
+  Timer,
+  ShieldCheck,
 } from "lucide-react";
-import { Link } from "@/i18n/routing";
-import { submitEarlyAccess } from "@/app/actions/forge";
+import Image from "next/image";
+import Link from "next/link";
 
 /* ── Types ───────────────────────────────────────── */
-interface Feature {
-  icon: typeof Brain;
+interface CRMPlatform {
+  name: string;
+  logoUrl?: string;
+  brandColor: string;
+  tier: 1 | 2;
+}
+
+interface Step {
+  number: number;
   title: string;
   description: string;
+  icon: React.ReactNode;
+}
+
+interface Stat {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
 }
 
 /* ── Data ────────────────────────────────────────── */
-const features: Feature[] = [
+const platforms: CRMPlatform[] = [
+  // Tier 1
   {
-    icon: Brain,
-    title: "Noctra AI integrado",
-    description:
-      "Insights automáticos, follow-ups sugeridos y alertas inteligentes basadas en el estado real de tu negocio.",
+    name: "HubSpot",
+    logoUrl: "/crm-tools/hubspot.svg",
+    brandColor: "#FF7A59",
+    tier: 1,
   },
   {
-    icon: FileText,
-    title: "Proposal Builder",
-    description:
-      "Crea propuestas con tu branding en minutos. El cliente las aprueba en línea con un solo click.",
+    name: "Zoho CRM",
+    logoUrl: "/crm-tools/zoho.png",
+    brandColor: "#E0212E",
+    tier: 1,
   },
   {
-    icon: BarChart3,
-    title: "Pipeline Visual",
-    description:
-      "Visualiza cada oportunidad por etapa. Forecast de ingresos calculado automáticamente.",
+    name: "Pipedrive",
+    logoUrl: "/crm-tools/pipedrive.png",
+    brandColor: "#173042",
+    tier: 1,
   },
   {
-    icon: Users,
-    title: "Portal de Clientes",
+    name: "Odoo",
+    logoUrl: "/crm-tools/odoo.png",
+    brandColor: "#A24689",
+    tier: 1,
+  },
+  {
+    name: "Salesforce",
+    logoUrl: "/crm-tools/salesforce.svg",
+    brandColor: "#00A1E0",
+    tier: 1,
+  },
+  {
+    name: "Freshsales",
+    logoUrl: "/crm-tools/freshsales.png",
+    brandColor: "#0088F5",
+    tier: 1,
+  },
+  {
+    name: "Bitrix24",
+    logoUrl: "/crm-tools/bitrix.png",
+    brandColor: "#2FC6F6",
+    tier: 1,
+  },
+  // Tier 2
+  {
+    name: "Monday.com",
+    logoUrl: "/crm-tools/monday.png",
+    brandColor: "#FF3D57",
+    tier: 2,
+  },
+  {
+    name: "Notion",
+    logoUrl: "/crm-tools/notion.png",
+    brandColor: "#000000",
+    tier: 2,
+  },
+  {
+    name: "Airtable",
+    logoUrl: "/crm-tools/airtable.svg",
+    brandColor: "#18BFFF",
+    tier: 2,
+  },
+  {
+    name: "Excel / Google Sheets",
+    logoUrl: "/crm-tools/csv-excel.svg",
+    brandColor: "#1D6F42",
+    tier: 2,
+  },
+];
+
+const steps: Step[] = [
+  {
+    number: 1,
+    title: "Elige tu CRM actual",
     description:
-      "Tus clientes ven el estado de su proyecto en tiempo real. Sin emails de seguimiento.",
+      "Selecciona desde dónde vienes. Soportamos conexión directa con los CRMs más populares o importación vía archivo.",
+    icon: <Database className="w-6 h-6" />,
+  },
+  {
+    number: 2,
+    title: "Nosotros mapeamos todo",
+    description:
+      "Noctra CRM detecta automáticamente tus campos y los mapea al formato correcto. Tú solo revisas y confirmas.",
+    icon: <Settings2 className="w-6 h-6" />,
+  },
+  {
+    number: 3,
+    title: "Listo para usar",
+    description:
+      "Tus contactos, empresas y oportunidades aparecen en Noctra CRM sin perder ningún dato. Recibe un reporte completo.",
+    icon: <Rocket className="w-6 h-6" />,
+  },
+];
+
+const stats: Stat[] = [
+  {
+    label: "CRMs soportados",
+    value: "+15 plataformas",
+    icon: <Cloud className="w-5 h-5" />,
+  },
+  {
+    label: "Tiempo promedio",
+    value: "< 30 minutos",
+    icon: <Timer className="w-5 h-5" />,
+  },
+  {
+    label: "Tasa de éxito",
+    value: "99.8% de registros",
+    icon: <ShieldCheck className="w-5 h-5" />,
   },
 ];
 
 /* ── Animations ──────────────────────────────────── */
-const fadeUp = {
-  hidden: { opacity: 0, y: 20 },
-  visible: { opacity: 1, y: 0 },
+const fadeInUp = {
+  hidden: { opacity: 0, y: 30 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.6,
+      ease: [0.22, 1, 0.36, 1] as const,
+    },
+  },
 };
 
-const staggerChildren = {
+const staggerContainer = {
+  hidden: { opacity: 0 },
   visible: {
+    opacity: 1,
     transition: {
-      staggerChildren: 0.1,
+      staggerChildren: 0.05,
     },
   },
 };
 
 /* ── Components ──────────────────────────────────── */
 
-// 1. Feature Card
-const FeatureCard = ({ feature }: { feature: Feature }) => {
-  const Icon = feature.icon;
-  return (
-    <motion.div
-      variants={fadeUp}
-      className="group p-6 bg-white/[0.02] border border-white/5 rounded-2xl hover:border-emerald-500/20 hover:bg-emerald-500/[0.02] transition-all duration-300">
-      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 mb-6 group-hover:scale-110 transition-transform duration-300">
-        <Icon size={24} />
-      </div>
-      <h3 className="text-lg font-bold text-white mb-2">{feature.title}</h3>
-      <p className="text-neutral-400 text-sm leading-relaxed">
-        {feature.description}
-      </p>
-    </motion.div>
-  );
-};
-
-// 2. Early Access Modal
-const EarlyAccessModal = ({
-  isOpen,
-  onClose,
-}: {
-  isOpen: boolean;
-  onClose: () => void;
-}) => {
-  const [email, setEmail] = useState("");
-  const [agencyName, setAgencyName] = useState("");
-  const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
-  const [error, setError] = useState<string | null>(null);
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault();
-    setIsSubmitting(true);
-    setError(null);
-
-    try {
-      const locale = window.location.pathname.split("/")[1] || "es";
-      const result = await submitEarlyAccess({
-        email,
-        agencyName,
-        locale,
-      });
-
-      if (result.error === "duplicate_email") {
-        setError("Este correo ya está registrado en la lista de espera.");
-      } else if (result.success) {
-        setIsSuccess(true);
-      } else {
-        throw new Error("Submission failed");
-      }
-    } catch (err) {
-      console.error("Error submitting early access:", err);
-      setError(
-        "Hubo un error al procesar tu solicitud. Por favor intenta de nuevo.",
-      );
-    } finally {
-      setIsSubmitting(false);
-    }
-  };
-
-  return (
-    <AnimatePresence>
-      {isOpen && (
-        <div className="fixed inset-0 z-[100] flex items-center justify-center p-4">
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            exit={{ opacity: 0 }}
-            onClick={onClose}
-            className="absolute inset-0 bg-black/80 backdrop-blur-sm"
-          />
-
-          <motion.div
-            initial={{ opacity: 0, scale: 0.95, y: 20 }}
-            animate={{ opacity: 1, scale: 1, y: 0 }}
-            exit={{ opacity: 0, scale: 0.95, y: 20 }}
-            className="relative w-full max-w-md bg-[#0a0a0f] border border-white/10 rounded-2xl overflow-hidden shadow-2xl">
-            <button
-              onClick={onClose}
-              className="absolute top-4 right-4 text-neutral-500 hover:text-white transition-colors">
-              <X size={20} />
-            </button>
-
-            <div className="p-8">
-              {!isSuccess ? (
-                <>
-                  <div className="flex items-center gap-3 mb-6">
-                    <div className="w-10 h-10 rounded-lg bg-emerald-500/10 flex items-center justify-center text-emerald-400">
-                      <Zap size={20} fill="currentColor" />
-                    </div>
-                    <div>
-                      <h3 className="text-xl font-bold text-white">
-                        Early Access
-                      </h3>
-                      <p className="text-xs text-neutral-400 font-mono">
-                        Noctra CRM — Beta privada
-                      </p>
-                    </div>
-                  </div>
-
-                  <p className="text-neutral-400 text-sm mb-8 leading-relaxed">
-                    Únete a las agencias que están moldeando el futuro de la
-                    gestión digital.
-                  </p>
-
-                  <ul className="space-y-3 mb-8">
-                    {[
-                      "Acceso antes del lanzamiento público",
-                      "Precio de fundador — descuento permanente",
-                      "Línea directa con el equipo de desarrollo",
-                      "Tu feedback moldea el producto",
-                    ].map((benefit) => (
-                      <li
-                        key={benefit}
-                        className="flex items-start gap-3 text-sm text-neutral-300">
-                        <CheckCircle2
-                          size={16}
-                          className="text-emerald-500 shrink-0 mt-0.5"
-                        />
-                        {benefit}
-                      </li>
-                    ))}
-                  </ul>
-
-                  <form onSubmit={handleSubmit} className="space-y-4">
-                    <div className="space-y-2">
-                      <label className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-1">
-                        Email corporativo *
-                      </label>
-                      <input
-                        required
-                        type="email"
-                        value={email}
-                        onChange={(e) => setEmail(e.target.value)}
-                        placeholder="tu@agencia.com"
-                        className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-neutral-600 focus:outline-none focus:border-emerald-500/40 transition-colors"
-                      />
-                    </div>
-
-                    <div className="space-y-2">
-                      <label className="text-xs font-mono text-neutral-500 uppercase tracking-widest pl-1">
-                        Nombre de la agencia
-                      </label>
-                      <input
-                        type="text"
-                        value={agencyName}
-                        onChange={(e) => setAgencyName(e.target.value)}
-                        placeholder="Ej. Noctra Studio"
-                        className="w-full bg-white/[0.03] border border-white/10 rounded-xl px-4 py-3 text-white placeholder:text-neutral-600 focus:outline-none focus:border-emerald-500/40 transition-colors"
-                      />
-                    </div>
-
-                    {error && (
-                      <p className="text-xs text-red-400 bg-red-400/10 border border-red-400/20 p-3 rounded-lg">
-                        {error}
-                      </p>
-                    )}
-
-                    <button
-                      disabled={isSubmitting}
-                      type="submit"
-                      className="w-full bg-emerald-500 hover:bg-emerald-400 text-black font-bold py-4 rounded-xl transition-all shadow-lg shadow-emerald-500/20 flex items-center justify-center gap-2 active:scale-[0.98]">
-                      {isSubmitting ? (
-                        <Loader2 className="w-5 h-5 animate-spin" />
-                      ) : (
-                        <>
-                          Solicitar Early Access
-                          <ArrowRight size={18} />
-                        </>
-                      )}
-                    </button>
-
-                    <p className="text-[10px] text-center font-mono text-neutral-500 uppercase tracking-widest mt-4">
-                      Solo 20 spots disponibles · Sin tarjeta de crédito
-                    </p>
-                  </form>
-                </>
-              ) : (
-                <motion.div
-                  initial={{ opacity: 0, y: 10 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  className="text-center py-8">
-                  <div className="w-20 h-20 rounded-full bg-emerald-500/10 flex items-center justify-center text-emerald-400 mx-auto mb-6">
-                    <CheckCircle2 size={48} />
-                  </div>
-                  <h3 className="text-2xl font-bold text-white mb-4">
-                    ¡Estás en lista!
-                  </h3>
-                  <p className="text-neutral-400 leading-relaxed mb-8">
-                    Te contactaremos en las próximas 48 horas con los detalles
-                    de acceso.
-                  </p>
-                  <button
-                    onClick={onClose}
-                    className="w-full bg-white/5 hover:bg-white/10 text-white font-bold py-4 rounded-xl transition-all border border-white/10">
-                    Cerrar
-                  </button>
-                </motion.div>
-              )}
-            </div>
-          </motion.div>
-        </div>
-      )}
-    </AnimatePresence>
-  );
-};
-
-// 3. Main Section
 export function MigrationSection() {
-  const [isModalOpen, setIsModalOpen] = useState(false);
-  const sectionRef = useRef(null);
-  const isInView = useInView(sectionRef, { once: true, margin: "-100px" });
+  const containerRef = useRef(null);
+  const isInView = useInView(containerRef, { once: true, margin: "-100px" });
 
   return (
     <section
-      id="noctra-crm"
-      ref={sectionRef}
-      className="relative py-28 md:py-36 bg-[#050505] overflow-hidden">
-      {/* Ambient glow */}
-      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[600px] h-[400px] bg-emerald-500/[0.04] rounded-full blur-[100px] pointer-events-none" />
+      id="migracion"
+      className="relative py-24 md:py-32 bg-[#050505] overflow-hidden"
+      ref={containerRef}>
+      {/* Background decoration - Using Emerald for Forge alignment, Violet for main site */}
+      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-emerald-500/5 rounded-full blur-[120px] pointer-events-none" />
+      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-violet-600/5 rounded-full blur-[120px] pointer-events-none" />
 
       <div className="max-w-7xl mx-auto px-6 relative z-10">
-        {/* Header */}
+        {/* Encabezado */}
         <motion.div
-          variants={fadeUp}
+          className="text-center max-w-3xl mx-auto mb-20"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          transition={{ duration: 0.6 }}
-          className="text-center max-w-3xl mx-auto mb-20">
-          <span className="inline-flex items-center gap-2 px-4 py-1.5 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-[10px] font-mono uppercase tracking-[0.2em] text-emerald-400 mb-8">
-            <Sparkles size={12} fill="currentColor" />
-            CONSTRUIDO POR NOCTRA STUDIO
+          variants={fadeInUp}>
+          <span className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 border border-emerald-500/20 rounded-full text-xs font-bold text-emerald-400 mb-6 tracking-wide">
+            <Zap size={14} className="fill-current" />
+            Migración sin complicaciones
           </span>
-          <h2 className="text-4xl md:text-6xl font-bold text-white tracking-tight mb-8">
-            Nuestro producto insignia.
-            <br />
-            <span className="text-emerald-400">Noctra CRM</span> — el CRM que
-            una agencia real necesita.
+          <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter">
+            Trae todos tus datos a Noctra CRM <br className="hidden md:block" />
+            en menos de 30 minutos
           </h2>
-          <p className="text-neutral-400 text-base md:text-lg leading-relaxed">
-            Construimos nuestra propia herramienta porque los CRMs existentes no
-            se adaptaban a cómo trabajan las agencias digitales. Gestiona
-            clientes, propuestas, proyectos y tu pipeline con inteligencia
-            artificial — desde el primer día.
+          <p className="text-neutral-400 text-lg md:text-xl leading-relaxed">
+            Sin perder un solo contacto. Sin contratar a un técnico.{" "}
+            <br className="hidden md:block" />
+            Sin hojas de cálculo confusas. Solo sigue el asistente paso a paso.
           </p>
         </motion.div>
 
-        {/* Features Grid */}
+        {/* Bloque visual central — Logos */}
+        <div className="mb-24">
+          <motion.div
+            className="flex flex-col items-center mb-4"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={fadeInUp}>
+            <div className="flex flex-wrap justify-center gap-4 text-[10px] font-bold text-neutral-500 uppercase tracking-[0.2em] mb-10">
+              <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.02] border border-white/5 rounded-lg">
+                <Zap size={12} className="text-emerald-500 fill-current" />{" "}
+                Conexión directa
+              </span>
+              <span className="flex items-center gap-1.5 px-3 py-1.5 bg-white/[0.02] border border-white/5 rounded-lg">
+                <Cloud size={12} className="text-blue-500" /> Importar archivo
+              </span>
+            </div>
+          </motion.div>
+
+          {/* Desktop Grid */}
+          <motion.div
+            className="hidden md:grid grid-cols-4 lg:grid-cols-6 gap-4"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={staggerContainer}>
+            {platforms.map((platform) => (
+              <motion.div
+                key={platform.name}
+                variants={fadeInUp}
+                className="group relative flex flex-col items-center justify-center p-6 bg-white/[0.01] border border-white/5 rounded-2xl hover:border-emerald-500/30 hover:bg-white/[0.03] transition-all duration-500">
+                <div className="relative w-12 h-12 mb-4 flex items-center justify-center">
+                  {platform.logoUrl ? (
+                    <Image
+                      src={platform.logoUrl}
+                      alt={`Logo de ${platform.name}`}
+                      width={48}
+                      height={48}
+                      className="object-contain grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    />
+                  ) : (
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-xl transition-all duration-300 shadow-lg bg-[#c6c6c6] group-hover:bg-[var(--brand-color)]"
+                      style={
+                        {
+                          "--brand-color": platform.brandColor,
+                        } as React.CSSProperties
+                      }>
+                      {platform.name.charAt(0)}
+                    </div>
+                  )}
+                </div>
+                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-500 group-hover:text-white transition-colors">
+                  {platform.name}
+                </span>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Mobile Carousel */}
+          <div className="md:hidden overflow-x-auto pb-4 -mx-6 px-6 no-scrollbar">
+            <motion.div
+              className="flex gap-4 w-max"
+              initial="hidden"
+              animate={isInView ? "visible" : "hidden"}
+              variants={staggerContainer}>
+              {platforms.map((platform) => (
+                <motion.div
+                  key={platform.name}
+                  variants={fadeInUp}
+                  className="group flex flex-col items-center justify-center w-32 h-32 bg-white/[0.01] border border-white/5 rounded-2xl active:bg-white/[0.03]">
+                  {platform.logoUrl ? (
+                    <Image
+                      src={platform.logoUrl}
+                      alt={`Logo de ${platform.name}`}
+                      width={40}
+                      height={40}
+                      className="object-contain mb-3 grayscale opacity-40 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-500"
+                    />
+                  ) : (
+                    <div
+                      className="w-10 h-10 rounded-lg flex items-center justify-center text-white font-bold text-lg mb-3"
+                      style={{ backgroundColor: "#c6c6c6" }}>
+                      {platform.name.charAt(0)}
+                    </div>
+                  )}
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-500">
+                    {platform.name}
+                  </span>
+                </motion.div>
+              ))}
+            </motion.div>
+          </div>
+        </div>
+
+        {/* Bloque de pasos — Cómo funciona */}
+        <div className="mb-24">
+          <motion.div
+            className="grid grid-cols-1 md:grid-cols-3 gap-12 relative"
+            initial="hidden"
+            animate={isInView ? "visible" : "hidden"}
+            variants={staggerContainer}>
+            {/* Connection Line (Desktop) */}
+            <div className="hidden md:block absolute top-[44px] left-[10%] right-[10%] h-[1px] bg-white/5 z-0" />
+
+            {steps.map((step, index) => (
+              <motion.div
+                key={step.number}
+                className="relative z-10 flex flex-col items-center md:items-start text-center md:text-left group"
+                variants={fadeInUp}>
+                <div className="w-20 h-20 rounded-2xl bg-white/[0.02] border border-white/5 flex items-center justify-center mb-6 shadow-2xl group-hover:border-emerald-500/50 transition-all duration-500 group-hover:bg-emerald-500/5">
+                  <div className="absolute -top-3 -right-3 w-8 h-8 rounded-full bg-emerald-500 text-black flex items-center justify-center font-bold text-sm border-4 border-[#050505]">
+                    {step.number}
+                  </div>
+                  <div className="text-emerald-400 group-hover:text-emerald-300 transition-colors">
+                    {step.icon}
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-white mb-3 tracking-tight">
+                  {step.title}
+                </h3>
+                <p className="text-neutral-400 text-sm leading-relaxed">
+                  {step.description}
+                </p>
+              </motion.div>
+            ))}
+          </motion.div>
+        </div>
+
+        {/* Bloque de confianza — Stats */}
         <motion.div
-          variants={staggerChildren}
+          className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-24"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-20">
-          {features.map((feature) => (
-            <FeatureCard key={feature.title} feature={feature} />
+          variants={staggerContainer}>
+          {stats.map((stat) => (
+            <motion.div
+              key={stat.label}
+              variants={fadeInUp}
+              className="flex items-center gap-4 p-5 bg-white/[0.01] border border-white/5 rounded-2xl group hover:border-white/10 transition-colors">
+              <div className="w-10 h-10 rounded-xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 group-hover:bg-emerald-500/20 transition-colors">
+                {stat.icon}
+              </div>
+              <div>
+                <div className="text-lg font-bold text-white leading-none mb-1">
+                  {stat.value}
+                </div>
+                <div className="text-[10px] text-neutral-500 font-bold uppercase tracking-widest">
+                  {stat.label}
+                </div>
+              </div>
+            </motion.div>
           ))}
         </motion.div>
 
-        {/* Early Access Block */}
+        {/* CTA principal */}
         <motion.div
-          variants={fadeUp}
+          className="flex flex-col items-center gap-8 mb-24"
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
-          transition={{ duration: 0.6, delay: 0.4 }}
-          className="max-w-4xl mx-auto mb-20">
-          <div className="relative p-8 md:p-12 bg-emerald-500/[0.04] border border-emerald-500/20 rounded-[2.5rem] overflow-hidden group">
-            {/* Subtle light effect on hover */}
+          variants={fadeInUp}>
+          <div className="flex flex-col sm:flex-row items-center gap-5 w-full justify-center">
+            <Link
+              href="/signup?ref=migration"
+              className="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition-all shadow-xl shadow-emerald-500/10 active:scale-[0.98] flex items-center justify-center gap-2 group">
+              Migra gratis ahora
+              <ArrowRight
+                size={20}
+                className="group-hover:translate-x-1 transition-transform"
+              />
+            </Link>
+            <Link
+              href="/docs/migracion"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="w-full sm:w-auto flex items-center justify-center gap-2 text-neutral-400 hover:text-white font-bold transition-all py-4 px-6 border border-white/5 hover:border-white/10 rounded-2xl bg-white/[0.01] hover:bg-white/[0.03]">
+              <BookOpen size={18} />
+              Ver documentación
+            </Link>
+          </div>
+        </motion.div>
+
+        {/* Bloque adicional — Tranquilidad */}
+        <motion.div
+          className="max-w-4xl mx-auto"
+          initial="hidden"
+          animate={isInView ? "visible" : "hidden"}
+          variants={fadeInUp}>
+          <div className="relative p-8 rounded-3xl bg-emerald-500/[0.02] border border-emerald-500/10 overflow-hidden group hover:border-emerald-500/20 transition-all duration-700">
+            {/* Glass effect */}
             <div className="absolute inset-0 bg-gradient-to-tr from-emerald-500/[0.02] via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none" />
 
-            <div className="flex flex-col md:flex-row items-center gap-8 md:gap-12 relative z-10">
-              <div className="flex-1 text-center md:text-left">
-                <div className="inline-flex items-center gap-2 px-3 py-1 bg-emerald-500/10 text-emerald-400 text-[10px] font-bold uppercase tracking-wider rounded-lg mb-6">
-                  🚀 EARLY ACCESS
-                </div>
-                <h3 className="text-2xl md:text-3xl font-bold text-white mb-4">
-                  Próximamente — Early Access
-                </h3>
-                <p className="text-neutral-400 text-sm md:text-base leading-relaxed">
-                  Estamos abriendo acceso anticipado para agencias que quieran
-                  probar Noctra CRM antes del lanzamiento oficial, con precio de
-                  fundador y línea directa para dar feedback que moldee el
-                  producto.
-                </p>
+            <div className="flex flex-col md:flex-row items-start gap-6 relative z-10">
+              <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center text-emerald-400 shrink-0">
+                <AlertCircle size={24} />
               </div>
-
-              <div className="flex flex-col items-center gap-4">
-                <button
-                  onClick={() => setIsModalOpen(true)}
-                  className="px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition-all shadow-xl shadow-emerald-500/10 flex items-center justify-center gap-2 group/btn active:scale-[0.98]">
-                  Solicitar Early Access
-                  <ArrowRight
-                    size={20}
-                    className="group-hover/btn:translate-x-1 transition-transform"
-                  />
-                </button>
-                <div className="text-[10px] font-mono text-neutral-500 uppercase tracking-widest">
-                  Solo 20 spots disponibles · Sin tarjeta de crédito
+              <div>
+                <h4 className="text-xl font-bold text-white mb-2 tracking-tight">
+                  ¿Tienes miedo de perder tus datos?
+                </h4>
+                <p className="text-neutral-400 leading-relaxed italic text-sm">
+                  &ldquo;Antes de confirmar la importación, verás exactamente
+                  qué se va a importar, cuántos registros, y si hay algún
+                  conflicto. Siempre puedes hacer rollback en los primeros 30
+                  días.&rdquo;
+                </p>
+                <div className="flex items-center gap-2 mt-4 text-[10px] font-bold text-emerald-500/80 uppercase tracking-[0.2em]">
+                  <CheckCircle2 size={12} />
+                  Tu seguridad es nuestra prioridad
                 </div>
               </div>
             </div>
           </div>
         </motion.div>
-
-        {/* Main CTAs */}
-        <motion.div
-          variants={fadeUp}
-          initial="hidden"
-          animate={isInView ? "visible" : "hidden"}
-          transition={{ duration: 0.6, delay: 0.5 }}
-          className="flex flex-col sm:flex-row items-center justify-center gap-8">
-          <Link
-            href="/forge"
-            className="flex items-center gap-2 px-8 py-3.5 border border-white/15 text-white font-bold rounded-xl hover:border-white/30 hover:bg-white/[0.03] transition-all group/cta">
-            Conocer Noctra CRM
-            <ArrowRight
-              size={18}
-              className="group-hover/cta:translate-x-1 transition-transform"
-            />
-          </Link>
-          <Link
-            href={"/forge#producto" as any}
-            className="text-sm font-bold text-neutral-400 hover:text-white transition-colors flex items-center gap-2 group/link">
-            Ver cómo funciona
-            <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-          </Link>
-        </motion.div>
       </div>
-
-      <EarlyAccessModal
-        isOpen={isModalOpen}
-        onClose={() => setIsModalOpen(false)}
-      />
     </section>
   );
 }
