@@ -13,21 +13,23 @@ export function IntroLoader() {
     if (!showIntro) return;
 
     const sequence = async () => {
-      // Phase 1: Text Sequence ("Zero Friction" -> "Infinite Scale")
-      // Duration: 2 words * 1.5s = 3.0s
-      await new Promise((r) => setTimeout(r, 3000));
+      // Phase 1: Text Sequence
+      // Duration: 3500ms (1500ms "Clarity" + 1500ms "Results" + 500ms overlap/padding)
+      await new Promise((r) => setTimeout(r, 3500));
 
       // Phase 2: Logo Reveal (Fade In)
+      // Duration Adjusted to 1200ms
       setStep(2);
-      await new Promise((r) => setTimeout(r, 2000));
+      await new Promise((r) => setTimeout(r, 1200));
 
       // Phase 3: Logo Exit (Fade Out)
+      // Duration Adjusted to 600ms
       setStep(3);
-      await new Promise((r) => setTimeout(r, 1000));
+      await new Promise((r) => setTimeout(r, 600));
 
       // Phase 4: Curtain Lift
       setStep(4);
-      await new Promise((r) => setTimeout(r, 800));
+      await new Promise((r) => setTimeout(r, 600));
 
       setIntroComplete();
     };
@@ -48,7 +50,7 @@ export function IntroLoader() {
           className="absolute inset-0 bg-[#050505] z-0 pointer-events-auto"
           initial={{ opacity: 1 }}
           animate={{ opacity: step === 4 ? 0 : 1 }}
-          transition={{ duration: 0.8, ease: "easeInOut" }}
+          transition={{ duration: 0.6, ease: "easeInOut" }}
         />
 
         {/* Phase 1: Text Sequence */}
@@ -70,15 +72,16 @@ export function IntroLoader() {
           {step === 2 && (
             <m.div
               key="logo"
-              initial={{ opacity: 0, filter: "blur(10px)", x: 0 }}
-              animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
+              initial={{ opacity: 0, filter: "blur(12px)", scale: 0.92, x: 0 }}
+              animate={{ opacity: 1, filter: "blur(0px)", scale: 1, x: 0 }}
               exit={{
                 opacity: 0,
-                filter: "blur(10px)",
+                filter: "blur(8px)",
+                scale: 1.04,
                 x: 0,
-                transition: { duration: 0.8 },
+                transition: { duration: 0.6 },
               }}
-              transition={{ duration: 0.8, ease: "easeInOut" }}
+              transition={{ duration: 0.9, ease: [0.16, 1, 0.3, 1] }}
               className="absolute inset-0 z-20 flex items-center justify-center">
               <BrandLogo className="text-white w-64 md:w-96 h-auto" />
             </m.div>
@@ -117,10 +120,10 @@ function TextSequence() {
     <AnimatePresence mode="wait">
       <m.span
         key={wordIndex}
-        initial={{ opacity: 0, filter: "blur(10px)", x: 0 }}
-        animate={{ opacity: 1, filter: "blur(0px)", x: 0 }}
-        exit={{ opacity: 0, filter: "blur(10px)", x: 0 }}
-        transition={{ duration: 0.5, ease: "easeInOut" }}
+        initial={{ opacity: 0, filter: "blur(8px)", y: 12, x: 0 }}
+        animate={{ opacity: 1, filter: "blur(0px)", y: 0, x: 0 }}
+        exit={{ opacity: 0, filter: "blur(8px)", y: -12, x: 0 }}
+        transition={{ duration: 0.45, ease: "easeOut" }}
         className="text-5xl md:text-8xl font-black font-sans text-white tracking-widest uppercase text-center leading-none px-4">
         {words[wordIndex]}
       </m.span>
