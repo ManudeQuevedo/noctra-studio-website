@@ -24,6 +24,7 @@ import {
   ChevronRight,
   ChevronLeft,
   Target,
+  ExternalLink,
 } from "lucide-react";
 import PhoneInput, { isValidPhoneNumber } from "react-phone-number-input";
 import flags from "react-phone-number-input/flags";
@@ -398,12 +399,65 @@ function ContactForm() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <main className="min-h-screen text-white pt-32 pb-24 relative overflow-hidden">
-        <RouteScopedBackground />
-        <div className="max-w-7xl mx-auto px-6 md:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 lg:gap-24">
-            {isSuccess ? (
-              <div className="lg:col-span-12">
+      <RouteScopedBackground />
+      <main className="text-white relative flex flex-col lg:flex-row bg-transparent">
+        {/* Left Side: Brand & Trust (40%) */}
+        <div className="lg:w-[40%] w-full p-8 lg:p-16 lg:pt-32 relative z-10 border-b lg:border-b-0 lg:border-r border-white/5 bg-black/20 backdrop-blur-md">
+          <div className="space-y-12 max-w-xl mx-auto lg:mx-0">
+            {/* Logo placeholder - assuming there's a logo component or image elsewhere, 
+                but based on the current code, we just had the H1 here. 
+                I'll keep the H1 as requested but with the new styling. */}
+            <m.div
+              initial={{ opacity: 0, x: -20 }}
+              animate={{ opacity: 1, x: 0 }}
+              className="space-y-4">
+              <div className="space-y-6">
+                <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9]">
+                  {t("hero.title_part1")}{" "}
+                  <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
+                    {t("hero.title_part2")}
+                  </span>
+                </h1>
+                <p className="text-xl text-neutral-400 font-medium leading-relaxed max-w-md">
+                  {t("hero.subtitle")}
+                </p>
+              </div>
+            </m.div>
+
+            {tipo === "socio-fundador" && (
+              <m.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-emerald-500/10 border border-emerald-500/20 rounded-xl">
+                <p className="text-emerald-500 font-bold text-sm">
+                  🚀 {t("hero.special_badge")}
+                </p>
+              </m.div>
+            )}
+
+            {tipo === "automatizacion" && (
+              <m.div
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                className="p-4 bg-blue-500/10 border border-blue-500/20 rounded-xl">
+                <p className="text-blue-400 font-bold text-sm">
+                  🤖 {t("hero.ai_badge")}
+                </p>
+              </m.div>
+            )}
+          </div>
+
+          {/* Static Compromisos / Testimonials */}
+          <div className="hidden lg:block lg:mt-16">
+            <TestimonialSidebar />
+          </div>
+        </div>
+
+        {/* Right Side: Interactive Form (60%) */}
+        <div className="lg:w-[60%] w-full flex flex-col relative z-10">
+          <div className="flex-1 flex flex-col justify-center px-8 lg:px-24 py-16 lg:py-32 w-full">
+            <div className="max-w-xl mx-auto w-full">
+              {isSuccess ? (
                 <SuccessState
                   t={t}
                   requestId={requestId}
@@ -414,338 +468,316 @@ function ContactForm() {
                     setCurrentStep(1);
                   }}
                 />
-              </div>
-            ) : (
-              <>
-                {/* Main Info Column */}
-                <div className="lg:col-span-4 space-y-8">
-                  <m.h1
-                    initial={{ y: 20, opacity: 0 }}
-                    animate={{ y: 0, opacity: 1 }}
-                    className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9]">
-                    {t("hero.title_part1")}
-                    <span className="block text-emerald-500">
-                      {t("hero.title_part2")}
-                    </span>
-                  </m.h1>
-
-                  {tipo === "socio-fundador" && (
-                    <div className="mb-8 p-4 bg-emerald-500/10 border border-emerald-500/20">
-                      <p className="text-emerald-500 font-bold text-sm">
-                        🚀 Estás aplicando para el precio especial de Socio
-                        Fundador (25% OFF).
-                      </p>
+              ) : (
+                <div className="w-full space-y-12">
+                  {/* Progress Header - Minimalist & Always Visible */}
+                  <div className="flex items-center justify-between mb-12">
+                    <div className="space-y-1">
+                      <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest font-bold">
+                        {t(`steps.step_${currentStep}.label`)}
+                      </span>
+                      <h2 className="text-3xl font-black text-white">
+                        {t(`steps.step_${currentStep}.title`)}
+                      </h2>
                     </div>
-                  )}
-
-                  {tipo === "automatizacion" && (
-                    <div className="mb-8 p-4 bg-blue-500/10 border border-blue-500/20">
-                      <p className="text-blue-400 font-bold text-sm">
-                        🤖 Consulta especializada en Automatización con IA.
-                      </p>
-                    </div>
-                  )}
-
-                  <p className="text-xl text-neutral-400 font-medium leading-relaxed">
-                    {t("hero.subtitle")}
-                  </p>
-
-                  <div className="hidden lg:block pt-12">
-                    <TestimonialSidebar />
-                  </div>
-                </div>
-
-                {/* Form Column */}
-                <div className="lg:col-span-8 flex flex-col pt-8 lg:pt-0">
-                  <div className="flex flex-col h-full bg-neutral-950/20 backdrop-blur-sm border border-white/[0.03] p-8 md:p-12">
-                    {/* Progress Header */}
-                    <div className="flex items-center justify-between mb-16">
-                      <div className="flex flex-col gap-1">
-                        <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest font-bold">
-                          {t(`steps.step_${currentStep}.label`)}
-                        </span>
-                        <h2 className="text-2xl font-black text-white">
-                          {t(`steps.step_${currentStep}.title`)}
-                        </h2>
-                      </div>
-                      <div className="flex gap-2">
-                        {[1, 2, 3].map((s) => (
-                          <div
-                            key={s}
-                            className={cn(
-                              "w-2.4 h-2 rounded-full transition-all duration-500",
-                              s === currentStep
-                                ? "w-8 bg-emerald-500"
-                                : s < currentStep
-                                  ? "bg-emerald-900"
-                                  : "bg-neutral-800",
-                            )}
-                          />
-                        ))}
-                      </div>
-                    </div>
-
-                    <form
-                      onSubmit={handleSubmit(onSubmit)}
-                      className="flex-1 flex flex-col">
-                      {securityError && (
+                    <div className="flex gap-2">
+                      {[1, 2, 3].map((s) => (
                         <div
-                          className={`p-4 bg-[#111111] border-l-2 font-mono text-sm tracking-tight transition-all duration-300 mb-8 ${
-                            securityError.type === "duplicate_email"
-                              ? "border-emerald-500 text-emerald-500"
-                              : securityError.type === "rate_limited"
-                                ? "border-amber-500 text-amber-500"
-                                : "border-red-500 text-red-500"
-                          }`}>
-                          {securityError.message}
-                        </div>
-                      )}
-                      <div className="relative overflow-hidden flex-1">
-                        <AnimatePresence mode="wait" custom={direction}>
-                          <m.div
-                            key={currentStep}
-                            custom={direction}
-                            variants={stepVariants}
-                            initial="enter"
-                            animate="center"
-                            exit="exit"
-                            transition={{ duration: 0.4, ease: "easeInOut" }}
-                            className="w-full">
-                            {currentStep === 1 && (
-                              <div className="space-y-12">
-                                <div className="group relative">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 group-focus-within:text-emerald-500 transition-colors">
-                                    {t("form.name_label")}
-                                  </label>
-                                  <div className="relative">
-                                    <User className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
-                                    <input
-                                      {...register("name", { required: true })}
-                                      placeholder={t("form.name_placeholder")}
-                                      className={inputClasses("name")}
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="group relative">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 group-focus-within:text-emerald-500 transition-colors">
-                                    {t("form.email_label")}
-                                  </label>
-                                  <div className="relative">
-                                    {watchAll.email &&
-                                    !errors.email &&
-                                    /^\S+@\S+$/i.test(watchAll.email) ? (
-                                      <Check className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
-                                    ) : (
-                                      <Mail className="absolute right-0 top-1/2 -translate-y-1/2 w-4 h-4 text-neutral-700" />
-                                    )}
-                                    <input
-                                      {...register("email", {
-                                        required: true,
-                                        pattern: /^\S+@\S+$/i,
-                                      })}
-                                      placeholder={t("form.email_placeholder")}
-                                      className={inputClasses("email")}
-                                    />
-                                  </div>
-                                </div>
-
-                                <div className="group relative">
-                                  <label
-                                    className={cn(
-                                      "text-[10px] font-mono uppercase tracking-[0.2em] transition-colors",
-                                      phoneValid === false
-                                        ? "text-red-500"
-                                        : phoneValid === true
-                                          ? "text-emerald-500"
-                                          : "text-neutral-300 group-focus-within:text-emerald-500",
-                                    )}>
-                                    {t("form.phone_label")}
-                                  </label>
-                                  <div className="relative">
-                                    <PhoneInput
-                                      defaultCountry="MX"
-                                      value={watchAll.phone}
-                                      onChange={handlePhoneChange}
-                                      flags={flags}
-                                      className={cn(
-                                        "phone-input-container",
-                                        phoneValid === true && "valid",
-                                        phoneValid === false && "invalid",
-                                      )}
-                                      placeholder={t("form.phone_placeholder")}
-                                      international
-                                      countryCallingCodeEditable={false}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-
-                            {currentStep === 2 && (
-                              <div className="space-y-12">
-                                <div className="space-y-4">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
-                                    {t("form.service_label")}
-                                  </label>
-                                  <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-                                    {[
-                                      "website",
-                                      "ecommerce",
-                                      "custom_system",
-                                      "optimization",
-                                      "discovery_call",
-                                      "not_sure",
-                                    ].map((service) => (
-                                      <button
-                                        key={service}
-                                        type="button"
-                                        onClick={() =>
-                                          setValue("service", service as any, {
-                                            shouldValidate: true,
-                                          })
-                                        }
-                                        className={cn(
-                                          "p-4 border text-left transition-all duration-300",
-                                          watchAll.service === service
-                                            ? "bg-emerald-500/10 border-emerald-500 text-white"
-                                            : "bg-transparent border-neutral-800 text-neutral-400 hover:border-neutral-700",
-                                        )}>
-                                        <div className="text-sm font-bold uppercase tracking-wider">
-                                          {t(`form.services.${service}`)}
-                                        </div>
-                                      </button>
-                                    ))}
-                                  </div>
-                                </div>
-
-                                <div className="space-y-4">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300">
-                                    {t("form.budget_label")}
-                                  </label>
-                                  <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
-                                    {[
-                                      "20-35k",
-                                      "35-50k",
-                                      "50-80k",
-                                      "80-120k",
-                                      "120k+",
-                                      "monthly",
-                                      "discuss",
-                                    ].map((budget) => (
-                                      <button
-                                        key={budget}
-                                        type="button"
-                                        onClick={() =>
-                                          setValue("budget", budget as any, {
-                                            shouldValidate: true,
-                                          })
-                                        }
-                                        className={cn(
-                                          "p-4 border text-center transition-all duration-300",
-                                          watchAll.budget === budget
-                                            ? "bg-emerald-500/10 border-emerald-500 text-white"
-                                            : "bg-transparent border-neutral-800 text-neutral-400 hover:border-neutral-700",
-                                        )}>
-                                        <div className="text-xs font-bold uppercase tracking-widest whitespace-nowrap">
-                                          {t(
-                                            `form.budgets.${watchAll.currency}.${budget}`,
-                                          )}
-                                        </div>
-                                      </button>
-                                    ))}
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-
-                            {currentStep === 3 && (
-                              <div className="space-y-12">
-                                <div className="group relative">
-                                  <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-300 group-focus-within:text-emerald-500 transition-colors">
-                                    {t("form.message_label")}
-                                  </label>
-                                  <div className="relative">
-                                    <MessageSquare className="absolute right-0 top-4 w-4 h-4 text-neutral-700" />
-                                    <textarea
-                                      {...register("message", {
-                                        required: true,
-                                      })}
-                                      placeholder={t(
-                                        "form.message_placeholder",
-                                      )}
-                                      rows={4}
-                                      className={cn(
-                                        inputClasses("message"),
-                                        "resize-none",
-                                      )}
-                                    />
-                                  </div>
-                                </div>
-                              </div>
-                            )}
-                          </m.div>
-                        </AnimatePresence>
-                      </div>
-
-                      {/* Honeypot Field - Truly Hidden */}
-                      <div
-                        style={{
-                          position: "absolute",
-                          left: "-9999px",
-                          height: 0,
-                          overflow: "hidden",
-                        }}>
-                        <input
-                          type="text"
-                          {...register("website")}
-                          defaultValue=""
-                          tabIndex={-1}
-                          autoComplete="off"
-                          aria-hidden="true"
+                          key={s}
+                          className={cn(
+                            "w-2.5 h-2.5 rounded-full transition-all duration-500 border border-white/10",
+                            s === currentStep
+                              ? "w-10 bg-emerald-500 border-emerald-500"
+                              : s < currentStep
+                                ? "bg-emerald-950/50"
+                                : "bg-neutral-900",
+                          )}
                         />
-                      </div>
-
-                      {/* Navigation Buttons */}
-                      <div className="mt-12 flex gap-4">
-                        {currentStep > 1 && (
-                          <button
-                            type="button"
-                            onClick={prevStep}
-                            className="flex-1 lg:flex-none px-8 py-5 rounded-full border border-neutral-800 hover:bg-white/5 transition-all text-sm font-bold flex items-center justify-center gap-2">
-                            <ChevronLeft className="w-4 h-4" />
-                            {t("steps.back")}
-                          </button>
-                        )}
-
-                        {currentStep < 3 ? (
-                          <button
-                            type="button"
-                            onClick={nextStep}
-                            disabled={currentStep === 1 && phoneValid !== true}
-                            className="flex-1 bg-white text-black py-5 rounded-full text-sm font-bold flex items-center justify-center gap-2 hover:bg-neutral-200 transition-all disabled:opacity-50">
-                            {t("steps.next")}
-                            <ChevronRight className="w-4 h-4" />
-                          </button>
-                        ) : (
-                          <button
-                            disabled={
-                              isSubmitting || !isValid || phoneValid !== true
-                            }
-                            type="submit"
-                            className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black py-5 rounded-full text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all disabled:opacity-50">
-                            {isSubmitting
-                              ? t("form.sending")
-                              : t("form.submit")}
-                            <ArrowRight className="w-4 h-4" />
-                          </button>
-                        )}
-                      </div>
-                    </form>
+                      ))}
+                    </div>
                   </div>
+
+                  <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
+                    {securityError && (
+                      <m.div
+                        initial={{ opacity: 0, y: -10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        className={`p-4 bg-neutral-900/50 border-l-2 font-mono text-sm tracking-tight mb-8 ${
+                          securityError.type === "duplicate_email"
+                            ? "border-emerald-500 text-emerald-500"
+                            : securityError.type === "rate_limited"
+                              ? "border-amber-500 text-amber-500"
+                              : "border-red-500 text-red-500"
+                        }`}>
+                        {securityError.message}
+                      </m.div>
+                    )}
+
+                    <div className="relative overflow-visible">
+                      {" "}
+                      {/** Changed to overflow-visible to show errors without layout shift */}
+                      <AnimatePresence mode="wait" custom={direction}>
+                        <m.div
+                          key={currentStep}
+                          custom={direction}
+                          variants={stepVariants}
+                          initial="enter"
+                          animate="center"
+                          exit="exit"
+                          transition={{
+                            duration: 0.4,
+                            ease: [0.16, 1, 0.3, 1],
+                          }}
+                          className="w-full">
+                          {currentStep === 1 && (
+                            <div className="space-y-10">
+                              {/* Input Field: Name */}
+                              <div className="space-y-4">
+                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  {t("form.name_label")}
+                                </label>
+                                <div className="relative group">
+                                  <User className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-700 group-focus-within:text-emerald-500 transition-colors" />
+                                  <input
+                                    {...register("name", { required: true })}
+                                    placeholder={t("form.name_placeholder")}
+                                    className={cn(
+                                      "w-full bg-transparent border-b py-4 pl-10 text-2xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-800",
+                                      errors.name
+                                        ? "border-red-500/50"
+                                        : "border-neutral-800 focus:border-emerald-500",
+                                    )}
+                                  />
+                                  {errors.name && (
+                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                      {t("validation.required")}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Input Field: Email */}
+                              <div className="space-y-4">
+                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  {t("form.email_label")}
+                                </label>
+                                <div className="relative group">
+                                  <Mail className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-700 group-focus-within:text-emerald-500 transition-colors" />
+                                  <input
+                                    {...register("email", {
+                                      required: true,
+                                      pattern: /^\S+@\S+$/i,
+                                    })}
+                                    placeholder={t("form.email_placeholder")}
+                                    className={cn(
+                                      "w-full bg-transparent border-b py-4 pl-10 text-2xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-800",
+                                      errors.email
+                                        ? "border-red-500/50"
+                                        : "border-neutral-800 focus:border-emerald-500",
+                                    )}
+                                  />
+                                  {errors.email && (
+                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                      {t("validation.invalid_email")}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+
+                              {/* Input Field: Phone */}
+                              <div className="space-y-4">
+                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  {t("form.phone_label")}
+                                </label>
+                                <div className="relative group">
+                                  <PhoneInput
+                                    defaultCountry="MX"
+                                    value={watchAll.phone}
+                                    onChange={handlePhoneChange}
+                                    flags={flags}
+                                    className={cn(
+                                      "phone-input-container !border-t-0 !border-x-0 rounded-none !py-0",
+                                      phoneValid === true && "valid",
+                                      phoneValid === false && "invalid",
+                                    )}
+                                    placeholder={t("form.phone_placeholder")}
+                                    international
+                                    countryCallingCodeEditable={false}
+                                  />
+                                  {phoneValid === false && (
+                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                      {t("validation.phone_format")}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {currentStep === 2 && (
+                            <div className="space-y-12">
+                              <div className="space-y-6">
+                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  {t("form.service_label")}
+                                </label>
+                                <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
+                                  {[
+                                    "website",
+                                    "ecommerce",
+                                    "custom_system",
+                                    "optimization",
+                                    "discovery_call",
+                                    "not_sure",
+                                  ].map((service) => (
+                                    <button
+                                      key={service}
+                                      type="button"
+                                      onClick={() =>
+                                        setValue("service", service as any, {
+                                          shouldValidate: true,
+                                        })
+                                      }
+                                      className={cn(
+                                        "p-5 border text-left transition-all duration-300 rounded-xl group relative overflow-hidden",
+                                        watchAll.service === service
+                                          ? "bg-emerald-500/10 border-emerald-500 text-white"
+                                          : "bg-white/[0.02] border-white/10 text-neutral-400 hover:border-white/20",
+                                      )}>
+                                      <div className="text-[11px] font-bold uppercase tracking-wider">
+                                        {t(`form.services.${service}`)}
+                                      </div>
+                                      {watchAll.service === service && (
+                                        <Check className="absolute right-4 top-1/2 -translate-y-1/2 w-4 h-4 text-emerald-500" />
+                                      )}
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+
+                              <div className="space-y-6">
+                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  {t("form.budget_label")}
+                                </label>
+                                <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
+                                  {[
+                                    "20-35k",
+                                    "35-50k",
+                                    "50-80k",
+                                    "80-120k",
+                                    "120k+",
+                                    "monthly",
+                                    "discuss",
+                                  ].map((budget) => (
+                                    <button
+                                      key={budget}
+                                      type="button"
+                                      onClick={() =>
+                                        setValue("budget", budget as any, {
+                                          shouldValidate: true,
+                                        })
+                                      }
+                                      className={cn(
+                                        "p-4 border text-center transition-all duration-300 rounded-xl",
+                                        watchAll.budget === budget
+                                          ? "bg-emerald-500/10 border-emerald-500 text-white"
+                                          : "bg-white/[0.02] border-white/10 text-neutral-400 hover:border-white/20",
+                                      )}>
+                                      <div className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
+                                        {t(
+                                          `form.budgets.${watchAll.currency}.${budget}`,
+                                        )}
+                                      </div>
+                                    </button>
+                                  ))}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+
+                          {currentStep === 3 && (
+                            <div className="space-y-10">
+                              <div className="space-y-4">
+                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                  {t("form.message_label")}
+                                </label>
+                                <div className="relative group">
+                                  <MessageSquare className="absolute left-0 top-4 w-5 h-5 text-neutral-700 group-focus-within:text-emerald-500 transition-colors" />
+                                  <textarea
+                                    {...register("message", {
+                                      required: true,
+                                    })}
+                                    placeholder={t("form.message_placeholder")}
+                                    rows={5}
+                                    className={cn(
+                                      "w-full bg-transparent border-b py-4 pl-10 text-xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-800 resize-none",
+                                      errors.message
+                                        ? "border-red-500/50"
+                                        : "border-neutral-800 focus:border-emerald-500",
+                                    )}
+                                  />
+                                  {errors.message && (
+                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                      {t("validation.required")}
+                                    </span>
+                                  )}
+                                </div>
+                              </div>
+                            </div>
+                          )}
+                        </m.div>
+                      </AnimatePresence>
+                    </div>
+
+                    {/* Honeypot Field */}
+                    <div className="sr-only">
+                      <input
+                        type="text"
+                        {...register("website")}
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
+                    {/* Navigation Buttons */}
+                    <m.div
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      className="pt-8 flex gap-4">
+                      {currentStep > 1 && (
+                        <button
+                          type="button"
+                          onClick={prevStep}
+                          className="px-8 py-5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all text-sm font-bold flex items-center justify-center gap-2 group">
+                          <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
+                          {t("steps.back")}
+                        </button>
+                      )}
+
+                      {currentStep < 3 ? (
+                        <button
+                          type="button"
+                          onClick={nextStep}
+                          disabled={currentStep === 1 && phoneValid !== true}
+                          className="flex-1 bg-emerald-500 text-black py-5 rounded-xl text-sm font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-emerald-400 transition-all disabled:opacity-30 disabled:grayscale transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                          {t("steps.next")}
+                          <ChevronRight className="w-4 h-4" />
+                        </button>
+                      ) : (
+                        <button
+                          disabled={
+                            isSubmitting || !isValid || phoneValid !== true
+                          }
+                          type="submit"
+                          className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black py-5 rounded-xl text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(16,185,129,0.6)]">
+                          {isSubmitting ? t("form.sending") : t("form.submit")}
+                          <ArrowRight className="w-4 h-4" />
+                        </button>
+                      )}
+                    </m.div>
+                  </form>
                 </div>
-              </>
-            )}
+              )}
+            </div>
           </div>
         </div>
       </main>
@@ -770,9 +802,9 @@ const SuccessState = ({
 
   return (
     <m.div
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      className="fixed inset-0 z-[100] bg-[#0a0a0a] flex items-center justify-center p-6">
+      initial={{ opacity: 0, scale: 0.95 }}
+      animate={{ opacity: 1, scale: 1 }}
+      className="w-full flex flex-col items-center text-center py-12">
       <div className="w-full max-w-[480px] flex flex-col items-center text-center">
         <span className="text-[11px] font-mono text-[#666666] uppercase tracking-[0.2em] mb-6">
           {t("success.ticket.title")}

@@ -10,7 +10,7 @@ const nextConfig: NextConfig = {
   
   // Transpile Sanity packages so Turbopack can handle them without the
   // "chunk.reason.enqueueModel is not a function" runtime error.
-  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/icons', '@sanity/vision'],
+  transpilePackages: ['sanity', 'next-sanity', '@sanity/ui', '@sanity/icons', '@sanity/vision', 'media-chrome', '@mux/mux-player', '@mux/mux-player-react'],
 
   // Tree shake these heavy libraries
   experimental: {
