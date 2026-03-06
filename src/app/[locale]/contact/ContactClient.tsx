@@ -682,7 +682,7 @@ function ContactForm() {
                                           ? "bg-emerald-500/10 border-emerald-500 text-white"
                                           : "bg-white/[0.02] border-white/10 text-neutral-400 hover:border-white/20",
                                       )}>
-                                      <div className="text-[10px] font-bold uppercase tracking-widest whitespace-nowrap">
+                                      <div className="text-[10px] font-bold uppercase tracking-widest leading-tight">
                                         {t(
                                           `form.budgets.${watchAll.currency}.${budget}`,
                                         )}

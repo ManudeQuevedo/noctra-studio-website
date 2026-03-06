@@ -2832,6 +2832,13 @@
         { "icon": "⚖️", "text": "Law Firms" },
         { "icon": "🔧", "text": "Local Services" },
         { "icon": "🏥", "text": "Medical Tourism" }
+      ],
+      "ongoing": [
+        { "icon": "📈", "text": "Growing enterprises" },
+        { "icon": "🛡️", "text": "Mission-critical platforms" },
+        { "icon": "🔄", "text": "High-demand systems" },
+        { "icon": "🛍️", "text": "E-commerce stores" },
+        { "icon": "🚀", "text": "Tech startups" }
       ]
     },
     "journey": {
@@ -3690,8 +3697,8 @@
           "50-80k": "$50k - $80k",
           "80-120k": "$80k - $120k",
           "120k+": "+$120k",
-          "monthly": "Monthly maintenance",
-          "discuss": "Not sure yet · Let's discuss"
+          "monthly": "Maintenance",
+          "discuss": "TBD · Let's discuss"
         },
         "usd": {
           "20-35k": "$1k - $1.8k",
@@ -3699,8 +3706,8 @@
           "50-80k": "$2.5k - $4k",
           "80-120k": "$4k - $6k",
           "120k+": "+$6k",
-          "monthly": "Monthly retainer",
-          "discuss": "Not sure yet · Let's discuss"
+          "monthly": "Retainer",
+          "discuss": "TBD · Let's discuss"
         }
       },
       "source_label": "How did you hear about us?",

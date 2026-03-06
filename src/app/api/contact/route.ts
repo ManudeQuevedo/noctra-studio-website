@@ -1,5 +1,5 @@
 import { NextResponse } from "next/server";
-import { createClient } from "@/utils/supabase/server";
+import { createAdminClient } from "@/utils/supabase/server";
 import { resend } from "@/lib/resend";
 import { validateCsrfToken } from "@/lib/csrf";
 import validator from "validator";
@@ -17,9 +17,10 @@ if (!process.env.RESEND_API_KEY) {
 }
 
 export async function POST(req: Request) {
+  let body: any;
   try {
-    const body = await req.json();
-    const supabase = await createClient();
+    body = await req.json();
+    const supabase = await createAdminClient();
 
     // 1. CSRF Token Validation
     const csrfToken = body.csrf_token;
@@ -251,7 +252,7 @@ export async function POST(req: Request) {
       { success: true, requestId, submissionId: submission.id },
       { headers: SECURITY_HEADERS }
     );
-  } catch (error) {
+  } catch (error: any) {
     console.error("Contact API Error:", error);
     return NextResponse.json(
       { error: "internal_error" },

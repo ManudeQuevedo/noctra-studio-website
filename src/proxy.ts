@@ -1,49 +1,14 @@
 import createMiddleware from "next-intl/middleware";
 import { routing } from "./i18n/routing";
-import { updateSession } from "./utils/supabase/middleware";
 import { NextRequest, NextResponse } from "next/server";
-import { createClient } from "@supabase/supabase-js";
 
 const intlMiddleware = createMiddleware(routing);
 
-const MAIN_DOMAINS = ["noctra.studio", "www.noctra.studio", "localhost:3000"];
-
 export default async function proxy(request: NextRequest) {
-  const host = request.headers.get("host") || "";
   const { pathname } = request.nextUrl;
   
-  // 0. Custom Domain & Subdomain Persistence Logic
-  let resolvedWorkspace = null;
-  const isMainDomain = MAIN_DOMAINS.some(d => host.includes(d));
-
-  if (!isMainDomain) {
-    // Determine if it's a subdomain (*.noctra.studio) or a custom domain
-    const isSubdomain = host.endsWith(".noctra.studio");
-    
-    // Initialize Supabase with service role to lookup workspace by domain
-    const supabaseAdmin = createClient(
-      process.env.NEXT_PUBLIC_SUPABASE_URL!,
-      process.env.SUPABASE_SERVICE_ROLE_KEY!
-    );
-
-    const query = isSubdomain 
-      ? supabaseAdmin.from("workspaces").select("id, tier, subdomain").eq("subdomain", host.split(".")[0]).single()
-      : supabaseAdmin.from("workspaces").select("id, tier, custom_domain").eq("custom_domain", host).single();
-
-    const { data: workspace } = await query;
-
-    if (workspace) {
-      // Validate Premium Tiers for Whitelabel
-      if (workspace.tier !== "pro" && workspace.tier !== "agency") {
-        // Block custom domain if not Premium
-        return NextResponse.redirect(new URL("https://noctra.studio/forge/settings/billing", request.url));
-      }
-      resolvedWorkspace = workspace;
-    }
-  }
-
   // Sanity Studio must be served from the root /studio route without any
-  // locale redirect. Skip intl + auth entirely for /studio paths.
+  // locale redirect. Skip intl entirely for /studio paths.
   if (pathname.startsWith('/studio')) {
     return NextResponse.next();
   }
@@ -55,68 +20,7 @@ export default async function proxy(request: NextRequest) {
   // 1. Run next-intl middleware to handle locale redirection/rewrites
   const response = intlMiddleware(request);
 
-  // 2. Run Supabase middleware to refresh session
-  let finalResponse = response;
-  let user = null;
-  try {
-    const result = await updateSession(request, response);
-    finalResponse = result.response;
-    user = result.user;
-    const aal = (result as any).aal;
-
-    // Handle Forge Route Protection
-    const isForgeRoute = pathname.includes('/forge');
-    const isLoginPage = pathname.endsWith('/forge/login');
-    
-    // Match exactly /forge or /es/forge or /en/forge (ignoring trailing slashes and preventing matches on sub-routes like /forge/projects)
-    const isLandingPage = /^\/(es|en)?\/?forge\/?$/.test(pathname);
-    
-    // DEBUG: Remove after fixing the redirect loop
-    if (isForgeRoute && !isLoginPage) {
-      console.log(`[Proxy] Checking route: ${pathname} | isLandingPage: ${isLandingPage} | hasUser: ${!!user}`);
-    }
-
-    if (isForgeRoute && !isLoginPage && !isLandingPage) {
-      if (!user) {
-        const loginUrl = request.nextUrl.clone();
-        if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
-          const locale = pathname.split('/')[1];
-          loginUrl.pathname = `/${locale}/forge/login`;
-        } else {
-          loginUrl.pathname = '/forge/login';
-        }
-        return NextResponse.redirect(loginUrl);
-      }
-
-      // MFA check
-      if (aal?.nextLevel === 'aal2' && aal?.currentLevel !== 'aal2') {
-        const loginUrl = request.nextUrl.clone();
-        if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
-          const locale = pathname.split('/')[1];
-          loginUrl.pathname = `/${locale}/forge/login`;
-        } else {
-          loginUrl.pathname = '/forge/login';
-        }
-        return NextResponse.redirect(loginUrl);
-      }
-    }
-
-    // Redirect authenticated users away from login page
-    if (isLoginPage && user && !(aal?.nextLevel === 'aal2' && aal?.currentLevel !== 'aal2')) {
-      const adminUrl = request.nextUrl.clone();
-      if (pathname.startsWith('/en/') || pathname.startsWith('/es/')) {
-        const locale = pathname.split('/')[1];
-        adminUrl.pathname = `/${locale}/forge/projects`;
-      } else {
-        adminUrl.pathname = '/forge/projects';
-      }
-      return NextResponse.redirect(adminUrl);
-    }
-  } catch (error) {
-    console.error("Proxy error:", error);
-  }
-
-  // 4. Add Security Headers
+  // 2. Add Security Headers
   const isDevelopment = process.env.NODE_ENV === 'development';
 
   // Content Security Policy
@@ -153,17 +57,10 @@ export default async function proxy(request: NextRequest) {
   };
 
   Object.entries(securityHeaders).forEach(([key, value]) => {
-    finalResponse.headers.set(key, value);
+    response.headers.set(key, value);
   });
 
-  // 5. Final Routing for White-label
-  if (resolvedWorkspace && !isMainDomain) {
-    // If we have a resolved workspace from a custom domain, 
-    // we can add a header to identify it in downstream components
-    finalResponse.headers.set("x-resolved-workspace-id", resolvedWorkspace.id);
-  }
-
-  return finalResponse;
+  return response;
 }
 
 export const config = {

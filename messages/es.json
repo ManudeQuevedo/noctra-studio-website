@@ -1060,6 +1060,13 @@
         { "icon": "⚖️", "text": "Despachos legales" },
         { "icon": "🔧", "text": "Servicios locales" },
         { "icon": "🏥", "text": "Turismo médico" }
+      ],
+      "ongoing": [
+        { "icon": "📈", "text": "Empresas en crecimiento" },
+        { "icon": "🛡️", "text": "Plataformas críticas" },
+        { "icon": "🔄", "text": "Sistemas de alta demanda" },
+        { "icon": "🛍️", "text": "Comercios electrónicos" },
+        { "icon": "🚀", "text": "Startups tecnológicas" }
       ]
     },
     "journey": {
@@ -2900,8 +2907,8 @@
           "50-80k": "$50k - $80k",
           "80-120k": "$80k - $120k",
           "120k+": "+$120k",
-          "monthly": "Mantenimiento mensual",
-          "discuss": "No estoy seguro · Platiquemos"
+          "monthly": "Mantenimiento",
+          "discuss": "Por definir · Platiquemos"
         },
         "usd": {
           "20-35k": "$1k - $1.8k",
@@ -2910,7 +2917,7 @@
           "80-120k": "$4k - $6k",
           "120k+": "+$6k",
           "monthly": "Retenedor mensual",
-          "discuss": "Aún no estoy seguro · Platiquemos"
+          "discuss": "Por definir · Platiquemos"
         }
       },
       "source_label": "¿Cómo nos conociste?",
