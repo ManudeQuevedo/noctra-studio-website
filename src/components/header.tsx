@@ -66,8 +66,8 @@ export function Header() {
     (pathname as string) === "/es";
   const shouldHide = isHomePage && !initialized;
 
-  // New Logic: Hide Strategy Button on Contact or Careers
-  const showStrategyButton = !isContactPage && !isCareersPage;
+  // Hide top CTA on pages where it competes with the primary hero CTA.
+  const showStrategyButton = !isContactPage && !isCareersPage && !isHomePage;
 
   // Close menu on route change
   React.useEffect(() => {
@@ -201,7 +201,7 @@ export function Header() {
           onClick={() => setIsOpen(!isOpen)}
           aria-label={isOpen ? "Close menu" : "Open menu"}
           aria-expanded={isOpen}
-          className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-full backdrop-blur-md border border-white/10 transition-transform active:scale-95">
+          className="flex items-center justify-center w-12 h-12 bg-white/10 rounded-full backdrop-blur-md border border-white/10 transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
           <div
             className={cn(
               "w-6 h-[14px] flex flex-col justify-between transition-all duration-300",
@@ -281,7 +281,7 @@ export function Header() {
                         pathname: "/contact",
                         query: { tipo: "consulta" },
                       }}
-                      className="hidden md:flex items-center justify-center px-6 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-neutral-200 transition-colors">
+                      className="hidden md:flex items-center justify-center px-6 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-neutral-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
                       {t("book_strategy_call")}
                     </Link>
                   </m.div>
@@ -291,7 +291,7 @@ export function Header() {
                   onClick={() => setIsOpen(!isOpen)}
                   aria-label={isOpen ? "Close menu" : "Open menu"}
                   aria-expanded={isOpen}
-                  className="flex items-center gap-4 group cursor-pointer">
+                  className="flex items-center gap-4 group cursor-pointer rounded-full px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
                   <span
                     className={cn(
                       "text-xs font-bold uppercase tracking-widest transition-colors duration-300",

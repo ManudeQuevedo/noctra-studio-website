@@ -1,5 +1,4 @@
 import type { Metadata, Viewport } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
 import localFont from "next/font/local";
 import "../globals.css";
 import { ThemeProvider } from "@/components/theme-provider";
@@ -58,18 +57,6 @@ const satoshi = localFont({
     },
   ],
   variable: "--font-satoshi",
-  display: "swap",
-});
-
-const geistSans = Geist({
-  variable: "--font-geist-sans",
-  subsets: ["latin"],
-  display: "swap",
-});
-
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
-  subsets: ["latin"],
   display: "swap",
 });
 
@@ -132,7 +119,7 @@ export default async function LocaleLayout({
   const { locale } = await params;
   const messages = await getMessages();
 
-  const fontClasses = `${satoshi.variable} ${geistSans.variable} ${geistMono.variable} antialiased selection:bg-white selection:text-black`;
+  const fontClasses = `${satoshi.variable} antialiased selection:bg-white selection:text-black`;
 
   return (
     <>
@@ -142,11 +129,6 @@ export default async function LocaleLayout({
           href="/fonts/Satoshi-Variable.woff2"
           as="font"
           type="font/woff2"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.gstatic.com"
           crossOrigin="anonymous"
         />
         <link
