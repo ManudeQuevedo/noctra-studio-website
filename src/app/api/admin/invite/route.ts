@@ -1,16 +1,15 @@
 import { createClient } from "@supabase/supabase-js";
-import { createClient as createServerClient } from "@/utils/supabase/server";
+import { getWorkspace } from "@/lib/workspace";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
-  // 1. Verify Admin (Server-side check)
-  const supabase = await createServerClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
-
-  if (!user || user.email !== "hello@noctra.studio") {
+  const ctx = await getWorkspace();
+  if (!ctx) {
     return NextResponse.json({ error: "Unauthorized" }, { status: 401 });
+  }
+
+  if (!["owner", "admin"].includes(ctx.role)) {
+    return NextResponse.json({ error: "Forbidden" }, { status: 403 });
   }
 
   // 2. Parse Input
@@ -62,6 +61,7 @@ export async function POST(request: Request) {
     client_id: userId,
     name: project_name,
     status: "discovery",
+    workspace_id: ctx.workspaceId,
   });
 
   if (projectError) {

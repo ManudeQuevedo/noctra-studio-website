@@ -144,6 +144,11 @@ export default async function LocaleLayout({
         `}
       </Script>
       <NextIntlClientProvider messages={messages} locale={locale}>
+        <a
+          href="#main-content"
+          className="sr-only fixed left-4 top-4 z-[120] rounded-full bg-white px-4 py-2 text-sm font-bold text-black focus:not-sr-only">
+          Skip to content
+        </a>
         <Cursor />
         <SmoothScroll />
         <ThemeProvider
@@ -157,7 +162,9 @@ export default async function LocaleLayout({
               <IntroLoader />
               <BackgroundManager />
               <Header />
-              {children}
+              <div id="main-content" tabIndex={-1}>
+                {children}
+              </div>
               <FooterWrapper />
               <ScrollToTop />
               <WhatsAppFloatingButton />

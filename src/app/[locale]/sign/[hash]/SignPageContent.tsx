@@ -43,7 +43,7 @@ export default function SignPageContent({ hash }: { hash: string }) {
       const { ip } = await response.json();
 
       await stampDocumentSignature(
-        doc.envelope.id, // Using Envelope ID instead of document ID
+        hash,
         signatureDataUrl,
         {
           ip,

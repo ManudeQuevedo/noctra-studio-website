@@ -1,12 +1,12 @@
 import { notFound, redirect } from "next/navigation";
-import { createClient } from "@/utils/supabase/server";
+import { createAdminClient } from "@/utils/supabase/server";
 
 export default async function ShortProposalRedirect({
   params,
 }: {
   params: { id: string };
 }) {
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
 
   // Find the proposal by ID to get the client_token
   const { data: proposal, error } = await supabase

@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/utils/supabase/server";
+import { createAdminClient, createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
 
@@ -62,7 +62,7 @@ export async function getProjectDeliverablesAction(projectId: string) {
 }
 
 export async function getDeliverableByTokenAction(token: string) {
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
   
   const { data, error } = await supabase
     .from("project_deliverables")

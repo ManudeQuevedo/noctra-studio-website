@@ -1,6 +1,6 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { createClient } from "@/utils/supabase/server";
+import { getWorkspaceAccess } from "@/lib/workspace-access";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_fallback", {
   apiVersion: "2024-06-20",
@@ -8,20 +8,20 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_fallback", {
 
 export async function POST(req: Request) {
   try {
-    const supabase = await createClient();
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
-    if (!session) {
-      return new NextResponse("Unauthorized", { status: 401 });
-    }
-
     const body = await req.json();
     const { workspaceId } = body;
 
     if (!workspaceId) {
       return new NextResponse("Missing required parameters", { status: 400 });
+    }
+
+    const { supabase, userId, hasAccess } = await getWorkspaceAccess(workspaceId);
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    if (!hasAccess) {
+      return new NextResponse("Forbidden", { status: 403 });
     }
 
     // Fetch Stripe Customer ID from DB

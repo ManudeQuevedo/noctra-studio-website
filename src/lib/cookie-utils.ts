@@ -17,6 +17,26 @@ export const CONSENT_KEY = 'noctra_cookie_consent';
 export const CONSENT_VERSION = '1.0';
 export const CONSENT_DURATION = 365 * 24 * 60 * 60 * 1000; // 365 days
 
+function getCookieValue(name: string): string | null {
+  if (typeof document === "undefined") return null;
+
+  const cookie = document.cookie
+    .split("; ")
+    .find((entry) => entry.startsWith(`${name}=`));
+
+  return cookie ? decodeURIComponent(cookie.split("=").slice(1).join("=")) : null;
+}
+
+function setConsentCookie(value: string) {
+  if (typeof document === "undefined") return;
+
+  const secure = window.location.protocol === "https:" ? "; Secure" : "";
+  document.cookie =
+    `${CONSENT_KEY}=${encodeURIComponent(value)}; Path=/; Max-Age=${Math.floor(
+      CONSENT_DURATION / 1000,
+    )}; SameSite=Lax${secure}`;
+}
+
 declare global {
   interface Window {
     dataLayer: unknown[];
@@ -53,9 +73,15 @@ export function shouldRespectDNT(): boolean {
 export function getStoredConsent(): CookieConsent | null {
   if (typeof window === 'undefined') return null;
   try {
-    const stored = localStorage.getItem(CONSENT_KEY);
+    const stored = getCookieValue(CONSENT_KEY) ?? localStorage.getItem(CONSENT_KEY);
     if (!stored) return null;
-    return JSON.parse(stored) as CookieConsent;
+    const parsed = JSON.parse(stored) as CookieConsent;
+
+    // Keep both storage layers in sync for older sessions or cross-tab reloads.
+    localStorage.setItem(CONSENT_KEY, JSON.stringify(parsed));
+    setConsentCookie(JSON.stringify(parsed));
+
+    return parsed;
   } catch {
     return null;
   }
@@ -79,8 +105,11 @@ export function saveConsent(consent: Omit<CookieConsent, 'timestamp' | 'version'
     timestamp: Date.now(),
     version: CONSENT_VERSION,
   };
-  
-  localStorage.setItem(CONSENT_KEY, JSON.stringify(fullConsent));
+
+  const serializedConsent = JSON.stringify(fullConsent);
+
+  localStorage.setItem(CONSENT_KEY, serializedConsent);
+  setConsentCookie(serializedConsent);
   
   // Dispatch custom event for real-time reactivity in the app
   if (typeof window !== 'undefined') {

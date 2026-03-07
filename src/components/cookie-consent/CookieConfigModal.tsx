@@ -1,12 +1,13 @@
 "use client";
 
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { Link } from '@/i18n/routing';
 import { X, Shield, BarChart, Megaphone, Check } from 'lucide-react';
 import { useTranslations } from 'next-intl';
 import { LazyMotion, m, domAnimation, AnimatePresence } from 'framer-motion';
 import { cn } from '@/lib/utils';
 import { Button } from '@/components/ui/button';
+import { useFocusTrap } from '@/hooks/use-focus-trap';
 
 interface CookieConfigModalProps {
   onClose: () => void;
@@ -29,6 +30,9 @@ export function CookieConfigModal({
   const t = useTranslations("CookieConsent.modal");
   const [analytics, setAnalytics] = useState(initialValues.analytics);
   const [marketing, setMarketing] = useState(initialValues.marketing);
+  const dialogRef = useRef<HTMLDivElement>(null);
+
+  useFocusTrap(true, dialogRef, onClose);
 
   const handleSave = () => {
     onSave({
@@ -63,6 +67,8 @@ export function CookieConfigModal({
         initial={{ opacity: 0, scale: 0.95, y: 20 }}
         animate={{ opacity: 1, scale: 1, y: 0 }}
         exit={{ opacity: 0, scale: 0.95, y: 20 }}
+        ref={dialogRef}
+        tabIndex={-1}
         className="relative bg-white dark:bg-neutral-950 rounded-3xl shadow-2xl max-w-2xl w-full overflow-hidden border border-neutral-200 dark:border-neutral-800"
         role="dialog"
         aria-modal="true"
@@ -132,7 +138,11 @@ export function CookieConfigModal({
                   <h3 className="font-bold text-neutral-950 dark:text-white">
                     {t("analytics.title")}
                   </h3>
-                  <Toggle enabled={analytics} onChange={setAnalytics} />
+                  <Toggle
+                    enabled={analytics}
+                    onChange={setAnalytics}
+                    label={t("analytics.title")}
+                  />
                 </div>
                 <p className="text-xs text-neutral-300 dark:text-neutral-400 mb-3 leading-relaxed">
                   {t("analytics.description")}
@@ -157,7 +167,11 @@ export function CookieConfigModal({
                   <h3 className="font-bold text-neutral-950 dark:text-white">
                     {t("marketing.title")}
                   </h3>
-                  <Toggle enabled={marketing} onChange={setMarketing} />
+                  <Toggle
+                    enabled={marketing}
+                    onChange={setMarketing}
+                    label={t("marketing.title")}
+                  />
                 </div>
                 <p className="text-xs text-neutral-300 dark:text-neutral-400 mb-3 leading-relaxed">
                   {t("marketing.description")}
@@ -194,7 +208,15 @@ export function CookieConfigModal({
   );
 }
 
-function Toggle({ enabled, onChange }: { enabled: boolean; onChange: (v: boolean) => void }) {
+function Toggle({
+  enabled,
+  onChange,
+  label,
+}: {
+  enabled: boolean;
+  onChange: (v: boolean) => void;
+  label: string;
+}) {
   return (
     <button
       onClick={() => onChange(!enabled)}
@@ -204,6 +226,7 @@ function Toggle({ enabled, onChange }: { enabled: boolean; onChange: (v: boolean
       )}
       role="switch"
       aria-checked={enabled}
+      aria-label={label}
     >
       <span
         className={cn(

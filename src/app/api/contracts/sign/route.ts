@@ -1,4 +1,4 @@
-import { createClient } from "@/utils/supabase/server";
+import { createAdminClient } from "@/utils/supabase/server";
 import { NextResponse } from "next/server";
 import { Resend } from "resend";
 import { populateProjectTasks } from "@/lib/populate-tasks";
@@ -10,7 +10,7 @@ export async function POST(req: Request) {
     const body = await req.json();
     const { token, signed_name, signature_data, signature_hash } = body;
 
-    const supabase = await createClient();
+    const supabase = await createAdminClient();
 
     // 1. Fetch contract and validate
     const { data: contract, error: fetchError } = await supabase

@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import { Link } from "@/i18n/routing";
 import { Cookie, Settings, X } from "lucide-react";
 import { useTranslations } from "next-intl";
@@ -13,12 +13,14 @@ import {
   CookieConsent,
 } from "@/lib/cookie-utils";
 import { CookieConfigModal } from "./CookieConfigModal";
+import { useFocusTrap } from "@/hooks/use-focus-trap";
 
 export function CookieBanner() {
   const t = useTranslations("CookieConsent.banner");
   const [showBanner, setShowBanner] = useState(false);
   const [showModal, setShowModal] = useState(false);
   const [hasMounted, setHasMounted] = useState(false);
+  const bannerRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
     const initTimer = setTimeout(() => {
@@ -55,6 +57,8 @@ export function CookieBanner() {
     setShowBanner(false);
   };
 
+  useFocusTrap(showBanner && !showModal, bannerRef, handleEssentialOnly);
+
   const handleSavedDetailed = (
     consent: Omit<CookieConsent, "timestamp" | "version">,
   ) => {
@@ -76,8 +80,12 @@ export function CookieBanner() {
             transition={{ duration: 0.4, ease: "easeOut" }}
             className="fixed bottom-0 left-0 right-0 z-[90] bg-black/95 backdrop-blur-sm border-t border-white/10 shadow-2xl"
             role="dialog"
+            aria-modal="true"
             aria-labelledby="cookie-banner-title">
-            <div className="max-w-7xl mx-auto px-6 py-4 relative">
+            <div
+              ref={bannerRef}
+              tabIndex={-1}
+              className="max-w-7xl mx-auto px-6 py-4 relative">
               {/* Botón cerrar */}
               <button
                 onClick={handleEssentialOnly}

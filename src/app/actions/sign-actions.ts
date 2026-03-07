@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/utils/supabase/server";
+import { createAdminClient, createClient } from "@/utils/supabase/server";
 import { PDFDocument, rgb, StandardFonts } from "pdf-lib";
 import { v4 as uuidv4 } from "uuid";
 
@@ -45,9 +45,7 @@ export async function generateSigningLink(documentId: string, type: "proposal" |
  * Validates a hash and returns the associated envelope with document details
  */
 export async function validateSigningHash(hash: string) {
-  // Use admin client bypass RLS for public users checking hashes,
-  // OR rely on the Anon RLS policy we created in the SQL.
-  const supabase = await createClient(); 
+  const supabase = await createAdminClient();
 
   const { data: envelope, error } = await supabase
     .from("document_envelopes")
@@ -75,21 +73,37 @@ export async function validateSigningHash(hash: string) {
  * Stamps a PDF with the signature and audit trail
  */
 export async function stampDocumentSignature(
-  envelopeId: string,
+  hash: string,
   signatureDataUrl: string,
   auditData: { ip: string; userAgent: string; email: string; name: string }
 ) {
-  // Since this might be called by an unauthenticated user, we need a service role client
-  // or rely strictly on the hash_token if passing it.
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
   
   const timestamp = new Date().toISOString();
+
+  const { data: envelope, error: envelopeError } = await supabase
+    .from("document_envelopes")
+    .select("id, status, expires_at, hash_token")
+    .eq("hash_token", hash)
+    .single();
+
+  if (envelopeError || !envelope) {
+    throw new Error("Invalid signing link");
+  }
+
+  if (envelope.status === "signed") {
+    throw new Error("Document already signed");
+  }
+
+  if (envelope.expires_at && new Date(envelope.expires_at) < new Date()) {
+    throw new Error("Signing link expired");
+  }
 
   // 1. Log the signature event in the audit table FIRST
   const { error: signatureError } = await supabase
     .from("document_signatures")
     .insert({
-      envelope_id: envelopeId,
+      envelope_id: envelope.id,
       signer_name: auditData.name,
       signer_email: auditData.email,
       ip_address: auditData.ip,
@@ -144,11 +158,11 @@ export async function stampDocumentSignature(
 
   lastPage.drawText(`IP: ${auditData.ip}`, { x: 70, y: 90, size: 8, font });
   lastPage.drawText(`Fecha: ${timestamp}`, { x: 70, y: 75, size: 8, font });
-  lastPage.drawText(`Envelope ID: ${envelopeId}`, { x: 70, y: 60, size: 8, font });
+  lastPage.drawText(`Envelope ID: ${envelope.id}`, { x: 70, y: 60, size: 8, font });
 
   // 3. Save stamped PDF
   const pdfBytes = await pdfDoc.save();
-  const signedPath = `${envelopeId}_signed.pdf`;
+  const signedPath = `${envelope.id}_signed.pdf`;
   
   // Mock Upload to storage
   // const { error: uploadError } = await supabase.storage.from('contracts').upload(signedPath, pdfBytes);
@@ -161,7 +175,7 @@ export async function stampDocumentSignature(
       signed_pdf_path: signedPath,
       hash_token: null // Invalidate public hash
     })
-    .eq("id", envelopeId);
+    .eq("id", envelope.id);
 
   if (updateError) throw new Error(updateError.message);
 

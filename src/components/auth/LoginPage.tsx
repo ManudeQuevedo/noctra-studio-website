@@ -8,6 +8,9 @@ import Link from "next/link";
 import { useRouter } from "next/navigation";
 
 export default function LoginPage() {
+  const emailInputId = "portal-email";
+  const passwordInputId = "portal-password";
+  const errorMessageId = "portal-login-error";
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);
@@ -73,39 +76,52 @@ export default function LoginPage() {
         <form onSubmit={handleSubmit} className="space-y-8">
           <div className="space-y-6">
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 ml-1">
+              <label
+                htmlFor={emailInputId}
+                className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 ml-1">
                 Email
               </label>
               <div className="relative group">
                 <Mail className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20 group-focus-within:text-white transition-colors" />
                 <input
+                  id={emailInputId}
                   type="email"
                   value={email}
                   onChange={(e) => setEmail(e.target.value)}
                   placeholder="name@company.com"
+                  autoComplete="email"
+                  aria-invalid={Boolean(error)}
+                  aria-describedby={error ? errorMessageId : undefined}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded px-10 py-3.5 text-sm outline-none focus:border-white/30 transition-all placeholder:text-white/10"
+                  className="w-full bg-white/5 border border-white/10 rounded px-10 py-3.5 text-sm outline-none focus:border-white/30 transition-all placeholder:text-white/30"
                 />
               </div>
             </div>
 
             <div className="space-y-2">
-              <label className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 ml-1">
+              <label
+                htmlFor={passwordInputId}
+                className="text-[10px] font-bold uppercase tracking-[0.2em] text-white/30 ml-1">
                 Password
               </label>
               <div className="relative group">
                 <Lock className="absolute left-4 top-1/2 -translate-y-1/2 w-3.5 h-3.5 text-white/20 group-focus-within:text-white transition-colors" />
                 <input
+                  id={passwordInputId}
                   type={showPassword ? "text" : "password"}
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="••••••••"
+                  autoComplete="current-password"
+                  aria-invalid={Boolean(error)}
+                  aria-describedby={error ? errorMessageId : undefined}
                   required
-                  className="w-full bg-white/5 border border-white/10 rounded px-10 py-3.5 text-sm outline-none focus:border-white/30 transition-all placeholder:text-white/10"
+                  className="w-full bg-white/5 border border-white/10 rounded px-10 py-3.5 text-sm outline-none focus:border-white/30 transition-all placeholder:text-white/30"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
+                  aria-label={showPassword ? "Hide password" : "Show password"}
                   className="absolute right-4 top-1/2 -translate-y-1/2 text-white/20 hover:text-white/40 transition-colors">
                   {showPassword ? (
                     <EyeOff className="w-4 h-4" />
@@ -119,6 +135,9 @@ export default function LoginPage() {
 
           {error && (
             <motion.div
+              id={errorMessageId}
+              role="alert"
+              aria-live="polite"
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               className="p-4 rounded border border-red-500/20 bg-red-500/5 text-red-500 text-[10px] font-mono uppercase tracking-widest text-center">

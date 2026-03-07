@@ -135,6 +135,14 @@ const ExpectationsCard = () => {
 
 function ContactForm() {
   const t = useTranslations("ContactPage");
+  const fieldIds = {
+    name: "contact-name",
+    email: "contact-email",
+    phone: "contact-phone",
+    service: "contact-service",
+    budget: "contact-budget",
+    message: "contact-message",
+  } as const;
   const [currentStep, setCurrentStep] = useState(1);
   const [time, setTime] = useState<string>("");
   const [isSuccess, setIsSuccess] = useState(false);
@@ -197,12 +205,13 @@ function ContactForm() {
   // Phone handler for react-phone-number-input
   const handlePhoneChange = (value: string | undefined) => {
     const val = value || "";
-    setValue("phone", val);
-    if (val) {
-      setPhoneValid(isValidPhoneNumber(val));
-    } else {
-      setPhoneValid(null);
-    }
+    const isPhoneValid = val ? isValidPhoneNumber(val) : null;
+    setPhoneValid(isPhoneValid);
+    setValue("phone", val, {
+      shouldDirty: true,
+      shouldTouch: true,
+      shouldValidate: Boolean(val),
+    });
   };
 
   useEffect(() => {
@@ -358,7 +367,7 @@ function ContactForm() {
     const fieldsToValidate =
       currentStep === 1
         ? ["name", "email", "phone"]
-        : ["service", "budget", "timeline"];
+        : ["service", "budget"];
 
     const isStepValid = await trigger(fieldsToValidate as any);
     if (isStepValid) {
@@ -400,10 +409,10 @@ function ContactForm() {
   return (
     <LazyMotion features={domAnimation}>
       <RouteScopedBackground />
-      <main className="text-white relative flex flex-col lg:flex-row bg-transparent">
+      <main className="relative flex min-h-screen flex-col bg-transparent pt-[calc(env(safe-area-inset-top)+5.25rem)] text-white lg:flex-row lg:pt-0">
         {/* Left Side: Brand & Trust (40%) */}
-        <div className="lg:w-[40%] w-full p-8 lg:p-16 lg:pt-32 relative z-10 border-b lg:border-b-0 lg:border-r border-white/5 bg-black/20 backdrop-blur-md">
-          <div className="space-y-12 max-w-xl mx-auto lg:mx-0">
+        <div className="relative z-10 w-full border-b border-white/5 bg-black/20 px-6 pb-10 pt-4 backdrop-blur-md sm:px-8 sm:pb-12 sm:pt-6 lg:w-[40%] lg:border-b-0 lg:border-r lg:p-16 lg:pt-32">
+          <div className="mx-auto max-w-xl space-y-10 lg:mx-0 lg:space-y-12">
             {/* Logo placeholder - assuming there's a logo component or image elsewhere, 
                 but based on the current code, we just had the H1 here. 
                 I'll keep the H1 as requested but with the new styling. */}
@@ -411,14 +420,14 @@ function ContactForm() {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               className="space-y-4">
-              <div className="space-y-6">
-                <h1 className="text-5xl md:text-7xl font-black tracking-tight leading-[0.9]">
+              <div className="max-w-[20rem] space-y-5 pr-10 sm:max-w-[24rem] sm:pr-0 lg:max-w-none">
+                <h1 className="text-[clamp(2.85rem,14vw,4.75rem)] font-black leading-[0.9] tracking-tight md:text-7xl">
                   {t("hero.title_part1")}{" "}
                   <span className="text-transparent bg-clip-text bg-gradient-to-r from-emerald-400 to-emerald-600">
                     {t("hero.title_part2")}
                   </span>
                 </h1>
-                <p className="text-xl text-neutral-400 font-medium leading-relaxed max-w-md">
+                <p className="max-w-md text-base font-medium leading-relaxed text-neutral-400 sm:text-lg lg:text-xl">
                   {t("hero.subtitle")}
                 </p>
               </div>
@@ -455,7 +464,7 @@ function ContactForm() {
 
         {/* Right Side: Interactive Form (60%) */}
         <div className="lg:w-[60%] w-full flex flex-col relative z-10">
-          <div className="flex-1 flex flex-col justify-center px-8 lg:px-24 py-16 lg:py-32 w-full">
+          <div className="flex w-full flex-1 flex-col justify-center px-6 py-12 sm:px-8 sm:py-14 lg:px-24 lg:py-32">
             <div className="max-w-xl mx-auto w-full">
               {isSuccess ? (
                 <SuccessState
@@ -471,16 +480,16 @@ function ContactForm() {
               ) : (
                 <div className="w-full space-y-12">
                   {/* Progress Header - Minimalist & Always Visible */}
-                  <div className="flex items-center justify-between mb-12">
+                  <div className="mb-10 flex flex-col gap-4 sm:mb-12 sm:flex-row sm:items-center sm:justify-between">
                     <div className="space-y-1">
                       <span className="text-[10px] font-mono text-emerald-500 uppercase tracking-widest font-bold">
                         {t(`steps.step_${currentStep}.label`)}
                       </span>
-                      <h2 className="text-3xl font-black text-white">
+                      <h2 className="text-3xl font-black text-white sm:text-[2rem]">
                         {t(`steps.step_${currentStep}.title`)}
                       </h2>
                     </div>
-                    <div className="flex gap-2">
+                    <div className="flex gap-2 self-start sm:self-auto">
                       {[1, 2, 3].map((s) => (
                         <div
                           key={s}
@@ -500,6 +509,8 @@ function ContactForm() {
                   <form onSubmit={handleSubmit(onSubmit)} className="space-y-8">
                     {securityError && (
                       <m.div
+                        role="alert"
+                        aria-live="polite"
                         initial={{ opacity: 0, y: -10 }}
                         animate={{ opacity: 1, y: 0 }}
                         className={`p-4 bg-neutral-900/50 border-l-2 font-mono text-sm tracking-tight mb-8 ${
@@ -530,26 +541,39 @@ function ContactForm() {
                           }}
                           className="w-full">
                           {currentStep === 1 && (
-                            <div className="space-y-10">
+                            <div className="space-y-8 sm:space-y-10">
                               {/* Input Field: Name */}
                               <div className="space-y-4">
-                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                <label
+                                  htmlFor={fieldIds.name}
+                                  className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
                                   {t("form.name_label")}
                                 </label>
                                 <div className="relative group">
                                   <User className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-700 group-focus-within:text-emerald-500 transition-colors" />
                                   <input
+                                    id={fieldIds.name}
                                     {...register("name", { required: true })}
                                     placeholder={t("form.name_placeholder")}
+                                    autoComplete="name"
+                                    aria-invalid={Boolean(errors.name)}
+                                    aria-describedby={
+                                      errors.name
+                                        ? `${fieldIds.name}-error`
+                                        : undefined
+                                    }
                                     className={cn(
-                                      "w-full bg-transparent border-b py-4 pl-10 text-2xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-800",
+                                      "w-full bg-transparent border-b py-4 pl-10 text-xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-700 sm:text-2xl",
                                       errors.name
                                         ? "border-red-500/50"
                                         : "border-neutral-800 focus:border-emerald-500",
                                     )}
                                   />
                                   {errors.name && (
-                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                    <span
+                                      id={`${fieldIds.name}-error`}
+                                      aria-live="polite"
+                                      className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
                                       {t("validation.required")}
                                     </span>
                                   )}
@@ -558,26 +582,41 @@ function ContactForm() {
 
                               {/* Input Field: Email */}
                               <div className="space-y-4">
-                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                <label
+                                  htmlFor={fieldIds.email}
+                                  className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
                                   {t("form.email_label")}
                                 </label>
                                 <div className="relative group">
                                   <Mail className="absolute left-0 top-1/2 -translate-y-1/2 w-5 h-5 text-neutral-700 group-focus-within:text-emerald-500 transition-colors" />
                                   <input
+                                    id={fieldIds.email}
+                                    type="email"
                                     {...register("email", {
                                       required: true,
                                       pattern: /^\S+@\S+$/i,
                                     })}
                                     placeholder={t("form.email_placeholder")}
+                                    autoComplete="email"
+                                    inputMode="email"
+                                    aria-invalid={Boolean(errors.email)}
+                                    aria-describedby={
+                                      errors.email
+                                        ? `${fieldIds.email}-error`
+                                        : undefined
+                                    }
                                     className={cn(
-                                      "w-full bg-transparent border-b py-4 pl-10 text-2xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-800",
+                                      "w-full bg-transparent border-b py-4 pl-10 text-xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-700 sm:text-2xl",
                                       errors.email
                                         ? "border-red-500/50"
                                         : "border-neutral-800 focus:border-emerald-500",
                                     )}
                                   />
                                   {errors.email && (
-                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                    <span
+                                      id={`${fieldIds.email}-error`}
+                                      aria-live="polite"
+                                      className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
                                       {t("validation.invalid_email")}
                                     </span>
                                   )}
@@ -586,15 +625,37 @@ function ContactForm() {
 
                               {/* Input Field: Phone */}
                               <div className="space-y-4">
-                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                <label
+                                  htmlFor={fieldIds.phone}
+                                  className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
                                   {t("form.phone_label")}
                                 </label>
                                 <div className="relative group">
+                                  <input
+                                    type="hidden"
+                                    {...register("phone", {
+                                      required: t("validation.required"),
+                                      validate: (value) =>
+                                        !value
+                                          ? t("validation.required")
+                                          : isValidPhoneNumber(value || "")
+                                          ? true
+                                          : t("validation.phone_format"),
+                                    })}
+                                  />
                                   <PhoneInput
+                                    id={fieldIds.phone}
                                     defaultCountry="MX"
                                     value={watchAll.phone}
                                     onChange={handlePhoneChange}
                                     flags={flags}
+                                    autoComplete="tel"
+                                    aria-invalid={Boolean(errors.phone)}
+                                    aria-describedby={
+                                      errors.phone
+                                        ? `${fieldIds.phone}-error`
+                                        : undefined
+                                    }
                                     className={cn(
                                       "phone-input-container !border-t-0 !border-x-0 rounded-none !py-0",
                                       phoneValid === true && "valid",
@@ -604,9 +665,13 @@ function ContactForm() {
                                     international
                                     countryCallingCodeEditable={false}
                                   />
-                                  {phoneValid === false && (
-                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
-                                      {t("validation.phone_format")}
+                                  {errors.phone && (
+                                    <span
+                                      id={`${fieldIds.phone}-error`}
+                                      aria-live="polite"
+                                      className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                      {errors.phone.message ||
+                                        t("validation.phone_format")}
                                     </span>
                                   )}
                                 </div>
@@ -615,11 +680,18 @@ function ContactForm() {
                           )}
 
                           {currentStep === 2 && (
-                            <div className="space-y-12">
+                            <div className="space-y-10 sm:space-y-12">
                               <div className="space-y-6">
-                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                <label
+                                  htmlFor={fieldIds.service}
+                                  className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
                                   {t("form.service_label")}
                                 </label>
+                                <input
+                                  id={fieldIds.service}
+                                  type="hidden"
+                                  {...register("service", { required: true })}
+                                />
                                 <div className="grid grid-cols-1 md:grid-cols-2 gap-3">
                                   {[
                                     "website",
@@ -632,6 +704,12 @@ function ContactForm() {
                                     <button
                                       key={service}
                                       type="button"
+                                      aria-pressed={watchAll.service === service}
+                                      aria-describedby={
+                                        errors.service
+                                          ? `${fieldIds.service}-error`
+                                          : undefined
+                                      }
                                       onClick={() =>
                                         setValue("service", service as any, {
                                           shouldValidate: true,
@@ -652,12 +730,27 @@ function ContactForm() {
                                     </button>
                                   ))}
                                 </div>
+                                {errors.service && (
+                                  <p
+                                    id={`${fieldIds.service}-error`}
+                                    aria-live="polite"
+                                    className="text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                    {t("validation.required")}
+                                  </p>
+                                )}
                               </div>
 
                               <div className="space-y-6">
-                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                <label
+                                  htmlFor={fieldIds.budget}
+                                  className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
                                   {t("form.budget_label")}
                                 </label>
+                                <input
+                                  id={fieldIds.budget}
+                                  type="hidden"
+                                  {...register("budget", { required: true })}
+                                />
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                   {[
                                     "20-35k",
@@ -671,6 +764,12 @@ function ContactForm() {
                                     <button
                                       key={budget}
                                       type="button"
+                                      aria-pressed={watchAll.budget === budget}
+                                      aria-describedby={
+                                        errors.budget
+                                          ? `${fieldIds.budget}-error`
+                                          : undefined
+                                      }
                                       onClick={() =>
                                         setValue("budget", budget as any, {
                                           shouldValidate: true,
@@ -690,6 +789,14 @@ function ContactForm() {
                                     </button>
                                   ))}
                                 </div>
+                                {errors.budget && (
+                                  <p
+                                    id={`${fieldIds.budget}-error`}
+                                    aria-live="polite"
+                                    className="text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                    {t("validation.required")}
+                                  </p>
+                                )}
                               </div>
                             </div>
                           )}
@@ -697,26 +804,39 @@ function ContactForm() {
                           {currentStep === 3 && (
                             <div className="space-y-10">
                               <div className="space-y-4">
-                                <label className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                                <label
+                                  htmlFor={fieldIds.message}
+                                  className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
                                   {t("form.message_label")}
                                 </label>
                                 <div className="relative group">
                                   <MessageSquare className="absolute left-0 top-4 w-5 h-5 text-neutral-700 group-focus-within:text-emerald-500 transition-colors" />
                                   <textarea
+                                    id={fieldIds.message}
                                     {...register("message", {
                                       required: true,
                                     })}
                                     placeholder={t("form.message_placeholder")}
                                     rows={5}
+                                    autoComplete="off"
+                                    aria-invalid={Boolean(errors.message)}
+                                    aria-describedby={
+                                      errors.message
+                                        ? `${fieldIds.message}-error`
+                                        : undefined
+                                    }
                                     className={cn(
-                                      "w-full bg-transparent border-b py-4 pl-10 text-xl outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-800 resize-none",
+                                      "w-full bg-transparent border-b py-4 pl-10 text-lg outline-none transition-all duration-500 font-mono text-white placeholder:text-neutral-700 resize-none sm:text-xl",
                                       errors.message
                                         ? "border-red-500/50"
                                         : "border-neutral-800 focus:border-emerald-500",
                                     )}
                                   />
                                   {errors.message && (
-                                    <span className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
+                                    <span
+                                      id={`${fieldIds.message}-error`}
+                                      aria-live="polite"
+                                      className="absolute left-10 -bottom-6 text-[10px] text-red-500/80 font-mono uppercase tracking-wider">
                                       {t("validation.required")}
                                     </span>
                                   )}
@@ -742,12 +862,12 @@ function ContactForm() {
                     <m.div
                       initial={{ opacity: 0, y: 10 }}
                       animate={{ opacity: 1, y: 0 }}
-                      className="pt-8 flex gap-4">
+                      className="flex flex-col-reverse gap-3 pt-8 sm:flex-row sm:gap-4">
                       {currentStep > 1 && (
                         <button
                           type="button"
                           onClick={prevStep}
-                          className="px-8 py-5 rounded-xl border border-white/5 bg-white/5 hover:bg-white/10 transition-all text-sm font-bold flex items-center justify-center gap-2 group">
+                          className="flex items-center justify-center gap-2 rounded-xl border border-white/5 bg-white/5 px-8 py-4 text-sm font-bold transition-all group hover:bg-white/10 sm:py-5">
                           <ChevronLeft className="w-4 h-4 group-hover:-translate-x-1 transition-transform" />
                           {t("steps.back")}
                         </button>
@@ -757,18 +877,15 @@ function ContactForm() {
                         <button
                           type="button"
                           onClick={nextStep}
-                          disabled={currentStep === 1 && phoneValid !== true}
-                          className="flex-1 bg-emerald-500 text-black py-5 rounded-xl text-sm font-black uppercase tracking-widest flex items-center justify-center gap-2 hover:bg-emerald-400 transition-all disabled:opacity-30 disabled:grayscale transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)]">
+                          className="flex w-full items-center justify-center gap-2 rounded-xl bg-emerald-500 py-4 text-sm font-black uppercase tracking-widest text-black transition-all shadow-[0_0_20px_rgba(16,185,129,0.2)] hover:bg-emerald-400 disabled:grayscale disabled:opacity-30 sm:flex-1 sm:py-5">
                           {t("steps.next")}
                           <ChevronRight className="w-4 h-4" />
                         </button>
                       ) : (
                         <button
-                          disabled={
-                            isSubmitting || !isValid || phoneValid !== true
-                          }
+                          disabled={isSubmitting}
                           type="submit"
-                          className="flex-1 bg-emerald-500 hover:bg-emerald-400 text-black py-5 rounded-xl text-sm font-black uppercase tracking-widest flex items-center justify-center gap-3 transition-all disabled:opacity-50 shadow-[0_0_20px_rgba(16,185,129,0.6)]">
+                          className="flex w-full items-center justify-center gap-3 rounded-xl bg-emerald-500 py-4 text-sm font-black uppercase tracking-widest text-black transition-all shadow-[0_0_20px_rgba(16,185,129,0.6)] hover:bg-emerald-400 disabled:opacity-50 sm:flex-1 sm:py-5">
                           {isSubmitting ? t("form.sending") : t("form.submit")}
                           <ArrowRight className="w-4 h-4" />
                         </button>

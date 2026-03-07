@@ -1,6 +1,6 @@
 "use server";
 
-import { createClient } from "@/utils/supabase/server";
+import { createAdminClient, createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
 import { Resend } from "resend";
 
@@ -35,7 +35,7 @@ export async function generateReportAction(projectId: string, config: ReportConf
 }
 
 export async function getReportByTokenAction(token: string) {
-  const supabase = await createClient();
+  const supabase = await createAdminClient();
 
   // Fetch project basic info with workspace info
   const { data: project, error: pError } = await supabase

@@ -2,9 +2,12 @@
 
 import { createClient } from "@/utils/supabase/server";
 import { revalidatePath } from "next/cache";
+import { getWorkspace } from "@/lib/workspace";
 
 export async function createContractFromProposalAction(proposalId: string) {
   const supabase = await createClient();
+  const ctx = await getWorkspace();
+  if (!ctx) throw new Error("No autenticado o sin workspace");
 
   // 1. Check Auth
   const { data: { user } } = await supabase.auth.getUser();
@@ -25,6 +28,7 @@ export async function createContractFromProposalAction(proposalId: string) {
   const { data: contract, error: contractError } = await supabase
     .from("contracts")
     .insert({
+      workspace_id: ctx.workspaceId,
       proposal_id: fullProposal.id,
       client_name: fullProposal.lead?.name || "",
       client_email: fullProposal.lead?.email || "",

@@ -1,7 +1,7 @@
 import { NextResponse } from "next/server";
 import Stripe from "stripe";
-import { createClient } from "@/utils/supabase/server";
 import { isEarlyAccessAvailable } from "@/lib/subscriptions";
+import { getWorkspaceAccess } from "@/lib/workspace-access";
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_fallback", {
   apiVersion: "2024-06-20",
@@ -9,20 +9,20 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || "sk_test_fallback", {
 
 export async function POST(req: Request) {
   try {
-    const supabase = await createClient();
-    const {
-      data: { session },
-    } = await supabase.auth.getSession();
-
-    if (!session) {
-      return new NextResponse("Unauthorized", { status: 401 });
-    }
-
     const body = await req.json();
     const { priceId, mode = "subscription", quantity = 1, workspaceId, creditAmount } = body;
 
     if (!priceId || !workspaceId) {
       return new NextResponse("Missing required parameters", { status: 400 });
+    }
+
+    const { supabase, userId, hasAccess } = await getWorkspaceAccess(workspaceId);
+    if (!userId) {
+      return new NextResponse("Unauthorized", { status: 401 });
+    }
+
+    if (!hasAccess) {
+      return new NextResponse("Forbidden", { status: 403 });
     }
 
     // Optional: Fetch Stripe Customer ID from the DB if they have one already
@@ -37,7 +37,7 @@ export async function POST(req: Request) {
     if (!customerId) {
         // Create customer in Stripe
         const customer = await stripe.customers.create({
-            email: session.user.email,
+            email: (await supabase.auth.getUser()).data.user?.email,
             metadata: {
                 workspace_id: workspaceId
             }
@@ -66,7 +66,7 @@ export async function POST(req: Request) {
       cancel_url: `${process.env.NEXT_PUBLIC_APP_URL}/forge/settings/billing?canceled=true`,
       metadata: {
         workspace_id: workspaceId,
-        user_id: session.user.id,
+        user_id: userId,
       },
     };
 
