@@ -1,6 +1,6 @@
 import { generatePageMetadata } from "@/lib/metadata";
+import { getPublicProjects } from "@/lib/site/projects";
 import WorkClient from "./WorkClient";
-import { getProjects } from "@/lib/projects";
 
 export const revalidate = 60;
 
@@ -14,7 +14,7 @@ export async function generateMetadata({
 }
 
 export default async function WorkPage() {
-  const projects = await getProjects();
+  const projects = await getPublicProjects();
 
   return <WorkClient projects={projects} />;
 }

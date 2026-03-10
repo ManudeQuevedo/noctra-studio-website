@@ -5,10 +5,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, X, CheckCircle2 } from "lucide-react";
-import type { Project } from "@/lib/projects";
+import type { PublicCaseStudyProject } from "@/types/site-project";
 
 type Props = {
-  project: Project;
+  project: PublicCaseStudyProject;
   locale: string;
 };
 

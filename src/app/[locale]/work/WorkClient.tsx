@@ -5,7 +5,7 @@ import { LazyMotion, m, domAnimation, AnimatePresence } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import Image from "next/image";
 import { ProjectCard } from "@/components/work/ProjectCard";
-import type { Project } from "@/lib/projects";
+import type { PublicProjectCard } from "@/types/site-project";
 import {
   ArrowRight,
   Code,
@@ -47,7 +47,11 @@ import {
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 
-export default function WorkClient({ projects }: { projects: Project[] }) {
+export default function WorkClient({
+  projects,
+}: {
+  projects: PublicProjectCard[];
+}) {
   const t = useTranslations("WorkPage");
   const locale = useLocale();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);

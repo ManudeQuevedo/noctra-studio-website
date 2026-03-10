@@ -1,5 +1,8 @@
-import { getProjectBySlug, getProjects } from "@/lib/projects";
-import { redirect } from "next/navigation";
+import {
+  getPublicCaseStudyBySlug,
+  getPublicCaseStudySlugs,
+} from "@/lib/site/projects";
+import { notFound } from "next/navigation";
 import CaseStudyClient from "./CaseStudyClient";
 import { Metadata } from "next";
 
@@ -8,20 +11,20 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const projects = await getProjects();
+  const slugs = await getPublicCaseStudySlugs();
   const locales = ["es", "en"];
 
-  return projects.flatMap((p) =>
+  return slugs.flatMap((slug) =>
     locales.map((locale) => ({
       locale,
-      slug: p.slug,
+      slug,
     })),
   );
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const project = await getPublicCaseStudyBySlug(slug);
 
   if (!project) {
     return {
@@ -37,10 +40,10 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseStudyPage({ params }: Props) {
   const { locale, slug } = await params;
-  const project = await getProjectBySlug(slug);
+  const project = await getPublicCaseStudyBySlug(slug);
 
-  if (!project || !project.case_study_enabled) {
-    redirect(`/${locale}/work`);
+  if (!project) {
+    notFound();
   }
 
   return <CaseStudyClient project={project} locale={locale} />;

@@ -2,7 +2,7 @@ import { redirect } from "next/navigation";
 import { createClient } from "@/utils/supabase/server";
 import { getWorkspace } from "@/lib/workspace";
 import ForgeProjectsClient from "./ForgeProjectsClient";
-import type { Project } from "@/lib/projects";
+import type { Project } from "@/types/crm-project";
 
 // Ensure this page is not statically cached
 export const dynamic = "force-dynamic";

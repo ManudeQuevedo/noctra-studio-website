@@ -19,17 +19,17 @@ import {
 } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
-import type { Project } from "@/lib/projects";
+import type { PublicProjectCard } from "@/types/site-project";
 import { getProjectOverrides } from "@/lib/project-overrides";
 
 type ProjectCardProps = {
-  project: Project;
+  project: PublicProjectCard;
   index: number;
   isCompletedVariant?: boolean;
 };
 
 // ProjectMockup implementation (using project id or slug if needed, for images we can map or use gallery)
-function ProjectMockup({ project }: { project: Project }) {
+function ProjectMockup({ project }: { project: PublicProjectCard }) {
   let imgPath = "/images/work/woodax-preview.jpg";
   const slug = project.slug.toLowerCase();
 

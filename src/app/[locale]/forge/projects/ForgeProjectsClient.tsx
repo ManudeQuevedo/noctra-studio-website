@@ -3,7 +3,7 @@
 import { useState, useEffect } from "react";
 import { useRouter } from "next/navigation";
 import { createClient } from "@/utils/supabase/client";
-import type { Project } from "@/lib/projects";
+import type { Project } from "@/types/crm-project";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import {
   Trash2,
