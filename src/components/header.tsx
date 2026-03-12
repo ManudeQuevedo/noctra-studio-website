@@ -190,46 +190,50 @@ export function Header() {
       {/* --- MOBILE CONTROLS (Fixed Layer / Z-[60]) --- */}
       {/* Always visible, outside animations, mix-blend-difference for visibility on all backgrounds */}
       {/* Pixel Perfect Alignment: h-12 flex items-center guarantees vertical center sharing */}
-      <div className="fixed left-4 top-[calc(env(safe-area-inset-top)+1rem)] z-[60] flex h-11 items-center md:hidden mix-blend-difference sm:left-6 sm:top-[calc(env(safe-area-inset-top)+1.5rem)] sm:h-12">
-        <Link href="/" className="block" aria-label="Noctra Studio Home">
-          <BrandLogo
-            className="h-11 w-11 text-white sm:h-12 sm:w-12"
-            showText={false}
-          />
-        </Link>
-      </div>
-
-      <div className="fixed right-4 top-[calc(env(safe-area-inset-top)+1rem)] z-[60] flex h-11 items-center md:hidden mix-blend-difference sm:right-6 sm:top-[calc(env(safe-area-inset-top)+1.5rem)] sm:h-12">
-        <button
-          onClick={() => setIsOpen(!isOpen)}
-          aria-label={isOpen ? "Close menu" : "Open menu"}
-          aria-expanded={isOpen}
-          className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 backdrop-blur-md transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:h-12 sm:w-12">
-          <div
-            className={cn(
-              "w-6 h-[14px] flex flex-col justify-between transition-all duration-300",
-              isOpen && "h-6 relative",
-            )}>
-            <span
-              className={cn(
-                "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45",
-              )}
-            />
-            <span
-              className={cn(
-                "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                isOpen && "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45",
-              )}
-            />
-            <span
-              className={cn(
-                "w-full h-[2px] bg-white rounded-full transition-all duration-300",
-                isOpen && "opacity-0",
-              )}
-            />
+      <div className="fixed inset-x-0 top-[calc(env(safe-area-inset-top)+1rem)] z-[60] px-6 md:hidden sm:top-[calc(env(safe-area-inset-top)+1.5rem)]">
+        <div className="mx-auto flex max-w-7xl items-center justify-between mix-blend-difference">
+          <div className="flex h-11 items-center sm:h-12">
+            <Link href="/" className="block" aria-label="Noctra Studio Home">
+              <BrandLogo
+                className="h-11 w-11 text-white sm:h-12 sm:w-12"
+                showText={false}
+              />
+            </Link>
           </div>
-        </button>
+
+          <div className="flex h-11 items-center sm:h-12">
+            <button
+              onClick={() => setIsOpen(!isOpen)}
+              aria-label={isOpen ? "Close menu" : "Open menu"}
+              aria-expanded={isOpen}
+              className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/10 backdrop-blur-md transition-transform active:scale-95 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black sm:h-12 sm:w-12">
+              <div
+                className={cn(
+                  "w-6 h-[14px] flex flex-col justify-between transition-all duration-300",
+                  isOpen && "h-6 relative",
+                )}>
+                <span
+                  className={cn(
+                    "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
+                    isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
+                    isOpen && "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45",
+                  )}
+                />
+                <span
+                  className={cn(
+                    "w-full h-[2px] bg-white rounded-full transition-all duration-300",
+                    isOpen && "opacity-0",
+                  )}
+                />
+              </div>
+            </button>
+          </div>
+        </div>
       </div>
 
       {/* --- DESKTOP HEADER (MD+) --- */}

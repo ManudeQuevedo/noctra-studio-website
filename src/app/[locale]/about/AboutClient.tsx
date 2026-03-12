@@ -6,10 +6,8 @@ import { Link } from "@/i18n/routing";
 import {
   ArrowRight,
   CheckCircle2,
-  Code,
-  Phone,
-  DollarSign,
-  LineChart,
+  GitBranch,
+  TrendingUp,
 } from "lucide-react";
 import NextImage from "next/image";
 
@@ -35,30 +33,49 @@ const FadeIn = ({
 export default function AboutClient() {
   const t = useTranslations("AboutPage");
 
-  const historyIcons = [Code, Phone, DollarSign, LineChart];
+  const historyIconItems = [
+    <NextImage
+      key="moon"
+      src="/icons/moon.svg"
+      alt="Noctra moon symbol"
+      width={24}
+      height={24}
+      className="h-6 w-6"
+    />,
+    <NextImage
+      key="square"
+      src="/icons/square.svg"
+      alt="Noctra square symbol"
+      width={24}
+      height={24}
+      className="h-6 w-6"
+    />,
+    <GitBranch key="system" className="h-6 w-6 text-white" />,
+    <TrendingUp key="growth" className="h-6 w-6 text-white" />,
+  ];
 
   return (
     <LazyMotion features={domAnimation}>
-    <main className="min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black relative">
-      {/* 1. Hero Section */}
-      <section className="pt-32 pb-16 px-6 md:px-8 border-b border-neutral-900 relative z-10">
-        <div className="max-w-7xl mx-auto w-full text-center md:text-left">
-          <m.h1
-            initial={{ opacity: 0, y: 30 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, ease: "easeOut" }}
-            className="text-6xl md:text-8xl lg:text-9xl font-bold tracking-tight mb-8 text-white text-balance">
-            {t("hero.title")}
-          </m.h1>
-          <m.p
-            initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
-            className="text-xl md:text-2xl text-neutral-400 max-w-3xl leading-relaxed text-balance">
-            {t("hero.subtitle")}
-          </m.p>
-        </div>
-      </section>
+      <main className="relative min-h-screen bg-[#050505] text-white selection:bg-white selection:text-black">
+        {/* 1. Hero Section */}
+        <section className="relative z-10 border-b border-neutral-900 px-6 pb-16 pt-32 md:px-8">
+          <div className="mx-auto w-full max-w-7xl text-center md:text-left">
+            <m.h1
+              initial={{ opacity: 0, y: 30 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut" }}
+              className="mb-8 text-6xl font-bold tracking-tight text-balance text-white md:text-8xl lg:text-9xl">
+              {t("hero.title")}
+            </m.h1>
+            <m.p
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+              className="max-w-3xl text-xl leading-relaxed text-balance text-neutral-400 md:text-2xl">
+              {t("hero.subtitle")}
+            </m.p>
+          </div>
+        </section>
 
       {/* 2. History Section */}
       <section className="py-24 md:py-32 px-6 md:px-8 border-b border-neutral-900 relative z-10">
@@ -99,11 +116,11 @@ export default function AboutClient() {
                   </h3>
                   <div className="grid grid-cols-1 gap-8">
                     {(t.raw("history.items") as any[]).map((item, i) => {
-                      const Icon = historyIcons[i] || CheckCircle2;
+                      const iconItem = historyIconItems[i];
                       return (
                         <div key={item.title} className="flex gap-6">
                           <div className="w-12 h-12 rounded-xl bg-white/5 border border-white/10 flex items-center justify-center shrink-0">
-                            <Icon className="w-6 h-6 text-white" />
+                            {iconItem || <CheckCircle2 className="h-6 w-6 text-white" />}
                           </div>
                           <div className="space-y-2">
                             <h4 className="text-lg font-bold text-white">{item.title}</h4>
