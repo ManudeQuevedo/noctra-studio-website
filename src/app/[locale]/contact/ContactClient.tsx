@@ -409,7 +409,8 @@ function ContactForm() {
   return (
     <LazyMotion features={domAnimation}>
       <RouteScopedBackground />
-      <main className="relative flex min-h-screen flex-col bg-transparent pt-[calc(env(safe-area-inset-top)+5.25rem)] text-white lg:flex-row lg:pt-0">
+      <main className="relative min-h-screen bg-transparent pt-[calc(env(safe-area-inset-top)+5.25rem)] text-white lg:pt-0">
+        <div className="mx-auto flex min-h-screen w-full max-w-[1280px] flex-col lg:flex-row">
         {/* Left Side: Brand & Trust (40%) */}
         <div className="relative z-10 w-full border-b border-white/5 bg-black/20 px-6 pb-10 pt-4 backdrop-blur-md sm:px-8 sm:pb-12 sm:pt-6 lg:w-[40%] lg:border-b-0 lg:border-r lg:p-16 lg:pt-32">
           <div className="mx-auto max-w-xl space-y-10 lg:mx-0 lg:space-y-12">
@@ -896,6 +897,7 @@ function ContactForm() {
               )}
             </div>
           </div>
+        </div>
         </div>
       </main>
     </LazyMotion>

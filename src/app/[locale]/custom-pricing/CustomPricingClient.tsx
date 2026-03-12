@@ -6,6 +6,7 @@ import { useState } from "react";
 import { Check, ChevronRight, ArrowLeft } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
+import { RealROICalculator } from "@/components/home/RealROICalculator";
 
 // Price ranges for estimation
 const PRICE_RANGES: Record<string, Record<string, [number, number]>> = {
@@ -315,6 +316,24 @@ export default function CustomPricingClient() {
               </m.div>
             )}
           </AnimatePresence>
+        </div>
+      </section>
+
+      <section className="relative z-10 px-6 pb-24 md:px-8 md:pb-32">
+        <div className="mx-auto max-w-7xl">
+          <div className="mb-12 max-w-3xl space-y-4">
+            <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500 backdrop-blur-md">
+              {t("roi_bridge.label")}
+            </span>
+            <h2 className="text-3xl font-bold tracking-tight text-white md:text-5xl">
+              {t("roi_bridge.title")}
+            </h2>
+            <p className="text-lg leading-relaxed text-neutral-400">
+              {t("roi_bridge.subtitle")}
+            </p>
+          </div>
+
+          <RealROICalculator />
         </div>
       </section>
     </main>

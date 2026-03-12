@@ -8,7 +8,7 @@ export function OrganizationSchema() {
     url: "https://noctra.studio",
     logo: "https://noctra.studio/noctra-studio-icon-dark-theme.svg",
     description:
-      "Strategic web development studio. Websites that generate measurable ROI. From $20k MXN + IVA. Results guarantee.",
+      "Engineering-first digital studio building high-performance websites, brand systems, and reliable digital platforms.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Querétaro",
@@ -41,7 +41,7 @@ export function WebsiteSchema() {
     name: "Noctra Studio",
     url: "https://noctra.studio",
     description:
-      "Strategic web development for businesses that need measurable results.",
+      "Clarity, structure, and reliable digital execution for modern businesses.",
     inLanguage: ["en", "es"],
     potentialAction: {
       "@type": "SearchAction",
@@ -69,7 +69,7 @@ export function LocalBusinessSchema() {
     url: "https://noctra.studio",
     email: "hola@noctra.studio",
     description:
-      "Strategic web development studio in Querétaro, Mexico. Websites that generate measurable ROI.",
+      "Engineering-first digital studio in Querétaro, Mexico. We build clear, reliable digital platforms for modern businesses.",
     address: {
       "@type": "PostalAddress",
       addressLocality: "Querétaro",
@@ -106,9 +106,9 @@ export function ServiceSchema() {
   const services = [
     {
       "@type": "Service",
-      name: "Professional Website Development",
+      name: "High-Performance Websites",
       description:
-        "Convert visitors into clients while you sleep. Forms that generate qualified leads, speed that keeps visitors (+40% conversion), technical SEO, and analytics showing real ROI.",
+        "Professional websites built for speed, clarity, and a stronger digital presence.",
       provider: { "@type": "Organization", name: "Noctra Studio" },
       areaServed: { "@type": "Country", name: "Mexico" },
       offers: {
@@ -127,9 +127,9 @@ export function ServiceSchema() {
     },
     {
       "@type": "Service",
-      name: "E-commerce Development",
+      name: "Brand Systems",
       description:
-        "From visit to sale in 3 clicks. Conversion-oriented catalog, frictionless purchase process, inventory integration, and real-time sales dashboard.",
+        "Brand systems translated into clear digital rules, reusable layouts, and consistent user experience.",
       provider: { "@type": "Organization", name: "Noctra Studio" },
       areaServed: { "@type": "Country", name: "Mexico" },
       offers: {
@@ -148,9 +148,9 @@ export function ServiceSchema() {
     },
     {
       "@type": "Service",
-      name: "Custom Web Systems",
+      name: "Reliable Digital Platforms",
       description:
-        "Recover 15+ hours weekly automating manual processes. Custom CRM, management systems that eliminate spreadsheets, integrations between your tools.",
+        "Custom digital platforms, portals, and workflows designed to stay clear, stable, and easy to manage.",
       provider: { "@type": "Organization", name: "Noctra Studio" },
       areaServed: { "@type": "Country", name: "Mexico" },
       offers: {
@@ -169,9 +169,9 @@ export function ServiceSchema() {
     },
     {
       "@type": "Service",
-      name: "Maintenance & Growth",
+      name: "Search Foundations",
       description:
-        "Each month faster, more visible, more conversions. Monthly metrics analysis, continuous improvements based on real user behavior, priority support.",
+        "Search-ready site structure, technical SEO essentials, and content organization designed for long-term visibility.",
       provider: { "@type": "Organization", name: "Noctra Studio" },
       areaServed: { "@type": "Country", name: "Mexico" },
       offers: {

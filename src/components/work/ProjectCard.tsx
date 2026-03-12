@@ -1,20 +1,11 @@
 "use client";
 
-import { useState } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
 import {
   ArrowRight,
-  Activity,
   CheckCircle2,
-  ChevronDown,
-  Target,
-  Milestone,
-  ArrowLeftRight,
-  XCircle,
-  BarChart3,
-  Globe,
   Star,
 } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
@@ -67,16 +58,51 @@ export function ProjectCard({
   const t = useTranslations("WorkPage");
   const locale = useLocale();
 
-  const [expandedResults, setExpandedResults] = useState(false);
-  const [expandedBeforeAfter, setExpandedBeforeAfter] = useState(false);
-
-  const toggleResults = () => setExpandedResults(!expandedResults);
-  const toggleBeforeAfter = () => setExpandedBeforeAfter(!expandedBeforeAfter);
-
   const phases = ["discovery", "design", "development", "launch"];
   const currentIndex = phases.indexOf(project.status as any);
 
   const overrides = getProjectOverrides(project.slug);
+  const projectMap = t.raw("sections.in_progress.projects") as Record<
+    string,
+    {
+      challenge?: string;
+      solution?: string;
+      system_built?: string;
+      expected_outcome?: string;
+      system_type?: string;
+      status_line?: string;
+      case_study_label?: string;
+    }
+  >;
+
+  const localizedProject =
+    Object.entries(projectMap).find(([key]) =>
+      project.slug.toLowerCase().includes(key),
+    )?.[1] ?? null;
+
+  const challengeText =
+    localizedProject?.challenge ||
+    project.challenge ||
+    overrides?.challenge ||
+    "Clearer digital positioning for a real business challenge.";
+
+  const systemBuiltText =
+    localizedProject?.system_built ||
+    localizedProject?.solution ||
+    project.solution ||
+    overrides?.solution ||
+    "A digital system designed to support visibility, trust, and daily operations.";
+
+  const expectedOutcomeText =
+    localizedProject?.expected_outcome ||
+    "A stronger digital foundation that supports long-term growth.";
+
+  const systemType = localizedProject?.system_type;
+  const statusLine = localizedProject?.status_line;
+  const projectStatusLabel =
+    (project.status as string) === "completed"
+      ? t("sections.in_progress.labels.completed_status")
+      : t("sections.in_progress.labels.active_status");
 
   return (
     <motion.div
@@ -88,16 +114,27 @@ export function ProjectCard({
       <div className="flex flex-col mb-8">
         <div className="flex items-start justify-between gap-4 mb-2">
           <h3 className="text-3xl font-bold tracking-tight">{project.name}</h3>
-          {isCompletedVariant && (
-            <span className="px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 shrink-0">
-              Completed
-            </span>
-          )}
+          <span
+            className={cn(
+              "px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest shrink-0",
+              (project.status as string) === "completed"
+                ? "bg-emerald-500/10 border border-emerald-500/20 text-emerald-500"
+                : "bg-white/5 border border-white/10 text-neutral-300",
+            )}>
+            {projectStatusLabel}
+          </span>
         </div>
         <p className="text-sm text-neutral-300 font-mono uppercase tracking-wider">
           {project.industry}
         </p>
-        <p className="text-neutral-400 mt-2">{project.tagline}</p>
+        <div className="mt-4 flex flex-wrap items-center gap-3">
+          {systemType ? (
+            <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-500">
+              {systemType}
+            </span>
+          ) : null}
+          <p className="text-neutral-400">{project.tagline}</p>
+        </div>
       </div>
 
       <ProjectMockup project={project} />
@@ -105,30 +142,35 @@ export function ProjectCard({
       <div className="space-y-8 flex-grow">
         <div className="space-y-4">
           <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
-            {locale === "es" ? "El reto" : "The challenge"}
+            {t("sections.in_progress.labels.challenge")}
           </h4>
           <p className="text-neutral-400 leading-relaxed">
-            {overrides?.challenge ||
-              project.challenge ||
-              "Conquering new heights."}
+            {challengeText}
           </p>
         </div>
 
         <div className="space-y-4">
           <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
-            {locale === "es" ? "Nuestra solución" : "Our solution"}
+            {t("sections.in_progress.labels.system_built")}
           </h4>
           <p className="text-white leading-relaxed">
-            {overrides?.solution ||
-              project.solution ||
-              "Providing tailored strategies."}
+            {systemBuiltText}
+          </p>
+        </div>
+
+        <div className="space-y-4">
+          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
+            {t("sections.in_progress.labels.expected_outcome")}
+          </h4>
+          <p className="text-neutral-300 leading-relaxed">
+            {expectedOutcomeText}
           </p>
         </div>
 
         {/* Visual Timeline Implementation */}
         <div className="pt-8 border-t border-white/5 pb-4">
           <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest mb-8">
-            {locale === "es" ? "Estado del proyecto" : "Project Status"}
+            {t("sections.in_progress.labels.status")}
           </h4>
 
           <div className="relative">
@@ -209,17 +251,18 @@ export function ProjectCard({
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5">
                 <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
                 <span className="text-xs font-mono text-neutral-400">
-                  Currently in{" "}
-                  {project.status.charAt(0).toUpperCase() +
-                    project.status.slice(1)}{" "}
-                  phase · Launching {project.launch_date}
+                  {statusLine ||
+                    `${t("sections.in_progress.labels.in_phase")} ${
+                      project.status.charAt(0).toUpperCase() +
+                      project.status.slice(1)
+                    } · ${t("sections.in_progress.labels.launching")} ${project.launch_date}`}
                 </span>
               </div>
             ) : (
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                 <span className="text-xs font-mono text-neutral-400">
-                  Project completed{" "}
+                  {t("sections.in_progress.labels.completed")}{" "}
                   {project.launch_date ? `· ${project.launch_date}` : ""}
                 </span>
               </div>
@@ -251,7 +294,9 @@ export function ProjectCard({
             <Link
               href={`/${locale}/work/${project.slug}`}
               className="w-full flex items-center justify-center p-3 rounded-xl bg-white text-black font-bold uppercase text-xs tracking-wider border border-white/5 hover:bg-neutral-200 transition-colors">
-              View Case Study <ArrowRight className="w-4 h-4 ml-2" />
+              {localizedProject?.case_study_label ||
+                t("sections.in_progress.labels.view_case_study")}{" "}
+              <ArrowRight className="w-4 h-4 ml-2" />
             </Link>
           </div>
         )}

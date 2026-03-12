@@ -11,7 +11,10 @@ import { Link } from "@/i18n/routing";
 export function ComparisonTable() {
   const t = useTranslations("ServicesPage.comparison");
   const { openQuiz } = useQuiz();
-  const labels = t.raw("labels") as string[];
+  const columns = t.raw("columns") as Array<{
+    title: string;
+    description: string;
+  }>;
   const features = t.raw("features") as Array<{
     name: string;
     values: (string | boolean)[];
@@ -37,13 +40,18 @@ export function ComparisonTable() {
             <thead>
               <tr className="border-b border-neutral-800 bg-neutral-900/50">
                 <th className="p-8 text-xs font-black text-neutral-300 uppercase tracking-widest w-1/4">
-                  Feature
+                  {t("feature_label")}
                 </th>
-                {labels.map((label, i) => (
+                {columns.map((column) => (
                   <th
-                    key={label}
-                    className="p-8 text-center text-sm font-black text-white uppercase tracking-widest">
-                    {label}
+                    key={column.title}
+                    className="p-8 text-center">
+                    <div className="text-sm font-black text-white uppercase tracking-widest">
+                      {column.title}
+                    </div>
+                    <p className="mt-3 text-xs font-medium normal-case tracking-normal text-neutral-400 leading-relaxed">
+                      {column.description}
+                    </p>
                   </th>
                 ))}
               </tr>
@@ -62,7 +70,7 @@ export function ComparisonTable() {
                     {feature.name}
                   </td>
                   {feature.values.map((val, j) => (
-                    <td key={labels[j]} className="p-8 text-center">
+                    <td key={columns[j]?.title ?? `${feature.name}-${j}`} className="p-8 text-center">
                       {feature.isCtaRow ? (
                         val === "CTA_AGENDAR" ? (
                           <Link
@@ -129,12 +137,12 @@ export function ComparisonTable() {
                       exit={{ height: 0, opacity: 0 }}
                       className="px-5 pb-5 border-t border-neutral-800/50 pt-4">
                       <div className="grid grid-cols-1 gap-3">
-                        {labels.map((label, j) => (
+                        {columns.map((column, j) => (
                           <div
-                            key={label}
+                            key={column.title}
                             className="flex items-center justify-between text-sm py-1">
                             <span className="text-neutral-300 font-medium uppercase tracking-widest text-[10px]">
-                              {label}
+                              {column.title}
                             </span>
                             <span className="text-white font-bold text-right max-w-[65%]">
                               {typeof feature.values[j] === "boolean"

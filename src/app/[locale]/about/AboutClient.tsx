@@ -16,11 +16,14 @@ import NextImage from "next/image";
 const FadeIn = ({
   children,
   delay = 0,
+  className,
 }: {
   children: React.ReactNode;
   delay?: number;
+  className?: string;
 }) => (
   <m.div
+    className={className}
     initial={{ opacity: 0, y: 20 }}
     whileInView={{ opacity: 1, y: 0 }}
     viewport={{ once: true }}
@@ -164,12 +167,12 @@ export default function AboutClient() {
             </h2>
           </FadeIn>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-16">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 lg:auto-rows-fr gap-6 mb-16">
             {(t.raw("tech.items") as any[]).map((item, i) => (
-              <FadeIn key={item.label} delay={i * 0.1}>
-                <div className="p-8 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-4">
+              <FadeIn key={item.label} delay={i * 0.1} className="h-full">
+                <div className="p-8 rounded-2xl bg-neutral-900 border border-neutral-800 space-y-4 h-full flex flex-col">
                   <div className="inline-flex px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[10px] font-mono text-neutral-400 uppercase tracking-widest">
-                    STAKED
+                    WHY IT MATTERS
                   </div>
                   <h3 className="text-lg font-bold text-white">{item.label}</h3>
                   <p className="text-sm text-neutral-400 leading-relaxed">

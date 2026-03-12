@@ -2,64 +2,52 @@
 
 import { useTranslations } from "next-intl";
 import {
-  LazyMotion,
-  m,
-  domAnimation,
   AnimatePresence,
+  LazyMotion,
+  domAnimation,
+  m,
   useInView,
 } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import NextImage from "next/image";
 import {
   ArrowRight,
-  Check,
-  ChevronDown,
-  Stethoscope,
-  Scale,
   Briefcase,
   Building2,
-  GraduationCap,
-  ShoppingBag,
-  Shirt,
-  Utensils,
-  Palette,
-  Sparkles,
-  Settings,
-  Presentation,
-  HardHat,
-  Hospital,
-  LayoutPanelLeft,
+  Calculator,
+  Check,
   ExternalLink,
-  Tag,
-  Calendar,
-  Zap,
-  Clock,
-  Package,
-  CircleDollarSign,
-  Lightbulb,
-  Search,
-  ShieldCheck,
+  GraduationCap,
+  Palette,
+  Scale,
+  Settings,
+  ShoppingBag,
+  Sparkles,
+  Stethoscope,
 } from "lucide-react";
-import { useState, useEffect, useRef } from "react";
+import { useEffect, useRef, useState, type TouchEvent } from "react";
 import { cn } from "@/lib/utils";
-
-// Components
 import { PhaseSelector } from "@/components/services/PhaseSelector";
-import { ComparisonTable } from "@/components/services/ComparisonTable";
-import { ServiceFAQ } from "@/components/services/ServiceFAQ";
 import { SmartCTA } from "@/components/services/SmartCTA";
+import { BaselineStandardsSection } from "@/components/services/BaselineStandardsSection";
 import { Button } from "@/components/ui/button";
 
-// Static images map
 const SERVICE_IMAGES = {
   web_dev: "/images/architecture.jpg",
-  ecommerce: "/images/identity.jpg",
-  ai: "/images/ai.jpg",
+  ecommerce: "/images/woodax.jpg",
+  branding: "/images/identity.jpg",
   seo: "/images/seo.jpg",
-  ongoing: "/images/architecture.jpg", // Reusing architecture for now as placeholder
+  ai: "/images/ai.jpg",
 };
 
-// Helper for translation icon keys
+const CONTACT_INTENTS: Record<string, string> = {
+  web_dev: "web_presence",
+  ecommerce: "ecommerce",
+  branding: "branding",
+  seo: "visibility",
+  ai: "automation",
+};
+
 const ICON_MAP: Record<string, any> = {
   "👨‍⚕️": Stethoscope,
   "⚖️": Scale,
@@ -67,52 +55,76 @@ const ICON_MAP: Record<string, any> = {
   "🏢": Building2,
   "🎓": GraduationCap,
   "🛍️": ShoppingBag,
-  "👕": Shirt,
-  "🍽️": Utensils,
   "🎨": Palette,
-  "💄": Sparkles,
   "⚙️": Settings,
-  "📊": Presentation,
-  "🏗️": HardHat,
-  "🏥": Hospital,
-  "🖥️": LayoutPanelLeft,
-  "🛡️": ShieldCheck,
+  "💄": Sparkles,
 };
+
+interface Phase {
+  id: string;
+  label: string;
+}
+
+interface AudienceItem {
+  icon: string;
+  text: string;
+}
+
+interface ContentItem {
+  title: string;
+  description: string;
+}
 
 const MobileServicesSlider = ({
   phases,
   activePhase,
   setActivePhase,
   t,
-}: any) => {
+}: {
+  phases: Phase[];
+  activePhase: string;
+  setActivePhase: (id: string) => void;
+  t: ReturnType<typeof useTranslations>;
+}) => {
   const [touchStart, setTouchStart] = useState<number | null>(null);
   const [touchEnd, setTouchEnd] = useState<number | null>(null);
   const [showHint, setShowHint] = useState(true);
 
-  // Minimum swipe distance (in px)
   const minSwipeDistance = 40;
-
-  const activeIdx = phases.findIndex((p: any) => p.id === activePhase);
+  const activeIdx = phases.findIndex((phase) => phase.id === activePhase);
 
   useEffect(() => {
-    const timer = setTimeout(() => {
-      setShowHint(false);
-    }, 4000);
-    return () => clearTimeout(timer);
+    const timer = window.setTimeout(() => setShowHint(false), 4000);
+    return () => window.clearTimeout(timer);
   }, []);
 
-  const onTouchStart = (e: React.TouchEvent) => {
-    setTouchEnd(null);
-    setTouchStart(e.targetTouches[0].clientX);
-    setShowHint(false); // Hide hint on first interaction
+  const goTo = (idx: number) => {
+    const nextPhase = phases[idx]?.id;
+    if (!nextPhase) return;
+
+    setActivePhase(nextPhase);
+
+    const tabEl = document.getElementById(`mobile-tab-${nextPhase}`);
+    tabEl?.scrollIntoView({
+      behavior: "smooth",
+      inline: "center",
+      block: "nearest",
+    });
   };
 
-  const onTouchMove = (e: React.TouchEvent) => {
-    setTouchEnd(e.targetTouches[0].clientX);
+  const onTouchStart = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(null);
+    setTouchStart(event.targetTouches[0]?.clientX ?? null);
+    setShowHint(false);
+  };
+
+  const onTouchMove = (event: TouchEvent<HTMLDivElement>) => {
+    setTouchEnd(event.targetTouches[0]?.clientX ?? null);
   };
 
   const onTouchEnd = () => {
-    if (!touchStart || !touchEnd) return;
+    if (touchStart === null || touchEnd === null) return;
+
     const distance = touchStart - touchEnd;
     const isLeftSwipe = distance > minSwipeDistance;
     const isRightSwipe = distance < -minSwipeDistance;
@@ -120,47 +132,34 @@ const MobileServicesSlider = ({
     if (isLeftSwipe && activeIdx < phases.length - 1) {
       goTo(activeIdx + 1);
     }
+
     if (isRightSwipe && activeIdx > 0) {
       goTo(activeIdx - 1);
     }
   };
 
-  const goTo = (idx: number) => {
-    const newPhase = phases[idx].id;
-    setActivePhase(newPhase);
-
-    // Scroll tab into view
-    const tabEl = document.getElementById(`mobile-tab-${newPhase}`);
-    if (tabEl) {
-      tabEl.scrollIntoView({
-        behavior: "smooth",
-        inline: "center",
-        block: "nearest",
-      });
-    }
-  };
-
   return (
-    <div className="w-full flex md:hidden flex-col mb-16 overflow-hidden pt-8">
-      {/* 1. PILL TABS */}
-      <div className="w-full px-6 mb-8">
-        <div className="flex overflow-x-auto scrollbar-none gap-3 pb-4 -mx-6 px-6 snap-x">
-          {phases.map((phase: any, idx: number) => {
+    <div className="mb-16 flex w-full flex-col overflow-hidden pt-8 md:hidden">
+      <div className="mb-8 w-full px-6">
+        <div className="-mx-6 flex snap-x gap-3 overflow-x-auto px-6 pb-4 scrollbar-none">
+          {phases.map((phase, idx) => {
             const isActive = phase.id === activePhase;
+
             return (
               <button
                 key={phase.id}
                 id={`mobile-tab-${phase.id}`}
                 onClick={() => goTo(idx)}
                 className={cn(
-                  "flex-shrink-0 flex items-center gap-2 px-4 rounded-full transition-colors snap-center min-h-[44px]",
+                  "min-h-[44px] shrink-0 snap-center rounded-full px-4 transition-colors",
+                  "flex items-center gap-2",
                   isActive
-                    ? "bg-emerald-500/20 border-[1.5px] border-emerald-500"
-                    : "bg-neutral-900 border border-neutral-800 text-neutral-400",
+                    ? "border-[1.5px] border-emerald-500 bg-emerald-500/20"
+                    : "border border-neutral-800 bg-neutral-900 text-neutral-400",
                 )}>
                 <span
                   className={cn(
-                    "text-xs font-mono font-bold",
+                    "font-mono text-xs font-bold",
                     isActive ? "text-emerald-500" : "text-neutral-300",
                   )}>
                   0{idx + 1}
@@ -168,7 +167,7 @@ const MobileServicesSlider = ({
                 <span
                   className={cn(
                     "text-xs font-black uppercase tracking-widest",
-                    isActive ? "text-white" : "",
+                    isActive && "text-white",
                   )}>
                   {phase.label}
                 </span>
@@ -178,135 +177,98 @@ const MobileServicesSlider = ({
         </div>
       </div>
 
-      {/* 2. SWIPEABLE CARDS */}
       <div
-        className="w-full relative overflow-hidden px-6"
-        onTouchStart={onTouchStart}
+        className="relative w-full overflow-hidden px-6"
+        onTouchEnd={onTouchEnd}
         onTouchMove={onTouchMove}
-        onTouchEnd={onTouchEnd}>
+        onTouchStart={onTouchStart}>
         <div
           className="flex flex-row transition-transform duration-[400ms] ease-[cubic-bezier(0.4,0,0.2,1)]"
           style={{ transform: `translateX(-${activeIdx * 100}%)` }}>
-          {phases.map((phase: any) => {
+          {phases.map((phase) => {
             const serviceKey = phase.id;
-            const industriesRaw = t.raw(`best_for.${serviceKey}`);
-            const industries = Array.isArray(industriesRaw)
-              ? industriesRaw.slice(0, 5)
-              : []; // Limit features
-
-            const isCustomSystem = serviceKey === "ai";
-            const isSEO = serviceKey === "seo";
-            const isOngoing = serviceKey === "ongoing";
-
-            let priceValue = t(`${serviceKey}.pricing_label`);
-            try {
-              if (isCustomSystem) {
-                priceValue = t("pricing_breakdown.ai.investment_notes.1").split(
-                  ": ",
-                )[1];
-              } else if (isSEO) {
-                priceValue = t("pricing_breakdown.seo.investment.0.value");
-              } else if (isOngoing) {
-                priceValue = t("pricing_breakdown.ongoing.investment.1.value");
-              }
-            } catch (e) {
-              console.error(e);
-            }
+            const highlights = t.raw(`${serviceKey}.highlights`) as string[];
+            const industries = (t.raw(`best_for.${serviceKey}`) as AudienceItem[])
+              .slice(0, 3);
 
             return (
               <div
                 key={phase.id}
-                className="w-full flex-shrink-0 pr-4 last:pr-0"
+                className="w-full shrink-0 pr-4 last:pr-0"
                 style={{ width: "100%" }}>
-                <div className="bg-[#161616] border border-neutral-800 rounded-[20px] overflow-hidden flex flex-col h-full">
-                  {/* Image Zone (160px) */}
-                  <div className="relative h-[160px] w-full overflow-hidden">
+                <div className="flex h-full flex-col overflow-hidden rounded-[20px] border border-neutral-800 bg-[#161616]">
+                  <div className="relative h-[170px] w-full overflow-hidden">
                     <NextImage
                       src={
-                        SERVICE_IMAGES[
-                          serviceKey as keyof typeof SERVICE_IMAGES
-                        ]
+                        SERVICE_IMAGES[serviceKey as keyof typeof SERVICE_IMAGES]
                       }
                       alt={t(`${serviceKey}.title`)}
                       fill
                       className="object-cover grayscale contrast-125 brightness-75 mix-blend-overlay"
                     />
                     <div className="absolute inset-0 bg-[url('/images/grid-pattern.svg')] opacity-20" />
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-[#161616]/50 to-transparent" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#161616] via-[#161616]/60 to-transparent" />
 
-                    {/* Badge inferior izquierdo */}
-                    <div className="absolute bottom-4 left-4">
-                      <span className="inline-block px-2 py-1 bg-emerald-500 text-black text-[9px] font-black uppercase tracking-widest rounded-sm">
-                        {t(`${serviceKey}.image_label`)}
+                    <div className="absolute left-4 top-4">
+                      <span className="inline-flex rounded-full border border-white/10 bg-white/10 px-3 py-1 text-[10px] font-black uppercase tracking-[0.2em] text-white backdrop-blur-md">
+                        {t(`${serviceKey}.benefit_short`)}
                       </span>
                     </div>
 
-                    {/* Price tag superior derecho */}
-                    <div className="absolute top-4 right-4 bg-white/10 backdrop-blur-md border border-white/10 rounded-full px-3 py-1 flex items-center gap-1.5 shadow-lg">
-                      <Tag className="w-3 h-3 text-emerald-400" />
-                      <span className="text-white font-bold text-xs uppercase tracking-wider">
-                        {priceValue}
+                    <div className="absolute bottom-4 left-4">
+                      <span className="inline-block rounded-sm bg-emerald-500 px-2 py-1 text-[9px] font-black uppercase tracking-widest text-black">
+                        {t(`${serviceKey}.image_label`)}
                       </span>
                     </div>
                   </div>
 
-                  {/* Content Zone */}
-                  <div className="p-6 flex flex-col flex-1">
-                    <h3 className="text-2xl font-bold text-white mb-2 leading-tight">
+                  <div className="flex flex-1 flex-col p-6">
+                    <h3 className="mb-3 text-2xl font-bold text-white">
                       {t(`${serviceKey}.title`)}
                     </h3>
-                    <p className="text-sm text-neutral-400 line-clamp-2 mb-6 leading-relaxed">
-                      {t(`${serviceKey}.focus`)}
+                    <p className="mb-6 text-sm leading-relaxed text-neutral-400">
+                      {t(`${serviceKey}.summary`)}
                     </p>
 
-                    {/* Feature Pills (Max 5, first 2 highlight) */}
-                    <div className="flex flex-wrap gap-2 mb-8">
-                      {industries.map((ind: any, i: number) => {
-                        const isHighlight = i < 2;
-                        return (
-                          <div
-                            key={ind.text}
-                            className={cn(
-                              "px-3 py-1 rounded-full text-[10px] font-bold flex items-center gap-1.5",
-                              isHighlight
-                                ? "bg-emerald-500/10 text-emerald-400 border border-emerald-500/20"
-                                : "bg-neutral-800 text-neutral-400 border border-neutral-700",
-                            )}>
-                            {isHighlight && <Check className="w-3 h-3" />}
-                            {ind.text}
-                          </div>
-                        );
-                      })}
+                    <div className="mb-6 space-y-3">
+                      {highlights.map((item) => (
+                        <div
+                          key={item}
+                          className="flex items-start gap-3 text-sm text-neutral-300">
+                          <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                          <span>{item}</span>
+                        </div>
+                      ))}
                     </div>
 
-                    {/* CTAs */}
+                    <div className="mb-8 flex flex-wrap gap-2">
+                      {industries.map((item) => (
+                        <span
+                          key={item.text}
+                          className="rounded-full border border-neutral-700 bg-neutral-900 px-3 py-1 text-[10px] font-bold uppercase tracking-[0.18em] text-neutral-300">
+                          {item.text}
+                        </span>
+                      ))}
+                    </div>
+
                     <div className="mt-auto flex gap-3">
                       <Link
                         href={{
                           pathname: "/contact",
                           query: {
-                            intent:
-                              serviceKey === "web_dev"
-                                ? "web_presence"
-                                : serviceKey === "ecommerce"
-                                  ? "ecommerce"
-                                  : serviceKey === "ai"
-                                    ? "custom_system"
-                                    : "general",
+                            intent: CONTACT_INTENTS[serviceKey] ?? "discovery",
                             cta: `services_${serviceKey}`,
                           },
                         }}
-                        className="flex-1 bg-emerald-500 text-black text-sm font-black uppercase tracking-widest rounded-xl py-3.5 flex justify-center items-center gap-2 transition-transform active:scale-95">
-                        {t("start_project")} <ArrowRight className="w-4 h-4" />
+                        className="flex flex-1 items-center justify-center gap-2 rounded-xl bg-emerald-500 py-3.5 text-sm font-black uppercase tracking-widest text-black transition-transform active:scale-95">
+                        {t("capabilities.primary_cta")}
+                        <ArrowRight className="h-4 w-4" />
                       </Link>
-                      <button
-                        onClick={() => {
-                          const element = document.getElementById("comparison");
-                          element?.scrollIntoView({ behavior: "smooth" });
-                        }}
-                        className="w-12 h-[52px] bg-neutral-800 rounded-xl flex items-center justify-center text-neutral-400 active:scale-95 transition-transform shrink-0">
-                        <Settings className="w-5 h-5" />
-                      </button>
+                      <Link
+                        href="/work"
+                        className="flex h-[52px] w-12 shrink-0 items-center justify-center rounded-xl bg-neutral-800 text-neutral-300 transition-transform active:scale-95">
+                        <ExternalLink className="h-4 w-4" />
+                      </Link>
                     </div>
                   </div>
                 </div>
@@ -316,50 +278,44 @@ const MobileServicesSlider = ({
         </div>
       </div>
 
-      {/* 4. PROGRESS DOTS */}
-      <div className="flex justify-center items-center gap-2 mt-8 mb-4">
-        {phases.map((phase: any, idx: number) => {
-          const isActive = idx === activeIdx;
-          return (
-            <div
-              key={phase.id}
-              className={cn(
-                "h-1.5 rounded-full transition-all duration-300",
-                isActive ? "w-6 bg-emerald-500" : "w-1.5 bg-neutral-800",
-              )}
-            />
-          );
-        })}
+      <div className="mb-4 mt-8 flex items-center justify-center gap-2">
+        {phases.map((phase, idx) => (
+          <div
+            key={phase.id}
+            className={cn(
+              "h-1.5 rounded-full transition-all duration-300",
+              idx === activeIdx ? "w-6 bg-emerald-500" : "w-1.5 bg-neutral-800",
+            )}
+          />
+        ))}
       </div>
 
-      {/* 5. SWIPE HINT */}
-      <div className="h-6 flex justify-center">
+      <div className="flex h-6 justify-center">
         <AnimatePresence>
           {showHint && (
             <m.div
               initial={{ opacity: 0, y: 5 }}
               animate={{ opacity: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.95 }}
-              className="text-[10px] font-mono text-neutral-300 flex items-center gap-2">
-              &larr; desliza para ver m&aacute;s &rarr;
+              className="flex items-center gap-2 font-mono text-[10px] text-neutral-300">
+              {t("capabilities.swipe_hint")}
             </m.div>
           )}
         </AnimatePresence>
       </div>
 
-      {/* 6. BOTTOM STRIP CTA */}
-      <div className="mt-8 mx-6 bg-[#111111] border border-[#1e1e1e] rounded-[24px] p-8 flex flex-col gap-8">
-        <div className="flex flex-col gap-1 items-start">
-          <span className="text-white font-black text-xl tracking-tight leading-tight">
+      <div className="mx-6 mt-8 flex flex-col gap-8 rounded-[24px] border border-[#1e1e1e] bg-[#111111] p-8">
+        <div className="flex flex-col items-start gap-1">
+          <span className="text-xl font-black leading-tight tracking-tight text-white">
             {t("mobile_banner.question")}
           </span>
-          <span className="text-emerald-500 text-[11px] font-black uppercase tracking-[0.2em]">
+          <span className="text-[11px] font-black uppercase tracking-[0.2em] text-emerald-500">
             {t("mobile_banner.subtitle")}
           </span>
         </div>
         <Link
           href={{ pathname: "/contact", query: { intent: "discovery" } }}
-          className="w-full bg-emerald-500 text-black text-xs font-black uppercase tracking-[0.15em] py-5 rounded-2xl hover:bg-emerald-400 transition-all active:scale-[0.98] text-center shadow-[0_10px_20px_-5px_rgba(16,185,129,0.3)]">
+          className="w-full rounded-2xl bg-emerald-500 py-5 text-center text-xs font-black uppercase tracking-[0.15em] text-black shadow-[0_10px_20px_-5px_rgba(16,185,129,0.3)] transition-all active:scale-[0.98] hover:bg-emerald-400">
           {t("mobile_banner.cta")}
         </Link>
       </div>
@@ -367,333 +323,72 @@ const MobileServicesSlider = ({
   );
 };
 
-// Custom Illustrated Icons for Standards
-const StandardIcons = {
-  Performance: () => (
-    <div className="relative w-16 h-16 mx-auto mb-6 group">
-      <svg
-        viewBox="0 0 64 64"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full">
-        <circle
-          cx="32"
-          cy="32"
-          r="28"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-neutral-800"
-        />
-        <path
-          d="M32 8V12"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-neutral-700"
-        />
-        <path
-          d="M56 32H52"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-neutral-700"
-        />
-        <path
-          d="M32 56V52"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-neutral-700"
-        />
-        <path
-          d="M8 32H12"
-          stroke="currentColor"
-          strokeWidth="2"
-          className="text-neutral-700"
-        />
-        <m.path
-          d="M32 32L50 14"
-          stroke="#10b981"
-          strokeWidth="3"
-          strokeLinecap="round"
-          initial={{ rotate: -90 }}
-          whileInView={{ rotate: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          style={{ originX: "32px", originY: "32px" }}
-        />
-        <circle cx="32" cy="32" r="4" fill="#10b981" />
-        <text
-          x="32"
-          y="48"
-          textAnchor="middle"
-          className="text-[8px] font-black fill-emerald-500/50 uppercase tracking-widest">
-          1.5s
-        </text>
-      </svg>
-      <div className="absolute inset-0 bg-emerald-500/10 blur-xl rounded-full opacity-0 group-hover:opacity-100 transition-opacity" />
-    </div>
-  ),
-  Worldwide: () => (
-    <div className="relative w-16 h-16 mx-auto mb-6 group">
-      <svg
-        viewBox="0 0 64 64"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full">
-        <circle
-          cx="32"
-          cy="32"
-          r="28"
-          stroke="currentColor"
-          strokeWidth="1"
-          className="text-neutral-800"
-        />
-        <ellipse
-          cx="32"
-          cy="32"
-          rx="12"
-          ry="28"
-          stroke="currentColor"
-          strokeWidth="1"
-          className="text-neutral-800"
-        />
-        <line
-          x1="4"
-          y1="32"
-          x2="60"
-          y2="32"
-          stroke="currentColor"
-          strokeWidth="1"
-          className="text-neutral-800"
-        />
-        <m.circle
-          cx="32"
-          cy="12"
-          r="3"
-          fill="#10b981"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity }}
-        />
-        <m.circle
-          cx="52"
-          cy="40"
-          r="3"
-          fill="#10b981"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 0.5 }}
-        />
-        <m.circle
-          cx="12"
-          cy="40"
-          r="3"
-          fill="#10b981"
-          animate={{ opacity: [0.4, 1, 0.4] }}
-          transition={{ duration: 2, repeat: Infinity, delay: 1 }}
-        />
-        <path
-          d="M32 12L52 40L12 40Z"
-          stroke="#10b981"
-          strokeWidth="1"
-          strokeDasharray="4 4"
-          className="opacity-30"
-        />
-      </svg>
-    </div>
-  ),
-  Secure: () => (
-    <div className="relative w-16 h-16 mx-auto mb-6 group">
-      <svg
-        viewBox="0 0 64 64"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-        className="w-full h-full">
-        <path
-          d="M32 6L10 14V30C10 44 32 58 32 58C32 58 54 44 54 30V14L32 6Z"
-          stroke="#10b981"
-          strokeWidth="2"
-          className="fill-emerald-500/5"
-        />
-        <m.path
-          d="M20 32L28 40L44 24"
-          stroke="#10b981"
-          strokeWidth="4"
-          strokeLinecap="round"
-          strokeLinejoin="round"
-          initial={{ pathLength: 0 }}
-          whileInView={{ pathLength: 1 }}
-          transition={{ duration: 0.8, delay: 0.2 }}
-        />
-        <rect
-          x="42"
-          y="10"
-          width="16"
-          height="10"
-          rx="4"
-          className="fill-emerald-500"
-        />
-        <text
-          x="50"
-          y="17"
-          textAnchor="middle"
-          className="text-[6px] font-black fill-black lowercase">
-          99.9%
-        </text>
-      </svg>
-    </div>
-  ),
-};
-
-const PricingBreakdown = ({ serviceKey }: { serviceKey: string }) => {
-  const t = useTranslations("ServicesPage.pricing_breakdown");
-  const labels = t.raw("labels") as any;
-  const data = t.raw(serviceKey) as any;
-
-  if (!data) return null;
+const HowWeHelpSection = () => {
+  const t = useTranslations("ServicesPage.how_we_help");
+  const items = t.raw("items") as ContentItem[];
 
   return (
-    <m.div
-      initial={{ height: 0, opacity: 0 }}
-      animate={{ height: "auto", opacity: 1 }}
-      exit={{ height: 0, opacity: 0 }}
-      transition={{ duration: 0.4, ease: "easeOut" }}
-      className="overflow-hidden">
-      <div className="mt-8 p-8 md:p-10 rounded-[2rem] bg-neutral-950/60 border border-emerald-500/10 backdrop-blur-xl shadow-2xl">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          {/* Left: Included & Deliverables */}
-          <div className="space-y-12">
-            <div>
-              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
-                <Package className="w-3.5 h-3.5 text-emerald-500" />
-                {labels.included}
-              </h5>
-              <ul className="grid grid-cols-1 gap-4">
-                {data.included.map((item: string, i: number) => (
-                  <li
-                    key={item}
-                    className="flex items-start gap-3 text-sm text-neutral-300">
-                    <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
-                    {item}
-                  </li>
-                ))}
-              </ul>
-            </div>
+    <section className="px-6 pb-24 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="mb-12 max-w-3xl">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+            {t("label")}
+          </span>
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
+            {t("title")}
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-neutral-400 md:text-xl">
+            {t("subtitle")}
+          </p>
+        </div>
 
-            <div>
-              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
-                <LayoutPanelLeft className="w-3.5 h-3.5 text-emerald-500" />
-                {labels.deliverables}
-              </h5>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                {data.deliverables.map((item: string, i: number) => (
-                  <div
-                    key={item}
-                    className="px-4 py-3 rounded-xl bg-white/[0.03] border border-white/[0.05] text-sm text-white font-medium flex items-center gap-2">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/40" />
-                    {item}
-                  </div>
-                ))}
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+          {items.map((item, index) => (
+            <div
+              key={item.title}
+              className="rounded-[2rem] border border-neutral-800 bg-neutral-900/20 p-8 backdrop-blur-sm">
+              <div className="mb-4 text-[10px] font-black uppercase tracking-[0.25em] text-neutral-500">
+                0{index + 1}
               </div>
+              <h3 className="mb-4 text-2xl font-bold tracking-tight text-white">
+                {item.title}
+              </h3>
+              <p className="leading-relaxed text-neutral-400">
+                {item.description}
+              </p>
             </div>
-          </div>
-
-          {/* Right: Timeline & Investment */}
-          <div className="space-y-12">
-            <div>
-              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
-                <Clock className="w-3.5 h-3.5 text-emerald-500" />
-                {labels.timeline}
-              </h5>
-              <div className="space-y-4">
-                {data.timeline.map((step: string, i: number) => (
-                  <div
-                    key={step}
-                    className="flex items-center gap-4 group/step">
-                    <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/30 group-last:bg-emerald-500" />
-                    <span className="text-sm text-neutral-400 group-last:text-white group-last:font-bold">
-                      {step}
-                    </span>
-                  </div>
-                ))}
-              </div>
-            </div>
-
-            <div className="pt-8 border-t border-neutral-800">
-              <h5 className="text-[10px] font-black text-neutral-300 uppercase tracking-[0.2em] mb-6 flex items-center gap-3">
-                <CircleDollarSign className="w-3.5 h-3.5 text-emerald-500" />
-                {labels.investment}
-              </h5>
-
-              {data.investment ? (
-                <div className="space-y-3">
-                  {data.investment
-                    .filter((inv: any) => !inv.total)
-                    .map((inv: any, i: number) => (
-                      <div
-                        key={inv.label}
-                        className="flex justify-between text-sm py-1 border-b border-white/[0.03]">
-                        <span className="text-neutral-300">{inv.label}</span>
-                        <span className="text-white font-mono">
-                          {inv.value}
-                        </span>
-                      </div>
-                    ))}
-                  <div className="flex justify-between items-center pt-8 text-2xl font-black text-white">
-                    <span>{labels.total}</span>
-                    <span className="text-emerald-500">
-                      {data.investment.find((inv: any) => inv.total)?.total}
-                    </span>
-                  </div>
-                </div>
-              ) : (
-                <div className="space-y-4">
-                  {data.investment_notes.map((note: string, i: number) => (
-                    <p
-                      key={note}
-                      className="text-sm text-neutral-400 italic font-medium">
-                      {note}
-                    </p>
-                  ))}
-                </div>
-              )}
-
-              {data.note && (
-                <div className="mt-8 p-4 rounded-xl bg-emerald-500/5 border border-emerald-500/10 flex items-start gap-4">
-                  <div className="w-5 h-5 rounded-full bg-emerald-500/20 flex items-center justify-center shrink-0">
-                    <Zap className="w-3 h-3 text-emerald-500" />
-                  </div>
-                  <p className="text-xs text-emerald-500/80 font-medium leading-relaxed">
-                    {data.note}
-                  </p>
-                </div>
-              )}
-            </div>
-          </div>
+          ))}
         </div>
       </div>
-    </m.div>
+    </section>
   );
 };
 
 const ServiceSection = ({
   serviceKey,
-  index,
   image,
 }: {
   serviceKey: string;
-  index: number;
   image: string;
 }) => {
   const t = useTranslations("ServicesPage");
-  const [showExamples, setShowExamples] = useState(false);
-  const [showPricing, setShowPricing] = useState(false);
+  const industries = t.raw(`best_for.${serviceKey}`) as AudienceItem[];
+  const highlights = t.raw(`${serviceKey}.highlights`) as string[];
 
-  // Extract industries data
-  const industriesRaw = t.raw(`best_for.${serviceKey}`);
-  const industries = Array.isArray(industriesRaw) ? industriesRaw : [];
-
-  const examplesRaw = t.raw(`real_examples.items.${serviceKey}`);
-  const examples = Array.isArray(examplesRaw) ? examplesRaw : [];
-
-  const isCustomSystem = serviceKey === "ai";
-  const isSEO = serviceKey === "seo";
-  const isOngoing = serviceKey === "ongoing";
+  const detailCards = [
+    {
+      label: t("capabilities.cards.what_it_is"),
+      value: t(`${serviceKey}.what_it_is`),
+    },
+    {
+      label: t("capabilities.cards.why_it_matters"),
+      value: t(`${serviceKey}.why_it_matters`),
+    },
+    {
+      label: t("capabilities.cards.business_benefit"),
+      value: t(`${serviceKey}.business_benefit`),
+    },
+  ];
 
   return (
     <m.div
@@ -701,191 +396,114 @@ const ServiceSection = ({
       animate={{ opacity: 1, scale: 1 }}
       exit={{ opacity: 0, scale: 0.95 }}
       transition={{ duration: 0.5 }}
-      className="w-full max-w-7xl mx-auto px-6 md:px-8">
-      <div className="grid grid-cols-1 md:grid-cols-12 gap-12 md:gap-24 items-start">
-        {/* Left Column - Visual Anchor & Badges */}
-        <div className="md:col-span-5 relative group">
-          <div className="relative w-full aspect-[4/5] rounded-[2.5rem] overflow-hidden border border-neutral-800 shadow-2xl">
+      className="mx-auto w-full max-w-7xl px-6 md:px-8">
+      <div className="grid grid-cols-1 items-start gap-12 md:grid-cols-12 md:gap-24">
+        <div className="relative group md:col-span-5">
+          <div className="relative aspect-[4/5] w-full overflow-hidden rounded-[2.5rem] border border-neutral-800 shadow-2xl">
             <NextImage
               src={image}
               alt={t(`${serviceKey}.title`)}
               fill
-              className="object-cover grayscale contrast-125 brightness-75 group-hover:scale-105 transition-transform duration-700"
               sizes="(max-width: 768px) 100vw, 50vw"
+              className="object-cover grayscale brightness-75 contrast-125 transition-transform duration-700 group-hover:scale-105"
             />
             <div className="absolute inset-0 bg-gradient-to-t from-neutral-950 via-transparent to-transparent opacity-60" />
 
-            {/* Overlay Label Card (Bottom) */}
-            <div className="absolute bottom-8 left-8 right-8 p-6 rounded-2xl bg-neutral-950/60 backdrop-blur-xl border border-white/10">
-              <span className="inline-block px-3 py-1 rounded-full bg-emerald-500 font-black text-black text-[10px] uppercase tracking-widest mb-3">
-                {t(`${serviceKey}.image_label`)}
-              </span>
-              <h3 className="text-xl font-bold text-white mb-2">
-                {t(`${serviceKey}.title`)}
-              </h3>
-              <p className="text-sm text-neutral-400 line-clamp-2">
-                {t(`${serviceKey}.focus`)}
-              </p>
+            <div className="absolute right-6 top-6">
+              <div className="rounded-xl border border-white/10 bg-white/10 px-4 py-2 text-xs font-black uppercase tracking-widest text-white shadow-2xl backdrop-blur-md">
+                {t(`${serviceKey}.benefit_short`)}
+              </div>
             </div>
 
-            {/* Pricing Badge (Top Right) */}
-            <div className="absolute top-6 right-6">
-              <div className="px-4 py-2 rounded-xl bg-white text-black font-black text-xs uppercase tracking-widest shadow-2xl flex items-center gap-2 transform group-hover:translate-y-[-4px] transition-transform">
-                <Tag className="w-3.5 h-3.5" />
-                {t(`${serviceKey}.pricing_label`)}
-              </div>
+            <div className="absolute bottom-8 left-8 right-8 rounded-2xl border border-white/10 bg-neutral-950/60 p-6 backdrop-blur-xl">
+              <span className="mb-3 inline-block rounded-full bg-emerald-500 px-3 py-1 text-[10px] font-black uppercase tracking-widest text-black">
+                {t(`${serviceKey}.image_label`)}
+              </span>
+              <h3 className="mb-3 text-2xl font-bold text-white">
+                {t(`${serviceKey}.title`)}
+              </h3>
+              <p className="text-sm leading-relaxed text-neutral-300">
+                {t(`${serviceKey}.summary`)}
+              </p>
             </div>
           </div>
         </div>
 
-        {/* Right Column - Problem/Solution/Details */}
-        <div className="md:col-span-7 space-y-12">
-          {/* Problem & Solution Blocks */}
-          <div className="grid grid-cols-1 gap-6">
-            <div className="p-8 bg-white/[0.02] border border-white/[0.05] rounded-[2.5rem] relative overflow-hidden group/box">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-red-500/20" />
-              <h4 className="text-[10px] font-black text-red-500 uppercase tracking-widest mb-3">
-                {t("problem_label")}
-              </h4>
-              <p className="text-xl text-neutral-300 font-medium leading-relaxed">
-                {t(`${serviceKey}.problem`)}
-              </p>
-            </div>
-            <div className="p-8 bg-emerald-500/[0.03] border border-emerald-500/10 rounded-[2.5rem] relative overflow-hidden group/box shadow-[0_20px_40px_-20px_rgba(16,185,129,0.1)]">
-              <div className="absolute top-0 left-0 w-1.5 h-full bg-emerald-500/40" />
-              <h4 className="text-[10px] font-black text-emerald-500 uppercase tracking-widest mb-3">
-                {t("solution_label")}
-              </h4>
-              <p className="text-xl text-white font-medium leading-relaxed">
-                {t(`${serviceKey}.solution`)}
-              </p>
-            </div>
+        <div className="space-y-12 md:col-span-7">
+          <div className="space-y-4">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+              {t("capabilities.detail_label")}
+            </span>
+            <h3 className="text-4xl font-black tracking-tight text-white md:text-5xl">
+              {t(`${serviceKey}.title`)}
+            </h3>
+            <p className="max-w-3xl text-lg leading-relaxed text-neutral-400">
+              {t(`${serviceKey}.summary`)}
+            </p>
           </div>
 
-          {/* Strategic CTA & Pricing Section */}
-          <div className="pt-8 border-t border-neutral-800">
-            <div className="flex flex-col gap-8">
-              <div className="flex flex-col gap-2">
-                <span className="text-3xl font-black text-white tracking-tight">
-                  {isCustomSystem
-                    ? t("pricing_breakdown.ai.investment_notes.1").split(
-                        ": ",
-                      )[1]
-                    : isSEO
-                      ? t("pricing_breakdown.seo.investment.0.value")
-                      : isOngoing
-                        ? t("pricing_breakdown.ongoing.investment.1.value")
-                        : t(`${serviceKey}.pricing_label`)}
-                </span>
-                {(isCustomSystem || isSEO || isOngoing) && (
-                  <span className="text-sm text-neutral-300 italic">
-                    {isCustomSystem
-                      ? `(${t("pricing_breakdown.ai.investment_notes.2")})`
-                      : isSEO
-                        ? `(${t("pricing_breakdown.seo.note")})`
-                        : `(${t("pricing_breakdown.ongoing.note")})`}
-                  </span>
-                )}
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
+            {detailCards.map((card) => (
+              <div
+                key={card.label}
+                className="rounded-[2rem] border border-neutral-800 bg-white/[0.02] p-6">
+                <p className="mb-3 text-[10px] font-black uppercase tracking-[0.22em] text-emerald-500">
+                  {card.label}
+                </p>
+                <p className="leading-relaxed text-neutral-300">{card.value}</p>
               </div>
-
-              <div className="flex flex-wrap items-center gap-6">
-                <Link
-                  href={{
-                    pathname: "/contact",
-                    query: {
-                      intent:
-                        serviceKey === "web_dev"
-                          ? "web_presence"
-                          : serviceKey === "ecommerce"
-                            ? "ecommerce"
-                            : serviceKey === "ai"
-                              ? "custom_system"
-                              : "general",
-                      cta: `services_${serviceKey}`,
-                    },
-                  }}
-                  className="px-8 py-5 rounded-xl bg-emerald-500 text-black font-black text-sm uppercase tracking-widest flex items-center gap-3 hover:bg-emerald-400 transition-all active:scale-95 shadow-[0_15px_30px_-10px_rgba(16,185,129,0.4)]">
-                  {isCustomSystem ? (
-                    <Calendar className="w-5 h-5" />
-                  ) : isSEO ? (
-                    <Search className="w-5 h-5" />
-                  ) : isOngoing ? (
-                    <ShieldCheck className="w-5 h-5" />
-                  ) : (
-                    <ArrowRight className="w-5 h-5" />
-                  )}
-                  {isCustomSystem
-                    ? t("cta_labels.scoping_call")
-                    : isSEO
-                      ? t("cta_labels.site_audit")
-                      : isOngoing
-                        ? t("ongoing.cta")
-                        : t("cta_labels.default")}
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-
-                <button
-                  onClick={() => setShowPricing(!showPricing)}
-                  className="text-sm font-bold text-emerald-500 hover:text-emerald-400 transition-colors flex items-center gap-2 group underline-offset-4 hover:underline">
-                  {showPricing
-                    ? t("pricing_breakdown.labels.hide")
-                    : t("pricing_breakdown.labels.show")}
-                  <ChevronDown
-                    className={cn(
-                      "w-4 h-4 transition-transform duration-300",
-                      showPricing && "rotate-180",
-                    )}
-                  />
-                </button>
-              </div>
-
-              {/* Scoping Call Context Box for Custom Systems */}
-              {isCustomSystem && (
-                <div className="p-8 rounded-[2rem] bg-neutral-900/50 border-l-4 border-emerald-500 space-y-6">
-                  <div className="flex items-center gap-3 text-white font-black text-xs uppercase tracking-[0.2em]">
-                    <Lightbulb className="w-4 h-4 text-emerald-500" />
-                    {t("scoping_call_box.title")}
-                  </div>
-                  <ul className="grid grid-cols-1 sm:grid-cols-2 gap-x-12 gap-y-3">
-                    {t
-                      .raw("scoping_call_box.items")
-                      .map((point: string, i: number) => (
-                        <li
-                          key={point}
-                          className="flex items-center gap-3 text-sm text-neutral-300">
-                          <div className="w-1.5 h-1.5 rounded-full bg-emerald-500/50" />
-                          {point}
-                        </li>
-                      ))}
-                  </ul>
-                  <p className="text-[10px] text-neutral-400 font-black uppercase tracking-[0.3em] pt-2">
-                    {t("scoping_call_box.footer")}
-                  </p>
-                </div>
-              )}
-
-              <AnimatePresence>
-                {showPricing && <PricingBreakdown serviceKey={serviceKey} />}
-              </AnimatePresence>
-            </div>
+            ))}
           </div>
 
-          {/* Best For section */}
-          <div className="pt-8 border-t border-neutral-800">
-            <h4 className="text-[10px] font-black text-neutral-300 uppercase tracking-widest mb-8">
+          <div className="grid grid-cols-1 gap-3 sm:grid-cols-3">
+            {highlights.map((item) => (
+              <div
+                key={item}
+                className="flex items-start gap-3 rounded-2xl border border-neutral-800 bg-neutral-900/30 p-4 text-sm text-neutral-300">
+                <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                <span>{item}</span>
+              </div>
+            ))}
+          </div>
+
+          <div className="flex flex-wrap items-center gap-4 border-t border-neutral-800 pt-8">
+            <Link
+              href={{
+                pathname: "/contact",
+                query: {
+                  intent: CONTACT_INTENTS[serviceKey] ?? "discovery",
+                  cta: `services_${serviceKey}`,
+                },
+              }}
+              className="flex items-center gap-3 rounded-xl bg-emerald-500 px-8 py-5 text-sm font-black uppercase tracking-widest text-black shadow-[0_15px_30px_-10px_rgba(16,185,129,0.4)] transition-all hover:bg-emerald-400 active:scale-95">
+              {t("capabilities.primary_cta")}
+              <ArrowRight className="h-5 w-5" />
+            </Link>
+
+            <Link
+              href="/work"
+              className="flex items-center gap-2 text-sm font-bold text-neutral-300 transition-colors hover:text-white">
+              {t("capabilities.secondary_cta")}
+              <ExternalLink className="h-4 w-4" />
+            </Link>
+          </div>
+
+          <div className="border-t border-neutral-800 pt-8">
+            <h4 className="mb-8 text-[10px] font-black uppercase tracking-widest text-neutral-300">
               {t("best_for.label")}
             </h4>
-            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-              {industries.map((item: any, i: number) => {
-                const Icon = ICON_MAP[item.icon] || Check;
+            <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
+              {industries.map((item) => {
+                const Icon = ICON_MAP[item.icon] || Briefcase;
+
                 return (
                   <div
                     key={item.text}
-                    className="flex items-center gap-4 p-4 rounded-xl border border-neutral-800/50 bg-white/[0.01] hover:border-emerald-500/30 transition-all group/ind">
-                    <div className="w-10 h-10 rounded-lg bg-neutral-800 flex items-center justify-center text-emerald-500 group-hover/ind:bg-emerald-500 group-hover/ind:text-black transition-all">
-                      <Icon className="w-5 h-5" />
+                    className="group/industry flex items-center gap-4 rounded-xl border border-neutral-800/50 bg-white/[0.01] p-4 transition-all hover:border-emerald-500/30">
+                    <div className="flex h-10 w-10 items-center justify-center rounded-lg bg-neutral-800 text-emerald-500 transition-all group-hover/industry:bg-emerald-500 group-hover/industry:text-black">
+                      <Icon className="h-5 w-5" />
                     </div>
-                    <span className="text-sm font-bold text-neutral-300 group-hover/ind:text-white transition-colors">
+                    <span className="text-sm font-bold text-neutral-300 transition-colors group-hover/industry:text-white">
                       {item.text}
                     </span>
                   </div>
@@ -893,127 +511,212 @@ const ServiceSection = ({
               })}
             </div>
           </div>
-
-          {/* Real Examples Collapsible */}
-          <div className="pt-8 border-t border-neutral-800">
-            <button
-              onClick={() => setShowExamples(!showExamples)}
-              className="w-full flex items-center justify-between text-left group">
-              <h4 className="text-[10px] font-black text-neutral-300 uppercase tracking-widest group-hover:text-white transition-colors">
-                {t("real_examples.title")}
-              </h4>
-              <ChevronDown
-                className={cn(
-                  "w-4 h-4 text-neutral-300 transition-transform",
-                  showExamples && "rotate-180 text-emerald-500",
-                )}
-              />
-            </button>
-            <AnimatePresence>
-              {showExamples && (
-                <m.div
-                  initial={{ height: 0, opacity: 0 }}
-                  animate={{ height: "auto", opacity: 1 }}
-                  exit={{ height: 0, opacity: 0 }}
-                  className="overflow-hidden mt-6">
-                  <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-                    {examples.map((example: any, i: number) => (
-                      <div
-                        key={example.name}
-                        className="p-6 rounded-2xl bg-neutral-900/50 border border-neutral-800/50">
-                        <p className="text-xs font-black text-emerald-500 mb-2 uppercase tracking-widest">
-                          {example.name}
-                        </p>
-                        <p className="text-sm text-neutral-400 leading-relaxed font-medium">
-                          {example.desc}
-                        </p>
-                      </div>
-                    ))}
-                  </div>
-                  <Link
-                    href="/work"
-                    className="mt-6 inline-flex items-center gap-2 text-xs font-bold text-neutral-300 hover:text-emerald-500 transition-all uppercase tracking-widest">
-                    {t("real_examples.view_more")}{" "}
-                    <ExternalLink className="w-3 h-3" />
-                  </Link>
-                </m.div>
-              )}
-            </AnimatePresence>
-          </div>
         </div>
       </div>
     </m.div>
   );
 };
 
+const IndustriesSection = () => {
+  const t = useTranslations("ServicesPage.industries");
+  const items = t.raw("items") as Array<{
+    icon: string;
+    title: string;
+    description: string;
+  }>;
+
+  return (
+    <section className="px-6 py-24 md:px-8">
+      <div className="mx-auto max-w-7xl">
+        <div className="mx-auto mb-16 max-w-3xl text-center">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+            {t("label")}
+          </span>
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
+            {t("title")}
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-neutral-400">
+            {t("subtitle")}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-5">
+          {items.map((item) => {
+            const Icon = ICON_MAP[item.icon] || Briefcase;
+
+            return (
+              <div
+                key={item.title}
+                className="rounded-[2rem] border border-neutral-800 bg-neutral-900/20 p-8 backdrop-blur-sm">
+                <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl bg-emerald-500/10 text-emerald-500">
+                  <Icon className="h-6 w-6" />
+                </div>
+                <h3 className="mb-3 text-2xl font-bold tracking-tight text-white">
+                  {item.title}
+                </h3>
+                <p className="leading-relaxed text-neutral-400">
+                  {item.description}
+                </p>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const ROITeaserSection = () => {
+  const t = useTranslations("ServicesPage.roi_teaser");
+
+  return (
+    <section className="px-6 py-24 md:px-8">
+      <div className="mx-auto max-w-7xl rounded-[3rem] border border-neutral-800 bg-white/[0.02] p-8 md:p-12">
+        <div className="grid gap-8 lg:grid-cols-[1.1fr_0.9fr] lg:items-center">
+          <div className="space-y-5">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+              {t("label")}
+            </span>
+            <h2 className="text-3xl font-black tracking-tight text-white md:text-5xl">
+              {t("title")}
+            </h2>
+            <p className="max-w-2xl text-lg leading-relaxed text-neutral-400">
+              {t("subtitle")}
+            </p>
+          </div>
+
+          <div className="rounded-[2rem] border border-white/[0.06] bg-neutral-950/80 p-8">
+            <div className="mb-6 flex h-14 w-14 items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/10">
+              <Calculator className="h-6 w-6 text-emerald-500" />
+            </div>
+            <div className="space-y-4">
+              {(t.raw("points") as string[]).map((point) => (
+                <div
+                  key={point}
+                  className="flex items-start gap-3 text-sm text-neutral-300 md:text-base">
+                  <Check className="mt-0.5 h-4 w-4 shrink-0 text-emerald-500" />
+                  <span>{point}</span>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8">
+              <Link
+                href="/custom-pricing"
+                className="inline-flex items-center gap-2 rounded-full border border-neutral-700 px-6 py-3 text-sm font-bold text-white transition-colors hover:border-white">
+                {t("cta")}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+};
+
+const MiniProcessSection = () => {
+  const t = useTranslations("ServicesPage.mini_process");
+  const steps = t.raw("steps") as ContentItem[];
+
+  return (
+    <section className="px-6 py-24 md:px-8">
+      <div className="mx-auto max-w-7xl rounded-[3rem] border border-neutral-800 bg-neutral-900/30 p-8 backdrop-blur-sm md:p-12">
+        <div className="mb-12 max-w-3xl">
+          <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+            {t("label")}
+          </span>
+          <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
+            {t("title")}
+          </h2>
+          <p className="mt-4 text-lg leading-relaxed text-neutral-400">
+            {t("subtitle")}
+          </p>
+        </div>
+
+        <div className="grid grid-cols-1 gap-6 md:grid-cols-4">
+          {steps.map((step, index) => (
+            <div
+              key={step.title}
+              className="rounded-[2rem] border border-white/[0.06] bg-white/[0.03] p-6">
+              <div className="mb-4 text-[10px] font-black uppercase tracking-[0.3em] text-neutral-500">
+                0{index + 1}
+              </div>
+              <h3 className="mb-3 text-2xl font-bold tracking-tight text-white">
+                {step.title}
+              </h3>
+              <p className="leading-relaxed text-neutral-400">
+                {step.description}
+              </p>
+            </div>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
 export default function ServicesClient() {
   const [activeTab, setActiveTab] = useState("web_dev");
   const t = useTranslations("ServicesPage");
-
-  const phases = [
-    { id: "web_dev", label: t("journey.phases.web_dev") },
-    { id: "ecommerce", label: t("journey.phases.ecommerce") },
-    { id: "ai", label: t("journey.phases.ai") },
-    { id: "seo", label: t("journey.phases.seo") },
-    { id: "ongoing", label: t("journey.phases.ongoing") },
-  ];
-
+  const standards = t.raw("standards.items") as Array<{
+    value: string;
+    description: string;
+  }>;
   const contactRef = useRef<HTMLDivElement>(null);
   const isContactInView = useInView(contactRef, { amount: 0.1 });
 
-  const scrollToSection = (id: string) => {
-    const el = document.getElementById(id);
-    if (el) {
-      el.scrollIntoView({ behavior: "smooth", block: "start" });
-    }
-  };
+  const phases: Phase[] = [
+    { id: "web_dev", label: t("journey.phases.web_dev") },
+    { id: "ecommerce", label: t("journey.phases.ecommerce") },
+    { id: "branding", label: t("journey.phases.branding") },
+    { id: "seo", label: t("journey.phases.seo") },
+    { id: "ai", label: t("journey.phases.ai") },
+  ];
 
   return (
     <LazyMotion features={domAnimation}>
-      <main className="min-h-screen bg-transparent pt-48 pb-0 relative z-0 selection:bg-emerald-500/30">
-        {/* Header */}
-        <section className="w-full max-w-7xl mx-auto px-6 md:px-8 mb-24 text-center">
+      <main className="relative z-0 min-h-screen bg-transparent pb-0 pt-48 selection:bg-emerald-500/30">
+        <section className="mx-auto mb-24 w-full max-w-7xl px-6 text-center md:px-8">
           <m.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}>
-            <h1 className="text-6xl md:text-[9.5rem] font-black tracking-tight mb-8 leading-none bg-gradient-to-b from-white to-white/40 bg-clip-text text-transparent">
+            <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] font-black uppercase tracking-[0.35em] text-emerald-500 backdrop-blur-md">
+              {t("hero_badge")}
+            </span>
+            <h1 className="mb-8 mt-8 bg-gradient-to-b from-white to-white/40 bg-clip-text text-5xl font-black leading-none tracking-tight text-transparent md:text-[8rem]">
               {t("title")}
             </h1>
-            <p className="text-xl md:text-3xl text-neutral-400 max-w-3xl mx-auto leading-relaxed font-medium px-4">
+            <p className="mx-auto max-w-4xl px-4 text-xl font-medium leading-relaxed text-neutral-400 md:text-3xl">
               {t("subtitle")}
             </p>
 
-            <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-10">
-              <m.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}>
+            <div className="flex flex-col items-center justify-center gap-4 pt-10 sm:flex-row">
+              <m.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   asChild
                   size="lg"
-                  className="rounded-full h-12 px-8 text-base bg-white text-black hover:bg-neutral-200 transition-colors duration-300">
+                  className="h-12 rounded-full bg-white px-8 text-base text-black transition-colors duration-300 hover:bg-neutral-200">
                   <Link
                     href={{
                       pathname: "/contact",
-                      query: { intent: "discovery" },
+                      query: { intent: "discovery", cta: "services_hero" },
                     }}>
                     {t("hero_cta_consult")}
                   </Link>
                 </Button>
               </m.div>
-              <m.div
-                whileHover={{ scale: 1.02 }}
-                whileTap={{ scale: 0.98 }}
-                transition={{ duration: 0.15, ease: "easeOut" }}>
+              <m.div whileHover={{ scale: 1.02 }} whileTap={{ scale: 0.98 }}>
                 <Button
                   variant="outline"
                   size="lg"
-                  onClick={() => {
-                    const element = document.getElementById("comparison");
-                    element?.scrollIntoView({ behavior: "smooth" });
-                  }}
-                  className="rounded-full h-12 px-8 text-base border-neutral-800 text-neutral-400 hover:text-white hover:border-white hover:bg-transparent transition-all duration-300">
+                  onClick={() =>
+                    document
+                      .getElementById("capabilities")
+                      ?.scrollIntoView({ behavior: "smooth" })
+                  }
+                  className="h-12 rounded-full border-neutral-800 px-8 text-base text-neutral-400 transition-all duration-300 hover:border-white hover:bg-transparent hover:text-white">
                   {t("hero_cta_pricing")}
                 </Button>
               </m.div>
@@ -1021,7 +724,24 @@ export default function ServicesClient() {
           </m.div>
         </section>
 
-        {/* Interactive Phase Selector */}
+        <HowWeHelpSection />
+
+        <section
+          id="capabilities"
+          className="mx-auto mb-20 w-full max-w-7xl px-6 md:px-8">
+          <div className="mx-auto max-w-3xl text-center">
+            <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+              {t("capabilities.label")}
+            </span>
+            <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
+              {t("capabilities.title")}
+            </h2>
+            <p className="mt-4 text-lg leading-relaxed text-neutral-400">
+              {t("capabilities.subtitle")}
+            </p>
+          </div>
+        </section>
+
         <div className="hidden md:block">
           <PhaseSelector
             phases={phases}
@@ -1030,109 +750,99 @@ export default function ServicesClient() {
           />
         </div>
 
-        {/* Main Experience Display */}
         <div className="hidden md:block">
-          <section
-            id="experience"
-            className="mb-32 min-h-[800px] scroll-mt-48 w-full max-w-7xl mx-auto px-6 md:px-8">
+          <section className="mb-32 min-h-[760px] w-full scroll-mt-48">
             <AnimatePresence mode="wait">
               <ServiceSection
                 key={activeTab}
                 serviceKey={activeTab}
-                index={phases.findIndex((p) => p.id === activeTab)}
                 image={SERVICE_IMAGES[activeTab as keyof typeof SERVICE_IMAGES]}
               />
             </AnimatePresence>
           </section>
         </div>
 
-        {/* Mobile Services Slider Layout */}
         <MobileServicesSlider
           phases={phases}
           activePhase={activeTab}
           setActivePhase={setActiveTab}
           t={t}
-          SERVICE_IMAGES={SERVICE_IMAGES}
         />
 
-        {/* Standards Break */}
-        <div className="w-screen relative left-1/2 -translate-x-1/2 bg-neutral-950 py-32 border-y border-neutral-800 mb-32">
-          <div className="max-w-7xl mx-auto px-6 md:px-8">
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-12 md:gap-8 text-center">
-              <div className="space-y-4 group">
-                <StandardIcons.Performance />
-                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
-                  STANDARD 01
-                </span>
-                <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                  {t("metrics.lighthouse")}
+        <div className="relative left-1/2 mb-32 w-screen -translate-x-1/2 border-y border-neutral-800 bg-neutral-950 py-32">
+          <div className="mx-auto max-w-7xl px-6 md:px-8">
+            <div className="mx-auto mb-16 max-w-3xl text-center">
+              <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+                {t("standards.label")}
+              </span>
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
+                {t("standards.title")}
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-neutral-400">
+                {t("standards.subtitle")}
+              </p>
+            </div>
+
+            <div className="grid grid-cols-1 gap-8 text-center md:grid-cols-3 md:gap-8">
+              {standards.map((item, index) => (
+                <div
+                  key={item.value}
+                  className="group space-y-4 rounded-[2rem] border border-white/[0.05] bg-white/[0.02] p-8">
+                  <span className="text-[10px] font-black uppercase tracking-[0.3em] text-emerald-500">
+                    STANDARD 0{index + 1}
+                  </span>
+                  <div className="text-3xl font-black tracking-tight text-white transition-colors group-hover:text-emerald-400 md:text-5xl">
+                    {item.value}
+                  </div>
+                  <p className="mx-auto max-w-sm leading-relaxed text-neutral-400">
+                    {item.description}
+                  </p>
                 </div>
-              </div>
-              <div className="space-y-4 group">
-                <StandardIcons.Worldwide />
-                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
-                  STANDARD 02
-                </span>
-                <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                  {t("metrics.latency")}
-                </div>
-              </div>
-              <div className="space-y-4 group">
-                <StandardIcons.Secure />
-                <span className="text-[10px] font-black text-emerald-500 uppercase tracking-[0.3em]">
-                  STANDARD 03
-                </span>
-                <div className="text-3xl md:text-5xl font-black tracking-tight text-white group-hover:text-emerald-400 transition-colors">
-                  {t("metrics.uptime")}
-                </div>
-              </div>
+              ))}
             </div>
           </div>
         </div>
 
-        {/* Additional Interactive Sections */}
-        <div
-          id="comparison"
-          className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8">
-          <ComparisonTable />
-        </div>
+        <BaselineStandardsSection />
 
-        <div id="faq" className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8">
-          <ServiceFAQ />
-        </div>
+        <ROITeaserSection />
+
+        <IndustriesSection />
+
+        <MiniProcessSection />
 
         <div
           id="contact"
           ref={contactRef}
-          className="scroll-mt-32 max-w-7xl mx-auto px-6 md:px-8 pb-32">
+          className="mx-auto max-w-7xl scroll-mt-32 px-6 pb-32 md:px-8">
           <SmartCTA activePhase={activeTab} />
         </div>
 
-        {/* Mobile Sticky CTA Bar */}
-        <div className="lg:hidden fixed bottom-0 left-0 w-full p-4 z-50 pointer-events-none">
+        <div className="pointer-events-none fixed bottom-0 left-0 w-full p-4 lg:hidden z-50">
           <m.div
             initial={{ y: 100 }}
             animate={{ y: isContactInView ? 150 : 0 }}
             transition={{ duration: 0.4, ease: "easeOut" }}
-            className="w-full p-4 rounded-2xl bg-neutral-900/90 backdrop-blur-xl border border-white/10 shadow-2xl pointer-events-auto flex items-center justify-between gap-4">
+            className="pointer-events-auto flex w-full items-center justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-900/90 p-4 shadow-2xl backdrop-blur-xl">
             <div className="flex flex-col">
-              <span className="text-[8px] font-black text-emerald-500 uppercase tracking-widest">
-                {activeTab.toUpperCase()}
+              <span className="text-[8px] font-black uppercase tracking-widest text-emerald-500">
+                {t("capabilities.label")}
               </span>
               <span className="text-xs font-bold text-white">
-                {activeTab === "ai"
-                  ? t("pricing_breakdown.ai.investment_notes.1").split(": ")[1]
-                  : activeTab === "seo"
-                    ? t("pricing_breakdown.seo.investment.0.value")
-                    : activeTab === "ongoing"
-                      ? t("pricing_breakdown.ongoing.investment.1.value")
-                      : t(`${activeTab}.pricing_label`)}
+                {t(`${activeTab}.title`)}
               </span>
             </div>
             <Link
-              href="/contact"
-              className="px-6 py-3 rounded-xl bg-white text-black font-black text-xs uppercase tracking-widest flex items-center gap-2">
-              {t("start_project")} <ArrowRight className="w-3 h-3" />
+              href={{
+                pathname: "/contact",
+                query: {
+                  intent: CONTACT_INTENTS[activeTab] ?? "discovery",
+                  cta: `services_sticky_${activeTab}`,
+                },
+              }}
+              className="flex items-center gap-2 rounded-xl bg-white px-6 py-3 text-xs font-black uppercase tracking-widest text-black">
+              {t("smart_cta.primary_cta")}
+              <ArrowRight className="h-3 w-3" />
             </Link>
           </m.div>
         </div>

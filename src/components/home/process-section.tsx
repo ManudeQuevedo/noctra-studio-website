@@ -14,7 +14,6 @@ import {
   BarChart3,
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
-import { cn } from "@/lib/utils";
 import { ReactNode } from "react";
 
 interface StepData {
@@ -40,6 +39,7 @@ export function ProcessSection() {
   const t = useTranslations("Process");
   const stepsData = t.raw("steps") as Record<string, StepData>;
   const labels = t.raw("labels") as {
+    deliverables: string;
     timeline: string;
     involvement: string;
     cta: string;
@@ -59,11 +59,11 @@ export function ProcessSection() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true, margin: "-80px" }}
           transition={{ duration: 0.5, ease: "easeOut" }}
-          className="text-center mb-20 space-y-4">
-          <h2 className="text-3xl md:text-4xl font-bold tracking-tight text-white uppercase italic">
+          className="mb-20 max-w-3xl space-y-5">
+          <h2 className="text-4xl font-bold tracking-tight text-white md:text-5xl">
             {t("title")}
           </h2>
-          <p className="text-base md:text-lg text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg leading-relaxed text-neutral-400 md:text-xl">
             {t("subtitle")}
           </p>
         </m.div>
@@ -122,7 +122,7 @@ export function ProcessSection() {
                 <div className="lg:col-span-7 flex flex-col justify-between space-y-8">
                   <div className="space-y-4">
                     <h4 className="text-xs font-bold uppercase tracking-[0.2em] text-emerald-500 mb-4">
-                      Entregables clave
+                      {labels.deliverables}
                     </h4>
                     <ul className="grid grid-cols-1 md:grid-cols-2 gap-y-3 gap-x-6">
                       {step.deliverables.map((item, i) => (
@@ -185,7 +185,7 @@ export function ProcessSection() {
             transition={{ duration: 0.15, ease: "easeOut" }}>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-2xl hover:bg-emerald-50 transition-all group active:scale-95 shadow-[0_0_40px_-5px_rgba(255,255,255,0.1)]">
+              className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 font-semibold text-black transition-colors group hover:bg-neutral-200">
               {labels.cta}
               <ArrowRight className="w-5 h-5 group-hover:translate-x-1 transition-transform" />
             </Link>

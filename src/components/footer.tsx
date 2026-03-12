@@ -3,68 +3,22 @@
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import {
-  ArrowRight,
   Instagram,
   Mail,
   MapPin,
-  Phone,
-  MessageCircle,
 } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
-import { usePathname } from "next/navigation";
 import NextImage from "next/image";
 
 export function Footer() {
   const t = useTranslations("Footer");
   const tNav = useTranslations("Navigation");
   const year = new Date().getFullYear();
-  const pathname = usePathname();
-
-  const isContactPage = pathname?.endsWith("/contact");
-  const isCareersPage =
-    pathname?.includes("/careers") || pathname?.includes("/talento");
-  const isWorkPage = pathname?.endsWith("/work");
-  const hideCtaRow = isContactPage || isCareersPage || isWorkPage;
 
   return (
     <footer className="bg-[#050505] border-t border-neutral-900 text-neutral-300 font-sans">
-      {/* 1. CTA SECTION */}
-      {!hideCtaRow && (
-        <div className="max-w-7xl mx-auto px-6 lg:px-8 py-12">
-          <div className="p-8 md:p-12 bg-gradient-to-br from-neutral-900 via-neutral-950 to-neutral-900 rounded-[2.5rem] border border-neutral-800 relative overflow-hidden group">
-            {/* Ambient background glow */}
-            <div className="absolute top-0 right-0 w-64 h-64 bg-white/5 rounded-full -mr-32 -mt-32 blur-3xl pointer-events-none group-hover:bg-white/10 transition-colors duration-700" />
-
-            <div className="relative z-10 max-w-2xl">
-              <h3 className="text-3xl md:text-4xl font-bold text-white mb-4 tracking-tight">
-                {t("cta.title")}
-              </h3>
-              <p className="text-lg md:text-xl text-neutral-300 mb-8 leading-relaxed">
-                {t("cta.subtitle")}
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <Link
-                  href={{
-                    pathname: "/contact",
-                    query: { intent: "general", cta: "footer_cta" },
-                  }}
-                  className="inline-flex items-center justify-center gap-2 bg-white text-black px-8 py-4 rounded-2xl font-black hover:bg-neutral-200 transition-all hover:scale-[1.02] active:scale-[0.98]">
-                  {t("cta.button_primary")}
-                  <ArrowRight className="h-5 w-5" />
-                </Link>
-                <Link
-                  href="/work"
-                  className="inline-flex items-center justify-center gap-2 bg-neutral-900 text-white px-8 py-4 rounded-2xl font-bold border border-neutral-800 hover:border-neutral-700 transition-all">
-                  {t("cta.button_secondary")}
-                </Link>
-              </div>
-            </div>
-          </div>
-        </div>
-      )}
-
       <div className="max-w-7xl mx-auto px-6 lg:px-8">
-        {/* 2. MAIN FOOTER GRID */}
+        {/* MAIN FOOTER GRID */}
         <div className="py-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* LOGO + TAGLINE (Col 1: Noctra Studio) */}
           <div className="lg:col-span-4 space-y-6">
@@ -277,41 +231,34 @@ export function Footer() {
 
         {/* 3. BOTTOM BAR (SOCIAL + COPYRIGHT + STATUS) */}
         <div className="py-12 border-t border-neutral-900">
-          <div className="flex flex-col lg:flex-row justify-between items-center gap-10">
-            {/* Left: Metadata & Status */}
-            <div className="flex flex-col items-center lg:items-start gap-4">
-              <div className="flex flex-wrap justify-center lg:justify-start items-center gap-x-4 gap-y-2 text-xs text-neutral-300 font-medium">
+          <div className="flex flex-col gap-8">
+            <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
+              <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-neutral-300 lg:justify-start">
                 <span>{t("copyright", { year: year.toString() })}</span>
                 <span className="hidden sm:inline text-neutral-800">•</span>
                 <span>{t("location")}</span>
               </div>
 
-              <div className="flex items-center gap-6">
-                {/* Professional Status Badge */}
-                <div className="flex items-center gap-4 py-2 px-4 bg-neutral-900/50 rounded-full border border-neutral-800">
-                  <div className="flex items-center gap-2">
-                    <div className="h-1.5 w-1.5 bg-green-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]"></div>
-                    <span className="text-[10px] uppercase tracking-widest text-neutral-400 font-bold">
-                      {t("status.label")}
-                    </span>
-                  </div>
-                  <div className="w-px h-3 bg-neutral-800" />
-                  <span className="text-[10px] uppercase tracking-widest text-neutral-300 font-bold">
-                    {t("status.uptime")}
-                  </span>
-                </div>
-              </div>
-            </div>
-
-            {/* Center: Casual Tagline (Visible on Desktop) */}
-            <div className="hidden xl:block">
-              <p className="text-xs text-neutral-400 font-medium tracking-tight">
+              <p className="text-xs font-medium tracking-tight text-neutral-400">
                 {t("made_with")}
               </p>
             </div>
 
-            {/* Right: Social Media Row */}
-            <div className="flex items-center gap-3">
+            <div className="flex flex-col items-center gap-5 sm:flex-row sm:justify-between">
+              <div className="flex items-center gap-4 rounded-full border border-neutral-800 bg-neutral-900/50 px-4 py-2">
+                <div className="flex items-center gap-2">
+                  <div className="h-1.5 w-1.5 rounded-full bg-green-500 animate-pulse shadow-[0_0_8px_rgba(34,197,94,0.6)]" />
+                  <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-400">
+                    {t("status.label")}
+                  </span>
+                </div>
+                <div className="h-3 w-px bg-neutral-800" />
+                <span className="text-[10px] font-bold uppercase tracking-widest text-neutral-300">
+                  {t("status.uptime")}
+                </span>
+              </div>
+
+              <div className="flex items-center gap-3">
               {[
                 {
                   icon: Instagram,
@@ -334,14 +281,8 @@ export function Footer() {
                   <social.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
                 </Link>
               ))}
+              </div>
             </div>
-          </div>
-
-          {/* Mobile Only Casual Tagline */}
-          <div className="mt-12 xl:hidden text-center">
-            <p className="text-[10px] text-neutral-400 uppercase tracking-[0.2em] font-bold">
-              {t("made_with")}
-            </p>
           </div>
         </div>
       </div>

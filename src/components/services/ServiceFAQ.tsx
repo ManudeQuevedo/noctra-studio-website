@@ -15,13 +15,18 @@ export function ServiceFAQ() {
     <LazyMotion features={domAnimation}>
     <section className="py-24 px-6">
       <div className="max-w-3xl mx-auto">
-        <div className="flex items-center gap-3 mb-12 justify-center">
-          <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
-            <HelpCircle className="w-5 h-5" />
+        <div className="mb-12 text-center">
+          <div className="flex items-center gap-3 mb-4 justify-center">
+            <div className="p-2 rounded-lg bg-emerald-500/10 text-emerald-500">
+              <HelpCircle className="w-5 h-5" />
+            </div>
+            <h2 className="text-3xl font-black text-white tracking-tight uppercase">
+              {t("title")}
+            </h2>
           </div>
-          <h2 className="text-3xl font-black text-white tracking-tight uppercase">
-            {t("title")}
-          </h2>
+          <p className="text-neutral-400 text-lg leading-relaxed">
+            {t("subtitle")}
+          </p>
         </div>
 
         <div className="space-y-4">
