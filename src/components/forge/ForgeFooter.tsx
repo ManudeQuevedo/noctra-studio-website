@@ -1,6 +1,7 @@
 "use client";
 
 import { Link } from "@/i18n/routing";
+import { CrmHomeLink } from "@/components/ui/crm-home-link";
 import { ArrowRight, Instagram } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import NextImage from "next/image";
@@ -15,7 +16,7 @@ export function ForgeFooter() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
           {/* LOGO + TAGLINE */}
           <div className="lg:col-span-4 space-y-6">
-            <Link href="/forge" className="inline-block group">
+            <CrmHomeLink className="inline-block group">
               <div className="flex items-center gap-3">
                 <NextImage
                   src="/favicon-light.svg"
@@ -28,7 +29,7 @@ export function ForgeFooter() {
                   Noctra Forge
                 </span>
               </div>
-            </Link>
+            </CrmHomeLink>
             <p className="text-sm text-neutral-400 leading-relaxed max-w-xs font-medium">
               Construido por diseñadores, para creativos.
             </p>
@@ -57,21 +58,16 @@ export function ForgeFooter() {
                   </a>
                 </li>
                 <li>
-                  <Link
-                    href="/forge/login"
+                  <CrmHomeLink
                     className="text-sm text-neutral-300 hover:text-white transition-colors">
                     Iniciar sesión
-                  </Link>
+                  </CrmHomeLink>
                 </li>
                 <li>
-                  <Link
-                    href={{
-                      pathname: "/forge/login",
-                      query: { mode: "signup", plan: "starter" },
-                    }}
+                  <CrmHomeLink
                     className="text-sm text-neutral-300 hover:text-white transition-colors">
                     Crear cuenta gratis
-                  </Link>
+                  </CrmHomeLink>
                 </li>
               </ul>
             </div>

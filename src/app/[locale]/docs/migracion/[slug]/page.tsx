@@ -10,6 +10,7 @@ import { notFound } from "next/navigation";
 import { Metadata } from "next";
 import Image from "next/image";
 import Link from "next/link";
+import { CrmHomeLink } from "@/components/ui/crm-home-link";
 
 interface Props {
   params: Promise<{ slug: string; locale: string }>;
@@ -102,11 +103,10 @@ export default async function MigrationGuidePage({ params }: Props) {
           )}
         </div>
 
-        <Link
-          href={`/${locale}/forge/migration/new?source=${guide.platform.toLowerCase()}`}
+        <CrmHomeLink
           className="sm:ml-auto w-full sm:w-auto flex-shrink-0 px-5 py-2.5 bg-violet-600 hover:bg-violet-500 text-white rounded-xl text-sm font-medium transition-colors text-center">
           Iniciar migración →
-        </Link>
+        </CrmHomeLink>
       </div>
 
       {/* Prerequisitos */}

@@ -12,7 +12,7 @@ import {
   Zap,
   Info,
 } from "lucide-react";
-import { Link } from "@/i18n/routing";
+import { CrmHomeLink } from "@/components/ui/crm-home-link";
 import { cn } from "@/lib/utils";
 
 export const PricingWithROI = () => {
@@ -88,14 +88,10 @@ export const PricingWithROI = () => {
               ))}
             </div>
 
-            <Link
-              href={{
-                pathname: "/forge/login",
-                query: { mode: "signup", plan: "starter" },
-              }}
+            <CrmHomeLink
               className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-white/5 border border-white/10 text-white font-bold hover:bg-white/10 transition-all active:scale-[0.98]">
               Empezar Gratis
-            </Link>
+            </CrmHomeLink>
           </div>
 
           {/* TIER 2: PRO (HIGHLIGHTED) */}
@@ -163,14 +159,10 @@ export const PricingWithROI = () => {
             </div>
 
             <div className="relative z-10">
-              <Link
-                href={{
-                  pathname: "/forge/login",
-                  query: { mode: "signup", plan: "pro", trial: "true" },
-                }}
+              <CrmHomeLink
                 className="w-full flex items-center justify-center gap-2 py-4 rounded-xl bg-white text-black font-black hover:bg-neutral-200 transition-all active:scale-[0.98]">
                 Probar 14 días <ArrowRight size={18} />
-              </Link>
+              </CrmHomeLink>
             </div>
           </div>
 

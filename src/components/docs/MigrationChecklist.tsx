@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import { CrmHomeLink } from "@/components/ui/crm-home-link";
 
 interface ChecklistItem {
   label: string;
@@ -95,11 +96,10 @@ export default function MigrationChecklist({
 
       {/* CTA si todos los obligatorios están completos */}
       {allRequiredDone && (
-        <a
-          href={`/forge/migration/new?source=${platform.toLowerCase()}`}
+        <CrmHomeLink
           className="mt-6 w-full flex items-center justify-center gap-2 px-6 py-3 bg-violet-600 hover:bg-violet-700 text-white rounded-xl font-medium transition-colors">
           ¡Estoy listo! Iniciar migración desde {platform} →
-        </a>
+        </CrmHomeLink>
       )}
     </div>
   );

@@ -17,6 +17,7 @@ import {
 } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { CrmHomeLink } from "@/components/ui/crm-home-link";
 
 /* ── Types ───────────────────────────────────────── */
 interface CRMPlatform {
@@ -375,15 +376,14 @@ export function MigrationSection() {
           animate={isInView ? "visible" : "hidden"}
           variants={fadeInUp}>
           <div className="flex flex-col sm:flex-row items-center gap-5 w-full justify-center">
-            <Link
-              href="/signup?ref=migration"
+            <CrmHomeLink
               className="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition-all shadow-xl shadow-emerald-500/10 active:scale-[0.98] flex items-center justify-center gap-2 group">
               Migra gratis ahora
               <ArrowRight
                 size={20}
                 className="group-hover:translate-x-1 transition-transform"
               />
-            </Link>
+            </CrmHomeLink>
             <Link
               href="/docs/migracion"
               target="_blank"

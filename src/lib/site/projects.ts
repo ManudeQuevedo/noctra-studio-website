@@ -1,11 +1,13 @@
 import "server-only";
 
-import { cache } from "react";
+import { unstable_cache } from "next/cache";
 import { createPublicSupabaseClient } from "@/lib/site/supabase";
 import type {
   PublicCaseStudyProject,
   PublicProjectCard,
 } from "@/types/site-project";
+
+export const PUBLIC_PROJECTS_TAG = "public-projects";
 
 const PUBLIC_PROJECT_CARD_SELECT = [
   "id",
@@ -35,38 +37,52 @@ const PUBLIC_CASE_STUDY_SELECT = [
   "gallery",
 ].join(", ");
 
-export const getPublicProjects = cache(async (): Promise<PublicProjectCard[]> => {
-  const supabase = createPublicSupabaseClient();
-  const { data, error } = await supabase
-    .from("projects")
-    .select(PUBLIC_PROJECT_CARD_SELECT)
-    .eq("visible", true)
-    .order("sort_order", { ascending: true });
+const getPublicProjectsCached = unstable_cache(
+  async (): Promise<PublicProjectCard[]> => {
+    const supabase = createPublicSupabaseClient();
+    const { data, error } = await supabase
+      .from("projects")
+      .select(PUBLIC_PROJECT_CARD_SELECT)
+      .eq("visible", true)
+      .order("sort_order", { ascending: true });
 
-  if (error) {
-    throw new Error(error.message);
-  }
+    if (error) {
+      throw new Error(error.message);
+    }
 
-  return (data ?? []) as unknown as PublicProjectCard[];
-});
+    return (data ?? []) as unknown as PublicProjectCard[];
+  },
+  ["public-projects:list"],
+  {
+    tags: [PUBLIC_PROJECTS_TAG],
+    revalidate: 300,
+  },
+);
 
-export const getPublicCaseStudySlugs = cache(async (): Promise<string[]> => {
-  const supabase = createPublicSupabaseClient();
-  const { data, error } = await supabase
-    .from("projects")
-    .select("slug")
-    .eq("visible", true)
-    .eq("case_study_enabled", true)
-    .order("sort_order", { ascending: true });
+const getPublicCaseStudySlugsCached = unstable_cache(
+  async (): Promise<string[]> => {
+    const supabase = createPublicSupabaseClient();
+    const { data, error } = await supabase
+      .from("projects")
+      .select("slug")
+      .eq("visible", true)
+      .eq("case_study_enabled", true)
+      .order("sort_order", { ascending: true });
 
-  if (error) {
-    throw new Error(error.message);
-  }
+    if (error) {
+      throw new Error(error.message);
+    }
 
-  return (data ?? []).map(({ slug }) => slug);
-});
+    return (data ?? []).map(({ slug }) => slug);
+  },
+  ["public-projects:slugs"],
+  {
+    tags: [PUBLIC_PROJECTS_TAG],
+    revalidate: 300,
+  },
+);
 
-export const getPublicCaseStudyBySlug = cache(
+const getPublicCaseStudyBySlugCached = unstable_cache(
   async (slug: string): Promise<PublicCaseStudyProject | null> => {
     const supabase = createPublicSupabaseClient();
     const { data, error } = await supabase
@@ -83,4 +99,21 @@ export const getPublicCaseStudyBySlug = cache(
 
     return (data as unknown as PublicCaseStudyProject | null) ?? null;
   },
+  ["public-projects:case-study"],
+  {
+    tags: [PUBLIC_PROJECTS_TAG],
+    revalidate: 300,
+  },
 );
+
+export async function getPublicProjects() {
+  return getPublicProjectsCached();
+}
+
+export async function getPublicCaseStudySlugs() {
+  return getPublicCaseStudySlugsCached();
+}
+
+export async function getPublicCaseStudyBySlug(slug: string) {
+  return getPublicCaseStudyBySlugCached(slug);
+}

@@ -10,6 +10,8 @@ type Props = {
   params: Promise<{ locale: string; slug: string }>;
 };
 
+export const revalidate = 60;
+
 export async function generateStaticParams() {
   const slugs = await getPublicCaseStudySlugs();
   const locales = ["es", "en"];

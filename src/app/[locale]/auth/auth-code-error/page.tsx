@@ -1,6 +1,6 @@
 import { useTranslations } from "next-intl";
-import Link from "next/link";
 import { AlertCircle } from "lucide-react";
+import { CrmHomeLink } from "@/components/ui/crm-home-link";
 
 export default function AuthCodeError() {
   const t = useTranslations("Auth");
@@ -23,11 +23,10 @@ export default function AuthCodeError() {
         </div>
 
         <div className="pt-4">
-          <Link
-            href="/forge/login"
+          <CrmHomeLink
             className="inline-block bg-white text-black px-6 py-3 rounded-lg font-bold hover:bg-neutral-200 transition-colors">
             Try Again
-          </Link>
+          </CrmHomeLink>
         </div>
       </div>
     </div>
