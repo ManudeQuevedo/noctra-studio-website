@@ -24,6 +24,7 @@ export type PublicProjectCard = {
   industry: string;
   status: PublicProjectStatus;
   launch_date: string | null;
+  published_to_site: boolean;
   case_study_enabled: boolean;
   challenge: string | null;
   solution: string | null;

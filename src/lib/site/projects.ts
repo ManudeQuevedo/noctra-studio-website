@@ -17,6 +17,7 @@ const PUBLIC_PROJECT_CARD_SELECT = [
   "industry",
   "status",
   "launch_date",
+  "published_to_site",
   "case_study_enabled",
   "challenge",
   "solution",
@@ -43,7 +44,7 @@ const getPublicProjectsCached = unstable_cache(
     const { data, error } = await supabase
       .from("projects")
       .select(PUBLIC_PROJECT_CARD_SELECT)
-      .eq("visible", true)
+      .eq("published_to_site", true)
       .order("sort_order", { ascending: true });
 
     if (error) {
@@ -65,7 +66,7 @@ const getPublicCaseStudySlugsCached = unstable_cache(
     const { data, error } = await supabase
       .from("projects")
       .select("slug")
-      .eq("visible", true)
+      .eq("published_to_site", true)
       .eq("case_study_enabled", true)
       .order("sort_order", { ascending: true });
 
@@ -89,7 +90,7 @@ const getPublicCaseStudyBySlugCached = unstable_cache(
       .from("projects")
       .select(PUBLIC_CASE_STUDY_SELECT)
       .eq("slug", slug)
-      .eq("visible", true)
+      .eq("published_to_site", true)
       .eq("case_study_enabled", true)
       .maybeSingle();
 

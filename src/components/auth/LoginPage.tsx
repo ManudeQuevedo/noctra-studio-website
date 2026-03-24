@@ -5,7 +5,7 @@ import { createClient } from "@/utils/supabase/client";
 import { Loader2, Lock, Mail, Eye, EyeOff } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
+import { NOCTRA_CRM_HOME_URL } from "@/lib/crm";
 
 export default function LoginPage() {
   const emailInputId = "portal-email";
@@ -18,7 +18,6 @@ export default function LoginPage() {
   const [error, setError] = useState<string | null>(null);
   const [mounted, setMounted] = useState(false);
   const supabase = createClient();
-  const router = useRouter();
 
   useEffect(() => {
     setMounted(true);
@@ -42,8 +41,7 @@ export default function LoginPage() {
       );
       setIsLoading(false);
     } else {
-      router.push("/forge"); // Default redirect for login
-      router.refresh();
+      window.location.assign(NOCTRA_CRM_HOME_URL);
     }
   };
 
