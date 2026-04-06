@@ -97,11 +97,11 @@ const nextConfig: NextConfig = {
             key: 'Content-Security-Policy',
             value: [
               "default-src 'self'",
-              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com",
+              "script-src 'self' 'unsafe-inline' 'unsafe-eval' https://va.vercel-scripts.com https://cdn.noctra.studio https://www.googletagmanager.com https://plausible.io",
               "style-src 'self' 'unsafe-inline'",
               "img-src 'self' blob: data: https: https://cdn.sanity.io https://images.unsplash.com https://placehold.co",
               "font-src 'self' data:",
-              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://vitals.vercel-insights.com https://*.sentry.io https://o172531.ingest.us.sentry.io https://*.sanity.io https://cdn.sanity.io",
+              "connect-src 'self' https://*.supabase.co wss://*.supabase.co https://vitals.vercel-insights.com https://*.sentry.io https://o172531.ingest.us.sentry.io https://*.sanity.io https://cdn.sanity.io https://cdn.noctra.studio",
               "worker-src 'self' blob:",
               "frame-ancestors 'none'",
             ].join('; ')

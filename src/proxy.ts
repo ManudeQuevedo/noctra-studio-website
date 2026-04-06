@@ -27,12 +27,12 @@ export default async function proxy(request: NextRequest) {
   const cspDirectives = [
     "default-src 'self'",
     isDevelopment
-      ? "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live"
-      : "script-src 'self' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com",
+      ? "script-src 'self' 'unsafe-eval' 'unsafe-inline' https://vercel.live https://cdn.noctra.studio https://www.googletagmanager.com https://plausible.io"
+      : "script-src 'self' 'unsafe-inline' https://vercel.live https://va.vercel-scripts.com https://cdn.noctra.studio https://www.googletagmanager.com https://plausible.io",
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://images.unsplash.com https://placehold.co https://*.supabase.co https://cdn.sanity.io",
     "font-src 'self' data:",
-    "connect-src 'self' https://*.supabase.co https://www.googleapis.com https://safebrowsing.googleapis.com https://http-observatory.security.mozilla.org https://vercel.live https://*.sentry.io https://o172531.ingest.us.sentry.io https://*.sanity.io https://api.sanity.io https://cdn.sanity.io",
+    "connect-src 'self' https://*.supabase.co https://www.googleapis.com https://safebrowsing.googleapis.com https://http-observatory.security.mozilla.org https://vercel.live https://*.sentry.io https://o172531.ingest.us.sentry.io https://*.sanity.io https://api.sanity.io https://cdn.sanity.io https://cdn.noctra.studio",
     "worker-src 'self' blob:",
     "frame-src 'self'",
     "object-src 'none'",
