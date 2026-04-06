@@ -32,7 +32,7 @@ export default async function proxy(request: NextRequest) {
     "style-src 'self' 'unsafe-inline'",
     "img-src 'self' data: blob: https://images.unsplash.com https://placehold.co https://*.supabase.co https://cdn.sanity.io",
     "font-src 'self' data:",
-    "connect-src 'self' https://*.supabase.co https://www.googleapis.com https://safebrowsing.googleapis.com https://http-observatory.security.mozilla.org https://vercel.live https://*.sentry.io https://o172531.ingest.us.sentry.io https://*.sanity.io https://api.sanity.io https://cdn.sanity.io https://cdn.noctra.studio",
+    "connect-src 'self' https://*.supabase.co https://www.googleapis.com https://safebrowsing.googleapis.com https://http-observatory.security.mozilla.org https://vercel.live https://*.sentry.io https://o172531.ingest.us.sentry.io https://*.sanity.io https://api.sanity.io https://cdn.sanity.io https://cdn.noctra.studio https://plausible.io",
     "worker-src 'self' blob:",
     "frame-src 'self'",
     "object-src 'none'",
