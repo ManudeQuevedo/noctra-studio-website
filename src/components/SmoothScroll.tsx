@@ -14,10 +14,12 @@ declare global {
 export function SmoothScroll() {
   const pathname = usePathname();
   const isForge = pathname.startsWith("/forge") || pathname.includes("/forge");
+  const prefersNativeScroll =
+    pathname.includes("/services/professional-websites");
 
   useEffect(() => {
-    // Forge uses its own native scroll containers — skip Lenis entirely
-    if (isForge) return;
+    // Some routes rely on native scroll for sticky/editorial behavior.
+    if (isForge || prefersNativeScroll) return;
 
     let lenis: Lenis;
     let animationFrameId: number;
@@ -50,7 +52,7 @@ export function SmoothScroll() {
         delete window.__lenis;
       }
     };
-  }, [isForge]);
+  }, [isForge, prefersNativeScroll]);
 
   return null;
 }

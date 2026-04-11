@@ -3,19 +3,22 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useTranslations } from "next-intl";
 import {
+  ArrowRight,
   Bot,
-  Blocks,
   MonitorSmartphone,
   Search,
-  ShoppingCart,
   SwatchBook,
+  Workflow,
 } from "lucide-react";
+import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/routing";
 
-const icons = [MonitorSmartphone, ShoppingCart, SwatchBook, Search, Bot];
+const icons = [SwatchBook, MonitorSmartphone, Search, Bot];
 
 export function CapabilitiesSection() {
-  const t = useTranslations("HomeCapabilities");
-  const rawItems = t.raw("items") as
+  const t = useTranslations("HomePage.services_section");
+  const tCaps = useTranslations("HomeCapabilities");
+  const rawItems = tCaps.raw("items") as
     | Array<{
         title: string;
         description: string;
@@ -60,11 +63,14 @@ export function CapabilitiesSection() {
             <p className="text-lg leading-relaxed text-neutral-400 md:text-xl">
               {t("subtitle")}
             </p>
+            <p className="max-w-2xl text-sm leading-relaxed text-neutral-300 md:text-base">
+              {t("intro")}
+            </p>
           </m.div>
 
-          <div className="grid gap-6 md:grid-cols-2 xl:grid-cols-3">
+          <div className="grid gap-6 md:grid-cols-2">
             {normalizedItems.map((item, index) => {
-              const Icon = icons[index] ?? Blocks;
+              const Icon = icons[index] ?? Workflow;
 
               return (
                 <m.article
@@ -104,6 +110,24 @@ export function CapabilitiesSection() {
                 </m.article>
               );
             })}
+          </div>
+
+          <div className="mt-10">
+            <Button
+              asChild
+              size="lg"
+              className="h-14 rounded-full bg-white px-8 text-base font-bold text-black transition-all duration-300 hover:bg-emerald-500 hover:text-white"
+            >
+              <Link
+                href={{
+                  pathname: "/contact",
+                  query: { tipo: "consulta", origen: "home-services" },
+                }}
+              >
+                {t("cta")}
+                <ArrowRight className="h-4 w-4" />
+              </Link>
+            </Button>
           </div>
         </div>
       </section>

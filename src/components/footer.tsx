@@ -10,10 +10,66 @@ import {
 import { FaXTwitter } from "react-icons/fa6";
 import NextImage from "next/image";
 
+type FooterItem = {
+  label: string;
+  href?: string;
+  badge?: string;
+};
+
 export function Footer() {
   const t = useTranslations("Footer");
-  const tNav = useTranslations("Navigation");
   const year = new Date().getFullYear();
+
+  const footerColumns: Array<{
+    title: string;
+    items: FooterItem[];
+  }> = [
+    {
+      title: t("sections.studio"),
+      items: [
+        { label: t("links.studio_overview"), href: "/services" },
+        {
+          label: t("links.websites"),
+          href: "/services/professional-websites",
+        },
+        { label: t("links.branding"), href: "/services" },
+        { label: t("links.seo"), href: "/services/optimization" },
+        { label: t("links.automations"), href: "/services/custom-systems" },
+      ],
+    },
+    {
+      title: t("sections.products"),
+      items: [
+        { label: t("links.radar"), href: "/#radar" },
+        { label: t("links.social"), href: "/#social" },
+      ],
+    },
+    {
+      title: t("sections.method"),
+      items: [
+        { label: t("links.method"), href: "/about" },
+        { label: t("links.how_we_build"), href: "/technology-explained" },
+        { label: t("links.discovery"), badge: t("badges.internal") },
+        { label: t("links.proposals"), badge: t("badges.internal") },
+      ],
+    },
+    {
+      title: t("sections.resources"),
+      items: [
+        { label: t("links.insights"), href: "/blog" },
+        { label: t("links.academy"), badge: t("badges.ecosystem") },
+        { label: t("links.guarantee"), href: "/guarantee" },
+      ],
+    },
+    {
+      title: t("sections.company"),
+      items: [
+        { label: t("links.work"), href: "/work" },
+        { label: t("links.contact"), href: "/contact" },
+        { label: t("links.network"), href: "/careers" },
+      ],
+    },
+  ];
 
   return (
     <footer className="bg-[#050505] border-t border-neutral-900 text-neutral-300 font-sans">
@@ -61,177 +117,65 @@ export function Footer() {
           </div>
 
           {/* COLUMNS 2-5 (Grid within grid) */}
-          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-4 gap-8">
-            {/* EMPRESA */}
-            <div>
-              <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">
-                {t("sections.company")}
-              </h4>
-              <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="/"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.home")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/about"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.about")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/work"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.work")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/careers"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {tNav("careers")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/contact"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.contact")}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* SERVICIOS */}
-            <div>
-              <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">
-                {t("sections.services")}
-              </h4>
-              <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="/services/professional-websites"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.websites")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/ecommerce"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.ecommerce")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/custom-systems"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.systems")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={"/services#visual-identity" as any}
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.branding")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/services/optimization"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.seo")}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* RECURSOS */}
-            <div>
-              <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">
-                {t("sections.resources")}
-              </h4>
-              <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="/blog"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.blog")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/guarantee"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.guarantee")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/technology-explained"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.technology")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={{
-                      pathname: "/contact" as any,
-                      query: { tipo: "consulta" },
-                    }}
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("links.consultation")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href={"/#roi-calculator" as any}
-                    className="text-sm text-neutral-300 hover:text-white transition-colors font-bold text-emerald-500/80 hover:text-emerald-400 underline decoration-emerald-500/20 underline-offset-4">
-                    {t("links.roi_calculator")}
-                  </Link>
-                </li>
-              </ul>
-            </div>
-
-            {/* LEGAL */}
-            <div>
-              <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">
-                {t("sections.legal")}
-              </h4>
-              <ul className="space-y-4">
-                <li>
-                  <Link
-                    href="/terms-and-conditions"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("terms_of_service")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/privacy-policy"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("privacy_policy")}
-                  </Link>
-                </li>
-                <li>
-                  <Link
-                    href="/cookie-policy"
-                    className="text-sm text-neutral-300 hover:text-white transition-colors">
-                    {t("cookie_policy")}
-                  </Link>
-                </li>
-              </ul>
-            </div>
+          <div className="lg:col-span-8 grid grid-cols-2 md:grid-cols-3 xl:grid-cols-5 gap-8">
+            {footerColumns.map((column) => (
+              <div key={column.title}>
+                <h4 className="text-xs font-bold text-white uppercase tracking-widest mb-6">
+                  {column.title}
+                </h4>
+                <ul className="space-y-4">
+                  {column.items.map((item) => (
+                    <li key={`${column.title}-${item.label}`}>
+                      {item.href ? (
+                        <Link
+                          href={item.href as any}
+                          className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors">
+                          <span>{item.label}</span>
+                          {item.badge ? (
+                            <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-neutral-400">
+                              {item.badge}
+                            </span>
+                          ) : null}
+                        </Link>
+                      ) : (
+                        <div className="inline-flex items-center gap-2 text-sm text-neutral-500">
+                          <span>{item.label}</span>
+                          {item.badge ? (
+                            <span className="rounded-full border border-white/10 bg-white/[0.03] px-2 py-0.5 text-[9px] font-bold uppercase tracking-widest text-neutral-500">
+                              {item.badge}
+                            </span>
+                          ) : null}
+                        </div>
+                      )}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
           </div>
         </div>
 
         {/* 3. BOTTOM BAR (SOCIAL + COPYRIGHT + STATUS) */}
         <div className="py-12 border-t border-neutral-900">
           <div className="flex flex-col gap-8">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-3 text-xs font-medium text-neutral-400">
+              <Link
+                href="/terms-and-conditions"
+                className="hover:text-white transition-colors">
+                {t("terms_of_service")}
+              </Link>
+              <Link
+                href="/privacy-policy"
+                className="hover:text-white transition-colors">
+                {t("privacy_policy")}
+              </Link>
+              <Link
+                href="/cookie-policy"
+                className="hover:text-white transition-colors">
+                {t("cookie_policy")}
+              </Link>
+            </div>
+
             <div className="flex flex-col items-center gap-4 text-center lg:flex-row lg:items-center lg:justify-between lg:text-left">
               <div className="flex flex-wrap items-center justify-center gap-x-4 gap-y-2 text-xs font-medium text-neutral-300 lg:justify-start">
                 <span>{t("copyright", { year: year.toString() })}</span>

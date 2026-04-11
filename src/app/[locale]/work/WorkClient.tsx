@@ -56,7 +56,7 @@ export default function WorkClient({
     <LazyMotion features={domAnimation}>
       <main className="min-h-screen bg-[#050505] text-white">
         {/* Header */}
-        <section className="pt-32 pb-16 px-6">
+        <section className="pt-48 pb-16 px-6">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <m.div
               initial={{ opacity: 0, scale: 0.95 }}

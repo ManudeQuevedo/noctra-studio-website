@@ -19,38 +19,24 @@ const icons = [
 ];
 
 export function AudienceSection() {
-  const t = useTranslations("HomeAudience");
-  const rawItems = t.raw("items") as
-    | Array<{
-        title: string;
-        description: string;
-      }>
-    | Record<
-        string,
-        {
-          title: string;
-          description: string;
-        }
-      >;
-  const items = Array.isArray(rawItems)
-    ? rawItems
-    : Object.values(rawItems ?? {});
-
-  const normalizedItems = items as Array<{
+  const t = useTranslations("HomePage.solutions");
+  const items = t.raw("items") as Array<{
     title: string;
-    description: string;
+    pain: string;
+    outcome: string;
+    support: string;
   }>;
 
   return (
     <LazyMotion features={domAnimation}>
-      <section className="px-6 py-24 md:px-8 md:py-32">
+      <section id="segments" className="px-6 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-7xl">
           <m.div
             initial={{ opacity: 0, y: 24 }}
             whileInView={{ opacity: 1, y: 0 }}
             viewport={{ once: true, margin: "-80px" }}
             transition={{ duration: 0.5 }}
-            className="mb-14 max-w-3xl space-y-5">
+            className="mb-14 max-w-4xl space-y-5">
             <p className="text-xs font-bold uppercase tracking-[0.24em] text-emerald-400">
               {t("label")}
             </p>
@@ -62,27 +48,70 @@ export function AudienceSection() {
             </p>
           </m.div>
 
-          <div className="grid gap-5 md:grid-cols-2 xl:grid-cols-5">
-            {normalizedItems.map((item, index) => {
+          <div className="grid gap-6 md:grid-cols-3">
+            {items.map((item, index) => {
               const Icon = icons[index] ?? Building2;
+              
+              // Define bento grid spans
+              const spans = [
+                "md:col-span-2", // Profesionistas (Wide)
+                "md:row-span-2", // Real Estate (Tall)
+                "md:col-span-1", // Escuelas (Square)
+                "md:col-span-1", // PyMEs (Square)
+                "md:col-span-3", // Startups (Full Width)
+              ];
 
               return (
                 <m.article
                   key={item.title}
-                  initial={{ opacity: 0, y: 24 }}
-                  whileInView={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.95 }}
+                  whileInView={{ opacity: 1, scale: 1 }}
+                  whileHover={{ y: -5, transition: { duration: 0.2 } }}
                   viewport={{ once: true, margin: "-80px" }}
-                  transition={{ duration: 0.45, delay: index * 0.06 }}
-                  className="rounded-[1.75rem] border border-neutral-800 bg-white/[0.02] p-6 transition-colors duration-300 hover:border-white/20">
-                  <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-white/10 bg-black/40">
-                    <Icon className="h-5 w-5 text-white" />
+                  transition={{ duration: 0.5, delay: index * 0.1 }}
+                  className={`group relative overflow-hidden rounded-[2rem] border border-white/5 bg-white/[0.02] p-8 transition-all duration-500 hover:border-emerald-500/30 hover:bg-emerald-500/[0.02] ${spans[index] || ""}`}>
+                  
+                  {/* Decorative background intensity */}
+                  <div className="absolute -right-10 -top-10 h-32 w-32 rounded-full bg-emerald-500/5 blur-[80px] transition-opacity group-hover:opacity-100" />
+                  
+                  <div className="relative z-10">
+                    <div className="mb-8 flex h-14 w-14 items-center justify-center rounded-[1.25rem] border border-white/10 bg-black/40 shadow-inner group-hover:border-emerald-500/20 group-hover:bg-emerald-500/10 transition-colors">
+                      <Icon className="h-6 w-6 text-neutral-400 group-hover:text-emerald-400 transition-colors" />
+                    </div>
+                    
+                    <h3 className="mb-6 text-2xl font-bold tracking-tight text-white md:text-3xl">
+                      {item.title}
+                    </h3>
+
+                    <div className="space-y-6">
+                      <div className="space-y-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-neutral-500">
+                          {t("pain_label")}
+                        </p>
+                        <p className="text-base leading-relaxed text-neutral-400">
+                          {item.pain}
+                        </p>
+                      </div>
+
+                      <div className="space-y-2">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-neutral-500">
+                          {t("outcome_label")}
+                        </p>
+                        <p className="text-base leading-relaxed text-neutral-300">
+                          {item.outcome}
+                        </p>
+                      </div>
+
+                      <div className="mt-8 rounded-2xl border border-emerald-400/10 bg-emerald-400/5 p-5 backdrop-blur-sm group-hover:border-emerald-400/20 transition-colors">
+                        <p className="text-[10px] font-bold uppercase tracking-[0.25em] text-emerald-400">
+                          {t("support_label")}
+                        </p>
+                        <p className="mt-2 text-sm leading-relaxed text-neutral-200">
+                          {item.support}
+                        </p>
+                      </div>
+                    </div>
                   </div>
-                  <h3 className="mb-3 text-xl font-semibold tracking-tight text-white">
-                    {item.title}
-                  </h3>
-                  <p className="text-sm leading-relaxed text-neutral-400 md:text-base">
-                    {item.description}
-                  </p>
                 </m.article>
               );
             })}

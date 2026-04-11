@@ -278,7 +278,7 @@ export function ProjectCard({
           {project.has_ai_form && (
             <div className="flex items-center gap-2 px-3 py-1.5 bg-blue-500/10 border border-blue-500/20 text-blue-400 rounded-md text-xs font-mono">
               <Star className="w-4 h-4" />
-              <span>AI-Powered Form</span>
+              <span>{t("sections.in_progress.labels.ai_form")}</span>
               {project.form_description && (
                 <span className="opacity-70">
                   {" "}

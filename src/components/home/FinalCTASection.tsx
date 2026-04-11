@@ -7,6 +7,23 @@ import { Link } from "@/i18n/routing";
 
 export function FinalCTASection() {
   const t = useTranslations("HomeFinalCta");
+  const paths = [
+    {
+      title: t("studio.title"),
+      copy: t("studio.copy"),
+      cta: t("studio.cta"),
+      href: {
+        pathname: "/contact" as const,
+        query: { tipo: "consulta", origen: "home-final-studio" },
+      },
+    },
+    {
+      title: t("products.title"),
+      copy: t("products.copy"),
+      cta: t("products.cta"),
+      href: "/#radar",
+    },
+  ];
 
   return (
     <LazyMotion features={domAnimation}>
@@ -29,18 +46,30 @@ export function FinalCTASection() {
             </p>
           </div>
 
-          <div className="mt-10 flex flex-col gap-4 sm:flex-row">
-            <Link
-              href={{ pathname: "/contact", query: { tipo: "consulta" } }}
-              className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-8 py-4 text-base font-semibold text-black transition-colors hover:bg-neutral-200">
-              {t("primary")}
-              <ArrowRight className="h-4 w-4" />
-            </Link>
-            <Link
-              href="/work"
-              className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.03] px-8 py-4 text-base font-semibold text-white transition-colors hover:border-white/25 hover:bg-white/[0.06]">
-              {t("secondary")}
-            </Link>
+          <div className="mt-10 grid gap-4 md:grid-cols-2">
+            {paths.map((path, index) => (
+              <div
+                key={path.title}
+                className="rounded-[1.8rem] border border-white/10 bg-white/[0.03] p-6"
+              >
+                <p className="text-[10px] font-bold uppercase tracking-[0.22em] text-neutral-500">
+                  {index === 0 ? t("studio.label") : t("products.label")}
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold tracking-tight text-white">
+                  {path.title}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-neutral-300 md:text-base">
+                  {path.copy}
+                </p>
+                <Link
+                  href={path.href as never}
+                  className="mt-6 inline-flex items-center gap-3 rounded-full bg-white px-6 py-3 text-sm font-semibold text-black transition-colors hover:bg-emerald-400"
+                >
+                  {path.cta}
+                  <ArrowRight className="h-4 w-4" />
+                </Link>
+              </div>
+            ))}
           </div>
         </m.div>
       </section>

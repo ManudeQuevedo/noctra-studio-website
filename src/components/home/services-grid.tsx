@@ -28,44 +28,37 @@ interface ServicesGridProps {
  * - Linking to detailed service pages
  */
 export function ServicesGrid({ images }: ServicesGridProps) {
-  const t = useTranslations("Services");
+  const t = useTranslations("ServicesPage");
   const tHome = useTranslations("HomePage");
 
   const services = [
     {
-      id: "web",
-      title: t("web_dev_title"),
-      description: t("web_dev_desc"),
-      icon: Code2,
-      image: images?.web,
-    },
-    {
-      id: "branding",
-      title: t("branding_title"),
-      description: t("branding_desc"),
+      id: "identity",
+      title: t("identity.title"),
+      description: t("identity.summary"),
       icon: Palette,
-      image: images?.branding,
+      image: images?.branding || "/images/identity.jpg",
     },
     {
-      id: "ai",
-      title: t("ai_title"),
-      description: t("ai_desc"),
-      icon: Bot,
-      image: images?.ai,
+      id: "performance",
+      title: t("performance.title"),
+      description: t("performance.summary"),
+      icon: Code2,
+      image: images?.web || "/images/architecture.jpg",
     },
     {
-      id: "seo",
-      title: t("seo_title"),
-      description: t("seo_desc"),
+      id: "visibility",
+      title: t("visibility.title"),
+      description: t("visibility.summary"),
       icon: LineChart,
-      image: images?.seo,
+      image: images?.seo || "/images/seo.jpg",
     },
     {
-      id: "ongoing",
-      title: t("ongoing_title"),
-      description: t("ongoing_desc"),
-      icon: ShieldCheck,
-      image: images?.ongoing,
+      id: "efficiency",
+      title: t("efficiency.title"),
+      description: t("efficiency.summary"),
+      icon: Bot,
+      image: images?.ai || "/images/ai.jpg",
     },
   ];
 
@@ -90,18 +83,11 @@ export function ServicesGrid({ images }: ServicesGridProps) {
         </p>
       </m.div>
 
-      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
+      <div className="grid gap-6 grid-cols-1 md:grid-cols-2 lg:grid-cols-4">
         {services.map((service) => {
-          const anchorMap: Record<string, string> = {
-            web: "web-dev",
-            branding: "visual-identity",
-            ai: "ai",
-            seo: "seo",
-            ongoing: "ongoing",
-          };
           return (
             <Link
-              href={{ pathname: "/services", hash: anchorMap[service.id] }}
+              href={{ pathname: "/services", hash: service.id }}
               key={service.id}
               className="block h-full">
               <m.div
@@ -136,16 +122,16 @@ export function ServicesGrid({ images }: ServicesGridProps) {
                     <service.icon className="w-6 h-6" />
                   </div>
 
-                  <h3 className="text-2xl md:text-3xl font-semibold text-white mb-3 group-hover:text-emerald-50 transition-colors">
+                  <h3 className="text-2xl font-semibold text-white mb-3 group-hover:text-emerald-50 transition-colors">
                     {service.title}
                   </h3>
 
-                  <p className="text-base text-neutral-400 leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors flex-1">
+                  <p className="text-sm text-neutral-400 leading-relaxed mb-8 group-hover:text-neutral-300 transition-colors flex-1">
                     {service.description}
                   </p>
                   <div className="flex items-center text-sm font-bold text-emerald-400 opacity-0 -translate-x-4 group-hover:opacity-100 group-hover:translate-x-0 transition-all duration-300 mt-auto">
                     <span className="mr-2 uppercase tracking-widest text-[10px]">
-                      {t("learn_more")}
+                      {t("capabilities.primary_cta")}
                     </span>
                     <ArrowRight className="w-4 h-4" />
                   </div>

@@ -32,7 +32,7 @@ const XIcon = ({ className }: { className?: string }) => (
 );
 
 export function Header() {
-  const { isIntroComplete, showIntro, initialized } = useIntro();
+  const { isIntroComplete, initialized } = useIntro();
   const pathname = usePathname();
   const nextPathname = useNextPathname();
   const t = useTranslations("Navigation");
@@ -53,12 +53,6 @@ export function Header() {
     nextPathname?.includes("/centro-comando");
   const isDashboardPage = nextPathname?.includes("/dashboard");
 
-  const [mounted, setMounted] = React.useState(false);
-
-  React.useEffect(() => {
-    setMounted(true);
-  }, []);
-
   // Prevent flash of navbar on homepage before intro check
   const isHomePage =
     pathname === "/" ||
@@ -66,8 +60,8 @@ export function Header() {
     (pathname as string) === "/es";
   const shouldHide = isHomePage && !initialized;
 
-  // Hide top CTA on pages where it competes with the primary hero CTA.
-  const showStrategyButton = !isContactPage && !isCareersPage && !isHomePage;
+  // Keep the CTA present on key pages while avoiding redundancy on contact/careers.
+  const showDiagnosticButton = !isContactPage && !isCareersPage;
 
   // Close menu on route change
   React.useEffect(() => {
@@ -117,11 +111,30 @@ export function Header() {
   });
 
   const navItems = [
-    { label: t("index"), href: "/" },
-    { label: t("capabilities"), href: "/services" },
+    { label: t("studio"), href: "/services" },
+    { label: t("radar"), href: "/#radar" },
+    { label: t("social"), href: "/#social" },
     { label: t("deployments"), href: "/work" },
-    { label: t("studio"), href: "/about" },
-    { label: t("initiate"), href: "/contact" },
+    { label: t("method"), href: "/about" },
+  ];
+
+  const modelItems = [
+    {
+      eyebrow: t("model.studio.eyebrow"),
+      description: t("model.studio.description"),
+    },
+    {
+      eyebrow: t("model.radar.eyebrow"),
+      description: t("model.radar.description"),
+    },
+    {
+      eyebrow: t("model.social.eyebrow"),
+      description: t("model.social.description"),
+    },
+    {
+      eyebrow: t("model.systems.eyebrow"),
+      description: t("model.systems.description"),
+    },
   ];
 
   if (isForgePage || isStudioPage || isDashboardPage) return null;
@@ -201,7 +214,11 @@ export function Header() {
             </Link>
           </div>
 
-          <div className="flex h-11 items-center sm:h-12">
+          <div className="flex items-center gap-3">
+            <LanguageSwitcher
+              variant="compact"
+              className="h-10 mix-blend-normal border-white/15 bg-black/35 sm:h-11"
+            />
             <button
               onClick={() => setIsOpen(!isOpen)}
               aria-label={isOpen ? "Close menu" : "Open menu"}
@@ -264,7 +281,7 @@ export function Header() {
           }}
           className="relative z-50 overflow-hidden shadow-2xl pointer-events-auto mx-auto mt-6 w-full max-w-[1280px]">
           <div className="flex flex-col w-full h-full relative">
-            {/* Desktop Header Row (Logo + CTA + Menu) */}
+            {/* Desktop Header Row (Logo + Utility + Menu) */}
             <div className="flex items-center justify-between px-8 h-[80px] shrink-0 z-50 relative">
               {/* Left: Logo */}
               <Link
@@ -276,9 +293,14 @@ export function Header() {
                 />
               </Link>
 
-              {/* Right: CTA + Menu */}
-              <div className="flex items-center gap-6 z-50">
-                {showStrategyButton && (
+              {/* Right: Language + CTA + Menu */}
+              <div className="flex items-center gap-4 z-50">
+                <LanguageSwitcher
+                  variant="compact"
+                  className="hidden lg:flex border-white/10 bg-white/[0.04]"
+                />
+
+                {showDiagnosticButton && (
                   <m.div
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
@@ -286,9 +308,9 @@ export function Header() {
                     <Link
                       href={{
                         pathname: "/contact",
-                        query: { tipo: "consulta" },
+                        query: { tipo: "diagnostico", intent: "diagnostic", cta: "header" },
                       }}
-                      className="hidden md:flex items-center justify-center px-6 py-2 bg-white text-black rounded-full text-xs font-bold uppercase tracking-widest hover:bg-neutral-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
+                      className="hidden md:flex items-center justify-center rounded-full border border-white/10 bg-white px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-black hover:bg-neutral-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
                       {t("book_strategy_call")}
                     </Link>
                   </m.div>
@@ -301,10 +323,10 @@ export function Header() {
                   className="flex items-center gap-4 group cursor-pointer rounded-full px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
                   <span
                     className={cn(
-                      "text-xs font-bold uppercase tracking-widest transition-colors duration-300",
+                      "inline-block w-[4.5rem] text-right text-xs font-bold uppercase tracking-widest transition-colors duration-300",
                       isOpen ? "text-neutral-300" : "text-white",
                     )}>
-                    {isOpen ? "CLOSE" : "MENU"}
+                    {isOpen ? t("menu_close") : t("menu_open")}
                   </span>
                   <div
                     className={cn(
@@ -402,23 +424,23 @@ export function Header() {
                     <div className="space-y-12">
                       <div className="space-y-6">
                         <h4 className="text-xs font-bold uppercase text-neutral-300 tracking-widest">
-                          {t("system_capabilities")}
+                          {t("model_label")}
                         </h4>
-                        <ul className="space-y-4">
-                          {[
-                            t("tags.cloud"),
-                            t("tags.ai"),
-                            t("tags.devops"),
-                            t("tags.headless"),
-                          ].map((tag, i) => (
+                        <ul className="space-y-5">
+                          {modelItems.map((item, i) => (
                             <m.li
-                              key={tag}
+                              key={item.eyebrow}
                               initial={{ opacity: 0, x: 10 }}
                               animate={{ opacity: 1, x: 0 }}
                               transition={{ delay: 0.5 + i * 0.1 }}
-                              className="text-sm font-mono text-neutral-400 flex items-center gap-3">
-                              <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                              {tag}
+                              className="space-y-2">
+                              <div className="flex items-center gap-3 text-[11px] font-mono uppercase tracking-widest text-neutral-300">
+                                <div className="w-1.5 h-1.5 bg-emerald-500 rounded-full shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
+                                {item.eyebrow}
+                              </div>
+                              <p className="pl-[18px] text-sm leading-relaxed text-neutral-400">
+                                {item.description}
+                              </p>
                             </m.li>
                           ))}
                         </ul>
@@ -439,28 +461,6 @@ export function Header() {
                         </p>
                       </div>
 
-                      {/* Socials & Lang */}
-                      <div className="flex items-center justify-between pt-8 border-t border-neutral-800/50">
-                        <div className="flex gap-4">
-                          <a
-                            href="https://instagram.com/noctra_studio"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="Instagram"
-                            className="text-neutral-400 hover:text-white transition-colors">
-                            <Instagram className="w-5 h-5" />
-                          </a>
-                          <a
-                            href="https://x.com/NoctraStudio"
-                            target="_blank"
-                            rel="noopener noreferrer"
-                            aria-label="X (formerly Twitter)"
-                            className="text-neutral-400 hover:text-white transition-colors">
-                            <XIcon className="w-5 h-5" />
-                          </a>
-                        </div>
-                        <LanguageSwitcher />
-                      </div>
                     </div>
                   </div>
                 </m.div>
@@ -491,8 +491,30 @@ export function Header() {
             {/* Zero Scroll Layout: Column spanning full height, pushed by padding */}
             {/* Adjusted Spacing: Reduced top padding (pt-20) and Increased bottom padding (pb-24) to lift footer clear of Chatbot */}
             <div className="flex-1 flex flex-col justify-between w-full px-6 pb-24 pt-24">
-              {/* 1. Main Navigation Links (Centered in available space) */}
-              <div className="flex-1 flex flex-col items-center justify-center gap-8">
+              <div className="space-y-6">
+                <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                  <div className="space-y-1">
+                    <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
+                      {t("language_label")}
+                    </p>
+                    <LanguageSwitcher variant="compact" />
+                  </div>
+
+                  {showDiagnosticButton && (
+                    <Link
+                      href={{
+                        pathname: "/contact",
+                        query: { tipo: "diagnostico", intent: "diagnostic", cta: "mobile-menu" },
+                      }}
+                      className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-black"
+                      onClick={() => setIsOpen(false)}>
+                      {t("book_strategy_call")}
+                    </Link>
+                  )}
+                </div>
+
+                {/* 1. Main Navigation Links */}
+                <div className="flex flex-col items-center justify-center gap-8 pt-6">
                 {navItems.map((item, index) => {
                   const isActive = pathname === item.href;
                   return (
@@ -521,9 +543,10 @@ export function Header() {
                     </m.div>
                   );
                 })}
+                </div>
               </div>
 
-              {/* 2. Footer (Status + Socials + Lang) - Pinned Bottom */}
+              {/* 2. Footer (Status + Socials) - Pinned Bottom */}
               <div className="w-full pt-8 border-t border-neutral-800/50">
                 <div className="flex flex-col gap-6">
                   {/* Status Indicator */}
@@ -534,8 +557,8 @@ export function Header() {
                     </span>
                   </div>
 
-                  {/* Socials & Lang */}
-                  <div className="flex items-center justify-between">
+                  {/* Socials */}
+                  <div className="flex items-center justify-center gap-4">
                     <div className="flex gap-4">
                       <a
                         href="https://instagram.com/noctra_studio"
@@ -554,7 +577,6 @@ export function Header() {
                         <XIcon className="w-5 h-5" />
                       </a>
                     </div>
-                    <LanguageSwitcher />
                   </div>
                 </div>
               </div>

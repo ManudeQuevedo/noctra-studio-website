@@ -3,75 +3,205 @@
 import { useTranslations } from "next-intl";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { ChevronDown } from "lucide-react";
+import {
+  ArrowRight,
+  Bot,
+  Search,
+  Sparkles,
+  SquareStack,
+  TrendingUp,
+  Zap,
+} from "lucide-react";
+import { LazyMotion, domAnimation, m } from "framer-motion";
+
+const systemIcons = [SquareStack, Search, Bot, TrendingUp];
 
 export function PageHero() {
   const t = useTranslations("HomePage");
-  const highlights = t.raw("hero.highlights") as string[];
 
   return (
-    <section className="relative flex min-h-screen flex-col items-center justify-center overflow-hidden pt-32 pb-16 text-center z-10 bg-transparent">
-      <div className="max-w-7xl space-y-5 w-full z-30 relative pointer-events-auto px-6">
-        <div className="mb-3 inline-flex max-w-fit items-center justify-center rounded-full border border-emerald-500/20 bg-neutral-900/65 px-3 py-2 md:px-5 md:py-2.5 backdrop-blur-md shadow-[0_0_28px_rgba(16,185,129,0.12)] transition-all hover:border-emerald-400/35 group">
-          <div className="flex flex-wrap items-center justify-center gap-2 md:gap-4">
-            <span className="text-[9px] md:text-xs font-black text-neutral-100 uppercase tracking-[0.14em]">
-              {t("hero.trust_badge.price")}
-            </span>
-            <div className="w-px h-3 bg-neutral-800" />
-            <span className="text-[9px] md:text-xs font-black text-emerald-400 uppercase tracking-[0.16em] animate-[pulse_3s_ease-in-out_infinite]">
-              {t("hero.trust_badge.guarantee")}
-            </span>
-            <div className="w-px h-3 bg-neutral-800" />
-            <span className="text-[9px] md:text-xs font-semibold text-neutral-200 uppercase tracking-[0.14em]">
-              {t("hero.trust_badge.founder")}
-            </span>
+    <LazyMotion features={domAnimation}>
+      <section className="relative z-10 overflow-hidden bg-transparent px-6 pb-20 pt-28 md:px-8 md:pb-28 md:pt-40 lg:pt-44">
+        <div className="mx-auto grid max-w-7xl gap-16 lg:grid-cols-[1.1fr_0.9fr] lg:items-start lg:gap-24">
+          {/* Left Content Column (60% approx) */}
+          <div className="flex flex-col">
+            <m.div
+              initial={{ opacity: 0, y: -8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, ease: "easeOut" }}
+              className="mb-6 flex items-center gap-2">
+              <Sparkles className="h-3.5 w-3.5 text-neutral-500" />
+              <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-neutral-500">
+                {t("hero.label")}
+              </span>
+            </m.div>
+
+            <m.h1
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
+              className="mb-8 max-w-4xl text-5xl font-black tracking-[-0.04em] text-white md:text-7xl lg:text-[4.5rem] lg:leading-[1.1]">
+              {t.rich("hero.title", {
+                br: () => <br className="hidden lg:block" />,
+              })}
+            </m.h1>
+
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.16 }}
+              className="mb-4 space-y-4">
+              <p className="max-w-xl text-lg leading-relaxed text-neutral-400 md:text-xl lg:leading-relaxed">
+                {t("hero.subtitle")}
+              </p>
+            </m.div>
+
+            <m.p
+              initial={{ opacity: 0, y: 15 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.22 }}
+              className="mb-8 text-sm text-neutral-500">
+              {t.rich("hero.product_anchor", {
+                strong: (chunks) => (
+                  <span className="font-semibold text-neutral-300">
+                    {chunks}
+                  </span>
+                ),
+              })}
+            </m.p>
+
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.8, ease: "easeOut", delay: 0.28 }}
+              className="flex flex-col gap-3 sm:flex-row sm:gap-4 lg:gap-4">
+              <Button
+                asChild
+                size="lg"
+                className="h-14 rounded-full bg-white px-8 text-base font-bold text-black transition-all hover:bg-emerald-500 hover:text-white sm:w-auto">
+                <Link
+                  href={{
+                    pathname: "/contact",
+                    query: { tipo: "diagnostico", origen: "hero" },
+                  }}>
+                  {t("hero.primary_cta")}
+                  <ArrowRight className="ml-2 h-4 w-4" />
+                </Link>
+              </Button>
+
+              <Button
+                asChild
+                variant="outline"
+                size="lg"
+                className="h-14 rounded-full border-white/10 bg-white/[0.03] px-8 text-base font-semibold text-white transition-all hover:border-white/20 hover:bg-white/[0.08] sm:w-auto">
+                <Link href={{ pathname: "/", hash: "the-system" }}>
+                  {t("hero.secondary_cta")}
+                </Link>
+              </Button>
+            </m.div>
           </div>
+
+          {/* Right System Panel (40% approx) */}
+          <m.div
+            initial={{ opacity: 0, scale: 0.98, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.14 }}
+            className="relative">
+            <div className="rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-neutral-950/95 via-neutral-950/85 to-emerald-950/20 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl md:p-8">
+              {/* Box Header */}
+              <div className="mb-8 flex items-center justify-between">
+                <div>
+                  <p className="text-[10px] font-bold uppercase tracking-[0.24em] text-emerald-400">
+                    {t("hero.visual_label")}
+                  </p>
+                  <p className="mt-1 text-lg font-semibold tracking-tight text-white">
+                    {t("hero.visual_title")}
+                  </p>
+                </div>
+              </div>
+
+              {/* Bento Grid (Radar vs Studio) */}
+              <div className="grid gap-4 md:grid-cols-2 lg:gap-5">
+                {/* Radar Column */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 rounded-xl border border-rose-500/20 bg-rose-500/5 px-3 py-2">
+                    <div className="h-1 w-1 animate-pulse rounded-full bg-rose-500" />
+                    <p className="text-[9px] font-bold uppercase tracking-widest text-rose-400">
+                      Radar: Detectando
+                    </p>
+                  </div>
+
+                  {[
+                    { label: "Baja autoridad digital", status: "CRÍTICO" },
+                    { label: "Fugas de conversión", status: "ALERTA" },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="rounded-2xl border border-white/5 bg-black/40 p-4 transition-colors hover:border-white/10">
+                      <div className="flex items-center justify-between">
+                        <span className="text-[11px] font-medium text-neutral-400">
+                          {item.label}
+                        </span>
+                        <span className="text-[9px] font-black tracking-tighter text-rose-500/80">
+                          {item.status}
+                        </span>
+                      </div>
+                      <div className="mt-3 h-1 w-full overflow-hidden rounded-full bg-neutral-900">
+                        <m.div
+                          initial={{ width: 0 }}
+                          animate={{ width: "35%" }}
+                          transition={{ duration: 1, delay: 0.5 }}
+                          className="h-full bg-rose-500/40"
+                        />
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                {/* Studio Column */}
+                <div className="space-y-4">
+                  <div className="flex items-center gap-2 rounded-xl border border-emerald-500/20 bg-emerald-500/5 px-3 py-2">
+                    <div className="h-1 w-1 rounded-full bg-emerald-500" />
+                    <p className="text-[9px] font-bold uppercase tracking-widest text-emerald-400">
+                      Studio: Resolviendo
+                    </p>
+                  </div>
+
+                  {[
+                    { label: "Branding de alta gama", icon: Sparkles },
+                    { label: "Web optimizada + conversión", icon: Zap },
+                  ].map((item) => (
+                    <div
+                      key={item.label}
+                      className="flex items-center gap-3 rounded-2xl border border-white/10 bg-white/5 p-4 shadow-sm transition-all hover:bg-white/[0.08]">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg border border-emerald-500/20 bg-emerald-500/10">
+                        <item.icon className="h-4 w-4 text-emerald-400" />
+                      </div>
+                      <span className="text-[12px] font-semibold text-white">
+                        {item.label}
+                      </span>
+                    </div>
+                  ))}
+                </div>
+              </div>
+
+              {/* Single Strong Metric */}
+              <div className="mt-8 rounded-2xl border border-white/5 bg-black/40 py-5 text-center">
+                <m.p
+                  initial={{ scale: 0.9, opacity: 0 }}
+                  animate={{ scale: 1, opacity: 1 }}
+                  transition={{ duration: 0.6, delay: 0.8 }}
+                  className="text-3xl font-black text-white">
+                  +45%
+                </m.p>
+                <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.24em] text-neutral-500">
+                  Conversión Garantizada
+                </p>
+              </div>
+            </div>
+          </m.div>
         </div>
-        <h1 className="text-5xl md:text-6xl lg:text-7xl xl:text-[6.5rem] font-black tracking-tight text-white">
-          {t("hero.title")}
-        </h1>
-
-        <p className="text-lg md:text-xl text-neutral-200 max-w-2xl mx-auto leading-relaxed">
-          {t("hero.subtitle")}
-        </p>
-
-        <p className="text-sm md:text-base text-neutral-400 max-w-xl mx-auto leading-relaxed">
-          {t("hero.supporting")}
-        </p>
-
-        <div className="mx-auto flex max-w-4xl flex-wrap items-center justify-center gap-3 pt-1">
-          {highlights.map((highlight) => (
-            <span
-              key={highlight}
-              className="rounded-full border border-white/10 bg-white/[0.04] px-4 py-2 text-[10px] font-bold uppercase tracking-[0.2em] text-neutral-200 md:text-xs">
-              {highlight}
-            </span>
-          ))}
-        </div>
-
-        <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-5">
-          <Button
-            asChild
-            size="lg"
-            className="rounded-full h-12 px-8 text-base bg-white text-black hover:bg-neutral-200 hover:scale-105 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/80 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
-            <Link href={{ pathname: "/contact", query: { tipo: "consulta" } }}>
-              {t("cta_start")}
-            </Link>
-          </Button>
-          <Button
-            asChild
-            variant="outline"
-            size="lg"
-            className="rounded-full h-12 px-8 text-base border-neutral-500/90 bg-white/[0.03] text-neutral-100 hover:text-white hover:border-white hover:bg-white/[0.08] hover:scale-105 active:scale-95 transition-all duration-300 focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
-            <Link href="/work">{t("cta_work")}</Link>
-          </Button>
-        </div>
-      </div>
-
-      {/* Scroll Indicator */}
-      <div className="absolute bottom-10 left-1/2 -translate-x-1/2 text-neutral-400 animate-bounce">
-        <ChevronDown className="w-8 h-8" />
-      </div>
-    </section>
+      </section>
+    </LazyMotion>
   );
 }

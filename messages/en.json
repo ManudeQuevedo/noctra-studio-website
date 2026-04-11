@@ -319,34 +319,235 @@
   },
   "HomePage": {
     "hero": {
-      "title": "Structured digital systems for real businesses.",
-      "subtitle": "Noctra Studio designs and builds websites, ecommerce experiences, brand systems, search foundations, and AI automations that make your business easier to understand, trust, and run.",
-      "supporting": "For professionals, small and medium businesses, startups, schools, and real estate teams that need clarity, structure, and long-term reliability.",
-      "highlights": [
-        "Web platforms",
-        "E-commerce",
-        "Search visibility",
-        "AI automations"
+      "label": "STUDIO + PROPRIETARY SOFTWARE",
+      "title": "Your reputation deserves a digital presence that closes sales for you.",
+      "subtitle": "We are not an agency. We design systems that detect, correct, and optimize your digital growth.",
+      "product_anchor": "Powered by **Noctra Radar** — our diagnostic and optimization system.",
+      "primary_cta": "Diagnose my digital presence",
+      "secondary_cta": "See how it works",
+      "trust_strip": [
+        "Real results guaranteed by contract",
+        "Premium implementation + Proprietary software",
+        "Conversion architecture for professionals and SMEs"
       ],
-      "trust_badge": {
-        "price": "ENGINEERING STUDIO",
-        "guarantee": "CLARITY + STRUCTURE",
-        "founder": "BUILT FOR LONG-TERM USE"
-      }
+      "visual_label": "How it works",
+      "visual_title": "Studio + products inside one system",
+      "visual_badge": "Hybrid model",
+      "system_steps": [
+        {
+          "step": "01 · Presence",
+          "title": "We define what your business needs to communicate",
+          "description": "Brand, website, and structure built so people understand you quickly and trust you faster."
+        },
+        {
+          "step": "02 · Radar",
+          "title": "We detect what is slowing visibility, SEO, and credibility",
+          "description": "Radar reveals what is currently hurting technical and commercial performance."
+        },
+        {
+          "step": "03 · Studio",
+          "title": "We implement improvements, redesign, and automation",
+          "description": "The Studio executes branding, websites, SEO, and digital workflows as one connected system."
+        },
+        {
+          "step": "04 · Social",
+          "title": "We sustain presence and continuity with software",
+          "description": "Social keeps content and consistency moving so growth does not depend on improvisation."
+        }
+      ],
+      "visual_footer_label": "Why it matters",
+      "visual_footer": "Noctra does not only design or develop. It builds a system where implementation and software reinforce business outcomes."
     },
-    "credibility": "Built with an engineering mindset and a clear, structured process.",
-    "intro_text": "We design digital systems that make businesses easier to understand, easier to trust, and easier to grow.",
-    "manifesto": {
-      "text": "We build [clear digital systems] for organizations that need [structure, reliability, and long-term usability]."
+    "hybrid_model": {
+      "label": "WHAT NOCTRA DOES",
+      "title": "We build the digital foundation that makes a business look credible, show up better, and convert with less friction.",
+      "subtitle": "We help businesses that no longer want to improvise their digital presence. We clarify the brand, improve the website, strengthen search visibility, and organize client acquisition with processes and software that can actually be sustained.",
+      "items": [
+        {
+          "title": "Brand clarity",
+          "description": "We define message, hierarchy, and visual presence so your business makes sense quickly and builds trust."
+        },
+        {
+          "title": "Websites that convert",
+          "description": "We design or restructure websites to explain your offer better and guide people toward the next step."
+        },
+        {
+          "title": "Organic visibility",
+          "description": "We fix structure, technical SEO, and content so the right people can actually find you."
+        },
+        {
+          "title": "More organized acquisition",
+          "description": "We design forms, flows, and automations to reduce friction in inquiries, bookings, and follow-up."
+        },
+        {
+          "title": "Operations strengthened with software",
+          "description": "We use internal systems to diagnose, monitor, and accelerate delivery when that adds real value."
+        }
+      ],
+      "cta": "See how we implement this",
+      "model_label": "The Noctra model",
+      "model_title": "First we solve the problem. Then we turn what repeats into a system.",
+      "model_copy": "That approach avoids generic agency work and also avoids building products that are disconnected from the market.",
+      "model_points": [
+        "The Studio works against real business goals: trust, leads, visibility, and conversion.",
+        "Radar and Social come from operational patterns that show up repeatedly in execution.",
+        "Clients can work with Noctra as a service, as software, or as a combination of both."
+      ],
+      "note_label": "Quick read",
+      "note": "The Noctra difference is not only making a website or a brand. It is having an implementation layer and a software layer that strengthen each other."
+    },
+    "solutions": {
+      "label": "BY BUSINESS TYPE",
+      "title": "Solutions for businesses that need more structured growth.",
+      "subtitle": "Each segment enters through a different pain point, but all of them need the same thing: clarity, trust, and a digital system that supports the business for real.",
+      "pain_label": "Main pain point",
+      "outcome_label": "Transformation",
+      "support_label": "Noctra support",
+      "items": [
+        {
+          "title": "Professionals",
+          "pain": "Your digital presence does not reflect the level of rigor and trust your actual work already has.",
+          "outcome": "You build authority faster and turn visits into better-qualified inquiries.",
+          "support": "Branding, professional website, local SEO, and client-intake automation."
+        },
+        {
+          "title": "Real estate and local businesses",
+          "pain": "Interest comes in scattered and gets lost between weak visibility, slow follow-up, and unclear messaging.",
+          "outcome": "You organize lead capture, response, and commercial structure so interest becomes real opportunities.",
+          "support": "Lead-focused web, local SEO, service or property structure, and sales automation."
+        },
+        {
+          "title": "Schools and institutions",
+          "pain": "Information feels fragmented and that hurts trust, admissions, and communication with families.",
+          "outcome": "Your institution feels more organized, clearer, and more trustworthy from the first interaction.",
+          "support": "Web architecture, content hierarchy, SEO, and admissions automations."
+        },
+        {
+          "title": "SMEs",
+          "pain": "Your business has grown, but your digital presence still looks like an earlier stage.",
+          "outcome": "You get a more credible, visible, and easier-to-run foundation for the next phase of growth.",
+          "support": "Selective rebrand, new website, structural SEO, and internal automations."
+        },
+        {
+          "title": "Startups",
+          "pain": "You need to look solid, explain fast, and scale without rebuilding everything every few months.",
+          "outcome": "You gain a premium presence, a clearer narrative, and a base built to iterate.",
+          "support": "Positioning, high-performance website, foundational SEO, and growth systems."
+        }
+      ]
+    },
+    "the_system": {
+      "label": "CONNECTED ARCHITECTURE",
+      "title": "The Noctra Architecture: Studio + Software in Sync",
+      "subtitle": "We are not a shop of isolated services. We have built an ecosystem where the Studio's human talent is powered by proprietary technology to guarantee scalability and results.",
+      "layer_1": "Intelligence & Diagnosis",
+      "layer_2": "Implementation & Action",
+      "layer_3": "Value & Amplification",
+      "studio": {
+        "eyebrow": "Core Execution",
+        "title": "Noctra Studio",
+        "description": "The executing arm that transforms diagnosis into real assets: high-end branding, high-performance sites, and time-saving automations.",
+        "points": [
+          "Conversion-oriented design",
+          "Premium web architecture",
+          "Technical and structural SEO"
+        ]
+      },
+      "radar": {
+        "eyebrow": "Flagship Product",
+        "title": "Noctra Radar",
+        "description": "Our monitoring and diagnostic system that detects authority, performance, and conversion failures before they affect your business.",
+        "points": [
+          "Leak point detection",
+          "Continuous authority audit",
+          "Technical performance alerts"
+        ]
+      },
+      "social": {
+        "eyebrow": "Product Area",
+        "title": "Noctra Social",
+        "description": "The tool designed to dominate the digital conversation, ensuring consistency and authority across all your social channels.",
+        "points": [
+          "Social authority management",
+          "Strategic planning",
+          "Brand continuity"
+        ]
+      },
+      "discovery": {
+        "eyebrow": "Internal System",
+        "title": "Discovery",
+        "description": "The deep research protocol that precedes every project to eliminate assumptions and base every decision on real data."
+      },
+      "proposals": {
+        "eyebrow": "Internal System",
+        "title": "Proposals",
+        "description": "Our structuring system that ensures full transparency, granular scopes, and a clear critical path for every delivery stage."
+      },
+      "academy": {
+        "eyebrow": "Ecosystem Asset",
+        "title": "Academy",
+        "description": "The repository of knowledge and best practices that elevates the digital criteria of our clients and their internal teams."
+      },
+      "note_label": "SYSTEM GUARANTEE",
+      "note": "The difference of Noctra is not just the final result, but the system that sustains it. Every internal tool ensures that your project is measurable, scalable, and organized."
+    },
+    "radar": {
+      "tagline": "FLAGSHIP PRODUCT",
+      "title": "Noctra Radar shows what is holding your site back before it turns into a business problem.",
+      "copy": "Radar reviews visibility, SEO, trust, and technical health to detect issues, prioritize improvements, and reveal what usually stays hidden.",
+      "surfaces": [
+        "Technical SEO and structure",
+        "Trust signals",
+        "Technical health and performance",
+        "Improvement priorities"
+      ],
+      "points": [
+        "Detects blockers affecting traffic, authority, and conversion.",
+        "Turns technical findings into business priorities.",
+        "Helps decide what to fix first and why.",
+        "Strengthens Studio work with more structured diagnosis and ongoing visibility."
+      ],
+      "overlay_label": "Radar view",
+      "overlay_title": "Prioritized findings you can act on early",
+      "support_label": "Why it strengthens the Noctra model",
+      "support_copy": "Radar does not stop at technical observation. It makes client conversations clearer, guides implementation, and turns invisible problems into useful decisions.",
+      "primary_cta": "Try Radar",
+      "secondary_cta": "See how it fits the Studio"
+    },
+    "social": {
+      "tagline": "SUSTAINED RELEVANCE",
+      "title": "Presence with intent, without the operational load.",
+      "copy": "Noctra Social is the support for your communication to maintain clarity and strategic direction, reducing planning friction and ensuring every message reinforces your authority.",
+      "points": [
+        "High-level consistency: Keep your brand present without relying on improvisation.",
+        "Meaningful workflows: Structure production prioritizing relevance over volume.",
+        "Unified voice: Content aligned with your narrative and strategic tone.",
+        "No operational chaos: Focus talent on what actually moves the business."
+      ],
+      "cta": "Explore Noctra Social",
+      "workflow_label": "Social Workflow",
+      "workflow_title": "Strategic presence with cadence and control",
+      "workflow_badge": "AI Assisted",
+      "pipeline": [
+        "Define content themes and priorities",
+        "Align tone, message, and channel goals",
+        "Accelerate production with AI support",
+        "Publish with continuity and consistency"
+      ],
+      "step_label": "Step {step}",
+      "workflow_note_label": "Where we're headed",
+      "workflow_note": "Social allows your brand to stay present between launches and sales cycles, without the need to create everything from scratch every week."
     },
     "services_section": {
-      "label": "// CAPABILITIES",
-      "title": "What we build",
-      "subtitle": "Clear, reliable digital systems shaped around real business needs."
+      "label": "WE IMPLEMENT THE SYSTEM FOR YOU",
+      "title": "When you need full execution, Noctra Studio builds it with you.",
+      "subtitle": "We do not offer an isolated list of services. We integrate branding, websites, SEO, and automations as parts of one growth system.",
+      "intro": "Each front is designed with business logic: explain better, convert better, operate with less friction, and grow on a more reliable foundation.",
+      "cta": "Talk to Noctra Studio"
     },
-    "cta_start": "Schedule a Discovery Call",
+    "cta_start": "Book a diagnostic",
     "cta_services": "See Capabilities",
-    "cta_work": "See Selected Work"
+    "cta_work": "Explore Noctra Radar"
   },
   "AIAutomationShowcase": {
     "pre_title": "KEY DIFFERENTIATOR",
@@ -394,14 +595,14 @@
   },
   "Metadata": {
     "home": {
-      "title": "Noctra Studio | Engineering-First Digital Studio",
-      "description": "Noctra Studio designs high-performance websites, brand systems, and reliable digital platforms with clarity, structure, and long-term usability.",
-      "keywords": "engineering first studio, high-performance websites, brand systems, digital platforms, SEO foundations, queretaro web studio",
-      "og_title": "Noctra Studio — Clarity for Your Digital Presence",
-      "og_description": "An engineering-first digital studio building clear, reliable websites and digital systems for modern businesses.",
+      "title": "Noctra Studio | Premium studio + proprietary software for digital growth",
+      "description": "Noctra Studio combines branding, websites, SEO, and automations with proprietary products like Radar and Social to build digital presence that is clearer, more credible, and more scalable.",
+      "keywords": "digital studio queretaro, branding and websites, SEO for businesses, AI automations, proprietary software for growth, noctra radar, noctra social",
+      "og_title": "Noctra Studio — Studio and software for structured growth",
+      "og_description": "Branding, websites, SEO, automation, and proprietary products that help businesses build trust, visibility, and more organized growth.",
       "og_image_alt": "Noctra Studio engineering-first digital studio",
-      "twitter_title": "Noctra Studio | Engineering-First Digital Studio",
-      "twitter_description": "Clear websites, structured brand systems, and reliable digital platforms."
+      "twitter_title": "Noctra Studio | Premium studio + proprietary software",
+      "twitter_description": "Branding, websites, SEO, automation, and proprietary products for clearer and more scalable digital presence."
     },
     "about": {
       "title": "Studio | Noctra Studio",
@@ -415,13 +616,13 @@
     },
     "services": {
       "title": "Our Services | Noctra Studio",
-      "description": "Professional websites, e-commerce, custom systems, and SEO designed to grow your business. From concept to launch.",
-      "keywords": "web development services, ecommerce development, custom web apps, SEO optimization, digital solutions querétaro",
-      "og_title": "Noctra Studio Services — Solutions That Grow Your Business",
-      "og_description": "Websites, e-commerce, custom systems, and SEO. From concept to launch.",
+      "description": "Branding, websites, SEO, and automations organized as the implementation layer of the Noctra method: clearer direction, stronger structure, and more reliable digital execution.",
+      "keywords": "branding queretaro, strategic websites, structural SEO, AI automations, digital studio with internal systems, noctra studio services",
+      "og_title": "Services | Noctra Studio",
+      "og_description": "Services organized around business outcomes, supported by internal systems that make execution clearer, more structured, and more reliable.",
       "og_image_alt": "Noctra Studio Services Overview",
-      "twitter_title": "Our Services — Noctra Studio",
-      "twitter_description": "Websites, e-commerce, custom systems, and SEO."
+      "twitter_title": "Services | Noctra Studio",
+      "twitter_description": "Branding, websites, SEO, and automations as a clearer, more structured implementation layer."
     },
     "contact": {
       "title": "Contact Us | Noctra Studio",
@@ -577,16 +778,39 @@
   "Navigation": {
     "index": "Home",
     "studio": "Studio",
+    "method": "Method",
     "capabilities": "Capabilities",
     "deployments": "Work",
+    "radar": "Radar",
+    "social": "Social",
     "initiate": "Start a Project",
     "system_capabilities": "Capabilities",
     "all_systems_operational": "All Systems Operational",
     "menu_open": "Menu",
     "menu_close": "Close",
-    "book_strategy_call": "Start a Project",
+    "book_strategy_call": "Diagnostic",
     "careers": "Join Our Network",
+    "model_label": "Noctra model",
+    "language_label": "Language",
     "location": "Querétaro, MX",
+    "model": {
+      "studio": {
+        "eyebrow": "Studio",
+        "description": "Implementation across brand, web, SEO, and automation."
+      },
+      "radar": {
+        "eyebrow": "Flagship product",
+        "description": "Radar reveals technical and commercial blockers early."
+      },
+      "social": {
+        "eyebrow": "Secondary product",
+        "description": "Social sustains strategic presence without operational clutter."
+      },
+      "systems": {
+        "eyebrow": "Internal systems",
+        "description": "Discovery and Proposals add rigor behind delivery, not noise in navigation."
+      }
+    },
     "tags": {
       "cloud": "Performance",
       "ai": "Search Visibility",
@@ -720,16 +944,25 @@
     "studio_label": "Noctra Studio",
     "brand_tagline": "Guidance and structure for the modern web.",
     "sections": {
+      "studio": "Studio",
+      "products": "Products",
+      "method": "Method",
       "company": "Company",
       "services": "Services",
       "resources": "Resources",
       "legal": "Legal",
       "contact": "Contact"
     },
+    "badges": {
+      "internal": "Internal",
+      "ecosystem": "Ecosystem"
+    },
     "links": {
       "home": "Home",
       "blog": "Blog",
+      "insights": "Insights",
       "about": "Studio",
+      "studio_overview": "Studio overview",
       "work": "Work",
       "network": "Join the Network",
       "contact": "Contact",
@@ -738,6 +971,14 @@
       "systems": "Reliable Platforms",
       "branding": "Brand Systems",
       "seo": "Search Foundations",
+      "automations": "Automations & Systems",
+      "radar": "Radar",
+      "social": "Social",
+      "method": "How Noctra Works",
+      "how_we_build": "How We Build",
+      "discovery": "Discovery",
+      "proposals": "Proposals",
+      "academy": "Academy",
       "guarantee": "Project Guarantee",
       "technology": "How We Build",
       "consultation": "Start a Project",
@@ -946,17 +1187,33 @@
     "cta": "Start my project",
     "compare_all_features": "Compare all features →",
     "back_to_pricing": "← Back to pricing",
-
     "feature_comparison": {
       "mobile_title": "How do they compare?",
       "mobile_subtitle": "Swipe to compare",
       "mobile_cta": "Free consultation →",
       "recommended_badge": "Recommended ★",
       "columns": [
-        { "id": "wix", "name": "Wix / Squarespace", "subtitle": "No-code basic" },
-        { "id": "webflow", "name": "Webflow", "subtitle": "No-code advanced" },
-        { "id": "agency", "name": "Traditional Agency", "subtitle": "WordPress / outsourced" },
-        { "id": "noctra", "name": "Noctra ★", "subtitle": "Custom engineering", "highlighted": true }
+        {
+          "id": "wix",
+          "name": "Wix / Squarespace",
+          "subtitle": "No-code basic"
+        },
+        {
+          "id": "webflow",
+          "name": "Webflow",
+          "subtitle": "No-code advanced"
+        },
+        {
+          "id": "agency",
+          "name": "Traditional Agency",
+          "subtitle": "WordPress / outsourced"
+        },
+        {
+          "id": "noctra",
+          "name": "Noctra ★",
+          "subtitle": "Custom engineering",
+          "highlighted": true
+        }
       ],
       "rows": [
         {
@@ -2645,53 +2902,44 @@
     }
   },
   "HomeCapabilities": {
-    "label": "What we build",
-    "title": "Digital systems with a clear job to do",
-    "subtitle": "Each capability is designed around business outcomes: clearer communication, smoother operations, stronger trust, and easier growth.",
+    "label": "What we implement",
+    "title": "Studio implementation system",
+    "subtitle": "Each capability is executed as part of a digital foundation that is clearer, more visible, and more useful for the business.",
     "items": [
       {
-        "title": "Web Platforms",
-        "description": "Websites and business platforms built to explain your offer clearly and guide people toward the next step.",
+        "title": "Branding",
+        "description": "We clarify message, positioning, and visual presence so the business feels stronger and easier to understand.",
         "points": [
-          "Clear page structure and conversion paths",
-          "Responsive design for desktop and mobile",
-          "Content management when it actually helps"
+          "Sharper positioning and narrative",
+          "Clearer visual hierarchy and direction",
+          "Brand foundation that supports site, content, and sales"
         ]
       },
       {
-        "title": "E-Commerce",
-        "description": "Online stores designed to reduce friction, build confidence, and make buying feel straightforward.",
+        "title": "Websites",
+        "description": "We design websites that explain better, convert better, and feel trustworthy across desktop and mobile.",
         "points": [
-          "Simpler catalog and product flows",
-          "Checkout experiences built for trust",
-          "A store that feels easier to manage"
+          "Architecture and flows shaped for conversion",
+          "Premium design with business clarity",
+          "Stable, fast, and maintainable experience"
         ]
       },
       {
-        "title": "Brand Identity",
-        "description": "Identity systems translated into usable digital rules so your business looks consistent wherever people meet it.",
+        "title": "SEO",
+        "description": "We fix structure, content, and technical signals to improve visibility with business intent.",
         "points": [
-          "Clear visual direction and hierarchy",
-          "Reusable layouts and interface rules",
-          "A more coherent presence across pages"
-        ]
-      },
-      {
-        "title": "Search Visibility",
-        "description": "Search foundations that help the right people find your business and understand it faster.",
-        "points": [
-          "Technical SEO essentials",
-          "Page hierarchy, metadata, and internal structure",
-          "Content organized for long-term visibility"
+          "Technical SEO and indexing foundations",
+          "Clearer page and content hierarchy",
+          "Better ability to attract relevant search demand"
         ]
       },
       {
         "title": "AI Automations",
-        "description": "Practical automations that reduce repetitive work and keep digital operations moving without manual follow-up.",
+        "description": "We reduce manual work in acquisition, follow-up, and operations with useful, measurable workflows.",
         "points": [
-          "Lead qualification and follow-up flows",
-          "Appointment, inquiry, or routing automations",
-          "Less repetitive work for your team"
+          "Automations for leads, bookings, or intake",
+          "More organized follow-up with less manual effort",
+          "Digital operations that are easier for your team to sustain"
         ]
       }
     ]
@@ -2780,367 +3028,256 @@
     "closing": "Together they express how Noctra works: turning confusion into clarity, and scattered digital efforts into something professional, consistent, and easy to trust."
   },
   "HomeExamples": {
-    "label": "Selected work",
-    "title": "Examples of the systems we build",
-    "subtitle": "Different industries, same principle: clearer structure, stronger trust, and digital systems that support real operations.",
-    "items": [
+    "label": "CREDIBILITY AND METHOD",
+    "title": "Credibility built from operational reality.",
+    "subtitle": "Noctra works from real friction in positioning, commercial clarity, visibility, and operations. What becomes a system or product first answers a concrete need, then gets structured, used, and refined.",
+    "cards": [
       {
-        "title": "Woodax Design",
-        "description": "A custom cabinetry studio with a portfolio and quote flow designed to qualify higher-value residential projects."
+        "label": "Real problem",
+        "title": "We start from concrete needs",
+        "description": "Every system begins where a business is losing clarity, consistency, or execution capacity. We do not design from an isolated idea, but from observable friction."
       },
       {
-        "title": "Dyma Group",
-        "description": "A multi-company industrial group with a clearer corporate platform and a structure that supports multiple business lines."
+        "label": "Structured build",
+        "title": "We build with defined criteria",
+        "description": "We organize context, decisions, hierarchy, and process before expanding the solution. That discipline makes the work feel serious because it is actually well built."
       },
       {
-        "title": "Valtru Interiorismo",
-        "description": "An interior design studio with a premium portfolio system shaped for trust, storytelling, and better-fit inquiries."
+        "label": "Refined through use",
+        "title": "What repeats becomes product",
+        "description": "When an operational pattern appears again and again, we refine it until it becomes clearer, more useful, and more stable. That is how Noctra products emerge."
       }
     ],
-    "cta": "See selected work"
+    "closing": "Our credibility does not depend on inflated metrics or empty storytelling. It depends on a consistent way of observing, structuring, and turning operational learning into stronger systems.",
+    "cta": "See work and method"
   },
   "HomeFinalCta": {
-    "label": "Start the conversation",
-    "title": "Need a system like this for your business?",
-    "subtitle": "We work with a limited number of clients each month so every project gets senior attention, clear thinking, and careful execution.",
-    "primary": "Schedule a Discovery Call",
-    "secondary": "See Selected Work"
+    "label": "NEXT STEP",
+    "title": "If you want Noctra to implement it for you or you prefer to start with the software, we can open either path.",
+    "subtitle": "Choose whether you need a full system with Studio guidance or you want to begin with a product-led path first."
   },
   "ServicesPage": {
-    "hero_badge": "ENGINEERING-DRIVEN DIGITAL SYSTEMS",
-    "title": "Digital systems designed for real businesses",
-    "subtitle": "We design and build websites, e-commerce platforms, brand systems, search-ready foundations, and intelligent automations that help companies operate and grow online.",
-    "hero_cta_consult": "Schedule a discovery call",
-    "hero_cta_pricing": "Explore capabilities",
+    "hero_badge": "GROWTH INFRASTRUCTURE",
+    "title": "Growth systems built to last",
+    "subtitle": "We are not a list of isolated services. We design and implement the strategic infrastructure your business needs to be found, build trust, and scale without friction.",
+    "hero_cta_consult": "Book Discovery Call",
+    "hero_cta_pricing": "View the system",
     "mobile_banner": {
-      "question": "Not sure where to start?",
-      "subtitle": "Clear guidance, no guesswork",
-      "cta": "Talk to Noctra"
+      "question": "Is your current digital infrastructure holding you back?",
+      "subtitle": "No-obligation evaluation",
+      "cta": "Diagnose my business"
     },
     "how_we_help": {
-      "label": "HOW WE HELP",
-      "title": "We bring structure to the parts of your digital presence that feel unclear.",
-      "subtitle": "Slow websites, scattered branding, and disconnected tools make businesses harder to trust. Noctra helps turn that confusion into a system that looks professional, works reliably, and supports long-term growth.",
+      "label": "THE NOCTRA METHOD",
+      "title": "Clarifying digital complexity with an engineering foundation.",
+      "subtitle": "At Noctra, every implementation is part of a connected system. We don't design just for aesthetics; we build business assets that integrate with our own software to guarantee constant performance.",
       "items": [
         {
-          "title": "Clarify the message",
-          "description": "We help businesses explain what they do with clearer pages, stronger hierarchy, and less digital noise."
+          "title": "Data-Driven Strategy",
+          "description": "We use Discovery to plan based on market realities, not creative assumptions. Every step has a technical 'why'."
         },
         {
-          "title": "Build a stronger system",
-          "description": "Instead of disconnected tasks, we shape websites, identity, visibility, and automations as one coherent digital foundation."
+          "title": "Software-Enforced Quality",
+          "description": "Your branding, web, and SEO services are backed by Radar to ensure technical health and authority never drop."
         },
         {
-          "title": "Reduce operational friction",
-          "description": "From inquiry flows to online sales to internal automations, we remove points of confusion that waste time and weaken trust."
+          "title": "Real Operability",
+          "description": "From proposal to launch, we use internal systems so the process is transparent, orderly, and surprise-free."
         }
       ]
     },
-    "capabilities": {
-      "label": "CAPABILITIES",
-      "title": "What we build",
-      "subtitle": "Each capability is designed as a structured system, so the end result feels clear to visitors and manageable for your team.",
-      "detail_label": "CAPABILITY OVERVIEW",
-      "primary_cta": "Discuss this capability",
-      "secondary_cta": "See related work",
-      "swipe_hint": "swipe to explore",
-      "cards": {
-        "what_it_is": "What it is",
-        "why_it_matters": "Why it matters",
-        "business_benefit": "Business benefit"
+    "system_engine": {
+      "label": "THE INTERNAL ENGINE",
+      "title": "What guarantees Noctra quality",
+      "subtitle": "Behind every service is an ecosystem of internal systems that protect your investment and ensure the precision of every delivered asset.",
+      "discovery": {
+        "title": "Discovery Protocol",
+        "description": "Our foundation phase where we analyze information architecture and commercial goals before writing a single line of code."
+      },
+      "proposals": {
+        "title": "Proposal Systems",
+        "description": "We guarantee clear critical paths. You know exactly what's being built, when, and how it impacts your business."
       }
     },
-    "how_we_work": {
-      "title": "How Projects Work",
-      "steps": [
-        "Clear Scope",
-        "Defined Timeline",
-        "Focused Build",
-        "Direct Updates"
-      ]
+    "capabilities": {
+      "label": "GROWTH LAYERS",
+      "title": "The Noctra Result System",
+      "subtitle": "We have organized our capabilities into logical layers that solve the real challenges of an expanding business.",
+      "detail_label": "SPECIFICATIONS",
+      "primary_cta": "Talk about this layer",
+      "secondary_cta": "View success cases",
+      "swipe_hint": "swipe to navigate",
+      "cards": {
+        "what_it_is": "Purpose",
+        "why_it_matters": "Why it's vital",
+        "business_benefit": "Direct Impact"
+      }
     },
-    "web_dev": {
-      "title": "Web Platforms",
-      "summary": "Modern websites designed to communicate credibility, attract the right customers, and convert visitors into real inquiries.",
-      "benefit_short": "Build trust online",
-      "what_it_is": "Professional websites and landing experiences built around clear structure, strong messaging, and dependable performance.",
-      "why_it_matters": "For many businesses, the website is the first proof of professionalism. If it feels unclear or outdated, trust drops before a conversation begins.",
-      "business_benefit": "A clearer platform helps people understand what you offer faster, trust you sooner, and contact you with more confidence.",
+    "identity": {
+      "title": "Identity & Authority",
+      "summary": "We establish the visual and narrative foundation that makes your business perceived as the leader it truly is.",
+      "benefit_short": "Build Instant Trust",
+      "what_it_is": "Brand systems built to last, not just logos. We build a coherent identity across all touchpoints.",
+      "why_it_matters": "In digital, trust is the most valuable currency. A scattered or amateur brand makes your clients hesitate before contacting you.",
+      "business_benefit": "A solid visual authority reduces price resistance and accelerates the sales closing cycle.",
       "highlights": [
-        "Clear page architecture",
-        "Mobile-first responsive design",
-        "Conversion-focused content flow"
+        "Scalable design systems",
+        "Strategic brand narrative",
+        "Web & social style guides"
       ],
-      "problem": "Your website does not reflect the quality of your business, or it makes people work too hard to understand what you offer.",
-      "solution": "We build clear, professional websites that explain your value quickly and guide visitors toward contact, booking, or inquiry.",
-      "focus": "A good website should not just exist. It should help people trust you faster and take the next step with confidence.",
-      "why": "When your website feels clear and reliable, more visitors stay, trust you, and reach out.",
-      "image_label": "Credible Digital Presence",
-      "pricing_label": "Starting at $20k MXN",
-      "process": [
-        "Review your current site, offer, and competitive context",
-        "Define the right structure, pages, and key content",
-        "Design and build each page with clarity in mind",
-        "Launch on a fast, stable setup that is easy to maintain"
-      ],
-      "deliverables": [
-        "A custom website tailored to your business",
-        "Clear page and content structure",
-        "Fast, search-ready foundation"
-      ],
-      "deliverables_subtext": [
-        "Built with a modern framework for speed and stability.",
-        "Your team can update essentials without depending on someone for every change.",
-        "Better structure improves both user experience and search visibility."
-      ],
-      "cta": "Talk about your website"
+      "image_label": "Visual Authority",
+      "pricing_label": "From $15k MXN + IVA"
     },
-    "ecommerce": {
-      "title": "E-Commerce",
-      "summary": "Online stores built to simplify purchasing, manage products clearly, and support business growth without unnecessary friction.",
-      "benefit_short": "Sell with less friction",
-      "what_it_is": "Digital commerce systems with clear product structure, reliable checkout flows, and practical store management.",
-      "why_it_matters": "If buying feels confusing, customers leave. A store has to feel trustworthy, simple, and easy to use from the first click.",
-      "business_benefit": "A stronger commerce setup improves conversion, supports repeat purchases, and makes daily store operations easier to manage.",
+    "performance": {
+      "title": "Conversion & Performance",
+      "summary": "We build your 24/7 sales engine. High-performance websites and e-commerce designed to close deals.",
+      "benefit_short": "Turn Visits into Revenue",
+      "what_it_is": "Implementation of sites under engineering standards (Next.js), optimized for extreme speed and high-end conversion flows.",
+      "why_it_matters": "A slow or confusing site is a salesman who doesn't speak. You need a platform that explains your value and leads the customer to checkout or contact without friction.",
+      "business_benefit": "Direct increase in conversion rate and reduction of customer acquisition cost.",
       "highlights": [
-        "Clear product and category structure",
-        "Reliable checkout and payments",
-        "Operations that are easier to manage"
+        "Conversion Architecture (CRO)",
+        "Frictionless E-commerce",
+        "Premium Cloud Infrastructure"
       ],
-      "image_label": "Reliable Online Sales",
-      "pricing_label": "Starting at $35k MXN",
-      "focus": "Your store should make products easy to explore, easy to trust, and easy to buy.",
-      "why": "When shopping feels simple and trustworthy, more visits turn into completed sales.",
-      "problem": "You are trying to sell through scattered channels, or your current store makes buying feel uncertain and difficult.",
-      "solution": "We create online stores with a clear buying flow, reliable payment setup, and a structure that helps customers purchase without confusion.",
-      "process": [
-        "Understand your products, operation, and sales model",
-        "Design a buying journey that feels simple and trustworthy",
-        "Configure payments, catalog setup, and key store operations",
-        "Launch with measurement in place so decisions stay clear"
-      ],
-      "deliverables": [
-        "Online store with payment setup",
-        "Simple product and order management",
-        "Sales tracking and customer insights"
-      ],
-      "deliverables_subtext": [
-        "Connected to trusted payment tools.",
-        "Update catalog, pricing, and inventory without depending on a developer.",
-        "See what products and channels are driving revenue."
-      ],
-      "cta": "Talk about your store"
+      "image_label": "Sales & Conversion",
+      "pricing_label": "From $25k MXN + IVA"
     },
-    "ai": {
-      "title": "AI Automations",
-      "summary": "Intelligent automations that streamline repetitive tasks, improve response times, and save operational time across the business.",
-      "benefit_short": "Save time weekly",
-      "what_it_is": "Practical automations and internal workflows that connect tasks, move information faster, and reduce manual work.",
-      "why_it_matters": "When teams spend too much time on follow-up, scheduling, or admin work, service slows down and growth becomes harder to sustain.",
-      "business_benefit": "Better automation reduces delays, lowers repetitive workload, and gives your team more time for higher-value work.",
+    "visibility": {
+      "title": "Visibility & Traction",
+      "summary": "We dominate visibility where your customers are searching. Structural SEO powered by Noctra Radar.",
+      "benefit_short": "Be Found by the Right People",
+      "what_it_is": "Sync between technical SEO, strategic content, and constant monitoring with our own Radar software.",
+      "why_it_matters": "Having the best product is useless if no one finds you. Organic traction is the most profitable long-term growth asset.",
+      "business_benefit": "Constant generation of qualified leads without relying exclusively on paid ads.",
       "highlights": [
-        "Workflow automation for repetitive tasks",
-        "Faster follow-up and response times",
-        "Clearer internal operational visibility"
+        "Structural SEO foundations",
+        "Noctra Radar monitoring (24/7)",
+        "Organic authority strategy"
       ],
-      "image_label": "Smarter Daily Operations",
-      "pricing_label": "Custom quote based on scope",
-      "problem": "Your team is still spending too much time on follow-ups, scheduling, admin work, or repetitive tasks.",
-      "solution": "We design automations and internal tools that reduce manual work and keep daily operations moving.",
-      "focus": "Automation should make the business easier to run. Less repetition. Faster response times. More time for work that actually matters.",
-      "why": "Fewer manual steps means fewer delays, fewer mistakes, and more time for clients.",
-      "process": [
-        "Review how your team works today",
-        "Identify the steps worth automating",
-        "Build the solution and connect it to your tools",
-        "Test, refine, and onboard your team"
-      ],
-      "deliverables": [
-        "A custom workflow or internal tool",
-        "A clear dashboard or status view",
-        "Documentation and team onboarding"
-      ],
-      "deliverables_subtext": [
-        "Can connect with the tools you already use.",
-        "Gives you visibility without checking multiple systems.",
-        "Set up so your team can use it with confidence."
-      ],
-      "cta": "Talk about automation"
+      "image_label": "Traction Growth",
+      "pricing_label": "From $12k MXN/month + IVA"
     },
-    "seo": {
-      "title": "Search Visibility",
-      "summary": "SEO foundations that help businesses appear in search results when customers are actively looking for their services.",
-      "benefit_short": "Be easier to find",
-      "what_it_is": "Search-ready site architecture, content structure, and visibility improvements built around the way people actually search.",
-      "why_it_matters": "Being good at what you do is not enough if the right people cannot find you when they are ready to choose a provider.",
-      "business_benefit": "Stronger visibility helps generate more qualified traffic, more relevant inquiries, and less dependence on paid channels alone.",
+    "efficiency": {
+      "title": "Efficiency & Scale",
+      "summary": "We automate what takes your time so you can focus on what generates real value. Assisted scalability.",
+      "benefit_short": "Recover 15+ Hours Weekly",
+      "what_it_is": "Implementation of smart flows and AI agents that solve repetitive tasks, customer service, and administrative management.",
+      "why_it_matters": "As you grow, manual tasks become the bottleneck. Automation allows your business to be 10x more agile without hiring more staff.",
+      "business_benefit": "Dramatic reduction in operational errors and bandwidth liberation for strategic tasks.",
       "highlights": [
-        "Technical SEO foundations",
-        "Clear content and page hierarchy",
-        "Visibility improvements that compound"
+        "CRM flow automation",
+        "AI agents for support",
+        "Systems integration (Zapier/Make)"
       ],
-      "image_label": "Search-Ready Foundation",
-      "pricing_label": "From $8,000 MXN/mo",
-      "focus": "Better visibility brings better opportunities. Not just more traffic, but more relevant visits from people already looking for what you offer.",
-      "why": "Better search visibility brings more qualified inquiries without relying only on ads.",
-      "problem": "People are looking for services like yours, but they are finding competitors first.",
-      "solution": "We improve your site structure, content, and search foundations so the right people can find you more easily.",
-      "process": [
-        "Audit your site and current visibility",
-        "Define the searches and topics that matter most",
-        "Apply improvements to structure, content, and performance",
-        "Measure progress and adjust month by month"
-      ],
-      "deliverables": [
-        "SEO improvements implemented on the site",
-        "Content plan and priority pages",
-        "Clear progress reports and next steps"
-      ],
-      "deliverables_subtext": [
-        "Works on speed, structure, and the signals search engines understand better.",
-        "Content is based on how your potential clients actually search.",
-        "You can see what is improving and what should happen next."
-      ],
-      "cta": "Talk about search visibility"
+      "image_label": "Scalability & AI",
+      "pricing_label": "Quote based on scale"
     },
-    "branding": {
-      "title": "Brand Identity",
-      "summary": "Visual identities and web-ready brand systems that help businesses look established, trustworthy, and consistent everywhere they appear.",
-      "benefit_short": "Look established",
-      "what_it_is": "Brand direction, visual systems, and core design assets created to keep your business consistent across website, marketing, and future touchpoints.",
-      "why_it_matters": "When branding feels inconsistent, people question the professionalism behind the business before they understand the value.",
-      "business_benefit": "A stronger identity makes the business easier to remember, easier to trust, and easier to present with confidence.",
-      "highlights": [
-        "Clear visual direction",
-        "Reusable identity rules and assets",
-        "Consistency across digital touchpoints"
-      ],
-      "image_label": "Consistent Brand System"
-    },
-    "ongoing": {
-      "title": "Support That Keeps Your Site Moving Forward",
-      "image_label": "Reliable Ongoing Support",
-      "pricing_label": "Plans from $2,500 MXN/mo",
-      "focus": "A strong site should not be left behind after launch. Ongoing support protects the investment and keeps the experience solid.",
-      "why": "Regular support protects your investment and keeps your digital presence from falling behind.",
-      "problem": "After launch, updates, fixes, and improvements often get delayed until the site starts feeling outdated again.",
-      "solution": "We stay involved to keep your digital presence current, reliable, and aligned with how your business is evolving.",
-      "process": [
-        "Review the current state of your site",
-        "Organize hosting, security, and access where needed",
-        "Set up monitoring and improvement priorities",
-        "Move into a steady monthly support rhythm"
-      ],
-      "deliverables": [
-        "Technical support and ongoing follow-up",
-        "Performance and reliability monitoring",
-        "Monthly improvements with clear visibility"
-      ],
-      "deliverables_subtext": [
-        "We handle the technical layer so it does not become your burden.",
-        "Issues can be spotted before they affect your day-to-day work.",
-        "Every month you know what changed and what comes next."
-      ],
-      "cta": "View support plans"
-    },
-    "pricing_callout_link": "See pricing breakdown",
-    "best_for": {
-      "label": "BEST FIT",
-      "web_dev": [
-        { "icon": "👨‍⚕️", "text": "Doctors and clinics" },
-        { "icon": "⚖️", "text": "Consultants and law firms" },
-        { "icon": "🏢", "text": "Architects and design studios" },
-        { "icon": "💼", "text": "Professional service firms" },
-        { "icon": "🎓", "text": "Schools and institutions" }
-      ],
-      "ecommerce": [
-        { "icon": "🛍️", "text": "Retail businesses" },
-        { "icon": "🛍️", "text": "Product and lifestyle brands" },
-        { "icon": "💼", "text": "Growing catalogs" },
-        { "icon": "🎨", "text": "Independent brands" },
-        { "icon": "💄", "text": "Beauty and wellness products" }
-      ],
-      "branding": [
-        { "icon": "👨‍⚕️", "text": "Professionals building credibility" },
-        { "icon": "💼", "text": "SMBs refining their image" },
-        { "icon": "⚙️", "text": "Startups that need a clearer brand" },
-        { "icon": "🏢", "text": "Real estate agencies" },
-        { "icon": "🎓", "text": "Schools and institutions" }
-      ],
-      "ai": [
-        { "icon": "⚙️", "text": "Operations-heavy businesses" },
-        { "icon": "⚙️", "text": "Service teams with repetitive workflows" },
-        { "icon": "🏢", "text": "Real estate and admin teams" },
-        { "icon": "🎓", "text": "Schools with manual processes" },
-        { "icon": "💼", "text": "Growing businesses that need better internal flow" }
-      ],
-      "seo": [
-        { "icon": "👨‍⚕️", "text": "Doctors and specialists" },
-        { "icon": "🏢", "text": "Real estate agencies" },
-        { "icon": "⚖️", "text": "Law firms" },
-        { "icon": "💼", "text": "Consultants and service businesses" },
-        { "icon": "🎓", "text": "Schools and educational institutions" }
+    "standards": {
+      "label": "RELIABILITY STANDARDS",
+      "title": "Built to feel clear, fast, and dependable.",
+      "subtitle": "Technical quality matters because visitors experience it as trust. These standards help the business feel more professional from the first interaction.",
+      "items": [
+        {
+          "value": "Fast in real use",
+          "description": "Pages load quickly and interactions feel smooth, so visitors stay focused instead of waiting on the site."
+        },
+        {
+          "value": "Stable across devices",
+          "description": "The experience stays clear and usable on mobile, desktop, and the everyday conditions your audience actually uses."
+        },
+        {
+          "value": "Reliable when it matters",
+          "description": "Your platform stays available and consistent when clients are ready to act, which protects trust and avoids missed opportunities."
+        }
       ]
     },
     "journey": {
-      "label": "CAPABILITY MAP",
+      "label": "SYSTEM LAYERS",
       "phases": {
-        "web_dev": "01 Web Platforms",
-        "ecommerce": "02 E-Commerce",
-        "branding": "03 Brand Identity",
-        "seo": "04 Search Visibility",
-        "ai": "05 AI Automations"
+        "identity": "01 Identity & Authority",
+        "performance": "02 Conversion & Performance",
+        "visibility": "03 Visibility & Traction",
+        "efficiency": "04 Efficiency & Scale"
       }
     },
-    "system_label": "SYSTEM",
-    "problem_label": "The Problem",
-    "solution_label": "The Solution",
-    "cta_labels": {
-      "scoping_call": "Schedule scoping call",
-      "site_audit": "Start free site audit",
-      "default": "Let's talk about your project"
-    },
-    "scoping_call_box": {
-      "title": "In this call we'll:",
-      "footer": "No commitment required",
-      "items": [
-        "Understand your workflow",
-        "Identify automation opportunities",
-        "Provide ballpark estimate",
-        "Discuss timeline & approach"
-      ]
-    },
-    "comparison": {
-      "title": "Choose the right starting point",
-      "subtitle": "Not every business needs the same level of digital support. This comparison helps you see what fits your current stage and what can grow with you.",
-      "feature_label": "What you get",
-      "columns": [
+    "mini_process": {
+      "label": "HOW PROJECTS WORK",
+      "title": "How projects typically work",
+      "subtitle": "The process stays structured and easy to follow from first conversation to launch.",
+      "steps": [
         {
-          "title": "Professional Website",
-          "description": "For businesses that need a clear, credible online presence."
+          "title": "Discovery",
+          "description": "We understand the business, the audience, and the digital gaps that are getting in the way."
         },
         {
-          "title": "Online Store",
-          "description": "For businesses that need a reliable way to sell online."
+          "title": "Strategy",
+          "description": "We define the right structure, priorities, and scope before design or build decisions begin."
         },
         {
-          "title": "Custom Automation",
-          "description": "For teams that need to save time and reduce manual work."
+          "title": "Design & Development",
+          "description": "We translate the direction into a system that looks professional, feels clear, and works reliably."
+        },
+        {
+          "title": "Launch",
+          "description": "We ship, test, support the rollout, and make sure the project is ready for real-world use."
         }
       ],
-      "features": [
-        { "name": "Investment", "values": ["From $20,000 MXN", "From $35,000 MXN", "Custom Quote"] },
-        { "name": "Timeline", "values": ["3-6 weeks", "6-8 weeks", "8-16 weeks"] },
-        { "name": "Best for", "values": ["Professional services", "Product-based businesses", "Operations-heavy teams"] },
-        { "name": "Main outcome", "values": ["More trust and inquiries", "More completed sales", "Less manual work"] },
-        { "name": "Online payments", "values": ["-", "Included", "Optional"] },
-        { "name": "Automation flows", "values": ["Basic", "Basic", "Included"] },
-        { "name": "Search-ready structure", "values": ["Included", "Included", "Included"] },
-        { "name": "Post-launch support", "values": ["60 days", "90 days", "Custom"] }
+      "cta": "See full process"
+    },
+    "roi_teaser": {
+      "label": "ROI planning",
+      "title": "Need to estimate whether the investment makes sense?",
+      "subtitle": "If you are comparing options internally, the ROI calculator helps translate a website or digital system into business terms your team can evaluate.",
+      "points": [
+        "Model payback period based on your revenue and conversion assumptions",
+        "Estimate time recovered from smoother digital operations",
+        "Use it before a discovery call if your team needs budget justification"
       ],
-      "footer_text": "If you are not sure which one fits, we can guide you.",
-      "cta_quiz": "Get guided recommendation",
-      "cta_consult": "Start a conversation"
+      "cta": "Open ROI calculator"
+    },
+    "best_for": {
+      "label": "IDEAL BUSINESSES",
+      "identity": [
+        {
+          "icon": "👨‍⚕️",
+          "text": "High-level professionals"
+        },
+        {
+          "icon": "💼",
+          "text": "Startups scaling"
+        }
+      ],
+      "performance": [
+        {
+          "icon": "🛍️",
+          "text": "E-commerce brands"
+        },
+        {
+          "icon": "🏢",
+          "text": "Growing SMEs"
+        }
+      ],
+      "visibility": [
+        {
+          "icon": "⚖️",
+          "text": "Firms and consultancies"
+        },
+        {
+          "icon": "🏢",
+          "text": "Real Estate"
+        }
+      ],
+      "efficiency": [
+        {
+          "icon": "⚙️",
+          "text": "Businesses with high admin load"
+        },
+        {
+          "icon": "🎓",
+          "text": "Educational institutions"
+        }
+      ]
     },
     "faq": {
       "title": "Questions, answered",
@@ -3230,64 +3367,56 @@
         }
       ]
     },
-    "mini_process": {
-      "label": "HOW PROJECTS WORK",
-      "title": "How projects typically work",
-      "subtitle": "The process stays structured and easy to follow from first conversation to launch.",
-      "steps": [
-        {
-          "title": "Discovery",
-          "description": "We understand the business, the audience, and the digital gaps that are getting in the way."
-        },
-        {
-          "title": "Strategy",
-          "description": "We define the right structure, priorities, and scope before design or build decisions begin."
-        },
-        {
-          "title": "Design & Development",
-          "description": "We translate the direction into a system that looks professional, feels clear, and works reliably."
-        },
-        {
-          "title": "Launch",
-          "description": "We ship, test, support the rollout, and make sure the project is ready for real-world use."
-        }
-      ],
-      "cta": "See full process"
-    },
-    "roi_teaser": {
-      "label": "ROI planning",
-      "title": "Need to estimate whether the investment makes sense?",
-      "subtitle": "If you are comparing options internally, the ROI calculator helps translate a website or digital system into business terms your team can evaluate.",
-      "points": [
-        "Model payback period based on your revenue and conversion assumptions",
-        "Estimate time recovered from smoother digital operations",
-        "Use it before a discovery call if your team needs budget justification"
-      ],
-      "cta": "Open ROI calculator"
-    },
     "real_examples": {
       "title": "REAL EXAMPLES",
       "view_more": "See what we're building →",
       "coming": "Projects in development - see Our Work page",
       "items": {
         "web_dev": [
-          { "name": "Woodax Design", "desc": "Premium carpentry portfolio with lead qualification" },
-          { "name": "Soon", "desc": "Medical practice with appointment automation" }
+          {
+            "name": "Woodax Design",
+            "desc": "Premium carpentry portfolio with lead qualification"
+          },
+          {
+            "name": "Soon",
+            "desc": "Medical practice with appointment automation"
+          }
         ],
         "ecommerce": [
-          { "name": "Soon", "desc": "Local retail with inventory integration" }
+          {
+            "name": "Soon",
+            "desc": "Local retail with inventory integration"
+          }
         ],
         "ai": [
-          { "name": "Dyma Group", "desc": "Corporate site with multi-entity management" },
-          { "name": "Soon", "desc": "CRM for fintech startup" }
+          {
+            "name": "Dyma Group",
+            "desc": "Corporate site with multi-entity management"
+          },
+          {
+            "name": "Soon",
+            "desc": "CRM for fintech startup"
+          }
         ],
         "seo": [
-          { "name": "Dr. Example", "desc": "Local SEO for dental clinic" },
-          { "name": "Legal Firm", "desc": "Content strategy for law firm" }
+          {
+            "name": "Dr. Example",
+            "desc": "Local SEO for dental clinic"
+          },
+          {
+            "name": "Legal Firm",
+            "desc": "Content strategy for law firm"
+          }
         ],
         "ongoing": [
-          { "name": "Woodax", "desc": "Total management of corporate site and SEO" },
-          { "name": "Dyma Group", "desc": "Evolutionary maintenance of internal systems" }
+          {
+            "name": "Woodax",
+            "desc": "Total management of corporate site and SEO"
+          },
+          {
+            "name": "Dyma Group",
+            "desc": "Evolutionary maintenance of internal systems"
+          }
         ]
       }
     },
@@ -3341,11 +3470,25 @@
           "🎓 1-hour training session"
         ],
         "investment": [
-          { "label": "Design & Strategy", "value": "$6,000 MXN" },
-          { "label": "Development", "value": "$10,000 MXN" },
-          { "label": "Optimization & Testing", "value": "$2,500 MXN" },
-          { "label": "Launch & Training", "value": "$1,500 MXN" },
-          { "total": "$20,000 MXN" }
+          {
+            "label": "Design & Strategy",
+            "value": "$6,000 MXN"
+          },
+          {
+            "label": "Development",
+            "value": "$10,000 MXN"
+          },
+          {
+            "label": "Optimization & Testing",
+            "value": "$2,500 MXN"
+          },
+          {
+            "label": "Launch & Training",
+            "value": "$1,500 MXN"
+          },
+          {
+            "total": "$20,000 MXN"
+          }
         ],
         "note": "One-time payment, no monthly fees, code is yours forever"
       },
@@ -3376,11 +3519,25 @@
           "🎓 2-hour admin training"
         ],
         "investment": [
-          { "label": "Design & Strategy", "value": "$8,000 MXN" },
-          { "label": "Development", "value": "$20,000 MXN" },
-          { "label": "Integration & Testing", "value": "$5,000 MXN" },
-          { "label": "Launch & Training", "value": "$2,000 MXN" },
-          { "total": "$35,000 MXN" }
+          {
+            "label": "Design & Strategy",
+            "value": "$8,000 MXN"
+          },
+          {
+            "label": "Development",
+            "value": "$20,000 MXN"
+          },
+          {
+            "label": "Integration & Testing",
+            "value": "$5,000 MXN"
+          },
+          {
+            "label": "Launch & Training",
+            "value": "$2,000 MXN"
+          },
+          {
+            "total": "$35,000 MXN"
+          }
         ],
         "note": "No transaction fees from us. Direct payment gateway."
       },
@@ -3450,10 +3607,22 @@
           "📞 Monthly strategy call"
         ],
         "investment": [
-          { "label": "Base Service", "value": "$8,000 MXN/mo" },
-          { "label": "Content (Optional)", "value": "+$5,000/mo" },
-          { "label": "A/B Testing (Optional)", "value": "+$3,000/mo" },
-          { "label": "CRO (Optional)", "value": "+$4,000/mo" }
+          {
+            "label": "Base Service",
+            "value": "$8,000 MXN/mo"
+          },
+          {
+            "label": "Content (Optional)",
+            "value": "+$5,000/mo"
+          },
+          {
+            "label": "A/B Testing (Optional)",
+            "value": "+$3,000/mo"
+          },
+          {
+            "label": "CRO (Optional)",
+            "value": "+$4,000/mo"
+          }
         ],
         "note": "Cancel anytime after 3-month minimum"
       },
@@ -3481,98 +3650,82 @@
           "💡 Constant technical advice"
         ],
         "investment": [
-          { "label": "Essential Plan", "value": "$2,500 MXN/mo" },
-          { "label": "Growth Plan", "value": "$5,500 MXN/mo" },
-          { "label": "Strategic Partner", "value": "$12,000 MXN/mo" }
+          {
+            "label": "Essential Plan",
+            "value": "$2,500 MXN/mo"
+          },
+          {
+            "label": "Growth Plan",
+            "value": "$5,500 MXN/mo"
+          },
+          {
+            "label": "Strategic Partner",
+            "value": "$12,000 MXN/mo"
+          }
         ],
         "note": "Save 15% on annual billing"
       }
     },
-    "standards": {
-      "label": "RELIABILITY STANDARDS",
-      "title": "Built to feel clear, fast, and dependable.",
-      "subtitle": "Technical quality matters because visitors experience it as trust. These standards help the business feel more professional from the first interaction.",
-      "items": [
-        {
-          "value": "Fast in real use",
-          "description": "Pages load quickly and interactions feel smooth, so visitors stay focused instead of waiting on the site."
-        },
-        {
-          "value": "Stable across devices",
-          "description": "The experience stays clear and usable on mobile, desktop, and the everyday conditions your audience actually uses."
-        },
-        {
-          "value": "Reliable when it matters",
-          "description": "Your platform stays available and consistent when clients are ready to act, which protects trust and avoids missed opportunities."
-        }
-      ]
-    },
     "start_project": "Start Your Project"
   },
   "WorkPage": {
-    "badge": "Active engineering work",
-    "title": "Systems we build for real businesses",
-    "subtitle": "Each project shows the challenge, the system we designed, and how it supports long-term growth.",
+    "badge": "Documented cases",
+    "title": "Systems implemented. Real results.",
+    "subtitle": "Each case documents a system: the diagnosed problem, the structured solution and the results it generated.",
     "sections": {
       "in_progress": {
         "title": "Active systems",
-        "description": "These platforms are currently being designed and deployed for real companies.",
+        "description": "Projects currently in design or development for real businesses.",
         "timeline_phases": {
-          "discovery": "Discovery",
+          "discovery": "Diagnosis",
           "design": "Design",
-          "development": "Development",
+          "development": "Build",
           "launch": "Launch",
-          "completed": "Completed"
+          "completed": "Delivered"
         },
         "labels": {
-          "challenge": "Challenge",
-          "system_built": "System built",
+          "challenge": "Context",
+          "system_built": "System implemented",
           "expected_outcome": "Expected outcome",
-          "status": "Status",
+          "status": "Progress",
           "active_status": "Active system",
-          "completed_status": "Released system",
-          "in_phase": "In",
+          "completed_status": "Delivered system",
+          "in_phase": "In phase",
           "launching": "Targeting",
           "completed": "Delivered",
-          "view_case_study": "View case study"
+          "view_case_study": "View full case",
+          "ai_form": "AI-Powered Form"
         },
         "projects": {
           "woodax": {
-            "challenge": "Woodax needed a digital presence that matched the quality of its custom work and reduced the back-and-forth of qualifying new inquiries by hand.",
-            "system_built": "A lead generation platform with structured project galleries, guided quote requests, and a mobile-first experience that presents premium work clearly.",
-            "expected_outcome": "More qualified inquiries, less manual filtering, and a stronger perception of value before the first conversation.",
-            "system_type": "Lead generation platform",
-            "status_line": "In development · preparing for launch",
-            "case_study_label": "View case study"
+            "challenge": "Woodax operates in premium custom manufacturing. Their work speaks for itself in person, but they had no digital presence to back it up. Every new lead required manual explanation, WhatsApp gallery review, and blind filtering.",
+            "system_built": "A lead generation platform with a project-type gallery, AI-guided quote request form, and a mobile-first architecture optimized for conversion.",
+            "expected_outcome": "Less manual filtering, more qualified leads before first contact, and a perceived value aligned with the actual price of their work.",
+            "system_type": "Prospecting platform",
+            "status_line": "In build · preparing for launch",
+            "case_study_label": "View full case"
           },
           "dyma": {
-            "challenge": "Dyma needed one clear corporate presence that could represent multiple business units without making the group feel fragmented or hard to navigate.",
-            "system_built": "A corporate web architecture with unified messaging, company-level sections, and a structure the internal team can keep updated without relying on outside support for every change.",
-            "expected_outcome": "Stronger corporate credibility, easier content management, and clearer inquiry routing across the group.",
+            "challenge": "Dyma is a corporate group with multiple business units sharing no unified digital presence. Each entity communicated in isolation, diluting the group identity and making it hard to route inquiries to the right place.",
+            "system_built": "A corporate web architecture with unified group-level messaging, independent company sections, and a CMS the internal team can update without external technical support.",
+            "expected_outcome": "Visible corporate credibility, properly routed inquiries, and frictionless editorial control.",
             "system_type": "Corporate web architecture",
             "status_line": "In design · interface and content architecture in progress",
-            "case_study_label": "View case study"
-          },
-          "valtru": {
-            "challenge": "Valtru needed a more structured way to present residential design work online and attract clients who were already aligned with a premium interior project.",
-            "system_built": "A brand experience system with immersive project presentation, clear inquiry paths, and a publishing flow built around visual storytelling.",
-            "expected_outcome": "Better-fit inquiries, a stronger premium positioning, and a site that supports the studio's next stage of growth.",
-            "system_type": "Brand experience system",
-            "status_line": "In discovery · defining structure and launch roadmap"
+            "case_study_label": "View full case"
           }
         }
       },
       "completed": {
-        "title": "Released systems",
-        "subtitle": "Delivered work that shows how structure, performance, and clarity come together once a system is live."
+        "title": "Delivered systems",
+        "subtitle": "Work in production. Each case documents the diagnosis, the system built, and the results it generated."
       },
       "industries": {
         "title": "Industries we build systems for",
-        "subtitle": "From service firms to corporate groups, we design digital systems that support real operations and long-term growth.",
+        "subtitle": "From professional firms to corporate groups, every system is designed to solve a real business problem.",
         "items": [
           {
             "name": "Professional Services",
-            "benefit": "Clear websites and inquiry flows that help firms look credible before the first call.",
+            "benefit": "A clear system that communicates expertise before the first call and filters leads who already understand your value.",
             "example": "Doctors, consultants, lawyers, architects",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3580,7 +3733,7 @@
           },
           {
             "name": "Schools and Education",
-            "benefit": "Structured sites that make programs, admissions, and trust signals easier to understand.",
+            "benefit": "Sites that reduce admission friction, clarify programs and build trust before a family schedules a visit.",
             "example": "Private schools, academies, training centers",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3588,7 +3741,7 @@
           },
           {
             "name": "Real Estate and Developments",
-            "benefit": "Digital systems that present properties clearly and route serious inquiries faster.",
+            "benefit": "Platforms that present properties clearly and accelerate the arrival of qualified buyers or renters.",
             "example": "Agencies, developments, investment groups",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3596,7 +3749,7 @@
           },
           {
             "name": "Custom Manufacturing",
-            "benefit": "Platforms that explain specialized work clearly and help filter better-fit leads.",
+            "benefit": "Structured galleries and quote flows that reduce manual filtering and attract higher-budget projects.",
             "example": "Fabricators, workshops, premium makers",
             "status": "Active system",
             "status_type": "active",
@@ -3604,7 +3757,7 @@
           },
           {
             "name": "Corporate Groups",
-            "benefit": "Centralized web architecture that keeps multiple entities organized and easier to manage.",
+            "benefit": "Centralized web architecture that gives cohesion to multiple entities and enables frictionless content management.",
             "example": "Industrial groups, holdings, multi-brand companies",
             "status": "Active system",
             "status_type": "active",
@@ -3612,7 +3765,7 @@
           },
           {
             "name": "Local Commerce",
-            "benefit": "Stores and service sites built to reduce friction and make buying or booking easier.",
+            "benefit": "Sites that eliminate purchase or contact friction and convert visitors into clients with a single action.",
             "example": "Retail brands, local services, growing SMBs",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3620,7 +3773,7 @@
           },
           {
             "name": "Healthcare and Wellness",
-            "benefit": "Professional websites that support bookings, trust, and a stronger first impression.",
+            "benefit": "Platforms that build trust before the first appointment and reduce time staff spend answering basic questions.",
             "example": "Clinics, specialists, wellness practices",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3628,7 +3781,7 @@
           },
           {
             "name": "Multi-location Services",
-            "benefit": "Clear location structure and contact paths that make regional operations easier to navigate.",
+            "benefit": "Clear location structure that makes routing the right contact easy and reduces operational confusion.",
             "example": "Teams with offices, branches, or service zones",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3637,38 +3790,38 @@
         ]
       },
       "process": {
-        "title": "How we build systems",
-        "subtitle": "A compact process built to keep decisions clear, execution structured, and launches dependable.",
-        "phase_label": "Step",
+        "title": "How we build each system",
+        "subtitle": "Four phases that ensure decision clarity, structured execution, and a launch that works from day one.",
+        "phase_label": "Phase",
         "cta": "See full process",
         "timeline": [
           {
-            "label": "Discovery",
-            "description": "We map the business context, the real problem, and what the system needs to do well."
+            "label": "Diagnosis",
+            "description": "We map the real business: context, specific problem, and what the system needs to solve before proposing anything."
           },
           {
             "label": "Design",
-            "description": "We define the structure, interface, and messaging so the experience feels clear before development starts."
+            "description": "We define structure, messaging, and experience before touching code. The system takes shape on paper before being built."
           },
           {
-            "label": "Development",
-            "description": "We build the system with performance, reliability, and easy future updates in mind."
+            "label": "Build",
+            "description": "We develop with performance, clarity, and future maintainability in mind. No unnecessary technical debt."
           },
           {
             "label": "Launch",
-            "description": "We ship with a stable foundation, then support the handoff so the system is ready for real use."
+            "description": "We ship with a stable foundation and support the handoff so the system works correctly from the first day."
           }
         ]
       },
       "faq": {
-        "title": "Questions that help build trust",
-        "subtitle": "A few practical answers before you start a conversation.",
+        "title": "What you need to know before starting",
+        "subtitle": "Direct answers to arrive at the conversation with clarity.",
         "items": [
           {
-            "category": "Portfolio",
+            "category": "Cases",
             "icon": "rotate",
-            "question": "Can I see examples of your work?",
-            "answer": "Yes. This page shows active systems in progress, and we share deeper previews or live examples when a project is available for review."
+            "question": "Can I see the work you have done?",
+            "answer": "Yes. This page shows active systems and we document each case upon completion. In conversation we share more detailed previews based on the project type."
           },
           {
             "category": "Location",
@@ -3680,21 +3833,21 @@
             "category": "Fit",
             "icon": "briefcase",
             "question": "What kinds of businesses are the best fit?",
-            "answer": "Professional firms, small businesses, startups, schools, real estate teams, and companies that need a clearer and more dependable digital presence."
+            "answer": "Professional firms, manufacturing companies, corporate groups, schools, and businesses that need their digital presence to actually reflect the quality of their work."
           },
           {
             "category": "Process",
             "icon": "message-square",
             "question": "Can you improve an existing site, or do you only build from scratch?",
-            "answer": "Both. Some projects start with a new system. Others begin by improving what already exists, then rebuilding the parts that are holding the business back."
+            "answer": "Both. Some projects start with a new system. Others begin with a diagnosis of the current site and rebuild the parts that are holding results back."
           }
         ]
       }
     },
     "cta": {
-      "title": "Need a system like this for your business?",
-      "subtitle": "We take a limited number of projects each month to ensure quality.",
-      "button": "Schedule a discovery call"
+      "title": "Does this system apply to your business?",
+      "subtitle": "We take few projects per month. If there is a fit, we build it together.",
+      "button": "Apply this system to my business"
     }
   },
   "BlogPage": {
@@ -4291,6 +4444,144 @@
     "upgrade_title": "Upgrade path",
     "upgrade_path": "Many clients start with a $20k landing to validate demand. When proven, we upgrade to a full 5-page site ($35k) reusing initial work. You don't pay twice."
   },
+  "ProfessionalWebsitesPage": {
+    "hero": {
+      "eyebrow": "Professional Websites — Noctra Studio",
+      "title": {
+        "line1": "Most websites",
+        "line2": "look good.",
+        "line3": "Very few actually",
+        "line4": "work."
+      },
+      "subtitle": {
+        "line1": "A professional website is not design.",
+        "line2": "It's structure, clarity, and conversion working together."
+      },
+      "cta": "Diagnose your digital presence",
+      "scrollCue": "Scroll to understand"
+    },
+    "sections": {
+      "what": {
+        "label": "01 — What",
+        "sideNote": "Redefining the baseline.",
+        "title": "What is a professional website?",
+        "lede": "Not a brochure. Not a portfolio. Not a digital business card.",
+        "body": "A professional website is a structured sales and trust system — one that operates 24 hours a day, answers the right questions in the right order, and moves the right visitor toward a clear decision.",
+        "quote": "It is the only employee who never sleeps, never misunderstands the brief, and never asks for a raise.",
+        "closing": "Most businesses treat their website as a design project. The ones that grow treat it as infrastructure — as deliberately engineered as the sales process itself."
+      },
+      "why": {
+        "label": "02 — Why",
+        "sideNote": "The real diagnosis.",
+        "title": "Why most websites fail.",
+        "intro": "It is rarely a design problem. Most websites that underperform are beautifully designed. The failure is structural — and it shows up in three consistent patterns.",
+        "failureModes": [
+          {
+            "number": "I",
+            "title": "Disconnected pages.",
+            "body": "The homepage says one thing. The about page says another. The services page lists everything. There is no thread. Visitors feel lost — not because they are confused, but because the site itself is."
+          },
+          {
+            "number": "II",
+            "title": "Unclear messaging.",
+            "body": "Within three seconds, the visitor must understand: what you do, who it is for, and why it matters to them. When that clarity is missing — and it usually is — the visitor leaves. Not because they are not interested, but because the effort of figuring it out is too high."
+          },
+          {
+            "number": "III",
+            "title": "No conversion logic.",
+            "body": "Beautiful sites with no path forward. No next step. No clear reason to act. Traffic without architecture is cost without return. The site receives visitors and releases them unchanged."
+          }
+        ],
+        "closing": "None of these are unsolvable. They are all the consequence of building a website before building a strategy — and they are exactly what Noctra Studio is designed to fix."
+      },
+      "how": {
+        "label": "03 — How",
+        "sideNote": "The Noctra method.",
+        "title": "Structure before aesthetics.",
+        "titleAccent": "Always.",
+        "intro": "Every website Noctra Studio builds begins in the same place: a clear model of who the visitor is, what they need to believe before they act, and what path gets them there. Design follows that logic — never precedes it.",
+        "principles": [
+          {
+            "index": "01",
+            "title": "Structure first.",
+            "description": "Before a single pixel is designed, we map the information architecture. Every page has a purpose. Every section has a job. Visitors move through a deliberate sequence — not a collection of independent ideas."
+          },
+          {
+            "index": "02",
+            "title": "Messaging clarity.",
+            "description": "We write the strategy before we write the copy. Who is reading this? What do they need to hear first? What objection must we address? What is the one thing we need them to walk away knowing? Every line earns its place."
+          },
+          {
+            "index": "03",
+            "title": "Conversion architecture.",
+            "description": "Trust is built incrementally. We design the conversion path — where to place the ask, how to reduce friction at each step, what micro-commitments lead to macro-conversions. The site is not a pamphlet. It is a persuasion system."
+          },
+          {
+            "index": "04",
+            "title": "Performance optimization.",
+            "description": "Speed is trust. A one-second delay costs conversions. We build on Next.js — server-rendered, edge-deployed, optimized by default. The site is fast because fast is not optional at a professional level."
+          }
+        ]
+      },
+      "systemView": {
+        "label": "04 — System View",
+        "title": "Not a page.",
+        "titleAccent": "A system.",
+        "description": "Every component of a professional website is connected. Change one element and it affects the whole. That is the difference between building pages and building systems.",
+        "entryPoints": ["Search", "Referral", "Social", "Direct"],
+        "layers": [
+          {
+            "layer": "Clarity Layer",
+            "desc": "Who this is for. What it solves. Why now.",
+            "accent": "border-white/20 bg-white/5 text-white"
+          },
+          {
+            "layer": "Trust Layer",
+            "desc": "Evidence, proof, credibility, specificity.",
+            "accent": "border-neutral-700 bg-neutral-900/40 text-neutral-300"
+          },
+          {
+            "layer": "Conversion Layer",
+            "desc": "The ask. Friction removed. One clear path.",
+            "accent": "border-emerald-500/30 bg-emerald-500/5 text-emerald-400"
+          }
+        ],
+        "output": "Qualified action",
+        "note": "Every layer feeds the next. Nothing is isolated. Everything is measured."
+      },
+      "outcomes": {
+        "label": "05 — Outcomes",
+        "sideNote": "What the system produces.",
+        "title": "What this creates.",
+        "items": [
+          {
+            "word": "Clarity.",
+            "body": "Visitors understand what you do within the first three seconds. Not a summary. Not a tagline. A genuine understanding — one that makes them feel seen, and makes your solution feel obvious. Clarity is the foundation of everything else."
+          },
+          {
+            "word": "Trust.",
+            "body": "Trust is not declared. It is accumulated. Through specificity, proof, consistency, and honest communication. A professional website builds trust systematically — layer by layer — before the visitor ever speaks to a human."
+          },
+          {
+            "word": "Conversion.",
+            "body": "Not traffic. Not impressions. Actual decisions. People who reach out, book calls, make purchases, and return. Conversion is the only metric that matters — and it is the direct output of structure applied with intention."
+          }
+        ]
+      },
+      "cta": {
+        "label": "Ready to begin",
+        "title": {
+          "line1": "Diagnose your",
+          "line2": "digital presence."
+        },
+        "description": "We review your current website against the system criteria above — structure, messaging, conversion logic, and performance — and tell you exactly what is working and what is not.",
+        "note": "No pitch. No commitment. Just clarity.",
+        "primaryCta": "Start the diagnosis",
+        "secondaryCta": "See our work",
+        "signature": "Noctra Studio — Professional Websites"
+      }
+    }
+  },
   "ServiceDetails": {
     "professional_websites": {
       "title": "Professional Websites",
@@ -4439,57 +4730,132 @@
     }
   },
   "TechnologyPage": {
-    "title": "Why Next.js (Explained Without Jargon)",
-    "subtitle": "We chose the best technology for your business results. Here's why, in plain language.",
-    "analogy_title": "Think of it like this",
-    "analogy": "WordPress is like renting a furnished apartment — it works, but you can't change the walls, and the landlord can raise the rent. Next.js is like building your own house — you own everything, customize anything, and it appreciates in value over time.",
-    "comparison_title": "WordPress vs Next.js: What matters for your business",
-    "comparison": [
-      {
-        "category": "Speed",
-        "wordpress": "5-8 seconds load time (typical)",
-        "nextjs": "< 1 second load time",
-        "business_impact": "Every second of delay costs you 7% in conversions"
-      },
-      {
-        "category": "Maintenance",
-        "wordpress": "Constant plugin updates, security patches, compatibility issues",
-        "nextjs": "Everything integrated, nothing to update manually",
-        "business_impact": "Save $10k+/year in maintenance costs"
-      },
-      {
-        "category": "SEO",
-        "wordpress": "Slow sites get penalized by Google",
-        "nextjs": "Built-in SEO optimization, Google loves fast sites",
-        "business_impact": "Higher rankings = more organic traffic = more clients"
-      },
-      {
-        "category": "Security",
-        "wordpress": "30,000+ known vulnerabilities in plugins",
-        "nextjs": "No plugins to hack, modern security practices",
-        "business_impact": "Protect your business and customer data"
-      },
-      {
-        "category": "Ownership",
-        "wordpress": "Locked into specific hosting and plugin ecosystem",
-        "nextjs": "You own 100% of the code, take it anywhere",
-        "business_impact": "No vendor lock-in, ever"
-      }
-    ],
-    "cost_title": "Real cost comparison (5-year view)",
-    "cost_wordpress": {
-      "label": "WordPress",
-      "year1": "$15,000 MXN (setup) + $8,000/year (hosting + plugins + maintenance)",
-      "total_5yr": "~$47,000 MXN total"
+    "hero": {
+      "title": "Technology is not complex.",
+      "subtitle": "It's just poorly explained.",
+      "description": "In a world that sells tools as if they were magic, we give you the engine blueprint so you understand the real value of your investment."
     },
-    "cost_nextjs": {
-      "label": "Next.js (Noctra)",
-      "year1": "$30,000 MXN (setup) + $2,000/year (hosting)",
-      "total_5yr": "~$38,000 MXN total"
+    "problem": {
+      "title": "Digital Noise",
+      "copy": "Most agencies sell tool names (React, Cloud, AI) to create a barrier of complexity. That barrier generates technical dependency and strategic confusion. At Noctra, we believe that technology only has value if it is invisible, predictable, and at the service of your business."
     },
-    "cost_note": "Next.js costs more upfront but saves money long-term — and performs significantly better.",
-    "cta": "See if Next.js is right for your business",
-    "cta_subtitle": "Free 45-minute consultation. No commitment."
+    "blueprint": {
+      "label": "THE SYSTEM BLUEPRINT",
+      "title": "Three layers of clarity",
+      "example_label": "Real Example",
+      "impact_label": "Business Impact",
+      "items": [
+        {
+          "label": "01 · Foundation",
+          "title": "The end of infinite maintenance",
+          "explanation": "Using cutting-edge technologies (Next.js) eliminates the need for constant plugin updates and the fear of the site breaking without warning.",
+          "example": "It's the difference between a wooden house that requires constant painting and a reinforced concrete structure that lasts decades.",
+          "impact": "Zero monthly technical maintenance costs and long-term protected investment."
+        },
+        {
+          "label": "02 · Intelligence",
+          "title": "Data that works, not hinders",
+          "explanation": "Structuring information so your business is legible to both humans and algorithms. Your site stops being a brochure and becomes an asset.",
+          "example": "A catalog that updates itself in Google results the moment you change a piece of data in your internal system.",
+          "impact": "Organic appearance in searches without depending on infinite advertising spend."
+        },
+        {
+          "label": "03 · Connectivity",
+          "title": "The digital nervous system",
+          "explanation": "Automating workflows so data travels effortlessly between marketing, sales, and operations.",
+          "example": "A new lead on your web triggers a reminder in your CRM and sends a welcome WhatsApp autonomously.",
+          "impact": "Recover more than 10 hours per week of manual management and eliminate human error."
+        }
+      ]
+    },
+    "system": {
+      "label": "THE NOCTRA METHOD",
+      "title": "We design this understanding into every line of code.",
+      "subtitle": "We don't implement technology for trends. We implement it for business architecture.",
+      "radar_note": "Our software (Radar) monitors the foundation. Social sustains the intelligence. The Studio designs the connectivity."
+    },
+    "cta": {
+      "title": "Ready to clarify your digital system?",
+      "primary": "Diagnose my system",
+      "secondary": "See working method",
+      "subtitle": "Discover the leaks in your current architecture in a 30-minute consultation."
+    }
+  },
+  "OptimizationPage": {
+    "hero": {
+      "title": "Your system is not broken.",
+      "subtitle": "It’s just not optimized.",
+      "description": "Most digital systems don’t fail loudly. They degrade quietly — through friction, misalignment, and missed signals.",
+      "cta": "Diagnose my system"
+    },
+    "problem": {
+      "title": "The Silent Leak",
+      "description": "Growth doesn't stop suddenly. It leaks through friction, misalignment, and outdated signals that most businesses don't see until it's too late.",
+      "points": [
+        "Quiet performance degradation",
+        "Hidden conversion friction",
+        "Strategic misalignment"
+      ]
+    },
+    "truth": {
+      "title": "Optimization = Correction",
+      "description": "It is not about 'tweaking' or 'guesswork.' It is about restoring a system to its intended health and performance by identifying and removing what's broken."
+    },
+    "method": {
+      "title": "The Correction Loop",
+      "steps": [
+        {
+          "label": "01 · Detection",
+          "title": "Radar-Powered Auditing",
+          "description": "Continuous monitoring with Noctra Radar to find leaks before they become business failures."
+        },
+        {
+          "label": "02 · Analysis",
+          "title": "Prioritizing Impact",
+          "description": "Converting data noise into strategic priorities that move the needle."
+        },
+        {
+          "label": "03 · Correction",
+          "title": "Structural Alignment",
+          "description": "Direct intervention to fix technical, narrative, and architectural friction."
+        },
+        {
+          "label": "04 · Refinement",
+          "title": "Continuous Feedback",
+          "description": "Repeatable loops to ensure sustained clarity and compounding results."
+        }
+      ]
+    },
+    "scope": {
+      "title": "What We Align",
+      "items": [
+        {
+          "title": "Conversion Flow",
+          "description": "Removing the invisible steps that cause drops."
+        },
+        {
+          "title": "Messaging Clarity",
+          "description": "Aligning value and expectation to restore trust."
+        },
+        {
+          "title": "Technical Performance",
+          "description": "Restoring speed as a competitive advantage."
+        },
+        {
+          "title": "System Structure",
+          "description": "Organizing code and content for long-term health."
+        }
+      ]
+    },
+    "noctra": {
+      "title": "Part of the Noctra System",
+      "description": "Powered by continuous detection from Noctra Radar and executed through the Studio."
+    },
+    "cta": {
+      "title": "Diagnose what’s slowing your growth",
+      "primary": "Diagnose my system",
+      "subtitle": "Discover the points of friction in your current system in a 30-minute consultation."
+    }
   },
   "CustomPricingPage": {
     "title": "Get Your Custom Quote",

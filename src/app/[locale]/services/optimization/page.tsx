@@ -1,5 +1,5 @@
 import { generatePageMetadata } from "@/lib/metadata";
-import ServicePageTemplate from "@/components/ServicePageTemplate";
+import OptimizationClient from "./OptimizationClient";
 
 export async function generateMetadata({
   params,
@@ -11,5 +11,5 @@ export async function generateMetadata({
 }
 
 export default function OptimizationPage() {
-  return <ServicePageTemplate namespace="optimization" interestId="optimization" />;
+  return <OptimizationClient />;
 }

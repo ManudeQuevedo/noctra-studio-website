@@ -5,7 +5,13 @@ import { usePathname, useRouter } from "@/i18n/routing";
 import { cn } from "@/lib/utils";
 import { useTransition } from "react";
 
-export function LanguageSwitcher({ className }: { className?: string }) {
+export function LanguageSwitcher({
+  className,
+  variant = "default",
+}: {
+  className?: string;
+  variant?: "default" | "compact";
+}) {
   const locale = useLocale();
   const pathname = usePathname();
   const router = useRouter();
@@ -20,25 +26,42 @@ export function LanguageSwitcher({ className }: { className?: string }) {
   };
 
   return (
-    <div className={cn("flex items-center gap-1", className)}>
+    <div
+      className={cn(
+        "flex items-center",
+        variant === "compact"
+          ? "gap-1 rounded-full border border-white/10 bg-white/[0.04] px-1.5 py-1 shadow-[0_0_0_1px_rgba(255,255,255,0.02)] backdrop-blur-md"
+          : "gap-1",
+        className,
+      )}>
       <button
         onClick={() => handleLocaleChange("en")}
         disabled={isPending}
         className={cn(
-          "text-sm font-medium transition-colors font-mono",
-          locale === "en" ? "text-white" : "text-neutral-300 hover:text-white",
-          isPending && "opacity-50 cursor-not-allowed"
+          "font-mono font-medium transition-colors",
+          variant === "compact"
+            ? "min-w-[2.5rem] rounded-full px-2 py-1 text-[11px] tracking-[0.18em]"
+            : "text-sm",
+          locale === "en"
+            ? "bg-white text-black"
+            : "text-neutral-300 hover:text-white",
+          isPending && "cursor-not-allowed opacity-50",
         )}>
         EN
       </button>
-      <span className="text-neutral-400">/</span>
+      {variant === "compact" ? null : <span className="text-neutral-400">/</span>}
       <button
         onClick={() => handleLocaleChange("es")}
         disabled={isPending}
         className={cn(
-          "text-sm font-medium transition-colors font-mono",
-          locale === "es" ? "text-white" : "text-neutral-300 hover:text-white",
-          isPending && "opacity-50 cursor-not-allowed"
+          "font-mono font-medium transition-colors",
+          variant === "compact"
+            ? "min-w-[2.5rem] rounded-full px-2 py-1 text-[11px] tracking-[0.18em]"
+            : "text-sm",
+          locale === "es"
+            ? "bg-white text-black"
+            : "text-neutral-300 hover:text-white",
+          isPending && "cursor-not-allowed opacity-50",
         )}>
         ES
       </button>
