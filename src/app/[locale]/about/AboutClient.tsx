@@ -170,7 +170,7 @@ const ES: AboutCopy = {
   visionTitle: "Un ecosistema, no un catálogo.",
   visionParagraphs: [
     "Noctra no se detendrá en ser un estudio con buenos proyectos. Estamos construyendo infraestructura de crecimiento: herramientas, datos y estrategia conectados en un solo sistema.",
-    "Cada producto que lanzamos está diseñado para integrarse con los demás. Radar alimenta al estudio. Social extiende la marca. CRM organiza la operación. No son productos sueltos: son capas del mismo sistema.",
+    "Cada producto que lanzamos está diseñado para integrarse con los demás. Radar alimenta al estudio. Social extiende la marca. Forge —nuestro CRM interno en desarrollo— organiza la operación. No son productos sueltos: son capas del mismo sistema.",
     "Construimos para que tu presencia digital siga siendo relevante, competitiva y medible dentro de 2, 3, 5 años. No para el proyecto de este mes.",
   ],
 
@@ -292,7 +292,7 @@ const EN: AboutCopy = {
   visionTitle: "An ecosystem, not a catalog.",
   visionParagraphs: [
     "Noctra will not stop at being a studio with good projects. We are building growth infrastructure: tools, data, and strategy connected into one system.",
-    "Every product we launch is designed to integrate with the others. Radar feeds the studio. Social extends the brand. CRM organizes operations. They are not separate products: they are layers of the same system.",
+    "Every product we launch is designed to integrate with the others. Radar feeds the studio. Social extends the brand. Forge —our internal CRM in development— organizes operations. They are not separate products: they are layers of the same system.",
     "We build so your digital presence remains relevant, competitive, and measurable 2, 3, 5 years from now. Not for this month's project.",
   ],
 

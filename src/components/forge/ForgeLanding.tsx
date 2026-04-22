@@ -214,16 +214,16 @@ export default function ForgeLanding() {
 
   const faqs = [
     {
-      q: "¿Necesito tarjeta de crédito para el trial?",
-      a: "No. El trial de 14 días es completamente gratis y no requiere datos de pago. Solo necesitas un email.",
+      q: "¿Cuándo estará disponible Noctra Forge?",
+      a: "Noctra Forge está en desarrollo activo con IA nativa integrada. Actualmente lo usamos internamente en Noctra Studio. Cuando estén listas las capacidades que queremos entregar, lo abriremos al ecosistema Noctra. Sin fecha comprometida.",
     },
     {
-      q: "¿Qué pasa cuando termina el trial?",
-      a: "Te mostramos las opciones de plan. Todo tu contenido se mantiene intacto — clientes, propuestas y proyectos siguen disponibles al suscribirte.",
+      q: "¿Puedo acceder ahora?",
+      a: "Por ahora es de uso interno en Noctra Studio. Si quieres ser de los primeros en acceder cuando esté disponible, registra tu interés y te avisamos directamente.",
     },
     {
-      q: "¿Puedo cancelar en cualquier momento?",
-      a: "Sí. En el plan mensual puedes cancelar cuando quieras. En el plan anual, el acceso se mantiene hasta el final del período pagado.",
+      q: "¿Qué capacidades de IA tendrá?",
+      a: "Está siendo construida con IA nativa desde su arquitectura base, no como un módulo agregado. Eso permite que el sistema aprenda de los patrones de tu operación, sugiera acciones y reduzca el trabajo manual de forma inteligente.",
     },
     {
       q: "¿Es solo para agencias de diseño y desarrollo?",
@@ -263,7 +263,7 @@ export default function ForgeLanding() {
         <div className="flex items-center gap-2 border border-[#10b981]/30 bg-[#10b981]/5 rounded-full px-4 py-1.5 mb-8 animate-in fade-in slide-in-from-bottom-4 duration-1000">
           <span className="w-1.5 h-1.5 bg-[#10b981] rounded-full animate-pulse" />
           <span className="text-[#10b981] text-xs uppercase tracking-widest font-medium">
-            14 días gratis · Sin tarjeta de crédito
+            En desarrollo activo · IA nativa integrada
           </span>
         </div>
         <h1 className="text-5xl md:text-7xl lg:text-8xl font-bold text-white tracking-tighter max-w-5xl mb-6 animate-in fade-in slide-in-from-bottom-8 duration-1000 delay-150">
@@ -305,8 +305,8 @@ export default function ForgeLanding() {
               transition={{ duration: 0.3 }}
               className="text-lg md:text-xl text-neutral-400 max-w-2xl leading-relaxed text-balance">
               {userType === "pro"
-                ? "Deja de perder tiempo en admin. Gestiona clientes, propuestas y cobros en un solo lugar."
-                : "Escala tus operaciones. Unifica tu equipo, proyectos y finanzas en una sola verdad."}
+                ? "La herramienta interna que Noctra usa para gestionar su operación. Construida con IA nativa para que no tengas que coordinar a mano."
+                : "Diseñada para agencias. En desarrollo activo con IA que conecta operación, clientes y proyectos en una sola interfaz."}
             </m.p>
           </AnimatePresence>
         </div>
@@ -315,7 +315,7 @@ export default function ForgeLanding() {
           <div className="flex flex-col sm:flex-row items-center gap-4 flex-wrap justify-center w-full">
             <CrmHomeLink
               className="flex items-center justify-center gap-2 bg-white text-black font-bold rounded-full h-12 px-8 text-base hover:bg-gray-200 transition-all duration-300 w-full sm:w-auto">
-              Empezar Gratis <ArrowRight size={18} />
+              Registrar interés <ArrowRight size={18} />
             </CrmHomeLink>
             <a
               href="#demo"
@@ -327,17 +327,15 @@ export default function ForgeLanding() {
           {/* Trust Indicators Inline */}
           <div className="flex items-center flex-wrap justify-center gap-x-4 gap-y-2 text-xs text-neutral-400 font-medium pt-2">
             <span className="flex items-center gap-1.5">
-              <Check size={14} className="text-[#10b981]" /> Sin tarjeta de
-              crédito
+              <Check size={14} className="text-[#10b981]" /> Herramienta interna
             </span>
             <span className="hidden sm:inline text-neutral-600">·</span>
             <span className="flex items-center gap-1.5">
-              <Check size={14} className="text-[#10b981]" /> Cancela cuando
-              quieras
+              <Check size={14} className="text-[#10b981]" /> IA nativa integrada
             </span>
             <span className="hidden sm:inline text-neutral-600">·</span>
             <span className="flex items-center gap-1.5">
-              <Check size={14} className="text-[#10b981]" /> Soporte incluido
+              <Check size={14} className="text-[#10b981]" /> Disponible en fase futura
             </span>
           </div>
         </div>
@@ -347,8 +345,8 @@ export default function ForgeLanding() {
             ✨ Construido por diseñadores, para creativos
           </p>
           <p className="text-[10px] text-neutral-500 mt-2 max-w-sm mx-auto">
-            El sistema interno que usamos en Noctra Studio, ahora disponible
-            para la comunidad.
+            Herramienta interna en desarrollo activo con IA nativa. Disponible
+            para el ecosistema Noctra en una fase futura.
           </p>
         </div>
       </section>
@@ -672,11 +670,11 @@ export default function ForgeLanding() {
                   margen.
                 </p>
                 <div className="flex flex-col items-center">
-                  <span className="text-[#10b981] text-5xl font-black tracking-tighter mb-1">
-                    $29<span className="text-sm font-bold">/mes</span>
+                  <span className="text-[#10b981] text-2xl font-black tracking-tighter mb-1">
+                    En desarrollo
                   </span>
                   <span className="text-[10px] text-neutral-500 font-medium mb-3">
-                    o comienza con el plan Starter por $9/mes
+                    Disponible para usuarios en una fase futura
                   </span>
                   <span className="text-[10px] uppercase tracking-[0.2em] text-[#10b981] font-bold">
                     Eficiencia Radical
@@ -729,17 +727,15 @@ export default function ForgeLanding() {
             para tu negocio.
           </h2>
           <p className="text-lg md:text-xl text-neutral-400 mb-10 max-w-xl leading-relaxed">
-            Organiza tu pipeline. Entrega proyectos a tiempo. Escala tu
-            operación hoy.
+            En desarrollo activo. Construido con IA nativa para que la
+            operación se gestione sola.
           </p>
-          {/* Beta Coming Soon - Temporarily Disabled */}
           <CrmHomeLink
             className="flex items-center justify-center gap-2 bg-white text-black font-bold h-12 rounded-full px-10 text-base hover:bg-gray-200 transition-all duration-300">
-            Empezar Gratis <ArrowRight size={18} />
+            Registrar interés <ArrowRight size={18} />
           </CrmHomeLink>
-          {/* Original Link: /forge/login */}
           <p className="text-xs text-neutral-500 mt-6 tracking-wide">
-            14 días gratis. Sin tarjeta. Cancela cuando quieras.
+            Uso interno hoy. Disponible para el ecosistema Noctra en una fase futura.
           </p>
         </div>
       </section>

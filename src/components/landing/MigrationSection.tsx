@@ -124,14 +124,14 @@ const steps: Step[] = [
     number: 2,
     title: "Nosotros mapeamos todo",
     description:
-      "Noctra CRM detecta automáticamente tus campos y los mapea al formato correcto. Tú solo revisas y confirmas.",
+      "Noctra Forge detectará automáticamente tus campos y los mapeará al formato correcto. Tú solo revisas y confirmas.",
     icon: <Settings2 className="w-6 h-6" />,
   },
   {
     number: 3,
     title: "Listo para usar",
     description:
-      "Tus contactos, empresas y oportunidades aparecen en Noctra CRM sin perder ningún dato. Recibe un reporte completo.",
+      "Tus contactos, empresas y oportunidades se importarán a Noctra Forge sin perder ningún dato. Recibirás un reporte completo.",
     icon: <Rocket className="w-6 h-6" />,
   },
 ];
@@ -204,13 +204,13 @@ export function MigrationSection() {
             Migración sin complicaciones
           </span>
           <h2 className="text-4xl md:text-5xl lg:text-6xl font-black text-white mb-6 tracking-tighter">
-            Trae todos tus datos a Noctra CRM <br className="hidden md:block" />
-            en menos de 30 minutos
+            Migración preparada — <br className="hidden md:block" />
+            lista cuando Noctra Forge lo esté
           </h2>
           <p className="text-neutral-400 text-lg md:text-xl leading-relaxed">
             Sin perder un solo contacto. Sin contratar a un técnico.{" "}
             <br className="hidden md:block" />
-            Sin hojas de cálculo confusas. Solo sigue el asistente paso a paso.
+            El asistente de migración estará disponible cuando abramos el acceso.
           </p>
         </motion.div>
 
@@ -378,7 +378,7 @@ export function MigrationSection() {
           <div className="flex flex-col sm:flex-row items-center gap-5 w-full justify-center">
             <CrmHomeLink
               className="w-full sm:w-auto px-8 py-4 bg-emerald-500 hover:bg-emerald-400 text-black font-bold rounded-2xl transition-all shadow-xl shadow-emerald-500/10 active:scale-[0.98] flex items-center justify-center gap-2 group">
-              Migra gratis ahora
+              Registrar interés
               <ArrowRight
                 size={20}
                 className="group-hover:translate-x-1 transition-transform"

@@ -32,21 +32,21 @@ export async function submitEarlyAccess(formData: {
   // 2. Send Personalized Email to User
   try {
     const isEn = locale === "en";
-    const subject = isEn 
-      ? "Welcome to Noctra CRM Early Access List! 🚀" 
-      : "¡Bienvenido a la lista de Early Access de Noctra CRM! 🚀";
+    const subject = isEn
+      ? "You're on the Noctra Forge waitlist 🚀"
+      : "Estás en la lista de espera de Noctra Forge 🚀";
 
     const html = isEn 
       ? `
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #10B981;">You're on the list!</h1>
           <p>Hello,</p>
-          <p>Thanks for your interest in <strong>Noctra CRM (Forge)</strong>. We've received your request for early access.</p>
-          <p>Our team is reviewing applications for the private beta. We're looking for agencies that want to help us shape the future of digital management.</p>
+          <p>Thanks for your interest in <strong>Noctra Forge</strong> — our internal management tool, built with native AI from the ground up.</p>
+          <p>Noctra Forge is currently in active development and used internally by the Noctra Studio team. We're building AI capabilities that make operations run on their own before we open access to the ecosystem.</p>
           <p><strong>What's next?</strong></p>
           <ul>
-            <li>We'll contact you within 48 hours to discuss your agency's needs.</li>
-            <li>Early access members get founder pricing and a direct line to our dev team.</li>
+            <li>We'll notify you directly when access opens — no generic announcements.</li>
+            <li>Waitlist members will be first in line when we roll out access.</li>
           </ul>
           <p>Best regards,<br/>The Noctra Studio Team</p>
         </div>
@@ -55,12 +55,12 @@ export async function submitEarlyAccess(formData: {
         <div style="font-family: sans-serif; max-width: 600px; margin: 0 auto;">
           <h1 style="color: #10B981;">¡Ya estás en la lista!</h1>
           <p>Hola,</p>
-          <p>Gracias por tu interés en <strong>Noctra CRM (Forge)</strong>. Hemos recibido tu solicitud para el acceso anticipado.</p>
-          <p>Nuestro equipo está revisando las aplicaciones para la beta privada. Buscamos agencias que quieran ayudarnos a moldear el futuro de la gestión digital.</p>
+          <p>Gracias por tu interés en <strong>Noctra Forge</strong> — nuestra herramienta interna de gestión, construida con IA nativa desde su arquitectura base.</p>
+          <p>Noctra Forge está en desarrollo activo y actualmente lo usamos de forma interna en Noctra Studio. Estamos construyendo capacidades de IA que hacen que la operación se gestione sola, antes de abrir el acceso al ecosistema.</p>
           <p><strong>¿Qué sigue?</strong></p>
           <ul>
-            <li>Te contactaremos en las próximas 48 horas para discutir las necesidades de tu agencia.</li>
-            <li>Los miembros con early access obtienen precio de fundador y línea directa con nuestro equipo de desarrollo.</li>
+            <li>Te avisaremos directamente cuando el acceso esté disponible — sin anuncios genéricos.</li>
+            <li>Los miembros de la lista de espera serán los primeros en acceder.</li>
           </ul>
           <p>Saludos,<br/>El equipo de Noctra Studio</p>
         </div>
