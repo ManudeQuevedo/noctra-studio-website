@@ -40,7 +40,7 @@ export default function GuaranteeClient() {
             className="inline-flex items-center gap-2 mb-8 border border-emerald-500/30 bg-emerald-500/10 rounded-full px-4 py-2">
             <Shield className="w-4 h-4 text-emerald-400" />
             <span className="text-sm text-emerald-400 font-medium">
-              60-day guarantee
+              {t("hero_badge")}
             </span>
           </m.div>
           <m.h1
@@ -79,7 +79,7 @@ export default function GuaranteeClient() {
                         <Icon className="w-5 h-5 text-white" />
                       </div>
                       <span className="text-xs font-mono text-neutral-300">
-                        STEP {i + 1}
+                        {t("step_label", { step: i + 1 })}
                       </span>
                     </div>
                     <h3 className="text-xl font-bold mb-3">

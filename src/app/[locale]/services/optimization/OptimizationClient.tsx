@@ -63,7 +63,7 @@ export default function OptimizationClient() {
                 transition={{ delay: 0.2 }}
                 className="text-xs font-mono tracking-[0.4em] uppercase text-neutral-500 block mb-4"
               >
-                Philosophy of Correction
+                Diagnóstico + Corrección
               </m.span>
               <h1 className="text-6xl md:text-8xl font-bold tracking-tighter leading-tight">
                 {t("hero.title")}
@@ -169,7 +169,7 @@ export default function OptimizationClient() {
             <div className="mb-32 text-center md:text-left">
               <FadeIn direction="right">
                 <span className="text-xs font-mono tracking-widest uppercase text-neutral-500 mb-4 block">
-                  Methodology
+                  Metodología
                 </span>
                 <h2 className="text-5xl md:text-7xl font-bold tracking-tight">
                   {t("method.title")}
@@ -257,7 +257,7 @@ export default function OptimizationClient() {
             <FadeIn>
               <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-400 text-[10px] font-mono tracking-widest mb-8">
                 <CheckCircle2 className="w-3 h-3" />
-                SYSTEM INTEGRATION
+                PARTE DEL SISTEMA NOCTRA
               </div>
               <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
                 {t("noctra.title")}
@@ -269,7 +269,7 @@ export default function OptimizationClient() {
 
             <FadeIn delay={0.3}>
               <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto opacity-50">
-                {["Continuous Scan", "Risk Detection", "Growth Mapping", "System Health"].map((label) => (
+                {["Escaneo continuo", "Detección de riesgos", "Mapa de crecimiento", "Salud del sistema"].map((label) => (
                   <div key={label} className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-[10px] font-mono text-neutral-500">
                     {label}
                   </div>
@@ -309,7 +309,7 @@ export default function OptimizationClient() {
                     </Button>
                     
                     <Link href="/services" className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm font-mono tracking-widest uppercase">
-                      All Systems
+                      Ver todos los servicios
                     </Link>
                   </div>
                 </FadeIn>

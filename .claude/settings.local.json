@@ -29,7 +29,8 @@
       "Bash(echo:*)",
       "Bash(timeout 60 git:*)",
       "Bash(git diff:*)",
-      "Bash(node_modules/.bin/next build:*)"
+      "Bash(node_modules/.bin/next build:*)",
+      "Bash(grep -n '\"desde ,000 MXN\\\\|desde \\\\$20,000\\\\|desde.*MXN.*garantía\\\\|garantía formal' messages/es.json)"
     ],
     "deny": [],
     "ask": []

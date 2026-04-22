@@ -29,7 +29,7 @@ export function AudienceSection() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section id="segments" className="px-6 py-24 md:px-8 md:py-32">
+      <section id="por-tipo-de-negocio" className="px-6 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-7xl">
           <m.div
             initial={{ opacity: 0, y: 24 }}

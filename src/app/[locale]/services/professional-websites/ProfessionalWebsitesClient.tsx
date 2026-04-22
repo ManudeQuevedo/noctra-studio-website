@@ -57,10 +57,10 @@ type Principle = {
   description: string;
 };
 
-type SystemLayer = {
-  layer: string;
-  desc: string;
-  accent: string;
+type SystemStage = {
+  step: string;
+  title: string;
+  description: string;
 };
 
 type Outcome = {
@@ -74,7 +74,7 @@ export default function ProfessionalWebsitesClient() {
   const failureModes = t.raw("sections.why.failureModes") as FailureMode[];
   const principles = t.raw("sections.how.principles") as Principle[];
   const entryPoints = t.raw("sections.systemView.entryPoints") as string[];
-  const systemLayers = t.raw("sections.systemView.layers") as SystemLayer[];
+  const systemFlow = t.raw("sections.systemView.flow") as SystemStage[];
   const outcomes = t.raw("sections.outcomes.items") as Outcome[];
 
   return (
@@ -215,6 +215,9 @@ export default function ProfessionalWebsitesClient() {
                     <p className="text-2xl font-semibold leading-snug text-white md:text-3xl">
                       &ldquo;{t("sections.what.quote")}&rdquo;
                     </p>
+                    <footer className="mt-4 text-sm italic text-muted-foreground">
+                      — {t("sections.what.quoteAttribution")}
+                    </footer>
                   </blockquote>
                 </Reveal>
 
@@ -384,73 +387,73 @@ export default function ProfessionalWebsitesClient() {
               </p>
             </Reveal>
 
-            {/* System diagram — typographic */}
+            {/* System diagram — dominant funnel */}
             <Reveal delay={0.3}>
-              <div className="mt-20 rounded-3xl border border-neutral-800 bg-neutral-950/40 p-8 md:p-12 lg:p-16">
+              <div className="mx-auto mt-20 w-full max-w-6xl rounded-[2rem] border border-white/10 bg-neutral-950/70 p-8 shadow-[0_0_0_1px_rgba(255,255,255,0.02),0_24px_80px_rgba(0,0,0,0.45)] md:p-10 lg:p-14">
+                <div className="flex flex-col gap-4 lg:flex-row lg:items-stretch lg:gap-3">
+                  {systemFlow.map((stage, index) => {
+                    const isFinalStage = index === systemFlow.length - 1;
+                    const cardTone = isFinalStage
+                      ? "bg-emerald-500/[0.08]"
+                      : index === 0
+                        ? "bg-white/[0.03]"
+                        : "bg-white/[0.05]";
 
-                {/* Top row: entry points */}
-                <div className="mb-12 flex flex-wrap gap-4 justify-center">
-                  {entryPoints.map((src) => (
-                    <div
-                      key={src}
-                      className="rounded-xl border border-neutral-800 bg-neutral-900/60 px-5 py-3 text-xs font-mono uppercase tracking-widest text-neutral-500"
-                    >
-                      {src}
-                    </div>
-                  ))}
-                </div>
+                    return (
+                      <div
+                        key={stage.step}
+                        className="flex flex-col gap-4 lg:flex-row lg:flex-1 lg:items-stretch"
+                      >
+                        <div
+                          className={`flex min-h-[220px] flex-1 flex-col rounded-lg border border-white/10 p-6 ${cardTone}`}
+                        >
+                          <div className="flex items-start justify-between gap-4">
+                            <div className="flex h-11 w-11 items-center justify-center rounded-full border border-white/10 bg-white/5 text-sm font-semibold text-white/80">
+                              {stage.step}
+                            </div>
+                            <span className="text-[11px] uppercase tracking-[0.22em] text-white/35">
+                              Etapa
+                            </span>
+                          </div>
 
-                {/* Arrow */}
-                <div className="flex justify-center mb-6">
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="h-10 w-px bg-neutral-800" />
-                    <div className="text-neutral-700 text-xs">↓</div>
-                  </div>
-                </div>
+                          <div className="mt-8">
+                            <h3 className="text-2xl font-bold text-white">
+                              {stage.title}
+                            </h3>
+                            <p className="mt-4 text-sm leading-7 text-neutral-400">
+                              {stage.description}
+                            </p>
+                          </div>
 
-                {/* Core system layers */}
-                <div className="space-y-3 max-w-xl mx-auto">
-                  {systemLayers.map((row, i) => (
-                    <div key={row.layer}>
-                      <div className={`rounded-2xl border px-6 py-5 ${row.accent}`}>
-                        <div className="flex items-center justify-between gap-4">
-                          <span className="text-xs font-bold uppercase tracking-widest opacity-60">
-                            {row.layer}
-                          </span>
-                          <span className="text-sm leading-snug text-right opacity-70">
-                            {row.desc}
-                          </span>
+                          {index === 0 ? (
+                            <div className="mt-auto pt-6">
+                              <div className="flex flex-wrap gap-2">
+                                {entryPoints.map((source) => (
+                                  <span
+                                    key={source}
+                                    className="rounded-full border border-white/10 bg-white/[0.04] px-3 py-1 text-[10px] font-mono uppercase tracking-[0.18em] text-neutral-400"
+                                  >
+                                    {source}
+                                  </span>
+                                ))}
+                              </div>
+                            </div>
+                          ) : null}
                         </div>
+
+                        {index < systemFlow.length - 1 ? (
+                          <div className="flex items-center justify-center py-1 lg:px-1">
+                            <div className="flex h-10 w-10 items-center justify-center rounded-full border border-white/10 bg-white/[0.03]">
+                              <ArrowRight className="h-4 w-4 text-white/60 rotate-90 lg:rotate-0" />
+                            </div>
+                          </div>
+                        ) : null}
                       </div>
-                      {i < 2 && (
-                        <div className="flex justify-center my-1">
-                          <div className="text-neutral-800 text-xs">↓</div>
-                        </div>
-                      )}
-                    </div>
-                  ))}
+                    );
+                  })}
                 </div>
 
-                {/* Arrow down */}
-                <div className="flex justify-center mt-6 mb-8">
-                  <div className="flex flex-col items-center gap-1">
-                    <div className="text-neutral-700 text-xs">↓</div>
-                    <div className="h-8 w-px bg-neutral-800" />
-                  </div>
-                </div>
-
-                {/* Output */}
-                <div className="text-center">
-                  <div className="inline-flex items-center gap-3 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-8 py-4">
-                    <div className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                    <span className="text-sm font-bold uppercase tracking-widest text-emerald-400">
-                      {t("sections.systemView.output")}
-                    </span>
-                  </div>
-                </div>
-
-                {/* Footer note */}
-                <p className="mt-10 text-center text-xs text-neutral-700 font-mono">
+                <p className="mt-10 text-center text-xs font-mono text-neutral-700">
                   {t("sections.systemView.note")}
                 </p>
               </div>
@@ -536,6 +539,20 @@ export default function ProfessionalWebsitesClient() {
             </Reveal>
 
             <Reveal delay={0.35}>
+              <div className="mb-8 mt-10 text-center">
+                <p className="text-sm text-muted-foreground">
+                  {t("sections.cta.pricing.label")}{" "}
+                  <strong className="text-white">
+                    {t("sections.cta.pricing.amount")}
+                  </strong>
+                </p>
+                <p className="mt-1 text-xs text-muted-foreground">
+                  {t("sections.cta.pricing.note")}
+                </p>
+              </div>
+            </Reveal>
+
+            <Reveal delay={0.4}>
               <div className="mt-12 flex flex-col gap-4 sm:flex-row">
                 <Link
                   href={{ pathname: "/contact", query: { intent: "professional-websites" } }}

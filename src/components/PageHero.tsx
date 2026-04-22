@@ -54,6 +54,11 @@ export function PageHero() {
               <p className="max-w-xl text-lg leading-relaxed text-neutral-400 md:text-xl lg:leading-relaxed">
                 {t("hero.subtitle")}
               </p>
+              <a
+                href="#por-tipo-de-negocio"
+                className="block text-sm text-emerald-400 hover:underline">
+                {t("hero.audience_anchor")}
+              </a>
             </m.div>
 
             <m.p
@@ -94,7 +99,7 @@ export function PageHero() {
                 variant="outline"
                 size="lg"
                 className="h-14 rounded-full border-white/10 bg-white/[0.03] px-8 text-base font-semibold text-white transition-all hover:border-white/20 hover:bg-white/[0.08] sm:w-auto">
-                <Link href={{ pathname: "/", hash: "the-system" }}>
+                <Link href={{ pathname: "/", hash: "what-noctra-does" }}>
                   {t("hero.secondary_cta")}
                 </Link>
               </Button>
@@ -192,13 +197,16 @@ export function PageHero() {
                   animate={{ scale: 1, opacity: 1 }}
                   transition={{ duration: 0.6, delay: 0.8 }}
                   className="text-3xl font-black text-white">
-                  +45%
+                  {t("hero.metric_value")}
                 </m.p>
                 <p className="mt-1 text-[10px] font-bold uppercase tracking-[0.24em] text-neutral-500">
-                  Conversión Garantizada
+                  {t("hero.metric_label")}
                 </p>
               </div>
             </div>
+            <p className="mt-3 px-2 text-xs leading-relaxed text-neutral-600">
+              {t("hero.metric_footnote")}
+            </p>
           </m.div>
         </div>
       </section>

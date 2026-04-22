@@ -7,6 +7,13 @@ import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 
 const icons = [Palette, Wrench, Search, Bot, Workflow];
+const prices = [
+  "Desde $15,000 MXN",
+  "Desde $25,000 MXN",
+  "Desde $12,000 MXN",
+  "Desde $18,000 MXN",
+  "Desde $80,000 MXN",
+];
 
 export function HybridModelSection() {
   const t = useTranslations("HomePage.hybrid_model");
@@ -57,6 +64,9 @@ export function HybridModelSection() {
                       </h3>
                       <p className="mt-2 text-sm leading-relaxed text-neutral-400">
                         {item.description}
+                      </p>
+                      <p className="mt-3 border-t border-white/8 pt-3 text-xs text-neutral-500">
+                        {prices[index]}
                       </p>
                     </div>
                   );

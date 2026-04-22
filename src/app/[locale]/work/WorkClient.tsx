@@ -22,7 +22,7 @@ import {
   Globe,
   RotateCcw,
 } from "lucide-react";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 import { cn } from "@/lib/utils";
 
 export default function WorkClient({
@@ -31,6 +31,7 @@ export default function WorkClient({
   projects: PublicProjectCard[];
 }) {
   const t = useTranslations("WorkPage");
+  const locale = useLocale();
   const [expandedIndex, setExpandedIndex] = useState<number | null>(null);
 
   const activeProjects = projects.filter((p) => p.status !== "completed");
@@ -51,6 +52,34 @@ export default function WorkClient({
   };
 
   const processIcons = [Search, Layout, Code, Zap];
+  const proofContent =
+    locale.startsWith("es")
+      ? {
+          honesty:
+            "Noctra opera desde 2024. Todos nuestros sistemas activos están en implementación. Documentamos el proceso, no solo el resultado final.",
+          label: "Prueba operativa",
+          title: "El proceso también funciona como evidencia.",
+          subtitle:
+            "Mientras los sistemas activos terminan de madurar, mostramos cómo pensamos, decidimos y construimos sobre proyectos reales. La transparencia no reemplaza los resultados: deja claro cómo llegamos a ellos.",
+          points: [
+            "Diagnóstico antes de diseño",
+            "Decisiones estructuradas por fase",
+            "Implementación sobre negocios reales",
+          ],
+        }
+      : {
+          honesty:
+            "Noctra has operated since 2024. All active systems are currently in implementation. We document the process, not just the final outcome.",
+          label: "Operational proof",
+          title: "The process also works as evidence.",
+          subtitle:
+            "While the active systems are still maturing, we show how we think, decide, and build on real client work. Transparency does not replace results: it makes clear how we get to them.",
+          points: [
+            "Diagnosis before design",
+            "Structured decisions by phase",
+            "Implementation on real businesses",
+          ],
+        };
 
   return (
     <LazyMotion features={domAnimation}>
@@ -79,6 +108,15 @@ export default function WorkClient({
               className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
               {t("subtitle")}
             </m.p>
+            <m.div
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.6, delay: 0.15 }}
+              className="border border-amber-500/30 bg-amber-500/5 rounded-lg p-4 mb-12 max-w-2xl mx-auto text-center">
+              <p className="text-sm text-amber-200/80">
+                {proofContent.honesty}
+              </p>
+            </m.div>
           </div>
         </section>
 
@@ -139,6 +177,76 @@ export default function WorkClient({
             </div>
           </section>
         )}
+
+        {/* Process Section */}
+        <section
+          id="process"
+          className="py-24 px-6 border-t border-neutral-900 bg-black overflow-hidden"
+          aria-labelledby="process-title">
+          <div className="max-w-6xl mx-auto">
+            <div className="mb-20 text-center space-y-5">
+              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400 uppercase tracking-[0.24em]">
+                {proofContent.label}
+              </div>
+              <h2 id="process-title" className="text-3xl md:text-5xl font-bold">
+                {proofContent.title}
+              </h2>
+              <p className="text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+                {proofContent.subtitle}
+              </p>
+
+              <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
+                {proofContent.points.map((point) => (
+                  <div
+                    key={point}
+                    className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-xs md:text-sm text-neutral-200">
+                    {point}
+                  </div>
+                ))}
+              </div>
+            </div>
+
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+              {(t.raw("sections.process.timeline") as any[]).map((step, i) => {
+                const Icon = processIcons[i];
+                return (
+                  <m.div
+                    key={step.label}
+                    initial={{ opacity: 0, y: 20 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ delay: i * 0.08 }}
+                    className="relative p-8 rounded-3xl border border-neutral-800 bg-white/[0.02] hover:border-emerald-500/20 transition-all duration-500 h-full flex flex-col">
+                    <div className="flex items-start justify-between mb-8">
+                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500">
+                        <Icon className="w-6 h-6" />
+                      </div>
+                      <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-neutral-300 uppercase tracking-widest">
+                        {t("sections.process.phase_label")} {i + 1}
+                      </div>
+                    </div>
+
+                    <div className="space-y-3 flex-grow">
+                      <h3 className="text-xl font-bold">{step.label}</h3>
+                      <p className="text-sm text-neutral-400 leading-relaxed">
+                        {step.description}
+                      </p>
+                    </div>
+                  </m.div>
+                );
+              })}
+            </div>
+
+            <div className="pt-12 text-center">
+              <Link
+                href="/services"
+                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-all duration-300 group">
+                {t("sections.process.cta")}
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
+              </Link>
+            </div>
+          </div>
+        </section>
 
         {/* Industries Grid */}
         <section className="py-24 px-6 border-t border-neutral-900 bg-black">
@@ -213,62 +321,6 @@ export default function WorkClient({
                   );
                 },
               )}
-            </div>
-          </div>
-        </section>
-
-        {/* Process Section */}
-        <section
-          id="process"
-          className="py-24 px-6 border-t border-neutral-900 bg-black overflow-hidden"
-          aria-labelledby="process-title">
-          <div className="max-w-6xl mx-auto">
-            <div className="mb-20 text-center space-y-4">
-              <h2 id="process-title" className="text-3xl md:text-5xl font-bold">
-                {t("sections.process.title")}
-              </h2>
-              <p className="text-neutral-400 max-w-2xl mx-auto">
-                {t("sections.process.subtitle")}
-              </p>
-            </div>
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
-              {(t.raw("sections.process.timeline") as any[]).map((step, i) => {
-                const Icon = processIcons[i];
-                return (
-                  <m.div
-                    key={step.label}
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: i * 0.08 }}
-                    className="relative p-8 rounded-3xl border border-neutral-800 bg-white/[0.02] hover:border-emerald-500/20 transition-all duration-500 h-full flex flex-col">
-                    <div className="flex items-start justify-between mb-8">
-                      <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500">
-                        <Icon className="w-6 h-6" />
-                      </div>
-                      <div className="px-3 py-1 rounded-full bg-white/5 border border-white/10 text-[9px] font-mono text-neutral-300 uppercase tracking-widest">
-                        {t("sections.process.phase_label")} {i + 1}
-                      </div>
-                    </div>
-
-                    <div className="space-y-3 flex-grow">
-                      <h3 className="text-xl font-bold">{step.label}</h3>
-                      <p className="text-sm text-neutral-400 leading-relaxed">
-                        {step.description}
-                      </p>
-                    </div>
-                  </m.div>
-                );
-              })}
-            </div>
-
-            <div className="pt-12 text-center">
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-all duration-300 group">
-                {t("sections.process.cta")}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </div>
           </div>
         </section>

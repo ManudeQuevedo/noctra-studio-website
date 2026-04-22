@@ -23,10 +23,12 @@ import {
   TrendingUp,
   Wrench,
 } from "lucide-react";
-import { Link } from "@/i18n/routing";
+import { Link, routing } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 
 /* ─────────────────────── types ─────────────────────── */
+
+type AppPathname = keyof typeof routing.pathnames;
 
 type ProblemPoint = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
@@ -53,6 +55,9 @@ type ServiceLayer = {
   capabilities: string[];
   intent: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
+  price?: string;
+  layerCtaText: string;
+  layerCtaHref: AppPathname;
 };
 
 type WhyCard = {
@@ -92,6 +97,7 @@ type ServicesPageCopy = {
   whyLabel: string;
   outcomeLabel: string;
   capabilitiesLabel: string;
+  priceLabel: string;
 
   /* 5. WHY THIS WORKS */
   whyLabel2: string;
@@ -218,6 +224,9 @@ const ES_COPY: ServicesPageCopy = {
       ],
       intent: "branding",
       icon: Sparkles,
+      price: "desde $15,000 MXN",
+      layerCtaText: "Ver Sistemas de Marca →",
+      layerCtaHref: "/services",
     },
     {
       id: "infrastructure",
@@ -237,6 +246,9 @@ const ES_COPY: ServicesPageCopy = {
       ],
       intent: "web_presence",
       icon: Globe,
+      price: "desde $25,000 MXN",
+      layerCtaText: "Ver Sitios Web →",
+      layerCtaHref: "/services/professional-websites",
     },
     {
       id: "visibility",
@@ -256,6 +268,9 @@ const ES_COPY: ServicesPageCopy = {
       ],
       intent: "visibility",
       icon: Search,
+      price: "desde $12,000 MXN",
+      layerCtaText: "Ver SEO y Visibilidad →",
+      layerCtaHref: "/services/optimization",
     },
     {
       id: "automation",
@@ -275,12 +290,15 @@ const ES_COPY: ServicesPageCopy = {
       ],
       intent: "automation",
       icon: Bot,
+      layerCtaText: "Ver Automatización →",
+      layerCtaHref: "/contact",
     },
   ],
   whenLabel: "Cuándo se activa",
   whyLabel: "Por qué importa",
   outcomeLabel: "Resultado esperado",
   capabilitiesLabel: "Incluye",
+  priceLabel: "Inversión",
 
   /* 5. WHY THIS WORKS */
   whyLabel2: "POR QUÉ FUNCIONA",
@@ -435,6 +453,9 @@ const EN_COPY: ServicesPageCopy = {
       ],
       intent: "branding",
       icon: Sparkles,
+      price: "from $15,000 MXN",
+      layerCtaText: "View Brand Systems →",
+      layerCtaHref: "/services",
     },
     {
       id: "infrastructure",
@@ -454,6 +475,9 @@ const EN_COPY: ServicesPageCopy = {
       ],
       intent: "web_presence",
       icon: Globe,
+      price: "from $25,000 MXN",
+      layerCtaText: "View Websites →",
+      layerCtaHref: "/services/professional-websites",
     },
     {
       id: "visibility",
@@ -473,6 +497,9 @@ const EN_COPY: ServicesPageCopy = {
       ],
       intent: "visibility",
       icon: Search,
+      price: "from $12,000 MXN",
+      layerCtaText: "View SEO & Visibility →",
+      layerCtaHref: "/services/optimization",
     },
     {
       id: "automation",
@@ -492,12 +519,15 @@ const EN_COPY: ServicesPageCopy = {
       ],
       intent: "automation",
       icon: Bot,
+      layerCtaText: "View Automation →",
+      layerCtaHref: "/contact",
     },
   ],
   whenLabel: "When to activate",
   whyLabel: "Why it matters",
   outcomeLabel: "Expected outcome",
   capabilitiesLabel: "Includes",
+  priceLabel: "Investment",
 
   /* 5. WHY THIS WORKS */
   whyLabel2: "WHY IT WORKS",
@@ -633,18 +663,20 @@ function ServiceLayerCard({
           </p>
         </div>
 
+        {layer.price && (
+          <div className="mt-4 border-t border-white/10 pt-4">
+            <span className="text-xs text-neutral-500">{copy.priceLabel}</span>
+            <span className="ml-2 text-sm font-medium text-white">
+              {layer.price}
+            </span>
+          </div>
+        )}
+
         <div className="pt-2">
           <Link
-            href={{
-              pathname: "/contact",
-              query: {
-                intent: layer.intent,
-                cta: `services_${layer.id}`,
-              },
-            }}
-            className="inline-flex items-center gap-3 rounded-full border border-white/10 bg-white px-6 py-3 text-sm font-black uppercase tracking-[0.16em] text-black transition-all hover:bg-emerald-50">
-            {copy.ctaPrimary}
-            <ArrowRight className="h-4 w-4" />
+            href={layer.layerCtaHref}
+            className="text-sm font-semibold text-emerald-400 transition-colors hover:text-emerald-300">
+            {layer.layerCtaText}
           </Link>
         </div>
       </div>
@@ -662,12 +694,12 @@ export default function ServicesClient() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <main className="relative min-h-screen overflow-x-clip bg-transparent pb-24 pt-40 selection:bg-emerald-500/30">
+      <main className="relative min-h-screen overflow-x-clip bg-transparent pb-24 pt-44 md:pt-48 lg:pt-52 selection:bg-emerald-500/30">
         <div className="pointer-events-none absolute inset-x-0 top-0 h-[42rem] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.16),transparent_55%)]" />
         <div className="pointer-events-none absolute inset-x-0 top-24 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
 
         {/* ═══════ 1. HERO ═══════ */}
-        <section className="relative px-6 pb-20 md:px-8">
+        <section className="relative px-6 pb-28 pt-8 md:px-8 md:pb-36 md:pt-12 lg:pt-16">
           <div className="mx-auto max-w-7xl">
             <m.div
               initial={{ opacity: 0, y: 24 }}
@@ -677,7 +709,7 @@ export default function ServicesClient() {
               <span className="inline-flex rounded-full border border-white/10 bg-white/5 px-4 py-2 text-[10px] font-black uppercase tracking-[0.34em] text-emerald-400 backdrop-blur">
                 {copy.heroBadge}
               </span>
-              <h1 className="mt-8 bg-gradient-to-b from-white to-white/45 bg-clip-text text-5xl font-black leading-[0.94] tracking-tight text-transparent md:text-7xl">
+              <h1 className="mt-8 pb-[0.08em] bg-gradient-to-b from-white to-white/45 bg-clip-text text-5xl font-black leading-[1.02] tracking-tight text-transparent md:text-7xl md:leading-[0.98]">
                 {copy.title}
               </h1>
               <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-neutral-300 md:text-2xl">
@@ -691,7 +723,7 @@ export default function ServicesClient() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-12 rounded-full bg-white px-8 text-base text-black hover:bg-neutral-100">
+                  className="h-auto min-h-[48px] w-full rounded-[1.5rem] bg-white px-5 py-3 text-sm text-black hover:bg-neutral-100 sm:w-auto sm:rounded-full sm:px-8 sm:text-base whitespace-normal">
                   <Link
                     href={{
                       pathname: "/contact",
@@ -699,7 +731,8 @@ export default function ServicesClient() {
                         intent: "radar_diagnostic",
                         cta: "services_hero",
                       },
-                    }}>
+                    }}
+                    className="leading-tight text-center text-balance">
                     {copy.heroPrimaryCta}
                   </Link>
                 </Button>
@@ -716,7 +749,34 @@ export default function ServicesClient() {
           </div>
         </section>
 
-        {/* ═══════ 2. THE PROBLEM ═══════ */}
+        {/* ═══════ 2. SERVICES AS IMPLEMENTATION ═══════ */}
+        <section className="px-6 pb-24 pt-8 md:px-8 md:pt-14">
+          <div className="mx-auto max-w-7xl">
+            <m.div {...fadeIn} className="mb-14 max-w-3xl">
+              <p className="text-[10px] font-black uppercase tracking-[0.32em] text-emerald-400">
+                {copy.servicesLabel}
+              </p>
+              <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
+                {copy.servicesTitle}
+              </h2>
+              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-neutral-400">
+                {copy.servicesSubtitle}
+              </p>
+            </m.div>
+
+            <div className="space-y-8">
+              {copy.serviceLayers.map((layer) => (
+                <ServiceLayerCard
+                  key={layer.id}
+                  layer={layer}
+                  copy={copy}
+                />
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ═══════ 3. THE PROBLEM ═══════ */}
         <section className="px-6 py-24 md:px-8">
           <div className="mx-auto max-w-7xl">
             <m.div {...fadeIn} className="mx-auto mb-14 max-w-3xl text-center">
@@ -755,7 +815,7 @@ export default function ServicesClient() {
           </div>
         </section>
 
-        {/* ═══════ 3. THE NOCTRA SYSTEM ═══════ */}
+        {/* ═══════ 4. THE NOCTRA SYSTEM ═══════ */}
         <section id="noctra-system" className="px-6 py-24 md:px-8">
           <div className="mx-auto max-w-7xl">
             <m.div {...fadeIn} className="mx-auto mb-14 max-w-3xl text-center">
@@ -817,33 +877,6 @@ export default function ServicesClient() {
                 {copy.systemNote}
               </p>
             </m.div>
-          </div>
-        </section>
-
-        {/* ═══════ 4. SERVICES AS IMPLEMENTATION ═══════ */}
-        <section className="px-6 pb-24 md:px-8">
-          <div className="mx-auto max-w-7xl">
-            <m.div {...fadeIn} className="mb-14 max-w-3xl">
-              <p className="text-[10px] font-black uppercase tracking-[0.32em] text-emerald-400">
-                {copy.servicesLabel}
-              </p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
-                {copy.servicesTitle}
-              </h2>
-              <p className="mt-5 max-w-3xl text-lg leading-relaxed text-neutral-400">
-                {copy.servicesSubtitle}
-              </p>
-            </m.div>
-
-            <div className="space-y-8">
-              {copy.serviceLayers.map((layer) => (
-                <ServiceLayerCard
-                  key={layer.id}
-                  layer={layer}
-                  copy={copy}
-                />
-              ))}
-            </div>
           </div>
         </section>
 
@@ -925,16 +958,22 @@ export default function ServicesClient() {
                         cta: "services_final",
                       },
                     }}
-                    className="inline-flex items-center justify-center gap-3 rounded-full bg-white px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-black transition-all hover:bg-emerald-50">
-                    {copy.ctaPrimary}
-                    <ArrowRight className="h-4 w-4" />
+                    className="grid w-full min-h-[56px] grid-cols-[1.25rem_minmax(0,1fr)_1.25rem] items-center gap-3 rounded-[1.5rem] bg-white px-5 py-3 text-[11px] font-black uppercase tracking-[0.1em] text-black transition-all hover:bg-emerald-50 sm:text-xs sm:tracking-[0.16em] md:rounded-full md:px-6 md:py-4 md:text-sm">
+                    <span aria-hidden="true" className="h-4 w-4" />
+                    <span className="text-center leading-[1.3] text-balance">
+                      {copy.ctaPrimary}
+                    </span>
+                    <ArrowRight className="h-4 w-4 justify-self-end opacity-80" />
                   </Link>
 
                   <Link
                     href="/work"
-                    className="inline-flex items-center justify-center gap-3 rounded-full border border-white/12 px-6 py-4 text-sm font-black uppercase tracking-[0.16em] text-white transition-all hover:bg-white/5">
-                    {copy.ctaSecondary}
-                    <ArrowRight className="h-4 w-4" />
+                    className="grid w-full min-h-[56px] grid-cols-[1.25rem_minmax(0,1fr)_1.25rem] items-center gap-3 rounded-[1.5rem] border border-white/12 px-5 py-3 text-[11px] font-black uppercase tracking-[0.1em] text-white transition-all hover:bg-white/5 sm:text-xs sm:tracking-[0.16em] md:rounded-full md:px-6 md:py-4 md:text-sm">
+                    <span aria-hidden="true" className="h-4 w-4" />
+                    <span className="text-center leading-[1.3] text-balance">
+                      {copy.ctaSecondary}
+                    </span>
+                    <ArrowRight className="h-4 w-4 justify-self-end opacity-80" />
                   </Link>
                 </div>
 

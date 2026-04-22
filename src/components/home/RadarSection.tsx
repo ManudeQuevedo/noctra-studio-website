@@ -135,16 +135,17 @@ export function RadarSection() {
                 <Button
                   asChild
                   size="lg"
-                  className="h-14 rounded-full bg-white px-8 text-base font-bold text-black transition-all duration-300 hover:bg-emerald-500 hover:text-white"
+                  className="h-auto min-h-[56px] w-full rounded-[1.5rem] bg-white px-6 py-4 text-xs font-bold text-black transition-all duration-300 hover:bg-emerald-500 hover:text-white sm:w-auto sm:rounded-full sm:text-sm md:text-base md:px-8 whitespace-normal"
                 >
                   <Link
                     href={{
                       pathname: "/contact",
                       query: { tipo: "radar", origen: "home-radar" },
                     }}
+                    className="flex justify-between items-center sm:justify-center gap-3 sm:gap-2 text-left"
                   >
-                    {t("primary_cta")}
-                    <ArrowRight className="h-4 w-4" />
+                    <span className="leading-tight text-balance">{t("primary_cta")}</span>
+                    <ArrowRight className="h-4 w-4 shrink-0" />
                   </Link>
                 </Button>
 

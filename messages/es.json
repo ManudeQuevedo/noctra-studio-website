@@ -321,8 +321,8 @@
     "hero": {
       "label": "STUDIO + SOFTWARE PROPIO",
       "title": "Tu reputación merece una presencia digital que cierre ventas por ti.",
-      "subtitle": "No somos una agencia. Diseñamos sistemas que detectan, corrigen y optimizan tu crecimiento digital.",
-      "product_anchor": "Impulsado por **Noctra Radar** — nuestro sistema de diagnóstico y optimización.",
+      "subtitle": "Ayudamos a negocios de cualquier tamaño a construir una presencia digital más clara, más visible y preparada para crecer — con marca, sitio, SEO, GEO y automatización como un sistema conectado.",
+      "product_anchor": "Diagnóstico, diseño, implementación y optimización continua — **todo en un sistema conectado**.",
       "primary_cta": "Diagnosticar mi presencia digital",
       "secondary_cta": "Ver cómo funciona",
       "trust_strip": [
@@ -330,6 +330,10 @@
         "Implementación premium + Software propio",
         "Arquitectura de conversión para profesionales y PyMEs"
       ],
+      "audience_anchor": "¿En qué industria opera tu negocio? →",
+      "metric_value": "4 capas",
+      "metric_label": "un solo sistema",
+      "metric_footnote": "*Marca, sitio, visibilidad y automatización se implementan según el punto de partida y los objetivos de cada negocio.",
       "visual_label": "Cómo funciona",
       "visual_title": "Studio + productos en un solo sistema",
       "visual_badge": "Modelo híbrido",
@@ -373,7 +377,7 @@
         },
         {
           "title": "Visibilidad orgánica",
-          "description": "Corregimos estructura, SEO técnico y contenido para que la gente correcta sí te encuentre."
+          "description": "Corregimos estructura, SEO técnico y contenido para que la gente correcta te encuentre — tanto en buscadores como en motores de respuesta con IA."
         },
         {
           "title": "Captación más ordenada",
@@ -390,7 +394,7 @@
       "model_copy": "Ese enfoque evita el trabajo genérico de agencia y también evita construir productos desconectados del mercado.",
       "model_points": [
         "El Studio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
-        "Radar y Social nacen de patrones operativos que aparecen una y otra vez en la ejecución.",
+        "El software que usamos nació de resolver los mismos problemas una y otra vez: lo que funciona en el Studio se convierte en sistema que escala.",
         "El cliente puede trabajar con Noctra como servicio, como software o como una combinación de ambos."
       ],
       "note_label": "Lectura rápida",
@@ -399,7 +403,7 @@
     "solutions": {
       "label": "POR TIPO DE NEGOCIO",
       "title": "Soluciones para negocios que necesitan crecer con más estructura.",
-      "subtitle": "Cada segmento entra por un problema distinto, pero todos necesitan lo mismo: claridad, confianza y un sistema digital que apoye el negocio de verdad.",
+      "subtitle": "Cada negocio entra por un problema distinto — sin importar si estás empezando, consolidando o escalando. Lo que todos necesitan es lo mismo: claridad, confianza y una base digital que crezca contigo.",
       "pain_label": "Problema principal",
       "outcome_label": "Transformación",
       "support_label": "Aplica Noctra con",
@@ -439,7 +443,7 @@
     "the_system": {
       "label": "ARQUITECTURA CONECTADA",
       "title": "La Arquitectura Noctra: Studio + Software en Sincronía",
-      "subtitle": "No somos una agencia de servicios aislados. Hemos construido un ecosistema donde el talento humano del Studio se potencia con tecnología propia para garantizar escalabilidad y resultados.",
+      "subtitle": "Cada resultado que entregamos está respaldado por una arquitectura de procesos y herramientas propias. Branding, web, visibilidad y automatización conectados para que nada funcione de forma aislada.",
       "layer_1": "Inteligencia & Diagnóstico",
       "layer_2": "Implementación & Acción",
       "layer_3": "Valor & Amplificación",
@@ -596,8 +600,8 @@
   "Metadata": {
     "home": {
       "title": "Noctra Studio | Studio premium + software propio para crecimiento digital",
-      "description": "Noctra Studio combina branding, websites, SEO y automatizaciones con productos propios como Radar y Social para construir presencia digital más clara, confiable y escalable.",
-      "keywords": "studio digital queretaro, branding y sitios web, SEO para negocios, automatizaciones con IA, software propio para marketing, noctra radar, noctra social",
+      "description": "Noctra Studio combina branding, websites, SEO, GEO y automatizaciones con productos propios como Radar y Social para construir una presencia digital más clara, visible y escalable — para negocios de cualquier tamaño.",
+      "keywords": "studio digital queretaro, branding y sitios web, SEO para negocios, GEO generative engine optimization, visibilidad en IA, automatizaciones con IA, software propio para marketing, noctra radar, noctra social",
       "og_title": "Noctra Studio — Studio y software para crecer con estructura",
       "og_description": "Branding, websites, SEO, automatización y productos propios para que tu negocio gane confianza, visibilidad y crecimiento más ordenado.",
       "og_image_alt": "Noctra Studio estudio digital con mentalidad de ingeniería",
@@ -617,7 +621,7 @@
     "services": {
       "title": "Nuestros Servicios | Noctra Studio",
       "description": "Branding, websites, SEO y automatizaciones organizados como la capa de implementación del método Noctra: más claridad, mejor estructura y una ejecución digital más confiable.",
-      "keywords": "branding querétaro, sitios web estratégicos, SEO estructural, automatizaciones con IA, estudio digital con sistemas internos, servicios noctra studio",
+      "keywords": "branding querétaro, sitios web estratégicos, SEO estructural, GEO visibilidad en IA, automatizaciones con IA, estudio digital con sistemas internos, servicios noctra studio",
       "og_title": "Servicios | Noctra Studio",
       "og_description": "Servicios organizados por resultados de negocio, respaldados por sistemas internos que hacen la ejecución más clara, estructurada y confiable.",
       "og_image_alt": "Descripción de Servicios de Noctra Studio",
@@ -677,7 +681,7 @@
     "technology": {
       "title": "Nuestra Tecnología | Noctra Studio",
       "description": "Por qué usamos Next.js en vez de WordPress. Tecnología moderna explicada en lenguaje simple para dueños de negocios.",
-      "keywords": "nextjs vs wordpress, tecnología web moderna, desarrollo web tecnología, sitios web rápidos",
+      "keywords": "tecnología web moderna, nextjs vs wordpress, SEO técnico y arquitectura, GEO visibilidad en IA, sitios web rápidos, estructura para buscadores",
       "og_title": "Tecnología Explicada — Noctra Studio",
       "og_description": "Tecnología moderna explicada simplemente. Por qué Next.js significa más rápido, más económico, mejor.",
       "og_image_alt": "Stack Tecnológico de Noctra Studio",
@@ -737,7 +741,7 @@
     "services-optimization": {
       "title": "Optimización y SEO | Noctra Studio",
       "description": "Optimización de velocidad, SEO técnico y monitoreo de rendimiento. Haz tu sitio más rápido y visible.",
-      "keywords": "optimización web, servicios SEO, optimización de velocidad, SEO técnico",
+      "keywords": "optimización web, servicios SEO, GEO visibilidad en IA, optimización de velocidad, SEO técnico, señales de autoridad",
       "og_title": "Optimización y SEO — Noctra Studio",
       "og_description": "Haz tu sitio más rápido y visible. SEO técnico y optimización de rendimiento.",
       "og_image_alt": "Servicios de Optimización de Noctra Studio",
@@ -1204,16 +1208,16 @@
       "pricing_label": "Desde $25k MXN + IVA"
     },
     "visibility": {
-      "title": "Visibilidad & Tracción",
-      "summary": "Dominamos la visibilidad donde tus clientes están buscando. SEO estructural potenciado por Noctra Radar.",
+      "title": "Visibilidad, SEO y GEO",
+      "summary": "Posicionamos tu negocio donde tus clientes buscan — en Google, en IA como ChatGPT y AI Overviews, y en el resultado orgánico que dura. SEO estructural + GEO, respaldado por Noctra Radar.",
       "benefit_short": "Sé Encontrado por la Gente Correcta",
-      "what_it_is": "Sincronía entre SEO técnico, contenido estratégico y monitoreo constante con nuestro software propio Radar.",
+      "what_it_is": "Sincronía entre SEO técnico, contenido estratégico y GEO (visibilidad en motores generativos como Google AI, ChatGPT y Perplexity), con monitoreo constante a través de Noctra Radar.",
       "why_it_matters": "De nada sirve tener el mejor producto si nadie te encuentra. La tracción orgánica es el activo de crecimiento más rentable a largo plazo.",
       "business_benefit": "Generación constante de leads calificados sin depender exclusivamente de pauta pagada.",
       "highlights": [
         "Bases SEO estructurales",
         "Monitoreo Noctra Radar (24/7)",
-        "Estrategia de autoridad orgánica"
+        "GEO: autoridad en buscadores y motores de IA"
       ],
       "image_label": "Crecimiento de Tracción",
       "pricing_label": "Desde $12k MXN/mes + IVA"
@@ -2739,11 +2743,11 @@
       },
       {
         "title": "SEO",
-        "description": "Corregimos estructura, contenido y señales técnicas para mejorar visibilidad con intención de negocio.",
+        "description": "Corregimos estructura, contenido y señales técnicas para mejorar la visibilidad en buscadores y en motores de IA como Google AI Overviews y ChatGPT — SEO y GEO como una sola capa de crecimiento.",
         "points": [
           "SEO técnico y fundamentos de indexación",
           "Jerarquía de páginas y contenido más clara",
-          "Mejor capacidad para atraer búsquedas relevantes"
+          "GEO: visibilidad en búsquedas con IA y resultados generativos"
         ]
       },
       {
@@ -2887,8 +2891,8 @@
   },
   "WorkPage": {
     "badge": "Casos documentados",
-    "title": "Sistemas implementados. Resultados reales.",
-    "subtitle": "Cada caso refleja un sistema: el problema diagnosticado, la solución estructurada y los resultados que generó.",
+    "title": "Sistemas en construcción. Metodología documentada.",
+    "subtitle": "Cada caso documenta el problema identificado, la solución estructurada y el resultado que está construido para generar.",
     "sections": {
       "in_progress": {
         "title": "Sistemas en ejecución",
@@ -3057,13 +3061,19 @@
             "icon": "message-square",
             "question": "¿Pueden mejorar un sitio existente o solo construyen desde cero?",
             "answer": "Ambas. Algunos proyectos inician con un sistema nuevo. Otros arrancan con un diagnóstico del sitio actual y reconstruyen las partes que están frenando los resultados."
+          },
+          {
+            "category": "Garantía",
+            "icon": "briefcase",
+            "question": "¿Tienen algún tipo de garantía de resultados?",
+            "answer": "Sí. Todos los proyectos desde $20,000 MXN incluyen una garantía formal: definimos KPIs contigo antes de empezar y, si no los alcanzamos en el período acordado, recibes un reembolso proporcional. Todo queda en el contrato. Conoce cómo funciona en detalle en <link>nuestra página de garantía</link>."
           }
         ]
       }
     },
     "cta": {
       "title": "¿Este sistema aplica a tu negocio?",
-      "subtitle": "Tomamos pocos proyectos por mes. Si hay fit, lo construimos juntos.",
+      "subtitle": "Tomamos pocos proyectos por mes para cuidar cada uno. Todos incluyen KPIs acordados y garantía de resultados por escrito. Si hay fit, te lo decimos en la primera llamada.",
       "button": "Aplicar este sistema a mi negocio"
     }
   },
@@ -3712,7 +3722,7 @@
   },
   "GuaranteePage": {
     "title": "Nuestra Garantía de Resultados",
-    "subtitle": "Respaldamos nuestras palabras con hechos. Si no cumplimos, no pagas.",
+    "subtitle": "Respaldamos nuestras palabras con hechos. Si no alcanzamos los KPIs acordados, devolvemos proporcionalmente — y queda escrito en el contrato antes de empezar.",
     "how_title": "Cómo funciona",
     "how_steps": [
       {
@@ -3763,14 +3773,14 @@
       }
     ],
     "example_real": {
-      "title": "Ejemplo: Consultorio médico en Querétaro (proyectado)",
+      "title": "Benchmark aplicado: ¿Qué KPIs esperaría un consultorio médico?",
       "kpis": [
         "✅ Sitio carga en <2 segundos",
         "✅ 30+ solicitudes de cita mensuales vía formulario web",
         "✅ Conversión visitante→paciente >3%",
         "📊 ROI proyectado: Recuperación de inversión en 4-6 meses"
       ],
-      "result": "Benchmark: Estos resultados son proyectados basados en casos de industria para el sector salud.",
+      "result": "Estos son números de referencia de industria para el sector salud, no resultados históricos de Noctra. Los KPIs reales se definen contigo antes de iniciar — adaptados a tu negocio, tu mercado y tu punto de partida.",
       "status": "Basado en benchmarks de industria"
     },
     "fine_print_title": "La letra pequeña",
@@ -3784,7 +3794,9 @@
       "Proyectos $35k+: garantía de 60 días"
     ],
     "cta": "Agendar consulta gratuita",
-    "cta_subtitle": "Discutiremos tus metas específicas y qué KPIs tienen sentido para tu negocio."
+    "cta_subtitle": "Discutiremos tus metas específicas y qué KPIs tienen sentido para tu negocio.",
+    "hero_badge": "Garantía de resultados",
+    "step_label": "PASO {step}"
   },
   "LandingPage": {
     "title": "Landing Page Estratégica",
@@ -3897,6 +3909,7 @@
         "lede": "No es un folleto. No es un portafolio. No es una tarjeta de presentación digital.",
         "body": "Un sitio web profesional es un sistema estructurado de ventas y confianza: uno que opera 24 horas al día, responde las preguntas correctas en el orden correcto y mueve al visitante adecuado hacia una decisión clara.",
         "quote": "Es el único empleado que nunca duerme, nunca malinterpreta el brief y nunca pide un aumento.",
+        "quoteAttribution": "Manuel de Quevedo, Fundador de Noctra Studio",
         "closing": "La mayoría de los negocios tratan su sitio web como un proyecto de diseño. Los que crecen lo tratan como infraestructura, tan deliberadamente diseñada como el propio proceso comercial."
       },
       "why": {
@@ -3957,7 +3970,39 @@
         "title": "No es una página.",
         "titleAccent": "Es un sistema.",
         "description": "Cada componente de un sitio profesional está conectado. Si cambias un elemento, afecta al conjunto. Esa es la diferencia entre construir páginas y construir sistemas.",
-        "entryPoints": ["Búsqueda", "Referido", "Social", "Directo"],
+        "entryPoints": [
+          "Búsqueda",
+          "Referido",
+          "Social",
+          "Directo"
+        ],
+        "flow": [
+          {
+            "step": "01",
+            "title": "Búsqueda",
+            "description": "Google, referido, social o tráfico directo: el sistema recibe intención desde distintos puntos de entrada."
+          },
+          {
+            "step": "02",
+            "title": "Claridad",
+            "description": "Para quién es, qué resuelve y por qué importa ahora."
+          },
+          {
+            "step": "03",
+            "title": "Confianza",
+            "description": "Prueba, evidencia, credibilidad y especificidad en el momento correcto."
+          },
+          {
+            "step": "04",
+            "title": "Conversión",
+            "description": "Una invitación clara, menos fricción y un siguiente paso evidente."
+          },
+          {
+            "step": "05",
+            "title": "Acción calificada",
+            "description": "El visitante correcto entiende, confía y avanza con intención."
+          }
+        ],
         "layers": [
           {
             "layer": "Capa de claridad",
@@ -4005,6 +4050,11 @@
         },
         "description": "Revisamos tu sitio actual contra los criterios del sistema anterior: estructura, mensaje, lógica de conversión y performance, y te decimos exactamente qué está funcionando y qué no.",
         "note": "Sin pitch. Sin compromiso. Solo claridad.",
+        "pricing": {
+          "label": "Inversión de referencia:",
+          "amount": "desde $25,000 MXN",
+          "note": "Precio final según alcance definido en el diagnóstico."
+        },
         "primaryCta": "Iniciar diagnóstico",
         "secondaryCta": "Ver nuestro trabajo",
         "signature": "Noctra Studio — Sitios Web Profesionales"
@@ -4098,19 +4148,61 @@
         "Dashboards personalizados con KPIs de negocio",
         "Escalabilidad total según crezca tu operación"
       ],
+      "process_steps": [
+        {
+          "duration": "Semana 1",
+          "label": "Discovery",
+          "deliverables": [
+            "Entrevista de mapeo de procesos (2-3 horas)",
+            "Documento de requerimientos funcionales",
+            "Definición de KPIs y métricas de éxito",
+            "Propuesta técnica ajustada al alcance real"
+          ]
+        },
+        {
+          "duration": "Semanas 2-3",
+          "label": "Architecture",
+          "deliverables": [
+            "Arquitectura de base de datos y flujos de datos",
+            "Wireframes de interfaces principales",
+            "Plan de integraciones con herramientas existentes",
+            "Revisión y aprobación del cliente antes de construir"
+          ]
+        },
+        {
+          "duration": "Semanas 4-5",
+          "label": "Development",
+          "deliverables": [
+            "Desarrollo incremental con demos semanales",
+            "Pruebas de integración y carga",
+            "Documentación técnica básica"
+          ]
+        },
+        {
+          "duration": "Semana 6",
+          "label": "Launch",
+          "deliverables": [
+            "Despliegue en ambiente de producción",
+            "Sesión de capacitación al equipo (2 horas)",
+            "30 días de soporte post-lanzamiento incluido",
+            "Configuración de monitoreo con Noctra Radar"
+          ]
+        }
+      ],
       "investment": {
         "title": "Inversión Transparente",
         "price": "Desde $80,000 MXN",
         "includes": "Análisis de procesos, desarrollo a medida y despliegue.",
         "not_includes": "Licencias de terceros si fueran necesarias.",
+        "modules_note": "Los rangos son orientativos. El precio exacto se define en el Discovery.",
         "modules": [
           {
             "name": "App móvil nativa",
-            "price": "Cotización extra"
+            "price": "desde $40,000 MXN adicionales"
           },
           {
             "name": "Módulo de IA para análisis de datos",
-            "price": "Cotización extra"
+            "price": "desde $25,000 MXN adicionales"
           }
         ]
       }
@@ -4184,9 +4276,9 @@
         {
           "label": "02 · Inteligencia",
           "title": "Datos que trabajan, no que estorban",
-          "explanation": "Estructurar la información para que tu negocio sea legible tanto para humanos como para algoritmos. Tu sitio deja de ser un folleto para ser un activo.",
+          "explanation": "Estructurar la información para que tu negocio sea legible tanto para personas como para buscadores y motores de IA. Eso es lo que hace posible el SEO y la visibilidad GEO — tu sitio deja de ser un folleto y se convierte en un activo de crecimiento.",
           "example": "Un catálogo que se actualiza solo en los resultados de Google en el momento que cambias un dato en tu sistema interno.",
-          "impact": "Aparición orgánica en búsquedas sin depender de pautas publicitarias infinitas."
+          "impact": "Aparición orgánica en búsquedas tradicionales y en resultados generativos de IA, sin depender de pauta pagada indefinida."
         },
         {
           "label": "03 · Conectividad",
@@ -4201,7 +4293,7 @@
       "label": "EL MÉTODO NOCTRA",
       "title": "Diseñamos este entendimiento en cada línea de código.",
       "subtitle": "No implementamos tecnología por moda. La implementamos por arquitectura de negocio.",
-      "radar_note": "Nuestro software (Radar) monitorea la cimentación. Social sostiene la inteligencia. El Studio diseña la conectividad."
+      "radar_note": "Nuestro software Radar monitorea la cimentación técnica, incluyendo señales SEO y visibilidad GEO. Social sostiene la inteligencia de contenido. El Studio diseña la conectividad de cada capa."
     },
     "cta": {
       "title": "¿Listo para aclarar tu sistema digital?",
@@ -4236,7 +4328,7 @@
         {
           "label": "01 · Detección",
           "title": "Auditoría impulsada por Radar",
-          "description": "Monitoreo continuo con Noctra Radar para encontrar fugas antes de que se conviertan en fallas de negocio."
+          "description": "Monitoreo continuo con Noctra Radar para detectar fugas de conversión, bloqueos de indexación y pérdidas de visibilidad en buscadores — antes de que se conviertan en fallas de negocio."
         },
         {
           "label": "02 · Análisis",
@@ -4246,7 +4338,7 @@
         {
           "label": "03 · Corrección",
           "title": "Alineación Estructural",
-          "description": "Intervención directa para corregir la fricción técnica, narrativa y arquitectónica."
+          "description": "Intervención directa para corregir fricción técnica, estructura SEO, jerarquía de contenido y señales de autoridad que afectan cómo y cuándo apareces ante tus clientes."
         },
         {
           "label": "04 · Refinamiento",
@@ -4263,16 +4355,16 @@
           "description": "Eliminando los pasos invisibles que causan caídas."
         },
         {
-          "title": "Claridad de Mensaje",
-          "description": "Alineando valor y expectativa para restaurar la confianza."
+          "title": "Visibilidad y Autoridad",
+          "description": "Corrigiendo la estructura, la jerarquía de contenido y las señales técnicas que determinan cómo apareces en buscadores y en motores de IA."
         },
         {
           "title": "Rendimiento Técnico",
           "description": "Restaurando la velocidad como una ventaja competitiva."
         },
         {
-          "title": "Estructura del Sistema",
-          "description": "Organizando código y contenido para la salud a largo plazo."
+          "title": "Estructura SEO y señales técnicas",
+          "description": "Organizando metadata, jerarquía de páginas y marcado estructural para que buscadores y asistentes de IA entiendan mejor lo que ofreces."
         }
       ]
     },
@@ -4902,5 +4994,11 @@
     },
     "footer": "Disponible para clientes con proyecto completado por Noctra. Precios no incluyen IVA. Contratos mensuales o anuales (descuento 15% en plan anual).",
     "cta": "Activar gestión continua"
+  },
+  "WhatsAppWidget": {
+    "label": "Chatea con nosotros",
+    "tooltip": "¿Hablamos de tu proyecto?",
+    "aria_label": "Contactar al equipo Noctra",
+    "message": "Hola equipo Noctra, me interesa platicar sobre mi proyecto"
   }
 }

@@ -64,7 +64,7 @@ export async function generateMetadata({
 /**
  * HomePage
  * Purpose: strategic refactor for hybrid model positioning.
- * Section Order: Hero → Hybrid Model → Audience → The System → Radar → Social → Capabilities → Selected Work → CTA
+ * Section Order: Hero → Hybrid Model → Audience → Capabilities → Examples → The System → Radar → Social → CTA
  */
 export default async function HomePage({
   params,
@@ -78,11 +78,11 @@ export default async function HomePage({
         <Hero />
         <HybridModelSection />
         <AudienceSection />
+        <CapabilitiesSection />
+        <ExamplesSection />
         <TheSystemSection />
         <RadarSection />
         <SocialSection />
-        <CapabilitiesSection />
-        <ExamplesSection />
         <FinalCTASection />
       </div>
 
