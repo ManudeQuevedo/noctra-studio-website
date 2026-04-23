@@ -17,22 +17,6 @@ const HybridModelSection = dynamic(() =>
     default: mod.HybridModelSection,
   })),
 );
-const TheSystemSection = dynamic(() =>
-  import("@/components/home/TheSystemSection").then((mod) => ({
-    default: mod.TheSystemSection,
-  })),
-);
-const RadarSection = dynamic(() =>
-  import("@/components/home/RadarSection").then((mod) => ({
-    default: mod.RadarSection,
-  })),
-);
-const SocialSection = dynamic(() =>
-  import("@/components/home/SocialSection").then((mod) => ({
-    default: mod.SocialSection,
-  })),
-);
-
 const CapabilitiesSection = dynamic(() =>
   import("@/components/home/CapabilitiesSection").then((mod) => ({
     default: mod.CapabilitiesSection,
@@ -84,9 +68,6 @@ export default async function HomePage({
         <AudienceSection />
         <CapabilitiesSection />
         <ExamplesSection />
-        <TheSystemSection />
-        <RadarSection />
-        <SocialSection />
         <FinalCTASection />
       </div>
 
