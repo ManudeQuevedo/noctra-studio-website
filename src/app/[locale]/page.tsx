@@ -1,5 +1,7 @@
 import dynamic from "next/dynamic";
 import { PageHero as Hero } from "@/components/PageHero";
+import { Thesis } from "@/components/sections/Thesis";
+import { Ecosystem } from "@/components/sections/Ecosystem";
 import { generatePageMetadata } from "@/lib/metadata";
 import {
   OrganizationSchema,
@@ -76,6 +78,8 @@ export default async function HomePage({
       <BrandNarrativeVisual className="inset-0 z-0" />
       <div className="relative z-10">
         <Hero />
+        <Thesis />
+        <Ecosystem />
         <HybridModelSection />
         <AudienceSection />
         <CapabilitiesSection />

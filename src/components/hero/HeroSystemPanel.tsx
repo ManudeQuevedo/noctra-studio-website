@@ -34,14 +34,14 @@ const layers: LayerConfig[] = [
     labelKey: "hero.system_layer_02_label",
     titleKey: "hero.system_layer_02_title",
     subtitleKey: "hero.system_layer_02_subtitle",
-    y: 126,
+    y: 130,
     delay: 0.45,
   },
   {
     labelKey: "hero.system_layer_03_label",
     titleKey: "hero.system_layer_03_title",
     subtitleKey: "hero.system_layer_03_subtitle",
-    y: 398,
+    y: 394,
     delay: 0.6,
   },
   {
@@ -54,17 +54,17 @@ const layers: LayerConfig[] = [
 ];
 
 const resultPulses: PulseConfig[] = [
-  { start: 110, end: 252, radius: 2.5, color: "#10B981", opacity: 1, duration: 3.2, delay: 0.25 },
-  { start: 226, end: 252, radius: 2.5, color: "#10B981", opacity: 1, duration: 2.8, delay: 1.05 },
-  { start: 398, end: 372, radius: 2.5, color: "#10B981", opacity: 1, duration: 3, delay: 0.7 },
-  { start: 514, end: 372, radius: 2.5, color: "#10B981", opacity: 1, duration: 3.35, delay: 1.35 },
+  { start: 110, end: 250, radius: 3, color: "#10B981", opacity: 1, duration: 3.2, delay: 0.25 },
+  { start: 230, end: 250, radius: 3, color: "#10B981", opacity: 1, duration: 2.8, delay: 1.05 },
+  { start: 394, end: 374, radius: 3, color: "#10B981", opacity: 1, duration: 3, delay: 0.7 },
+  { start: 514, end: 374, radius: 3, color: "#10B981", opacity: 1, duration: 3.35, delay: 1.35 },
 ];
 
 const signalPulses: PulseConfig[] = [
-  { start: 252, end: 110, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 2.9, delay: 0.9 },
-  { start: 252, end: 226, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 3.25, delay: 0.35 },
-  { start: 372, end: 398, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 3.1, delay: 1.2 },
-  { start: 372, end: 514, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 2.95, delay: 0.55 },
+  { start: 250, end: 110, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 2.9, delay: 0.9 },
+  { start: 250, end: 230, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 3.25, delay: 0.35 },
+  { start: 374, end: 394, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 3.1, delay: 1.2 },
+  { start: 374, end: 514, radius: 1.5, color: "#F0EDE6", opacity: 0.35, duration: 2.95, delay: 0.55 },
 ];
 
 function LayerBlock({
@@ -91,9 +91,9 @@ function LayerBlock({
         width="412"
         height="100"
         rx="16"
-        fill="#0A0B13"
+        fill="rgba(16, 185, 129, 0.03)"
         stroke="#10B981"
-        strokeOpacity="0.35"
+        strokeOpacity="0.5"
         strokeWidth="0.5"
       />
       <text
@@ -174,7 +174,7 @@ export function HeroSystemPanel() {
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.8, ease: "easeOut", delay: 0.14 }}
       className="relative mx-auto w-full max-w-[380px] lg:ml-auto lg:mr-0 lg:max-w-[420px]">
-      <div className="rounded-[2.5rem] border border-white/10 bg-gradient-to-br from-neutral-950/95 via-neutral-950/85 to-emerald-950/20 p-6 shadow-[0_40px_120px_rgba(0,0,0,0.5)] backdrop-blur-xl md:p-8">
+      <div className="relative">
         <div className="mb-8">
           <p
             className="text-[10px] font-bold uppercase tracking-[0.24em]"
@@ -182,7 +182,7 @@ export function HeroSystemPanel() {
             {t("hero.visual_label")}
           </p>
           <p
-            className="mt-1 max-w-sm text-lg font-semibold tracking-tight md:text-xl"
+            className="mt-1 max-w-sm text-base font-semibold tracking-tight"
             style={{ color: "#F0EDE6" }}>
             {t("hero.visual_title")}
           </p>
@@ -191,7 +191,7 @@ export function HeroSystemPanel() {
         <svg
           role="img"
           aria-labelledby={`${titleId} ${descId}`}
-          viewBox="0 0 460 680"
+          viewBox="0 0 460 700"
           width="100%"
           height="auto"
           preserveAspectRatio="xMidYMid meet"
@@ -207,27 +207,27 @@ export function HeroSystemPanel() {
             </radialGradient>
           </defs>
 
-          <circle cx="230" cy="312" r="95" fill={`url(#${gradientId})`} />
+          <circle cx="230" cy="312" r="100" fill={`url(#${gradientId})`} />
 
           <g>
             <line
               x1="230"
               y1="110"
               x2="230"
-              y2="252"
+              y2="250"
               stroke="#10B981"
-              strokeWidth="0.6"
-              strokeOpacity="0.35"
+              strokeWidth="1"
+              strokeOpacity="0.5"
               strokeDasharray="2 4"
             />
             <line
               x1="230"
-              y1="372"
+              y1="374"
               x2="230"
               y2="514"
               stroke="#10B981"
-              strokeWidth="0.6"
-              strokeOpacity="0.35"
+              strokeWidth="1"
+              strokeOpacity="0.5"
               strokeDasharray="2 4"
             />
           </g>
@@ -247,12 +247,12 @@ export function HeroSystemPanel() {
             <m.circle
               cx="230"
               cy="312"
-              r="60"
+              r="65"
               fill="none"
               stroke="#10B981"
               strokeWidth="0.8"
               opacity="0.3"
-              animate={{ r: [60, 85], opacity: [0.35, 0] }}
+              animate={{ r: [65, 90], opacity: [0.35, 0] }}
               transition={{
                 duration: 3,
                 ease: "easeOut",
@@ -263,7 +263,7 @@ export function HeroSystemPanel() {
             <circle
               cx="230"
               cy="312"
-              r="60"
+              r="62"
               fill="#07080F"
               stroke="#10B981"
               strokeWidth="1.5"
@@ -273,7 +273,7 @@ export function HeroSystemPanel() {
               y="290"
               textAnchor="middle"
               fill="#10B981"
-              fontSize="10"
+              fontSize="9"
               fontWeight="500"
               letterSpacing="2">
               {t("hero.system_core_kicker")}
@@ -291,7 +291,7 @@ export function HeroSystemPanel() {
               y="318"
               textAnchor="middle"
               fill="#F0EDE6"
-              fontSize="14"
+              fontSize="13"
               fontWeight="500">
               {t("hero.system_core_line_1")}
             </text>
@@ -300,7 +300,7 @@ export function HeroSystemPanel() {
               y="336"
               textAnchor="middle"
               fill="#F0EDE6"
-              fontSize="14"
+              fontSize="13"
               fontWeight="500">
               {t("hero.system_core_line_2")}
             </text>
@@ -319,13 +319,13 @@ export function HeroSystemPanel() {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.5, delay: 1.2 }}>
-            <circle cx="88" cy="648" r="1.5" fill="#F0EDE6" opacity="0.35" />
-            <text x="104" y="652" fill="#888780" fontSize="12">
+            <circle cx="88" cy="660" r="1.5" fill="#F0EDE6" opacity="0.35" />
+            <text x="104" y="664" fill="#888780" fontSize="11">
               {t("hero.system_legend_out")}
             </text>
 
-            <circle cx="265" cy="648" r="2.5" fill="#10B981" />
-            <text x="281" y="652" fill="#888780" fontSize="12">
+            <circle cx="278" cy="660" r="2.5" fill="#10B981" />
+            <text x="294" y="664" fill="#888780" fontSize="11">
               {t("hero.system_legend_in")}
             </text>
           </m.g>

@@ -322,12 +322,12 @@
       "label": "STUDIO WITH PROPRIETARY SOFTWARE",
       "title": "Your business doesn't need another agency. It needs a system.",
       "subtitle": "LATAM agencies sell templates disguised as strategy. We build the full stack — brand, site, visibility and automation — operating as one connected system.",
-      "product_anchor": "Diagnosis, design, implementation, and continuous optimization — **all in one connected system**.",
+      "product_anchor": "Diagnosis, design, implementation, and continuous optimization — <strong>all in one connected system</strong>.",
       "primary_cta": "Diagnose my digital presence",
       "secondary_cta": "See how it works",
       "audience_anchor": "What industry does your business operate in? →",
       "visual_label": "THE SYSTEM",
-      "visual_title": "Four layers. One stack. Built around your business.",
+      "visual_title": "Four layers. One stack. Built around you.",
       "system_layer_01_label": "01 / BRAND",
       "system_layer_01_title": "Clear identity",
       "system_layer_01_subtitle": "Recognized in seconds, not minutes",
@@ -345,6 +345,65 @@
       "system_core_line_2": "system",
       "system_legend_out": "Your business signals",
       "system_legend_in": "The system returns results"
+    },
+    "thesis": {
+      "kicker": "02 / THESIS",
+      "title_prefix": "LATAM agencies are ",
+      "title_emphasis": "broken.",
+      "paragraph_1": "They charge retainers without measurable impact. They deliver 'custom sites' that are templates in disguise. They sell services that retain the client, not grow them.",
+      "paragraph_2": "Meanwhile, the world changed. Today a business doesn't risk its digital existence on a single web page — it risks it on a system: brand, site, visibility on Google and in AI (ChatGPT, Perplexity, Gemini), and automated operations. Agencies keep selling pieces. No one is building the system.",
+      "paragraph_3": "That's why Noctra exists. We're a services studio with proprietary software in development. Every layer of the system we sell you as a service today is becoming a product that operates on its own tomorrow. We're not another agency. We're the transition toward what LATAM will need in the next 5 years."
+    },
+    "ecosystem": {
+      "kicker": "03 / ECOSYSTEM",
+      "title": "Seven products. One thesis.",
+      "subtitle": "Services we run today. Products launching tomorrow. All connected by the same system.",
+      "footnote": "Every active service feeds the development of its corresponding product. The system closes when all are operational.",
+      "items": [
+        {
+          "name": "noctra.studio",
+          "layer": "CORE",
+          "badge": "Active",
+          "description": "The studio. High-level services with a founder's thesis. The gateway to the system."
+        },
+        {
+          "name": "Radar",
+          "layer": "VISIBILITY",
+          "badge": "Flagship · In development",
+          "description": "GEO + SEO intelligence. We measure your brand visibility in ChatGPT, Perplexity and Gemini — not just Google. The first AI reputation radar for LATAM.",
+          "flagship_line": "Flagship product. Launching in 2026."
+        },
+        {
+          "name": "Social",
+          "layer": "CONTENT",
+          "badge": "In development",
+          "description": "AI-powered social media content generation. Visual editor with AI superpowers. Preserves your brand voice."
+        },
+        {
+          "name": "CRM",
+          "layer": "AUTOMATION",
+          "badge": "In development",
+          "description": "The CRM LATAM deserves. WhatsApp-first, designed from scratch for how we sell in the region. A real alternative to Salesforce and HubSpot."
+        },
+        {
+          "name": "Discovery",
+          "layer": "SALES",
+          "badge": "Active",
+          "description": "Lead intake and qualification forms. Replaces the chaos of WhatsApp + Google Forms with a polished flow."
+        },
+        {
+          "name": "Proposals",
+          "layer": "SALES",
+          "badge": "Active",
+          "description": "From proposal to signed contract pipeline. From first call to deposit, without spreadsheets."
+        },
+        {
+          "name": "Academy",
+          "layer": "KNOWLEDGE",
+          "badge": "MVP 2026",
+          "description": "Learning platform. What we learn by building, we teach. Currently in definition phase."
+        }
+      ]
     },
     "hybrid_model": {
       "label": "WHAT NOCTRA DOES",
