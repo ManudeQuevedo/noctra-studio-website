@@ -319,48 +319,32 @@
   },
   "HomePage": {
     "hero": {
-      "label": "STUDIO + SOFTWARE PROPIO",
-      "title": "Tu reputación merece una presencia digital que cierre ventas por ti.",
-      "subtitle": "Ayudamos a negocios de cualquier tamaño a construir una presencia digital más clara, más visible y preparada para crecer — con marca, sitio, SEO, GEO y automatización como un sistema conectado.",
+      "label": "STUDIO CON SOFTWARE PROPIO",
+      "title": "Tu negocio no necesita otra agencia. Necesita un sistema.",
+      "subtitle": "Las agencias LATAM venden plantillas disfrazadas de estrategia. Nosotros construimos el stack completo — marca, sitio, visibilidad y automatización — operando como un sistema conectado.",
       "product_anchor": "Diagnóstico, diseño, implementación y optimización continua — **todo en un sistema conectado**.",
       "primary_cta": "Diagnosticar mi presencia digital",
       "secondary_cta": "Ver cómo funciona",
-      "trust_strip": [
-        "Resultados reales garantizados por contrato",
-        "Implementación premium + Software propio",
-        "Arquitectura de conversión para profesionales y PyMEs"
-      ],
       "audience_anchor": "¿En qué industria opera tu negocio? →",
-      "metric_value": "4 capas",
-      "metric_label": "un solo sistema",
-      "metric_footnote": "*Marca, sitio, visibilidad y automatización se implementan según el punto de partida y los objetivos de cada negocio.",
-      "visual_label": "Cómo funciona",
-      "visual_title": "Studio + productos en un solo sistema",
-      "visual_badge": "Modelo híbrido",
-      "system_steps": [
-        {
-          "step": "01 · Presencia",
-          "title": "Definimos la base que tu negocio necesita comunicar",
-          "description": "Marca, sitio y estructura para que la gente te entienda rápido y confíe más."
-        },
-        {
-          "step": "02 · Radar",
-          "title": "Detectamos lo que está frenando visibilidad, SEO y credibilidad",
-          "description": "Radar hace visible lo que hoy está afectando rendimiento técnico y comercial."
-        },
-        {
-          "step": "03 · Studio",
-          "title": "Implementamos mejoras, rediseño y automatización",
-          "description": "El Studio ejecuta branding, websites, SEO y flujos digitales como un sistema conectado."
-        },
-        {
-          "step": "04 · Social",
-          "title": "Sostenemos presencia y continuidad con software",
-          "description": "Social mantiene contenido y consistencia para que el crecimiento no dependa de improvisar."
-        }
-      ],
-      "visual_footer_label": "Por qué importa",
-      "visual_footer": "Noctra no solo diseña o desarrolla. Construye un sistema donde la implementación y el software refuerzan resultados de negocio."
+      "visual_label": "EL SISTEMA",
+      "visual_title": "Cuatro capas. Un stack. Centrado en tu negocio.",
+      "system_layer_01_label": "01 / MARCA",
+      "system_layer_01_title": "Identidad clara",
+      "system_layer_01_subtitle": "Te reconocen en segundos, no en minutos",
+      "system_layer_02_label": "02 / SITIO",
+      "system_layer_02_title": "Cierre de ventas",
+      "system_layer_02_subtitle": "Visitas que se convierten en clientes",
+      "system_layer_03_label": "03 / VISIBILIDAD",
+      "system_layer_03_title": "SEO + GEO",
+      "system_layer_03_subtitle": "Te encuentran en Google, ChatGPT y Perplexity",
+      "system_layer_04_label": "04 / AUTOMATIZACIÓN",
+      "system_layer_04_title": "Operación sin fricción",
+      "system_layer_04_subtitle": "Menos trabajo manual, más tiempo para vender",
+      "system_core_kicker": "TU NEGOCIO",
+      "system_core_line_1": "Centro del",
+      "system_core_line_2": "sistema",
+      "system_legend_out": "Tu negocio emite",
+      "system_legend_in": "El sistema devuelve resultados"
     },
     "hybrid_model": {
       "label": "QUÉ HACE NOCTRA",

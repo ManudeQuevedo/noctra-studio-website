@@ -319,48 +319,32 @@
   },
   "HomePage": {
     "hero": {
-      "label": "STUDIO + PROPRIETARY SOFTWARE",
-      "title": "Your reputation deserves a digital presence that closes sales for you.",
-      "subtitle": "We help businesses of any size build a clearer, more visible digital presence — ready to grow — with brand, website, SEO, GEO, and automation working as a connected system.",
+      "label": "STUDIO WITH PROPRIETARY SOFTWARE",
+      "title": "Your business doesn't need another agency. It needs a system.",
+      "subtitle": "LATAM agencies sell templates disguised as strategy. We build the full stack — brand, site, visibility and automation — operating as one connected system.",
       "product_anchor": "Diagnosis, design, implementation, and continuous optimization — **all in one connected system**.",
       "primary_cta": "Diagnose my digital presence",
       "secondary_cta": "See how it works",
-      "trust_strip": [
-        "Real results guaranteed by contract",
-        "Premium implementation + Proprietary software",
-        "Conversion architecture for professionals and SMEs"
-      ],
       "audience_anchor": "What industry does your business operate in? →",
-      "metric_value": "4 layers",
-      "metric_label": "one system",
-      "metric_footnote": "*Brand, website, visibility, and automation are implemented based on each business's starting point and goals.",
-      "visual_label": "How it works",
-      "visual_title": "Studio + products inside one system",
-      "visual_badge": "Hybrid model",
-      "system_steps": [
-        {
-          "step": "01 · Presence",
-          "title": "We define what your business needs to communicate",
-          "description": "Brand, website, and structure built so people understand you quickly and trust you faster."
-        },
-        {
-          "step": "02 · Radar",
-          "title": "We detect what is slowing visibility, SEO, and credibility",
-          "description": "Radar reveals what is currently hurting technical and commercial performance."
-        },
-        {
-          "step": "03 · Studio",
-          "title": "We implement improvements, redesign, and automation",
-          "description": "The Studio executes branding, websites, SEO, and digital workflows as one connected system."
-        },
-        {
-          "step": "04 · Social",
-          "title": "We sustain presence and continuity with software",
-          "description": "Social keeps content and consistency moving so growth does not depend on improvisation."
-        }
-      ],
-      "visual_footer_label": "Why it matters",
-      "visual_footer": "Noctra does not only design or develop. It builds a system where implementation and software reinforce business outcomes."
+      "visual_label": "THE SYSTEM",
+      "visual_title": "Four layers. One stack. Built around your business.",
+      "system_layer_01_label": "01 / BRAND",
+      "system_layer_01_title": "Clear identity",
+      "system_layer_01_subtitle": "Recognized in seconds, not minutes",
+      "system_layer_02_label": "02 / SITE",
+      "system_layer_02_title": "Sales closing",
+      "system_layer_02_subtitle": "Visits that convert into customers",
+      "system_layer_03_label": "03 / VISIBILITY",
+      "system_layer_03_title": "SEO + GEO",
+      "system_layer_03_subtitle": "Found on Google, ChatGPT and Perplexity",
+      "system_layer_04_label": "04 / AUTOMATION",
+      "system_layer_04_title": "Frictionless operations",
+      "system_layer_04_subtitle": "Less manual work, more time to sell",
+      "system_core_kicker": "YOUR BUSINESS",
+      "system_core_line_1": "Center of the",
+      "system_core_line_2": "system",
+      "system_legend_out": "Your business signals",
+      "system_legend_in": "The system returns results"
     },
     "hybrid_model": {
       "label": "WHAT NOCTRA DOES",
@@ -3058,7 +3042,19 @@
   "HomeFinalCta": {
     "label": "NEXT STEP",
     "title": "If you want Noctra to implement it for you or you prefer to start with the software, we can open either path.",
-    "subtitle": "Choose whether you need a full system with Studio guidance or you want to begin with a product-led path first."
+    "subtitle": "Choose whether you need a full system with Studio guidance or you want to begin with a product-led path first.",
+    "studio": {
+      "label": "Service path",
+      "title": "I want to work with Noctra Studio",
+      "copy": "Ideal if you need branding, website, SEO, or automation implemented with an integrated strategic view.",
+      "cta": "Talk to the Studio"
+    },
+    "products": {
+      "label": "Product path",
+      "title": "I want to explore Noctra products",
+      "copy": "Ideal if you want to start by seeing how Radar and Social can help you organize visibility and presence.",
+      "cta": "Explore products"
+    }
   },
   "ServicesPage": {
     "hero_badge": "GROWTH INFRASTRUCTURE",
