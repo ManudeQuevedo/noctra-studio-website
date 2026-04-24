@@ -21,7 +21,7 @@ export function FinalCTASection() {
       title: t("products.title"),
       copy: t("products.copy"),
       cta: t("products.cta"),
-      href: "/#radar",
+      href: "/#ecosystem",
     },
   ];
 

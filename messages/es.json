@@ -405,44 +405,6 @@
         }
       ]
     },
-    "hybrid_model": {
-      "label": "QUÉ HACE NOCTRA",
-      "title": "Construimos la base digital que hace que un negocio se vea serio, aparezca mejor y convierta con menos fricción.",
-      "subtitle": "Ayudamos a negocios que ya no quieren improvisar su presencia digital. Aclaramos la marca, mejoramos el sitio, fortalecemos la visibilidad en buscadores y ordenamos la captación de clientes con procesos y software que sí se pueden sostener.",
-      "items": [
-        {
-          "title": "Claridad de marca",
-          "description": "Definimos mensaje, jerarquía y presencia visual para que tu negocio se entienda rápido y genere confianza."
-        },
-        {
-          "title": "Sitios que convierten",
-          "description": "Diseñamos o reestructuramos websites para explicar mejor tu oferta y llevar a las personas al siguiente paso."
-        },
-        {
-          "title": "Visibilidad orgánica",
-          "description": "Corregimos estructura, SEO técnico y contenido para que la gente correcta te encuentre — tanto en buscadores como en motores de respuesta con IA."
-        },
-        {
-          "title": "Captación más ordenada",
-          "description": "Diseñamos formularios, flujos y automatizaciones para reducir fricción en consultas, citas y seguimiento."
-        },
-        {
-          "title": "Operación reforzada con software",
-          "description": "Usamos sistemas propios para diagnosticar, monitorear y acelerar la entrega cuando eso aporta valor real."
-        }
-      ],
-      "cta": "Ver cómo implementamos esto",
-      "model_label": "Modelo Noctra",
-      "model_title": "Primero resolvemos el problema. Luego convertimos lo repetible en sistema.",
-      "model_copy": "Ese enfoque evita el trabajo genérico de agencia y también evita construir productos desconectados del mercado.",
-      "model_points": [
-        "El Estudio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
-        "El software que usamos nació de resolver los mismos problemas una y otra vez: lo que funciona en el Studio se convierte en sistema que escala.",
-        "El cliente puede trabajar con Noctra como servicio, como software o como una combinación de ambos."
-      ],
-      "note_label": "Lectura rápida",
-      "note": "La diferencia de Noctra no es solo hacer un sitio o un branding. Es tener una capa de implementación y una capa de software que se fortalecen mutuamente."
-    },
     "services": {
       "kicker": "04 / SERVICIOS",
       "title": "Primero resolvemos el problema. Luego convertimos lo repetible en sistema.",
@@ -517,118 +479,13 @@
         }
       ]
     },
-    "the_system": {
-      "label": "ARQUITECTURA CONECTADA",
-      "title": "La Arquitectura Noctra: Estudio + Software en Sincronía",
-      "subtitle": "Cada resultado que entregamos está respaldado por una arquitectura de procesos y herramientas propias. Branding, web, visibilidad y automatización conectados para que nada funcione de forma aislada.",
-      "layer_1": "Inteligencia & Diagnóstico",
-      "layer_2": "Implementación & Acción",
-      "layer_3": "Valor & Amplificación",
-      "studio": {
-        "eyebrow": "Ejecución Core",
-        "title": "Noctra Studio",
-        "description": "El brazo ejecutor que transforma el diagnóstico en activos reales: branding de alta gama, sitios de alto desempeño y automatizaciones que liberan tiempo.",
-        "points": [
-          "Diseño orientado a la conversión",
-          "Arquitectura web premium",
-          "SEO técnico y estructural"
-        ]
-      },
-      "radar": {
-        "eyebrow": "Flagship Product",
-        "title": "Noctra Radar",
-        "description": "Nuestro sistema de monitoreo y diagnóstico que detecta fallos de autoridad, rendimiento y conversión antes de que afecten tu negocio.",
-        "points": [
-          "Detección de puntos de fuga",
-          "Auditoría continua de autoridad",
-          "Alertas de performance técnica"
-        ]
-      },
-      "social": {
-        "eyebrow": "Product Area",
-        "title": "Noctra Social",
-        "description": "La herramienta diseñada para dominar la conversación digital, asegurando coherencia y autoridad en todos tus canales sociales.",
-        "points": [
-          "Gestión de autoridad social",
-          "Planificación estratégica",
-          "Continuidad de marca"
-        ]
-      },
-      "discovery": {
-        "eyebrow": "Internal System",
-        "title": "Discovery",
-        "description": "El protocolo de investigación profunda que precede a cada proyecto para eliminar suposiciones y basar cada decisión en datos reales."
-      },
-      "proposals": {
-        "eyebrow": "Internal System",
-        "title": "Proposals",
-        "description": "Nuestro sistema de estructuración que asegura transparencia total, alcances granulares y una ruta crítica clara para cada etapa de entrega."
-      },
-      "academy": {
-        "eyebrow": "Ecosystem Asset",
-        "title": "Academy",
-        "description": "El repositorio de conocimiento y mejores prácticas que eleva el criterio digital de nuestros clientes y sus equipos internos."
-      },
-      "note_label": "GARANTÍA DE SISTEMA",
-      "note": "La diferencia de Noctra no es solo el resultado final, sino el sistema que lo sostiene. Cada herramienta interna garantiza que tu proyecto sea medible, escalable y ordenado."
-    },
-    "radar": {
-      "tagline": "PRODUCTO PRINCIPAL",
-      "title": "Noctra Radar te muestra qué está frenando el rendimiento de tu sitio antes de que se convierta en un problema de negocio.",
-      "copy": "Radar revisa visibilidad, SEO, confianza y salud técnica para detectar fallas, priorizar mejoras y hacer visible lo que normalmente pasa desapercibido.",
-      "surfaces": [
-        "SEO técnico y estructura",
-        "Señales de confianza",
-        "Salud técnica y rendimiento",
-        "Prioridades de mejora"
-      ],
-      "points": [
-        "Detecta bloqueos que afectan tráfico, autoridad y conversión.",
-        "Convierte hallazgos técnicos en prioridades de negocio.",
-        "Ayuda a decidir qué corregir primero y por qué.",
-        "Fortalece el trabajo del Estudio con diagnóstico más estructurado y seguimiento continuo."
-      ],
-      "overlay_label": "Vista de Radar",
-      "overlay_title": "Hallazgos priorizados para actuar antes",
-      "support_label": "Por qué fortalece el modelo Noctra",
-      "support_copy": "Radar no se queda en observación técnica. Hace que la conversación con el cliente sea más clara, orienta la implementación y convierte los problemas invisibles en decisiones útiles.",
-      "primary_cta": "Probar Radar",
-      "secondary_cta": "Ver cómo se integra con el Estudio"
-    },
-    "social": {
-      "tagline": "PRODUCTO SECUNDARIO",
-      "title": "Noctra Social ayuda a mantener una presencia relevante sin convertir el contenido en una carga operativa.",
-      "copy": "Social organiza ideas, ritmo y tono de marca para producir contenido con apoyo de IA sin perder dirección estratégica.",
-      "points": [
-        "Más consistencia en canales clave.",
-        "Producción más rápida sin improvisar.",
-        "Mensajes alineados con tu voz y tu mercado.",
-        "Mejor continuidad entre posicionamiento, contenido y demanda."
-      ],
-      "cta": "Explorar Noctra Social",
-      "workflow_label": "Flujo de Social",
-      "workflow_title": "Presencia estratégica con ritmo y control",
-      "workflow_badge": "Asistido por IA",
-      "pipeline": [
-        "Definir temas y prioridades de contenido",
-        "Alinear tono, mensaje y objetivos por canal",
-        "Acelerar producción con apoyo de IA",
-        "Publicar con continuidad y consistencia"
-      ],
-      "step_label": "Paso {step}",
-      "workflow_note_label": "Qué resuelve",
-      "workflow_note": "Social ayuda a que la marca siga presente entre campañas, lanzamientos y ciclos comerciales, sin depender de producir todo desde cero cada semana."
-    },
     "services_section": {
       "label": "IMPLEMENTAMOS EL SISTEMA POR TI",
       "title": "Cuando necesitas ejecución completa, Noctra Studio la construye contigo.",
       "subtitle": "No ofrecemos una lista aislada de servicios. Integramos branding, websites, SEO y automatizaciones como partes de un mismo sistema de crecimiento.",
       "intro": "Cada frente se diseña con lógica de negocio: explicar mejor, convertir mejor, operar con menos fricción y crecer con una base más confiable.",
       "cta": "Hablar con Noctra Studio"
-    },
-    "cta_start": "Agendar diagnóstico",
-    "cta_services": "Ver capacidades",
-    "cta_work": "Explorar Noctra Radar"
+    }
   },
   "AIAutomationShowcase": {
     "pre_title": "DIFERENCIADOR CLAVE",
@@ -2795,49 +2652,6 @@
       "cta": "Agendar discovery call"
     }
   },
-  "HomeCapabilities": {
-    "label": "Lo que implementamos",
-    "title": "Sistema de implementación Studio",
-    "subtitle": "Cada capacidad se ejecuta como parte de una base digital más clara, visible y útil para el negocio.",
-    "items": [
-      {
-        "title": "Branding",
-        "description": "Aclaramos mensaje, propuesta y presencia visual para que tu negocio se entienda y se vea más sólido.",
-        "points": [
-          "Posicionamiento y narrativa más claros",
-          "Jerarquía visual y dirección coherente",
-          "Base de marca útil para sitio, contenido y ventas"
-        ]
-      },
-      {
-        "title": "Websites",
-        "description": "Diseñamos sitios que explican mejor, convierten mejor y se sienten confiables en desktop y mobile.",
-        "points": [
-          "Arquitectura y flujo pensados para conversión",
-          "Diseño premium con claridad comercial",
-          "Experiencia estable, rápida y fácil de mantener"
-        ]
-      },
-      {
-        "title": "SEO",
-        "description": "Corregimos estructura, contenido y señales técnicas para mejorar la visibilidad en buscadores y en motores de IA como Google AI Overviews y ChatGPT — SEO y GEO como una sola capa de crecimiento.",
-        "points": [
-          "SEO técnico y fundamentos de indexación",
-          "Jerarquía de páginas y contenido más clara",
-          "GEO: visibilidad en búsquedas con IA y resultados generativos"
-        ]
-      },
-      {
-        "title": "AI Automations",
-        "description": "Reducimos trabajo manual en captación, seguimiento y operación con flujos útiles y medibles.",
-        "points": [
-          "Automatizaciones para leads, citas o intake",
-          "Seguimiento más ordenado y menos manual",
-          "Procesos digitales más sostenibles para tu equipo"
-        ]
-      }
-    ]
-  },
   "HomeProblem": {
     "label": "El problema",
     "title": "La mayoría de los negocios no tienen un problema digital. Tienen un problema de claridad.",
@@ -2925,45 +2739,21 @@
     },
     "closing": "Juntos expresan cómo trabaja Noctra: convertir confusión en claridad y esfuerzos digitales dispersos en algo profesional, consistente y fácil de confiar."
   },
-  "HomeExamples": {
-    "label": "CREDIBILIDAD Y MÉTODO",
-    "title": "Credibilidad nacida de la realidad operativa.",
-    "subtitle": "Noctra trabaja sobre fricciones reales de posicionamiento, claridad comercial, visibilidad y operación. Lo que se convierte en sistema o producto primero responde a una necesidad concreta, luego se ordena, se usa y se refina.",
-    "cards": [
-      {
-        "label": "Problema real",
-        "title": "Partimos de necesidades concretas",
-        "description": "Cada sistema empieza donde un negocio pierde claridad, consistencia o capacidad de ejecución. No diseñamos desde una idea aislada, sino desde una fricción observable."
-      },
-      {
-        "label": "Construcción con estructura",
-        "title": "Construimos con criterios definidos",
-        "description": "Ordenamos contexto, decisiones, jerarquías y procesos antes de expandir la solución. Esa disciplina hace que el trabajo se vea serio porque realmente está bien construido."
-      },
-      {
-        "label": "Refinamiento por uso",
-        "title": "Lo que se repite, se convierte en producto",
-        "description": "Cuando un patrón operativo aparece una y otra vez, lo refinamos hasta volverlo más claro, más útil y más estable. Así nacen los productos de Noctra."
-      }
-    ],
-    "closing": "Nuestra credibilidad no depende de cifras infladas ni de narrativa vacía. Depende de una forma consistente de observar, estructurar y convertir aprendizaje operativo en sistemas más sólidos.",
-    "cta": "Ver trabajo y método"
-  },
   "HomeFinalCta": {
     "label": "SIGUIENTE PASO",
-    "title": "Si quieres que Noctra lo implemente por ti o prefieres empezar por el software, podemos abrir cualquiera de los dos caminos.",
-    "subtitle": "Elige si necesitas un sistema completo con acompañamiento del Studio o si quieres explorar primero las herramientas que ya usamos para hacerlo más escalable.",
+    "title": "¿Listo para construir tu sistema?",
+    "subtitle": "Empieza con un diagnóstico gratuito o explora los productos que estamos construyendo.",
     "studio": {
       "label": "Ruta de servicio",
       "title": "Quiero trabajar con Noctra Studio",
       "copy": "Ideal si necesitas branding, website, SEO o automatización implementados con una visión integral.",
-      "cta": "Hablar con el Studio"
+      "cta": "Diagnosticar mi presencia digital"
     },
     "products": {
       "label": "Ruta de producto",
       "title": "Quiero explorar los productos Noctra",
       "copy": "Ideal si quieres empezar viendo cómo Radar y Social pueden ayudarte a ordenar visibilidad y presencia.",
-      "cta": "Explorar productos"
+      "cta": "Ver el ecosistema"
     }
   },
   "WorkPage": {

@@ -44,7 +44,7 @@ export function Ecosystem() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section className="bg-transparent px-6 py-24 md:px-8 md:py-32">
+      <section id="ecosystem" className="bg-transparent px-6 py-24 md:px-8 md:py-32">
         <div className="mx-auto max-w-6xl">
 
           <m.p
