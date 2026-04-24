@@ -319,7 +319,7 @@
   },
   "HomePage": {
     "hero": {
-      "label": "STUDIO CON SOFTWARE PROPIO",
+      "label": "ESTUDIO CON SOFTWARE PROPIO",
       "title": "Tu negocio no necesita otra agencia. Necesita un sistema.",
       "subtitle": "Las agencias LATAM venden plantillas disfrazadas de estrategia. Nosotros construimos el stack completo — marca, sitio, visibilidad y automatización — operando como un sistema conectado.",
       "product_anchor": "Diagnóstico, diseño, implementación y optimización continua — <strong>todo en un sistema conectado</strong>.",
@@ -436,7 +436,7 @@
       "model_title": "Primero resolvemos el problema. Luego convertimos lo repetible en sistema.",
       "model_copy": "Ese enfoque evita el trabajo genérico de agencia y también evita construir productos desconectados del mercado.",
       "model_points": [
-        "El Studio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
+        "El Estudio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
         "El software que usamos nació de resolver los mismos problemas una y otra vez: lo que funciona en el Studio se convierte en sistema que escala.",
         "El cliente puede trabajar con Noctra como servicio, como software o como una combinación de ambos."
       ],
@@ -483,8 +483,8 @@
       "model_title": "Servicio e ingeniería. No uno u otro.",
       "model_subtitle": "Ese enfoque evita el trabajo genérico de agencia y también evita construir productos desconectados del mercado.",
       "model_points": [
-        "El Studio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
-        "El software que usamos nació de resolver los mismos problemas una y otra vez: lo que funciona en el Studio se convierte en sistema que escala.",
+        "El Estudio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
+        "El software que usamos nació de resolver los mismos problemas una y otra vez: lo que funciona en el Estudio se convierte en sistema que escala.",
         "El cliente puede trabajar con Noctra como servicio, como software o como una combinación de ambos."
       ],
       "quick_read_label": "LECTURA RÁPIDA",
@@ -519,7 +519,7 @@
     },
     "the_system": {
       "label": "ARQUITECTURA CONECTADA",
-      "title": "La Arquitectura Noctra: Studio + Software en Sincronía",
+      "title": "La Arquitectura Noctra: Estudio + Software en Sincronía",
       "subtitle": "Cada resultado que entregamos está respaldado por una arquitectura de procesos y herramientas propias. Branding, web, visibilidad y automatización conectados para que nada funcione de forma aislada.",
       "layer_1": "Inteligencia & Diagnóstico",
       "layer_2": "Implementación & Acción",
@@ -586,14 +586,14 @@
         "Detecta bloqueos que afectan tráfico, autoridad y conversión.",
         "Convierte hallazgos técnicos en prioridades de negocio.",
         "Ayuda a decidir qué corregir primero y por qué.",
-        "Fortalece el trabajo del Studio con diagnóstico más estructurado y seguimiento continuo."
+        "Fortalece el trabajo del Estudio con diagnóstico más estructurado y seguimiento continuo."
       ],
       "overlay_label": "Vista de Radar",
       "overlay_title": "Hallazgos priorizados para actuar antes",
       "support_label": "Por qué fortalece el modelo Noctra",
       "support_copy": "Radar no se queda en observación técnica. Hace que la conversación con el cliente sea más clara, orienta la implementación y convierte los problemas invisibles en decisiones útiles.",
       "primary_cta": "Probar Radar",
-      "secondary_cta": "Ver cómo se integra con el Studio"
+      "secondary_cta": "Ver cómo se integra con el Estudio"
     },
     "social": {
       "tagline": "PRODUCTO SECUNDARIO",
@@ -676,13 +676,13 @@
   },
   "Metadata": {
     "home": {
-      "title": "Noctra Studio | Studio premium + software propio para crecimiento digital",
+      "title": "Noctra Studio | Estudio premium + software propio para crecimiento digital",
       "description": "Noctra Studio combina branding, websites, SEO, GEO y automatizaciones con productos propios como Radar y Social para construir una presencia digital más clara, visible y escalable — para negocios de cualquier tamaño.",
-      "keywords": "studio digital queretaro, branding y sitios web, SEO para negocios, GEO generative engine optimization, visibilidad en IA, automatizaciones con IA, software propio para marketing, noctra radar, noctra social",
-      "og_title": "Noctra Studio — Studio y software para crecer con estructura",
+      "keywords": "estudio digital queretaro, branding y sitios web, SEO para negocios, GEO generative engine optimization, visibilidad en IA, automatizaciones con IA, software propio para marketing, noctra radar, noctra social",
+      "og_title": "Noctra Studio — Estudio y software para crecer con estructura",
       "og_description": "Branding, websites, SEO, automatización y productos propios para que tu negocio gane confianza, visibilidad y crecimiento más ordenado.",
       "og_image_alt": "Noctra Studio estudio digital con mentalidad de ingeniería",
-      "twitter_title": "Noctra Studio | Studio premium + software propio",
+      "twitter_title": "Noctra Studio | Estudio premium + software propio",
       "twitter_description": "Branding, websites, SEO, automatización y productos propios para construir una presencia digital más clara y escalable."
     },
     "about": {
