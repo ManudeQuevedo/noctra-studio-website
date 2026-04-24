@@ -2,6 +2,7 @@ import dynamic from "next/dynamic";
 import { PageHero as Hero } from "@/components/PageHero";
 import { Thesis } from "@/components/sections/Thesis";
 import { Ecosystem } from "@/components/sections/Ecosystem";
+import { Services } from "@/components/sections/Services";
 import { generatePageMetadata } from "@/lib/metadata";
 import {
   OrganizationSchema,
@@ -12,24 +13,9 @@ import {
 import { BrandNarrativeVisual } from "@/components/home/BrandNarrativeVisual";
 
 // Lazy load new strategic components
-const HybridModelSection = dynamic(() =>
-  import("@/components/home/HybridModelSection").then((mod) => ({
-    default: mod.HybridModelSection,
-  })),
-);
-const CapabilitiesSection = dynamic(() =>
-  import("@/components/home/CapabilitiesSection").then((mod) => ({
-    default: mod.CapabilitiesSection,
-  })),
-);
 const AudienceSection = dynamic(() =>
   import("@/components/home/AudienceSection").then((mod) => ({
     default: mod.AudienceSection,
-  })),
-);
-const ExamplesSection = dynamic(() =>
-  import("@/components/home/ExamplesSection").then((mod) => ({
-    default: mod.ExamplesSection,
   })),
 );
 const FinalCTASection = dynamic(() =>
@@ -50,7 +36,7 @@ export async function generateMetadata({
 /**
  * HomePage
  * Purpose: strategic refactor for hybrid model positioning.
- * Section Order: Hero → Hybrid Model → Audience → Capabilities → Examples → The System → Radar → Social → CTA
+ * Section Order: Hero → Thesis → Ecosystem → Services → Audience → CTA
  */
 export default async function HomePage({
   params,
@@ -64,10 +50,8 @@ export default async function HomePage({
         <Hero />
         <Thesis />
         <Ecosystem />
-        <HybridModelSection />
+        <Services />
         <AudienceSection />
-        <CapabilitiesSection />
-        <ExamplesSection />
         <FinalCTASection />
       </div>
 

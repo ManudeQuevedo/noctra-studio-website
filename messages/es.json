@@ -443,43 +443,77 @@
       "note_label": "Lectura rápida",
       "note": "La diferencia de Noctra no es solo hacer un sitio o un branding. Es tener una capa de implementación y una capa de software que se fortalecen mutuamente."
     },
+    "services": {
+      "kicker": "04 / SERVICIOS",
+      "title": "Primero resolvemos el problema. Luego convertimos lo repetible en sistema.",
+      "subtitle": "No ofrecemos servicios aislados. Cada implementación alimenta el desarrollo del producto correspondiente.",
+      "item_01_name": "Claridad de marca",
+      "item_01_description": "Definimos mensaje, jerarquía y presencia visual para que tu negocio se entienda rápido y genere confianza.",
+      "item_01_bullets": [
+        "Posicionamiento y narrativa más claros",
+        "Jerarquía visual y dirección coherente",
+        "Base de marca útil para sitio, contenido y ventas"
+      ],
+      "item_01_price": "Desde $15,000 MXN",
+      "item_02_name": "Sitios que convierten",
+      "item_02_description": "Diseñamos o reestructuramos websites para explicar mejor tu oferta y llevar a las personas al siguiente paso.",
+      "item_02_bullets": [
+        "Arquitectura y flujo pensados para conversión",
+        "Diseño premium con claridad comercial",
+        "Experiencia estable, rápida y fácil de mantener"
+      ],
+      "item_02_price": "Desde $25,000 MXN",
+      "item_03_name": "SEO + GEO",
+      "item_03_description": "Corregimos estructura, contenido y señales técnicas para que te encuentren en buscadores y en motores de IA.",
+      "item_03_bullets": [
+        "SEO técnico y fundamentos de indexación",
+        "Jerarquía de páginas y contenido más clara",
+        "GEO: visibilidad en búsquedas con IA y resultados generativos"
+      ],
+      "item_03_price": "Desde $12,000 MXN",
+      "item_04_name": "Automatizaciones con IA",
+      "item_04_description": "Reducimos trabajo manual en captación, seguimiento y operación con flujos útiles y medibles.",
+      "item_04_bullets": [
+        "Automatizaciones para leads, citas o intake",
+        "Seguimiento más ordenado y menos manual",
+        "Procesos digitales más sostenibles para tu equipo"
+      ],
+      "item_04_price": "Desde $18,000 MXN",
+      "model_kicker": "MODELO NOCTRA",
+      "model_title": "Servicio e ingeniería. No uno u otro.",
+      "model_subtitle": "Ese enfoque evita el trabajo genérico de agencia y también evita construir productos desconectados del mercado.",
+      "model_points": [
+        "El Studio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
+        "El software que usamos nació de resolver los mismos problemas una y otra vez: lo que funciona en el Studio se convierte en sistema que escala.",
+        "El cliente puede trabajar con Noctra como servicio, como software o como una combinación de ambos."
+      ],
+      "quick_read_label": "LECTURA RÁPIDA",
+      "quick_read_text": "La diferencia de Noctra no es solo hacer un sitio o un branding. Es tener una capa de implementación y una capa de software que se fortalecen mutuamente."
+    },
     "solutions": {
-      "label": "POR TIPO DE NEGOCIO",
-      "title": "Soluciones para negocios que necesitan crecer con más estructura.",
-      "subtitle": "Cada negocio entra por un problema distinto — sin importar si estás empezando, consolidando o escalando. Lo que todos necesitan es lo mismo: claridad, confianza y una base digital que crezca contigo.",
-      "pain_label": "Problema principal",
-      "outcome_label": "Transformación",
-      "support_label": "Aplica Noctra con",
+      "label": "05 / PARA QUIÉN",
+      "title": "¿En qué industria opera tu negocio?",
+      "subtitle": "Trabajamos con negocios que necesitan estructura digital real — no plantillas.",
       "items": [
         {
-          "title": "Profesionistas",
-          "pain": "Tu presencia digital no transmite el nivel de rigor y confianza que sí existe en tu trabajo.",
-          "outcome": "Generas autoridad más rápido y conviertes visitas en consultas mejor calificadas.",
-          "support": "Branding, sitio profesional, SEO local y automatización de atención."
+          "name": "Profesionistas",
+          "short_description": "Tu presencia no refleja el nivel de tu trabajo."
         },
         {
-          "title": "Real estate y negocios locales",
-          "pain": "El interés llega disperso y se pierde entre visibilidad débil, seguimiento lento y mensajes poco claros.",
-          "outcome": "Ordenas captación, respuesta y estructura comercial para convertir interés en oportunidades reales.",
-          "support": "Web enfocada en leads, SEO local, estructura de servicios o propiedades y automatización comercial."
+          "name": "Real estate y negocios locales",
+          "short_description": "El interés llega disperso y el seguimiento se pierde."
         },
         {
-          "title": "Escuelas e instituciones",
-          "pain": "La información se siente fragmentada y eso complica confianza, admisiones y comunicación con familias.",
-          "outcome": "Tu institución se percibe más organizada, clara y confiable desde el primer contacto.",
-          "support": "Arquitectura web, jerarquía de contenidos, SEO y automatizaciones de admisiones."
+          "name": "Escuelas e instituciones",
+          "short_description": "Información fragmentada que complica confianza y admisiones."
         },
         {
-          "title": "PyMEs",
-          "pain": "Tu negocio ya creció, pero tu presencia digital todavía parece una etapa anterior.",
-          "outcome": "Tienes una base más seria, visible y fácil de operar para ordenar la siguiente fase.",
-          "support": "Rebranding selectivo, nuevo sitio, SEO estructural y automatizaciones internas."
+          "name": "PyMEs",
+          "short_description": "Tu negocio creció pero tu presencia digital se quedó atrás."
         },
         {
-          "title": "Startups",
-          "pain": "Necesitas verte sólido, explicar rápido y escalar sin reconstruir todo cada pocos meses.",
-          "outcome": "Ganas una presencia premium, una narrativa más clara y una base lista para iterar.",
-          "support": "Posicionamiento, sitio de alto desempeño, SEO inicial y sistemas de growth."
+          "name": "Startups",
+          "short_description": "Necesitas verte sólido y explicar rápido sin reconstruir cada mes."
         }
       ]
     },

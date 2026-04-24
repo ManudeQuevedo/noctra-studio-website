@@ -443,43 +443,77 @@
       "note_label": "Quick read",
       "note": "The Noctra difference is not only making a website or a brand. It is having an implementation layer and a software layer that strengthen each other."
     },
+    "services": {
+      "kicker": "04 / SERVICES",
+      "title": "First we solve the problem. Then we turn what repeats into a system.",
+      "subtitle": "We do not offer isolated services. Every implementation feeds the development of the corresponding product.",
+      "item_01_name": "Brand clarity",
+      "item_01_description": "We define message, hierarchy and visual presence so your business is understood quickly and builds trust.",
+      "item_01_bullets": [
+        "Sharper positioning and narrative",
+        "Clearer visual hierarchy and direction",
+        "Brand foundation that supports site, content, and sales"
+      ],
+      "item_01_price": "Desde $15,000 MXN",
+      "item_02_name": "Sites that convert",
+      "item_02_description": "We design or restructure websites to better explain your offer and move people to the next step.",
+      "item_02_bullets": [
+        "Architecture and flows shaped for conversion",
+        "Premium design with business clarity",
+        "Stable, fast, and maintainable experience"
+      ],
+      "item_02_price": "Desde $25,000 MXN",
+      "item_03_name": "SEO + GEO",
+      "item_03_description": "We fix structure, content and technical signals so you're found on search engines and AI platforms.",
+      "item_03_bullets": [
+        "Technical SEO and indexing foundations",
+        "Clearer page and content hierarchy",
+        "GEO: visibility in AI-powered search and generative results"
+      ],
+      "item_03_price": "Desde $12,000 MXN",
+      "item_04_name": "AI Automations",
+      "item_04_description": "We reduce manual work in lead capture, follow-up and operations with useful, measurable flows.",
+      "item_04_bullets": [
+        "Automations for leads, bookings, or intake",
+        "More organized follow-up with less manual effort",
+        "Digital operations that are easier for your team to sustain"
+      ],
+      "item_04_price": "Desde $18,000 MXN",
+      "model_kicker": "THE NOCTRA MODEL",
+      "model_title": "Service and engineering. Not one or the other.",
+      "model_subtitle": "That approach avoids generic agency work and also avoids building products that are disconnected from the market.",
+      "model_points": [
+        "The Studio works against real business goals: trust, leads, visibility, and conversion.",
+        "The software we use was born from solving the same problems over and over: what works in the Studio becomes a system that scales.",
+        "Clients can work with Noctra as a service, as software, or as a combination of both."
+      ],
+      "quick_read_label": "QUICK READ",
+      "quick_read_text": "The Noctra difference is not only making a website or a brand. It is having an implementation layer and a software layer that strengthen each other."
+    },
     "solutions": {
-      "label": "BY BUSINESS TYPE",
-      "title": "Solutions for businesses that need more structured growth.",
-      "subtitle": "Every business enters through a different pain point — whether you are starting out, consolidating, or scaling fast. What everyone needs is the same: clarity, trust, and a digital foundation that grows with you.",
-      "pain_label": "Main pain point",
-      "outcome_label": "Transformation",
-      "support_label": "Noctra support",
+      "label": "05 / FOR WHOM",
+      "title": "What industry does your business operate in?",
+      "subtitle": "We work with businesses that need real digital structure — not templates.",
       "items": [
         {
-          "title": "Professionals",
-          "pain": "Your digital presence does not reflect the level of rigor and trust your actual work already has.",
-          "outcome": "You build authority faster and turn visits into better-qualified inquiries.",
-          "support": "Branding, professional website, local SEO, and client-intake automation."
+          "name": "Professionals",
+          "short_description": "Your presence doesn't reflect the level of your work."
         },
         {
-          "title": "Real estate and local businesses",
-          "pain": "Interest comes in scattered and gets lost between weak visibility, slow follow-up, and unclear messaging.",
-          "outcome": "You organize lead capture, response, and commercial structure so interest becomes real opportunities.",
-          "support": "Lead-focused web, local SEO, service or property structure, and sales automation."
+          "name": "Real estate and local businesses",
+          "short_description": "Interest arrives scattered and follow-up gets lost."
         },
         {
-          "title": "Schools and institutions",
-          "pain": "Information feels fragmented and that hurts trust, admissions, and communication with families.",
-          "outcome": "Your institution feels more organized, clearer, and more trustworthy from the first interaction.",
-          "support": "Web architecture, content hierarchy, SEO, and admissions automations."
+          "name": "Schools and institutions",
+          "short_description": "Fragmented information that hurts trust and admissions."
         },
         {
-          "title": "SMEs",
-          "pain": "Your business has grown, but your digital presence still looks like an earlier stage.",
-          "outcome": "You get a more credible, visible, and easier-to-run foundation for the next phase of growth.",
-          "support": "Selective rebrand, new website, structural SEO, and internal automations."
+          "name": "SMEs",
+          "short_description": "Your business grew but your digital presence didn't keep up."
         },
         {
-          "title": "Startups",
-          "pain": "You need to look solid, explain fast, and scale without rebuilding everything every few months.",
-          "outcome": "You gain a premium presence, a clearer narrative, and a base built to iterate.",
-          "support": "Positioning, high-performance website, foundational SEO, and growth systems."
+          "name": "Startups",
+          "short_description": "You need to look solid and explain fast without rebuilding every month."
         }
       ]
     },
