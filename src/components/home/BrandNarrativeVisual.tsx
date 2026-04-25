@@ -9,6 +9,8 @@ interface BrandNarrativeVisualProps {
 }
 
 export function BrandNarrativeVisual({ className, variant = "both" }: BrandNarrativeVisualProps) {
+  const viewport = { once: true, margin: "-100px 0px" } as const;
+
   return (
     <LazyMotion features={domAnimation}>
       <div className={cn("pointer-events-none absolute overflow-hidden", className)}>
@@ -17,8 +19,9 @@ export function BrandNarrativeVisual({ className, variant = "both" }: BrandNarra
           <m.div 
             initial={{ opacity: 0, rotate: -10 }}
             whileInView={{ opacity: 0.15, rotate: 0 }}
+            viewport={viewport}
             transition={{ duration: 1.5, ease: "easeOut" }}
-            className="absolute -right-20 -top-20 h-[500px] w-[500px] rounded-[100px] border-[40px] border-emerald-500/20"
+            className="absolute -right-20 -top-20 h-[500px] w-[500px] rounded-[100px] border-[40px] border-emerald-500/20 will-change-transform"
           />
         )}
 
@@ -27,8 +30,9 @@ export function BrandNarrativeVisual({ className, variant = "both" }: BrandNarra
           <m.div
             initial={{ opacity: 0, scale: 0.8, x: -20 }}
             whileInView={{ opacity: 0.2, scale: 1, x: 0 }}
+            viewport={viewport}
             transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
-            className="absolute -left-32 bottom-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent blur-3xl"
+            className="absolute -left-32 bottom-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent blur-3xl will-change-transform"
           />
         )}
         
@@ -71,8 +75,9 @@ export function BrandNarrativeVisual({ className, variant = "both" }: BrandNarra
           fill="currentColor"
           initial={{ opacity: 0, scale: 0.9 }}
           whileInView={{ opacity: 0.03, scale: 1 }}
+          viewport={viewport}
           transition={{ duration: 2 }}
-          className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 text-white"
+          className="absolute left-1/2 top-1/2 h-[800px] w-[800px] -translate-x-1/2 -translate-y-1/2 text-white will-change-transform"
         >
           <path d="M175.61,0H18.04C8.08,0,0,8.08,0,18.04v157.57c0,9.96,8.08,18.04,18.04,18.04h157.57c9.96,0,18.04-8.08,18.04-18.04V18.04c0-9.96-8.08-18.04-18.04-18.04ZM54.06,122.5c-20.17-31.18-11.25-72.8,19.93-92.97l73.04,112.9c-31.18,20.17-72.8,11.25-92.97-19.93Z" />
         </m.svg>

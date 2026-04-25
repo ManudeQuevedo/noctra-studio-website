@@ -55,30 +55,16 @@ export default function WorkClient({
   const proofContent =
     locale.startsWith("es")
       ? {
-          honesty:
-            "Noctra opera desde 2024. Todos nuestros sistemas activos están en implementación. Documentamos el proceso, no solo el resultado final.",
-          label: "Prueba operativa",
-          title: "El proceso también funciona como evidencia.",
+          label: "Proceso transparente",
+          title: "Te mostramos cómo se construye antes de prometer resultados.",
           subtitle:
-            "Mientras los sistemas activos terminan de madurar, mostramos cómo pensamos, decidimos y construimos sobre proyectos reales. La transparencia no reemplaza los resultados: deja claro cómo llegamos a ellos.",
-          points: [
-            "Diagnóstico antes de diseño",
-            "Decisiones estructuradas por fase",
-            "Implementación sobre negocios reales",
-          ],
+            "Verás diagnóstico, decisiones y avance por fase para saber qué se está construyendo y por qué.",
         }
       : {
-          honesty:
-            "Noctra has operated since 2024. All active systems are currently in implementation. We document the process, not just the final outcome.",
-          label: "Operational proof",
-          title: "The process also works as evidence.",
+          label: "Transparent process",
+          title: "We show how the work is built before promising results.",
           subtitle:
-            "While the active systems are still maturing, we show how we think, decide, and build on real client work. Transparency does not replace results: it makes clear how we get to them.",
-          points: [
-            "Diagnosis before design",
-            "Structured decisions by phase",
-            "Implementation on real businesses",
-          ],
+            "You see the diagnosis, decisions, and phase progress so you know what is being built and why.",
         };
 
   return (
@@ -108,15 +94,6 @@ export default function WorkClient({
               className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
               {t("subtitle")}
             </m.p>
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, delay: 0.15 }}
-              className="border border-amber-500/30 bg-amber-500/5 rounded-lg p-4 mb-12 max-w-2xl mx-auto text-center">
-              <p className="text-sm text-amber-200/80">
-                {proofContent.honesty}
-              </p>
-            </m.div>
           </div>
         </section>
 
@@ -194,16 +171,6 @@ export default function WorkClient({
               <p className="text-neutral-400 max-w-3xl mx-auto leading-relaxed">
                 {proofContent.subtitle}
               </p>
-
-              <div className="flex flex-wrap items-center justify-center gap-3 pt-3">
-                {proofContent.points.map((point) => (
-                  <div
-                    key={point}
-                    className="px-4 py-2 rounded-full border border-white/10 bg-white/[0.03] text-xs md:text-sm text-neutral-200">
-                    {point}
-                  </div>
-                ))}
-              </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 relative">
@@ -307,12 +274,6 @@ export default function WorkClient({
                       <h3 className="text-xl font-bold mb-2">
                         {industry.name}
                       </h3>
-
-                      {industry.example && (
-                        <p className="text-[10px] font-mono text-neutral-300 uppercase tracking-widest mb-4">
-                          {industry.example}
-                        </p>
-                      )}
 
                       <p className="text-sm text-neutral-400 leading-relaxed mt-auto">
                         {industry.benefit}

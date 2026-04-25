@@ -5,19 +5,13 @@ import type { ComponentType, SVGProps } from "react";
 import { useLocale } from "next-intl";
 import { LazyMotion, domAnimation, m, useInView } from "framer-motion";
 import {
-  ArrowRight,
-  Activity,
   AlertTriangle,
-  BarChart3,
   Bot,
-  CheckCircle2,
   Compass,
   Globe,
-  Layers3,
   LineChart,
   Radar,
   Search,
-  ShieldCheck,
   Sparkles,
   Target,
   TrendingUp,
@@ -32,15 +26,13 @@ type AppPathname = keyof typeof routing.pathnames;
 
 type ProblemPoint = {
   icon: ComponentType<SVGProps<SVGSVGElement>>;
-  title: string;
-  description: string;
+  text: string;
 };
 
 type SystemStep = {
   step: string;
   title: string;
   description: string;
-  detail: string;
   icon: ComponentType<SVGProps<SVGSVGElement>>;
 };
 
@@ -48,9 +40,7 @@ type ServiceLayer = {
   id: string;
   eyebrow: string;
   title: string;
-  description: string;
   when: string;
-  why: string;
   outcome: string;
   capabilities: string[];
   intent: string;
@@ -60,33 +50,22 @@ type ServiceLayer = {
   layerCtaHref: AppPathname;
 };
 
-type WhyCard = {
-  title: string;
-  description: string;
-  icon: ComponentType<SVGProps<SVGSVGElement>>;
-};
-
 type ServicesPageCopy = {
   /* 1. HERO */
   heroBadge: string;
   title: string;
   subtitle: string;
   heroPrimaryCta: string;
-  heroSecondaryCta: string;
-  heroAnchor: string;
 
   /* 2. THE PROBLEM */
   problemLabel: string;
   problemTitle: string;
-  problemSubtitle: string;
   problemPoints: ProblemPoint[];
 
   /* 3. THE NOCTRA SYSTEM */
   systemLabel: string;
   systemTitle: string;
-  systemSubtitle: string;
   systemSteps: SystemStep[];
-  systemNote: string;
 
   /* 4. SERVICES AS IMPLEMENTATION */
   servicesLabel: string;
@@ -94,23 +73,15 @@ type ServicesPageCopy = {
   servicesSubtitle: string;
   serviceLayers: ServiceLayer[];
   whenLabel: string;
-  whyLabel: string;
   outcomeLabel: string;
   capabilitiesLabel: string;
   priceLabel: string;
 
-  /* 5. WHY THIS WORKS */
-  whyLabel2: string;
-  whyTitle: string;
-  whySubtitle: string;
-  whyCards: WhyCard[];
-
-  /* 6. CTA */
+  /* 5. CTA */
   ctaLabel: string;
   ctaTitle: string;
   ctaSubtitle: string;
   ctaPrimary: string;
-  ctaSecondary: string;
   ctaNote: string;
 
   /* Sticky bar */
@@ -122,105 +93,77 @@ type ServicesPageCopy = {
 
 const ES_COPY: ServicesPageCopy = {
   /* 1. HERO */
-  heroBadge: "SISTEMA DE CRECIMIENTO DIGITAL",
-  title: "Un sistema diseñado para hacer crecer tu presencia digital.",
+  heroBadge: "SERVICIOS NOCTRA",
+  title: "Más clientes desde tu presencia digital",
   subtitle:
-    "Lo que ofrecemos no es una lista de servicios aislados. Es un método estructurado que diagnostica, diseña, implementa y optimiza cada capa de tu presencia digital para que trabaje como un sistema conectado.",
-  heroPrimaryCta: "Diagnosticar mi presencia digital",
-  heroSecondaryCta: "Ver cómo funciona",
-  heroAnchor: "Impulsado por Noctra Radar — nuestro motor de diagnóstico.",
+    "Diagnóstico, web, visibilidad y automatización conectados para generar oportunidades medibles.",
+  heroPrimaryCta: "Diagnosticar mi presencia →",
 
   /* 2. THE PROBLEM */
   problemLabel: "EL PROBLEMA QUE RESOLVEMOS",
-  problemTitle:
-    "La mayoría de los negocios operan con esfuerzos digitales desconectados.",
-  problemSubtitle:
-    "¿Te suena familiar? Un logo por un lado, un sitio web por otro, algo de SEO sin seguimiento, redes sin estrategia. Todo se siente disperso porque no hay un sistema que lo conecte.",
+  problemTitle: "Tu presencia no está trabajando completa.",
   problemPoints: [
     {
       icon: AlertTriangle,
-      title: "Esfuerzos fragmentados",
-      description:
-        "Marca, web, SEO y redes operan por separado. Sin una lógica común, cada pieza compite en lugar de sumar.",
+      text: "Marca, sitio, SEO y seguimiento no están conectados.",
     },
     {
       icon: Target,
-      title: "Entregas sin contexto",
-      description:
-        "La agencia tradicional entrega entregables aislados: un logo, unas páginas, un reporte. Nadie conecta las piezas con el resultado de negocio.",
+      text: "El sitio no convierte suficientes visitas en conversaciones.",
     },
     {
       icon: LineChart,
-      title: "Resultados inconsistentes",
-      description:
-        "Sin diagnóstico real ni optimización continua, los resultados dependen de la suerte, no de un proceso.",
+      text: "Las decisiones se toman sin diagnóstico ni prioridades claras.",
     },
   ],
 
   /* 3. THE NOCTRA SYSTEM */
   systemLabel: "EL SISTEMA NOCTRA",
-  systemTitle: "Cómo funciona el sistema que hace crecer tu negocio.",
-  systemSubtitle:
-    "Cada paso tiene un propósito. No saltamos a ejecutar sin antes entender dónde estás, qué necesitas y cómo medir el progreso.",
+  systemTitle: "De diagnóstico a crecimiento medible.",
   systemSteps: [
     {
       step: "01",
       title: "Diagnóstico",
-      description: "Noctra Radar analiza tu presencia actual.",
-      detail:
-        "Radar evalúa visibilidad, SEO, confianza y salud técnica de tu sitio. Detecta bloqueos, prioriza mejoras y convierte hallazgos técnicos en decisiones de negocio. Sin suposiciones: datos reales.",
+      description: "Detectamos bloqueos, oportunidades y prioridades reales.",
       icon: Radar,
     },
     {
       step: "02",
       title: "Diseño del sistema",
-      description: "Definimos la estructura y la estrategia.",
-      detail:
-        "Con el diagnóstico en mano, diseñamos el mapa de acción: qué capas necesitan intervención, en qué orden, con qué prioridad y cómo se conectan entre sí para funcionar como un sistema.",
+      description: "Definimos qué activar, en qué orden y con qué objetivo.",
       icon: Compass,
     },
     {
       step: "03",
       title: "Implementación",
-      description: "Construimos las capas que necesitas.",
-      detail:
-        "Activamos las capas correctas del sistema: identidad, web, visibilidad, automatización. Cada pieza se construye bajo la misma lógica estratégica para que sume, no compita.",
+      description: "Construimos las capas que más impacto tienen hoy.",
       icon: Wrench,
     },
     {
       step: "04",
       title: "Optimización continua",
-      description: "Medimos, ajustamos y evolucionamos.",
-      detail:
-        "El sistema no termina en el lanzamiento. Radar sigue monitoreando, detectando oportunidades y señalando qué ajustar. El crecimiento se vuelve un ciclo, no un evento.",
+      description: "Medimos, ajustamos y convertimos mejoras en ciclo.",
       icon: TrendingUp,
     },
   ],
-  systemNote:
-    "Noctra Radar no es un extra opcional. Es el punto de partida y el motor de continuidad de todo el sistema.",
 
   /* 4. SERVICES AS IMPLEMENTATION */
   servicesLabel: "CAPAS DE IMPLEMENTACIÓN",
-  servicesTitle:
-    "Los servicios son las piezas de tu sistema. No entregables sueltos.",
+  servicesTitle: "Recibes las capas que tu presencia necesita.",
   servicesSubtitle:
-    "Cada capa se activa según lo que el diagnóstico revele. No trabajamos todo a la vez: priorizamos lo que tiene más impacto para tu negocio hoy.",
+    "Activamos solo lo que el diagnóstico prioriza para mover resultados.",
   serviceLayers: [
     {
       id: "identity",
       eyebrow: "CAPA 01",
       title: "Identidad y posicionamiento",
-      description:
-        "La base que define cómo se percibe tu negocio. Sin claridad de marca, todo lo demás pierde fuerza.",
-      when: "Cuando tu negocio se percibe genérico, disperso o menos valioso de lo que realmente es.",
-      why: "La identidad define la primera impresión y la confianza a largo plazo. Es la diferencia entre que alguien te contacte o siga buscando.",
-      outcome:
-        "Más confianza, oferta más clara, mejor tasa de conversión desde el primer contacto.",
+      when: "Cuando tu oferta se percibe genérica o poco clara.",
+      outcome: "Más confianza, mejor percepción y una oferta fácil de elegir.",
       capabilities: [
         "Branding estratégico",
-        "Narrativa y mensajería de marca",
-        "Sistema visual consistente",
-        "Posicionamiento competitivo",
+        "Narrativa",
+        "Sistema visual",
+        "Posicionamiento",
       ],
       intent: "branding",
       icon: Sparkles,
@@ -232,17 +175,13 @@ const ES_COPY: ServicesPageCopy = {
       id: "infrastructure",
       eyebrow: "CAPA 02",
       title: "Infraestructura digital",
-      description:
-        "Tu sitio web no es una vitrina. Es la infraestructura comercial donde converge todo el sistema.",
-      when: "Cuando tu sitio no explica bien tu oferta, es lento, no genera contactos o se siente desactualizado.",
-      why: "Un sitio sin arquitectura de conversión es un vendedor que no habla. Cada segundo de carga extra y cada paso de fricción cuestan oportunidades reales.",
-      outcome:
-        "Un sitio que trabaja 24/7: explica, convence y convierte sin intervención manual.",
+      when: "Cuando tu sitio no explica, no convence o no convierte.",
+      outcome: "Un sitio rápido que convierte visitas en oportunidades.",
       capabilities: [
-        "Websites de alto rendimiento (Next.js)",
-        "Arquitectura de conversión (CRO)",
-        "Landing pages optimizadas",
-        "E-commerce sin fricción",
+        "Website Next.js",
+        "CRO",
+        "Landing pages",
+        "E-commerce",
       ],
       intent: "web_presence",
       icon: Globe,
@@ -254,17 +193,13 @@ const ES_COPY: ServicesPageCopy = {
       id: "visibility",
       eyebrow: "CAPA 03",
       title: "Adquisición y visibilidad",
-      description:
-        "Que las personas correctas te encuentren, sin depender solo de pauta pagada o de que alguien te recomiende.",
-      when: "Cuando tienes un buen producto o servicio, pero la gente no te encuentra en Google.",
-      why: "La visibilidad orgánica es el canal más sostenible de adquisición. Pero solo funciona si hay estructura técnica, contenido relevante y señales de autoridad.",
-      outcome:
-        "Más tráfico orgánico cualificado, menos dependencia de pauta y crecimiento compuesto.",
+      when: "Cuando te buscan poco o dependes demasiado de pauta.",
+      outcome: "Más tráfico cualificado y menor dependencia de anuncios.",
       capabilities: [
-        "SEO técnico y estructural",
-        "Arquitectura de contenido",
-        "Estrategia de autoridad",
-        "Monitoreo con Noctra Radar",
+        "SEO técnico",
+        "Contenido",
+        "Autoridad",
+        "Radar",
       ],
       intent: "visibility",
       icon: Search,
@@ -276,17 +211,13 @@ const ES_COPY: ServicesPageCopy = {
       id: "automation",
       eyebrow: "CAPA 04",
       title: "Automatización y optimización",
-      description:
-        "Eliminar fricción operativa para que tu equipo se enfoque en lo que de verdad mueve el negocio.",
-      when: "Cuando pierdes demasiado tiempo en seguimiento manual, coordinación o tareas repetitivas.",
-      why: "La eficiencia operativa no es un lujo. Es lo que permite crecer sin que cada nueva oportunidad sea una carga más.",
-      outcome:
-        "Menos trabajo manual, mejor respuesta al cliente y más capacidad para escalar.",
+      when: "Cuando el seguimiento manual retrasa oportunidades.",
+      outcome: "Menos fricción, mejor respuesta y más capacidad de escalar.",
       capabilities: [
-        "Automatizaciones con IA",
-        "Flujos de captación de leads",
-        "Integraciones CRM y herramientas",
-        "Procesos de seguimiento automático",
+        "IA",
+        "Leads",
+        "CRM",
+        "Seguimiento",
       ],
       intent: "automation",
       icon: Bot,
@@ -295,161 +226,99 @@ const ES_COPY: ServicesPageCopy = {
     },
   ],
   whenLabel: "Cuándo se activa",
-  whyLabel: "Por qué importa",
   outcomeLabel: "Resultado esperado",
   capabilitiesLabel: "Incluye",
   priceLabel: "Inversión",
 
-  /* 5. WHY THIS WORKS */
-  whyLabel2: "POR QUÉ FUNCIONA",
-  whyTitle: "Sistema vs. servicios aislados",
-  whySubtitle:
-    "La diferencia no está en las piezas individuales. Está en cómo se conectan entre sí y en el proceso que las sostiene.",
-  whyCards: [
-    {
-      title: "Sistema integrado, no entregables sueltos",
-      description:
-        "Cada capa se diseña bajo la misma lógica estratégica. Marca, web, SEO y automatización se refuerzan mutuamente en lugar de competir entre sí.",
-      icon: Layers3,
-    },
-    {
-      title: "Optimización continua, no proyectos que se abandonan",
-      description:
-        "Con Noctra Radar monitoreando de forma continua, el sistema detecta oportunidades y problemas antes de que afecten resultados. El crecimiento no depende de revisiones esporádicas.",
-      icon: Activity,
-    },
-    {
-      title: "Impacto medible, no promesas abstractas",
-      description:
-        "Cada decisión parte de datos reales del diagnóstico. Cada mejora se mide contra métricas concretas. El ROI no es un concepto: es un número que puedes verificar.",
-      icon: BarChart3,
-    },
-    {
-      title: "Primero diagnóstico, luego acción",
-      description:
-        "No saltamos a implementar sin entender. Radar genera la base de inteligencia que define qué hacer, en qué orden y por qué. Eso elimina trabajo innecesario y decisiones a ciegas.",
-      icon: ShieldCheck,
-    },
-  ],
-
   /* 6. CTA */
   ctaLabel: "SIGUIENTE PASO",
-  ctaTitle: "Empieza con un diagnóstico real de tu presencia digital.",
+  ctaTitle: "Empieza con un diagnóstico real.",
   ctaSubtitle:
-    "Noctra Radar analiza tu sitio, detecta bloqueos de crecimiento y te muestra un mapa de prioridades. Sin compromiso, sin genéricos. Un diagnóstico real para decisiones reales.",
-  ctaPrimary: "Diagnosticar mi presencia digital",
-  ctaSecondary: "Ver casos de trabajo",
+    "Identificamos bloqueos, prioridades y oportunidades para convertir tu presencia en crecimiento.",
+  ctaPrimary: "Diagnosticar mi presencia →",
   ctaNote:
     "Trabajamos con pocos proyectos a la vez para cuidar foco, criterio y ejecución.",
 
   /* Sticky bar */
-  stickyLabel: "Sistema Noctra",
-  stickyCta: "Diagnosticar ahora",
+  stickyLabel: "Servicios Noctra",
+  stickyCta: "Diagnosticar →",
 };
 
 /* ─────────────────────── EN copy ─────────────────────── */
 
 const EN_COPY: ServicesPageCopy = {
   /* 1. HERO */
-  heroBadge: "DIGITAL GROWTH SYSTEM",
-  title: "A system designed to grow your digital presence.",
+  heroBadge: "NOCTRA SERVICES",
+  title: "More clients from your digital presence",
   subtitle:
-    "What we offer is not a list of isolated services. It is a structured method that diagnoses, designs, implements, and optimizes every layer of your digital presence so it works as a connected system.",
-  heroPrimaryCta: "Diagnose my digital presence",
-  heroSecondaryCta: "See how it works",
-  heroAnchor: "Powered by Noctra Radar — our diagnostic engine.",
+    "Diagnosis, web, visibility, and automation connected to generate measurable opportunities.",
+  heroPrimaryCta: "Diagnose my presence →",
 
   /* 2. THE PROBLEM */
   problemLabel: "THE PROBLEM WE SOLVE",
-  problemTitle:
-    "Most businesses operate with disconnected digital efforts.",
-  problemSubtitle:
-    "Sound familiar? A logo on one side, a website on another, some SEO with no follow-up, social media with no strategy. Everything feels scattered because there is no system connecting it.",
+  problemTitle: "Your presence is not working as a whole.",
   problemPoints: [
     {
       icon: AlertTriangle,
-      title: "Fragmented efforts",
-      description:
-        "Brand, website, SEO, and social operate separately. Without shared logic, each piece competes instead of compounding.",
+      text: "Brand, site, SEO, and follow-up are not connected.",
     },
     {
       icon: Target,
-      title: "Deliverables without context",
-      description:
-        "Traditional agencies deliver isolated outputs: a logo, a few pages, a report. Nobody connects the pieces to business results.",
+      text: "The site does not turn enough visits into conversations.",
     },
     {
       icon: LineChart,
-      title: "Inconsistent results",
-      description:
-        "Without real diagnosis or continuous optimization, results depend on luck, not on a process.",
+      text: "Decisions happen without diagnosis or clear priorities.",
     },
   ],
 
   /* 3. THE NOCTRA SYSTEM */
   systemLabel: "THE NOCTRA SYSTEM",
-  systemTitle: "How the system works to grow your business.",
-  systemSubtitle:
-    "Every step has a purpose. We do not jump to execution without first understanding where you are, what you need, and how to measure progress.",
+  systemTitle: "From diagnosis to measurable growth.",
   systemSteps: [
     {
       step: "01",
       title: "Diagnosis",
-      description: "Noctra Radar analyzes your current presence.",
-      detail:
-        "Radar evaluates visibility, SEO, trust, and technical health. It detects blockers, prioritizes improvements, and turns technical findings into business decisions. No assumptions: real data.",
+      description: "We detect real blockers, opportunities, and priorities.",
       icon: Radar,
     },
     {
       step: "02",
       title: "System design",
-      description: "We define the structure and strategy.",
-      detail:
-        "With the diagnosis in hand, we design the action map: which layers need intervention, in what order, with what priority, and how they connect to function as a system.",
+      description: "We define what to activate, in what order, and why.",
       icon: Compass,
     },
     {
       step: "03",
       title: "Implementation",
-      description: "We build the layers you need.",
-      detail:
-        "We activate the right system layers: identity, web, visibility, automation. Each piece is built under the same strategic logic so it compounds instead of competing.",
+      description: "We build the layers with the highest impact now.",
       icon: Wrench,
     },
     {
       step: "04",
       title: "Continuous optimization",
-      description: "We measure, adjust, and evolve.",
-      detail:
-        "The system does not end at launch. Radar keeps monitoring, detecting opportunities, and flagging what to adjust. Growth becomes a cycle, not an event.",
+      description: "We measure, adjust, and turn improvements into a cycle.",
       icon: TrendingUp,
     },
   ],
-  systemNote:
-    "Noctra Radar is not an optional add-on. It is the starting point and the continuity engine of the entire system.",
 
   /* 4. SERVICES AS IMPLEMENTATION */
   servicesLabel: "IMPLEMENTATION LAYERS",
-  servicesTitle:
-    "Services are the pieces of your system. Not standalone deliverables.",
+  servicesTitle: "You receive the layers your presence needs.",
   servicesSubtitle:
-    "Each layer activates based on what the diagnosis reveals. We do not work on everything at once: we prioritize what has the most impact for your business today.",
+    "We activate only what the diagnosis prioritizes to move results.",
   serviceLayers: [
     {
       id: "identity",
       eyebrow: "LAYER 01",
       title: "Identity & positioning",
-      description:
-        "The foundation that defines how your business is perceived. Without brand clarity, everything else loses its power.",
-      when: "When your business feels generic, scattered, or less valuable than it actually is.",
-      why: "Identity defines the first impression and long-term trust. It is the difference between someone contacting you or continuing to search.",
-      outcome:
-        "More trust, clearer offer, better conversion rate from the very first contact.",
+      when: "When your offer feels generic or unclear.",
+      outcome: "More trust, stronger perception, and an offer people choose.",
       capabilities: [
         "Strategic branding",
-        "Brand narrative & messaging",
-        "Consistent visual system",
-        "Competitive positioning",
+        "Narrative",
+        "Visual system",
+        "Positioning",
       ],
       intent: "branding",
       icon: Sparkles,
@@ -461,17 +330,13 @@ const EN_COPY: ServicesPageCopy = {
       id: "infrastructure",
       eyebrow: "LAYER 02",
       title: "Digital infrastructure",
-      description:
-        "Your website is not a showcase. It is the commercial infrastructure where the entire system converges.",
-      when: "When your site does not explain your offer well, is slow, does not generate leads, or feels outdated.",
-      why: "A site without conversion architecture is a salesperson who does not speak. Every extra second of load time and every friction step costs real opportunities.",
-      outcome:
-        "A site that works 24/7: explains, persuades, and converts without manual intervention.",
+      when: "When your site does not explain, persuade, or convert.",
+      outcome: "A fast site that turns visits into opportunities.",
       capabilities: [
-        "High-performance websites (Next.js)",
-        "Conversion architecture (CRO)",
-        "Optimized landing pages",
-        "Frictionless e-commerce",
+        "Next.js website",
+        "CRO",
+        "Landing pages",
+        "E-commerce",
       ],
       intent: "web_presence",
       icon: Globe,
@@ -483,17 +348,13 @@ const EN_COPY: ServicesPageCopy = {
       id: "visibility",
       eyebrow: "LAYER 03",
       title: "Acquisition & visibility",
-      description:
-        "The right people find you, without depending solely on paid ads or word-of-mouth referrals.",
-      when: "When you have a great product or service, but people cannot find you on Google.",
-      why: "Organic visibility is the most sustainable acquisition channel. But it only works with technical structure, relevant content, and authority signals.",
-      outcome:
-        "More qualified organic traffic, less ad dependency, and compound growth.",
+      when: "When people barely find you or ads do all the work.",
+      outcome: "More qualified traffic and less dependency on ads.",
       capabilities: [
-        "Technical & structural SEO",
-        "Content architecture",
-        "Authority strategy",
-        "Monitoring with Noctra Radar",
+        "Technical SEO",
+        "Content",
+        "Authority",
+        "Radar",
       ],
       intent: "visibility",
       icon: Search,
@@ -505,17 +366,13 @@ const EN_COPY: ServicesPageCopy = {
       id: "automation",
       eyebrow: "LAYER 04",
       title: "Automation & optimization",
-      description:
-        "Eliminate operational friction so your team focuses on what truly moves the business.",
-      when: "When you lose too much time on manual follow-ups, coordination, or repetitive tasks.",
-      why: "Operational efficiency is not a luxury. It is what allows growth without every new opportunity becoming another burden.",
-      outcome:
-        "Less manual work, better client response, and more capacity to scale.",
+      when: "When manual follow-up slows opportunities down.",
+      outcome: "Less friction, better response, and more room to scale.",
       capabilities: [
-        "AI-powered automations",
-        "Lead capture workflows",
-        "CRM & tool integrations",
-        "Automated follow-up processes",
+        "AI",
+        "Leads",
+        "CRM",
+        "Follow-up",
       ],
       intent: "automation",
       icon: Bot,
@@ -524,56 +381,22 @@ const EN_COPY: ServicesPageCopy = {
     },
   ],
   whenLabel: "When to activate",
-  whyLabel: "Why it matters",
   outcomeLabel: "Expected outcome",
   capabilitiesLabel: "Includes",
   priceLabel: "Investment",
 
-  /* 5. WHY THIS WORKS */
-  whyLabel2: "WHY IT WORKS",
-  whyTitle: "System vs. isolated services",
-  whySubtitle:
-    "The difference is not in the individual pieces. It is in how they connect and the process that sustains them.",
-  whyCards: [
-    {
-      title: "Integrated system, not standalone deliverables",
-      description:
-        "Each layer is designed under the same strategic logic. Brand, web, SEO, and automation reinforce each other instead of competing.",
-      icon: Layers3,
-    },
-    {
-      title: "Continuous optimization, not abandoned projects",
-      description:
-        "With Noctra Radar monitoring continuously, the system detects opportunities and issues before they affect results. Growth does not depend on sporadic check-ins.",
-      icon: Activity,
-    },
-    {
-      title: "Measurable impact, not abstract promises",
-      description:
-        "Every decision starts from real diagnostic data. Every improvement is measured against concrete metrics. ROI is not a concept: it is a number you can verify.",
-      icon: BarChart3,
-    },
-    {
-      title: "Diagnosis first, action second",
-      description:
-        "We do not jump into implementation without understanding. Radar generates the intelligence base that defines what to do, in what order, and why. That eliminates unnecessary work and blind decisions.",
-      icon: ShieldCheck,
-    },
-  ],
-
   /* 6. CTA */
   ctaLabel: "NEXT STEP",
-  ctaTitle: "Start with a real diagnosis of your digital presence.",
+  ctaTitle: "Start with a real diagnosis.",
   ctaSubtitle:
-    "Noctra Radar analyzes your site, detects growth blockers, and shows you a priority map. No commitment, no generics. A real diagnosis for real decisions.",
-  ctaPrimary: "Diagnose my digital presence",
-  ctaSecondary: "View case studies",
+    "We identify blockers, priorities, and opportunities to turn your presence into growth.",
+  ctaPrimary: "Diagnose my presence →",
   ctaNote:
     "We take on a limited number of projects to protect focus, judgment, and execution quality.",
 
   /* Sticky bar */
-  stickyLabel: "Noctra System",
-  stickyCta: "Get diagnosed",
+  stickyLabel: "Noctra Services",
+  stickyCta: "Diagnose →",
 };
 
 /* ─────────────────────── animation presets ─────────────── */
@@ -615,10 +438,6 @@ function ServiceLayerCard({
           </div>
         </div>
 
-        <p className="max-w-2xl text-base leading-relaxed text-neutral-300 md:text-lg">
-          {layer.description}
-        </p>
-
         <div>
           <p className="mb-3 text-[10px] font-black uppercase tracking-[0.26em] text-neutral-500">
             {copy.capabilitiesLabel}
@@ -642,15 +461,6 @@ function ServiceLayerCard({
           </p>
           <p className="text-sm leading-relaxed text-neutral-200 md:text-base">
             {layer.when}
-          </p>
-        </div>
-
-        <div className="rounded-[1.5rem] border border-white/8 bg-black/20 p-6">
-          <p className="mb-3 text-[10px] font-black uppercase tracking-[0.26em] text-emerald-400">
-            {copy.whyLabel}
-          </p>
-          <p className="text-sm leading-relaxed text-neutral-200 md:text-base">
-            {layer.why}
           </p>
         </div>
 
@@ -715,9 +525,6 @@ export default function ServicesClient() {
               <p className="mx-auto mt-8 max-w-3xl text-xl leading-relaxed text-neutral-300 md:text-2xl">
                 {copy.subtitle}
               </p>
-              <p className="mx-auto mt-5 max-w-2xl text-sm leading-relaxed text-emerald-400/80 md:text-base">
-                {copy.heroAnchor}
-              </p>
 
               <div className="mt-10 flex flex-col items-center justify-center gap-4 sm:flex-row">
                 <Button
@@ -735,14 +542,6 @@ export default function ServicesClient() {
                     className="leading-tight text-center text-balance">
                     {copy.heroPrimaryCta}
                   </Link>
-                </Button>
-
-                <Button
-                  asChild
-                  variant="outline"
-                  size="lg"
-                  className="h-12 rounded-full border-white/12 bg-transparent px-8 text-base text-neutral-200 hover:bg-white/5 hover:text-white">
-                  <a href="#noctra-system">{copy.heroSecondaryCta}</a>
                 </Button>
               </div>
             </m.div>
@@ -786,9 +585,6 @@ export default function ServicesClient() {
               <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
                 {copy.problemTitle}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-neutral-400">
-                {copy.problemSubtitle}
-              </p>
             </m.div>
 
             <div className="grid gap-6 md:grid-cols-3">
@@ -796,17 +592,14 @@ export default function ServicesClient() {
                 const Icon = point.icon;
                 return (
                   <m.div
-                    key={point.title}
+                    key={point.text}
                     {...fadeIn}
                     className="rounded-[2rem] border border-white/8 bg-white/[0.03] p-8">
                     <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-red-500/20 bg-red-500/10 text-red-400">
                       <Icon className="h-5 w-5" />
                     </div>
-                    <h3 className="text-2xl font-black tracking-tight text-white">
-                      {point.title}
-                    </h3>
-                    <p className="mt-4 leading-relaxed text-neutral-400">
-                      {point.description}
+                    <p className="text-base font-bold leading-relaxed text-neutral-200">
+                      {point.text}
                     </p>
                   </m.div>
                 );
@@ -825,9 +618,6 @@ export default function ServicesClient() {
               <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
                 {copy.systemTitle}
               </h2>
-              <p className="mt-5 text-lg leading-relaxed text-neutral-400">
-                {copy.systemSubtitle}
-              </p>
             </m.div>
 
             <div className="relative grid gap-6 md:grid-cols-2 xl:grid-cols-4">
@@ -855,63 +645,6 @@ export default function ServicesClient() {
                     <p className="mt-2 text-sm font-bold text-emerald-300/80">
                       {step.description}
                     </p>
-                    <p className="mt-4 text-sm leading-relaxed text-neutral-400">
-                      {step.detail}
-                    </p>
-                  </m.div>
-                );
-              })}
-            </div>
-
-            {/* System note (Radar anchor) */}
-            <m.div
-              {...fadeIn}
-              className="mx-auto mt-10 max-w-3xl rounded-[1.5rem] border border-emerald-500/15 bg-gradient-to-br from-emerald-500/8 to-transparent p-6 text-center">
-              <div className="mb-3 flex items-center justify-center gap-2">
-                <Radar className="h-4 w-4 text-emerald-400" />
-                <p className="text-[10px] font-black uppercase tracking-[0.26em] text-emerald-400">
-                  Noctra Radar
-                </p>
-              </div>
-              <p className="text-sm leading-relaxed text-neutral-300 md:text-base">
-                {copy.systemNote}
-              </p>
-            </m.div>
-          </div>
-        </section>
-
-        {/* ═══════ 5. WHY THIS WORKS ═══════ */}
-        <section className="px-6 py-24 md:px-8">
-          <div className="mx-auto max-w-7xl">
-            <m.div {...fadeIn} className="mx-auto mb-14 max-w-3xl text-center">
-              <p className="text-[10px] font-black uppercase tracking-[0.32em] text-emerald-400">
-                {copy.whyLabel2}
-              </p>
-              <h2 className="mt-4 text-3xl font-black tracking-tight text-white md:text-5xl">
-                {copy.whyTitle}
-              </h2>
-              <p className="mt-5 text-lg leading-relaxed text-neutral-400">
-                {copy.whySubtitle}
-              </p>
-            </m.div>
-
-            <div className="grid gap-6 md:grid-cols-2">
-              {copy.whyCards.map((card) => {
-                const Icon = card.icon;
-                return (
-                  <m.div
-                    key={card.title}
-                    {...fadeIn}
-                    className="rounded-[2rem] border border-white/8 bg-white/[0.03] p-8">
-                    <div className="mb-6 flex h-12 w-12 items-center justify-center rounded-2xl border border-emerald-500/20 bg-emerald-500/10 text-emerald-400">
-                      <Icon className="h-5 w-5" />
-                    </div>
-                    <h3 className="text-2xl font-black tracking-tight text-white">
-                      {card.title}
-                    </h3>
-                    <p className="mt-4 leading-relaxed text-neutral-400">
-                      {card.description}
-                    </p>
                   </m.div>
                 );
               })}
@@ -919,7 +652,7 @@ export default function ServicesClient() {
           </div>
         </section>
 
-        {/* ═══════ 6. CTA ═══════ */}
+        {/* ═══════ 5. CTA ═══════ */}
         <section
           ref={contactRef}
           className="px-6 pb-10 pt-24 md:px-8 md:pb-20">
@@ -958,22 +691,10 @@ export default function ServicesClient() {
                         cta: "services_final",
                       },
                     }}
-                    className="grid w-full min-h-[56px] grid-cols-[1.25rem_minmax(0,1fr)_1.25rem] items-center gap-3 rounded-[1.5rem] bg-white px-5 py-3 text-[11px] font-black uppercase tracking-[0.1em] text-black transition-all hover:bg-emerald-50 sm:text-xs sm:tracking-[0.16em] md:rounded-full md:px-6 md:py-4 md:text-sm">
-                    <span aria-hidden="true" className="h-4 w-4" />
+                    className="flex min-h-[56px] w-full items-center justify-center rounded-[1.5rem] bg-white px-5 py-3 text-center text-[11px] font-black uppercase tracking-[0.1em] text-black transition-all hover:bg-emerald-50 sm:text-xs sm:tracking-[0.16em] md:rounded-full md:px-6 md:py-4 md:text-sm">
                     <span className="text-center leading-[1.3] text-balance">
                       {copy.ctaPrimary}
                     </span>
-                    <ArrowRight className="h-4 w-4 justify-self-end opacity-80" />
-                  </Link>
-
-                  <Link
-                    href="/work"
-                    className="grid w-full min-h-[56px] grid-cols-[1.25rem_minmax(0,1fr)_1.25rem] items-center gap-3 rounded-[1.5rem] border border-white/12 px-5 py-3 text-[11px] font-black uppercase tracking-[0.1em] text-white transition-all hover:bg-white/5 sm:text-xs sm:tracking-[0.16em] md:rounded-full md:px-6 md:py-4 md:text-sm">
-                    <span aria-hidden="true" className="h-4 w-4" />
-                    <span className="text-center leading-[1.3] text-balance">
-                      {copy.ctaSecondary}
-                    </span>
-                    <ArrowRight className="h-4 w-4 justify-self-end opacity-80" />
                   </Link>
                 </div>
 

@@ -232,8 +232,8 @@ export default function OptimizationClient() {
               </FadeIn>
             </div>
 
-            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-              {[0, 1, 2, 3].map((i) => (
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {[0, 1, 2].map((i) => (
                 <FadeIn key={i} delay={i * 0.1}>
                   <div className="h-full p-8 rounded-3xl border border-neutral-900 bg-black/40 hover:border-neutral-700 transition-colors group">
                     <h4 className="text-xl font-bold mb-4 group-hover:text-emerald-400 transition-colors">
@@ -262,19 +262,9 @@ export default function OptimizationClient() {
               <h2 className="text-4xl md:text-6xl font-bold tracking-tight mb-8">
                 {t("noctra.title")}
               </h2>
-              <p className="text-xl text-neutral-400 font-light mb-16 max-w-2xl mx-auto">
+              <p className="text-xl text-neutral-400 font-light max-w-2xl mx-auto">
                 {t("noctra.description")}
               </p>
-            </FadeIn>
-
-            <FadeIn delay={0.3}>
-              <div className="grid grid-cols-2 md:grid-cols-4 gap-4 max-w-3xl mx-auto opacity-50">
-                {["Escaneo continuo", "Detección de riesgos", "Mapa de crecimiento", "Salud del sistema"].map((label) => (
-                  <div key={label} className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-[10px] font-mono text-neutral-500">
-                    {label}
-                  </div>
-                ))}
-              </div>
             </FadeIn>
           </div>
         </section>
@@ -300,17 +290,13 @@ export default function OptimizationClient() {
                     <Button
                       asChild
                       size="lg"
-                      className="rounded-full h-16 px-12 text-lg bg-emerald-500 text-black hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)] mb-4"
+                      className="rounded-full h-16 px-12 text-lg bg-emerald-500 text-black hover:bg-emerald-400 transition-all duration-300 shadow-[0_0_20px_rgba(16,185,129,0.3)]"
                     >
                       <Link href={{ pathname: "/contact", query: { intent: "radar_diagnostic" } }}>
                         {t("cta.primary")}
                         <ArrowRight className="w-5 h-5 ml-2" />
                       </Link>
                     </Button>
-                    
-                    <Link href="/services" className="text-neutral-500 hover:text-neutral-300 transition-colors text-sm font-mono tracking-widest uppercase">
-                      Ver todos los servicios
-                    </Link>
                   </div>
                 </FadeIn>
               </div>

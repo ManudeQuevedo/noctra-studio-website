@@ -4,7 +4,7 @@ import { useTranslations } from "next-intl";
 import { HeroSystemPanel } from "@/components/hero/HeroSystemPanel";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { ArrowRight, Sparkles } from "lucide-react";
+import { Sparkles } from "lucide-react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
 export function PageHero() {
@@ -45,11 +45,6 @@ export function PageHero() {
               <p className="text-lg leading-relaxed text-neutral-300 md:text-xl lg:leading-relaxed">
                 {t("hero.subtitle")}
               </p>
-              <a
-                href="#por-tipo-de-negocio"
-                className="block text-sm text-emerald-400 hover:underline">
-                {t("hero.audience_anchor")}
-              </a>
             </m.div>
 
             <m.p
@@ -81,17 +76,6 @@ export function PageHero() {
                     query: { tipo: "diagnostico", origen: "hero" },
                   }}>
                   {t("hero.primary_cta")}
-                  <ArrowRight className="ml-2 h-4 w-4 transition-transform duration-300 ease-out group-hover:translate-x-1" />
-                </Link>
-              </Button>
-
-              <Button
-                asChild
-                variant="outline"
-                size="lg"
-                className="h-14 rounded-full border-white/10 bg-white/[0.03] px-8 text-base font-semibold text-white transition-all hover:border-white/30 hover:bg-white/[0.08] sm:w-auto">
-                <Link href={{ pathname: "/", hash: "what-noctra-does" }}>
-                  {t("hero.secondary_cta")}
                 </Link>
               </Button>
             </m.div>

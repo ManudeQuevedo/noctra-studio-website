@@ -86,13 +86,6 @@ export function ProjectCard({
     overrides?.challenge ||
     "Clearer digital positioning for a real business challenge.";
 
-  const systemBuiltText =
-    localizedProject?.system_built ||
-    localizedProject?.solution ||
-    project.solution ||
-    overrides?.solution ||
-    "A digital system designed to support visibility, trust, and daily operations.";
-
   const expectedOutcomeText =
     localizedProject?.expected_outcome ||
     "A stronger digital foundation that supports long-term growth.";
@@ -127,44 +120,31 @@ export function ProjectCard({
         <p className="text-sm text-neutral-300 font-mono uppercase tracking-wider">
           {project.industry}
         </p>
-        <div className="mt-4 flex flex-wrap items-center gap-3">
-          {systemType ? (
-            <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-500">
-              {systemType}
-            </span>
-          ) : null}
-          <p className="text-neutral-400">{project.tagline}</p>
-        </div>
       </div>
 
       <ProjectMockup project={project} />
 
       <div className="space-y-8 flex-grow">
         <div className="space-y-4">
-          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
-            {t("sections.in_progress.labels.challenge")}
-          </h4>
-          <p className="text-neutral-400 leading-relaxed">
-            {challengeText}
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
-            {t("sections.in_progress.labels.system_built")}
-          </h4>
-          <p className="text-white leading-relaxed">
-            {systemBuiltText}
-          </p>
-        </div>
-
-        <div className="space-y-4">
-          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest">
-            {t("sections.in_progress.labels.expected_outcome")}
-          </h4>
-          <p className="text-neutral-300 leading-relaxed">
-            {expectedOutcomeText}
-          </p>
+          {systemType ? (
+            <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-500">
+              {systemType}
+            </span>
+          ) : null}
+          <div className="grid gap-3">
+            <p className="text-sm text-neutral-300 leading-relaxed">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-500">
+                {t("sections.in_progress.labels.challenge")}
+              </span>{" "}
+              {challengeText}
+            </p>
+            <p className="text-sm text-white leading-relaxed">
+              <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-500">
+                {t("sections.in_progress.labels.expected_outcome")}
+              </span>{" "}
+              {expectedOutcomeText}
+            </p>
+          </div>
         </div>
 
         {/* Visual Timeline Implementation */}

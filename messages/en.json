@@ -320,26 +320,24 @@
   "HomePage": {
     "hero": {
       "label": "STUDIO WITH PROPRIETARY SOFTWARE",
-      "title": "Your business doesn't need another agency. It needs a system.",
-      "subtitle": "LATAM agencies sell templates disguised as strategy. We build the full stack — brand, site, visibility and automation — operating as one connected system.",
-      "product_anchor": "Diagnosis, design, implementation, and continuous optimization — <strong>all in one connected system</strong>.",
-      "primary_cta": "Diagnose my digital presence",
-      "secondary_cta": "See how it works",
-      "audience_anchor": "What industry does your business operate in? →",
+      "title": "Your\u00A0digital\u00A0presence,<br></br>working\u00A0as\u00A0a<br></br>business\u00A0engine.",
+      "subtitle": "One team. Full stack. Measurable results from month one.",
+      "product_anchor": "Real work for Dyma Group, and Woodax Design.",
+      "primary_cta": "Diagnose my presence →",
       "visual_label": "THE SYSTEM",
-      "visual_title": "Four layers. One stack. Built around you.",
+      "visual_title": "A system ready to sell.",
       "system_layer_01_label": "01 / BRAND",
-      "system_layer_01_title": "Clear identity",
-      "system_layer_01_subtitle": "Recognized in seconds, not minutes",
+      "system_layer_01_title": "Clarity to be chosen",
+      "system_layer_01_subtitle": "Message, offer, and trust in order.",
       "system_layer_02_label": "02 / SITE",
-      "system_layer_02_title": "Sales closing",
-      "system_layer_02_subtitle": "Visits that convert into customers",
+      "system_layer_02_title": "Site that converts visits",
+      "system_layer_02_subtitle": "Speed and tracking from day one.",
       "system_layer_03_label": "03 / VISIBILITY",
-      "system_layer_03_title": "SEO + GEO",
-      "system_layer_03_subtitle": "Found on Google, ChatGPT and Perplexity",
+      "system_layer_03_title": "Easier to find demand",
+      "system_layer_03_subtitle": "SEO and content for real searches.",
       "system_layer_04_label": "04 / AUTOMATION",
-      "system_layer_04_title": "Frictionless operations",
-      "system_layer_04_subtitle": "Less manual work, more time to sell",
+      "system_layer_04_title": "Operation without repeated tasks",
+      "system_layer_04_subtitle": "Simple flows to respond and sell.",
       "system_core_kicker": "YOUR BUSINESS",
       "system_core_line_1": "Center of the",
       "system_core_line_2": "system",
@@ -348,142 +346,144 @@
     },
     "thesis": {
       "kicker": "02 / THESIS",
-      "title_prefix": "LATAM agencies are ",
-      "title_emphasis": "broken.",
-      "paragraph_1": "They charge retainers without measurable impact. They deliver 'custom sites' that are templates in disguise. They sell services that retain the client, not grow them.",
-      "paragraph_2": "Meanwhile, the world changed. Today a business doesn't risk its digital existence on a single web page — it risks it on a system: brand, site, visibility on Google and in AI (ChatGPT, Perplexity, Gemini), and automated operations. Agencies keep selling pieces. No one is building the system.",
-      "paragraph_3": "That's why Noctra exists. We're a services studio with proprietary software in development. Every layer of the system we sell you as a service today is becoming a product that operates on its own tomorrow. We're not another agency. We're the transition toward what LATAM will need in the next 5 years."
+      "title_prefix": "LATAM doesn't need ",
+      "title_emphasis": "more noise.",
+      "paragraph_1": "Retainers without measurable impact. Pretty sites that don't sell. Campaigns that don't talk to each other.",
+      "paragraph_2": "Meanwhile, businesses lose clarity, follow-up, and real opportunities every week.",
+      "paragraph_3": "Noctra is Clarity Engineering to turn digital presence into business."
     },
     "ecosystem": {
       "kicker": "03 / ECOSYSTEM",
-      "title": "Seven products. One thesis.",
-      "subtitle": "Services we run today. Products launching tomorrow. All connected by the same system.",
-      "footnote": "Every active service feeds the development of its corresponding product. The system closes when all are operational.",
+      "title": "Products to operate with clarity.",
+      "subtitle": "Active services and proprietary products to organize presence, visibility, and sales.",
+      "footnote": "Real work for Dyma Group, and Woodax Design.",
       "items": [
         {
-          "name": "noctra.studio",
+          "name": "Noctra Studio",
           "layer": "CORE",
           "badge": "Active",
-          "description": "The studio. High-level services with a founder's thesis. The gateway to the system."
+          "description": "Complete digital presence for SMEs and professionals. Brand, site, visibility, and measurement working together."
         },
         {
           "name": "Radar",
           "layer": "VISIBILITY",
-          "badge": "Flagship · In development",
-          "description": "GEO + SEO intelligence. We measure your brand visibility in ChatGPT, Perplexity and Gemini — not just Google. The first AI reputation radar for LATAM.",
-          "flagship_line": "Flagship product. Launching in 2026."
+          "badge": "2026",
+          "description": "Coming soon: monitoring of opportunities, signals, and competition.",
+          "flagship_line": "Arriving in 2026."
         },
         {
           "name": "Social",
           "layer": "CONTENT",
-          "badge": "In development",
-          "description": "AI-powered social media content generation. Visual editor with AI superpowers. Preserves your brand voice."
+          "badge": "2026",
+          "description": "Coming soon: planning and control of commercial content.",
+          "flagship_line": "Arriving in 2026."
         },
         {
           "name": "CRM",
           "layer": "AUTOMATION",
           "badge": "In development",
-          "description": "The CRM LATAM deserves. WhatsApp-first, designed from scratch for how we sell in the region. A real alternative to Salesforce and HubSpot."
+          "description": "WhatsApp-first CRM to organize leads and follow-up. Designed for how LATAM sells."
         },
         {
           "name": "Discovery",
           "layer": "SALES",
           "badge": "Active",
-          "description": "Lead intake and qualification forms. Replaces the chaos of WhatsApp + Google Forms with a polished flow."
+          "description": "Lead intake and qualification in a clear flow. Less chaos before selling."
         },
         {
           "name": "Proposals",
           "layer": "SALES",
           "badge": "Active",
-          "description": "From proposal to signed contract pipeline. From first call to deposit, without spreadsheets."
+          "description": "Pipeline from proposal to signed contract. Fewer spreadsheets, more progress."
         },
         {
           "name": "Academy",
           "layer": "KNOWLEDGE",
           "badge": "MVP 2026",
-          "description": "Learning platform. What we learn by building, we teach. Currently in definition phase."
+          "description": "Practical learning from real cases. In definition phase for 2026."
         }
       ]
     },
     "services": {
       "kicker": "04 / SERVICES",
-      "title": "First we solve the problem. Then we turn what repeats into a system.",
-      "subtitle": "We do not offer isolated services. Every implementation feeds the development of the corresponding product.",
-      "item_01_name": "Brand clarity",
-      "item_01_description": "We define message, hierarchy and visual presence so your business is understood quickly and builds trust.",
+      "title": "Services to unlock growth.",
+      "subtitle": "Every service solves a specific problem of presence, conversion, or operation.",
+      "item_01_name": "Strategic brand",
+      "item_01_description": "Solves confusing messages that stall the purchasing decision.",
       "item_01_bullets": [
-        "Sharper positioning and narrative",
-        "Clearer visual hierarchy and direction",
-        "Brand foundation that supports site, content, and sales"
+        "Clearer positioning and narrative",
+        "Visual hierarchy and coherent direction",
+        "Useful brand foundation for site, content, and sales"
       ],
-      "item_01_price": "Desde $15,000 MXN",
-      "item_02_name": "Sites that convert",
-      "item_02_description": "We design or restructure websites to better explain your offer and move people to the next step.",
+      "item_01_price": "From $18,000 MXN",
+      "item_02_name": "Commercial website",
+      "item_02_description": "Solves sites that look good, but don't convert.",
       "item_02_bullets": [
-        "Architecture and flows shaped for conversion",
-        "Premium design with business clarity",
-        "Stable, fast, and maintainable experience"
+        "Architecture and flow designed for conversion",
+        "Premium design with commercial clarity",
+        "Stable, fast, and easy-to-maintain experience"
       ],
-      "item_02_price": "Desde $25,000 MXN",
-      "item_03_name": "SEO + GEO",
-      "item_03_description": "We fix structure, content and technical signals so you're found on search engines and AI platforms.",
+      "item_02_price": "From $35,000 MXN",
+      "item_03_name": "Visibility and SEO",
+      "item_03_description": "Solves low organic demand and poor search intent.",
       "item_03_bullets": [
         "Technical SEO and indexing foundations",
         "Clearer page and content hierarchy",
-        "GEO: visibility in AI-powered search and generative results"
+        "GEO: visibility in AI searches and generative results"
       ],
-      "item_03_price": "Desde $12,000 MXN",
-      "item_04_name": "AI Automations",
-      "item_04_description": "We reduce manual work in lead capture, follow-up and operations with useful, measurable flows.",
+      "item_03_price": "From $12,000 MXN / month",
+      "item_04_name": "Commercial automation",
+      "item_04_description": "Solves manual follow-up, lost leads, and slow responses.",
       "item_04_bullets": [
         "Automations for leads, bookings, or intake",
-        "More organized follow-up with less manual effort",
-        "Digital operations that are easier for your team to sustain"
+        "More organized and less manual follow-up",
+        "More sustainable digital processes for your team"
       ],
-      "item_04_price": "Desde $18,000 MXN",
-      "model_kicker": "THE NOCTRA MODEL",
+      "item_04_price": "From $20,000 MXN",
+      "item_cta": "See how it works →",
+      "model_kicker": "NOCTRA MODEL",
       "model_title": "Service and engineering. Not one or the other.",
-      "model_subtitle": "That approach avoids generic agency work and also avoids building products that are disconnected from the market.",
+      "model_subtitle": "That approach avoids generic agency work and also avoids building products disconnected from the market.",
       "model_points": [
-        "The Studio works against real business goals: trust, leads, visibility, and conversion.",
+        "The Studio works on real business goals: trust, leads, visibility, and conversion.",
         "The software we use was born from solving the same problems over and over: what works in the Studio becomes a system that scales.",
-        "Clients can work with Noctra as a service, as software, or as a combination of both."
+        "The client can work with Noctra as a service, as software, or as a combination of both."
       ],
       "quick_read_label": "QUICK READ",
-      "quick_read_text": "The Noctra difference is not only making a website or a brand. It is having an implementation layer and a software layer that strengthen each other."
+      "quick_read_text": "The Noctra difference is not just making a website or a brand. It is having an implementation layer and a software layer that strengthen each other."
     },
     "solutions": {
       "label": "05 / FOR WHOM",
-      "title": "What industry does your business operate in?",
-      "subtitle": "We work with businesses that need real digital structure — not templates.",
+      "title": "For businesses that already sell.",
+      "subtitle": "Common pains when digital presence doesn't accompany growth.",
       "items": [
         {
           "name": "Professionals",
-          "short_description": "Your presence doesn't reflect the level of your work."
+          "short_description": "Your expertise isn't understood quickly."
         },
         {
-          "name": "Real estate and local businesses",
-          "short_description": "Interest arrives scattered and follow-up gets lost."
+          "name": "Service SMEs",
+          "short_description": "You receive leads, but few advance."
         },
         {
-          "name": "Schools and institutions",
-          "short_description": "Fragmented information that hurts trust and admissions."
+          "name": "Studios and firms",
+          "short_description": "Your portfolio doesn't explain your value."
         },
         {
-          "name": "SMEs",
-          "short_description": "Your business grew but your digital presence didn't keep up."
+          "name": "B2B Companies",
+          "short_description": "Your site doesn't support consultative sales."
         },
         {
-          "name": "Startups",
-          "short_description": "You need to look solid and explain fast without rebuilding every month."
+          "name": "Local businesses",
+          "short_description": "Interest arrives scattered and gets lost."
         }
       ]
     },
     "services_section": {
       "label": "WE IMPLEMENT THE SYSTEM FOR YOU",
-      "title": "When you need full execution, Noctra Studio builds it with you.",
-      "subtitle": "We do not offer an isolated list of services. We integrate branding, websites, SEO, and automations as parts of one growth system.",
-      "intro": "Each front is designed with business logic: explain better, convert better, operate with less friction, and grow on a more reliable foundation.",
+      "title": "When you need complete execution, Noctra Studio builds it with you.",
+      "subtitle": "We don't offer an isolated list of services. We integrate branding, websites, SEO, and automations as parts of the same growth system.",
+      "intro": "Each front is designed with business logic: explain better, convert better, operate with less friction, and grow with a more reliable foundation.",
       "cta": "Talk to Noctra Studio"
     }
   },
@@ -1052,15 +1052,7 @@
     "web_dev_title": "Your website working 24/7",
     "web_dev_desc": "Convert visitors into clients while you sleep. Forms that generate qualified leads, speed that keeps visitors (+40% conversion), technical SEO, and analytics showing real ROI.",
     "branding_title": "Sell online without complications",
-    "branding_desc": "From visit to sale in 3 clicks. Conversion-oriented catalog, frictionless purchase process, inventory integration, and real-time sales dashboard.",
-    "seo_title": "Your site improving month by month",
-    "seo_desc": "Each month faster, more visible, more conversions. Monthly metrics analysis, continuous improvements based on real user behavior, priority support, and content strategies.",
-    "ai_title": "Automate what takes your time",
-    "ai_desc": "Every hour you spend learning tools, fixing your site, or wondering why your SEO isn't working is an hour you're not with your clients. We handle everything digital. You focus on your profession.",
-    "ongoing_title": "Your long-term digital partner",
-    "ongoing_desc": "Hosting, domain, updates, technical support and continuous improvements. You focus on your business. Once a month we review metrics and define next period improvements.",
-    "explore_capabilities": "See all services",
-    "lets_talk": "Let's Talk"
+    "branding_desc": "From visit to sale in 3 clicks. Conversion-oriented catalog, frictionless purchase process, inventory integration, and real-time sales dashboard."
   },
   "Pricing": {
     "title": "Transparent pricing",
@@ -1337,53 +1329,9 @@
       },
       "vat_note": "* Prices do not include VAT"
     },
-    "roi_calculator": {
-      "title": "How long will your site take to pay for itself?",
-      "inputs": {
-        "current_clients": {
-          "label": "How many new clients do you currently get per month?",
-          "placeholder": "ex: 5",
-          "helper": "Average over the last 6 months"
-        },
-        "avg_ticket": {
-          "label": "What is your average ticket per client?",
-          "placeholder": "$8,000",
-          "helper": "Average value of a sale/service (MXN)"
-        },
-        "investment_tier": {
-          "label": "What investment are you considering?",
-          "options": {
-            "20000": "Professional Site - $20k",
-            "35000": "E-commerce - $35k",
-            "80000": "Custom System - $80k"
-          }
-        }
-      },
-      "outputs": {
-        "payback_period": {
-          "label": "Pays for itself in:",
-          "unit": "months"
-        },
-        "monthly_new_revenue": {
-          "label": "Additional monthly revenue:",
-          "description": "Based on 40% improvement in conversion"
-        },
-        "annual_roi": {
-          "label": "12-month ROI:",
-          "description": "Return on investment first year"
-        },
-        "three_year_revenue": {
-          "label": "Additional 3-year revenue:",
-          "description": "Assuming constant conversion"
-        }
-      },
-      "cta": "Schedule consultation to validate these numbers",
-      "disclaimer": "* Estimated calculations based on industry benchmarks. Real results vary by business."
-    },
     "infrastructure_comparison": {
       "title": "Transparent investment",
       "subtitle": "Fixed prices, no surprises. Here's what you'd pay with alternatives:",
-      "tagline": "Build your current tech stack, see what you're really spending",
       "industry_labels": {
         "select": "Select your industry:",
         "medical": {
@@ -1441,7 +1389,6 @@
           "title": "YOUR CURRENT SETUP",
           "empty_state": "👈 Select the tools you currently use from the categories below",
           "total_label": "TOTAL 2-YEAR COST",
-          "monthly_avg": "Monthly average",
           "hidden_costs_title": "⚠️ HIDDEN COSTS NOT INCLUDED:",
           "hidden_costs_items": [
             "Emergency fixes when systems break",
@@ -1449,18 +1396,12 @@
             "Integration maintenance",
             "Your time managing 4+ vendors",
             "Switching costs if unsatisfied"
-          ],
-          "clear_all": "Clear all selections",
-          "show_all": "Show all",
-          "show_less": "Show less"
+          ]
         },
         "noctra": {
           "title": "WITH NOCTRA STUDIO",
           "badge": "RECOMMENDED",
-          "tagline": "ALL-IN-ONE SOLUTION",
           "total_label": "TOTAL 2-YEAR COST",
-          "monthly_label": "Monthly cost: $0 (one-time investment)",
-          "included_title": "What's included:",
           "included_items": [
             "Professional custom website",
             "Built-in SEO optimization",
@@ -1490,9 +1431,6 @@
       "savings_card": {
         "title": "💵 YOU SAVE",
         "roi_label": "Return on Investment",
-        "payback_label": "Payback Period",
-        "payback_value": "Immediate (vs ongoing subscriptions)",
-        "enough_to_title": "💡 That's enough to:",
         "enough_to_items": [
           "Hire a full-time employee",
           "Open a second location",
@@ -1500,17 +1438,12 @@
           "Expand your business"
         ]
       },
-      "tiers": {
-        "ecommerce": "Note: For e-commerce sites, our investment is $35,000 MXN + IVA (Still saving you {savings})",
-        "enterprise": "Note: For custom client portals, our investment starts at $35,000 MXN + IVA"
-      },
       "breakdown": {
         "cta_open": "See detailed year-by-year breakdown ▼",
         "cta_close": "Close breakdown ▲",
         "title": "DETAILED YEAR-BY-YEAR BREAKDOWN",
         "year_1": "YEAR 1:",
         "year_2": "YEAR 2:",
-        "subtotal": "Subtotal",
         "grand_total": "2-YEAR GRAND TOTAL",
         "extra_considerations": "💡 Additional considerations:",
         "extra_items": [
@@ -1522,14 +1455,10 @@
       },
       "warnings": {
         "high_spend": "⚠️ You're spending 5x more than necessary. Consider consolidating with an all-in-one solution.",
-        "wp_risk": "💡 Common combination, but maintenance typically falls on you when freelancer moves on. Noctra includes 60-day support + documentation.",
-        "marketing_seo": "💡 A website with built-in SEO could reduce your paid advertising dependency by 40-60%, saving you significant amounts over 2 years.",
         "doctoralia": "💡 Doctoralia takes 15-20% commission per appointment. Direct bookings eliminate this expense.",
         "hospitality_ota": "⚠️ OTA commissions are your biggest expense! A professional website can reduce dependency by 40-60%."
       },
       "methodology": {
-        "cta_open": "How we calculated these numbers",
-        "cta_close": "Close ▲",
         "title": "METHODOLOGY",
         "summary": "These estimates represent 2-year total cost of ownership for small-medium businesses in Mexico (Querétaro, CDMX, Guadalajara, Monterrey) as of Feb 2025.",
         "sections": [
@@ -1557,14 +1486,6 @@
         "variations": "YOUR COSTS MAY VARY based on specific requirements, content volume, integration complexity, and provider experience.",
         "commitment": "TRANSPARENCY COMMITMENT: If you're a competing provider and believe any figures are inaccurate, contact us at hello@noctra.studio",
         "last_updated": "Last updated: February 15, 2025"
-      },
-      "ctas": {
-        "consultation": "Schedule free consultation →",
-        "calculate_roi": "Calculate exact ROI ↓",
-        "footer_savings": "💰 YOUR POTENTIAL SAVINGS",
-        "footer_period": "over 2 years",
-        "footer_note": "That's enough to hire a full-time employee or open a second location",
-        "footer_btn": "Calculate exact ROI for your business →"
       },
       "categories": {
         "medical": [
@@ -2731,6 +2652,21 @@
               }
             ]
           }
+        ],
+        "other": [
+          {
+            "id": "other_stack",
+            "label": "🛠️ General Stack",
+            "options": [
+              {
+                "id": "various_saas",
+                "label": "Various Fragmented SaaS",
+                "min": 45000,
+                "max": 120000,
+                "info": "Sum of multiple subscriptions"
+              }
+            ]
+          }
         ]
       },
       "option_warnings": {
@@ -2761,6 +2697,130 @@
         "flying_blind": "⚠️ Flying blind - no idea what's working",
         "high_security_risk": "⚠️ High risk of downtime and attacks"
       }
+    },
+    "comparison_table": {
+      "cta": "View detailed side-by-side comparison",
+      "title": "DETAILED COMPARISON",
+      "headers": [
+        "Feature",
+        "WP+Agency",
+        "Freelancer",
+        "DIY",
+        "Noctra"
+      ],
+      "rows": [
+        [
+          "2-Year Cost",
+          "$85-125k",
+          "$40-85k",
+          "$48-90k",
+          "$20k"
+        ],
+        [
+          "Setup Time",
+          "6-12 wks",
+          "4-16 wks",
+          "4-8 wks",
+          "3-6 wks"
+        ],
+        [
+          "Code Ownership",
+          "❌ No",
+          "⚠️ Maybe",
+          "❌ No",
+          "✅ Yes"
+        ],
+        [
+          "Maintenance",
+          "Required",
+          "DIY/Paid",
+          "DIY",
+          "60d free"
+        ],
+        [
+          "Scalability",
+          "Limited",
+          "Varies",
+          "Poor",
+          "Excellent"
+        ],
+        [
+          "Speed (<2s)",
+          "⚠️ Rare",
+          "⚠️ Varies",
+          "❌ No",
+          "✅ Always"
+        ],
+        [
+          "SEO Quality",
+          "⚠️ Plugins",
+          "Varies",
+          "⚠️ Basic",
+          "✅ Built-in"
+        ],
+        [
+          "Guarantees",
+          "⚠️ Some",
+          "❌ None",
+          "❌ None",
+          "✅ 60-days"
+        ]
+      ]
+    },
+    "methodology": {
+      "title": "How do we calculate these numbers?",
+      "summary": "These estimates represent the 2-year total cost of ownership for a 5-10 page professional website in the Mexican market (Queretaro, CDMX, Guadalajara, Monterrey) as of February 2025.",
+      "sections": [
+        {
+          "title": "DATA SOURCES",
+          "items": [
+            "30+ agency proposals collected (2024-2025)",
+            "Wix Business Plan: $27 USD/mo",
+            "Squarespace Business Plan: $23 USD/mo",
+            "Freelance Rates: Data from Workana, Upwork Mexico",
+            "Industry reports: Clutch.co, GoodFirms 2024-2025",
+            "Direct research: 15+ competitor analysis calls"
+          ]
+        },
+        {
+          "title": "ASSUMPTIONS",
+          "items": [
+            "Scope: 5-10 pages, basic SEO, mobile responsive",
+            "Hosting: Professional grade (not basic shared)",
+            "Maintenance: Bugs, security, minor changes",
+            "Excludes: Major redesigns, 50+ products, custom integrations"
+          ]
+        },
+        {
+          "title": "CURRENCY",
+          "content": "Prices in Mexican Pesos (MXN). Exchange rate used: $18 MXN per USD (average Feb 2025)."
+        },
+        {
+          "title": "YOUR COSTS MAY VARY",
+          "items": [
+            "Specific feature requirements",
+            "Content volume and complexity",
+            "Integration needs (CRM, payments, etc.)",
+            "Expected support level",
+            "Provider experience and location"
+          ]
+        }
+      ]
+    },
+    "disclaimers": {
+      "title": "⚠️ ESTIMATES AND DISCLAIMERS",
+      "items": [
+        "<strong>Price estimates:</strong> Represent market averages based on early 2025 research for Mexico.",
+        "<strong>Time valuation:</strong> DIY costs include the opportunity cost of your time. We assume you value your time at your effective hourly rate.",
+        "<strong>Total Cost of Ownership:</strong> Includes setup, maintenance, hosting, and typical hidden costs for 24 months.",
+        "<strong>Not financial advice:</strong> These comparisons are educational. Consult your accountant for investment decisions.",
+        "<strong>Competitive Analysis:</strong> We've made every effort to present fair comparisons. If you believe something is incorrect, contact us."
+      ],
+      "last_updated": "Last updated: February 15, 2025"
+    },
+    "calculator_cta": {
+      "text": "Calculate ROI for your project",
+      "description": "Interactive calculator: enter your monthly revenue and we'll show you the payback period"
     }
   },
   "Process": {
@@ -2924,20 +2984,9 @@
   },
   "HomeFinalCta": {
     "label": "NEXT STEP",
-    "title": "Ready to build your system?",
-    "subtitle": "Start with a free diagnosis or explore the products we're building.",
-    "studio": {
-      "label": "Service path",
-      "title": "I want to work with Noctra Studio",
-      "copy": "Ideal if you need branding, website, SEO, or automation implemented with an integrated strategic view.",
-      "cta": "Diagnose my digital presence"
-    },
-    "products": {
-      "label": "Product path",
-      "title": "I want to explore Noctra products",
-      "copy": "Ideal if you want to start by seeing how Radar and Social can help you organize visibility and presence.",
-      "cta": "See the ecosystem"
-    }
+    "title": "Start with a diagnostic.",
+    "subtitle": "We review where you're losing clarity, conversion, and follow-up.",
+    "cta": "Diagnose my presence →"
   },
   "ServicesPage": {
     "hero_badge": "GROWTH INFRASTRUCTURE",
@@ -3552,13 +3601,13 @@
     "start_project": "Start Your Project"
   },
   "WorkPage": {
-    "badge": "Documented cases",
-    "title": "Systems in progress. Methodology documented.",
-    "subtitle": "Each case documents the problem identified, the structured solution, and the result it is built to generate.",
+    "badge": "Real projects",
+    "title": "See whether we can solve a problem like yours.",
+    "subtitle": "These cases show how we turn business problems into clear, measurable web systems ready to operate.",
     "sections": {
       "in_progress": {
-        "title": "Active systems",
-        "description": "Projects currently in design or development for real businesses.",
+        "title": "Real problems we are solving",
+        "description": "Each card summarizes the client challenge, the system in progress, and the result we are working toward.",
         "timeline_phases": {
           "discovery": "Diagnosis",
           "design": "Design",
@@ -3567,7 +3616,7 @@
           "completed": "Delivered"
         },
         "labels": {
-          "challenge": "Context",
+          "challenge": "Problem",
           "system_built": "System implemented",
           "expected_outcome": "Expected outcome",
           "status": "Progress",
@@ -3581,17 +3630,17 @@
         },
         "projects": {
           "woodax": {
-            "challenge": "Woodax operates in premium custom manufacturing. Their work speaks for itself in person, but they had no digital presence to back it up. Every new lead required manual explanation, WhatsApp gallery review, and blind filtering.",
-            "system_built": "A lead generation platform with a project-type gallery, AI-guided quote request form, and a mobile-first architecture optimized for conversion.",
-            "expected_outcome": "Less manual filtering, more qualified leads before first contact, and a perceived value aligned with the actual price of their work.",
+            "challenge": "Leads asked for examples and pricing over WhatsApp without arriving qualified.",
+            "system_built": "A prospecting platform with a project-type gallery and guided quote flow.",
+            "expected_outcome": "Less manual filtering and quote requests with stronger purchase intent.",
             "system_type": "Prospecting platform",
             "status_line": "In build · preparing for launch",
             "case_study_label": "View full case"
           },
           "dyma": {
-            "challenge": "Dyma is a corporate group with multiple business units sharing no unified digital presence. Each entity communicated in isolation, diluting the group identity and making it hard to route inquiries to the right place.",
-            "system_built": "A corporate web architecture with unified group-level messaging, independent company sections, and a CMS the internal team can update without external technical support.",
-            "expected_outcome": "Visible corporate credibility, properly routed inquiries, and frictionless editorial control.",
+            "challenge": "Several business units communicated separately and confused prospects about who to contact.",
+            "system_built": "A corporate web architecture with group messaging and company sections.",
+            "expected_outcome": "A stronger corporate brand and inquiries routed to the right team.",
             "system_type": "Corporate web architecture",
             "status_line": "In design · interface and content architecture in progress",
             "case_study_label": "View full case"
@@ -3603,12 +3652,12 @@
         "subtitle": "Work in production. Each case documents the diagnosis, the system built, and the results it generated."
       },
       "industries": {
-        "title": "Industries we build systems for",
-        "subtitle": "From professional firms to corporate groups, every system is designed to solve a real business problem.",
+        "title": "Industries we can help",
+        "subtitle": "The approach changes by operation; the goal is always to turn visits into clearer decisions.",
         "items": [
           {
             "name": "Professional Services",
-            "benefit": "A clear system that communicates expertise before the first call and filters leads who already understand your value.",
+            "benefit": "More prospects arrive understanding your value before the first call.",
             "example": "Doctors, consultants, lawyers, architects",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3616,7 +3665,7 @@
           },
           {
             "name": "Schools and Education",
-            "benefit": "Sites that reduce admission friction, clarify programs and build trust before a family schedules a visit.",
+            "benefit": "More families arrive with programs, requirements, and next steps clear.",
             "example": "Private schools, academies, training centers",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3624,7 +3673,7 @@
           },
           {
             "name": "Real Estate and Developments",
-            "benefit": "Platforms that present properties clearly and accelerate the arrival of qualified buyers or renters.",
+            "benefit": "More qualified buyers find properties and request contact without friction.",
             "example": "Agencies, developments, investment groups",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3632,7 +3681,7 @@
           },
           {
             "name": "Custom Manufacturing",
-            "benefit": "Structured galleries and quote flows that reduce manual filtering and attract higher-budget projects.",
+            "benefit": "Less manual back-and-forth and more requests ready to quote.",
             "example": "Fabricators, workshops, premium makers",
             "status": "Active system",
             "status_type": "active",
@@ -3640,7 +3689,7 @@
           },
           {
             "name": "Corporate Groups",
-            "benefit": "Centralized web architecture that gives cohesion to multiple entities and enables frictionless content management.",
+            "benefit": "Every unit is presented clearly and receives inquiries in the right place.",
             "example": "Industrial groups, holdings, multi-brand companies",
             "status": "Active system",
             "status_type": "active",
@@ -3648,7 +3697,7 @@
           },
           {
             "name": "Local Commerce",
-            "benefit": "Sites that eliminate purchase or contact friction and convert visitors into clients with a single action.",
+            "benefit": "More visitors find what to buy, how to request it, and how to contact you.",
             "example": "Retail brands, local services, growing SMBs",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3656,7 +3705,7 @@
           },
           {
             "name": "Healthcare and Wellness",
-            "benefit": "Platforms that build trust before the first appointment and reduce time staff spend answering basic questions.",
+            "benefit": "More patients arrive with trust and fewer basic doubts to resolve.",
             "example": "Clinics, specialists, wellness practices",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3664,7 +3713,7 @@
           },
           {
             "name": "Multi-location Services",
-            "benefit": "Clear location structure that makes routing the right contact easy and reduces operational confusion.",
+            "benefit": "Each person finds the branch, area, or contact that fits their need.",
             "example": "Teams with offices, branches, or service zones",
             "status": "Accepting projects",
             "status_type": "accepting",
@@ -3703,40 +3752,40 @@
           {
             "category": "Cases",
             "icon": "rotate",
-            "question": "Can I see the work you have done?",
+            "question": "How do I know you can solve a problem like mine?",
             "answer": "Yes. This page shows active systems and we document each case upon completion. In conversation we share more detailed previews based on the project type."
           },
           {
             "category": "Location",
             "icon": "globe",
-            "question": "Do you work outside Querétaro?",
+            "question": "Can I work with you if I am not in Querétaro?",
             "answer": "Yes. Noctra works remotely with clients across Mexico and beyond, using a clear process for communication, review, and launch."
           },
           {
             "category": "Fit",
             "icon": "briefcase",
-            "question": "What kinds of businesses are the best fit?",
+            "question": "Is my business too small or too specific?",
             "answer": "Professional firms, manufacturing companies, corporate groups, schools, and businesses that need their digital presence to actually reflect the quality of their work."
           },
           {
             "category": "Process",
             "icon": "message-square",
-            "question": "Can you improve an existing site, or do you only build from scratch?",
+            "question": "Do I need to rebuild my whole site from scratch?",
             "answer": "Both. Some projects start with a new system. Others begin with a diagnosis of the current site and rebuild the parts that are holding results back."
           },
           {
             "category": "Guarantee",
             "icon": "briefcase",
-            "question": "Do you offer any kind of results guarantee?",
+            "question": "What happens if the project does not generate what we agreed?",
             "answer": "Yes. All projects from $20,000 MXN include a formal guarantee: we define KPIs with you before starting, and if we do not reach them within the agreed period, you receive a proportional refund. Everything is in the contract. Learn how it works in detail on <link>our guarantee page</link>."
           }
         ]
       }
     },
     "cta": {
-      "title": "Does this system apply to your business?",
-      "subtitle": "We take a limited number of projects per month to give each one the attention it deserves. All include agreed KPIs and a written results guarantee. If there is a fit, we will tell you in the first call.",
-      "button": "Apply this system to my business"
+      "title": "Is something similar happening in your business?",
+      "subtitle": "We review your case, tell you whether working together makes sense, and define the next step without unnecessary back-and-forth.",
+      "button": "Review my case"
     }
   },
   "BlogPage": {
@@ -3909,7 +3958,14 @@
       "location_value": "Queretaro, MX",
       "time_label": "Timezone"
     },
-    "loading": "Loading..."
+    "loading": "Loading...",
+    "budget": {
+      "identity": "Website / Landing Page",
+      "growth": "E-commerce / Corporate Site",
+      "system": "Custom Software / Web App",
+      "retainer": "Ongoing Maintenance",
+      "unsure": "I'm not sure · Let's talk"
+    }
   },
   "TermsPage": {
     "title": "Terms of Service",
@@ -4344,10 +4400,6 @@
         "line3": "Very few actually",
         "line4": "work."
       },
-      "subtitle": {
-        "line1": "A professional website is not design.",
-        "line2": "It's structure, clarity, and conversion working together."
-      },
       "cta": "Diagnose your digital presence",
       "scrollCue": "Scroll to understand"
     },
@@ -4356,11 +4408,9 @@
         "label": "01 — What",
         "sideNote": "Redefining the baseline.",
         "title": "What is a professional website?",
-        "lede": "Not a brochure. Not a portfolio. Not a digital business card.",
         "body": "A professional website is a structured sales and trust system — one that operates 24 hours a day, answers the right questions in the right order, and moves the right visitor toward a clear decision.",
         "quote": "It is the only employee who never sleeps, never misunderstands the brief, and never asks for a raise.",
-        "quoteAttribution": "Manuel de Quevedo, Founder of Noctra Studio",
-        "closing": "Most businesses treat their website as a design project. The ones that grow treat it as infrastructure — as deliberately engineered as the sales process itself."
+        "quoteAttribution": "Manuel de Quevedo, Founder of Noctra Studio"
       },
       "why": {
         "label": "02 — Why",
@@ -4383,15 +4433,13 @@
             "title": "No conversion logic.",
             "body": "Beautiful sites with no path forward. No next step. No clear reason to act. Traffic without architecture is cost without return. The site receives visitors and releases them unchanged."
           }
-        ],
-        "closing": "None of these are unsolvable. They are all the consequence of building a website before building a strategy — and they are exactly what Noctra Studio is designed to fix."
+        ]
       },
       "how": {
         "label": "03 — How",
         "sideNote": "The Noctra method.",
         "title": "Structure before aesthetics.",
         "titleAccent": "Always.",
-        "intro": "Every website Noctra Studio builds begins in the same place: a clear model of who the visitor is, what they need to believe before they act, and what path gets them there. Design follows that logic — never precedes it.",
         "principles": [
           {
             "index": "01",
@@ -4499,7 +4547,6 @@
           "line2": "digital presence."
         },
         "description": "We review your current website against the system criteria above — structure, messaging, conversion logic, and performance — and tell you exactly what is working and what is not.",
-        "note": "No pitch. No commitment. Just clarity.",
         "pricing": {
           "label": "Reference investment:",
           "amount": "from $25,000 MXN",
@@ -5450,5 +5497,253 @@
     "tooltip": "Let's talk about your project",
     "aria_label": "Contact Noctra team",
     "message": "Hi Noctra team, I'm interested in talking about my project"
+  },
+  "roi_calculator": {
+    "title": "How quickly does your site pay for itself?",
+    "inputs": {
+      "current_clients": {
+        "label": "How many new clients do you currently get per month?",
+        "placeholder": "e.g.: 5",
+        "helper": "Average of the last 6 months"
+      },
+      "avg_ticket": {
+        "label": "What is your average ticket per client?",
+        "placeholder": "$8,000",
+        "helper": "Average value of a sale/service (MXN)"
+      },
+      "investment_tier": {
+        "label": "What investment are you considering?",
+        "options": {
+          "20000": "Professional Site - $20k",
+          "35000": "E-commerce - $35k",
+          "80000": "Custom System - $80k"
+        }
+      }
+    },
+    "outputs": {
+      "payback_period": {
+        "label": "Pays for itself in:",
+        "unit": "months"
+      },
+      "monthly_new_revenue": {
+        "label": "Additional monthly revenue:",
+        "description": "Based on 40% conversion improvement"
+      },
+      "annual_roi": {
+        "label": "12-month ROI:",
+        "description": "Return on investment first year"
+      },
+      "three_year_revenue": {
+        "label": "Additional 3-year revenue:",
+        "description": "Assuming constant conversion"
+      }
+    },
+    "cta": "Schedule consultation to validate these numbers",
+    "disclaimer": "* Estimated calculations based on industry benchmarks. Real results vary by business."
+  },
+  "TrustedBy": {
+    "title": "Our Engineering Arsenal"
+  },
+  "CaseStudies": {
+    "hero": {
+      "title": "Case Studies — Real Problem Solving through Design and Code",
+      "subtitle": "Even without client projects yet, these examples show how we tackle real business challenges with modern web development, UI/UX, and strategic thinking."
+    },
+    "disclaimer": "These case studies are conceptual explorations designed to demonstrate Noctra Studio's methodology, problem-solving, and digital transformation approach.",
+    "projects": {
+      "cafe_aurora": {
+        "name": "Café Aurora",
+        "concept": "Web Redesign for Local Coffee Shop",
+        "challenge": "Low online visibility and an outdated web design that didn't reflect the brand's premium positioning.",
+        "solution": "Complete overhaul in Next.js with GSAP animations, mobile-first design, and an interactive menu system that increased engagement by 300%.",
+        "tech_stack": [
+          "Next.js",
+          "Tailwind CSS",
+          "GSAP",
+          "Vercel"
+        ],
+        "results": [
+          {
+            "metric": "300%",
+            "label": "Engagement",
+            "context": "Menu Interaction",
+            "action": "Target"
+          },
+          {
+            "metric": "100",
+            "label": "Performance",
+            "context": "Lighthouse Score",
+            "action": "Achieved"
+          },
+          {
+            "metric": "<1s",
+            "label": "Load Time",
+            "context": "First Contentful Paint",
+            "action": "Optimized"
+          }
+        ],
+        "process": [
+          {
+            "step": "Discovery",
+            "description": "Analysis of local competitors and user behavior."
+          },
+          {
+            "step": "Strategy",
+            "description": "Mobile-first approach for customers on the go."
+          },
+          {
+            "step": "Build",
+            "description": "Next.js implementation for speed and SEO."
+          }
+        ]
+      },
+      "strongfit": {
+        "name": "StrongFit",
+        "concept": "High-Converting Landing Page for Fitness Coach",
+        "challenge": "Low conversion rates and lack of trust signals on the existing landing page.",
+        "solution": "Strategic Figma design converted to React components with a focused CTA strategy, A/B testing, and social proof integration.",
+        "tech_stack": [
+          "Figma",
+          "React",
+          "Conversion Optimization",
+          "Analytics"
+        ],
+        "results": [
+          {
+            "metric": "0.00",
+            "label": "CLS",
+            "context": "Zero Layout Shift",
+            "action": "Achieved"
+          },
+          {
+            "metric": "+40%",
+            "label": "Conversion",
+            "context": "Lead Form",
+            "action": "Projected"
+          },
+          {
+            "metric": "A",
+            "label": "Accessibility",
+            "context": "WCAG 2.1",
+            "action": "Compliant"
+          }
+        ],
+        "process": [
+          {
+            "step": "Audit",
+            "description": "Identification of friction points in the user journey."
+          },
+          {
+            "step": "Design",
+            "description": "High-fidelity prototypes in Figma."
+          },
+          {
+            "step": "Development",
+            "description": "Pixel-perfect React implementation."
+          }
+        ]
+      },
+      "fintrack": {
+        "name": "FinTrack",
+        "concept": "Financial Analytics Dashboard UI/UX",
+        "challenge": "Complex data visualization needs and overwhelming interface for financial professionals.",
+        "solution": "Clean dashboard UI with Chart.js integration, dark mode support, and scalable component architecture for future expansion.",
+        "tech_stack": [
+          "SaaS Architecture",
+          "Data Visualization",
+          "Component Library",
+          "TypeScript"
+        ],
+        "results": [
+          {
+            "metric": "Real-Time",
+            "label": "Sync",
+            "context": "WebSocket Data",
+            "action": "Enabled"
+          },
+          {
+            "metric": "60fps",
+            "label": "Rendering",
+            "context": "Complex Charts",
+            "action": "Optimized"
+          },
+          {
+            "metric": "100%",
+            "label": "Type Safety",
+            "context": "TypeScript Coverage",
+            "action": "Enforced"
+          }
+        ],
+        "process": [
+          {
+            "step": "Architecture",
+            "description": "Definition of data models and API interfaces."
+          },
+          {
+            "step": "UI Design",
+            "description": "Dark-mode first design for data density."
+          },
+          {
+            "step": "Engineering",
+            "description": "Building reusable visualization components."
+          }
+        ]
+      },
+      "vaultra": {
+        "name": "Vaultra",
+        "concept": "Cybersecurity Interface",
+        "challenge": "Visualizing complex security threats without overwhelming the user.",
+        "solution": "A minimalist, high-contrast interface prioritizing critical alerts and actionable intelligence.",
+        "tech_stack": [
+          "Next.js",
+          "Vercel",
+          "Auth0"
+        ],
+        "results": [
+          {
+            "metric": "A+",
+            "label": "Security",
+            "context": "Security Headers",
+            "action": "Hardened"
+          },
+          {
+            "metric": "0ms",
+            "label": "Leaks",
+            "context": "Data Exposure",
+            "action": "Prevented"
+          },
+          {
+            "metric": "2FA",
+            "label": "Auth",
+            "context": "Multi-Factor",
+            "action": "Integrated"
+          }
+        ],
+        "process": [
+          {
+            "step": "Threat Model",
+            "description": "Analysis of potential attack vectors."
+          },
+          {
+            "step": "UX Strategy",
+            "description": "Prioritization of alert visibility and response time."
+          },
+          {
+            "step": "Implementation",
+            "description": "Secure coding practices and headers."
+          }
+        ]
+      }
+    },
+    "labels": {
+      "challenge": "The Challenge",
+      "solution": "The Solution",
+      "tech_stack": "Tech Stack"
+    },
+    "cta": {
+      "headline": "Not sure where your current digital infrastructure is failing?",
+      "subtext": "We offer a complimentary high-level technical audit for qualified brands. See exactly how we'd approach your project.",
+      "button": "Request Architecture Audit"
+    }
   }
 }

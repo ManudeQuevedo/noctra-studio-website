@@ -3,7 +3,8 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-const viewport = { once: true, margin: "-50px" } as const;
+const viewport = { once: true, margin: "-100px 0px" } as const;
+const cardViewport = { once: true, margin: "-80px 0px" } as const;
 
 type BadgeStatus = "active" | "in_dev" | "flagship" | "mvp";
 
@@ -48,29 +49,29 @@ export function Ecosystem() {
         <div className="mx-auto max-w-6xl">
 
           <m.p
-            initial={{ opacity: 0, y: -8 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={viewport}
-            className="mb-6 text-[11px] font-medium uppercase tracking-[0.24em] text-emerald-400">
+            className="mb-6 text-[11px] font-medium uppercase tracking-[0.24em] text-emerald-400 will-change-transform">
             {t("ecosystem.kicker")}
           </m.p>
 
           <m.h2
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.08 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
             viewport={viewport}
-            className="mb-4 text-3xl font-bold tracking-tight text-white md:text-4xl">
+            className="mb-4 text-3xl font-bold tracking-tight text-white will-change-transform md:text-4xl">
             {t("ecosystem.title")}
           </m.h2>
 
           <m.p
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.16 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.16 }}
             viewport={viewport}
-            className="mb-12 text-base text-neutral-400 md:mb-16 md:text-lg">
+            className="mb-12 text-base text-neutral-400 will-change-transform md:mb-16 md:text-lg">
             {t("ecosystem.subtitle")}
           </m.p>
 
@@ -82,12 +83,13 @@ export function Ecosystem() {
               return (
                 <m.div
                   key={item.name}
-                  initial={{ opacity: 0, y: 12 }}
+                  id={item.name.toLowerCase()}
+                  initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: i * 0.08 }}
-                  viewport={viewport}
+                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                  viewport={cardViewport}
                   className={[
-                    "rounded-xl border p-6 transition-all duration-200",
+                    "scroll-mt-32 rounded-xl border p-6 transition-[transform,border-color,background-color] duration-200 will-change-transform",
                     cfg.wide ? "md:col-span-2" : "",
                     isFlagship
                       ? "border-emerald-500/40 bg-gradient-to-br from-[#0a0b13] to-emerald-500/5"
@@ -103,7 +105,7 @@ export function Ecosystem() {
                     <span
                       className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.1em] ${badgeClass[cfg.status]}`}>
                       {isFlagship && (
-                        <span className="h-1 w-1 animate-pulse rounded-full bg-emerald-400" />
+                        <span className="h-1 w-1 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                       )}
                       {item.badge}
                     </span>

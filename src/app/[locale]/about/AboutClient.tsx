@@ -3,10 +3,8 @@
 import { useRef } from "react";
 import { useLocale } from "next-intl";
 import { LazyMotion, domAnimation, m, useScroll, useTransform } from "framer-motion";
-import { ArrowRight, Radar } from "lucide-react";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
-import { ScrollTextReveal } from "@/components/ui/ScrollTextReveal";
 
 /* ─────────────────────── types ─────────────────────── */
 
@@ -17,11 +15,6 @@ type AboutCopy = {
   heroTitleLine2: string;
   heroSubLine1: string;
   heroSubLine2: string;
-
-  /* 2. THE PROBLEM */
-  problemLine1: string;
-  problemLine2: string;
-  problemLine3: string;
 
   /* 3. WHY NOCTRA EXISTS */
   originLabel: string;
@@ -69,7 +62,6 @@ type AboutCopy = {
   ctaTitle: string;
   ctaSub: string;
   ctaPrimary: string;
-  ctaSecondary: string;
   ctaNote: string;
 };
 
@@ -78,27 +70,17 @@ type AboutCopy = {
 const ES: AboutCopy = {
   /* 1 */
   heroBadge: "NOCTRA STUDIO",
-  heroTitleLine1: "No construimos presencia digital.",
-  heroTitleLine2: "Construimos claridad.",
-  heroSubLine1: "Noctra existe porque el mercado digital se llenó de ruido y piezas sueltas.",
-  heroSubLine2: "Nosotros elegimos otro camino.",
-
-  /* 2 */
-  problemLine1:
-    "Más herramientas no significan más crecimiento.",
-  problemLine2:
-    "Más contenido no significa más confianza.",
-  problemLine3:
-    "Más agencias no significan mejores resultados.",
+  heroTitleLine1: "No construimos piezas digitales.",
+  heroTitleLine2: "Construimos claridad comercial.",
+  heroSubLine1: "Noctra existe porque muchas empresas crecieron digitalmente en piezas sueltas: web, contenido, SEO, automatización.",
+  heroSubLine2: "Nosotros elegimos conectar esas piezas bajo una lógica que se entiende, se mide y mejora.",
 
   /* 3 */
   originLabel: "POR QUÉ EXISTE NOCTRA",
-  originTitle: "Vimos un mercado lleno de esfuerzo. Y vacío de estructura.",
+  originTitle: "Vimos mucho esfuerzo digital. Y poca estructura.",
   originParagraphs: [
-    "Empezamos trabajando en proyectos digitales como la mayoría: branding por un lado, web por otro, SEO como un extra opcional. Cada pieza vivía sola. Se entregaba, se facturaba y se olvidaba.",
-    "Pero los resultados no escalaban. Los clientes acumulaban activos digitales que no conversaban entre sí. Los rediseños no resolvían problemas; solo los movían de lugar.",
-    "El patrón era claro: el problema no era la ejecución de cada pieza. Era la ausencia de un sistema que las conectara.",
-    "Noctra nació de esa observación. No como una agencia más, sino como un modelo diferente: uno donde cada capa digital — identidad, web, visibilidad, automatización — se diseña bajo la misma lógica. Un sistema, no un catálogo.",
+    "Muchas empresas invierten en marca, web, contenido, SEO y herramientas, pero cada pieza vive por separado. El resultado es una presencia digital que existe, pero no siempre explica, convierte o se sostiene.",
+    "Noctra nació de esa observación: el problema no era hacer más cosas, sino construirlas bajo la misma lógica. Un sistema, no un catálogo.",
   ],
 
   /* 4 */
@@ -106,19 +88,19 @@ const ES: AboutCopy = {
   shiftTitle: "De piezas sueltas a sistema conectado.",
   shiftFromLabel: "EL MODELO VIEJO",
   shiftFromPoints: [
-    "Logo desconectado de la web",
-    "Web sin arquitectura de conversión",
-    "SEO como servicio opcional",
+    "Logo aislado",
+    "Web sin conversión",
+    "SEO al final",
     "Lanzar y olvidar",
-    "Resultados que dependen de la suerte",
+    "Resultados por suerte",
   ],
   shiftToLabel: "EL MODELO NOCTRA",
   shiftToPoints: [
-    "Identidad que alimenta la web",
-    "Web como motor de conversión 24/7",
-    "SEO estructural desde el día uno",
-    "Monitoreo y optimización continua",
-    "Resultados medibles y compuestos",
+    "Identidad conectada",
+    "Web que convierte",
+    "SEO desde origen",
+    "Optimización continua",
+    "Resultados medibles",
   ],
   shiftNote:
     "No es un tema de hacer más. Es un tema de hacer que todo funcione junto.",
@@ -129,15 +111,15 @@ const ES: AboutCopy = {
   thinkingPillars: [
     {
       title: "Claridad",
-      text: "Si alguien llega a tu sitio y no entiende qué haces en 8 segundos, el problema no es el diseño. Es la estructura del mensaje. Todo empieza por lo que debe quedar claro.",
+      text: "Si no se entiende rápido, no funciona.",
     },
     {
       title: "Estructura",
-      text: "Un sitio rápido con mala arquitectura sigue siendo un mal sitio. Contenido sin estrategia es ruido. La estructura viene antes que el volumen, siempre.",
+      text: "La estrategia ordena antes de escalar.",
     },
     {
       title: "Continuidad",
-      text: "Un sistema que no se mide, se degrada. La optimización no es un extra; es la razón por la que el sistema sigue funcionando después del lanzamiento.",
+      text: "Lo que no se mide, se degrada.",
     },
   ],
 
@@ -145,33 +127,31 @@ const ES: AboutCopy = {
   modelLabel: "EL MODELO",
   modelTitle: "Estudio + Producto. Dos capas, un sistema.",
   modelSub:
-    "Noctra no es solo un estudio que ejecuta proyectos. Es un modelo híbrido donde la implementación estratégica y el software propio se refuerzan mutuamente.",
+    "Combinamos implementación estratégica con productos propios para que lo construido no se quede estático después del lanzamiento.",
   studioTitle: "Noctra Studio",
   studioText:
-    "Implementación estratégica. Construimos las capas que necesita tu negocio — identidad, web, visibilidad, automatización — bajo una sola lógica.",
+    "Construimos identidad, web y visibilidad bajo una sola lógica.",
   studioPoints: [
     "Branding estratégico",
     "Websites de alto rendimiento",
     "SEO técnico y estructural",
-    "Automatizaciones con IA",
   ],
   productsTitle: "Noctra Products",
   productsText:
-    "Software que sostiene lo construido. Radar diagnostica y monitorea. Social extiende la marca. Cada herramienta refuerza el sistema.",
+    "Creamos herramientas que diagnostican, monitorean y extienden el sistema.",
   productsPoints: [
-    "Noctra Radar — diagnóstico continuo",
-    "Noctra Social — contenido con IA",
-    "Herramientas internas de ejecución",
-    "Ecosistema conectado",
+    "Radar: diagnóstico continuo",
+    "Social: contenido con IA",
+    "Forge: operación conectada",
   ],
 
   /* 7 */
   visionLabel: "HACIA DÓNDE VAMOS",
-  visionTitle: "Un ecosistema, no un catálogo.",
+  visionTitle: "Más productos significa más continuidad para tu negocio.",
   visionParagraphs: [
-    "Noctra no se detendrá en ser un estudio con buenos proyectos. Estamos construyendo infraestructura de crecimiento: herramientas, datos y estrategia conectados en un solo sistema.",
-    "Cada producto que lanzamos está diseñado para integrarse con los demás. Radar alimenta al estudio. Social extiende la marca. Forge —nuestro CRM interno en desarrollo— organiza la operación. No son productos sueltos: son capas del mismo sistema.",
-    "Construimos para que tu presencia digital siga siendo relevante, competitiva y medible dentro de 2, 3, 5 años. No para el proyecto de este mes.",
+    "Cada producto que construimos busca resolver una parte concreta del mismo problema: que tu presencia digital no dependa de impulsos aislados, proveedores desconectados o revisiones esporádicas.",
+    "Para una PYME o profesionista, eso significa tener más claridad sobre qué mejorar, cuándo actuar y cómo sostener el crecimiento sin volver a empezar cada vez.",
+    "No estamos creando herramientas por acumulación. Estamos construyendo una forma más ordenada de operar tu presencia digital con el tiempo.",
   ],
 
   /* 8 */
@@ -181,17 +161,15 @@ const ES: AboutCopy = {
   founderQuote:
     "Noctra no nació de querer hacer una agencia mejor. Nació de la frustración de ver que el modelo actual no funcionaba.",
   founderParagraphs: [
-    "Después de años viendo proyectos que se entregaban y se olvidaban, resultados que se degradaban en silencio y esfuerzos que nunca se conectaban, decidí que si iba a construir algo, tenía que funcionar como un sistema.",
-    "No como un catálogo de servicios. No como un portafolio bonito. Como un sistema donde cada pieza refuerza a la otra y donde los resultados se miden, se ajustan y se componen con el tiempo.",
+    "Después de ver proyectos entregados y olvidados, resultados que se degradaban y esfuerzos que nunca se conectaban, decidí construir algo que funcionara como sistema: una forma de hacer que cada pieza refuerce a la otra y mejore con el tiempo.",
     "Esa es la promesa. No ser la agencia más creativa. Ser el sistema más claro.",
   ],
 
   /* 9 */
-  ctaTitle: "Entender cómo funciona Noctra.",
+  ctaTitle: "Entender dónde estás parado.",
   ctaSub:
-    "Si lo que leíste aquí resuena con cómo piensas tu negocio, el siguiente paso es ver el sistema en acción.",
-  ctaPrimary: "Diagnosticar mi presencia digital",
-  ctaSecondary: "Ver cómo aplicamos este enfoque",
+    "El siguiente paso es ver qué tan clara, conectada y medible es tu presencia digital hoy.",
+  ctaPrimary: "Diagnosticar mi presencia →",
   ctaNote: "Trabajamos con pocos proyectos a la vez para cuidar foco y ejecución.",
 };
 
@@ -200,27 +178,17 @@ const ES: AboutCopy = {
 const EN: AboutCopy = {
   /* 1 */
   heroBadge: "NOCTRA STUDIO",
-  heroTitleLine1: "We don't build digital presence.",
-  heroTitleLine2: "We build clarity.",
-  heroSubLine1: "Noctra exists because the digital market filled up with noise and loose pieces.",
-  heroSubLine2: "We chose a different path.",
-
-  /* 2 */
-  problemLine1:
-    "More tools do not mean more growth.",
-  problemLine2:
-    "More content does not mean more trust.",
-  problemLine3:
-    "More agencies do not mean better results.",
+  heroTitleLine1: "We don't build digital pieces.",
+  heroTitleLine2: "We build commercial clarity.",
+  heroSubLine1: "Noctra exists because many businesses grew digitally through loose pieces: web, content, SEO, automation.",
+  heroSubLine2: "We chose to connect those pieces under a logic that can be understood, measured, and improved.",
 
   /* 3 */
   originLabel: "WHY NOCTRA EXISTS",
-  originTitle: "We saw a market full of effort. And empty of structure.",
+  originTitle: "We saw a lot of digital effort. And little structure.",
   originParagraphs: [
-    "We started working on digital projects like most do: branding on one side, web on another, SEO as an optional add-on. Each piece lived alone. Delivered, invoiced, forgotten.",
-    "But results did not scale. Clients accumulated digital assets that did not talk to each other. Redesigns did not solve problems; they just moved them somewhere else.",
-    "The pattern was clear: the problem was not the execution of each piece. It was the absence of a system connecting them.",
-    "Noctra was born from that observation. Not as another agency, but as a different model: one where every digital layer — identity, web, visibility, automation — is designed under the same logic. A system, not a catalog.",
+    "Many businesses invest in brand, web, content, SEO, and tools, but each piece lives separately. The result is a digital presence that exists, but does not always explain, convert, or sustain itself.",
+    "Noctra was born from that observation: the problem was not doing more things, but building them under the same logic. A system, not a catalog.",
   ],
 
   /* 4 */
@@ -228,19 +196,19 @@ const EN: AboutCopy = {
   shiftTitle: "From loose pieces to connected system.",
   shiftFromLabel: "THE OLD MODEL",
   shiftFromPoints: [
-    "Logo disconnected from the website",
-    "Website without conversion architecture",
-    "SEO as an optional service",
+    "Isolated logo",
+    "Website without conversion",
+    "SEO at the end",
     "Launch and forget",
-    "Results that depend on luck",
+    "Results by luck",
   ],
   shiftToLabel: "THE NOCTRA MODEL",
   shiftToPoints: [
-    "Identity that feeds the website",
-    "Website as a 24/7 conversion engine",
-    "Structural SEO from day one",
-    "Continuous monitoring and optimization",
-    "Measurable, compound results",
+    "Connected identity",
+    "Website that converts",
+    "SEO from origin",
+    "Continuous optimization",
+    "Measurable results",
   ],
   shiftNote:
     "It is not about doing more. It is about making everything work together.",
@@ -251,15 +219,15 @@ const EN: AboutCopy = {
   thinkingPillars: [
     {
       title: "Clarity",
-      text: "If someone lands on your site and cannot understand what you do in 8 seconds, the problem is not the design. It is the structure of the message. Everything starts with what needs to be clear.",
+      text: "If it is not understood quickly, it does not work.",
     },
     {
       title: "Structure",
-      text: "A fast site with bad architecture is still a bad site. Content without strategy is noise. Structure comes before volume, always.",
+      text: "Strategy brings order before scale.",
     },
     {
       title: "Continuity",
-      text: "A system that is not measured degrades. Optimization is not an add-on; it is the reason the system keeps working after launch.",
+      text: "What is not measured degrades.",
     },
   ],
 
@@ -267,33 +235,31 @@ const EN: AboutCopy = {
   modelLabel: "THE MODEL",
   modelTitle: "Studio + Product. Two layers, one system.",
   modelSub:
-    "Noctra is not just a studio that executes projects. It is a hybrid model where strategic implementation and proprietary software reinforce each other.",
+    "We combine strategic implementation with proprietary products so what we build does not stay static after launch.",
   studioTitle: "Noctra Studio",
   studioText:
-    "Strategic implementation. We build the layers your business needs — identity, web, visibility, automation — under one logic.",
+    "We build identity, web, and visibility under one logic.",
   studioPoints: [
     "Strategic branding",
     "High-performance websites",
     "Technical & structural SEO",
-    "AI-powered automations",
   ],
   productsTitle: "Noctra Products",
   productsText:
-    "Software that sustains what we build. Radar diagnoses and monitors. Social extends the brand. Each tool reinforces the system.",
+    "We create tools that diagnose, monitor, and extend the system.",
   productsPoints: [
-    "Noctra Radar — continuous diagnosis",
-    "Noctra Social — AI-powered content",
-    "Internal execution tools",
-    "Connected ecosystem",
+    "Radar: continuous diagnosis",
+    "Social: AI-powered content",
+    "Forge: connected operations",
   ],
 
   /* 7 */
   visionLabel: "WHERE WE ARE GOING",
-  visionTitle: "An ecosystem, not a catalog.",
+  visionTitle: "More products means more continuity for your business.",
   visionParagraphs: [
-    "Noctra will not stop at being a studio with good projects. We are building growth infrastructure: tools, data, and strategy connected into one system.",
-    "Every product we launch is designed to integrate with the others. Radar feeds the studio. Social extends the brand. Forge —our internal CRM in development— organizes operations. They are not separate products: they are layers of the same system.",
-    "We build so your digital presence remains relevant, competitive, and measurable 2, 3, 5 years from now. Not for this month's project.",
+    "Every product we build solves a concrete part of the same problem: making sure your digital presence does not depend on isolated impulses, disconnected providers, or occasional reviews.",
+    "For a small business or professional, that means more clarity about what to improve, when to act, and how to sustain growth without starting over every time.",
+    "We are not creating tools for accumulation. We are building a more orderly way to operate your digital presence over time.",
   ],
 
   /* 8 */
@@ -303,17 +269,15 @@ const EN: AboutCopy = {
   founderQuote:
     "Noctra was not born from wanting to build a better agency. It was born from the frustration of seeing the current model not working.",
   founderParagraphs: [
-    "After years of seeing projects delivered and forgotten, results degrading silently, and efforts that never connected, I decided that if I was going to build something, it had to work as a system.",
-    "Not as a catalog of services. Not as a pretty portfolio. As a system where every piece reinforces the other and results are measured, adjusted, and compounded over time.",
+    "After seeing projects delivered and forgotten, results degrading, and efforts that never connected, I decided to build something that worked as a system: a way to make every piece reinforce the other and improve over time.",
     "That is the promise. Not to be the most creative agency. To be the clearest system.",
   ],
 
   /* 9 */
-  ctaTitle: "Understand how Noctra works.",
+  ctaTitle: "Understand where you stand.",
   ctaSub:
-    "If what you read here resonates with how you think about your business, the next step is seeing the system in action.",
-  ctaPrimary: "Diagnose my digital presence",
-  ctaSecondary: "See how we apply this approach",
+    "The next step is seeing how clear, connected, and measurable your digital presence is today.",
+  ctaPrimary: "Diagnose my presence →",
   ctaNote: "We take on few projects at a time to protect focus and execution.",
 };
 
@@ -428,23 +392,6 @@ export default function AboutClient() {
             </div>
           </m.div>
         </section>
-
-        {/* ═══════════════════════════════════════════
-            2. THE PROBLEM — editorial scroll reveal
-        ═══════════════════════════════════════════ */}
-        <section className="relative px-6 py-40 md:px-8 md:py-64">
-          <ScrollTextReveal
-            lines={[
-              { text: c.problemLine1, className: "text-left" },
-              { text: c.problemLine2, className: "text-left md:ml-[15%] lg:ml-[25%]" },
-              { text: c.problemLine3, className: "text-left" },
-            ]}
-            className="mx-auto max-w-7xl"
-          />
-        </section>
-
-        {/* thin divider */}
-        <div className="mx-auto h-px w-full max-w-2xl bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
         {/* ═══════════════════════════════════════════
             3. WHY NOCTRA EXISTS — long-form, generous spacing
@@ -805,7 +752,7 @@ export default function AboutClient() {
               {c.ctaSub}
             </p>
 
-            <div className="mt-12 flex flex-col items-center justify-center gap-4 sm:flex-row">
+            <div className="mt-12 flex items-center justify-center">
               <Link
                 href={{
                   pathname: "/contact",
@@ -813,14 +760,6 @@ export default function AboutClient() {
                 }}
                 className="inline-flex items-center gap-3 rounded-full bg-white px-8 py-4 text-sm font-black uppercase tracking-[0.16em] text-black transition-all hover:bg-emerald-50">
                 {c.ctaPrimary}
-                <ArrowRight className="h-4 w-4" />
-              </Link>
-
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-3 rounded-full border border-white/12 px-8 py-4 text-sm font-black uppercase tracking-[0.16em] text-neutral-300 transition-all hover:bg-white/5 hover:text-white">
-                {c.ctaSecondary}
-                <ArrowRight className="h-4 w-4" />
               </Link>
             </div>
 

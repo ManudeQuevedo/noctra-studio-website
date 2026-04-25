@@ -125,26 +125,11 @@ export default function ProfessionalWebsitesClient() {
               ) : null}
             </m.h1>
 
-            <m.p
-              initial={{ opacity: 0, y: 24 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{
-                duration: 0.9,
-                ease: [0.22, 1, 0.36, 1],
-                delay: 0.28,
-              }}
-              className="mt-10 max-w-xl text-lg leading-relaxed text-neutral-400 md:text-xl"
-            >
-              {t("hero.subtitle.line1")}
-              <br />
-              {t("hero.subtitle.line2")}
-            </m.p>
-
             <m.div
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               transition={{ duration: 0.8, delay: 0.5 }}
-              className="mt-12"
+              className="mt-10"
             >
               <Link
                 href={{
@@ -199,18 +184,12 @@ export default function ProfessionalWebsitesClient() {
                 </Reveal>
 
                 <Reveal delay={0.1}>
-                  <p className="text-xl leading-relaxed text-neutral-400 md:text-2xl">
-                    {t("sections.what.lede")}
-                  </p>
-                </Reveal>
-
-                <Reveal delay={0.15}>
                   <p className="text-lg leading-relaxed text-neutral-400">
                     {t("sections.what.body")}
                   </p>
                 </Reveal>
 
-                <Reveal delay={0.2}>
+                <Reveal delay={0.15}>
                   <blockquote className="border-l-2 border-white/20 pl-8">
                     <p className="text-2xl font-semibold leading-snug text-white md:text-3xl">
                       &ldquo;{t("sections.what.quote")}&rdquo;
@@ -219,12 +198,6 @@ export default function ProfessionalWebsitesClient() {
                       — {t("sections.what.quoteAttribution")}
                     </footer>
                   </blockquote>
-                </Reveal>
-
-                <Reveal delay={0.25}>
-                  <p className="text-lg leading-relaxed text-neutral-400">
-                    {t("sections.what.closing")}
-                  </p>
                 </Reveal>
               </div>
             </div>
@@ -285,13 +258,6 @@ export default function ProfessionalWebsitesClient() {
                   ))}
                 </div>
 
-                <Reveal delay={0.3}>
-                  <div className="rounded-2xl border border-neutral-800 bg-neutral-950/60 p-8">
-                    <p className="text-lg font-medium leading-relaxed text-neutral-300">
-                      {t("sections.why.closing")}
-                    </p>
-                  </div>
-                </Reveal>
               </div>
             </div>
           </div>
@@ -326,12 +292,6 @@ export default function ProfessionalWebsitesClient() {
                       {t("sections.how.titleAccent")}
                     </span>
                   </h2>
-                </Reveal>
-
-                <Reveal delay={0.1}>
-                  <p className="text-lg leading-relaxed text-neutral-400">
-                    {t("sections.how.intro")}
-                  </p>
                 </Reveal>
 
                 {/* Four principles */}
@@ -533,12 +493,6 @@ export default function ProfessionalWebsitesClient() {
             </Reveal>
 
             <Reveal delay={0.3}>
-              <p className="mt-4 text-sm text-neutral-600">
-                {t("sections.cta.note")}
-              </p>
-            </Reveal>
-
-            <Reveal delay={0.35}>
               <div className="mb-8 mt-10 text-center">
                 <p className="text-sm text-muted-foreground">
                   {t("sections.cta.pricing.label")}{" "}
@@ -552,7 +506,7 @@ export default function ProfessionalWebsitesClient() {
               </div>
             </Reveal>
 
-            <Reveal delay={0.4}>
+            <Reveal delay={0.35}>
               <div className="mt-12 flex flex-col gap-4 sm:flex-row">
                 <Link
                   href={{ pathname: "/contact", query: { intent: "professional-websites" } }}
@@ -571,7 +525,7 @@ export default function ProfessionalWebsitesClient() {
             </Reveal>
 
             {/* Bottom signature */}
-            <Reveal delay={0.5}>
+            <Reveal delay={0.45}>
               <div className="mt-24 flex items-center gap-4">
                 <div className="h-px flex-1 bg-neutral-900" />
                 <span className="text-[10px] font-mono uppercase tracking-[0.22em] text-neutral-700">

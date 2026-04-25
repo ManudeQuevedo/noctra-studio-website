@@ -2,7 +2,7 @@
 
 import { useTranslations } from "next-intl";
 import { LazyMotion, m, domAnimation } from "framer-motion";
-import { CheckCircle2, Layers, Network, Zap, ShieldCheck, ArrowRight } from "lucide-react";
+import { CheckCircle2, Layers, Network, ShieldCheck } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
 
@@ -155,9 +155,6 @@ export default function TechnologyClient() {
                           <h3 className="text-3xl md:text-4xl font-bold mb-6">
                             {t(`blueprint.items.${i}.title`)}
                           </h3>
-                          <p className="text-lg text-neutral-400 font-light leading-relaxed max-w-md ml-auto mr-0 md:mx-0">
-                            {t(`blueprint.items.${i}.explanation`)}
-                          </p>
                         </FadeIn>
                       </div>
 
@@ -212,21 +209,6 @@ export default function TechnologyClient() {
                 <p className="text-neutral-200 text-lg md:text-xl font-light leading-relaxed">
                   {t("system.radar_note")}
                 </p>
-                
-                <div className="mt-12 flex flex-wrap justify-center gap-4">
-                  <div className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-xs font-mono text-neutral-400">
-                    Next.js + Vercel
-                  </div>
-                  <div className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-xs font-mono text-neutral-400">
-                    Framer Motion
-                  </div>
-                  <div className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-xs font-mono text-neutral-400">
-                    Noctra Radar SDK
-                  </div>
-                  <div className="px-4 py-2 rounded-lg bg-neutral-900 border border-neutral-800 text-xs font-mono text-emerald-400/80">
-                    Proprietary Stack
-                  </div>
-                </div>
               </div>
             </FadeIn>
           </div>
@@ -255,7 +237,6 @@ export default function TechnologyClient() {
                     >
                       <Link href={{ pathname: "/contact", query: { intent: "radar_diagnostic" } }}>
                         {t("cta.primary")}
-                        <ArrowRight className="w-4 h-4 ml-2" />
                       </Link>
                     </Button>
                     <Button
