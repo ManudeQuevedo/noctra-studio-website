@@ -38,11 +38,8 @@ export const WhatsAppFloatingButton = () => {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={t("aria_label")}
-          className="flex items-center gap-2 h-[52px] bg-[#25D366] rounded-full px-4 text-white shadow-lg hover:shadow-[#25D366]/20 hover:scale-105 transition-all duration-300">
-          <FaWhatsapp className="w-6 h-6 shrink-0" />
-          <span className="text-sm font-medium whitespace-nowrap pr-1">
-            {t("label")}
-          </span>
+          className="flex items-center justify-center w-12 h-12 bg-[#1a7a45] rounded-full text-white shadow-lg hover:bg-[#1f9152] hover:shadow-[#1a7a45]/30 hover:scale-105 transition-all duration-300">
+          <FaWhatsapp className="w-6 h-6" />
         </a>
       </m.div>
     </LazyMotion>
