@@ -99,8 +99,8 @@ function TextSequence() {
   const [wordIndex, setWordIndex] = useState(0);
 
   const wordsByLocale: Record<string, string[]> = {
-    en: ["Clarity first.", "Results after."],
-    es: ["Claridad primero.", "Resultados después."],
+    en: ["A system built", "around your business."],
+    es: ["Un sistema construido", "alrededor de tu negocio."],
   };
 
   const words = wordsByLocale[locale] ?? wordsByLocale.en;
