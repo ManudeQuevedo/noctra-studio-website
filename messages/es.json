@@ -346,11 +346,10 @@
     },
     "thesis": {
       "kicker": "02 / TESIS",
-      "title_prefix": "LATAM no necesita ",
-      "title_emphasis": "más ruido.",
-      "paragraph_1": "Sobran agencias que venden piezas sueltas.",
-      "paragraph_2": "Tu negocio necesita presencia clara, medible y comercial.",
-      "paragraph_3": "Noctra: ingeniería para vender con claridad."
+      "headline": "LATAM no necesita más ruido.",
+      "problem": "Las agencias venden logos, sitios y SEO como piezas separadas. Cada una factura su parte. Nadie responde por el sistema completo.",
+      "consequence": "El resultado: negocios con tres proveedores, cero claridad y presencia que no vende.",
+      "positioning": "Noctra construye el sistema completo — y lo mide."
     },
     "ecosystem": {
       "kicker": "03 / ECOSISTEMA",

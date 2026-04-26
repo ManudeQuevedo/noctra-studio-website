@@ -346,11 +346,10 @@
     },
     "thesis": {
       "kicker": "02 / THESIS",
-      "title_prefix": "LATAM doesn't need ",
-      "title_emphasis": "more noise.",
-      "paragraph_1": "Retainers without measurable impact. Pretty sites that don't sell. Campaigns that don't talk to each other.",
-      "paragraph_2": "Meanwhile, businesses lose clarity, follow-up, and real opportunities every week.",
-      "paragraph_3": "Noctra is Clarity Engineering to turn digital presence into business."
+      "headline": "LATAM doesn't need more noise.",
+      "problem": "Agencies sell logos, websites and SEO as separate pieces. Each one invoices their part. Nobody owns the full system.",
+      "consequence": "The result: businesses with three vendors, zero clarity and a presence that doesn't sell.",
+      "positioning": "Noctra builds the full system — and measures it."
     },
     "ecosystem": {
       "kicker": "03 / ECOSYSTEM",

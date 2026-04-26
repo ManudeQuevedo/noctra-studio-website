@@ -26,16 +26,8 @@ export function Thesis() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
             viewport={viewport}
-            className="mb-12 text-4xl font-bold leading-[1.1] tracking-tight text-white will-change-transform md:mb-16 md:text-5xl">
-            {t("thesis.title_prefix")}
-            <m.span
-              initial={{ opacity: 0, y: 10 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut", delay: 0.28 }}
-              viewport={viewport}
-              className="inline-block will-change-transform">
-              {t("thesis.title_emphasis")}
-            </m.span>
+            className="text-4xl font-bold leading-[1.1] tracking-tight text-white will-change-transform md:text-5xl">
+            {t("thesis.headline")}
           </m.h2>
 
           <m.p
@@ -43,8 +35,8 @@ export function Thesis() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.15 }}
             viewport={viewport}
-            className="mb-6 text-lg font-normal leading-relaxed text-[#F0EDE6]/85 will-change-transform md:text-xl">
-            {t("thesis.paragraph_1")}
+            className="mt-8 text-lg font-normal leading-relaxed text-white/70 will-change-transform md:text-xl">
+            {t("thesis.problem")}
           </m.p>
 
           <m.p
@@ -52,8 +44,8 @@ export function Thesis() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.30 }}
             viewport={viewport}
-            className="mb-6 text-lg font-normal leading-relaxed text-[#F0EDE6]/85 will-change-transform md:text-xl">
-            {t("thesis.paragraph_2")}
+            className="mt-4 text-lg font-normal leading-relaxed text-white/70 will-change-transform md:text-xl">
+            {t("thesis.consequence")}
           </m.p>
 
           <m.p
@@ -61,8 +53,8 @@ export function Thesis() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.45 }}
             viewport={viewport}
-            className="text-lg font-normal leading-relaxed text-[#F0EDE6]/85 will-change-transform md:text-xl">
-            {t("thesis.paragraph_3")}
+            className="mt-8 text-lg font-medium leading-relaxed text-white will-change-transform md:text-xl">
+            {t("thesis.positioning")}
           </m.p>
         </div>
       </section>
