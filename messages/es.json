@@ -325,19 +325,19 @@
       "product_anchor": "Trabajo real para Dyma Group y Woodax Design.",
       "primary_cta": "Diagnosticar mi presencia →",
       "visual_label": "EL SISTEMA",
-      "visual_title": "Un sistema listo para vender.",
+      "visual_title": "Un negocio más claro y vendible.",
       "system_layer_01_label": "01 / MARCA",
-      "system_layer_01_title": "Claridad para ser elegido",
-      "system_layer_01_subtitle": "Mensaje, oferta y confianza en orden.",
+      "system_layer_01_title": "Autoridad inmediata",
+      "system_layer_01_subtitle": "Tu valor se entiende rápido.",
       "system_layer_02_label": "02 / SITIO",
-      "system_layer_02_title": "Sitio que convierte visitas",
-      "system_layer_02_subtitle": "Velocidad y seguimiento desde día uno.",
+      "system_layer_02_title": "Prospectos calificados",
+      "system_layer_02_subtitle": "Tu web filtra y convierte.",
       "system_layer_03_label": "03 / VISIBILIDAD",
-      "system_layer_03_title": "Demanda más fácil de encontrar",
-      "system_layer_03_subtitle": "SEO y contenido para búsquedas reales.",
+      "system_layer_03_title": "Demanda constante",
+      "system_layer_03_subtitle": "Te encuentran cuando buscan.",
       "system_layer_04_label": "04 / AUTOMATIZACIÓN",
-      "system_layer_04_title": "Operación sin tareas repetidas",
-      "system_layer_04_subtitle": "Flujos simples para responder y vender.",
+      "system_layer_04_title": "Operación ligera",
+      "system_layer_04_subtitle": "Menos tareas, mejores respuestas.",
       "system_core_kicker": "TU NEGOCIO",
       "system_core_line_1": "Centro del",
       "system_core_line_2": "sistema",
@@ -348,134 +348,118 @@
       "kicker": "02 / TESIS",
       "title_prefix": "LATAM no necesita ",
       "title_emphasis": "más ruido.",
-      "paragraph_1": "Retainers sin impacto medible. Sitios bonitos que no venden. Campañas que no conversan entre sí.",
-      "paragraph_2": "Mientras tanto, los negocios pierden claridad, seguimiento y oportunidades reales cada semana.",
-      "paragraph_3": "Noctra es Ingeniería de Claridad para convertir presencia digital en negocio."
+      "paragraph_1": "Sobran agencias que venden piezas sueltas.",
+      "paragraph_2": "Tu negocio necesita presencia clara, medible y comercial.",
+      "paragraph_3": "Noctra: ingeniería para vender con claridad."
     },
     "ecosystem": {
       "kicker": "03 / ECOSISTEMA",
-      "title": "Productos para operar con claridad.",
-      "subtitle": "Servicios activos y productos propios para ordenar presencia, visibilidad y ventas.",
+      "title": "Herramientas para operar mejor.",
+      "subtitle": "Presencia, ventas y seguimiento ordenados para equipos pequeños.",
       "footnote": "Trabajo real para Dyma Group y Woodax Design.",
       "items": [
         {
           "name": "Noctra Studio",
           "layer": "CORE",
-          "badge": "Activo",
-          "description": "Presencia digital completa para PYMEs y profesionistas. Marca, sitio, visibilidad y medición trabajando juntos."
+          "badge": "ACTIVO",
+          "description": "Presencia digital lista para vender. Marca, sitio y medición en una entrega."
         },
         {
           "name": "Radar",
           "layer": "VISIBILIDAD",
           "badge": "2026",
-          "description": "Próximamente: monitoreo de oportunidades, señales y competencia.",
+          "description": "Detecta fallas de presencia, reputación y conversión.",
           "flagship_line": "Llega en 2026."
         },
         {
           "name": "Social",
           "layer": "CONTENIDO",
           "badge": "2026",
-          "description": "Próximamente: planeación y control de contenido comercial.",
+          "description": "Ordena contenido, campañas y seguimiento comercial.",
           "flagship_line": "Llega en 2026."
         },
         {
           "name": "CRM",
           "layer": "AUTOMATIZACIÓN",
-          "badge": "En desarrollo",
-          "description": "CRM WhatsApp-first para ordenar leads y seguimiento. Diseñado para cómo vende LATAM."
+          "badge": "EN DESARROLLO",
+          "description": "Seguimiento comercial sin hojas sueltas. Clientes, oportunidades y tareas en control."
         },
         {
           "name": "Discovery",
           "layer": "VENTAS",
-          "badge": "Activo",
-          "description": "Intake y calificación de leads en un flujo claro. Menos caos antes de vender."
+          "badge": "ACTIVO",
+          "description": "Diagnóstico claro antes de invertir. Prioridades, riesgos y próximos pasos."
         },
         {
           "name": "Proposals",
           "layer": "VENTAS",
-          "badge": "Activo",
-          "description": "Pipeline de propuesta a contrato firmado. Menos hojas de cálculo, más avance."
+          "badge": "EN DESARROLLO",
+          "description": "Propuestas comerciales más fáciles de cerrar. Alcance, precio y decisión sin confusión."
         },
         {
           "name": "Academy",
           "layer": "CONOCIMIENTO",
-          "badge": "MVP 2026",
-          "description": "Aprendizaje práctico desde casos reales. En fase de definición para 2026."
+          "badge": "EN DESARROLLO",
+          "description": "Criterio digital para equipos pequeños. Aprende a comprar, medir y mejorar."
         }
       ]
     },
     "services": {
       "kicker": "04 / SERVICIOS",
       "title": "Servicios para destrabar crecimiento.",
-      "subtitle": "Cada servicio resuelve un problema concreto de presencia, conversión u operación.",
-      "item_01_name": "Marca estratégica",
-      "item_01_description": "Resuelve mensajes confusos que frenan la decisión de compra.",
-      "item_01_bullets": [
-        "Posicionamiento y narrativa más claros",
-        "Jerarquía visual y dirección coherente",
-        "Base de marca útil para sitio, contenido y ventas"
-      ],
-      "item_01_price": "Desde $18,000 MXN",
-      "item_02_name": "Sitio web comercial",
-      "item_02_description": "Resuelve sitios que se ven bien, pero no convierten.",
-      "item_02_bullets": [
-        "Arquitectura y flujo pensados para conversión",
-        "Diseño premium con claridad comercial",
-        "Experiencia estable, rápida y fácil de mantener"
-      ],
+      "subtitle": "Cada servicio resuelve un problema comercial concreto.",
+      "item_01_name": "Diagnóstico de Presencia",
+      "item_01_description": "Detecta qué frena confianza, tráfico y conversión.",
+      "item_01_price": "Desde $3,500 MXN",
+      "item_02_name": "Studio Web",
+      "item_02_description": "Convierte tu sitio en una herramienta comercial.",
       "item_02_price": "Desde $35,000 MXN",
-      "item_03_name": "Visibilidad y SEO",
-      "item_03_description": "Resuelve baja demanda orgánica y poca intención de búsqueda.",
-      "item_03_bullets": [
-        "SEO técnico y fundamentos de indexación",
-        "Jerarquía de páginas y contenido más clara",
-        "GEO: visibilidad en búsquedas con IA y resultados generativos"
-      ],
-      "item_03_price": "Desde $12,000 MXN / mes",
-      "item_04_name": "Automatización comercial",
-      "item_04_description": "Resuelve seguimiento manual, leads perdidos y respuestas lentas.",
-      "item_04_bullets": [
-        "Automatizaciones para leads, citas o intake",
-        "Seguimiento más ordenado y menos manual",
-        "Procesos digitales más sostenibles para tu equipo"
-      ],
-      "item_04_price": "Desde $20,000 MXN",
+      "item_03_name": "Marca y Posicionamiento",
+      "item_03_description": "Aclara qué vendes, para quién y por qué elegirte.",
+      "item_03_price": "Desde $18,000 MXN",
+      "item_04_name": "Automatización Comercial",
+      "item_04_description": "Reduce seguimiento manual y pérdida de oportunidades.",
+      "item_04_price": "Desde $12,000 MXN",
       "item_cta": "Ver cómo funciona →",
       "model_kicker": "MODELO NOCTRA",
-      "model_title": "Servicio e ingeniería. No uno u otro.",
-      "model_subtitle": "Ese enfoque evita el trabajo genérico de agencia y también evita construir productos desconectados del mercado.",
+      "model_title": "Un solo camino para mejorar presencia.",
+      "model_subtitle": "Diagnóstico, prioridades y ejecución cuando tenga sentido.",
       "model_points": [
-        "El Estudio trabaja sobre objetivos reales de negocio: confianza, leads, visibilidad y conversión.",
-        "El software que usamos nació de resolver los mismos problemas una y otra vez: lo que funciona en el Estudio se convierte en sistema que escala.",
-        "El cliente puede trabajar con Noctra como servicio, como software o como una combinación de ambos."
+        "El trabajo empieza por claridad comercial: confianza, leads, visibilidad y conversión.",
+        "Cada entrega se ordena alrededor de decisiones que el cliente sí puede medir.",
+        "El siguiente paso siempre es diagnosticar antes de invertir más."
       ],
       "quick_read_label": "LECTURA RÁPIDA",
-      "quick_read_text": "La diferencia de Noctra no es solo hacer un sitio o un branding. Es tener una capa de implementación y una capa de software que se fortalecen mutuamente."
+      "quick_read_text": "Noctra convierte presencia dispersa en una base clara para vender mejor."
     },
     "solutions": {
       "label": "05 / PARA QUIÉN",
-      "title": "Para negocios que ya venden.",
-      "subtitle": "Dolores comunes cuando la presencia digital no acompaña el crecimiento.",
+      "title": "¿En qué industria opera tu negocio?",
+      "subtitle": "Dolores concretos que frenan decisiones comerciales.",
       "items": [
         {
-          "name": "Profesionistas",
-          "short_description": "Tu experiencia no se entiende rápido."
+          "name": "Doctores",
+          "short_description": "Pacientes comparan confianza antes de agendar."
         },
         {
-          "name": "PYMEs de servicios",
-          "short_description": "Recibes leads, pero pocos avanzan."
+          "name": "Despachos legales",
+          "short_description": "Tu experiencia debe verse antes de consultar."
         },
         {
-          "name": "Estudios y despachos",
-          "short_description": "Tu portafolio no explica tu valor."
+          "name": "Escuelas privadas",
+          "short_description": "Padres necesitan claridad antes de pedir informes."
         },
         {
-          "name": "Empresas B2B",
-          "short_description": "Tu sitio no sostiene ventas consultivas."
+          "name": "Inmobiliarias",
+          "short_description": "Propiedades sin seguimiento pierden compradores listos."
         },
         {
-          "name": "Negocios locales",
-          "short_description": "El interés llega disperso y se pierde."
+          "name": "PYMEs",
+          "short_description": "Ventas dependen demasiado de referencias informales."
+        },
+        {
+          "name": "Startups",
+          "short_description": "Tu propuesta debe entenderse en segundos."
         }
       ]
     },
@@ -880,7 +864,7 @@
       "button_secondary": "Ver proyectos"
     },
     "studio_label": "Noctra Studio",
-    "brand_tagline": "Claridad digital para negocios que necesitan vender mejor.",
+    "brand_tagline": "Claridad digital para negocios que venden en serio.",
     "sections": {
       "studio": "Studio",
       "products": "Productos",
@@ -2742,17 +2726,17 @@
   "HomeFinalCta": {
     "label": "SIGUIENTE PASO",
     "title": "Empieza con un diagnóstico.",
-    "subtitle": "Revisamos dónde estás perdiendo claridad, conversión y seguimiento.",
+    "subtitle": "Antes de invertir más, identifica qué está frenando tu presencia digital.",
     "cta": "Diagnosticar mi presencia →"
   },
   "WorkPage": {
     "badge": "Proyectos reales",
-    "title": "Ve si podemos resolver un problema como el tuyo.",
-    "subtitle": "Estos casos muestran cómo convertimos problemas comerciales en sistemas web claros, medibles y listos para operar.",
+    "title": "Tu problema ya lo hemos visto antes.",
+    "subtitle": "Dyma Group y Woodax llegaron con el mismo caos. Esto es lo que construimos.",
     "sections": {
       "in_progress": {
         "title": "Problemas reales que estamos resolviendo",
-        "description": "Cada tarjeta resume el reto del cliente, el sistema en curso y el resultado que buscamos generar.",
+        "description": "Nombre, industria, problema y resultado esperado: sin relleno.",
         "timeline_phases": {
           "discovery": "Diagnóstico",
           "design": "Diseño",
@@ -2775,17 +2759,17 @@
         },
         "projects": {
           "woodax": {
-            "challenge": "Prospectos pedían ejemplos y precios por WhatsApp sin llegar calificados.",
-            "system_built": "Plataforma de prospección con galería por tipo de proyecto y cotización guiada.",
-            "expected_outcome": "Menos filtrado manual y solicitudes de cotización con mayor intención de compra.",
+            "challenge": "Prospectos llegan por WhatsApp sin contexto ni calificación.",
+            "system_built": "Plataforma de prospección con galería y cotización guiada.",
+            "expected_outcome": "Solicitudes más claras y con mayor intención de compra.",
             "system_type": "Plataforma de prospección",
             "status_line": "En construcción · preparando lanzamiento",
             "case_study_label": "Ver caso completo"
           },
           "dyma": {
-            "challenge": "Varias unidades comunicaban por separado y confundían a prospectos sobre a quién contactar.",
-            "system_built": "Arquitectura web corporativa con mensaje de grupo y secciones por empresa.",
-            "expected_outcome": "Marca corporativa más sólida y consultas dirigidas al equipo correcto.",
+            "challenge": "Varias unidades confundían a prospectos sobre a quién contactar.",
+            "system_built": "Arquitectura web corporativa con mensaje de grupo.",
+            "expected_outcome": "Consultas más claras y dirigidas al equipo correcto.",
             "system_type": "Arquitectura web corporativa",
             "status_line": "En diseño · interfaz y arquitectura de contenido en progreso",
             "case_study_label": "Ver caso completo"
@@ -2798,7 +2782,7 @@
       },
       "industries": {
         "title": "Industrias donde podemos ayudarte",
-        "subtitle": "El enfoque cambia según tu operación; el objetivo siempre es convertir visitas en decisiones más claras.",
+        "subtitle": "Cada industria recibe una solución orientada a un resultado concreto.",
         "items": [
           {
             "name": "Servicios Profesionales",
@@ -2867,26 +2851,26 @@
         ]
       },
       "process": {
-        "title": "Cómo construimos cada sistema",
-        "subtitle": "Cuatro fases que aseguran claridad de decisión, ejecución ordenada y un lanzamiento que funciona desde el primer día.",
+        "title": "Cómo verás avanzar tu proyecto",
+        "subtitle": "Somos transparentes sobre diagnóstico, decisiones y avance. Sabes qué se construye, por qué y en qué fase está.",
         "phase_label": "Fase",
-        "cta": "Ver proceso completo",
+        "cta": "Diagnosticar mi presencia →",
         "timeline": [
           {
             "label": "Diagnóstico",
-            "description": "Mapeamos el negocio real: el contexto, el problema específico y lo que el sistema necesita resolver antes de proponer cualquier cosa."
+            "description": "Entendemos tu problema antes de proponer una solución."
           },
           {
             "label": "Diseño",
-            "description": "Definimos estructura, mensajes y experiencia antes de tocar código. El sistema toma forma en papel antes de construirse."
+            "description": "Ordenamos estructura, mensajes y experiencia antes de construir."
           },
           {
             "label": "Construcción",
-            "description": "Desarrollamos con rendimiento, claridad y capacidad de actualización futura. Sin deuda técnica innecesaria."
+            "description": "Construimos con claridad, rendimiento y base mantenible."
           },
           {
             "label": "Lanzamiento",
-            "description": "Entregamos con base estable y acompañamos la transición para que el sistema funcione correctamente desde el primer día."
+            "description": "Lanzamos con base estable y seguimiento inicial."
           }
         ]
       },
@@ -2897,40 +2881,40 @@
           {
             "category": "Casos",
             "icon": "rotate",
-            "question": "¿Cómo sé si pueden resolver un problema como el mío?",
-            "answer": "Sí. Esta página muestra sistemas activos y documentamos cada caso al completarse. En conversación compartimos previas más detalladas según el tipo de proyecto."
+            "question": "¿Han trabajado en algo parecido a mi caso?",
+            "answer": "Esta página muestra sistemas activos y casos documentados. En la llamada revisamos referencias más cercanas a tu industria o problema."
           },
           {
             "category": "Ubicación",
             "icon": "globe",
-            "question": "¿Puedo trabajar con ustedes si no estoy en Querétaro?",
+            "question": "¿Trabajan con clientes fuera de Querétaro?",
             "answer": "Sí. Noctra trabaja de forma remota con clientes en México y fuera del país, con un proceso claro para comunicación, revisión y lanzamiento."
           },
           {
             "category": "Fit",
             "icon": "briefcase",
-            "question": "¿Mi negocio es demasiado chico o demasiado específico?",
-            "answer": "Firmas profesionales, empresas de manufactura, grupos corporativos, escuelas y compañías que necesitan que su presencia digital refleje realmente la calidad de su trabajo."
+            "question": "¿Tiene sentido para una PYME o profesionista?",
+            "answer": "Sí, cuando tu presencia digital ya afecta confianza, ventas, seguimiento o claridad comercial."
           },
           {
             "category": "Proceso",
             "icon": "message-square",
-            "question": "¿Tengo que rehacer todo mi sitio desde cero?",
-            "answer": "Ambas. Algunos proyectos inician con un sistema nuevo. Otros arrancan con un diagnóstico del sitio actual y reconstruyen las partes que están frenando los resultados."
+            "question": "¿Tendría que rehacer mi sitio completo?",
+            "answer": "No siempre. Primero diagnosticamos qué está frenando resultados y decidimos si conviene mejorar, reconstruir o empezar de nuevo."
           },
           {
             "category": "Garantía",
             "icon": "briefcase",
-            "question": "¿Qué pasa si el proyecto no genera lo acordado?",
-            "answer": "Sí. Todos los proyectos desde $20,000 MXN incluyen una garantía formal: definimos KPIs contigo antes de empezar y, si no los alcanzamos en el período acordado, recibes un reembolso proporcional. Todo queda en el contrato. Conoce cómo funciona en detalle en <link>nuestra página de garantía</link>."
+            "question": "¿Qué pasa si no se cumplen los objetivos?",
+            "answer": "En proyectos desde $20,000 MXN definimos KPIs antes de empezar. Si no se alcanzan en el periodo acordado, aplica un reembolso proporcional documentado en contrato. Conoce los detalles en <link>nuestra página de garantía</link>."
           }
         ]
       }
     },
     "cta": {
-      "title": "¿Te está pasando algo parecido?",
-      "subtitle": "Revisamos tu caso, te decimos si tiene sentido trabajar juntos y definimos el siguiente paso sin vueltas.",
-      "button": "Quiero revisar mi caso"
+      "title": "¿Quieres saber qué mejorar primero?",
+      "subtitle": "Revisamos tu presencia actual y te decimos qué está frenando claridad, confianza o conversión.",
+      "button": "Diagnosticar mi presencia →"
     }
   },
   "TrustedBy": {

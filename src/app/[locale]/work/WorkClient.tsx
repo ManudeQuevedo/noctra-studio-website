@@ -55,23 +55,23 @@ export default function WorkClient({
   const proofContent =
     locale.startsWith("es")
       ? {
-          label: "Proceso transparente",
-          title: "Te mostramos cómo se construye antes de prometer resultados.",
+          label: "Avance visible",
+          title: "Transparencia sobre el proceso.",
           subtitle:
-            "Verás diagnóstico, decisiones y avance por fase para saber qué se está construyendo y por qué.",
+            "Ves diagnóstico, decisiones y avance por fase. Sin promesas vagas ni cajas negras.",
         }
       : {
-          label: "Transparent process",
-          title: "We show how the work is built before promising results.",
+          label: "Visible progress",
+          title: "Transparency about the process.",
           subtitle:
-            "You see the diagnosis, decisions, and phase progress so you know what is being built and why.",
+            "You see diagnosis, decisions, and phase progress. No vague promises or black boxes.",
         };
 
   return (
     <LazyMotion features={domAnimation}>
       <main className="min-h-screen bg-[#050505] text-white">
         {/* Header */}
-        <section className="pt-48 pb-16 px-6">
+        <section className="px-6 pb-24 pt-48 md:pb-32">
           <div className="max-w-4xl mx-auto text-center space-y-6">
             <m.div
               initial={{ opacity: 0, scale: 0.95 }}
@@ -91,7 +91,7 @@ export default function WorkClient({
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.6, delay: 0.1 }}
-              className="text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
+              className="mb-16 text-lg md:text-xl text-neutral-400 max-w-2xl mx-auto leading-relaxed">
               {t("subtitle")}
             </m.p>
           </div>
@@ -202,15 +202,6 @@ export default function WorkClient({
                   </m.div>
                 );
               })}
-            </div>
-
-            <div className="pt-12 text-center">
-              <Link
-                href="/services"
-                className="inline-flex items-center gap-3 px-8 py-4 bg-white text-black font-bold rounded-full hover:bg-neutral-200 transition-all duration-300 group">
-                {t("sections.process.cta")}
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
-              </Link>
             </div>
           </div>
         </section>
@@ -430,8 +421,8 @@ export default function WorkClient({
                 href={{
                   pathname: "/contact",
                   query: {
-                    intent: "discovery_call",
-                    cta: "schedule_discovery",
+                    intent: "radar_diagnostic",
+                    cta: "work_final",
                   },
                 }}
                 className="inline-flex items-center gap-3 px-10 py-5 bg-white text-black font-bold text-xl rounded-full hover:bg-neutral-200 transition-all duration-300 group">

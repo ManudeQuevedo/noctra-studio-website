@@ -29,14 +29,13 @@ const LABEL = {
   },
   results: { es: "05 · Resultados", en: "05 · Results" },
   ctaTitle: {
-    es: "¿Este sistema aplica a tu negocio?",
-    en: "Does this system apply to your business?",
+    es: "¿Quieres revisar tu presencia?",
+    en: "Want to review your presence?",
   },
   ctaPrimary: {
-    es: "Aplicar este sistema a mi negocio",
-    en: "Apply this system to my business",
+    es: "Diagnosticar mi presencia →",
+    en: "Diagnose my presence →",
   },
-  ctaSecondary: { es: "← Volver a casos", en: "← Back to cases" },
 };
 
 function t(key: keyof typeof LABEL, locale: string): string {
@@ -298,15 +297,10 @@ export default function CaseStudyClient({ project, locale }: Props) {
           </h2>
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-4">
             <Link
-              href={`/${locale}/contact?intent=discovery_call&cta=case_study`}
+              href={`/${locale}/contact?intent=radar_diagnostic&cta=case_study`}
               className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-4 bg-white text-black font-bold uppercase tracking-wider text-sm rounded-xl hover:bg-neutral-200 transition-colors group">
               {t("ctaPrimary", locale)}
               <ArrowRight className="w-4 h-4 group-hover:translate-x-0.5 transition-transform" />
-            </Link>
-            <Link
-              href={`/${locale}/work`}
-              className="w-full sm:w-auto px-8 py-4 bg-transparent text-white border border-white/10 font-bold uppercase tracking-wider text-sm rounded-xl hover:bg-white/5 transition-colors">
-              {t("ctaSecondary", locale)}
             </Link>
           </div>
         </motion.div>

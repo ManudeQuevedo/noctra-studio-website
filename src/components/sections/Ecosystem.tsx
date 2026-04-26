@@ -28,8 +28,8 @@ const itemConfigs: ItemConfig[] = [
   { number: "03", status: "in_dev",   wide: false },
   { number: "04", status: "in_dev",   wide: false },
   { number: "05", status: "active",   wide: false },
-  { number: "06", status: "active",   wide: false },
-  { number: "07", status: "mvp",      wide: false },
+  { number: "06", status: "in_dev",   wide: false },
+  { number: "07", status: "in_dev",   wide: false },
 ];
 
 const badgeClass: Record<BadgeStatus, string> = {

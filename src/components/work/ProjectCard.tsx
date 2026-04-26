@@ -90,7 +90,6 @@ export function ProjectCard({
     localizedProject?.expected_outcome ||
     "A stronger digital foundation that supports long-term growth.";
 
-  const systemType = localizedProject?.system_type;
   const statusLine = localizedProject?.status_line;
   const projectStatusLabel =
     (project.status as string) === "completed"
@@ -126,11 +125,6 @@ export function ProjectCard({
 
       <div className="space-y-8 flex-grow">
         <div className="space-y-4">
-          {systemType ? (
-            <span className="inline-flex items-center rounded-full border border-emerald-500/20 bg-emerald-500/10 px-3 py-1 text-[10px] font-mono font-bold uppercase tracking-widest text-emerald-500">
-              {systemType}
-            </span>
-          ) : null}
           <div className="grid gap-3">
             <p className="text-sm text-neutral-300 leading-relaxed">
               <span className="font-mono text-[10px] uppercase tracking-widest text-neutral-500">

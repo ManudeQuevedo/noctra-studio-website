@@ -3602,12 +3602,12 @@
   },
   "WorkPage": {
     "badge": "Real projects",
-    "title": "See whether we can solve a problem like yours.",
-    "subtitle": "These cases show how we turn business problems into clear, measurable web systems ready to operate.",
+    "title": "We have seen your problem before.",
+    "subtitle": "Dyma Group and Woodax arrived with the same chaos. This is what we built.",
     "sections": {
       "in_progress": {
         "title": "Real problems we are solving",
-        "description": "Each card summarizes the client challenge, the system in progress, and the result we are working toward.",
+        "description": "Name, industry, problem, and expected outcome: no filler.",
         "timeline_phases": {
           "discovery": "Diagnosis",
           "design": "Design",
@@ -3630,17 +3630,17 @@
         },
         "projects": {
           "woodax": {
-            "challenge": "Leads asked for examples and pricing over WhatsApp without arriving qualified.",
-            "system_built": "A prospecting platform with a project-type gallery and guided quote flow.",
-            "expected_outcome": "Less manual filtering and quote requests with stronger purchase intent.",
+            "challenge": "Leads arrive through WhatsApp without context or qualification.",
+            "system_built": "A prospecting platform with gallery and guided quote flow.",
+            "expected_outcome": "Clearer requests with stronger purchase intent.",
             "system_type": "Prospecting platform",
             "status_line": "In build · preparing for launch",
             "case_study_label": "View full case"
           },
           "dyma": {
-            "challenge": "Several business units communicated separately and confused prospects about who to contact.",
-            "system_built": "A corporate web architecture with group messaging and company sections.",
-            "expected_outcome": "A stronger corporate brand and inquiries routed to the right team.",
+            "challenge": "Several units confused prospects about who to contact.",
+            "system_built": "Corporate web architecture with group messaging.",
+            "expected_outcome": "Clearer inquiries routed to the right team.",
             "system_type": "Corporate web architecture",
             "status_line": "In design · interface and content architecture in progress",
             "case_study_label": "View full case"
@@ -3653,7 +3653,7 @@
       },
       "industries": {
         "title": "Industries we can help",
-        "subtitle": "The approach changes by operation; the goal is always to turn visits into clearer decisions.",
+        "subtitle": "Each industry gets a solution oriented to a concrete result.",
         "items": [
           {
             "name": "Professional Services",
@@ -3722,26 +3722,26 @@
         ]
       },
       "process": {
-        "title": "How we build each system",
-        "subtitle": "Four phases that ensure decision clarity, structured execution, and a launch that works from day one.",
+        "title": "How you will see progress",
+        "subtitle": "We are transparent about diagnosis, decisions, and progress. You know what is being built, why, and where it stands.",
         "phase_label": "Phase",
-        "cta": "See full process",
+        "cta": "Diagnose my presence →",
         "timeline": [
           {
             "label": "Diagnosis",
-            "description": "We map the real business: context, specific problem, and what the system needs to solve before proposing anything."
+            "description": "We understand your problem before proposing a solution."
           },
           {
             "label": "Design",
-            "description": "We define structure, messaging, and experience before touching code. The system takes shape on paper before being built."
+            "description": "We organize structure, messaging, and experience before building."
           },
           {
             "label": "Build",
-            "description": "We develop with performance, clarity, and future maintainability in mind. No unnecessary technical debt."
+            "description": "We build for clarity, performance, and maintainability."
           },
           {
             "label": "Launch",
-            "description": "We ship with a stable foundation and support the handoff so the system works correctly from the first day."
+            "description": "We launch with a stable foundation and initial follow-up."
           }
         ]
       },
@@ -3752,40 +3752,40 @@
           {
             "category": "Cases",
             "icon": "rotate",
-            "question": "How do I know you can solve a problem like mine?",
-            "answer": "Yes. This page shows active systems and we document each case upon completion. In conversation we share more detailed previews based on the project type."
+            "question": "Have you worked on something like my case?",
+            "answer": "This page shows active systems and documented cases. On the call, we review references closer to your industry or problem."
           },
           {
             "category": "Location",
             "icon": "globe",
-            "question": "Can I work with you if I am not in Querétaro?",
+            "question": "Do you work with clients outside Querétaro?",
             "answer": "Yes. Noctra works remotely with clients across Mexico and beyond, using a clear process for communication, review, and launch."
           },
           {
             "category": "Fit",
             "icon": "briefcase",
-            "question": "Is my business too small or too specific?",
-            "answer": "Professional firms, manufacturing companies, corporate groups, schools, and businesses that need their digital presence to actually reflect the quality of their work."
+            "question": "Does this make sense for a small business or professional?",
+            "answer": "Yes, when your digital presence already affects trust, sales, follow-up, or commercial clarity."
           },
           {
             "category": "Process",
             "icon": "message-square",
-            "question": "Do I need to rebuild my whole site from scratch?",
-            "answer": "Both. Some projects start with a new system. Others begin with a diagnosis of the current site and rebuild the parts that are holding results back."
+            "question": "Would I need to rebuild my whole site?",
+            "answer": "Not always. We first diagnose what is holding results back, then decide whether to improve, rebuild, or start fresh."
           },
           {
             "category": "Guarantee",
             "icon": "briefcase",
-            "question": "What happens if the project does not generate what we agreed?",
-            "answer": "Yes. All projects from $20,000 MXN include a formal guarantee: we define KPIs with you before starting, and if we do not reach them within the agreed period, you receive a proportional refund. Everything is in the contract. Learn how it works in detail on <link>our guarantee page</link>."
+            "question": "What happens if the goals are not met?",
+            "answer": "For projects from $20,000 MXN, we define KPIs before starting. If they are not met within the agreed period, a contract-backed proportional refund applies. Learn the details on <link>our guarantee page</link>."
           }
         ]
       }
     },
     "cta": {
-      "title": "Is something similar happening in your business?",
-      "subtitle": "We review your case, tell you whether working together makes sense, and define the next step without unnecessary back-and-forth.",
-      "button": "Review my case"
+      "title": "Want to know what to improve first?",
+      "subtitle": "We review your current presence and show what is holding back clarity, trust, or conversion.",
+      "button": "Diagnose my presence →"
     }
   },
   "BlogPage": {

@@ -96,7 +96,7 @@ const ES_COPY: ServicesPageCopy = {
   heroBadge: "SERVICIOS NOCTRA",
   title: "Más clientes desde tu presencia digital",
   subtitle:
-    "Diagnóstico, web, visibilidad y automatización conectados para generar oportunidades medibles.",
+    "Claridad, visibilidad y seguimiento para generar oportunidades medibles.",
   heroPrimaryCta: "Diagnosticar mi presencia →",
 
   /* 2. THE PROBLEM */
@@ -119,7 +119,7 @@ const ES_COPY: ServicesPageCopy = {
 
   /* 3. THE NOCTRA SYSTEM */
   systemLabel: "EL SISTEMA NOCTRA",
-  systemTitle: "De diagnóstico a crecimiento medible.",
+  systemTitle: "De diagnóstico a oportunidades medibles.",
   systemSteps: [
     {
       step: "01",
@@ -148,22 +148,21 @@ const ES_COPY: ServicesPageCopy = {
   ],
 
   /* 4. SERVICES AS IMPLEMENTATION */
-  servicesLabel: "CAPAS DE IMPLEMENTACIÓN",
-  servicesTitle: "Recibes las capas que tu presencia necesita.",
+  servicesLabel: "QUÉ RECIBES",
+  servicesTitle: "Las piezas necesarias para crecer.",
   servicesSubtitle:
-    "Activamos solo lo que el diagnóstico prioriza para mover resultados.",
+    "Activamos solo lo que tu diagnóstico necesita ahora.",
   serviceLayers: [
     {
       id: "identity",
       eyebrow: "CAPA 01",
       title: "Identidad y posicionamiento",
-      when: "Cuando tu oferta se percibe genérica o poco clara.",
-      outcome: "Más confianza, mejor percepción y una oferta fácil de elegir.",
+      when: "Tu oferta se percibe genérica o poco clara.",
+      outcome: "Más confianza y una oferta fácil de elegir.",
       capabilities: [
-        "Branding estratégico",
+        "Branding",
         "Narrativa",
         "Sistema visual",
-        "Posicionamiento",
       ],
       intent: "branding",
       icon: Sparkles,
@@ -175,12 +174,12 @@ const ES_COPY: ServicesPageCopy = {
       id: "infrastructure",
       eyebrow: "CAPA 02",
       title: "Infraestructura digital",
-      when: "Cuando tu sitio no explica, no convence o no convierte.",
+      when: "Tu sitio no explica, convence o convierte.",
       outcome: "Un sitio rápido que convierte visitas en oportunidades.",
       capabilities: [
-        "Website Next.js",
+        "Sitio web",
         "CRO",
-        "Landing pages",
+        "Landings",
         "E-commerce",
       ],
       intent: "web_presence",
@@ -193,13 +192,12 @@ const ES_COPY: ServicesPageCopy = {
       id: "visibility",
       eyebrow: "CAPA 03",
       title: "Adquisición y visibilidad",
-      when: "Cuando te buscan poco o dependes demasiado de pauta.",
+      when: "Te encuentran poco o dependes de pauta.",
       outcome: "Más tráfico cualificado y menor dependencia de anuncios.",
       capabilities: [
-        "SEO técnico",
+        "SEO",
         "Contenido",
         "Autoridad",
-        "Radar",
       ],
       intent: "visibility",
       icon: Search,
@@ -211,8 +209,8 @@ const ES_COPY: ServicesPageCopy = {
       id: "automation",
       eyebrow: "CAPA 04",
       title: "Automatización y optimización",
-      when: "Cuando el seguimiento manual retrasa oportunidades.",
-      outcome: "Menos fricción, mejor respuesta y más capacidad de escalar.",
+      when: "El seguimiento manual retrasa oportunidades.",
+      outcome: "Mejor respuesta y más capacidad de escalar.",
       capabilities: [
         "IA",
         "Leads",
@@ -241,7 +239,7 @@ const ES_COPY: ServicesPageCopy = {
 
   /* Sticky bar */
   stickyLabel: "Servicios Noctra",
-  stickyCta: "Diagnosticar →",
+  stickyCta: "Diagnosticar mi presencia →",
 };
 
 /* ─────────────────────── EN copy ─────────────────────── */
@@ -251,7 +249,7 @@ const EN_COPY: ServicesPageCopy = {
   heroBadge: "NOCTRA SERVICES",
   title: "More clients from your digital presence",
   subtitle:
-    "Diagnosis, web, visibility, and automation connected to generate measurable opportunities.",
+    "Clarity, visibility, and follow-up to generate measurable opportunities.",
   heroPrimaryCta: "Diagnose my presence →",
 
   /* 2. THE PROBLEM */
@@ -274,7 +272,7 @@ const EN_COPY: ServicesPageCopy = {
 
   /* 3. THE NOCTRA SYSTEM */
   systemLabel: "THE NOCTRA SYSTEM",
-  systemTitle: "From diagnosis to measurable growth.",
+  systemTitle: "From diagnosis to measurable opportunities.",
   systemSteps: [
     {
       step: "01",
@@ -285,7 +283,7 @@ const EN_COPY: ServicesPageCopy = {
     {
       step: "02",
       title: "System design",
-      description: "We define what to activate, in what order, and why.",
+      description: "We define what to activate, in what order, and for what goal.",
       icon: Compass,
     },
     {
@@ -303,22 +301,21 @@ const EN_COPY: ServicesPageCopy = {
   ],
 
   /* 4. SERVICES AS IMPLEMENTATION */
-  servicesLabel: "IMPLEMENTATION LAYERS",
-  servicesTitle: "You receive the layers your presence needs.",
+  servicesLabel: "WHAT YOU RECEIVE",
+  servicesTitle: "The pieces needed to grow.",
   servicesSubtitle:
-    "We activate only what the diagnosis prioritizes to move results.",
+    "We activate only what your diagnosis needs now.",
   serviceLayers: [
     {
       id: "identity",
       eyebrow: "LAYER 01",
       title: "Identity & positioning",
-      when: "When your offer feels generic or unclear.",
-      outcome: "More trust, stronger perception, and an offer people choose.",
+      when: "Your offer feels generic or unclear.",
+      outcome: "More trust and an offer people choose.",
       capabilities: [
-        "Strategic branding",
+        "Branding",
         "Narrative",
         "Visual system",
-        "Positioning",
       ],
       intent: "branding",
       icon: Sparkles,
@@ -330,12 +327,12 @@ const EN_COPY: ServicesPageCopy = {
       id: "infrastructure",
       eyebrow: "LAYER 02",
       title: "Digital infrastructure",
-      when: "When your site does not explain, persuade, or convert.",
+      when: "Your site does not explain, persuade, or convert.",
       outcome: "A fast site that turns visits into opportunities.",
       capabilities: [
-        "Next.js website",
+        "Website",
         "CRO",
-        "Landing pages",
+        "Landings",
         "E-commerce",
       ],
       intent: "web_presence",
@@ -348,13 +345,12 @@ const EN_COPY: ServicesPageCopy = {
       id: "visibility",
       eyebrow: "LAYER 03",
       title: "Acquisition & visibility",
-      when: "When people barely find you or ads do all the work.",
+      when: "People barely find you or ads do the work.",
       outcome: "More qualified traffic and less dependency on ads.",
       capabilities: [
-        "Technical SEO",
+        "SEO",
         "Content",
         "Authority",
-        "Radar",
       ],
       intent: "visibility",
       icon: Search,
@@ -366,8 +362,8 @@ const EN_COPY: ServicesPageCopy = {
       id: "automation",
       eyebrow: "LAYER 04",
       title: "Automation & optimization",
-      when: "When manual follow-up slows opportunities down.",
-      outcome: "Less friction, better response, and more room to scale.",
+      when: "Manual follow-up slows opportunities down.",
+      outcome: "Better response and more room to scale.",
       capabilities: [
         "AI",
         "Leads",
@@ -396,7 +392,7 @@ const EN_COPY: ServicesPageCopy = {
 
   /* Sticky bar */
   stickyLabel: "Noctra Services",
-  stickyCta: "Diagnose →",
+  stickyCta: "Diagnose my presence →",
 };
 
 /* ─────────────────────── animation presets ─────────────── */
@@ -442,15 +438,9 @@ function ServiceLayerCard({
           <p className="mb-3 text-[10px] font-black uppercase tracking-[0.26em] text-neutral-500">
             {copy.capabilitiesLabel}
           </p>
-          <div className="flex flex-wrap gap-2">
-            {layer.capabilities.map((cap) => (
-              <span
-                key={cap}
-                className="rounded-full border border-white/10 bg-black/30 px-3 py-2 text-xs font-bold uppercase tracking-[0.18em] text-neutral-200">
-                {cap}
-              </span>
-            ))}
-          </div>
+          <p className="text-sm font-bold uppercase tracking-[0.14em] text-neutral-200">
+            {layer.capabilities.join(" · ")}
+          </p>
         </div>
       </div>
 
@@ -730,7 +720,7 @@ export default function ServicesClient() {
                   cta: "services_sticky",
                 },
               }}
-              className="shrink-0 rounded-xl bg-white px-4 py-3 text-xs font-black uppercase tracking-[0.16em] text-black">
+              className="max-w-[56%] rounded-xl bg-white px-4 py-3 text-center text-[10px] font-black uppercase leading-tight tracking-[0.12em] text-black">
               {copy.stickyCta}
             </Link>
           </m.div>
