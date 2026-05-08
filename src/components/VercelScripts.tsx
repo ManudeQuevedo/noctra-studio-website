@@ -3,11 +3,12 @@
 import { useEffect, useState } from "react";
 import { SpeedInsights } from "@vercel/speed-insights/next";
 import { Analytics } from "@vercel/analytics/react";
+import { GoogleAnalytics } from "@next/third-parties/google";
 import { getStoredConsent } from "@/lib/cookie-utils";
 
 /**
  * VercelScripts Component
- * Conditionally renders Vercel Analytics and Speed Insights based on user consent.
+ * Conditionally renders Analytics (Vercel & Google) and Speed Insights based on user consent.
  */
 export function VercelScripts() {
   const [hasConsent, setHasConsent] = useState(false);
@@ -40,10 +41,13 @@ export function VercelScripts() {
 
   if (!hasConsent) return null;
 
+  const gaId = process.env.NEXT_PUBLIC_GA_ID;
+
   return (
     <>
       <SpeedInsights />
       <Analytics />
+      {gaId && <GoogleAnalytics gaId={gaId} />}
     </>
   );
 }
