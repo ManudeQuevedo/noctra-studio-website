@@ -349,25 +349,25 @@
       "system_legend_in": "The system returns results"
     },
     "thesis": {
-      "kicker": "02 / THESIS",
+      "kicker": "00 / THESIS",
       "headline": "Your business doesn't have a quality problem. It has a visibility problem.",
       "problem": "Most businesses in Mexico run well, but nobody finds them. They have a logo from one designer, a site built by another, and someone else running social. Three vendors, three invoices, zero system. Nobody is accountable for the complete result.",
       "consequence": "The customer arrives by referral or doesn't arrive. The site exists but doesn't sell. Social gets posted but produces nothing measurable. That isn't bad luck. It's a lack of architecture.",
       "positioning": "Noctra builds the complete system that covers your brand, site, visibility in search engines and artificial intelligence, and also measures it month by month. A single team, accountable for the result. No excuses between vendors."
     },
     "ecosystem": {
-      "kicker": "03 / ECOSYSTEM",
+      "kicker": "01 / ECOSYSTEM",
       "title": "We don't just build your presence. We give you the tools to grow.",
-      "subtitle": "Every Noctra client gets access to software we built, powered by AI. You decide whether you run it or we manage it for you.",
+      "subtitle": "Depending on your plan, you get access to software built by Noctra, powered by AI. You decide whether you run it or we manage it for you.",
       "ai_costs": "AI costs go directly to the provider (OpenAI, Google, Anthropic). Noctra configures everything and guides you to keep them efficient — no intermediaries, no markups.",
       "ownership": {
-        "headline": "Your data, always yours.",
-        "copy": "If you decide to work with another provider, we hand over everything — access, data, code, and content. No retention, no additional charges. We build for your independence, not your dependency."
+        "headline": "Your data and your website, always yours.",
+        "copy": "If you decide to work with another provider, we hand over all your data, your website code, and all your digital access — domain, hosting, and accounts. Access to Noctra tools is included while you have an active plan."
       },
       "ownership_stats": [
-        { "value": "100%", "label": "of your access, always" },
+        { "value": "100%", "label": "of your data, always exportable" },
         { "value": "0", "label": "cancellation penalty" },
-        { "value": "1", "label": "team accountable" }
+        { "value": "1", "label": "team accountable for results" }
       ],
       "products": [
         {
@@ -377,9 +377,21 @@
           "name": "Noctra Radar",
           "category": "Visibility",
           "description": "Monitor how your brand appears on Google, ChatGPT, Gemini, and Perplexity. Detect opportunities and drops before they affect your business.",
+          "plan_availability": "Included in Noctra Presence and Noctra System",
           "managed_line": "Available with Noctra management",
           "cta_app": "radar",
           "cta_label": "Open Radar →"
+        },
+        {
+          "id": "noctra-ops",
+          "status": "july_2026",
+          "badge": "JULY 2026",
+          "icon": "layers",
+          "name": "Noctra Ops",
+          "category": "Operations",
+          "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. The complete commercial flow, unified.",
+          "plan_availability": "Included in Noctra System",
+          "internal_note": "In development. Available July 2026."
         },
         {
           "id": "noctra-social",
@@ -388,16 +400,8 @@
           "name": "Noctra Social",
           "category": "Content",
           "description": "AI-powered social media content generation, aligned to your brand and editorial calendar. Ready to publish.",
+          "plan_availability": "Available in Presence and System plans",
           "managed_line": "Available with Noctra management"
-        },
-        {
-          "id": "noctra-ops",
-          "status": "coming_soon",
-          "badge": "JULY 2026",
-          "icon": "layers",
-          "name": "Noctra Ops",
-          "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. Noctra's complete commercial flow, unified.",
-          "internal_note": "In development. Available for clients in July 2026."
         }
       ]
     },
@@ -450,40 +454,44 @@
       "quick_read_text": "The Noctra difference is not just making a website or a brand. It is having an implementation layer and a software layer that strengthen each other."
     },
     "solutions": {
-      "label": "04 / FOR WHOM",
+      "label": "02 / FOR WHOM",
       "title": "For businesses that already sell.",
       "subtitle": "Common pains when digital presence doesn't accompany growth.",
       "items": [
         {
-          "name": "Professionals",
-          "short_description": "Your expertise isn't understood quickly."
+          "name": "Doctors",
+          "short_description": "Patients compare trust before booking."
         },
         {
-          "name": "Service SMEs",
-          "short_description": "You receive leads, but few advance."
+          "name": "Lawyers",
+          "short_description": "Your expertise must show before they walk in."
         },
         {
-          "name": "Studios and firms",
-          "short_description": "Your portfolio doesn't explain your value."
+          "name": "Real estate agencies",
+          "short_description": "Listings without follow-up lose ready buyers."
         },
         {
-          "name": "B2B Companies",
-          "short_description": "Your site doesn't support consultative sales."
+          "name": "Schools",
+          "short_description": "Families compare online before asking for info."
         },
         {
-          "name": "Local businesses",
-          "short_description": "Interest arrives scattered and gets lost."
+          "name": "Startups",
+          "short_description": "Your pitch must land in seconds."
+        },
+        {
+          "name": "Small business",
+          "short_description": "Sales lean too hard on informal referrals."
         }
       ]
     },
     "pricingAnchor": {
-      "label": "05 / INVESTMENT",
+      "label": "03 / INVESTMENT",
       "headline": "Clear pricing. No surprises.",
       "subheadline": "We know budget matters. That's why our prices are public, fixed, and without fine print.",
       "support_line": "Not sure which one you need? Start with a free diagnosis.",
       "payment_indicator_stripe": "Card via Stripe",
       "payment_indicator_transfer": "Bank transfer",
-      "payment_indicator_msi": "Installments available from $32,000 MXN",
+      "payment_indicator_msi": "Installments available from $20,000 MXN",
       "cta": "View all services and pricing →",
       "philosophy": "All projects require 50% upfront. Monthly subscriptions with no minimum contract — cancel anytime.",
       "packages": [
@@ -5563,9 +5571,6 @@
     "cta": "Schedule consultation to validate these numbers",
     "disclaimer": "* Estimated calculations based on industry benchmarks. Real results vary by business."
   },
-  "TrustedBy": {
-    "title": "Our Engineering Arsenal"
-  },
   "CaseStudies": {
     "hero": {
       "title": "Case Studies — Real Problem Solving through Design and Code",
@@ -5825,10 +5830,52 @@
     },
     "software": {
       "section_label": "00B / SOFTWARE",
-      "headline": "Brand infrastructure + proprietary software. All included.",
-      "subheadline": "Every Noctra project includes access to the tools we built so your business grows with or without us.",
+      "headline": "Brand infrastructure + proprietary software.",
+      "subheadline": "The tools we built are available based on your plan. The more your business grows, the more tools you have access to.",
+      "access_matrix": {
+        "title": "What does each plan include?",
+        "columns": [
+          {
+            "tier": "base",
+            "name": "Noctra Base",
+            "price_hint": "$18,000 MXN",
+            "included": [
+              "Website delivered",
+              "Brand configured",
+              "Basic SEO activated"
+            ],
+            "excluded": ["No Noctra product access"],
+            "note": "Tools are available as a monthly add-on."
+          },
+          {
+            "tier": "presence",
+            "name": "Noctra Presence",
+            "price_hint": "$32,000 MXN",
+            "included": [
+              "Everything in Base",
+              "Noctra Radar — 3 months included",
+              "Noctra Social — when available"
+            ],
+            "excluded": ["No Noctra Ops"],
+            "note": "After 3 months, Radar continues as a monthly add-on."
+          },
+          {
+            "tier": "system",
+            "name": "Noctra System",
+            "price_hint": "$55,000 MXN",
+            "included": [
+              "Everything in Presence",
+              "Noctra Radar — 6 months included",
+              "Noctra Ops — when available (July 2026)",
+              "Noctra Social — when available"
+            ],
+            "excluded": [],
+            "note": "Management included for the first 3 months. Then as add-on."
+          }
+        ]
+      },
       "radar": {
-        "status": "INCLUDED IN PRESENCE AND SYSTEM",
+        "status": "ACTIVE · PRESENCE AND SYSTEM",
         "name": "Noctra Radar",
         "description": "Monitors your brand visibility on Google, ChatGPT, Gemini, and Perplexity in real time. Detects when competitors outrank you, identifies opportunity keywords, and measures how AI mentions you.",
         "option_a_title": "You run it",
@@ -5838,20 +5885,29 @@
         "option_b_badge": "Add-on: from $1,800 MXN + VAT / month"
       },
       "ops": {
-        "badge": "JULY 2026",
+        "status": "JULY 2026 · SYSTEM ONLY",
         "name": "Noctra Ops",
-        "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. Noctra's complete commercial flow, unified.",
-        "internal_note": "In development. Available for clients in July 2026."
+        "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. Noctra's complete commercial flow, unified. Your client goes from prospect to signed without leaving one flow.",
+        "internal_note": "Tool included in Noctra System. In development — available July 2026."
       },
-      "coming_soon": "Noctra Social — AI content management · Coming soon",
+      "social": {
+        "status": "COMING SOON · PRESENCE AND SYSTEM",
+        "name": "Noctra Social",
+        "description": "AI-powered social media content generation, aligned to your brand voice and editorial calendar. You approve, Noctra publishes — or you publish it yourself.",
+        "option_a_title": "You run it",
+        "option_a_description": "Access to the content generator. You approve and publish each post.",
+        "option_b_title": "We manage it",
+        "option_b_description": "Noctra generates, schedules, and publishes for you every month.",
+        "option_b_badge": "Add-on: from $3,500 MXN + VAT / month"
+      },
       "ai_costs": "AI costs go directly to the provider (OpenAI, Google, Anthropic). Noctra configures everything and guides you to keep your costs efficient and predictable — no intermediaries, no markups. You pay the provider directly at their published price.",
-      "ownership_quote": "If you ever decide to change providers, we hand over everything unconditionally.",
+      "ownership_quote": "If you decide to leave, your data and your website go with you. Access to Noctra tools is included while you have an active plan.",
       "ownership_points": [
-        "All access — domain, hosting, accounts, and tools",
-        "All data — content, leads, and historical metrics",
-        "All the code — your website belongs to you, not us"
+        "All access — domain, hosting, accounts, and digital tools",
+        "All your data — leads, historical metrics, and generated content",
+        "Your website code — built for you, owned by you"
       ],
-      "ownership_closing": "No penalties. No retention. No fine print."
+      "ownership_closing": "No penalties. No data retention. No fine print."
     },
     "projects": {
       "label": "01 / PROJECTS",

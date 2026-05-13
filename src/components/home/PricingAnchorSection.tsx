@@ -4,6 +4,10 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 import { Building2, CalendarDays, CreditCard } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
+import {
+  homeSectionContainerClass,
+  homeSectionKickerClass,
+} from "@/components/home/homeSectionFrame";
 
 const viewport = { once: true, margin: "-10%" } as const;
 
@@ -23,14 +27,14 @@ export function PricingAnchorSection() {
     <LazyMotion features={domAnimation}>
       <section
         id="inversion"
-        className="scroll-mt-28 bg-[#050505] px-6 py-20 md:px-8 md:py-[120px]">
-        <div className="mx-auto max-w-6xl">
+        className="scroll-mt-28 bg-[#050505] pt-24 pb-20 md:pt-24 md:pb-[120px]">
+        <div className={homeSectionContainerClass}>
           <m.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={viewport}
-            className="mb-6 text-center text-[11px] font-medium uppercase tracking-[0.24em] text-emerald-400 will-change-transform md:text-left">
+            className={`${homeSectionKickerClass} will-change-transform`}>
             {t("label")}
           </m.p>
 

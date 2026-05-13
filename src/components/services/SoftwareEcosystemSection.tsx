@@ -2,38 +2,60 @@
 
 import { m } from "framer-motion";
 import {
-  Clock,
+  Check,
   Code,
   Database,
   Key,
   Layers,
   Monitor,
   Radio,
+  Rss,
   Users,
+  X,
   Zap,
 } from "lucide-react";
+
+export type AccessMatrixColumn = {
+  tier: "base" | "presence" | "system";
+  name: string;
+  price_hint: string;
+  included: string[];
+  excluded: string[];
+  note: string;
+};
+
+export type SoftwareProductOptions = {
+  option_a_title: string;
+  option_a_description: string;
+  option_b_title: string;
+  option_b_description: string;
+  option_b_badge: string;
+};
 
 export type SoftwareEcosystemMessages = {
   section_label: string;
   headline: string;
   subheadline: string;
+  access_matrix: {
+    title: string;
+    columns: AccessMatrixColumn[];
+  };
   radar: {
     status: string;
     name: string;
     description: string;
-    option_a_title: string;
-    option_a_description: string;
-    option_b_title: string;
-    option_b_description: string;
-    option_b_badge: string;
-  };
+  } & SoftwareProductOptions;
   ops: {
-    badge: string;
+    status: string;
     name: string;
     description: string;
     internal_note: string;
   };
-  coming_soon: string;
+  social: {
+    status: string;
+    name: string;
+    description: string;
+  } & SoftwareProductOptions;
   ai_costs: string;
   ownership_quote: string;
   ownership_points: string[];
@@ -48,13 +70,67 @@ const fadeIn = {
 } as const;
 
 const productCardClass =
-  "rounded-2xl border-[0.5px] border-white/8 bg-white/[0.03] p-6 md:p-8";
+  "rounded-2xl border border-white/8 bg-white/3 p-6 md:p-8";
 
-const mutedDateBadgeClass =
-  "text-xs px-2 py-0.5 rounded-full bg-white/5 text-white/30 border border-white/10";
+const optionShellClass = "rounded-xl bg-white/5 p-4";
+
+const optionBadgeClass =
+  "mt-2 inline-block rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/40";
 
 function SubsectionRule() {
-  return <div className="mx-auto my-10 h-px w-12 bg-white/10" aria-hidden />;
+  return (
+    <div className="mx-auto my-10 h-px w-12 bg-white/10" aria-hidden />
+  );
+}
+
+function columnShellClass(tier: AccessMatrixColumn["tier"]) {
+  if (tier === "base") {
+    return "rounded-2xl border border-white/8 bg-white/3 p-6";
+  }
+  if (tier === "presence") {
+    return "rounded-2xl border border-white/15 bg-white/3 p-6";
+  }
+  return "rounded-2xl border border-white/20 bg-white/5 p-6";
+}
+
+function ProductOptionsBlock({
+  option_a_title,
+  option_a_description,
+  option_b_title,
+  option_b_description,
+  option_b_badge,
+}: SoftwareProductOptions) {
+  return (
+    <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
+      <div className={optionShellClass}>
+        <div className="flex items-center gap-2">
+          <Monitor
+            className="h-4 w-4 shrink-0 text-white/60"
+            strokeWidth={1.75}
+            aria-hidden
+          />
+          <p className="text-sm font-semibold text-white">{option_a_title}</p>
+        </div>
+        <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
+          {option_a_description}
+        </p>
+      </div>
+      <div className={optionShellClass}>
+        <div className="flex items-center gap-2">
+          <Users
+            className="h-4 w-4 shrink-0 text-white/60"
+            strokeWidth={1.75}
+            aria-hidden
+          />
+          <p className="text-sm font-semibold text-white">{option_b_title}</p>
+        </div>
+        <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
+          {option_b_description}
+        </p>
+        <span className={optionBadgeClass}>{option_b_badge}</span>
+      </div>
+    </div>
+  );
 }
 
 export function SoftwareEcosystemSection({
@@ -81,12 +157,54 @@ export function SoftwareEcosystemSection({
 
         <SubsectionRule />
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+        <m.div {...fadeIn}>
+          <p className="mb-4 text-sm font-medium text-white/60">
+            {data.access_matrix.title}
+          </p>
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
+            {data.access_matrix.columns.map((col) => (
+              <div key={col.tier} className={columnShellClass(col.tier)}>
+                <p className="text-base font-semibold text-white">{col.name}</p>
+                <p className="mt-1 text-sm text-white/50">{col.price_hint}</p>
+                <ul className="mt-4 space-y-2">
+                  {col.included.map((line) => (
+                    <li
+                      key={line}
+                      className="flex gap-2 text-sm text-green-400/70"
+                    >
+                      <Check
+                        className="mt-0.5 h-4 w-4 shrink-0"
+                        strokeWidth={2}
+                        aria-hidden
+                      />
+                      <span className="leading-snug">{line}</span>
+                    </li>
+                  ))}
+                  {col.excluded.map((line) => (
+                    <li
+                      key={line}
+                      className="flex gap-2 text-sm text-white/20"
+                    >
+                      <X
+                        className="mt-0.5 h-4 w-4 shrink-0"
+                        strokeWidth={2}
+                        aria-hidden
+                      />
+                      <span className="leading-snug">{line}</span>
+                    </li>
+                  ))}
+                </ul>
+                <p className="mt-2 text-xs italic text-white/30">{col.note}</p>
+              </div>
+            ))}
+          </div>
+        </m.div>
+
+        <SubsectionRule />
+
+        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
           {/* Noctra Radar */}
-          <m.article
-            {...fadeIn}
-            className={`flex flex-col ${productCardClass}`}
-          >
+          <m.article {...fadeIn} className={`flex flex-col ${productCardClass}`}>
             <Radio
               className="h-6 w-6 shrink-0 text-white/80"
               strokeWidth={1.75}
@@ -101,57 +219,26 @@ export function SoftwareEcosystemSection({
             <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-[15px]">
               {data.radar.description}
             </p>
-            <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
-              <div className="rounded-xl bg-white/5 p-4">
-                <div className="flex items-center gap-2">
-                  <Monitor
-                    className="h-4 w-4 shrink-0 text-white/60"
-                    strokeWidth={1.75}
-                    aria-hidden
-                  />
-                  <p className="text-sm font-semibold text-white">
-                    {data.radar.option_a_title}
-                  </p>
-                </div>
-                <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
-                  {data.radar.option_a_description}
-                </p>
-              </div>
-              <div className="rounded-xl bg-white/5 p-4">
-                <div className="flex items-center gap-2">
-                  <Users
-                    className="h-4 w-4 shrink-0 text-white/60"
-                    strokeWidth={1.75}
-                    aria-hidden
-                  />
-                  <p className="text-sm font-semibold text-white">
-                    {data.radar.option_b_title}
-                  </p>
-                </div>
-                <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
-                  {data.radar.option_b_description}
-                </p>
-                <span className="mt-2 inline-block rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/40">
-                  {data.radar.option_b_badge}
-                </span>
-              </div>
-            </div>
+            <ProductOptionsBlock
+              option_a_title={data.radar.option_a_title}
+              option_a_description={data.radar.option_a_description}
+              option_b_title={data.radar.option_b_title}
+              option_b_description={data.radar.option_b_description}
+              option_b_badge={data.radar.option_b_badge}
+            />
           </m.article>
 
-          {/* Noctra Ops (Discovery + Proposals unified) */}
-          <m.article
-            {...fadeIn}
-            className={`flex flex-col ${productCardClass}`}
-          >
-            <div className="flex items-start justify-between gap-3">
-              <Layers
-                className="h-6 w-6 shrink-0 text-white/40"
-                strokeWidth={1.75}
-                aria-hidden
-              />
-              <span className={mutedDateBadgeClass}>{data.ops.badge}</span>
-            </div>
-            <h3 className="mt-4 text-xl font-bold text-white">{data.ops.name}</h3>
+          {/* Noctra Ops */}
+          <m.article {...fadeIn} className={`flex flex-col ${productCardClass}`}>
+            <Layers
+              className="h-6 w-6 shrink-0 text-white/80"
+              strokeWidth={1.75}
+              aria-hidden
+            />
+            <p className="mt-3 text-xs tracking-wide text-white/30 uppercase">
+              {data.ops.status}
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-white">{data.ops.name}</h3>
             <p className="mt-4 flex-1 text-sm leading-relaxed text-white/70 md:text-[15px]">
               {data.ops.description}
             </p>
@@ -159,32 +246,41 @@ export function SoftwareEcosystemSection({
               {data.ops.internal_note}
             </p>
           </m.article>
+
+          {/* Noctra Social */}
+          <m.article {...fadeIn} className={`flex flex-col ${productCardClass}`}>
+            <Rss
+              className="h-6 w-6 shrink-0 text-white/80"
+              strokeWidth={1.75}
+              aria-hidden
+            />
+            <p className="mt-3 text-xs tracking-wide text-white/30 uppercase">
+              {data.social.status}
+            </p>
+            <h3 className="mt-2 text-xl font-bold text-white">
+              {data.social.name}
+            </h3>
+            <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-[15px]">
+              {data.social.description}
+            </p>
+            <ProductOptionsBlock
+              option_a_title={data.social.option_a_title}
+              option_a_description={data.social.option_a_description}
+              option_b_title={data.social.option_b_title}
+              option_b_description={data.social.option_b_description}
+              option_b_badge={data.social.option_b_badge}
+            />
+          </m.article>
         </div>
 
-        <SubsectionRule />
-
-        <m.div
-          {...fadeIn}
-          className="mt-4 flex items-center gap-3 rounded-xl border border-white/5 bg-white/[0.02] p-4 text-sm text-white/30"
-        >
-          <Clock
-            className="h-3.5 w-3.5 shrink-0 text-white/20"
-            strokeWidth={1.75}
-            aria-hidden
-          />
-          <p>{data.coming_soon}</p>
-        </m.div>
-
-        <div className="mx-auto mt-8 flex max-w-xl items-start justify-center gap-2 border-t border-white/5 pt-8 text-xs text-white/30">
+        <div className="mx-auto mt-8 flex max-w-xl items-start justify-center gap-2 border-t border-white/5 pt-8 text-center text-xs text-white/30">
           <Zap
             size={14}
             className="mt-0.5 shrink-0 text-white/20"
             strokeWidth={1.75}
             aria-hidden
           />
-          <p className="min-w-0 flex-1 text-pretty text-center">
-            {data.ai_costs}
-          </p>
+          <p className="min-w-0 flex-1 text-pretty">{data.ai_costs}</p>
         </div>
 
         <m.div

@@ -10,13 +10,11 @@ import {
   SiSupabase,
   SiPython,
   SiVercel,
-  SiAmazon,
   SiCloudflare,
   SiMysql,
   SiMongodb,
   SiDocker,
   SiGithubactions,
-  SiAdobe,
   SiGreensock,
   SiShopify,
   SiPayloadcms,
@@ -25,6 +23,8 @@ import {
   SiGooglecloud,
   SiTypescript,
 } from "react-icons/si";
+import { FaAws } from "react-icons/fa6";
+import { TbBrandAdobe } from "react-icons/tb";
 import { LazyMotion, m, domAnimation } from "framer-motion";
 
 const icons = [
@@ -37,13 +37,13 @@ const icons = [
   { icon: SiSupabase, label: "Supabase" },
   { icon: SiPython, label: "Python" },
   { icon: SiVercel, label: "Vercel" },
-  { icon: SiAmazon, label: "AWS" },
+  { icon: FaAws, label: "AWS" },
   { icon: SiCloudflare, label: "Cloudflare" },
   { icon: SiMysql, label: "MySQL" },
   { icon: SiMongodb, label: "MongoDB" },
   { icon: SiDocker, label: "Docker" },
   { icon: SiGithubactions, label: "GitHub Actions" },
-  { icon: SiAdobe, label: "Adobe" },
+  { icon: TbBrandAdobe, label: "Adobe" },
   { icon: SiGreensock, label: "GSAP" },
   { icon: SiShopify, label: "Shopify" },
   { icon: SiPayloadcms, label: "Payload" },

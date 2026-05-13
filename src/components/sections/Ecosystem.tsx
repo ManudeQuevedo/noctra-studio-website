@@ -3,11 +3,15 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { Layers, ShieldCheck, Users, Zap } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
+import {
+  homeSectionContainerClass,
+  homeSectionKickerClass,
+} from "@/components/home/homeSectionFrame";
 
 const viewport = { once: true, margin: "-10%" } as const;
 const cardViewport = { once: true, margin: "-10%" } as const;
 
-type ProductStatus = "active" | "coming_soon";
+type ProductStatus = "active" | "coming_soon" | "july_2026";
 
 type EcosystemProduct = {
   id: string;
@@ -16,6 +20,7 @@ type EcosystemProduct = {
   name: string;
   category?: string;
   description: string;
+  plan_availability?: string;
   managed_line?: string;
   internal_note?: string;
   icon?: "layers";
@@ -31,7 +36,7 @@ type OwnershipStat = {
 const activeBadgeClass =
   "text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20";
 
-const comingSoonBadgeClass =
+const mutedBadgeClass =
   "text-xs px-2 py-0.5 rounded-full bg-white/5 text-white/30 border border-white/10";
 
 export function Ecosystem() {
@@ -46,14 +51,14 @@ export function Ecosystem() {
     <LazyMotion features={domAnimation}>
       <section
         id="radar"
-        className="scroll-mt-28 bg-transparent px-6 py-20 md:px-8 md:py-[120px]">
-        <div className="mx-auto max-w-6xl">
+        className="scroll-mt-28 bg-transparent pt-20 pb-24 md:pt-[120px] md:pb-24">
+        <div className={homeSectionContainerClass}>
           <m.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={viewport}
-            className="mb-6 text-[11px] font-medium uppercase tracking-[0.24em] text-emerald-400 will-change-transform">
+            className={`${homeSectionKickerClass} will-change-transform`}>
             {t("ecosystem.kicker")}
           </m.p>
 
@@ -75,9 +80,11 @@ export function Ecosystem() {
             {t("ecosystem.subtitle")}
           </m.p>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
             {products.map((item, i) => {
               const isActive = item.status === "active";
+              const badgeClass =
+                item.status === "active" ? activeBadgeClass : mutedBadgeClass;
 
               return (
                 <m.div
@@ -102,25 +109,15 @@ export function Ecosystem() {
                   {item.icon === "layers" ? (
                     <div className="flex items-start justify-between gap-3">
                       <Layers
-                        size={24}
+                        size={20}
                         className="shrink-0 text-white/40"
                         aria-hidden
                       />
-                      <span
-                        className={
-                          isActive ? activeBadgeClass : comingSoonBadgeClass
-                        }>
-                        {item.badge}
-                      </span>
+                      <span className={badgeClass}>{item.badge}</span>
                     </div>
                   ) : (
                     <div className="flex justify-end">
-                      <span
-                        className={
-                          isActive ? activeBadgeClass : comingSoonBadgeClass
-                        }>
-                        {item.badge}
-                      </span>
+                      <span className={badgeClass}>{item.badge}</span>
                     </div>
                   )}
 
@@ -138,17 +135,23 @@ export function Ecosystem() {
                     {item.description}
                   </p>
 
+                  {item.plan_availability ? (
+                    <p className="mt-2 text-xs text-white/40">
+                      {item.plan_availability}
+                    </p>
+                  ) : null}
+
                   {item.internal_note ? (
-                    <p className="mt-3 text-xs italic text-white/30">
+                    <p className="mt-1 text-xs italic text-white/30">
                       {item.internal_note}
                     </p>
                   ) : null}
 
                   {item.managed_line ? (
-                    <p className="mt-3 flex items-center gap-1 text-xs text-white/40">
+                    <p className="mt-1 flex items-center gap-1 text-xs text-white/40">
                       <Users
                         size={12}
-                        className="flex-shrink-0 text-white/40"
+                        className="shrink-0 text-white/40"
                         aria-hidden
                       />
                       {item.managed_line}
@@ -174,13 +177,15 @@ export function Ecosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.12 }}
             viewport={viewport}
-            className="mx-auto mt-6 flex max-w-lg items-start justify-center gap-2 border-t border-white/5 pt-6 text-center text-xs text-white/30">
+            className="mx-auto mt-8 flex max-w-lg items-start justify-center gap-2 border-t border-white/5 pt-6 text-center text-xs text-white/30">
             <Zap
               size={14}
-              className="mt-0.5 flex-shrink-0 text-white/20"
+              className="mt-0.5 shrink-0 text-white/20"
               aria-hidden
             />
-            <p className="min-w-0 flex-1 text-center text-pretty">{t("ecosystem.ai_costs")}</p>
+            <p className="min-w-0 flex-1 text-center text-pretty">
+              {t("ecosystem.ai_costs")}
+            </p>
           </m.div>
 
           <m.div
@@ -188,7 +193,7 @@ export function Ecosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
             viewport={viewport}
-            className="mt-6 rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 md:p-8">
+            className="mt-6 rounded-2xl border border-white/8 bg-white/3 p-6 md:p-8">
             <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
               <div className="max-w-xl flex-1">
                 <ShieldCheck
@@ -207,7 +212,9 @@ export function Ecosystem() {
               <div className="flex flex-wrap gap-8 md:flex-nowrap md:justify-end">
                 {ownershipStats.map((stat) => (
                   <div key={stat.value + stat.label} className="min-w-[5.5rem]">
-                    <p className="text-2xl font-bold text-white">{stat.value}</p>
+                    <p className="text-2xl font-bold text-white">
+                      {stat.value}
+                    </p>
                     <p className="mt-1 text-xs text-white/40">{stat.label}</p>
                   </div>
                 ))}

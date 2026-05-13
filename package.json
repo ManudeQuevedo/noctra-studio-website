@@ -48,7 +48,6 @@
     "csrf": "^3.1.0",
     "date-fns": "^4.1.0",
     "framer-motion": "^12.23.24",
-    "gsap": "^3.14.2",
     "html2canvas-pro": "^2.0.2",
     "ioredis": "^5.10.0",
     "jspdf": "^4.2.0",
