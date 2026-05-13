@@ -345,7 +345,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
-          className="mt-32 p-10 md:p-16 rounded-3xl border border-white/5 bg-gradient-to-b from-neutral-900/50 to-black text-center space-y-8">
+          className="mt-32 p-10 md:p-16 rounded-3xl border border-white/5 bg-linear-to-b from-neutral-900/50 to-black text-center space-y-8">
           <h2 className="text-3xl md:text-5xl font-bold tracking-tight">
             {t("ctaTitle", locale)}
           </h2>

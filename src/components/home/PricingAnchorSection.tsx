@@ -1,6 +1,7 @@
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import { Building2, CalendarDays, CreditCard } from "lucide-react";
 import { useTranslations } from "next-intl";
 import { Link } from "@/i18n/routing";
 
@@ -103,12 +104,47 @@ export function PricingAnchorSection() {
           <m.div
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6, ease: "easeOut", delay: 0.31 }}
+            viewport={viewport}
+            className="mt-8 mb-6 flex flex-wrap items-center justify-center gap-3 text-xs text-white/40 md:justify-start">
+            <span className="inline-flex items-center gap-1.5">
+              <CreditCard
+                className="size-3.5 shrink-0 text-white/30"
+                aria-hidden
+              />
+              {t("payment_indicator_stripe")}
+            </span>
+            <span className="select-none text-white/20" aria-hidden>
+              ·
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <Building2
+                className="size-3.5 shrink-0 text-white/30"
+                aria-hidden
+              />
+              {t("payment_indicator_transfer")}
+            </span>
+            <span className="select-none text-white/20" aria-hidden>
+              ·
+            </span>
+            <span className="inline-flex items-center gap-1.5">
+              <CalendarDays
+                className="size-3.5 shrink-0 text-white/30"
+                aria-hidden
+              />
+              {t("payment_indicator_msi")}
+            </span>
+          </m.div>
+
+          <m.div
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.34 }}
             viewport={viewport}
-            className="mt-8 flex justify-center md:justify-start">
+            className="flex justify-center md:justify-start">
             <Link
               href="/services"
-              className="inline-flex rounded-full border border-white/15 bg-white/[0.03] px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-emerald-500/35 hover:bg-white/[0.06] md:px-7 md:text-base">
+              className="inline-flex rounded-full border border-white/15 bg-white/3 px-6 py-3 text-sm font-semibold text-white transition-colors hover:border-emerald-500/35 hover:bg-white/6 md:px-7 md:text-base">
               {t("cta")}
             </Link>
           </m.div>

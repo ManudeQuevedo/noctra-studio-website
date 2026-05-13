@@ -469,6 +469,9 @@
       "headline": "Precios claros. Sin sorpresas.",
       "subheadline": "Sabemos que el presupuesto importa. Por eso nuestros precios son públicos, fijos y sin letra pequeña.",
       "support_line": "¿No sabes cuál necesitas? Empieza con un diagnóstico gratuito.",
+      "payment_indicator_stripe": "Tarjeta vía Stripe",
+      "payment_indicator_transfer": "Transferencia bancaria",
+      "payment_indicator_msi": "MSI disponibles desde $32,000 MXN",
       "cta": "Ver todos los servicios y precios →",
       "philosophy": "Todos los proyectos incluyen anticipo del 50% al inicio. Suscripciones mensuales sin contrato mínimo — cancela cuando quieras.",
       "packages": [
@@ -4855,6 +4858,54 @@
       "subheadline": "Para consultorios, despachos, escuelas y negocios establecidos en México.",
       "cta": "Empieza con un diagnóstico gratuito →"
     },
+    "thesis": {
+      "section_label": "00 / ENFOQUE",
+      "problem": {
+        "label": "El problema común",
+        "body": [
+          "La mayoría de negocios contrata por separado: un diseñador para el logo, una agencia para el sitio, alguien más para las redes.",
+          "El resultado es presencia fragmentada — nadie es responsable del sistema completo ni de los resultados que genera."
+        ]
+      },
+      "method": {
+        "label": "Cómo trabajamos",
+        "body": [
+          "Noctra empieza con un diagnóstico. Antes de proponer cualquier solución, entendemos el negocio, el mercado, y dónde están las oportunidades reales.",
+          "Después construimos el sistema completo — marca, sitio, visibilidad — como un solo proyecto coordinado, con un solo equipo responsable del resultado."
+        ],
+        "steps": [
+          {
+            "number": "01",
+            "name": "Diagnóstico",
+            "sub": "Entendemos antes de proponer"
+          },
+          {
+            "number": "02",
+            "name": "Arquitectura",
+            "sub": "Diseñamos el sistema completo"
+          },
+          {
+            "number": "03",
+            "name": "Construcción",
+            "sub": "Ejecutamos con precisión"
+          },
+          {
+            "number": "04",
+            "name": "Medición",
+            "sub": "Resultados documentados desde el mes 1"
+          }
+        ]
+      },
+      "guarantee": {
+        "label": "Nuestra garantía",
+        "headline": "Entregamos en tiempo. O seguimos trabajando.",
+        "body": [
+          "Todos los proyectos incluyen fecha de entrega comprometida y una ronda completa de ajustes sin costo adicional después de la entrega.",
+          "Si no cumplimos el plazo acordado, continuamos trabajando hasta completar el proyecto sin cobrar más."
+        ],
+        "closing": "Sin letra pequeña."
+      }
+    },
     "projects": {
       "label": "01 / PROYECTOS",
       "intro": "Elige según la etapa de tu negocio. Precio fijo, entregables definidos, sin sorpresas.",
@@ -5041,6 +5092,47 @@
           "price": "$19,000 MXN + IVA",
           "savings": "Ahorro $6,500 MXN vs individual",
           "featured": false
+        }
+      ]
+    },
+    "payments": {
+      "section_label": "04 / PAGOS",
+      "headline": "Flexibilidad para invertir sin fricción.",
+      "subheadline": "Aceptamos transferencia bancaria y tarjeta de crédito vía Stripe. Para proyectos mayores a $20,000 MXN, disponemos meses sin intereses con tarjeta participante.",
+      "cards": {
+        "transfer": {
+          "title": "Transferencia bancaria",
+          "detail": "CLABE y datos de pago proporcionados al confirmar el proyecto."
+        },
+        "card": {
+          "title": "Tarjeta de crédito",
+          "detail": "Pago seguro vía Stripe. Visa, Mastercard y American Express."
+        },
+        "msi": {
+          "title": "Meses sin intereses",
+          "detail": "Disponible a 3, 6 o 12 MSI con tarjeta participante. Aplica para proyectos mayores a $20,000 MXN."
+        }
+      },
+      "pricing_title": "Precios con meses sin intereses",
+      "pricing_intro": "Los meses sin intereses aplican solo a proyectos mayores a $20,000 MXN. Los dos paquetes siguientes califican; el tercero queda por debajo de ese umbral.",
+      "pricing_rows": [
+        {
+          "name": "Noctra Presencia",
+          "msi": "$34,500 MXN + IVA a MSI",
+          "or": "ó",
+          "cash": "$32,000 MXN + IVA pagando en una sola exhibición",
+          "savings": "(ahorro de $2,500 MXN)"
+        },
+        {
+          "name": "Noctra Sistema",
+          "msi": "$59,000 MXN + IVA a MSI",
+          "or": "ó",
+          "cash": "$55,000 MXN + IVA pagando en una sola exhibición",
+          "savings": "(ahorro de $4,000 MXN)"
+        },
+        {
+          "name": "Noctra Base",
+          "below_threshold": "Sin MSI — por debajo de $20,000 MXN. $18,000 MXN + IVA en una sola exhibición o transferencia bancaria."
         }
       ]
     },

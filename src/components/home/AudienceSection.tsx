@@ -58,7 +58,7 @@ export function AudienceSection() {
                   delay: index * 0.08,
                 }}
                 viewport={cardViewport}
-                className="rounded-xl border border-white/[0.08] bg-[rgba(16,185,129,0.03)] p-5 transition-colors duration-200 will-change-transform hover:border-emerald-500/30">
+                className="rounded-xl border border-white/8 bg-[rgba(16,185,129,0.03)] p-5 transition-colors duration-200 will-change-transform hover:border-emerald-500/30">
                 <h3 className="text-base font-semibold text-white">
                   {item.name}
                 </h3>

@@ -1,9 +1,15 @@
 "use client";
 
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { LazyMotion, domAnimation, m, useInView } from "framer-motion";
 import { useMessages } from "next-intl";
-import { Check } from "lucide-react";
+import {
+  CalendarDays,
+  Check,
+  CreditCard,
+  Landmark,
+  ShieldCheck,
+} from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
 
@@ -38,12 +44,29 @@ type BundleTier = {
   featured: boolean;
 };
 
+type ThesisStep = {
+  number: string;
+  name: string;
+  sub: string;
+};
+
 type ServicesCatalogMessages = {
   hero: {
     headline_line1: string;
     headline_line2: string;
     subheadline: string;
     cta: string;
+  };
+  thesis: {
+    section_label: string;
+    problem: { label: string; body: string[] };
+    method: { label: string; body: string[]; steps: ThesisStep[] };
+    guarantee: {
+      label: string;
+      headline: string;
+      body: string[];
+      closing: string;
+    };
   };
   projects: {
     label: string;
@@ -61,6 +84,26 @@ type ServicesCatalogMessages = {
     description: string;
     popular_badge: string;
     tiers: BundleTier[];
+  };
+  payments: {
+    section_label: string;
+    headline: string;
+    subheadline: string;
+    cards: {
+      transfer: { title: string; detail: string };
+      card: { title: string; detail: string };
+      msi: { title: string; detail: string };
+    };
+    pricing_title: string;
+    pricing_intro: string;
+    pricing_rows: {
+      name: string;
+      msi?: string;
+      or?: string;
+      cash?: string;
+      savings?: string;
+      below_threshold?: string;
+    }[];
   };
   footer_cta: {
     title: string;
@@ -91,14 +134,15 @@ export default function ServicesClient() {
     ServicesCatalog: ServicesCatalogMessages;
   };
   const c = messages.ServicesCatalog;
+  const thesis = c.thesis;
   const contactRef = useRef<HTMLDivElement>(null);
   const isContactInView = useInView(contactRef, { amount: 0.2 });
 
   return (
     <LazyMotion features={domAnimation}>
       <main className="relative min-h-screen overflow-x-clip bg-transparent pb-28 pt-40 selection:bg-emerald-500/30 md:pt-44 lg:pt-48">
-        <div className="pointer-events-none absolute inset-x-0 top-0 h-[36rem] bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.07),transparent_58%)]" />
-        <div className="pointer-events-none absolute inset-x-0 top-20 h-px bg-gradient-to-r from-transparent via-white/10 to-transparent" />
+        <div className="pointer-events-none absolute inset-x-0 top-0 h-144 bg-[radial-gradient(circle_at_top,rgba(16,185,129,0.07),transparent_58%)]" />
+        <div className="pointer-events-none absolute inset-x-0 top-20 h-px bg-linear-to-r from-transparent via-white/10 to-transparent" />
 
         {/* HERO — full first viewport below header so pricing starts after scroll */}
         <section className="relative flex min-h-[calc(100svh-10rem)] flex-col justify-center overflow-hidden px-6 py-12 md:min-h-[calc(100svh-11rem)] md:px-8 md:py-16 lg:min-h-[calc(100svh-12rem)] lg:py-20">
@@ -134,6 +178,118 @@ export default function ServicesClient() {
                 className="h-14 rounded-full bg-white px-10 text-base font-semibold text-black hover:bg-white/90 md:h-16 md:px-12 md:text-lg">
                 <Link href="/diagnostico">{c.hero.cta}</Link>
               </Button>
+            </m.div>
+          </div>
+        </section>
+
+        {/* 00 THESIS — approach before pricing */}
+        <section className="border-t border-white/5 px-6 pt-24 pb-20 md:px-8">
+          <div className="mx-auto max-w-7xl">
+            <m.div {...fadeIn} className="mx-auto max-w-2xl text-left">
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-400">
+                {thesis.section_label}
+              </p>
+
+              <div className="mt-12 space-y-4">
+                <p className="text-xs font-mono uppercase tracking-widest text-white/30">
+                  {thesis.problem.label}
+                </p>
+                {thesis.problem.body.map((paragraph, i) => (
+                  <p
+                    key={`problem-${i}`}
+                    className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <div className="my-12 h-px w-12 bg-white/10" aria-hidden />
+
+              <div className="space-y-4">
+                <p className="text-xs font-mono uppercase tracking-widest text-white/30">
+                  {thesis.method.label}
+                </p>
+                {thesis.method.body.map((paragraph, i) => (
+                  <p
+                    key={`method-${i}`}
+                    className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+
+              <ul className="mt-10 flex flex-col gap-6 md:hidden">
+                {thesis.method.steps.map((step) => (
+                  <li key={step.number}>
+                    <p className="text-sm font-medium text-white">
+                      <span className="mr-2 text-xs font-mono uppercase tracking-widest text-white/30">
+                        {step.number}
+                      </span>
+                      {step.name}
+                    </p>
+                    <p className="mt-1 text-xs text-white/50">{step.sub}</p>
+                  </li>
+                ))}
+              </ul>
+
+              <div
+                className="mt-10 hidden md:flex md:items-stretch"
+                role="list"
+                aria-label={thesis.method.label}>
+                {thesis.method.steps.map((step, index) => (
+                  <Fragment key={step.number}>
+                    <div
+                      role="listitem"
+                      className="min-w-0 flex-[2_1_0%] space-y-1.5">
+                      <p className="text-sm font-medium text-white">
+                        <span className="mr-2 text-xs font-mono uppercase tracking-widest text-white/30">
+                          {step.number}
+                        </span>
+                        {step.name}
+                      </p>
+                      <p className="text-xs text-white/50">{step.sub}</p>
+                    </div>
+                    {index < thesis.method.steps.length - 1 ? (
+                      <div
+                        className="flex min-w-2 flex-1 items-center justify-center px-1"
+                        aria-hidden>
+                        <div className="h-px w-full bg-white/10" />
+                      </div>
+                    ) : null}
+                  </Fragment>
+                ))}
+              </div>
+
+              <div className="my-12 h-px w-12 bg-white/10" aria-hidden />
+
+              <div className="rounded-2xl border border-white/8 bg-white/3 p-8">
+                <p className="text-xs font-mono uppercase tracking-widest text-white/30">
+                  {thesis.guarantee.label}
+                </p>
+                <div className="mt-4 flex items-start gap-3">
+                  <ShieldCheck
+                    className="mt-0.5 h-5 w-5 shrink-0 text-emerald-400"
+                    aria-hidden
+                  />
+                  <div className="min-w-0 flex-1">
+                    <h2 className="text-pretty text-xl font-semibold leading-snug text-white md:text-2xl">
+                      {thesis.guarantee.headline}
+                    </h2>
+                    <div className="mt-4 space-y-3">
+                      {thesis.guarantee.body.map((paragraph, i) => (
+                        <p
+                          key={`guarantee-${i}`}
+                          className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]">
+                          {paragraph}
+                        </p>
+                      ))}
+                    </div>
+                    <p className="mt-4 text-xs italic text-white/40">
+                      {thesis.guarantee.closing}
+                    </p>
+                  </div>
+                </div>
+              </div>
             </m.div>
           </div>
         </section>
@@ -278,11 +434,130 @@ export default function ServicesClient() {
           </div>
         </section>
 
+        {/* 04 PAYMENTS */}
+        <section className="border-t border-white/5 px-6 py-20 md:px-8 md:py-24">
+          <div className="mx-auto max-w-7xl">
+            <m.div {...fadeIn} className="mb-12 max-w-3xl">
+              <p className="text-[11px] font-bold uppercase tracking-[0.28em] text-emerald-400">
+                {c.payments.section_label}
+              </p>
+              <h2 className="mt-4 text-2xl font-black leading-tight text-white md:text-3xl">
+                {c.payments.headline}
+              </h2>
+              <p className="mt-4 text-lg leading-relaxed text-white/70 md:text-xl">
+                {c.payments.subheadline}
+              </p>
+            </m.div>
+
+            <div className="grid gap-4 md:grid-cols-3">
+              <m.article
+                {...fadeIn}
+                className="rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15">
+                <Landmark
+                  className="h-5 w-5 text-white/60"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
+                <h3 className="mt-4 text-base font-semibold text-white">
+                  {c.payments.cards.transfer.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  {c.payments.cards.transfer.detail}
+                </p>
+              </m.article>
+
+              <m.article
+                {...fadeIn}
+                className="group rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15">
+                <CreditCard
+                  className="h-5 w-5 text-white/60"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
+                <h3 className="mt-4 text-base font-semibold text-white">
+                  {c.payments.cards.card.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  {c.payments.cards.card.detail}
+                </p>
+                <img
+                  src="/images/stripe-logo.svg"
+                  alt="Stripe"
+                  className="mt-2 h-5 w-auto opacity-40 transition-opacity duration-200 group-hover:opacity-70"
+                />
+              </m.article>
+
+              <m.article
+                {...fadeIn}
+                className="rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15">
+                <CalendarDays
+                  className="h-5 w-5 text-white/60"
+                  strokeWidth={1.75}
+                  aria-hidden
+                />
+                <h3 className="mt-4 text-base font-semibold text-white">
+                  {c.payments.cards.msi.title}
+                </h3>
+                <p className="mt-2 text-sm leading-relaxed text-white/60">
+                  {c.payments.cards.msi.detail}
+                </p>
+              </m.article>
+            </div>
+
+            <m.div
+              {...fadeIn}
+              className="mt-10 rounded-2xl border border-white/6 bg-white/2 px-5 py-6 md:px-8 md:py-7">
+              <p className="text-xs font-medium uppercase tracking-wider text-white/40">
+                {c.payments.pricing_title}
+              </p>
+              <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/50">
+                {c.payments.pricing_intro}
+              </p>
+              <ul className="mt-5 space-y-4">
+                {c.payments.pricing_rows.map((row) =>
+                  row.below_threshold ? (
+                    <li
+                      key={row.name}
+                      className="text-pretty border-t border-white/6 pt-4 leading-relaxed">
+                      <span className="text-sm font-medium text-white">
+                        {row.name}
+                      </span>
+                      <span className="text-sm text-white/60">
+                        {" "}
+                        — {row.below_threshold}
+                      </span>
+                    </li>
+                  ) : (
+                    <li key={row.name} className="text-pretty leading-relaxed">
+                      <span className="text-sm font-medium text-white">
+                        {row.name}
+                      </span>
+                      <span className="text-sm text-white/70">
+                        {" "}
+                        — {row.msi}
+                      </span>{" "}
+                      <span className="mx-2 text-xs text-white/30">
+                        {row.or}
+                      </span>{" "}
+                      <span className="text-sm font-medium text-white">
+                        {row.cash}
+                      </span>{" "}
+                      <span className="text-xs text-green-400/70">
+                        {row.savings}
+                      </span>
+                    </li>
+                  ),
+                )}
+              </ul>
+            </m.div>
+          </div>
+        </section>
+
         {/* FOOTER CTA */}
         <section
           ref={contactRef}
           className="border-t border-white/5 px-6 py-16 md:px-8 md:py-24">
-          <div className="mx-auto max-w-3xl rounded-[2rem] border border-emerald-500/25 bg-gradient-to-br from-emerald-500/10 via-white/[0.04] to-transparent p-8 text-center md:p-12">
+          <div className="mx-auto max-w-3xl rounded-4xl border border-emerald-500/25 bg-linear-to-br from-emerald-500/10 via-white/4 to-transparent p-8 text-center md:p-12">
             <m.div {...fadeIn}>
               <h2 className="text-2xl font-black text-white md:text-4xl">
                 {c.footer_cta.title}

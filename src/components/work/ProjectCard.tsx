@@ -31,7 +31,7 @@ function ProjectMockup({ project }: { project: PublicProjectCard }) {
   const objectPosition = slug.includes("valtru") ? "center 30%" : "center";
 
   return (
-    <div className="relative aspect-[16/9] bg-neutral-900 rounded-2xl overflow-hidden mb-8 group/mockup flex items-center justify-center border border-white/5">
+    <div className="relative aspect-video bg-neutral-900 rounded-2xl overflow-hidden mb-8 group/mockup flex items-center justify-center border border-white/5">
       {/* Dynamic Placeholder or Image mapping based on existing code */}
       <Image
         src={imgPath}
@@ -41,7 +41,7 @@ function ProjectMockup({ project }: { project: PublicProjectCard }) {
         sizes="(max-width: 768px) 100vw, 50vw"
         className="object-cover transition-transform duration-700 ease-out group-hover/mockup:scale-105"
       />
-      <div className="absolute inset-0 bg-gradient-to-t from-neutral-950/80 via-transparent to-transparent opacity-60" />
+      <div className="absolute inset-0 bg-linear-to-t from-neutral-950/80 via-transparent to-transparent opacity-60" />
     </div>
   );
 }
@@ -127,7 +127,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
 
       <ProjectMockup project={project} />
 
-      <div className="space-y-8 flex-grow">
+      <div className="space-y-8 grow">
         <div className="space-y-4">
           <div className="grid gap-3">
             <p className="text-sm text-neutral-300 leading-relaxed">
@@ -191,7 +191,7 @@ export function ProjectCard({ project, index }: ProjectCardProps) {
               </div>
             </div>
             <div className="mt-8 flex justify-center">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5">
+              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/3 border border-white/5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                 <span className="text-xs font-mono text-neutral-400">
                   {t("sections.in_progress.labels.completed")}{" "}

@@ -101,8 +101,8 @@ export function Ecosystem() {
                     "scroll-mt-32 rounded-xl border p-6 transition-[transform,border-color,background-color] duration-200 will-change-transform",
                     cfg.wide ? "md:col-span-2" : "",
                     isFlagship
-                      ? "border-emerald-500/40 bg-gradient-to-br from-[#0a0b13] to-emerald-500/5"
-                      : "border-white/[0.08] bg-[rgba(16,185,129,0.03)] hover:-translate-y-0.5 hover:border-emerald-500/30",
+                      ? "border-emerald-500/40 bg-linear-to-br from-[#0a0b13] to-emerald-500/5"
+                      : "border-white/8 bg-[rgba(16,185,129,0.03)] hover:-translate-y-0.5 hover:border-emerald-500/30",
                   ]
                     .filter(Boolean)
                     .join(" ")}>
@@ -111,7 +111,7 @@ export function Ecosystem() {
                       {cfg.number}
                     </span>
                     <span
-                      className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-[0.1em] ${badgeClass[cfg.status]}`}>
+                      className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest ${badgeClass[cfg.status]}`}>
                       {isFlagship && (
                         <span className="h-1 w-1 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
                       )}

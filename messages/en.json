@@ -485,6 +485,9 @@
       "headline": "Clear pricing. No surprises.",
       "subheadline": "We know budget matters. That's why our prices are public, fixed, and without fine print.",
       "support_line": "Not sure which one you need? Start with a free diagnosis.",
+      "payment_indicator_stripe": "Card via Stripe",
+      "payment_indicator_transfer": "Bank transfer",
+      "payment_indicator_msi": "Installments available from $32,000 MXN",
       "cta": "View all services and pricing →",
       "philosophy": "All projects require 50% upfront. Monthly subscriptions with no minimum contract — cancel anytime.",
       "packages": [
@@ -5776,6 +5779,54 @@
       "subheadline": "For clinics, law firms, schools, and established businesses in Mexico.",
       "cta": "Start with a free diagnosis →"
     },
+    "thesis": {
+      "section_label": "00 / APPROACH",
+      "problem": {
+        "label": "The common problem",
+        "body": [
+          "Most businesses hire separately: a designer for the logo, an agency for the website, someone else for social media.",
+          "The result is a fragmented presence — nobody owns the complete system or the results it produces."
+        ]
+      },
+      "method": {
+        "label": "How we work",
+        "body": [
+          "Noctra starts with a diagnosis. Before proposing any solution, we understand the business, the market, and where the real opportunities are.",
+          "Then we build the complete system — brand, website, visibility — as one coordinated project, with one team accountable for the result."
+        ],
+        "steps": [
+          {
+            "number": "01",
+            "name": "Diagnosis",
+            "sub": "We understand before proposing"
+          },
+          {
+            "number": "02",
+            "name": "Architecture",
+            "sub": "We design the complete system"
+          },
+          {
+            "number": "03",
+            "name": "Build",
+            "sub": "We execute with precision"
+          },
+          {
+            "number": "04",
+            "name": "Measurement",
+            "sub": "Documented results from month one"
+          }
+        ]
+      },
+      "guarantee": {
+        "label": "Our guarantee",
+        "headline": "We deliver on time. Or we keep working.",
+        "body": [
+          "Every project includes a committed delivery date and one complete round of adjustments at no extra cost after delivery.",
+          "If we miss the agreed deadline, we keep working until the project is complete at no additional charge."
+        ],
+        "closing": "No fine print."
+      }
+    },
     "projects": {
       "label": "01 / PROJECTS",
       "intro": "Choose based on your business stage. Fixed price, defined deliverables, no surprises.",
@@ -5962,6 +6013,47 @@
           "price": "$19,000 MXN + VAT",
           "savings": "Save $6,500 MXN vs buying separately",
           "featured": false
+        }
+      ]
+    },
+    "payments": {
+      "section_label": "04 / PAYMENTS",
+      "headline": "Flexibility to invest without friction.",
+      "subheadline": "We accept bank transfer and credit card via Stripe. For projects over $20,000 MXN, installment plans are available with participating cards.",
+      "cards": {
+        "transfer": {
+          "title": "Bank transfer",
+          "detail": "CLABE and payment details provided upon project confirmation."
+        },
+        "card": {
+          "title": "Credit card",
+          "detail": "Secure payment via Stripe. Visa, Mastercard and American Express."
+        },
+        "msi": {
+          "title": "Installment plans",
+          "detail": "Available at 3, 6, or 12 months with participating cards. Applies to projects over $20,000 MXN."
+        }
+      },
+      "pricing_title": "Installment pricing",
+      "pricing_intro": "Interest-free installments apply only to projects over $20,000 MXN. The two packages below qualify; the third is below that threshold.",
+      "pricing_rows": [
+        {
+          "name": "Noctra Presence",
+          "msi": "$34,500 MXN + VAT with installments",
+          "or": "or",
+          "cash": "$32,000 MXN + VAT paid in full",
+          "savings": "(save $2,500 MXN)"
+        },
+        {
+          "name": "Noctra System",
+          "msi": "$59,000 MXN + VAT with installments",
+          "or": "or",
+          "cash": "$55,000 MXN + VAT paid in full",
+          "savings": "(save $4,000 MXN)"
+        },
+        {
+          "name": "Noctra Base",
+          "below_threshold": "No MSI — below the $20,000 MXN threshold. $18,000 MXN + VAT as a one-time payment or bank transfer."
         }
       ]
     },

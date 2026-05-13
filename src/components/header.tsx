@@ -199,7 +199,7 @@ export function Header() {
       {/* --- MOBILE CONTROLS (Fixed Layer / Z-[60]) --- */}
       {/* Always visible, outside animations, mix-blend-difference for visibility on all backgrounds */}
       {/* Pixel Perfect Alignment: h-12 flex items-center guarantees vertical center sharing */}
-      <div className="fixed inset-x-0 top-[calc(env(safe-area-inset-top)+1rem)] z-[60] px-6 md:hidden sm:top-[calc(env(safe-area-inset-top)+1.5rem)]">
+      <div className="fixed inset-x-0 top-[calc(env(safe-area-inset-top)+1rem)] z-60 px-6 md:hidden sm:top-[calc(env(safe-area-inset-top)+1.5rem)]">
         <div className="mx-auto flex max-w-7xl items-center justify-between mix-blend-difference">
           <div className="flex h-11 items-center sm:h-12">
             <Link href="/" className="block" aria-label="Noctra Studio Home">
@@ -254,7 +254,7 @@ export function Header() {
       {/* --- DESKTOP HEADER (MD+) --- */}
       <m.header
         data-fixed-header
-        className="fixed z-[50] top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
+        className="fixed z-50 top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
         initial={{ y: -20, opacity: 0 }}
         animate={{
           y: showNavbar ? 0 : -20,
@@ -295,7 +295,7 @@ export function Header() {
               <div className="flex items-center gap-4 z-50">
                 <LanguageSwitcher
                   variant="compact"
-                  className="hidden lg:flex border-white/10 bg-white/[0.04]"
+                  className="hidden lg:flex border-white/10 bg-white/4"
                 />
 
                 {showDiagnosticButton && (
@@ -325,7 +325,7 @@ export function Header() {
                   className="flex items-center gap-4 group cursor-pointer rounded-full px-2 py-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
                   <span
                     className={cn(
-                      "inline-block w-[4.5rem] text-right text-xs font-bold uppercase tracking-widest transition-colors duration-300",
+                      "inline-block w-18 text-right text-xs font-bold uppercase tracking-widest transition-colors duration-300",
                       isOpen ? "text-neutral-300" : "text-white",
                     )}>
                     {isOpen ? t("menu_close") : t("menu_open")}
@@ -422,7 +422,7 @@ export function Header() {
                   </div>
 
                   {/* Desktop Sidebar */}
-                  <div className="w-[300px] border-l border-neutral-800/50 pl-16 py-4 flex flex-col justify-between h-full bg-gradient-to-b from-transparent to-black/20">
+                  <div className="w-[300px] border-l border-neutral-800/50 pl-16 py-4 flex flex-col justify-between h-full bg-linear-to-b from-transparent to-black/20">
                     <div className="space-y-12">
                       <div className="space-y-6">
                         <h4 className="text-xs font-bold uppercase text-neutral-300 tracking-widest">
@@ -496,13 +496,13 @@ export function Header() {
             animate="open"
             exit="exit"
             variants={mobileOverlayVariants}
-            className="fixed inset-0 z-[50] bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 flex flex-col pointer-events-auto overflow-hidden touch-none"
+            className="fixed inset-0 z-50 bg-[#050505]/95 backdrop-blur-2xl border-b border-white/10 flex flex-col pointer-events-auto overflow-hidden touch-none"
             style={{ overscrollBehavior: "none" }}>
             {/* Zero Scroll Layout: Column spanning full height, pushed by padding */}
             {/* Adjusted Spacing: Reduced top padding (pt-20) and Increased bottom padding (pb-24) to lift footer clear of Chatbot */}
             <div className="flex-1 flex flex-col justify-between w-full px-6 pb-24 pt-24">
               <div className="space-y-6">
-                <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/[0.03] px-4 py-3">
+                <div className="flex items-center justify-between rounded-2xl border border-white/10 bg-white/3 px-4 py-3">
                   <div className="space-y-1">
                     <p className="text-[10px] font-mono uppercase tracking-[0.2em] text-neutral-500">
                       {t("language_label")}

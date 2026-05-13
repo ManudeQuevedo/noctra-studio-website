@@ -98,7 +98,7 @@ export function Services() {
                   delay: index * 0.08,
                 }}
                 viewport={cardViewport}
-                className="rounded-xl border border-white/[0.08] bg-[rgba(16,185,129,0.03)] p-6 transition-[transform,border-color,background-color] duration-200 will-change-transform hover:-translate-y-0.5 hover:border-emerald-500/30">
+                className="rounded-xl border border-white/8 bg-[rgba(16,185,129,0.03)] p-6 transition-[transform,border-color,background-color] duration-200 will-change-transform hover:-translate-y-0.5 hover:border-emerald-500/30">
                 <span className="text-[11px] text-neutral-600">
                   {item.number}
                 </span>
@@ -111,7 +111,7 @@ export function Services() {
                   {item.description}
                 </p>
 
-                <p className="mt-4 border-t border-white/[0.06] pt-4 text-sm font-medium text-emerald-400">
+                <p className="mt-4 border-t border-white/6 pt-4 text-sm font-medium text-emerald-400">
                   {item.price}
                 </p>
 

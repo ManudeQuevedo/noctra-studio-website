@@ -98,7 +98,7 @@ export default function WorkClient({
 
         {/* In Progress Section */}
         {activeProjects.length > 0 && (
-          <section className="py-24 px-6 border-t border-neutral-900 bg-white/[0.01]">
+          <section className="py-24 px-6 border-t border-neutral-900 bg-white/1">
             <div className="max-w-6xl mx-auto">
               <div className="mb-16">
                 <h2 className="text-3xl md:text-4xl font-bold mb-4">
@@ -181,7 +181,7 @@ export default function WorkClient({
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
                     transition={{ delay: i * 0.08 }}
-                    className="relative p-8 rounded-3xl border border-neutral-800 bg-white/[0.02] hover:border-emerald-500/20 transition-all duration-500 h-full flex flex-col">
+                    className="relative p-8 rounded-3xl border border-neutral-800 bg-white/2 hover:border-emerald-500/20 transition-all duration-500 h-full flex flex-col">
                     <div className="flex items-start justify-between mb-8">
                       <div className="w-12 h-12 rounded-xl bg-emerald-500/10 border border-emerald-500/20 flex items-center justify-center text-emerald-500">
                         <Icon className="w-6 h-6" />
@@ -191,7 +191,7 @@ export default function WorkClient({
                       </div>
                     </div>
 
-                    <div className="space-y-3 flex-grow">
+                    <div className="space-y-3 grow">
                       <h3 className="text-xl font-bold">{step.label}</h3>
                       <p className="text-sm text-neutral-400 leading-relaxed">
                         {step.description}
@@ -304,7 +304,7 @@ export default function WorkClient({
                     className={cn(
                       "rounded-2xl border transition-all duration-500 overflow-hidden group relative",
                       isFAQExpanded
-                        ? "border-emerald-500/30 bg-emerald-500/[0.02]"
+                        ? "border-emerald-500/30 bg-emerald-500/2"
                         : "border-neutral-800 bg-black hover:border-white/10 hover:shadow-[0_0_30px_-15px_rgba(255,255,255,0.1)] hover:-translate-y-0.5",
                     )}>
                     {/* Active Indicator Bar */}
@@ -330,7 +330,7 @@ export default function WorkClient({
                         <Icon className="w-5 h-5" />
                       </div>
 
-                      <div className="flex-grow space-y-2">
+                      <div className="grow space-y-2">
                         <div className="flex flex-wrap items-center gap-3">
                           <span
                             className={cn(
@@ -403,7 +403,7 @@ export default function WorkClient({
         </section>
 
         {/* CTA Section */}
-        <section className="py-32 px-6 border-t border-neutral-900 bg-white/[0.01]">
+        <section className="py-32 px-6 border-t border-neutral-900 bg-white/1">
           <div className="max-w-4xl mx-auto text-center space-y-12">
             <div className="space-y-6">
               <h2 className="text-4xl md:text-7xl font-bold tracking-tight">

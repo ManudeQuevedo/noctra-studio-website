@@ -28,7 +28,7 @@ export function BrandNarrativeVisual({
             whileInView={{ opacity: 0.2, scale: 1, x: 0 }}
             viewport={viewport}
             transition={{ duration: 2, ease: "easeOut", delay: 0.2 }}
-            className="absolute -left-32 bottom-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent blur-3xl will-change-transform"
+            className="absolute -left-32 bottom-0 h-[600px] w-[600px] rounded-full bg-linear-to-br from-emerald-500/20 to-transparent blur-3xl will-change-transform"
           />
         )}
 
@@ -60,8 +60,8 @@ export function BrandNarrativeVisual({
             animate={{ opacity: 0.1 }}
             transition={{ duration: 3, delay: 1 }}
             className="absolute inset-0">
-            <div className="absolute top-[20%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent rotate-[15deg] translate-y-20" />
-            <div className="absolute top-[60%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent rotate-[-10deg] -translate-y-40" />
+            <div className="absolute top-[20%] left-0 w-full h-px bg-linear-to-r from-transparent via-emerald-500/20 to-transparent rotate-15 translate-y-20" />
+            <div className="absolute top-[60%] left-0 w-full h-px bg-linear-to-r from-transparent via-emerald-500/10 to-transparent rotate-[-10deg] -translate-y-40" />
           </m.div>
         </div>
       </div>
