@@ -124,5 +124,17 @@
     "esbuild": "^0.25.0",
     "path-to-regexp": "^6.3.0",
     "undici": "^5.28.6"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@parcel/watcher",
+      "@sentry/cli",
+      "@swc/core",
+      "core-js",
+      "esbuild",
+      "msgpackr-extract",
+      "sharp",
+      "unrs-resolver"
+    ]
   }
 }
