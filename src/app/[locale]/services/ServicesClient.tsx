@@ -12,6 +12,10 @@ import {
 } from "lucide-react";
 import { Link } from "@/i18n/routing";
 import { Button } from "@/components/ui/button";
+import {
+  SoftwareEcosystemSection,
+  type SoftwareEcosystemMessages,
+} from "@/components/services/SoftwareEcosystemSection";
 
 type PackageCard = {
   id: string;
@@ -68,6 +72,7 @@ type ServicesCatalogMessages = {
       closing: string;
     };
   };
+  software: SoftwareEcosystemMessages;
   projects: {
     label: string;
     intro: string;
@@ -156,7 +161,8 @@ export default function ServicesClient() {
               initial={{ opacity: 0, y: 16 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55 }}
-              className="text-pretty text-5xl font-black leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl">
+              className="text-pretty text-5xl font-black leading-[1.02] tracking-tight text-white sm:text-6xl md:text-7xl lg:text-8xl xl:text-9xl"
+            >
               <span className="block">{c.hero.headline_line1}</span>
               <span className="block">{c.hero.headline_line2}</span>
             </m.h1>
@@ -164,18 +170,21 @@ export default function ServicesClient() {
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.08 }}
-              className="mx-auto mt-6 max-w-3xl text-pretty text-xl font-semibold leading-snug text-white/60 sm:mt-8 sm:text-2xl md:mt-10 md:text-3xl lg:mt-12 lg:leading-tight">
+              className="mx-auto mt-6 max-w-3xl text-pretty text-xl font-semibold leading-snug text-white/60 sm:mt-8 sm:text-2xl md:mt-10 md:text-3xl lg:mt-12 lg:leading-tight"
+            >
               {c.hero.subheadline}
             </m.p>
             <m.div
               initial={{ opacity: 0, y: 12 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.55, delay: 0.14 }}
-              className="mt-12 sm:mt-14 md:mt-16">
+              className="mt-12 sm:mt-14 md:mt-16"
+            >
               <Button
                 asChild
                 size="lg"
-                className="h-14 rounded-full bg-white px-10 text-base font-semibold text-black hover:bg-white/90 md:h-16 md:px-12 md:text-lg">
+                className="h-14 rounded-full bg-white px-10 text-base font-semibold text-black hover:bg-white/90 md:h-16 md:px-12 md:text-lg"
+              >
                 <Link href="/diagnostico">{c.hero.cta}</Link>
               </Button>
             </m.div>
@@ -197,7 +206,8 @@ export default function ServicesClient() {
                 {thesis.problem.body.map((paragraph, i) => (
                   <p
                     key={`problem-${i}`}
-                    className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]">
+                    className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]"
+                  >
                     {paragraph}
                   </p>
                 ))}
@@ -212,7 +222,8 @@ export default function ServicesClient() {
                 {thesis.method.body.map((paragraph, i) => (
                   <p
                     key={`method-${i}`}
-                    className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]">
+                    className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]"
+                  >
                     {paragraph}
                   </p>
                 ))}
@@ -235,12 +246,14 @@ export default function ServicesClient() {
               <div
                 className="mt-10 hidden md:flex md:items-stretch"
                 role="list"
-                aria-label={thesis.method.label}>
+                aria-label={thesis.method.label}
+              >
                 {thesis.method.steps.map((step, index) => (
                   <Fragment key={step.number}>
                     <div
                       role="listitem"
-                      className="min-w-0 flex-[2_1_0%] space-y-1.5">
+                      className="min-w-0 flex-[2_1_0%] space-y-1.5"
+                    >
                       <p className="text-sm font-medium text-white">
                         <span className="mr-2 text-xs font-mono uppercase tracking-widest text-white/30">
                           {step.number}
@@ -252,7 +265,8 @@ export default function ServicesClient() {
                     {index < thesis.method.steps.length - 1 ? (
                       <div
                         className="flex min-w-2 flex-1 items-center justify-center px-1"
-                        aria-hidden>
+                        aria-hidden
+                      >
                         <div className="h-px w-full bg-white/10" />
                       </div>
                     ) : null}
@@ -279,7 +293,8 @@ export default function ServicesClient() {
                       {thesis.guarantee.body.map((paragraph, i) => (
                         <p
                           key={`guarantee-${i}`}
-                          className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]">
+                          className="text-pretty text-base leading-relaxed text-white/70 md:text-[17px]"
+                        >
                           {paragraph}
                         </p>
                       ))}
@@ -293,6 +308,8 @@ export default function ServicesClient() {
             </m.div>
           </div>
         </section>
+
+        <SoftwareEcosystemSection data={c.software} />
 
         {/* 01 PROJECTS */}
         <section className="border-t border-white/5 px-6 pb-20 pt-24 md:px-8 md:pb-24 md:pt-32">
@@ -314,7 +331,8 @@ export default function ServicesClient() {
                 <m.article
                   key={pkg.id}
                   {...fadeIn}
-                  className={`relative flex flex-col ${cardShellClass(pkg.featured)}`}>
+                  className={`relative flex flex-col ${cardShellClass(pkg.featured)}`}
+                >
                   {pkg.featured && (
                     <span className="absolute right-4 top-4 inline-flex rounded-full bg-emerald-500/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-300">
                       {c.projects.popular_badge}
@@ -335,7 +353,8 @@ export default function ServicesClient() {
                     {pkg.deliverables.map((line) => (
                       <li
                         key={line}
-                        className="flex gap-2 text-sm leading-snug text-white/75 md:text-[15px]">
+                        className="flex gap-2 text-sm leading-snug text-white/75 md:text-[15px]"
+                      >
                         <Check
                           className="mt-0.5 h-4 w-4 shrink-0 text-emerald-400"
                           aria-hidden
@@ -375,7 +394,8 @@ export default function ServicesClient() {
                     {addon.tiers.map((tier) => (
                       <div
                         key={tier.tier}
-                        className={`flex flex-col ${cardShellClass(tier.featured)}`}>
+                        className={`flex flex-col ${cardShellClass(tier.featured)}`}
+                      >
                         {tier.featured && (
                           <span className="mb-3 inline-flex w-fit rounded-full bg-emerald-500/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-300">
                             {c.projects.popular_badge}
@@ -415,7 +435,8 @@ export default function ServicesClient() {
                 <m.div
                   key={tier.name}
                   {...fadeIn}
-                  className={`flex flex-col ${cardShellClass(tier.featured)}`}>
+                  className={`flex flex-col ${cardShellClass(tier.featured)}`}
+                >
                   {tier.featured && (
                     <span className="mb-3 inline-flex w-fit rounded-full bg-emerald-500/20 px-2.5 py-1 text-[10px] font-bold uppercase tracking-wide text-emerald-300">
                       {c.bundle.popular_badge}
@@ -452,7 +473,8 @@ export default function ServicesClient() {
             <div className="grid gap-4 md:grid-cols-3">
               <m.article
                 {...fadeIn}
-                className="rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15">
+                className="rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15"
+              >
                 <Landmark
                   className="h-5 w-5 text-white/60"
                   strokeWidth={1.75}
@@ -468,7 +490,8 @@ export default function ServicesClient() {
 
               <m.article
                 {...fadeIn}
-                className="group rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15">
+                className="group rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15"
+              >
                 <CreditCard
                   className="h-5 w-5 text-white/60"
                   strokeWidth={1.75}
@@ -489,7 +512,8 @@ export default function ServicesClient() {
 
               <m.article
                 {...fadeIn}
-                className="rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15">
+                className="rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 transition-colors duration-200 hover:border-white/15"
+              >
                 <CalendarDays
                   className="h-5 w-5 text-white/60"
                   strokeWidth={1.75}
@@ -506,7 +530,8 @@ export default function ServicesClient() {
 
             <m.div
               {...fadeIn}
-              className="mt-10 rounded-2xl border border-white/6 bg-white/2 px-5 py-6 md:px-8 md:py-7">
+              className="mt-10 rounded-2xl border border-white/6 bg-white/2 px-5 py-6 md:px-8 md:py-7"
+            >
               <p className="text-xs font-medium uppercase tracking-wider text-white/40">
                 {c.payments.pricing_title}
               </p>
@@ -518,7 +543,8 @@ export default function ServicesClient() {
                   row.below_threshold ? (
                     <li
                       key={row.name}
-                      className="text-pretty border-t border-white/6 pt-4 leading-relaxed">
+                      className="text-pretty border-t border-white/6 pt-4 leading-relaxed"
+                    >
                       <span className="text-sm font-medium text-white">
                         {row.name}
                       </span>
@@ -556,7 +582,8 @@ export default function ServicesClient() {
         {/* FOOTER CTA */}
         <section
           ref={contactRef}
-          className="border-t border-white/5 px-6 py-16 md:px-8 md:py-24">
+          className="border-t border-white/5 px-6 py-16 md:px-8 md:py-24"
+        >
           <div className="mx-auto max-w-3xl rounded-4xl border border-emerald-500/25 bg-linear-to-br from-emerald-500/10 via-white/4 to-transparent p-8 text-center md:p-12">
             <m.div {...fadeIn}>
               <h2 className="text-2xl font-black text-white md:text-4xl">
@@ -568,7 +595,8 @@ export default function ServicesClient() {
               <Button
                 asChild
                 size="lg"
-                className="mt-8 h-14 rounded-full bg-white px-8 text-base font-semibold text-black hover:bg-white/90">
+                className="mt-8 h-14 rounded-full bg-white px-8 text-base font-semibold text-black hover:bg-white/90"
+              >
                 <Link href="/diagnostico">{c.footer_cta.button}</Link>
               </Button>
             </m.div>
@@ -581,7 +609,8 @@ export default function ServicesClient() {
             initial={{ y: 100 }}
             animate={{ y: isContactInView ? 140 : 0 }}
             transition={{ duration: 0.35, ease: "easeOut" }}
-            className="pointer-events-auto mx-auto flex max-w-lg items-center justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/95 p-4 shadow-2xl backdrop-blur-xl">
+            className="pointer-events-auto mx-auto flex max-w-lg items-center justify-between gap-4 rounded-2xl border border-white/10 bg-neutral-950/95 p-4 shadow-2xl backdrop-blur-xl"
+          >
             <div className="min-w-0">
               <p className="text-[9px] font-bold uppercase tracking-[0.24em] text-emerald-400">
                 {c.sticky.label}
@@ -592,7 +621,8 @@ export default function ServicesClient() {
             </div>
             <Link
               href="/diagnostico"
-              className="shrink-0 rounded-xl bg-white px-4 py-3 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-black">
+              className="shrink-0 rounded-xl bg-white px-4 py-3 text-center text-[10px] font-bold uppercase leading-tight tracking-wide text-black"
+            >
               {c.sticky.cta}
             </Link>
           </m.div>

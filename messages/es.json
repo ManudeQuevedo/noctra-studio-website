@@ -357,54 +357,47 @@
     },
     "ecosystem": {
       "kicker": "03 / ECOSISTEMA",
-      "title": "Herramientas para operar mejor.",
-      "subtitle": "Presencia, ventas y seguimiento ordenados para equipos pequeños.",
-      "footnote": "Trabajo real para Dyma Group y Woodax Design.",
-      "items": [
+      "title": "No solo construimos tu presencia. Te damos las herramientas para crecer.",
+      "subtitle": "Cada cliente de Noctra recibe acceso a software desarrollado por nosotros, potenciado por IA. Tú decides si lo operas tú o lo manejamos nosotros.",
+      "ai_costs": "Los costos de inteligencia artificial son directos al proveedor (OpenAI, Google, Anthropic). Noctra configura todo y te guía para mantenerlos eficientes — sin intermediarios ni markups.",
+      "ownership": {
+        "headline": "Tu información, siempre tuya.",
+        "copy": "Si decides trabajar con otro proveedor, te entregamos todo — accesos, datos, código y contenido. Sin retención, sin cargos adicionales. Construimos para que seas independiente, no para que dependas de nosotros."
+      },
+      "ownership_stats": [
+        { "value": "100%", "label": "de tus accesos, siempre" },
+        { "value": "0", "label": "penalización por cancelar" },
+        { "value": "1", "label": "equipo responsable del resultado" }
+      ],
+      "products": [
         {
-          "name": "Noctra Studio",
-          "layer": "CORE",
+          "id": "noctra-radar",
+          "status": "active",
           "badge": "ACTIVO",
-          "description": "Presencia digital lista para vender. Marca, sitio y medición en una entrega."
-        },
-        {
-          "name": "Radar",
-          "layer": "VISIBILIDAD",
-          "badge": "Acceso anticipado",
-          "description": "Monitorea la visibilidad de tu marca en Google, ChatGPT y Gemini. Disponible en acceso anticipado.",
+          "name": "Noctra Radar",
+          "category": "Visibilidad",
+          "description": "Monitorea cómo aparece tu marca en Google, ChatGPT, Gemini y Perplexity. Detecta oportunidades y caídas antes de que afecten tu negocio.",
+          "managed_line": "Disponible con gestión Noctra",
           "cta_app": "radar",
           "cta_label": "Abrir Radar →"
         },
         {
-          "name": "Social",
-          "layer": "CONTENIDO",
-          "badge": "2026",
-          "description": "Ordena contenido, campañas y seguimiento comercial.",
-          "flagship_line": "Llega en 2026."
+          "id": "noctra-social",
+          "status": "coming_soon",
+          "badge": "PRÓXIMAMENTE",
+          "name": "Noctra Social",
+          "category": "Contenido",
+          "description": "Generación de contenido para redes sociales con IA, alineado a tu marca y calendario editorial. Listo para publicar.",
+          "managed_line": "Disponible con gestión Noctra"
         },
         {
-          "name": "CRM",
-          "layer": "AUTOMATIZACIÓN",
-          "badge": "EN DESARROLLO",
-          "description": "Seguimiento comercial sin hojas sueltas. Clientes, oportunidades y tareas en control."
-        },
-        {
-          "name": "Discovery",
-          "layer": "VENTAS",
-          "badge": "ACTIVO",
-          "description": "Diagnóstico claro antes de invertir. Prioridades, riesgos y próximos pasos."
-        },
-        {
-          "name": "Proposals",
-          "layer": "VENTAS",
-          "badge": "EN DESARROLLO",
-          "description": "Propuestas comerciales más fáciles de cerrar. Alcance, precio y decisión sin confusión."
-        },
-        {
-          "name": "Academy",
-          "layer": "CONOCIMIENTO",
-          "badge": "EN DESARROLLO",
-          "description": "Criterio digital para equipos pequeños. Aprende a comprar, medir y mejorar."
+          "id": "noctra-ops",
+          "status": "coming_soon",
+          "badge": "JULIO 2026",
+          "icon": "layers",
+          "name": "Noctra Ops",
+          "description": "Diagnóstico de clientes, propuestas, contratos y firma digital en un solo lugar. Todo el flujo comercial de Noctra, unificado.",
+          "internal_note": "En desarrollo. Disponible para clientes en Julio 2026."
         }
       ]
     },
@@ -4908,6 +4901,36 @@
         ],
         "closing": "Sin letra pequeña."
       }
+    },
+    "software": {
+      "section_label": "00B / SOFTWARE",
+      "headline": "Infraestructura de marca + software propio. Todo incluido.",
+      "subheadline": "Cada proyecto Noctra incluye acceso a las herramientas que desarrollamos para que tu negocio crezca con o sin nosotros.",
+      "radar": {
+        "status": "INCLUIDO EN PRESENCIA Y SISTEMA",
+        "name": "Noctra Radar",
+        "description": "Monitorea la visibilidad de tu marca en Google, ChatGPT, Gemini y Perplexity en tiempo real. Detecta cuando tu competencia te supera, identifica keywords de oportunidad y mide cómo te menciona la IA.",
+        "option_a_title": "Lo operas tú",
+        "option_a_description": "Acceso completo al dashboard. Reportes automáticos a tu correo cada semana.",
+        "option_b_title": "Lo manejamos nosotros",
+        "option_b_description": "Nuestro equipo interpreta los datos, implementa mejoras y te entrega un resumen mensual ejecutivo.",
+        "option_b_badge": "Add-on: desde $1,800 MXN + IVA / mes"
+      },
+      "ops": {
+        "badge": "JULIO 2026",
+        "name": "Noctra Ops",
+        "description": "Diagnóstico de clientes, propuestas, contratos y firma digital en un solo lugar. Todo el flujo comercial de Noctra, unificado.",
+        "internal_note": "En desarrollo. Disponible para clientes en Julio 2026."
+      },
+      "coming_soon": "Noctra Social — Gestión de contenido con IA · Próximamente",
+      "ai_costs": "Los costos de inteligencia artificial son directos al proveedor (OpenAI, Google, Anthropic). Noctra configura todo y te guía para mantener tus costos eficientes y predecibles — sin intermediarios ni markups. Tú pagas al proveedor directamente, al precio que ellos publican.",
+      "ownership_quote": "Si en algún momento decides cambiar de proveedor, te entregamos todo sin condiciones.",
+      "ownership_points": [
+        "Todos los accesos — dominio, hosting, cuentas y herramientas",
+        "Todos los datos — contenido, leads y métricas históricas",
+        "Todo el código — tu sitio web es tuyo, no nuestro"
+      ],
+      "ownership_closing": "Sin penalizaciones. Sin retención. Sin letra pequeña."
     },
     "projects": {
       "label": "01 / PROYECTOS",

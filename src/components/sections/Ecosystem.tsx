@@ -1,51 +1,46 @@
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
+import { Layers, ShieldCheck, Users, Zap } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 
 const viewport = { once: true, margin: "-10%" } as const;
 const cardViewport = { once: true, margin: "-10%" } as const;
 
-type BadgeStatus = "active" | "in_dev" | "flagship" | "mvp";
+type ProductStatus = "active" | "coming_soon";
 
-type EcosystemItem = {
-  name: string;
-  layer: string;
+type EcosystemProduct = {
+  id: string;
+  status: ProductStatus;
   badge: string;
+  name: string;
+  category?: string;
   description: string;
-  flagship_line?: string;
-  /** When set to "radar", `cta_label` links to the live Radar product app */
+  managed_line?: string;
+  internal_note?: string;
+  icon?: "layers";
   cta_app?: "radar";
   cta_label?: string;
 };
 
-type ItemConfig = {
-  number: string;
-  status: BadgeStatus;
-  wide: boolean;
+type OwnershipStat = {
+  value: string;
+  label: string;
 };
 
-const itemConfigs: ItemConfig[] = [
-  { number: "01", status: "active", wide: false },
-  { number: "02", status: "flagship", wide: true },
-  { number: "03", status: "in_dev", wide: false },
-  { number: "04", status: "in_dev", wide: false },
-  { number: "05", status: "active", wide: false },
-  { number: "06", status: "in_dev", wide: false },
-  { number: "07", status: "in_dev", wide: false },
-];
+const activeBadgeClass =
+  "text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20";
 
-const badgeClass: Record<BadgeStatus, string> = {
-  active: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30",
-  in_dev: "bg-white/[0.04] text-[#C8B8A2] border border-[#C8B8A2]/20",
-  flagship: "bg-emerald-500/15 text-emerald-400 border border-emerald-500/50",
-  mvp: "bg-white/[0.03] text-neutral-500 border border-white/10",
-};
+const comingSoonBadgeClass =
+  "text-xs px-2 py-0.5 rounded-full bg-white/5 text-white/30 border border-white/10";
 
 export function Ecosystem() {
   const t = useTranslations("HomePage");
   const locale = useLocale();
-  const items = t.raw("ecosystem.items") as unknown as EcosystemItem[];
+  const products = t.raw("ecosystem.products") as unknown as EcosystemProduct[];
+  const ownershipStats = t.raw(
+    "ecosystem.ownership_stats",
+  ) as unknown as OwnershipStat[];
 
   return (
     <LazyMotion features={domAnimation}>
@@ -80,15 +75,14 @@ export function Ecosystem() {
             {t("ecosystem.subtitle")}
           </m.p>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-3">
-            {items.map((item, i) => {
-              const cfg = itemConfigs[i];
-              const isFlagship = cfg.status === "flagship";
+          <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
+            {products.map((item, i) => {
+              const isActive = item.status === "active";
 
               return (
                 <m.div
-                  key={item.name}
-                  id={item.name.toLowerCase()}
+                  key={item.id}
+                  id={item.id}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
                   transition={{
@@ -98,45 +92,68 @@ export function Ecosystem() {
                   }}
                   viewport={cardViewport}
                   className={[
-                    "scroll-mt-32 rounded-xl border p-6 transition-[transform,border-color,background-color] duration-200 will-change-transform",
-                    cfg.wide ? "md:col-span-2" : "",
-                    isFlagship
-                      ? "border-emerald-500/40 bg-linear-to-br from-[#0a0b13] to-emerald-500/5"
-                      : "border-white/8 bg-[rgba(16,185,129,0.03)] hover:-translate-y-0.5 hover:border-emerald-500/30",
+                    "scroll-mt-32 rounded-2xl border border-white/8 bg-white/3 p-6 will-change-transform",
+                    isActive
+                      ? "transition-colors duration-200 hover:border-white/15"
+                      : "",
                   ]
                     .filter(Boolean)
                     .join(" ")}>
-                  <div className="flex items-center justify-between">
-                    <span className="text-[11px] font-normal text-white/20">
-                      {cfg.number}
-                    </span>
-                    <span
-                      className={`flex items-center gap-1.5 rounded-full px-2.5 py-1 text-[10px] font-medium uppercase tracking-widest ${badgeClass[cfg.status]}`}>
-                      {isFlagship && (
-                        <span className="h-1 w-1 rounded-full bg-emerald-400 shadow-[0_0_8px_rgba(52,211,153,0.8)]" />
-                      )}
-                      {item.badge}
-                    </span>
-                  </div>
+                  {item.icon === "layers" ? (
+                    <div className="flex items-start justify-between gap-3">
+                      <Layers
+                        size={24}
+                        className="shrink-0 text-white/40"
+                        aria-hidden
+                      />
+                      <span
+                        className={
+                          isActive ? activeBadgeClass : comingSoonBadgeClass
+                        }>
+                        {item.badge}
+                      </span>
+                    </div>
+                  ) : (
+                    <div className="flex justify-end">
+                      <span
+                        className={
+                          isActive ? activeBadgeClass : comingSoonBadgeClass
+                        }>
+                        {item.badge}
+                      </span>
+                    </div>
+                  )}
 
-                  <p
-                    className={`mt-4 font-semibold text-white ${cfg.wide ? "text-xl" : "text-lg"}`}>
+                  <p className="mt-4 text-lg font-semibold text-white">
                     {item.name}
                   </p>
 
-                  <p className="mt-1 text-[11px] font-medium uppercase tracking-[0.15em] text-emerald-400">
-                    {item.layer}
-                  </p>
+                  {item.category ? (
+                    <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-emerald-400/90">
+                      {item.category}
+                    </p>
+                  ) : null}
 
                   <p className="mt-3 text-[13px] leading-relaxed text-neutral-400">
                     {item.description}
                   </p>
 
-                  {item.flagship_line && (
-                    <p className="mt-4 text-[12px] font-medium text-emerald-400">
-                      {item.flagship_line}
+                  {item.internal_note ? (
+                    <p className="mt-3 text-xs italic text-white/30">
+                      {item.internal_note}
                     </p>
-                  )}
+                  ) : null}
+
+                  {item.managed_line ? (
+                    <p className="mt-3 flex items-center gap-1 text-xs text-white/40">
+                      <Users
+                        size={12}
+                        className="flex-shrink-0 text-white/40"
+                        aria-hidden
+                      />
+                      {item.managed_line}
+                    </p>
+                  ) : null}
 
                   {item.cta_label && item.cta_app === "radar" ? (
                     <a
@@ -152,14 +169,51 @@ export function Ecosystem() {
             })}
           </div>
 
-          <m.p
-            initial={{ opacity: 0 }}
-            whileInView={{ opacity: 1 }}
-            transition={{ duration: 0.6, delay: 0.8 }}
+          <m.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.12 }}
             viewport={viewport}
-            className="mt-8 text-center text-[12px] text-neutral-500">
-            {t("ecosystem.footnote")}
-          </m.p>
+            className="mx-auto mt-6 flex max-w-lg items-start justify-center gap-2 border-t border-white/5 pt-6 text-center text-xs text-white/30">
+            <Zap
+              size={14}
+              className="mt-0.5 flex-shrink-0 text-white/20"
+              aria-hidden
+            />
+            <p className="min-w-0 flex-1 text-center text-pretty">{t("ecosystem.ai_costs")}</p>
+          </m.div>
+
+          <m.div
+            initial={{ opacity: 0, y: 8 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.2 }}
+            viewport={viewport}
+            className="mt-6 rounded-2xl border-[0.5px] border-white/8 bg-white/3 p-6 md:p-8">
+            <div className="flex flex-col gap-8 md:flex-row md:items-start md:justify-between">
+              <div className="max-w-xl flex-1">
+                <ShieldCheck
+                  size={20}
+                  className="text-green-400/70"
+                  aria-hidden
+                />
+                <h3 className="mt-4 text-xl font-semibold tracking-tight text-white md:text-2xl">
+                  {t("ecosystem.ownership.headline")}
+                </h3>
+                <p className="mt-3 text-sm leading-relaxed text-white/55 md:text-base">
+                  {t("ecosystem.ownership.copy")}
+                </p>
+              </div>
+
+              <div className="flex flex-wrap gap-8 md:flex-nowrap md:justify-end">
+                {ownershipStats.map((stat) => (
+                  <div key={stat.value + stat.label} className="min-w-[5.5rem]">
+                    <p className="text-2xl font-bold text-white">{stat.value}</p>
+                    <p className="mt-1 text-xs text-white/40">{stat.label}</p>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </m.div>
         </div>
       </section>
     </LazyMotion>

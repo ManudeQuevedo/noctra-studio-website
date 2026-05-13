@@ -357,54 +357,47 @@
     },
     "ecosystem": {
       "kicker": "03 / ECOSYSTEM",
-      "title": "Products to operate with clarity.",
-      "subtitle": "Active services and proprietary products to organize presence, visibility, and sales.",
-      "footnote": "Real work for Dyma Group, and Woodax Design.",
-      "items": [
+      "title": "We don't just build your presence. We give you the tools to grow.",
+      "subtitle": "Every Noctra client gets access to software we built, powered by AI. You decide whether you run it or we manage it for you.",
+      "ai_costs": "AI costs go directly to the provider (OpenAI, Google, Anthropic). Noctra configures everything and guides you to keep them efficient — no intermediaries, no markups.",
+      "ownership": {
+        "headline": "Your data, always yours.",
+        "copy": "If you decide to work with another provider, we hand over everything — access, data, code, and content. No retention, no additional charges. We build for your independence, not your dependency."
+      },
+      "ownership_stats": [
+        { "value": "100%", "label": "of your access, always" },
+        { "value": "0", "label": "cancellation penalty" },
+        { "value": "1", "label": "team accountable" }
+      ],
+      "products": [
         {
-          "name": "Noctra Studio",
-          "layer": "CORE",
-          "badge": "Active",
-          "description": "Complete digital presence for SMEs and professionals. Brand, site, visibility, and measurement working together."
-        },
-        {
-          "name": "Radar",
-          "layer": "VISIBILITY",
-          "badge": "Early access",
-          "description": "Monitor your brand visibility on Google, ChatGPT, and Gemini. Now in early access.",
+          "id": "noctra-radar",
+          "status": "active",
+          "badge": "ACTIVE",
+          "name": "Noctra Radar",
+          "category": "Visibility",
+          "description": "Monitor how your brand appears on Google, ChatGPT, Gemini, and Perplexity. Detect opportunities and drops before they affect your business.",
+          "managed_line": "Available with Noctra management",
           "cta_app": "radar",
           "cta_label": "Open Radar →"
         },
         {
-          "name": "Social",
-          "layer": "CONTENT",
-          "badge": "2026",
-          "description": "Coming soon: planning and control of commercial content.",
-          "flagship_line": "Arriving in 2026."
+          "id": "noctra-social",
+          "status": "coming_soon",
+          "badge": "COMING SOON",
+          "name": "Noctra Social",
+          "category": "Content",
+          "description": "AI-powered social media content generation, aligned to your brand and editorial calendar. Ready to publish.",
+          "managed_line": "Available with Noctra management"
         },
         {
-          "name": "CRM",
-          "layer": "AUTOMATION",
-          "badge": "In development",
-          "description": "WhatsApp-first CRM to organize leads and follow-up. Designed for how LATAM sells."
-        },
-        {
-          "name": "Discovery",
-          "layer": "SALES",
-          "badge": "Active",
-          "description": "Lead intake and qualification in a clear flow. Less chaos before selling."
-        },
-        {
-          "name": "Proposals",
-          "layer": "SALES",
-          "badge": "Active",
-          "description": "Pipeline from proposal to signed contract. Fewer spreadsheets, more progress."
-        },
-        {
-          "name": "Academy",
-          "layer": "KNOWLEDGE",
-          "badge": "MVP 2026",
-          "description": "Practical learning from real cases. In definition phase for 2026."
+          "id": "noctra-ops",
+          "status": "coming_soon",
+          "badge": "JULY 2026",
+          "icon": "layers",
+          "name": "Noctra Ops",
+          "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. Noctra's complete commercial flow, unified.",
+          "internal_note": "In development. Available for clients in July 2026."
         }
       ]
     },
@@ -5829,6 +5822,36 @@
         ],
         "closing": "No fine print."
       }
+    },
+    "software": {
+      "section_label": "00B / SOFTWARE",
+      "headline": "Brand infrastructure + proprietary software. All included.",
+      "subheadline": "Every Noctra project includes access to the tools we built so your business grows with or without us.",
+      "radar": {
+        "status": "INCLUDED IN PRESENCE AND SYSTEM",
+        "name": "Noctra Radar",
+        "description": "Monitors your brand visibility on Google, ChatGPT, Gemini, and Perplexity in real time. Detects when competitors outrank you, identifies opportunity keywords, and measures how AI mentions you.",
+        "option_a_title": "You run it",
+        "option_a_description": "Full dashboard access. Automatic weekly reports to your email.",
+        "option_b_title": "We manage it",
+        "option_b_description": "Our team interprets the data, implements improvements, and delivers a monthly executive summary.",
+        "option_b_badge": "Add-on: from $1,800 MXN + VAT / month"
+      },
+      "ops": {
+        "badge": "JULY 2026",
+        "name": "Noctra Ops",
+        "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. Noctra's complete commercial flow, unified.",
+        "internal_note": "In development. Available for clients in July 2026."
+      },
+      "coming_soon": "Noctra Social — AI content management · Coming soon",
+      "ai_costs": "AI costs go directly to the provider (OpenAI, Google, Anthropic). Noctra configures everything and guides you to keep your costs efficient and predictable — no intermediaries, no markups. You pay the provider directly at their published price.",
+      "ownership_quote": "If you ever decide to change providers, we hand over everything unconditionally.",
+      "ownership_points": [
+        "All access — domain, hosting, accounts, and tools",
+        "All data — content, leads, and historical metrics",
+        "All the code — your website belongs to you, not us"
+      ],
+      "ownership_closing": "No penalties. No retention. No fine print."
     },
     "projects": {
       "label": "01 / PROJECTS",
