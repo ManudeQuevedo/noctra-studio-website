@@ -202,5 +202,8 @@ export default isSentryConfigured
       tunnelRoute: "/monitoring",
       disableLogger: true,
       automaticVercelMonitors: true,
+      sourcemaps: {
+        disable: true,
+      },
     })
   : analyzedConfig;
