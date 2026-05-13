@@ -901,10 +901,7 @@
       "legal": "Legal",
       "contact": "Contacto"
     },
-    "badges": {
-      "internal": "Interno",
-      "ecosystem": "Ecosistema"
-    },
+    "ops_coming_soon_badge": "Jul 2026",
     "links": {
       "home": "Inicio",
       "blog": "Blog",
@@ -922,10 +919,9 @@
       "automations": "Automatizaciones y Sistemas",
       "radar": "Radar",
       "social": "Social",
+      "ops": "Noctra Ops",
       "method": "Cómo funciona Noctra",
       "how_we_build": "Cómo construimos",
-      "discovery": "Discovery",
-      "proposals": "Proposals",
       "academy": "Academy",
       "guarantee": "Garantía del Proyecto",
       "technology": "Cómo Construimos",

@@ -2,7 +2,13 @@
 
 import { useRef } from "react";
 import { useLocale } from "next-intl";
-import { LazyMotion, domAnimation, m, useScroll, useTransform } from "framer-motion";
+import {
+  LazyMotion,
+  domAnimation,
+  m,
+  useScroll,
+  useTransform,
+} from "framer-motion";
 import Image from "next/image";
 import { Link } from "@/i18n/routing";
 
@@ -33,15 +39,17 @@ type AboutCopy = {
   /* 5. HOW WE THINK */
   thinkingLabel: string;
   thinkingTitle: string;
-  thinkingPillars: { title: string; text: string }[];
+  thinkingPillars: { title: string; text: string; detail: string }[];
 
   /* 6. STUDIO + PRODUCTS */
   modelLabel: string;
   modelTitle: string;
   modelSub: string;
+  modelOwnershipNote: string;
   studioTitle: string;
   studioText: string;
   studioPoints: string[];
+  productsCardLabel: string;
   productsTitle: string;
   productsText: string;
   productsPoints: string[];
@@ -72,8 +80,10 @@ const ES: AboutCopy = {
   heroBadge: "NOCTRA STUDIO",
   heroTitleLine1: "No construimos presencia digital.",
   heroTitleLine2: "Construimos claridad.",
-  heroSubLine1: "Conectamos web, contenido, SEO y herramientas bajo una lógica que tu cliente entiende.",
-  heroSubLine2: "Una presencia más clara se mide mejor, vende mejor y mejora con el tiempo.",
+  heroSubLine1:
+    "Conectamos web, contenido, SEO y herramientas bajo una lógica que tu cliente entiende.",
+  heroSubLine2:
+    "Una presencia más clara se mide mejor, vende mejor y mejora con el tiempo.",
 
   /* 3 */
   originLabel: "POR QUÉ EXISTE NOCTRA",
@@ -112,14 +122,20 @@ const ES: AboutCopy = {
     {
       title: "Claridad",
       text: "El cliente debe entender rápido.",
+      detail:
+        "Si tu cliente necesita que le expliques qué haces, tu presencia digital no está funcionando.",
     },
     {
       title: "Estructura",
       text: "Primero ordenar, luego escalar.",
+      detail:
+        "Crecer sobre una base desorganizada solo amplifica el problema. Ordenamos antes de construir.",
     },
     {
       title: "Continuidad",
       text: "Medir evita que se degrade.",
+      detail:
+        "Una presencia digital sin seguimiento pierde valor con el tiempo. Medimos para que lo construido siga funcionando.",
     },
   ],
 
@@ -128,6 +144,8 @@ const ES: AboutCopy = {
   modelTitle: "Estudio + Producto. Dos capas, un sistema.",
   modelSub:
     "Combinamos implementación estratégica con productos propios para que lo construido no se quede estático después del lanzamiento.",
+  modelOwnershipNote:
+    "Tus datos, tu sitio y tus accesos son tuyos siempre. El acceso a las herramientas Noctra está incluido mientras tengas un plan activo.",
   studioTitle: "Noctra Studio",
   studioText:
     "Construimos la base estratégica y visible de tu presencia digital.",
@@ -136,20 +154,21 @@ const ES: AboutCopy = {
     "Web clara, rápida y útil.",
     "SEO desde la estructura.",
   ],
-  productsTitle: "Noctra Products",
+  productsCardLabel: "SOFTWARE",
+  productsTitle: "Noctra Software",
   productsText:
-    "Creamos herramientas para sostener claridad después del lanzamiento.",
+    "Herramientas propias potenciadas por IA para que tu negocio crezca con o sin nuestra intervención directa.",
   productsPoints: [
     "Radar detecta qué mejorar.",
     "Social sostiene contenido estratégico.",
-    "Forge conecta operación y seguimiento.",
+    "Noctra Ops unifica diagnóstico, propuestas y contratos.",
   ],
 
   /* 7 */
   visionLabel: "HACIA DÓNDE VAMOS",
   visionTitle: "Más productos significa más continuidad para tu negocio.",
   visionParagraphs: [
-    "Para una PYME o profesionista, más productos Noctra significa menos dependencia de impulsos sueltos.",
+    "Noctra Ops — el sistema unificado de diagnóstico, propuestas y contratos — llega en Julio 2026. Noctra Social, gestión de contenido con IA, está en desarrollo. Cada producto reduce la dependencia de tu negocio en esfuerzo manual.",
     "Queremos que sepas qué mejorar, cuándo actuar y cómo sostener tu presencia sin volver a empezar.",
     "No sumamos herramientas por acumular: construimos continuidad.",
   ],
@@ -170,7 +189,8 @@ const ES: AboutCopy = {
   ctaSub:
     "El siguiente paso es ver qué tan clara, conectada y medible es tu presencia digital hoy.",
   ctaPrimary: "Diagnosticar mi presencia →",
-  ctaNote: "Trabajamos con pocos proyectos a la vez para cuidar foco y ejecución.",
+  ctaNote:
+    "Trabajamos con pocos proyectos a la vez para cuidar foco y ejecución.",
 };
 
 /* ─────────────────────── EN copy ─────────────────────── */
@@ -180,8 +200,10 @@ const EN: AboutCopy = {
   heroBadge: "NOCTRA STUDIO",
   heroTitleLine1: "We don't build digital presence.",
   heroTitleLine2: "We build clarity.",
-  heroSubLine1: "We connect web, content, SEO, and tools under a logic your client understands.",
-  heroSubLine2: "A clearer presence is easier to measure, easier to sell through, and easier to improve.",
+  heroSubLine1:
+    "We connect web, content, SEO, and tools under a logic your client understands.",
+  heroSubLine2:
+    "A clearer presence is easier to measure, easier to sell through, and easier to improve.",
 
   /* 3 */
   originLabel: "WHY NOCTRA EXISTS",
@@ -220,14 +242,20 @@ const EN: AboutCopy = {
     {
       title: "Clarity",
       text: "Clients should understand quickly.",
+      detail:
+        "If your client needs you to explain what you do, your digital presence isn't working.",
     },
     {
       title: "Structure",
       text: "Order first, then scale.",
+      detail:
+        "Growing on a disorganized foundation only amplifies the problem. We organize before we build.",
     },
     {
       title: "Continuity",
       text: "Measurement prevents gradual decay.",
+      detail:
+        "A digital presence without follow-up loses value over time. We measure so what we built keeps working.",
     },
   ],
 
@@ -236,6 +264,8 @@ const EN: AboutCopy = {
   modelTitle: "Studio + Product. Two layers, one system.",
   modelSub:
     "We combine strategic implementation with proprietary products so what we build does not stay static after launch.",
+  modelOwnershipNote:
+    "Your data, your website, and your access are always yours. Access to Noctra tools is included while you have an active plan.",
   studioTitle: "Noctra Studio",
   studioText:
     "We build the strategic, visible foundation of your digital presence.",
@@ -244,20 +274,21 @@ const EN: AboutCopy = {
     "Clear, fast, useful web.",
     "SEO from the structure.",
   ],
-  productsTitle: "Noctra Products",
+  productsCardLabel: "SOFTWARE",
+  productsTitle: "Noctra Software",
   productsText:
-    "We create tools to sustain clarity after launch.",
+    "Proprietary AI-powered tools so your business grows with or without our direct involvement.",
   productsPoints: [
     "Radar detects what to improve.",
     "Social sustains strategic content.",
-    "Forge connects operations and follow-up.",
+    "Noctra Ops unifies diagnosis, proposals, and contracts.",
   ],
 
   /* 7 */
   visionLabel: "WHERE WE ARE GOING",
   visionTitle: "More products means more continuity for your business.",
   visionParagraphs: [
-    "For a small business or professional, more Noctra products means less dependence on isolated pushes.",
+    "Noctra Ops — the unified system for diagnosis, proposals, and contracts — arrives in July 2026. Noctra Social, AI-powered content management, is in development. Each product reduces your business's dependency on manual effort.",
     "We want you to know what to improve, when to act, and how to sustain your presence without starting over.",
     "We are not stacking tools. We are building continuity.",
   ],
@@ -525,9 +556,14 @@ export default function AboutClient() {
                       {pillar.title}
                     </h3>
                   </div>
-                  <p className="max-w-2xl text-lg leading-[1.85] text-neutral-400 md:text-xl">
-                    {pillar.text}
-                  </p>
+                  <div className="max-w-2xl">
+                    <p className="text-lg leading-[1.85] text-neutral-400 md:text-xl">
+                      {pillar.text}
+                    </p>
+                    <p className="mt-2 text-sm leading-relaxed text-white/40">
+                      {pillar.detail}
+                    </p>
+                  </div>
                 </m.div>
               ))}
             </div>
@@ -538,7 +574,7 @@ export default function AboutClient() {
         <div className="mx-auto h-px w-full max-w-2xl bg-gradient-to-r from-transparent via-white/8 to-transparent" />
 
         {/* ═══════════════════════════════════════════
-            6. STUDIO + PRODUCTS — subtle, asymmetric
+            6. STUDIO + SOFTWARE — subtle, asymmetric
         ═══════════════════════════════════════════ */}
         <section className="px-6 py-32 md:px-8 md:py-44">
           <div className="mx-auto max-w-7xl">
@@ -582,14 +618,14 @@ export default function AboutClient() {
                 </div>
               </m.div>
 
-              {/* Products */}
+              {/* Noctra Software */}
               <m.div
                 {...reveal}
                 transition={{ ...reveal.transition, delay: 0.1 }}
                 className="flex flex-col justify-between rounded-[2rem] border border-emerald-500/12 bg-gradient-to-br from-emerald-500/[0.05] to-transparent p-8 md:p-10">
                 <div>
                   <p className="mb-2 text-[10px] font-black uppercase tracking-[0.28em] text-emerald-400/80">
-                    PRODUCTS
+                    {c.productsCardLabel}
                   </p>
                   <h3 className="text-2xl font-black tracking-tight text-white md:text-3xl">
                     {c.productsTitle}
@@ -610,6 +646,10 @@ export default function AboutClient() {
                 </div>
               </m.div>
             </div>
+
+            <p className="mx-auto mt-8 max-w-lg text-center text-xs leading-relaxed text-white/25">
+              {c.modelOwnershipNote}
+            </p>
           </div>
         </section>
 
@@ -656,38 +696,40 @@ export default function AboutClient() {
             <div className="pointer-events-none absolute left-0 top-1/4 h-1/2 w-px bg-gradient-to-b from-transparent via-emerald-500/10 to-transparent" />
 
             <div className="flex flex-col gap-24 lg:grid lg:grid-cols-[1.1fr_0.9fr] lg:items-center lg:gap-x-16">
-              
               {/* Text Column — Unified editorial center */}
               <div className="space-y-20 lg:col-start-1 lg:row-start-1">
                 {/* 1. The Hook — Quote */}
                 <div className="space-y-10">
-                <m.div {...reveal} className="inline-block border-l border-emerald-500/30 pl-6">
-                  <p className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400/60">
-                    {c.founderLabel}
-                  </p>
-                </m.div>
+                  <m.div
+                    {...reveal}
+                    className="inline-block border-l border-emerald-500/30 pl-6">
+                    <p className="text-[10px] font-black uppercase tracking-[0.4em] text-emerald-400/60">
+                      {c.founderLabel}
+                    </p>
+                  </m.div>
 
-                <m.blockquote
-                  {...revealSlow}
-                  className="relative">
-                  <p className="text-3xl font-black leading-[1.15] tracking-tight text-white md:text-5xl lg:text-6xl">
-                    &ldquo;{c.founderQuote}&rdquo;
-                  </p>
-                </m.blockquote>
+                  <m.blockquote {...revealSlow} className="relative">
+                    <p className="text-3xl font-black leading-[1.15] tracking-tight text-white md:text-5xl lg:text-6xl">
+                      &ldquo;{c.founderQuote}&rdquo;
+                    </p>
+                  </m.blockquote>
                 </div>
 
                 {/* 2. The Depth — Narrative Text */}
                 <div className="max-w-xl space-y-8 pb-12 lg:pb-0">
-                {c.founderParagraphs.map((p, i) => (
-                  <m.p
-                    key={i}
-                    {...reveal}
-                    transition={{ ...reveal.transition, delay: 0.2 + i * 0.1 }}
-                    className="text-lg leading-[1.8] text-neutral-400 md:text-xl">
-                    {p}
-                  </m.p>
-                ))}
-              </div>
+                  {c.founderParagraphs.map((p, i) => (
+                    <m.p
+                      key={i}
+                      {...reveal}
+                      transition={{
+                        ...reveal.transition,
+                        delay: 0.2 + i * 0.1,
+                      }}
+                      className="text-lg leading-[1.8] text-neutral-400 md:text-xl">
+                      {p}
+                    </m.p>
+                  ))}
+                </div>
               </div>
 
               {/* 3. The Anchor — Portrait (Stacked after text on mobile, dominant right on desktop) */}
@@ -710,7 +752,7 @@ export default function AboutClient() {
                   </div>
 
                   {/* Signature Area — Editorial caption style */}
-                  <m.div 
+                  <m.div
                     initial={{ opacity: 0, x: 20 }}
                     whileInView={{ opacity: 1, x: 0 }}
                     transition={{ delay: 0.6, duration: 1 }}
@@ -730,7 +772,6 @@ export default function AboutClient() {
                   <div className="hidden lg:block mt-24 h-24 w-px bg-gradient-to-b from-emerald-500/10 to-transparent ml-8" />
                 </m.div>
               </div>
-
             </div>
           </div>
         </section>
@@ -742,9 +783,7 @@ export default function AboutClient() {
             9. CTA — soft, confident, minimal
         ═══════════════════════════════════════════ */}
         <section className="px-6 py-32 md:px-8 md:py-44">
-          <m.div
-            {...revealSlow}
-            className="mx-auto max-w-4xl text-center">
+          <m.div {...revealSlow} className="mx-auto max-w-4xl text-center">
             <h2 className="text-3xl font-black tracking-tight text-white md:text-5xl">
               {c.ctaTitle}
             </h2>

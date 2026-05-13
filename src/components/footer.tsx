@@ -10,6 +10,8 @@ type FooterItem = {
   label: string;
   href?: string;
   badge?: string;
+  /** Non-link row with date pill (e.g. upcoming product) */
+  comingSoonDate?: string;
 };
 
 export function Footer() {
@@ -38,6 +40,10 @@ export function Footer() {
       items: [
         { label: t("links.radar"), href: "/#radar" },
         { label: t("links.social"), href: "/#social" },
+        {
+          label: t("links.ops"),
+          comingSoonDate: t("ops_coming_soon_badge"),
+        },
       ],
     },
     {
@@ -45,15 +51,13 @@ export function Footer() {
       items: [
         { label: t("links.method"), href: "/about" },
         { label: t("links.how_we_build"), href: "/technology-explained" },
-        { label: t("links.discovery"), badge: t("badges.internal") },
-        { label: t("links.proposals"), badge: t("badges.internal") },
       ],
     },
     {
       title: t("sections.resources"),
       items: [
         { label: t("links.insights"), href: "/blog" },
-        { label: t("links.academy"), badge: t("badges.ecosystem") },
+        { label: t("links.academy") },
         { label: t("links.guarantee"), href: "/guarantee" },
       ],
     },
@@ -122,7 +126,14 @@ export function Footer() {
                 <ul className="space-y-4">
                   {column.items.map((item) => (
                     <li key={`${column.title}-${item.label}`}>
-                      {item.href ? (
+                      {item.comingSoonDate ? (
+                        <span className="flex items-center gap-2 text-sm text-white/20">
+                          {item.label}
+                          <span className="rounded border border-white/10 px-1.5 py-0.5 text-xs text-white/20">
+                            {item.comingSoonDate}
+                          </span>
+                        </span>
+                      ) : item.href ? (
                         <Link
                           href={item.href as any}
                           className="inline-flex items-center gap-2 text-sm text-neutral-300 hover:text-white transition-colors">
