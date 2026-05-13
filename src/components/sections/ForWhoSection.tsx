@@ -212,7 +212,7 @@ export function ForWhoSection() {
 
   return (
     <section
-      id="social"
+      id="para-quien"
       ref={sectionRef}
       className="relative min-h-dvh scroll-mt-28 bg-[#050505] py-24 md:min-h-screen md:py-24">
       <div className={homeSectionContainerClass}>

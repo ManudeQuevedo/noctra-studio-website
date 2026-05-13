@@ -14,7 +14,8 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
-import { Instagram, Linkedin } from "lucide-react";
+import { Instagram } from "lucide-react";
+import NextImage from "next/image";
 import { usePathname as useNextPathname } from "next/navigation";
 import { useIntro } from "@/context/IntroContext";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -455,20 +456,34 @@ export function Header() {
                       </p>
                       <div className="flex items-center gap-3">
                         <a
-                          href="https://instagram.com/noctra_studio"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          aria-label="Instagram"
-                          className="text-neutral-400 hover:text-white transition-colors p-1.5 -ml-1.5">
-                          <Instagram className="w-5 h-5" />
-                        </a>
-                        <a
                           href="https://www.linkedin.com/company/noctra-studio"
                           target="_blank"
                           rel="noopener noreferrer"
                           aria-label="LinkedIn"
+                          className="text-neutral-400 hover:text-white transition-colors p-1.5 -ml-1.5">
+                          <NextImage
+                            src="/icons/linkedin-logo.png"
+                            alt=""
+                            width={20}
+                            height={20}
+                            className="h-5 w-5 object-contain brightness-0 invert opacity-90 hover:opacity-100"
+                          />
+                        </a>
+                        <a
+                          href="https://instagram.com/noctra_studio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Instagram"
                           className="text-neutral-400 hover:text-white transition-colors p-1.5">
-                          <Linkedin className="w-5 h-5" />
+                          <Instagram className="w-5 h-5" />
+                        </a>
+                        <a
+                          href="https://x.com/NoctraStudio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="X (formerly Twitter)"
+                          className="text-neutral-400 hover:text-white transition-colors p-1.5">
+                          <XIcon className="w-5 h-5" />
                         </a>
                       </div>
                     </div>
@@ -569,20 +584,26 @@ export function Header() {
 
                   <div className="flex items-center justify-center gap-2">
                     <a
+                      href="https://www.linkedin.com/company/noctra-studio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      className="text-neutral-300 hover:text-white transition-colors p-2">
+                      <NextImage
+                        src="/icons/linkedin-logo.png"
+                        alt=""
+                        width={20}
+                        height={20}
+                        className="h-5 w-5 object-contain brightness-0 invert opacity-90 hover:opacity-100"
+                      />
+                    </a>
+                    <a
                       href="https://instagram.com/noctra_studio"
                       target="_blank"
                       rel="noopener noreferrer"
                       aria-label="Instagram"
                       className="text-neutral-300 hover:text-white transition-colors p-2">
                       <Instagram className="w-5 h-5" />
-                    </a>
-                    <a
-                      href="https://www.linkedin.com/company/noctra-studio"
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      aria-label="LinkedIn"
-                      className="text-neutral-300 hover:text-white transition-colors p-2">
-                      <Linkedin className="w-5 h-5" />
                     </a>
                     <a
                       href="https://x.com/NoctraStudio"

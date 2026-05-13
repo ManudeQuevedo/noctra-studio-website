@@ -2,11 +2,7 @@
 
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import {
-  Instagram,
-  Mail,
-  MapPin,
-} from "lucide-react";
+import { Instagram, Mail, MapPin } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import NextImage from "next/image";
 
@@ -203,28 +199,36 @@ export function Footer() {
               </div>
 
               <div className="flex items-center gap-3">
-              {[
-                {
-                  icon: Instagram,
-                  href: "https://instagram.com/noctra_studio",
-                  label: t("social.instagram"),
-                },
-                {
-                  icon: FaXTwitter,
-                  href: "https://x.com/NoctraStudio",
-                  label: t("social.twitter"),
-                },
-              ].map((social, i) => (
-                <Link
-                  key={social.href}
-                  href={social.href as any}
+                <a
+                  href="https://www.linkedin.com/company/noctra-studio"
                   target="_blank"
                   rel="noopener noreferrer"
-                  aria-label={social.label}
+                  aria-label={t("social.linkedin")}
                   className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300">
-                  <social.icon className="w-5 h-5 transition-transform group-hover:scale-110" />
-                </Link>
-              ))}
+                  <NextImage
+                    src="/icons/linkedin-logo.png"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 object-contain brightness-0 invert opacity-90 hover:opacity-100"
+                  />
+                </a>
+                <a
+                  href="https://instagram.com/noctra_studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("social.instagram")}
+                  className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300">
+                  <Instagram className="w-5 h-5" />
+                </a>
+                <a
+                  href="https://x.com/NoctraStudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={t("social.twitter")}
+                  className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300">
+                  <FaXTwitter className="w-5 h-5" />
+                </a>
               </div>
             </div>
           </div>

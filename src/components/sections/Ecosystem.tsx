@@ -54,11 +54,12 @@ export function Ecosystem() {
         className="scroll-mt-28 bg-transparent pt-20 pb-24 md:pt-[120px] md:pb-24">
         <div className={homeSectionContainerClass}>
           <m.p
+            id="social"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={viewport}
-            className={`${homeSectionKickerClass} will-change-transform`}>
+            className={`${homeSectionKickerClass} scroll-mt-28 will-change-transform`}>
             {t("ecosystem.kicker")}
           </m.p>
 
