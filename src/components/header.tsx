@@ -14,7 +14,7 @@ import { useTranslations } from "next-intl";
 import { Link, usePathname } from "@/i18n/routing";
 import { LanguageSwitcher } from "@/components/language-switcher";
 import { cn } from "@/lib/utils";
-import { Instagram } from "lucide-react";
+import { Instagram, Linkedin } from "lucide-react";
 import { usePathname as useNextPathname } from "next/navigation";
 import { useIntro } from "@/context/IntroContext";
 import { BrandLogo } from "@/components/ui/BrandLogo";
@@ -131,10 +131,6 @@ export function Header() {
       eyebrow: t("model.social.eyebrow"),
       description: t("model.social.description"),
     },
-    {
-      eyebrow: t("model.systems.eyebrow"),
-      description: t("model.systems.description"),
-    },
   ];
 
   if (isForgePage || isStudioPage || isDashboardPage) return null;
@@ -232,13 +228,15 @@ export function Header() {
                 <span
                   className={cn(
                     "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                    isOpen && "absolute top-1/2 left-0 -translate-y-1/2 rotate-45",
+                    isOpen &&
+                      "absolute top-1/2 left-0 -translate-y-1/2 rotate-45",
                   )}
                 />
                 <span
                   className={cn(
                     "w-full h-[2px] bg-white rounded-full transition-all duration-300 transform origin-center",
-                    isOpen && "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45",
+                    isOpen &&
+                      "absolute top-1/2 left-0 -translate-y-1/2 -rotate-45",
                   )}
                 />
                 <span
@@ -308,7 +306,11 @@ export function Header() {
                     <Link
                       href={{
                         pathname: "/contact",
-                        query: { tipo: "diagnostico", intent: "diagnostic", cta: "header" },
+                        query: {
+                          tipo: "diagnostico",
+                          intent: "diagnostic",
+                          cta: "header",
+                        },
                       }}
                       className="hidden md:flex items-center justify-center rounded-full border border-white/10 bg-white px-5 py-2 text-[11px] font-bold uppercase tracking-[0.18em] text-black hover:bg-neutral-200 transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-white/70 focus-visible:ring-offset-2 focus-visible:ring-offset-black">
                       {t("book_strategy_call")}
@@ -447,20 +449,28 @@ export function Header() {
                       </div>
                     </div>
 
-                    <div className="flex flex-col gap-8">
-                      {/* Status */}
-                      <div className="space-y-2">
-                        <div className="flex items-center gap-2">
-                          <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse" />
-                          <span className="text-xs font-mono text-neutral-400">
-                            {t("all_systems_operational")}
-                          </span>
-                        </div>
-                        <p className="text-xs font-mono text-neutral-400 pl-4">
-                          {t("location", { defaultValue: "Querétaro, MX" })}
-                        </p>
+                    <div className="flex flex-col gap-6">
+                      <p className="text-sm leading-relaxed text-neutral-400 pr-2">
+                        {t("menu_tagline")}
+                      </p>
+                      <div className="flex items-center gap-3">
+                        <a
+                          href="https://instagram.com/noctra_studio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="Instagram"
+                          className="text-neutral-400 hover:text-white transition-colors p-1.5 -ml-1.5">
+                          <Instagram className="w-5 h-5" />
+                        </a>
+                        <a
+                          href="https://www.linkedin.com/company/noctra-studio"
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label="LinkedIn"
+                          className="text-neutral-400 hover:text-white transition-colors p-1.5">
+                          <Linkedin className="w-5 h-5" />
+                        </a>
                       </div>
-
                     </div>
                   </div>
                 </m.div>
@@ -504,7 +514,11 @@ export function Header() {
                     <Link
                       href={{
                         pathname: "/contact",
-                        query: { tipo: "diagnostico", intent: "diagnostic", cta: "mobile-menu" },
+                        query: {
+                          tipo: "diagnostico",
+                          intent: "diagnostic",
+                          cta: "mobile-menu",
+                        },
                       }}
                       className="inline-flex items-center justify-center rounded-full border border-white/10 bg-white px-4 py-2 text-[10px] font-bold uppercase tracking-[0.18em] text-black"
                       onClick={() => setIsOpen(false)}>
@@ -515,68 +529,69 @@ export function Header() {
 
                 {/* 1. Main Navigation Links */}
                 <div className="flex flex-col items-center justify-center gap-8 pt-6">
-                {navItems.map((item, index) => {
-                  const isActive = pathname === item.href;
-                  return (
-                    <m.div
-                      key={item.href}
-                      initial={{ opacity: 0, y: 10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      transition={{ delay: 0.1 + index * 0.05 }}
-                      className="w-full text-center">
-                      <Link
-                        href={item.href as any}
-                        className={cn(
-                          "flex items-center justify-center gap-3 text-3xl font-bold tracking-tight transition-colors duration-300",
-                          isActive
-                            ? "text-white"
-                            : "text-neutral-300 hover:text-white",
-                        )}
-                        onClick={() => setIsOpen(false)}>
-                        {isActive && (
-                          <span className="text-emerald-500 text-xl font-bold tracking-tight">
-                            {">_"}
-                          </span>
-                        )}
-                        {item.label}
-                      </Link>
-                    </m.div>
-                  );
-                })}
+                  {navItems.map((item, index) => {
+                    const isActive = pathname === item.href;
+                    return (
+                      <m.div
+                        key={item.href}
+                        initial={{ opacity: 0, y: 10 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ delay: 0.1 + index * 0.05 }}
+                        className="w-full text-center">
+                        <Link
+                          href={item.href as any}
+                          className={cn(
+                            "flex items-center justify-center gap-3 text-3xl font-bold tracking-tight transition-colors duration-300",
+                            isActive
+                              ? "text-white"
+                              : "text-neutral-300 hover:text-white",
+                          )}
+                          onClick={() => setIsOpen(false)}>
+                          {isActive && (
+                            <span className="text-emerald-500 text-xl font-bold tracking-tight">
+                              {">_"}
+                            </span>
+                          )}
+                          {item.label}
+                        </Link>
+                      </m.div>
+                    );
+                  })}
                 </div>
               </div>
 
               {/* 2. Footer (Status + Socials) - Pinned Bottom */}
               <div className="w-full pt-8 border-t border-neutral-800/50">
                 <div className="flex flex-col gap-6">
-                  {/* Status Indicator */}
-                  <div className="flex items-center justify-center gap-2">
-                    <div className="w-2 h-2 bg-emerald-500 rounded-full animate-pulse shadow-[0_0_8px_rgba(16,185,129,0.5)]" />
-                    <span className="text-xs font-mono text-neutral-400">
-                      {t("all_systems_operational")}
-                    </span>
-                  </div>
+                  <p className="text-center text-sm leading-relaxed text-neutral-400 px-2">
+                    {t("menu_tagline")}
+                  </p>
 
-                  {/* Socials */}
-                  <div className="flex items-center justify-center gap-4">
-                    <div className="flex gap-4">
-                      <a
-                        href="https://instagram.com/noctra_studio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="Instagram"
-                        className="text-neutral-300 hover:text-white transition-colors p-2">
-                        <Instagram className="w-5 h-5" />
-                      </a>
-                      <a
-                        href="https://x.com/NoctraStudio"
-                        target="_blank"
-                        rel="noopener noreferrer"
-                        aria-label="X (formerly Twitter)"
-                        className="text-neutral-300 hover:text-white transition-colors p-2">
-                        <XIcon className="w-5 h-5" />
-                      </a>
-                    </div>
+                  <div className="flex items-center justify-center gap-2">
+                    <a
+                      href="https://instagram.com/noctra_studio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="Instagram"
+                      className="text-neutral-300 hover:text-white transition-colors p-2">
+                      <Instagram className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://www.linkedin.com/company/noctra-studio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="LinkedIn"
+                      className="text-neutral-300 hover:text-white transition-colors p-2">
+                      <Linkedin className="w-5 h-5" />
+                    </a>
+                    <a
+                      href="https://x.com/NoctraStudio"
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      aria-label="X (formerly Twitter)"
+                      className="text-neutral-300 hover:text-white transition-colors p-2">
+                      <XIcon className="w-5 h-5" />
+                    </a>
                   </div>
                 </div>
               </div>

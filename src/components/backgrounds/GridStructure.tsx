@@ -37,10 +37,12 @@ function MovingGrid() {
 export function GridStructure() {
   return (
     <div className="absolute inset-0 bg-neutral-950">
-      <Canvas camera={{ position: [0, 2, 5], fov: 60 }}>
-        <fog attach="fog" args={["#0a0a0a", 5, 20]} />
-        <MovingGrid />
-      </Canvas>
+      <div className="absolute inset-0 opacity-[0.2]">
+        <Canvas camera={{ position: [0, 2, 5], fov: 60 }}>
+          <fog attach="fog" args={["#0a0a0a", 5, 20]} />
+          <MovingGrid />
+        </Canvas>
+      </div>
     </div>
   );
 }

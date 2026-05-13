@@ -80,6 +80,72 @@ const nextConfig: NextConfig = {
         destination: '/:locale/work',
         permanent: true,
       },
+      // Spanish localized URLs (next-intl pathnames) → App Router segment paths
+      {
+        source: '/es/aviso-de-privacidad',
+        destination: '/es/privacy-policy',
+        permanent: true,
+      },
+      {
+        source: '/es/terminos-y-condiciones',
+        destination: '/es/terms-and-conditions',
+        permanent: true,
+      },
+      {
+        source: '/es/politica-de-cookies',
+        destination: '/es/cookie-policy',
+        permanent: true,
+      },
+      {
+        source: '/es/garantia',
+        destination: '/es/guarantee',
+        permanent: true,
+      },
+      {
+        source: '/es/tecnologia-explicada',
+        destination: '/es/technology-explained',
+        permanent: true,
+      },
+      {
+        source: '/es/precios-personalizados',
+        destination: '/es/custom-pricing',
+        permanent: true,
+      },
+      {
+        source: '/es/primeros-clientes',
+        destination: '/es/first-clients',
+        permanent: true,
+      },
+      {
+        source: '/es/talento',
+        destination: '/es/careers',
+        permanent: true,
+      },
+      {
+        source: '/es/servicios/landing-page',
+        destination: '/es/services/landing-page',
+        permanent: true,
+      },
+      {
+        source: '/es/servicios/sitios-web-profesionales',
+        destination: '/es/services/professional-websites',
+        permanent: true,
+      },
+      {
+        source: '/es/servicios/tiendas-en-linea',
+        destination: '/es/services/ecommerce',
+        permanent: true,
+      },
+      {
+        source: '/es/servicios/sistemas-a-medida',
+        destination: '/es/services/custom-systems',
+        permanent: true,
+      },
+      {
+        source: '/es/servicios/optimizacion',
+        destination: '/es/services/optimization',
+        permanent: true,
+      },
     ];
   },
 

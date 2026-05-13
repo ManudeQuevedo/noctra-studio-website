@@ -3,8 +3,8 @@
 import { LazyMotion, domAnimation, m } from "framer-motion";
 import { useTranslations } from "next-intl";
 
-const viewport = { once: true, margin: "-100px 0px" } as const;
-const cardViewport = { once: true, margin: "-80px 0px" } as const;
+const viewport = { once: true, margin: "-10%" } as const;
+const cardViewport = { once: true, margin: "-10%" } as const;
 
 export function AudienceSection() {
   const t = useTranslations("HomePage.solutions");
@@ -16,17 +16,15 @@ export function AudienceSection() {
   return (
     <LazyMotion features={domAnimation}>
       <section
-        id="por-tipo-de-negocio"
-        className="bg-transparent px-6 py-24 md:px-8 md:py-32"
-      >
+        id="social"
+        className="scroll-mt-28 bg-transparent px-6 py-20 md:px-8 md:py-[120px]">
         <div className="mx-auto max-w-6xl">
           <m.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={viewport}
-            className="mb-6 text-[11px] font-medium uppercase tracking-[0.24em] text-emerald-400 will-change-transform"
-          >
+            className="mb-6 text-[11px] font-medium uppercase tracking-[0.24em] text-emerald-400 will-change-transform">
             {t("label")}
           </m.p>
 
@@ -35,8 +33,7 @@ export function AudienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.08 }}
             viewport={viewport}
-            className="mb-4 text-3xl font-bold leading-[1.1] tracking-tight text-white will-change-transform md:text-4xl"
-          >
+            className="mb-4 text-3xl font-bold leading-[1.1] tracking-tight text-white will-change-transform md:text-4xl">
             {t("title")}
           </m.h2>
 
@@ -45,8 +42,7 @@ export function AudienceSection() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.16 }}
             viewport={viewport}
-            className="mb-12 text-base text-neutral-400 will-change-transform md:mb-16 md:text-lg"
-          >
+            className="mb-12 text-base text-neutral-400 will-change-transform md:mb-16 md:text-lg">
             {t("subtitle")}
           </m.p>
 
@@ -56,11 +52,16 @@ export function AudienceSection() {
                 key={item.name}
                 initial={{ opacity: 0, y: 10 }}
                 whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, ease: "easeOut", delay: index * 0.08 }}
+                transition={{
+                  duration: 0.5,
+                  ease: "easeOut",
+                  delay: index * 0.08,
+                }}
                 viewport={cardViewport}
-                className="rounded-xl border border-white/[0.08] bg-[rgba(16,185,129,0.03)] p-5 transition-colors duration-200 will-change-transform hover:border-emerald-500/30"
-              >
-                <h3 className="text-base font-semibold text-white">{item.name}</h3>
+                className="rounded-xl border border-white/[0.08] bg-[rgba(16,185,129,0.03)] p-5 transition-colors duration-200 will-change-transform hover:border-emerald-500/30">
+                <h3 className="text-base font-semibold text-white">
+                  {item.name}
+                </h3>
                 <p className="mt-2 truncate text-[13px] text-neutral-400">
                   {item.short_description}
                 </p>

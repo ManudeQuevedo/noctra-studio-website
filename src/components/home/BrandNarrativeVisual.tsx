@@ -8,12 +8,19 @@ interface BrandNarrativeVisualProps {
   variant?: "moon" | "square" | "both";
 }
 
-export function BrandNarrativeVisual({ className, variant = "both" }: BrandNarrativeVisualProps) {
-  const viewport = { once: true, margin: "-100px 0px" } as const;
+export function BrandNarrativeVisual({
+  className,
+  variant = "both",
+}: BrandNarrativeVisualProps) {
+  const viewport = { once: true, margin: "-10%" } as const;
 
   return (
     <LazyMotion features={domAnimation}>
-      <div className={cn("pointer-events-none absolute overflow-hidden", className)}>
+      <div
+        className={cn(
+          "pointer-events-none absolute overflow-hidden",
+          className,
+        )}>
         {/* Moon Shape */}
         {(variant === "moon" || variant === "both") && (
           <m.div
@@ -24,17 +31,18 @@ export function BrandNarrativeVisual({ className, variant = "both" }: BrandNarra
             className="absolute -left-32 bottom-0 h-[600px] w-[600px] rounded-full bg-gradient-to-br from-emerald-500/20 to-transparent blur-3xl will-change-transform"
           />
         )}
-        
+
         {/* System Lines / Grid suggestion */}
         <div className="absolute inset-0 z-0">
-          <svg className="h-full w-full opacity-[0.03]" xmlns="http://www.w3.org/2000/svg">
+          <svg
+            className="h-full w-full opacity-[0.03]"
+            xmlns="http://www.w3.org/2000/svg">
             <defs>
               <pattern
                 id="grid"
                 width="80"
                 height="80"
-                patternUnits="userSpaceOnUse"
-              >
+                patternUnits="userSpaceOnUse">
                 <path
                   d="M 80 0 L 0 0 0 80"
                   fill="none"
@@ -45,19 +53,17 @@ export function BrandNarrativeVisual({ className, variant = "both" }: BrandNarra
             </defs>
             <rect width="100%" height="100%" fill="url(#grid)" />
           </svg>
-          
+
           {/* Directional Lines */}
-          <m.div 
+          <m.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 0.1 }}
             transition={{ duration: 3, delay: 1 }}
-            className="absolute inset-0"
-          >
+            className="absolute inset-0">
             <div className="absolute top-[20%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/20 to-transparent rotate-[15deg] translate-y-20" />
             <div className="absolute top-[60%] left-0 w-full h-[1px] bg-gradient-to-r from-transparent via-emerald-500/10 to-transparent rotate-[-10deg] -translate-y-40" />
           </m.div>
         </div>
-
       </div>
     </LazyMotion>
   );

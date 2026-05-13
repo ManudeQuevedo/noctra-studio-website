@@ -1,10 +1,10 @@
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { useTranslations } from "next-intl";
+import { useLocale, useTranslations } from "next-intl";
 
-const viewport = { once: true, margin: "-100px 0px" } as const;
-const cardViewport = { once: true, margin: "-80px 0px" } as const;
+const viewport = { once: true, margin: "-10%" } as const;
+const cardViewport = { once: true, margin: "-10%" } as const;
 
 type BadgeStatus = "active" | "in_dev" | "flagship" | "mvp";
 
@@ -14,6 +14,9 @@ type EcosystemItem = {
   badge: string;
   description: string;
   flagship_line?: string;
+  /** When set to "radar", `cta_label` links to the live Radar product app */
+  cta_app?: "radar";
+  cta_label?: string;
 };
 
 type ItemConfig = {
@@ -23,31 +26,33 @@ type ItemConfig = {
 };
 
 const itemConfigs: ItemConfig[] = [
-  { number: "01", status: "active",   wide: false },
-  { number: "02", status: "flagship", wide: true  },
-  { number: "03", status: "in_dev",   wide: false },
-  { number: "04", status: "in_dev",   wide: false },
-  { number: "05", status: "active",   wide: false },
-  { number: "06", status: "in_dev",   wide: false },
-  { number: "07", status: "in_dev",   wide: false },
+  { number: "01", status: "active", wide: false },
+  { number: "02", status: "flagship", wide: true },
+  { number: "03", status: "in_dev", wide: false },
+  { number: "04", status: "in_dev", wide: false },
+  { number: "05", status: "active", wide: false },
+  { number: "06", status: "in_dev", wide: false },
+  { number: "07", status: "in_dev", wide: false },
 ];
 
 const badgeClass: Record<BadgeStatus, string> = {
-  active:   "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30",
-  in_dev:   "bg-white/[0.04] text-[#C8B8A2] border border-[#C8B8A2]/20",
+  active: "bg-emerald-500/10 text-emerald-400 border border-emerald-500/30",
+  in_dev: "bg-white/[0.04] text-[#C8B8A2] border border-[#C8B8A2]/20",
   flagship: "bg-emerald-500/15 text-emerald-400 border border-emerald-500/50",
-  mvp:      "bg-white/[0.03] text-neutral-500 border border-white/10",
+  mvp: "bg-white/[0.03] text-neutral-500 border border-white/10",
 };
 
 export function Ecosystem() {
   const t = useTranslations("HomePage");
+  const locale = useLocale();
   const items = t.raw("ecosystem.items") as unknown as EcosystemItem[];
 
   return (
     <LazyMotion features={domAnimation}>
-      <section id="ecosystem" className="bg-transparent px-6 py-24 md:px-8 md:py-32">
+      <section
+        id="radar"
+        className="scroll-mt-28 bg-transparent px-6 py-20 md:px-8 md:py-[120px]">
         <div className="mx-auto max-w-6xl">
-
           <m.p
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -86,7 +91,11 @@ export function Ecosystem() {
                   id={item.name.toLowerCase()}
                   initial={{ opacity: 0, y: 10 }}
                   whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, ease: "easeOut", delay: i * 0.08 }}
+                  transition={{
+                    duration: 0.5,
+                    ease: "easeOut",
+                    delay: i * 0.08,
+                  }}
                   viewport={cardViewport}
                   className={[
                     "scroll-mt-32 rounded-xl border p-6 transition-[transform,border-color,background-color] duration-200 will-change-transform",
@@ -97,7 +106,6 @@ export function Ecosystem() {
                   ]
                     .filter(Boolean)
                     .join(" ")}>
-
                   <div className="flex items-center justify-between">
                     <span className="text-[11px] font-normal text-white/20">
                       {cfg.number}
@@ -111,7 +119,8 @@ export function Ecosystem() {
                     </span>
                   </div>
 
-                  <p className={`mt-4 font-semibold text-white ${cfg.wide ? "text-xl" : "text-lg"}`}>
+                  <p
+                    className={`mt-4 font-semibold text-white ${cfg.wide ? "text-xl" : "text-lg"}`}>
                     {item.name}
                   </p>
 
@@ -128,6 +137,16 @@ export function Ecosystem() {
                       {item.flagship_line}
                     </p>
                   )}
+
+                  {item.cta_label && item.cta_app === "radar" ? (
+                    <a
+                      href={`https://radar.noctra.studio/${locale}`}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="mt-4 inline-flex text-[13px] font-medium text-emerald-400/95 underline decoration-emerald-500/30 underline-offset-4 transition-colors hover:text-emerald-300 hover:decoration-emerald-400/60">
+                      {item.cta_label}
+                    </a>
+                  ) : null}
                 </m.div>
               );
             })}

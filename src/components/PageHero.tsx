@@ -1,10 +1,7 @@
 "use client";
 
 import { useTranslations } from "next-intl";
-import { HeroSystemPanel } from "@/components/hero/HeroSystemPanel";
-import { Button } from "@/components/ui/button";
 import { Link } from "@/i18n/routing";
-import { Sparkles } from "lucide-react";
 import { LazyMotion, domAnimation, m } from "framer-motion";
 
 export function PageHero() {
@@ -12,82 +9,48 @@ export function PageHero() {
 
   return (
     <LazyMotion features={domAnimation}>
-      <section className="relative z-10 overflow-hidden bg-transparent px-6 pb-20 pt-28 md:px-8 md:pb-28 md:pt-40 lg:pt-44">
-        <div className="mx-auto grid min-w-0 max-w-7xl gap-16 lg:grid-cols-[minmax(0,1.1fr)_minmax(0,0.9fr)] lg:items-center lg:gap-24">
-          {/* Left Content Column (60% approx) */}
-          <div className="flex min-w-0 flex-col items-start gap-6 md:gap-7">
-            <m.div
-              initial={{ opacity: 0, y: -8 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.6, ease: "easeOut" }}
-              className="flex items-center gap-2">
-              <Sparkles className="h-3.5 w-3.5 text-neutral-500" />
-              <span className="text-[10px] font-bold uppercase tracking-[0.24em] text-neutral-500">
-                {t("hero.label")}
-              </span>
-            </m.div>
+      <section className="relative z-10 flex min-h-screen flex-col justify-center overflow-x-hidden bg-transparent px-6 pt-24 pb-20 md:px-8 md:pt-28 md:pb-28 lg:pt-32 lg:pb-32">
+        <div className="mx-auto min-w-0 w-full max-w-6xl text-center">
+          <m.p
+            initial={{ opacity: 0, y: -8 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut" }}
+            className="mb-8 text-xs font-medium uppercase tracking-widest text-white/50 md:text-sm">
+            {t("hero.label")}
+          </m.p>
 
-            <m.h1
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.08 }}
-              className="max-w-4xl text-5xl font-black leading-[1.05] tracking-[-0.015em] text-white break-words md:text-7xl lg:text-[4.5rem] lg:leading-[1.05]">
-              {t.rich("hero.title", {
-                br: () => (
-                  <>
-                    <span className="lg:hidden"> </span>
-                    <br className="hidden lg:block" />
-                  </>
-                ),
-              })}
-            </m.h1>
+          <m.h1
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, ease: "easeOut", delay: 0.06 }}
+            className="mx-auto w-full max-w-5xl text-[clamp(1.35rem,4.2vw+0.85rem,3.75rem)] font-black leading-[0.95] tracking-[-0.02em] text-white lg:text-7xl xl:text-8xl 2xl:text-9xl">
+            {t.rich("hero.title", {
+              br: () => <br />,
+            })}
+          </m.h1>
 
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.16 }}
-              className="max-w-xl space-y-2.5">
-              <p className="text-lg leading-relaxed text-neutral-300 md:text-xl lg:leading-relaxed">
-                {t("hero.subtitle")}
-              </p>
-            </m.div>
+          <m.p
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.12 }}
+            className="mx-auto mt-6 max-w-xl text-lg leading-relaxed text-white/80 sm:text-xl md:mt-8 md:text-2xl">
+            {t("hero.subtitle")}
+          </m.p>
 
-            <m.p
-              initial={{ opacity: 0, y: 15 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.22 }}
-              className="max-w-xl text-sm text-neutral-500">
-              {t.rich("hero.product_anchor", {
-                strong: (chunks) => (
-                  <span className="font-semibold text-neutral-300">
-                    {chunks}
-                  </span>
-                ),
-              })}
-            </m.p>
-
-            <m.div
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.8, ease: "easeOut", delay: 0.28 }}
-              className="flex flex-col items-start gap-3 sm:flex-row sm:gap-4 lg:gap-4">
-              <Button
-                asChild
-                size="lg"
-                className="group h-14 rounded-full bg-white px-8 text-base font-bold text-black transition-all hover:bg-emerald-500 hover:text-white sm:w-auto">
-                <Link
-                  href={{
-                    pathname: "/contact",
-                    query: { tipo: "diagnostico", origen: "hero" },
-                  }}>
-                  {t("hero.primary_cta")}
-                </Link>
-              </Button>
-            </m.div>
-          </div>
-
-          {/* Right System Panel (40% approx) */}
-          <HeroSystemPanel />
+          <m.div
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.7, ease: "easeOut", delay: 0.18 }}
+            className="mt-10 flex flex-col items-center gap-4 md:mt-12">
+            <Link
+              href="/diagnostico"
+              className="inline-flex min-h-[56px] w-full min-w-0 items-center justify-center gap-2 rounded-full bg-white px-6 py-5 text-center text-base font-semibold text-black whitespace-nowrap transition-all hover:bg-white/90 active:scale-[0.98] sm:w-auto sm:px-10 sm:text-lg">
+              {t("hero.primary_cta")}
+            </Link>
+            <p className="max-w-md text-center text-sm leading-snug text-white/45 sm:text-white/50">
+              {t("hero.social_proof")}
+            </p>
+          </m.div>
         </div>
       </section>
     </LazyMotion>

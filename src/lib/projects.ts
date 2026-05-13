@@ -33,6 +33,7 @@ export type Project = {
     include_deliverables: boolean
   }
   report_generated_at?: string
+  services_delivered?: string[] | null
 }
 
 export async function getProjects(): Promise<Project[]> {

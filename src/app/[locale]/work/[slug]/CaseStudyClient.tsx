@@ -4,8 +4,18 @@ import { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import { ArrowLeft, ArrowRight, X, CheckCircle2, Target, Layers, Wrench, BarChart3 } from "lucide-react";
+import {
+  ArrowLeft,
+  ArrowRight,
+  X,
+  CheckCircle2,
+  Target,
+  Layers,
+  Wrench,
+  BarChart3,
+} from "lucide-react";
 import type { PublicCaseStudyProject } from "@/types/site-project";
+import { formatServicesDeliveredLine } from "@/lib/format-project-services";
 
 type Props = {
   project: PublicCaseStudyProject;
@@ -40,43 +50,82 @@ const LABEL = {
 
 function t(key: keyof typeof LABEL, locale: string): string {
   const entry = LABEL[key];
-  return (entry as Record<string, string>)[locale] ?? (entry as Record<string, string>).en;
+  return (
+    (entry as Record<string, string>)[locale] ??
+    (entry as Record<string, string>).en
+  );
 }
 
 // Derive diagnostic tags from industry + solution text
-function getDiagnosticAreas(project: PublicCaseStudyProject, locale: string): string[] {
+function getDiagnosticAreas(
+  project: PublicCaseStudyProject,
+  locale: string,
+): string[] {
   const isEs = locale === "es";
   const base: string[] = [];
 
   const industry = project.industry?.toLowerCase() ?? "";
   const solution = project.solution?.toLowerCase() ?? "";
 
-  if (industry.includes("manufactur") || solution.includes("galería") || solution.includes("gallery")) {
+  if (
+    industry.includes("manufactur") ||
+    solution.includes("galería") ||
+    solution.includes("gallery")
+  ) {
     base.push(isEs ? "Presentación de trabajo" : "Work presentation");
   }
-  if (solution.includes("cotiz") || solution.includes("quote") || solution.includes("formulario") || solution.includes("form")) {
+  if (
+    solution.includes("cotiz") ||
+    solution.includes("quote") ||
+    solution.includes("formulario") ||
+    solution.includes("form")
+  ) {
     base.push(isEs ? "Flujo de cotización" : "Quote flow");
   }
   if (solution.includes("mobile") || solution.includes("móvil")) {
     base.push(isEs ? "Experiencia mobile" : "Mobile experience");
   }
-  if (solution.includes("content") || solution.includes("contenido") || solution.includes("cms") || solution.includes("gestión")) {
+  if (
+    solution.includes("content") ||
+    solution.includes("contenido") ||
+    solution.includes("cms") ||
+    solution.includes("gestión")
+  ) {
     base.push(isEs ? "Gestión de contenido" : "Content management");
   }
-  if (solution.includes("corporat") || solution.includes("grupo") || solution.includes("group") || solution.includes("arquitectura") || solution.includes("architecture")) {
+  if (
+    solution.includes("corporat") ||
+    solution.includes("grupo") ||
+    solution.includes("group") ||
+    solution.includes("arquitectura") ||
+    solution.includes("architecture")
+  ) {
     base.push(isEs ? "Arquitectura corporativa" : "Corporate architecture");
   }
-  if (solution.includes("conver") || solution.includes("prospecto") || solution.includes("lead")) {
+  if (
+    solution.includes("conver") ||
+    solution.includes("prospecto") ||
+    solution.includes("lead")
+  ) {
     base.push(isEs ? "Conversión y prospectos" : "Conversion & leads");
   }
-  if (solution.includes("confianza") || solution.includes("trust") || solution.includes("credibilidad") || solution.includes("credibility")) {
+  if (
+    solution.includes("confianza") ||
+    solution.includes("trust") ||
+    solution.includes("credibilidad") ||
+    solution.includes("credibility")
+  ) {
     base.push(isEs ? "Credibilidad digital" : "Digital credibility");
   }
 
   // Fallback: generic strategic areas
   if (base.length < 3) {
     const fallbacks = isEs
-      ? ["Posicionamiento digital", "Claridad de mensajes", "Estructura de conversión"]
+      ? [
+          "Posicionamiento digital",
+          "Claridad de mensajes",
+          "Estructura de conversión",
+        ]
       : ["Digital positioning", "Message clarity", "Conversion structure"];
     for (const f of fallbacks) {
       if (!base.includes(f)) base.push(f);
@@ -104,7 +153,6 @@ export default function CaseStudyClient({ project, locale }: Props) {
   return (
     <main className="min-h-screen bg-[#050505] text-white pt-32 pb-24">
       <div className="max-w-4xl mx-auto px-6">
-
         {/* ── HERO ── */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -119,27 +167,32 @@ export default function CaseStudyClient({ project, locale }: Props) {
           </Link>
 
           <div className="space-y-4">
-            <div className="flex items-center gap-4">
-              <span className="text-xs font-mono uppercase tracking-widest text-neutral-300">
-                {project.industry}
-              </span>
-              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-mono">
-                <CheckCircle2 className="w-3.5 h-3.5" />
-                {t("delivered", locale)}
-              </div>
-            </div>
-
             <h1 className="text-5xl md:text-7xl font-bold tracking-tight leading-tight">
               {project.name}
             </h1>
             <p className="text-xl md:text-2xl text-neutral-400 max-w-2xl leading-relaxed">
               {project.tagline}
             </p>
+            <div className="flex flex-wrap items-center gap-2">
+              {project.industry?.trim() ? (
+                <span className="inline-flex text-xs px-3 py-1 rounded-full border border-white/10 text-white/50">
+                  {project.industry}
+                </span>
+              ) : null}
+              <div className="inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full bg-emerald-500/10 border border-emerald-500/20 text-emerald-500 text-xs font-mono">
+                <CheckCircle2 className="w-3.5 h-3.5" />
+                {t("delivered", locale)}
+              </div>
+            </div>
+            {formatServicesDeliveredLine(project.services_delivered) ? (
+              <p className="text-xs text-white/40">
+                {formatServicesDeliveredLine(project.services_delivered)}
+              </p>
+            ) : null}
           </div>
         </motion.div>
 
         <div className="space-y-24">
-
           {/* ── 01 · CONTEXTO Y PROBLEMA ── */}
           {project.challenge && (
             <motion.section
@@ -243,7 +296,8 @@ export default function CaseStudyClient({ project, locale }: Props) {
           )}
 
           {/* ── 05 · RESULTADOS ── */}
-          {(project.results || (project.metrics && project.metrics.length > 0)) && (
+          {(project.results ||
+            (project.metrics && project.metrics.length > 0)) && (
             <motion.section
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}

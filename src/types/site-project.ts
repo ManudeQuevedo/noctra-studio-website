@@ -22,6 +22,7 @@ export type PublicProjectCard = {
   name: string;
   tagline: string;
   industry: string;
+  services_delivered: string[] | null;
   status: PublicProjectStatus;
   launch_date: string | null;
   published_to_site: boolean;
@@ -38,6 +39,7 @@ export type PublicCaseStudyProject = {
   name: string;
   tagline: string;
   industry: string;
+  services_delivered: string[] | null;
   challenge: string | null;
   solution: string | null;
   results: string | null;

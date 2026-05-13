@@ -319,11 +319,12 @@
   },
   "HomePage": {
     "hero": {
-      "label": "STUDIO WITH PROPRIETARY SOFTWARE",
-      "title": "Your digital presence,<br></br>working as a<br></br>business engine.",
-      "subtitle": "One team. Full stack. Measurable results from month one.",
+      "label": "Querétaro, México · Results from month one",
+      "title": "Clarity for businesses<br></br>in Mexico.",
+      "subtitle": "Brand, website, and visibility across search engines and AI — built by one team, fully measurable.",
       "product_anchor": "Real work for Dyma Group, and Woodax Design.",
-      "primary_cta": "Diagnose my presence →",
+      "social_proof": "Real work for Dyma Group and Woodax Design.",
+      "primary_cta": "Start with a free diagnosis →",
       "visual_label": "THE SYSTEM",
       "visual_title": "A system ready to sell.",
       "system_layer_01_label": "01 / BRAND",
@@ -346,10 +347,10 @@
     },
     "thesis": {
       "kicker": "02 / THESIS",
-      "headline": "LATAM doesn't need more noise.",
-      "problem": "Agencies sell logos, websites and SEO as separate pieces. Each one invoices their part. Nobody owns the full system.",
-      "consequence": "The result: businesses with three vendors, zero clarity and a presence that doesn't sell.",
-      "positioning": "Noctra builds the full system — and measures it."
+      "headline": "Your business doesn't have a quality problem. It has a visibility problem.",
+      "problem": "Most businesses in Mexico run well, but nobody finds them. They have a logo from one designer, a site built by another, and someone else running social. Three vendors, three invoices, zero system. Nobody is accountable for the complete result.",
+      "consequence": "The customer arrives by referral or doesn't arrive. The site exists but doesn't sell. Social gets posted but produces nothing measurable. That isn't bad luck. It's a lack of architecture.",
+      "positioning": "Noctra builds the complete system that covers your brand, site, visibility in search engines and artificial intelligence, and also measures it month by month. A single team, accountable for the result. No excuses between vendors."
     },
     "ecosystem": {
       "kicker": "03 / ECOSYSTEM",
@@ -366,9 +367,10 @@
         {
           "name": "Radar",
           "layer": "VISIBILITY",
-          "badge": "2026",
-          "description": "Coming soon: monitoring of opportunities, signals, and competition.",
-          "flagship_line": "Arriving in 2026."
+          "badge": "Early access",
+          "description": "Monitor your brand visibility on Google, ChatGPT, and Gemini. Now in early access.",
+          "cta_app": "radar",
+          "cta_label": "Open Radar →"
         },
         {
           "name": "Social",
@@ -452,7 +454,7 @@
       "quick_read_text": "The Noctra difference is not just making a website or a brand. It is having an implementation layer and a software layer that strengthen each other."
     },
     "solutions": {
-      "label": "05 / FOR WHOM",
+      "label": "04 / FOR WHOM",
       "title": "For businesses that already sell.",
       "subtitle": "Common pains when digital presence doesn't accompany growth.",
       "items": [
@@ -475,6 +477,33 @@
         {
           "name": "Local businesses",
           "short_description": "Interest arrives scattered and gets lost."
+        }
+      ]
+    },
+    "pricingAnchor": {
+      "label": "05 / INVESTMENT",
+      "headline": "Clear pricing. No surprises.",
+      "subheadline": "We know budget matters. That's why our prices are public, fixed, and without fine print.",
+      "support_line": "Not sure which one you need? Start with a free diagnosis.",
+      "cta": "View all services and pricing →",
+      "philosophy": "All projects require 50% upfront. Monthly subscriptions with no minimum contract — cancel anytime.",
+      "packages": [
+        {
+          "name": "Noctra Base",
+          "stage": "For new businesses",
+          "price": "From $18,000 MXN + VAT"
+        },
+        {
+          "name": "Noctra Presence",
+          "stage": "For established businesses",
+          "price": "From $32,000 MXN + VAT",
+          "badge": "Most popular",
+          "highlight": true
+        },
+        {
+          "name": "Noctra System",
+          "stage": "For scaling businesses",
+          "price": "From $55,000 MXN + VAT"
         }
       ]
     },
@@ -722,14 +751,13 @@
     "social": "Social",
     "initiate": "Start a Project",
     "system_capabilities": "Capabilities",
-    "all_systems_operational": "All Systems Operational",
+    "menu_tagline": "Digital presence that brings you customers.",
     "menu_open": "Menu",
     "menu_close": "Close",
     "book_strategy_call": "Diagnostic",
     "careers": "Join Our Network",
     "model_label": "Noctra model",
     "language_label": "Language",
-    "location": "Querétaro, MX",
     "model": {
       "studio": {
         "eyebrow": "Studio",
@@ -742,10 +770,6 @@
       "social": {
         "eyebrow": "Secondary product",
         "description": "Social sustains strategic presence without operational clutter."
-      },
-      "systems": {
-        "eyebrow": "Internal systems",
-        "description": "Discovery and Proposals add rigor behind delivery, not noise in navigation."
       }
     },
     "tags": {
@@ -5493,7 +5517,7 @@
   },
   "WhatsAppWidget": {
     "label": "Chat with us",
-    "tooltip": "Let's talk about your project",
+    "tooltip": "Chat on WhatsApp",
     "aria_label": "Contact Noctra team",
     "message": "Hi Noctra team, I'm interested in talking about my project"
   },
@@ -5743,6 +5767,212 @@
       "headline": "Not sure where your current digital infrastructure is failing?",
       "subtext": "We offer a complimentary high-level technical audit for qualified brands. See exactly how we'd approach your project.",
       "button": "Request Architecture Audit"
+    }
+  },
+  "ServicesCatalog": {
+    "hero": {
+      "headline_line1": "More clients.",
+      "headline_line2": "No referrals.",
+      "subheadline": "For clinics, law firms, schools, and established businesses in Mexico.",
+      "cta": "Start with a free diagnosis →"
+    },
+    "projects": {
+      "label": "01 / PROJECTS",
+      "intro": "Choose based on your business stage. Fixed price, defined deliverables, no surprises.",
+      "popular_badge": "Most popular",
+      "packages": [
+        {
+          "id": "base",
+          "name": "Noctra Base",
+          "stage": "Stage 01 · New",
+          "price": "$18,000 MXN + VAT",
+          "delivery": "Delivery in 3–4 weeks",
+          "payment": "50% upfront · 50% on delivery",
+          "deliverables": [
+            "Basic visual identity (logo, palette, typography)",
+            "4–5 page website",
+            "Basic copy written by Noctra",
+            "Google Business Profile setup",
+            "Basic on-page SEO",
+            "Domain and hosting (first year)",
+            "Contact form connected to WhatsApp"
+          ],
+          "promise": "Within a month of delivery, your business shows up on Google when someone searches for your services in your city.",
+          "featured": false
+        },
+        {
+          "id": "presencia",
+          "name": "Noctra Presence",
+          "stage": "Stage 02 · Established",
+          "price": "$32,000 MXN + VAT",
+          "delivery": "Delivery in 4–5 weeks",
+          "payment": "50% upfront · 50% on delivery",
+          "deliverables": [
+            "Everything in Noctra Base",
+            "Full brand system",
+            "6–8 page website with premium design",
+            "Full conversion-oriented copy",
+            "Technical SEO + local keyword strategy",
+            "Noctra Radar integration (3 months)",
+            "1 lead-capture landing page",
+            "Reports at month 1 and month 3"
+          ],
+          "promise": "In 90 days you have active, measurable digital presence and at least 3 documented qualified leads.",
+          "featured": true
+        },
+        {
+          "id": "sistema",
+          "name": "Noctra System",
+          "stage": "Stage 03 · Scaling",
+          "price": "$55,000 MXN + VAT",
+          "delivery": "Delivery in 5–6 weeks",
+          "payment": "40% upfront · 30% midpoint · 30% on delivery",
+          "deliverables": [
+            "Everything in Noctra Presence",
+            "SEO content strategy (6 months)",
+            "Lead follow-up automation",
+            "Noctra Radar included for 6 months",
+            "2 lead-capture landing pages",
+            "Basic CRM setup",
+            "2-hour system walkthrough workshop",
+            "Monthly reports for 6 months"
+          ],
+          "promise": "In 6 months you have a documented acquisition system that runs automated without constant intervention from Noctra.",
+          "featured": false
+        }
+      ]
+    },
+    "subscriptions": {
+      "label": "02 / SUBSCRIPTIONS",
+      "intro": "Noctra as your monthly technology partner. No minimum contract — cancel anytime.",
+      "addons": [
+        {
+          "name": "Noctra Social",
+          "tiers": [
+            {
+              "tier": "Essential",
+              "price": "$3,500 MXN + VAT/mo",
+              "summary": "8 posts, 1 platform, copy + design, calendar",
+              "featured": false
+            },
+            {
+              "tier": "Standard",
+              "price": "$5,500 MXN + VAT/mo",
+              "summary": "12 posts, 2 platforms, + metrics report",
+              "featured": true
+            },
+            {
+              "tier": "Complete",
+              "price": "$8,000 MXN + VAT/mo",
+              "summary": "20 posts, 3 platforms, + 4 Stories/Reels",
+              "featured": false
+            }
+          ]
+        },
+        {
+          "name": "Noctra Visibility",
+          "tiers": [
+            {
+              "tier": "Basic",
+              "price": "$1,800 MXN + VAT/mo",
+              "summary": "Monthly SEO+GEO report, alerts, Google positions",
+              "featured": false
+            },
+            {
+              "tier": "Advanced",
+              "price": "$3,200 MXN + VAT/mo",
+              "summary": "+ technical analysis, 3 competitors, 2 fixes",
+              "featured": true
+            },
+            {
+              "tier": "Strategic",
+              "price": "$5,000 MXN + VAT/mo",
+              "summary": "+ content strategy, active GEO optimization, 30-min session",
+              "featured": false
+            }
+          ]
+        },
+        {
+          "name": "Noctra Performance",
+          "tiers": [
+            {
+              "tier": "Basic",
+              "price": "$1,200 MXN + VAT/mo",
+              "summary": "Uptime, Core Web Vitals, 404s, security",
+              "featured": false
+            },
+            {
+              "tier": "Advanced",
+              "price": "$2,200 MXN + VAT/mo",
+              "summary": "+ 2 speed fixes, monthly backup, alerts",
+              "featured": true
+            },
+            {
+              "tier": "Complete",
+              "price": "$3,500 MXN + VAT/mo",
+              "summary": "+ 4 fixes, weekly backup, WhatsApp support, 1 UX improvement",
+              "featured": false
+            }
+          ]
+        },
+        {
+          "name": "Noctra Advisor",
+          "tiers": [
+            {
+              "tier": "Essential",
+              "price": "$2,500 MXN + VAT/mo",
+              "summary": "1× 60 min session, 3 recommendations, written summary",
+              "featured": false
+            },
+            {
+              "tier": "Standard",
+              "price": "$4,000 MXN + VAT/mo",
+              "summary": "2 sessions, 5 recommendations, WhatsApp within 4 hrs",
+              "featured": true
+            },
+            {
+              "tier": "Premium",
+              "price": "$6,500 MXN + VAT/mo",
+              "summary": "3 sessions, 8 recommendations, WhatsApp within 2 hrs, competitor review",
+              "featured": false
+            }
+          ]
+        }
+      ]
+    },
+    "bundle": {
+      "label": "03 / BUNDLE",
+      "description": "Combine every add-on in one monthly plan with a bundle discount.",
+      "popular_badge": "Most popular",
+      "tiers": [
+        {
+          "name": "Essential",
+          "price": "$9,500 MXN + VAT",
+          "savings": "Save $3,000 MXN vs buying separately",
+          "featured": false
+        },
+        {
+          "name": "Standard",
+          "price": "$13,500 MXN + VAT",
+          "savings": "Save $4,400 MXN vs buying separately",
+          "featured": true
+        },
+        {
+          "name": "Premium",
+          "price": "$19,000 MXN + VAT",
+          "savings": "Save $6,500 MXN vs buying separately",
+          "featured": false
+        }
+      ]
+    },
+    "footer_cta": {
+      "title": "Ready for the next step?",
+      "subtitle": "Book a diagnosis and we’ll define which package or add-ons fit your stage.",
+      "button": "Book a diagnosis →"
+    },
+    "sticky": {
+      "label": "Services",
+      "cta": "Diagnosis →"
     }
   }
 }

@@ -4,6 +4,13 @@ import Script from "next/script";
 export default function RootLayout({ children }: { children: ReactNode }) {
   return (
     <html lang="es" suppressHydrationWarning>
+      <head>
+        <link
+          rel="preconnect"
+          href="https://cdn.resend.com"
+          crossOrigin="anonymous"
+        />
+      </head>
       <body
         suppressHydrationWarning
         className="selection:bg-white selection:text-black">

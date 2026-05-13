@@ -52,20 +52,19 @@ export default function WorkClient({
   };
 
   const processIcons = [Search, Layout, Code, Zap];
-  const proofContent =
-    locale.startsWith("es")
-      ? {
-          label: "Avance visible",
-          title: "Transparencia sobre el proceso.",
-          subtitle:
-            "Ves diagnóstico, decisiones y avance por fase. Sin promesas vagas ni cajas negras.",
-        }
-      : {
-          label: "Visible progress",
-          title: "Transparency about the process.",
-          subtitle:
-            "You see diagnosis, decisions, and phase progress. No vague promises or black boxes.",
-        };
+  const proofContent = locale.startsWith("es")
+    ? {
+        label: "Avance visible",
+        title: "Transparencia sobre el proceso.",
+        subtitle:
+          "Ves diagnóstico, decisiones y avance por fase. Sin promesas vagas ni cajas negras.",
+      }
+    : {
+        label: "Visible progress",
+        title: "Transparency about the process.",
+        subtitle:
+          "You see diagnosis, decisions, and phase progress. No vague promises or black boxes.",
+      };
 
   return (
     <LazyMotion features={domAnimation}>
@@ -147,7 +146,6 @@ export default function WorkClient({
                     project={project}
                     index={index}
                     key={project.id}
-                    isCompletedVariant={true}
                   />
                 ))}
               </div>

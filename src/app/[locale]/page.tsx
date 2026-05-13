@@ -2,7 +2,6 @@ import dynamic from "next/dynamic";
 import { PageHero as Hero } from "@/components/PageHero";
 import { Thesis } from "@/components/sections/Thesis";
 import { Ecosystem } from "@/components/sections/Ecosystem";
-import { Services } from "@/components/sections/Services";
 import { generatePageMetadata } from "@/lib/metadata";
 import {
   OrganizationSchema,
@@ -16,6 +15,11 @@ import { BrandNarrativeVisual } from "@/components/home/BrandNarrativeVisual";
 const AudienceSection = dynamic(() =>
   import("@/components/home/AudienceSection").then((mod) => ({
     default: mod.AudienceSection,
+  })),
+);
+const PricingAnchorSection = dynamic(() =>
+  import("@/components/home/PricingAnchorSection").then((mod) => ({
+    default: mod.PricingAnchorSection,
   })),
 );
 const FinalCTASection = dynamic(() =>
@@ -36,7 +40,7 @@ export async function generateMetadata({
 /**
  * HomePage
  * Purpose: strategic refactor for hybrid model positioning.
- * Section Order: Hero → Thesis → Ecosystem → Services → Audience → CTA
+ * Section Order: Hero → Thesis → Ecosystem → Audience → Pricing anchor → CTA
  */
 export default async function HomePage({
   params,
@@ -50,8 +54,8 @@ export default async function HomePage({
         <Hero />
         <Thesis />
         <Ecosystem />
-        <Services />
         <AudienceSection />
+        <PricingAnchorSection />
         <FinalCTASection />
       </div>
 

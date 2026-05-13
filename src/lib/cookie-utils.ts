@@ -39,7 +39,8 @@ function setConsentCookie(value: string) {
 
 declare global {
   interface Window {
-    dataLayer: unknown[];
+    /** Optional to match @next/third-parties Window augmentation */
+    dataLayer?: unknown[];
     gtag: (command: string, ...args: unknown[]) => void;
     fbq: ((command: string, ...args: unknown[]) => void) & {
       push?: (...args: unknown[]) => void;

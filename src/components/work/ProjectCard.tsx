@@ -3,20 +3,16 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import Image from "next/image";
-import {
-  ArrowRight,
-  CheckCircle2,
-  Star,
-} from "lucide-react";
+import { ArrowRight, CheckCircle2, Star } from "lucide-react";
 import { useTranslations, useLocale } from "next-intl";
 import { cn } from "@/lib/utils";
 import type { PublicProjectCard } from "@/types/site-project";
 import { getProjectOverrides } from "@/lib/project-overrides";
+import { formatServicesDeliveredLine } from "@/lib/format-project-services";
 
 type ProjectCardProps = {
   project: PublicProjectCard;
   index: number;
-  isCompletedVariant?: boolean;
 };
 
 // ProjectMockup implementation (using project id or slug if needed, for images we can map or use gallery)
@@ -50,16 +46,11 @@ function ProjectMockup({ project }: { project: PublicProjectCard }) {
   );
 }
 
-export function ProjectCard({
-  project,
-  index,
-  isCompletedVariant,
-}: ProjectCardProps) {
+export function ProjectCard({ project, index }: ProjectCardProps) {
   const t = useTranslations("WorkPage");
   const locale = useLocale();
 
   const phases = ["discovery", "design", "development", "launch"];
-  const currentIndex = phases.indexOf(project.status as any);
 
   const overrides = getProjectOverrides(project.slug);
   const projectMap = t.raw("sections.in_progress.projects") as Record<
@@ -70,7 +61,6 @@ export function ProjectCard({
       system_built?: string;
       expected_outcome?: string;
       system_type?: string;
-      status_line?: string;
       case_study_label?: string;
     }
   >;
@@ -90,11 +80,12 @@ export function ProjectCard({
     localizedProject?.expected_outcome ||
     "A stronger digital foundation that supports long-term growth.";
 
-  const statusLine = localizedProject?.status_line;
-  const projectStatusLabel =
-    (project.status as string) === "completed"
-      ? t("sections.in_progress.labels.completed_status")
-      : t("sections.in_progress.labels.active_status");
+  const isShipped = project.status === "completed";
+  const projectStatusLabel = isShipped
+    ? t("sections.in_progress.labels.completed_status")
+    : t("sections.in_progress.labels.active_status");
+
+  const servicesLine = formatServicesDeliveredLine(project.services_delivered);
 
   return (
     <motion.div
@@ -104,21 +95,34 @@ export function ProjectCard({
       transition={{ delay: index * 0.1 }}
       className="group p-8 md:p-10 rounded-3xl border border-neutral-800 bg-black hover:border-white/20 transition-all duration-500 flex flex-col h-full relative overflow-hidden">
       <div className="flex flex-col mb-8">
-        <div className="flex items-start justify-between gap-4 mb-2">
+        <div className="flex items-start justify-between gap-4 mb-3">
           <h3 className="text-3xl font-bold tracking-tight">{project.name}</h3>
-          <span
-            className={cn(
-              "px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest shrink-0",
-              (project.status as string) === "completed"
-                ? "bg-emerald-500/10 border border-emerald-500/20 text-emerald-500"
-                : "bg-white/5 border border-white/10 text-neutral-300",
-            )}>
-            {projectStatusLabel}
-          </span>
+          {isShipped ? (
+            <span
+              className={cn(
+                "px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest shrink-0 border",
+                "bg-emerald-500/10 border-emerald-500/20 text-emerald-500",
+              )}>
+              {projectStatusLabel}
+            </span>
+          ) : (
+            <span
+              className={cn(
+                "px-3 py-1 rounded-full text-[10px] font-mono font-bold uppercase tracking-widest shrink-0 border",
+                "bg-white/5 border border-white/10 text-neutral-300",
+              )}>
+              {projectStatusLabel}
+            </span>
+          )}
         </div>
-        <p className="text-sm text-neutral-300 font-mono uppercase tracking-wider">
-          {project.industry}
-        </p>
+        {project.industry?.trim() ? (
+          <span className="inline-flex w-fit text-xs px-3 py-1 rounded-full border border-white/10 text-white/50">
+            {project.industry}
+          </span>
+        ) : null}
+        {servicesLine ? (
+          <p className="mt-2 text-xs text-white/40">{servicesLine}</p>
+        ) : null}
       </div>
 
       <ProjectMockup project={project} />
@@ -141,98 +145,52 @@ export function ProjectCard({
           </div>
         </div>
 
-        {/* Visual Timeline Implementation */}
-        <div className="pt-8 border-t border-white/5 pb-4">
-          <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest mb-8">
-            {t("sections.in_progress.labels.status")}
-          </h4>
+        {/* Shipped projects only: public timeline (no internal in-progress copy) */}
+        {isShipped && (
+          <div className="pt-8 border-t border-white/5 pb-4">
+            <h4 className="text-xs font-mono text-neutral-300 uppercase tracking-widest mb-8">
+              {t("sections.in_progress.labels.status")}
+            </h4>
 
-          <div className="relative">
-            {/* Timeline Line */}
-            <div className="absolute top-5 left-8 right-8 h-1 bg-white/10 rounded-full overflow-hidden">
-              <motion.div
-                initial={{ width: 0 }}
-                animate={{
-                  width:
-                    project.status === "completed"
-                      ? "100%"
-                      : `${(currentIndex / (phases.length - 1)) * 100}%`,
-                }}
-                transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
-                className="absolute inset-y-0 left-0 bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
-              />
-            </div>
-
-            {/* Timeline Steps */}
-            <div className="relative z-10 flex justify-between">
-              {phases.map((phase, i) => {
-                const label =
-                  t(`sections.in_progress.timeline_phases.${phase}`) || phase;
-                let state: "completed" | "active" | "pending" = "pending";
-
-                if (
-                  (project.status as string) === "completed" ||
-                  i < currentIndex
-                ) {
-                  state = "completed";
-                } else if (
-                  i === currentIndex &&
-                  (project.status as string) !== "completed"
-                ) {
-                  state = "active";
-                }
-
-                return (
-                  <div key={phase} className="flex flex-col items-center gap-3">
-                    <div
-                      className={cn(
-                        "w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-500",
-                        state === "completed"
-                          ? "bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)] text-white"
-                          : state === "active"
-                            ? "bg-black border-2 border-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.2)] text-emerald-500"
-                            : "bg-black border border-white/10 text-white/20",
-                      )}>
-                      {state === "completed" ? (
-                        <CheckCircle2 className="w-5 h-5" />
-                      ) : state === "active" ? (
-                        <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse relative">
-                          <div className="absolute inset-0 rounded-full bg-emerald-500 animate-ping opacity-50" />
-                        </div>
-                      ) : (
-                        <div className="w-2 h-2 rounded-full border border-current" />
-                      )}
-                    </div>
-                    <span
-                      className={cn(
-                        "text-[10px] font-mono tracking-wider uppercase text-center w-20 leading-tight",
-                        state === "completed"
-                          ? "text-emerald-500/80 font-bold"
-                          : state === "active"
-                            ? "text-emerald-500 font-bold"
-                            : "text-neutral-400",
-                      )}>
-                      {label}
-                    </span>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-          <div className="mt-8 flex justify-center">
-            {!isCompletedVariant &&
-            (project.status as string) !== "completed" ? (
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5">
-                <div className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
-                <span className="text-xs font-mono text-neutral-400">
-                  {statusLine ||
-                    `${t("sections.in_progress.labels.in_phase")} ${
-                      project.status.charAt(0).toUpperCase() +
-                      project.status.slice(1)
-                    } · ${t("sections.in_progress.labels.launching")} ${project.launch_date}`}
-                </span>
+            <div className="relative">
+              <div className="absolute top-5 left-8 right-8 h-1 bg-white/10 rounded-full overflow-hidden">
+                <motion.div
+                  initial={{ width: 0 }}
+                  animate={{ width: "100%" }}
+                  transition={{ duration: 1, delay: 0.5, ease: "easeOut" }}
+                  className="absolute inset-y-0 left-0 bg-emerald-500 shadow-[0_0_15px_rgba(16,185,129,0.5)]"
+                />
               </div>
-            ) : (
+
+              <div className="relative z-10 flex justify-between">
+                {phases.map((phase) => {
+                  const label =
+                    t(`sections.in_progress.timeline_phases.${phase}`) || phase;
+
+                  return (
+                    <div
+                      key={phase}
+                      className="flex flex-col items-center gap-3">
+                      <div
+                        className={cn(
+                          "w-11 h-11 rounded-xl flex items-center justify-center transition-all duration-500",
+                          "bg-emerald-500 shadow-[0_0_20px_rgba(16,185,129,0.3)] text-white",
+                        )}>
+                        <CheckCircle2 className="w-5 h-5" />
+                      </div>
+                      <span
+                        className={cn(
+                          "text-[10px] font-mono tracking-wider uppercase text-center w-20 leading-tight",
+                          "text-emerald-500/80 font-bold",
+                        )}>
+                        {label}
+                      </span>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+            <div className="mt-8 flex justify-center">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-white/[0.03] border border-white/5">
                 <CheckCircle2 className="w-4 h-4 text-emerald-500" />
                 <span className="text-xs font-mono text-neutral-400">
@@ -240,9 +198,9 @@ export function ProjectCard({
                   {project.launch_date ? `· ${project.launch_date}` : ""}
                 </span>
               </div>
-            )}
+            </div>
           </div>
-        </div>
+        )}
 
         {/* Dynamic Metrics directly matching hardcoded styling logic if needed */}
       </div>

@@ -15,6 +15,7 @@ const PUBLIC_PROJECT_CARD_SELECT = [
   "name",
   "tagline",
   "industry",
+  "services_delivered",
   "status",
   "launch_date",
   "published_to_site",
@@ -31,6 +32,7 @@ const PUBLIC_CASE_STUDY_SELECT = [
   "name",
   "tagline",
   "industry",
+  "services_delivered",
   "challenge",
   "solution",
   "results",
@@ -41,6 +43,7 @@ const PUBLIC_CASE_STUDY_SELECT = [
 const getPublicProjectsCached = unstable_cache(
   async (): Promise<PublicProjectCard[]> => {
     const supabase = createPublicSupabaseClient();
+    /** All projects flagged for the public site (pipeline UI is sanitized in ProjectCard). */
     const { data, error } = await supabase
       .from("projects")
       .select(PUBLIC_PROJECT_CARD_SELECT)
@@ -53,7 +56,7 @@ const getPublicProjectsCached = unstable_cache(
 
     return (data ?? []) as unknown as PublicProjectCard[];
   },
-  ["public-projects:list"],
+  ["public-projects:list", "v5-services-delivered"],
   {
     tags: [PUBLIC_PROJECTS_TAG],
     revalidate: 300,
@@ -100,7 +103,7 @@ const getPublicCaseStudyBySlugCached = unstable_cache(
 
     return (data as unknown as PublicCaseStudyProject | null) ?? null;
   },
-  ["public-projects:case-study"],
+  ["public-projects:case-study", "v2-services"],
   {
     tags: [PUBLIC_PROJECTS_TAG],
     revalidate: 300,
