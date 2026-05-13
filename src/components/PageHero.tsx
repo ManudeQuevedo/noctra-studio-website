@@ -6,6 +6,11 @@ import { LazyMotion, domAnimation, m } from "framer-motion";
 
 export function PageHero() {
   const t = useTranslations("HomePage");
+  const heroTitleLines = [
+    t("hero.titleLine1"),
+    t("hero.titleLine2"),
+    t("hero.titleLine3"),
+  ].filter((line) => line.trim().length > 0);
 
   return (
     <LazyMotion features={domAnimation}>
@@ -15,18 +20,21 @@ export function PageHero() {
             initial={{ opacity: 0, y: -8 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, ease: "easeOut" }}
-            className="mb-8 text-xs font-medium uppercase tracking-widest text-white/50 md:text-sm">
-            {t("hero.label")}
+            className="mb-8 text-xs font-medium uppercase tracking-widest text-white/50 md:text-sm lg:whitespace-nowrap">
+            <span className="lg:hidden">{t("hero.labelMobile")}</span>
+            <span className="hidden lg:inline">{t("hero.labelDesktop")}</span>
           </m.p>
 
           <m.h1
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, ease: "easeOut", delay: 0.06 }}
-            className="mx-auto w-full max-w-5xl text-[clamp(1.35rem,4.2vw+0.85rem,3.75rem)] font-black leading-[0.95] tracking-[-0.02em] text-white lg:text-7xl xl:text-8xl 2xl:text-9xl">
-            {t.rich("hero.title", {
-              br: () => <br />,
-            })}
+            className="mx-auto w-full max-w-5xl text-[clamp(1.35rem,4.2vw+0.85rem,3.75rem)] font-black leading-[0.95] tracking-[-0.02em] text-white normal-case lg:text-7xl xl:text-8xl 2xl:text-9xl">
+            {heroTitleLines.map((line, index) => (
+              <span key={index} className="block normal-case">
+                {line}
+              </span>
+            ))}
           </m.h1>
 
           <m.p

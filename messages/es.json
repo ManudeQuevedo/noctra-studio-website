@@ -319,8 +319,11 @@
   },
   "HomePage": {
     "hero": {
-      "label": "Querétaro, México · Resultados desde el mes 1",
-      "title": "Más clientes,<br></br>Sin depender<br></br>de referidos.",
+      "labelMobile": "Querétaro, México · Mes 1",
+      "labelDesktop": "Querétaro, México · Resultados desde el mes 1",
+      "titleLine1": "Más clientes,",
+      "titleLine2": "sin depender",
+      "titleLine3": "de referidos.",
       "subtitle": "Marca, sitio web y visibilidad en buscadores e inteligencia artificial — todo construido por un solo equipo, todo medible.",
       "product_anchor": "Trabajo real para Dyma Group y Woodax Design.",
       "social_proof": "Trabajo real para Dyma Group y Woodax Design.",

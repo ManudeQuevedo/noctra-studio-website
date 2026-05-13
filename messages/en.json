@@ -319,8 +319,11 @@
   },
   "HomePage": {
     "hero": {
-      "label": "Querétaro, México · Results from month one",
-      "title": "Clarity for businesses<br></br>in Mexico.",
+      "labelMobile": "Querétaro, México · Month 1",
+      "labelDesktop": "Querétaro, México · Results from month one",
+      "titleLine1": "Clarity for businesses",
+      "titleLine2": "in Mexico.",
+      "titleLine3": "",
       "subtitle": "Brand, website, and visibility across search engines and AI — built by one team, fully measurable.",
       "product_anchor": "Real work for Dyma Group, and Woodax Design.",
       "social_proof": "Real work for Dyma Group and Woodax Design.",
