@@ -1,12 +1,14 @@
 "use client";
 
 import { useEffect } from "react";
+import { useIntro } from "@/context/IntroContext";
 
 type OwlightFeedbackWidgetProps = {
   locale: string;
 };
 
 const OWLIGHT_INTRO_STORAGE_KEY = "owlight_intro_dismissed";
+const OWLIGHT_VISIBILITY_GATE_ID = "owlight-intro-visibility-gate";
 
 const SPANISH_MX_TEXT: Record<string, string> = {
   Feedback: "Comentarios",
@@ -254,6 +256,35 @@ function syncMobileLayoutState(shadowRoot: ShadowRoot) {
   container.dataset.noctraOpen = feedbackForm ? "true" : "false";
 }
 
+function setOwlightIntroGate(hidden: boolean) {
+  const host = document.getElementById("owlight-feedback-widget-host");
+  let gate = document.getElementById(OWLIGHT_VISIBILITY_GATE_ID);
+
+  if (hidden) {
+    if (!gate) {
+      gate = document.createElement("style");
+      gate.id = OWLIGHT_VISIBILITY_GATE_ID;
+      gate.textContent =
+        "#owlight-feedback-widget-host{display:none!important;visibility:hidden!important;}";
+      document.head.appendChild(gate);
+    }
+
+    if (host) {
+      host.style.display = "none";
+      host.style.visibility = "hidden";
+    }
+
+    return;
+  }
+
+  gate?.remove();
+
+  if (host) {
+    host.style.display = "";
+    host.style.visibility = "";
+  }
+}
+
 function syncOwlightWidget(locale: string) {
   const host = document.getElementById("owlight-feedback-widget-host");
   const shadowRoot = host?.shadowRoot;
@@ -464,11 +495,20 @@ function syncOwlightWidget(locale: string) {
 }
 
 export function OwlightFeedbackWidget({ locale }: OwlightFeedbackWidgetProps) {
+  const { initialized, isIntroComplete } = useIntro();
+
   useEffect(() => {
     let retryTimer: number | undefined;
     let shadowObserver: MutationObserver | undefined;
+    const shouldHideUntilIntroCompletes = !initialized || !isIntroComplete;
 
     const syncPosition = () => {
+      setOwlightIntroGate(shouldHideUntilIntroCompletes);
+
+      if (shouldHideUntilIntroCompletes) {
+        return;
+      }
+
       if (!syncOwlightWidget(locale)) {
         retryTimer = window.setTimeout(syncPosition, 250);
         return;
@@ -500,7 +540,7 @@ export function OwlightFeedbackWidget({ locale }: OwlightFeedbackWidgetProps) {
         window.clearTimeout(retryTimer);
       }
     };
-  }, [locale]);
+  }, [initialized, isIntroComplete, locale]);
 
   return null;
 }

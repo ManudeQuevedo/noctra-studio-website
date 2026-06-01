@@ -10,6 +10,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           href="https://cdn.resend.com"
           crossOrigin="anonymous"
         />
+        <style
+          id="owlight-intro-visibility-gate"
+          dangerouslySetInnerHTML={{
+            __html:
+              "#owlight-feedback-widget-host{display:none!important;visibility:hidden!important;}",
+          }}
+        />
       </head>
       <body
         suppressHydrationWarning
