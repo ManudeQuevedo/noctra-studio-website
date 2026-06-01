@@ -241,6 +241,19 @@ function suppressAutomaticIntro(shadowRoot: ShadowRoot) {
   }
 }
 
+function syncMobileLayoutState(shadowRoot: ShadowRoot) {
+  const container = shadowRoot.querySelector<HTMLElement>(
+    '[data-widget-container="true"]',
+  );
+
+  if (!container) {
+    return;
+  }
+
+  const feedbackForm = shadowRoot.querySelector(".feedback-form");
+  container.dataset.noctraOpen = feedbackForm ? "true" : "false";
+}
+
 function syncOwlightWidget(locale: string) {
   const host = document.getElementById("owlight-feedback-widget-host");
   const shadowRoot = host?.shadowRoot;
@@ -261,6 +274,37 @@ function syncOwlightWidget(locale: string) {
       @media (max-width: 640px) {
         [data-widget-container="true"] {
           right: 16px !important;
+        }
+
+        [data-widget-container="true"][data-noctra-open="true"] {
+          inset: 0 !important;
+          top: 0 !important;
+          right: 0 !important;
+          bottom: 0 !important;
+          left: 0 !important;
+          display: flex !important;
+          align-items: center !important;
+          justify-content: center !important;
+          width: 100vw !important;
+          height: 100dvh !important;
+          min-height: 100svh !important;
+          padding: max(16px, env(safe-area-inset-top)) 16px max(96px, calc(env(safe-area-inset-bottom) + 96px)) 16px !important;
+          transform: none !important;
+          box-sizing: border-box !important;
+        }
+
+        [data-widget-container="true"][data-noctra-open="true"] .feedback-form {
+          width: min(100%, 360px) !important;
+          max-height: min(78dvh, calc(100dvh - 128px)) !important;
+          margin: 0 !important;
+          overflow-y: auto !important;
+          overscroll-behavior: contain !important;
+          -webkit-overflow-scrolling: touch !important;
+        }
+
+        [data-widget-container="true"][data-noctra-open="true"] .feedback-textarea {
+          min-height: 120px !important;
+          max-height: 180px !important;
         }
       }
 
@@ -405,6 +449,7 @@ function syncOwlightWidget(locale: string) {
   }
 
   replaceBrokenLogo(shadowRoot);
+  syncMobileLayoutState(shadowRoot);
   suppressAutomaticIntro(shadowRoot);
 
   if (locale === "es") {
