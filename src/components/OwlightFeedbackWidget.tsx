@@ -81,6 +81,48 @@ const SPANISH_MX_TEXT: Record<string, string> = {
     "Los comentarios no están disponibles por ahora.",
 };
 
+const ENGLISH_US_TEXT: Record<string, string> = {
+  Comentarios: "Feedback",
+  "Ayúdanos a mejorar": "Help us improve",
+  "¿Qué quieres contarnos?": "Pick a topic",
+  "Cuéntanos más": "Tell us more",
+  "¿Quieres que te respondamos? Déjanos tu correo (opcional)":
+    "Want a reply? Leave your email (optional)",
+  "¿Algo no funciona?": "Something not working?",
+  "¿Tienes una idea? Nos encantaría escucharla.":
+    "Got an idea? We'd love to hear it!",
+  "Escribe tu comentario...": "Drop a quick note here...",
+  "Enviar comentarios": "Send feedback",
+  Enviando: "Sending",
+  "Tomar captura": "Take screenshot",
+  "Volver a tomar captura": "Retake Screenshot",
+  "Consejo: arrastra para seleccionar un área. Presiona Esc para cancelar.":
+    "Tip: Drag to select an area. Press Esc to cancel.",
+  "Captura adjunta": "Screenshot attached",
+  "Hubo un error al capturar la página. Intenta subir una imagen directamente.":
+    "There was an error capturing the page. Try uploading an image instead.",
+  "O sube una imagen directamente": "Or upload an image instead",
+  "Tu opinión importa": "Your opinion matters",
+  "¿Quieres contarnos algo? Comparte tus ideas o avísanos si encontraste algún problema.":
+    "Want to tell us something? Share your ideas here or let us know if you ran into a problem.",
+  "Compartir algo": "Share something",
+  Después: "Later",
+  "¡Gracias!": "Thank you!",
+  "Gracias por tus comentarios. Los revisaremos pronto.":
+    "We appreciate your feedback and will review it soon.",
+  "Escribe un comentario antes de enviar": "Please enter some feedback",
+  "El mensaje es demasiado largo (máximo 5000 caracteres)":
+    "Message is too long (max 5000 characters)",
+  "Ingresa un correo válido": "Please enter a valid email address",
+  "Algo salió mal. Inténtalo de nuevo.":
+    "Failed to submit feedback. Please try again.",
+  "Los comentarios no están disponibles por ahora.":
+    "Feedback is temporarily unavailable.",
+  Problema: "Problem",
+  Sugerencia: "Suggestion",
+  Comentario: "Comment",
+};
+
 function createFeedbackIcon() {
   const svg = document.createElementNS("http://www.w3.org/2000/svg", "svg");
   svg.setAttribute("aria-hidden", "true");
@@ -193,7 +235,10 @@ function replaceBrokenLogo(shadowRoot: ShadowRoot) {
     });
 }
 
-function applySpanishMxCopy(shadowRoot: ShadowRoot) {
+function applyLocalizedCopy(
+  shadowRoot: ShadowRoot,
+  replacements: Record<string, string>,
+) {
   const walker = document.createTreeWalker(
     shadowRoot,
     NodeFilter.SHOW_TEXT,
@@ -209,9 +254,9 @@ function applySpanishMxCopy(shadowRoot: ShadowRoot) {
   let node = walker.nextNode();
   while (node) {
     const text = node.textContent?.trim();
-    if (text && SPANISH_MX_TEXT[text]) {
+    if (text && replacements[text]) {
       node.textContent =
-        node.textContent?.replace(text, SPANISH_MX_TEXT[text]) ?? null;
+        node.textContent?.replace(text, replacements[text]) ?? null;
     }
     node = walker.nextNode();
   }
@@ -219,7 +264,7 @@ function applySpanishMxCopy(shadowRoot: ShadowRoot) {
   shadowRoot.querySelectorAll<HTMLInputElement | HTMLTextAreaElement>(
     "input[placeholder], textarea[placeholder]",
   ).forEach((element) => {
-    const replacement = SPANISH_MX_TEXT[element.placeholder];
+    const replacement = replacements[element.placeholder];
     if (replacement) {
       element.placeholder = replacement;
     }
@@ -487,9 +532,10 @@ function syncOwlightWidget(locale: string) {
   syncMobileLayoutState(shadowRoot);
   suppressAutomaticIntro(shadowRoot);
 
-  if (locale === "es") {
-    applySpanishMxCopy(shadowRoot);
-  }
+  applyLocalizedCopy(
+    shadowRoot,
+    locale === "es" ? SPANISH_MX_TEXT : ENGLISH_US_TEXT,
+  );
 
   return true;
 }
