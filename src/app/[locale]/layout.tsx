@@ -41,6 +41,7 @@ import {
   LocalBusinessSchema,
 } from "@/components/seo/JsonLd";
 import { VercelScripts } from "@/components/VercelScripts";
+import { OwlightFeedbackWidget } from "@/components/OwlightFeedbackWidget";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
 import { IntroProvider } from "@/context/IntroContext";
@@ -120,7 +121,6 @@ export default async function LocaleLayout({
   const messages = await getMessages();
 
   const fontClasses = `${satoshi.variable} antialiased selection:bg-white selection:text-black`;
-
   return (
     <>
       <Script id="apply-attributes" strategy="beforeInteractive">
@@ -161,6 +161,7 @@ export default async function LocaleLayout({
               <CookieSettingsButton />
               <QuizModal />
               <VercelScripts />
+              <OwlightFeedbackWidget locale={locale} />
             </QuizProvider>
           </IntroProvider>
         </ThemeProvider>

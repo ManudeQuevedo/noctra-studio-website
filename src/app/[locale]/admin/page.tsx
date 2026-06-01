@@ -4,6 +4,7 @@ import { useActionState } from "react";
 import { deployClientInfrastructure, type ActionResponse } from "./actions";
 import { useTranslations } from "next-intl";
 import { ArrowRight } from "lucide-react";
+import ProductDeployWizard from "@/components/admin/ProductDeployWizard";
 
 const initialState: ActionResponse = {
   success: false,
@@ -19,7 +20,7 @@ export default function AdminDashboard() {
   );
 
   return (
-    <div className="min-h-screen bg-black text-white flex items-center justify-center p-6">
+    <div className="min-h-screen bg-black text-white flex flex-col items-center justify-center py-12 px-6">
       <div className="w-full max-w-2xl border border-zinc-800 bg-zinc-900/50 p-8 rounded-xl">
         <div className="mb-8">
           <h1 className="text-2xl font-bold tracking-tight">{t("title")}</h1>
@@ -115,6 +116,10 @@ export default function AdminDashboard() {
             <ArrowRight className="w-4 h-4" />
           </button>
         </form>
+      </div>
+
+      <div className="w-full max-w-2xl mt-8">
+        <ProductDeployWizard />
       </div>
     </div>
   );

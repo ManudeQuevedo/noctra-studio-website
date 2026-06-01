@@ -20,6 +20,13 @@ export default function RootLayout({ children }: { children: ReactNode }) {
           data-site-id="47dbb728b34b4ea5b801daa6105a5946"
           strategy="beforeInteractive"
         />
+        <Script
+          src="https://owlight-widget.vercel.app/widget-feedback.umd.js"
+          data-theme="dark"
+          data-position="left"
+          data-lang="en"
+          strategy="lazyOnload"
+        />
       </body>
     </html>
   );
