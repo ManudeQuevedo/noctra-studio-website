@@ -273,7 +273,11 @@ function syncOwlightWidget(locale: string) {
 
       @media (max-width: 640px) {
         [data-widget-container="true"] {
+          top: auto !important;
           right: 16px !important;
+          bottom: max(112px, calc(env(safe-area-inset-bottom) + 112px)) !important;
+          left: auto !important;
+          transform: none !important;
         }
 
         [data-widget-container="true"][data-noctra-open="true"] {
