@@ -6,6 +6,8 @@ type OwlightFeedbackWidgetProps = {
   locale: string;
 };
 
+const OWLIGHT_INTRO_STORAGE_KEY = "owlight_intro_dismissed";
+
 const SPANISH_MX_TEXT: Record<string, string> = {
   Feedback: "Comentarios",
   "Help us improve": "Ayúdanos a mejorar",
@@ -222,6 +224,23 @@ function applySpanishMxCopy(shadowRoot: ShadowRoot) {
   });
 }
 
+function suppressAutomaticIntro(shadowRoot: ShadowRoot) {
+  try {
+    window.localStorage.setItem(OWLIGHT_INTRO_STORAGE_KEY, "1");
+  } catch {
+    // Storage can be blocked in private browsing; the DOM fallback below still
+    // keeps the automatic welcome popover from staying visible.
+  }
+
+  const introDismissButton =
+    shadowRoot.querySelector<HTMLButtonElement>(".intro-btn--secondary");
+  const feedbackForm = shadowRoot.querySelector(".feedback-form");
+
+  if (introDismissButton && !feedbackForm) {
+    introDismissButton.click();
+  }
+}
+
 function syncOwlightWidget(locale: string) {
   const host = document.getElementById("owlight-feedback-widget-host");
   const shadowRoot = host?.shadowRoot;
@@ -265,6 +284,10 @@ function syncOwlightWidget(locale: string) {
         border-color: rgba(255, 255, 255, 0.12) !important;
         border-radius: 8px !important;
         box-shadow: 0 24px 80px rgba(0, 0, 0, 0.48) !important;
+      }
+
+      [role="dialog"]:not(.feedback-form) {
+        display: none !important;
       }
 
       a[href*="owlight"] {
@@ -382,6 +405,7 @@ function syncOwlightWidget(locale: string) {
   }
 
   replaceBrokenLogo(shadowRoot);
+  suppressAutomaticIntro(shadowRoot);
 
   if (locale === "es") {
     applySpanishMxCopy(shadowRoot);
