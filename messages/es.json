@@ -319,12 +319,12 @@
   },
   "HomePage": {
     "hero": {
-      "labelMobile": "Querétaro, México · Mes 1",
-      "labelDesktop": "Querétaro, México · Resultados desde el mes 1",
-      "titleLine1": "Más clientes,",
-      "titleLine2": "sin depender",
-      "titleLine3": "de referidos.",
-      "subtitle": "Marca, sitio web y visibilidad en buscadores e inteligencia artificial — todo construido por un solo equipo, todo medible.",
+      "labelMobile": "Querétaro, México",
+      "labelDesktop": "Querétaro, México",
+      "titleLine1": "No una agencia.",
+      "titleLine2": "Una presencia que es tuya.",
+      "titleLine3": "Para siempre.",
+      "subtitle": "Tu marca, tu sitio y tu visibilidad en buscadores e IA — todo medible, todo tuyo.",
       "product_anchor": "Trabajo real para Dyma Group y Woodax Design.",
       "social_proof": "Trabajo real para Dyma Group y Woodax Design.",
       "primary_cta": "Empieza con un diagnóstico gratuito →",
@@ -350,14 +350,14 @@
     },
     "thesis": {
       "kicker": "00 / TESIS",
-      "headline": "Tu negocio no tiene un problema de calidad. Tiene un problema de visibilidad.",
-      "problem": "La mayoría de negocios en México opera bien, pero nadie los encuentra. Tienen un logo hecho por un diseñador, una página construida por otro, y alguien más llevando las redes. Tres proveedores, tres facturas, cero sistema. Nadie es responsable del resultado completo.",
-      "consequence": "El cliente llega por referido o no llega. El sitio existe pero no vende. Las redes se publican pero no generan nada medible. Eso no es mala suerte. Es falta de arquitectura.",
-      "positioning": "Noctra construye el sistema completo que abarca tu marca, sitio, visibilidad en buscadores e inteligencia artificial, y además lo mide mes a mes. Un solo equipo, responsable del resultado. Sin excusas entre proveedores."
+      "headline": "No contratas tres proveedores para tener un sistema.\nContratas uno.",
+      "problem": "La mayoría de negocios en México opera bien, pero nadie los encuentra. Un diseñador para el logo, otro para el sitio, alguien más para las redes. Tres facturas, cero responsabilidad sobre el resultado.",
+      "consequence": "Eso no es mala suerte. Es falta de arquitectura.",
+      "positioning": "Noctra construye el sistema completo — marca, sitio, visibilidad en buscadores e IA — y lo mide mes a mes. Un solo equipo. Responsable del resultado. Sin excusas entre proveedores."
     },
     "ecosystem": {
       "kicker": "01 / ECOSISTEMA",
-      "title": "No solo construimos tu presencia. Te damos las herramientas para crecer.",
+      "title": "El software que usamos para crecer tu negocio, también es tuyo.",
       "subtitle": "Dependiendo de tu plan, recibes acceso a software desarrollado por Noctra, potenciado por IA. Tú decides si lo operas tú o lo manejamos nosotros.",
       "ai_costs": "Los costos de inteligencia artificial son directos al proveedor (OpenAI, Google, Anthropic). Noctra configura todo y te guía para mantenerlos eficientes — sin intermediarios ni markups.",
       "ownership": {
@@ -435,6 +435,7 @@
     },
     "solutions": {
       "label": "02 / PARA QUIÉN",
+      "intro": "Construido para negocios que ya son buenos — y quieren que el mercado lo sepa.",
       "title": "¿En qué industria opera tu negocio?",
       "subtitle": "Dolores concretos que frenan decisiones comerciales.",
       "items": [
@@ -466,8 +467,8 @@
     },
     "pricingAnchor": {
       "label": "03 / INVERSIÓN",
-      "headline": "Precios claros. Sin sorpresas.",
-      "subheadline": "Sabemos que el presupuesto importa. Por eso nuestros precios son públicos, fijos y sin letra pequeña.",
+      "headline": "Sabías desde el inicio cuánto ibas a invertir.",
+      "subheadline": "Sin letra pequeña. Sin sorpresas. Sin llamadas para darte una cotización.",
       "support_line": "¿No sabes cuál necesitas? Empieza con un diagnóstico gratuito.",
       "payment_indicator_stripe": "Tarjeta vía Stripe",
       "payment_indicator_transfer": "Transferencia bancaria",
@@ -890,7 +891,7 @@
       "button_secondary": "Ver proyectos"
     },
     "studio_label": "Noctra Studio",
-    "brand_tagline": "Claridad digital para negocios que venden en serio.",
+    "brand_tagline": "Un sistema. Un equipo. Resultados medibles.",
     "sections": {
       "studio": "Studio",
       "products": "Productos",
@@ -2747,14 +2748,14 @@
   },
   "HomeFinalCta": {
     "label": "SIGUIENTE PASO",
-    "title": "Empieza con un diagnóstico.",
-    "subtitle": "Antes de invertir más, identifica qué está frenando tu presencia digital.",
+    "title": "Antes de gastar más, entiende qué está fallando.",
+    "subtitle": "El diagnóstico es gratuito. La claridad, inmediata.",
     "cta": "Diagnosticar mi presencia →"
   },
   "WorkPage": {
     "badge": "Proyectos reales",
-    "title": "Tu problema ya lo hemos visto antes.",
-    "subtitle": "Dyma Group y Woodax llegaron con el mismo caos. Esto es lo que construimos.",
+    "title": "Clientes reales. Problemas reales. Sin casos de estudio inventados.",
+    "subtitle": "Dyma Group y Woodax llegaron con presencia rota y sin sistema. Esto es lo que existe hoy.",
     "sections": {
       "in_progress": {
         "title": "Problemas reales que estamos resolviendo",
@@ -2934,7 +2935,7 @@
       }
     },
     "cta": {
-      "title": "¿Quieres saber qué mejorar primero?",
+      "title": "¿No sabes por dónde empezar? Ese es exactamente el punto de partida.",
       "subtitle": "Revisamos tu presencia actual y te decimos qué está frenando claridad, confianza o conversión.",
       "button": "Diagnosticar mi presencia →"
     }
@@ -5021,7 +5022,7 @@
             "1 landing page de captación de leads",
             "Reportes al mes 1 y mes 3"
           ],
-          "promise": "En 90 días tienes presencia digital activa, medible, y al menos 3 leads calificados documentados.",
+          "promise": "En 90 días: presencia activa, medible, y mínimo 3 leads calificados documentados. Si no se cumple, seguimos sin costo adicional.",
           "featured": true
         },
         {

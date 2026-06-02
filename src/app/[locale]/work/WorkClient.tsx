@@ -56,14 +56,12 @@ export default function WorkClient({
     ? {
         label: "Avance visible",
         title: "Transparencia sobre el proceso.",
-        subtitle:
-          "Ves diagnóstico, decisiones y avance por fase. Sin promesas vagas ni cajas negras.",
+        subtitle: "Sabes exactamente en qué fase estás y qué sigue.",
       }
     : {
         label: "Visible progress",
         title: "Transparency about the process.",
-        subtitle:
-          "You see diagnosis, decisions, and phase progress. No vague promises or black boxes.",
+        subtitle: "You know exactly what phase you're in and what comes next.",
       };
 
   return (

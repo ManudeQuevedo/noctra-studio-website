@@ -78,8 +78,8 @@ type AboutCopy = {
 const ES: AboutCopy = {
   /* 1 */
   heroBadge: "NOCTRA STUDIO",
-  heroTitleLine1: "No construimos presencia digital.",
-  heroTitleLine2: "Construimos claridad.",
+  heroTitleLine1: "No somos una agencia más.",
+  heroTitleLine2: "Somos el sistema que las reemplaza.",
   heroSubLine1:
     "Conectamos web, contenido, SEO y herramientas bajo una lógica que tu cliente entiende.",
   heroSubLine2:
@@ -87,10 +87,10 @@ const ES: AboutCopy = {
 
   /* 3 */
   originLabel: "POR QUÉ EXISTE NOCTRA",
-  originTitle: "Vimos mucho esfuerzo digital. Y poca estructura.",
+  originTitle:
+    "Vimos proyectos entregados y abandonados. Decidimos construir algo diferente.",
   originParagraphs: [
-    "Vimos negocios invirtiendo en marca, web, contenido, SEO y herramientas que no se conectaban entre sí.",
-    "Decidimos crear Noctra para ordenar esas piezas bajo una sola lógica: claridad, estructura y continuidad.",
+    "Negocios invirtiendo en marca, web, contenido y SEO — cada pieza en manos de alguien diferente, sin que nadie fuera responsable del resultado. Construimos Noctra para cambiar eso. Un solo sistema. Una sola responsabilidad.",
   ],
 
   /* 4 */
@@ -178,14 +178,14 @@ const ES: AboutCopy = {
   founderName: "Manuel de Quevedo",
   founderRole: "Fundador, Noctra Studio",
   founderQuote:
-    "Noctra no nació de querer hacer una agencia mejor. Nació de la frustración de ver que el modelo actual no funcionaba.",
+    "Noctra no nació de querer hacer una agencia mejor. Nació de la frustración de entregar proyectos que nadie medía y que nadie sostenía.",
   founderParagraphs: [
     "Después de ver proyectos entregados y olvidados, resultados que se degradaban y esfuerzos que nunca se conectaban, decidí construir un sistema donde cada pieza refuerza a la otra y mejora con el tiempo.",
     "Esa es la promesa: no ser la agencia más creativa, sino el sistema más claro.",
   ],
 
   /* 9 */
-  ctaTitle: "Entender dónde estás parado.",
+  ctaTitle: "Antes de invertir más, entiende qué está fallando.",
   ctaSub:
     "El siguiente paso es ver qué tan clara, conectada y medible es tu presencia digital hoy.",
   ctaPrimary: "Diagnosticar mi presencia →",
@@ -198,8 +198,8 @@ const ES: AboutCopy = {
 const EN: AboutCopy = {
   /* 1 */
   heroBadge: "NOCTRA STUDIO",
-  heroTitleLine1: "We don't build digital presence.",
-  heroTitleLine2: "We build clarity.",
+  heroTitleLine1: "We're not another agency.",
+  heroTitleLine2: "We're the system that replaces them.",
   heroSubLine1:
     "We connect web, content, SEO, and tools under a logic your client understands.",
   heroSubLine2:
@@ -207,10 +207,10 @@ const EN: AboutCopy = {
 
   /* 3 */
   originLabel: "WHY NOCTRA EXISTS",
-  originTitle: "We saw a lot of digital effort. And little structure.",
+  originTitle:
+    "We saw projects delivered and forgotten. We decided to build something different.",
   originParagraphs: [
-    "We saw businesses investing in brand, web, content, SEO, and tools that did not connect with each other.",
-    "We created Noctra to organize those pieces under one logic: clarity, structure, and continuity.",
+    "Businesses investing in brand, web, content, and SEO — each piece in someone else's hands, with nobody accountable for the result. We built Noctra to change that. One system. One responsibility.",
   ],
 
   /* 4 */
@@ -298,14 +298,14 @@ const EN: AboutCopy = {
   founderName: "Manuel de Quevedo",
   founderRole: "Founder, Noctra Studio",
   founderQuote:
-    "Noctra was not born from wanting to build a better agency. It was born from the frustration of seeing the current model not working.",
+    "Noctra wasn't born from wanting to build a better agency. It was born from the frustration of delivering projects that nobody measured and nobody sustained.",
   founderParagraphs: [
     "After seeing projects delivered and forgotten, results degrading, and efforts that never connected, I decided to build a system where every piece reinforces the other and improves over time.",
     "That is the promise: not to be the most creative agency, but the clearest system.",
   ],
 
   /* 9 */
-  ctaTitle: "Understand where you stand.",
+  ctaTitle: "Before investing more, understand what's broken.",
   ctaSub:
     "The next step is seeing how clear, connected, and measurable your digital presence is today.",
   ctaPrimary: "Diagnose my presence →",

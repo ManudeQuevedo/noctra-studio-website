@@ -319,12 +319,12 @@
   },
   "HomePage": {
     "hero": {
-      "labelMobile": "Querétaro, México · Month 1",
-      "labelDesktop": "Querétaro, México · Results from month one",
-      "titleLine1": "Clarity for businesses",
-      "titleLine2": "in Mexico.",
-      "titleLine3": "",
-      "subtitle": "Brand, website, and visibility across search engines and AI — built by one team, fully measurable.",
+      "labelMobile": "Querétaro, México",
+      "labelDesktop": "Querétaro, México",
+      "titleLine1": "Not an agency.",
+      "titleLine2": "A presence that's yours.",
+      "titleLine3": "Forever.",
+      "subtitle": "Brand, website, and visibility across search engines and AI — fully measurable, permanently yours.",
       "product_anchor": "Real work for Dyma Group, and Woodax Design.",
       "social_proof": "Real work for Dyma Group and Woodax Design.",
       "primary_cta": "Start with a free diagnosis →",
@@ -350,14 +350,14 @@
     },
     "thesis": {
       "kicker": "00 / THESIS",
-      "headline": "Your business doesn't have a quality problem. It has a visibility problem.",
-      "problem": "Most businesses in Mexico run well, but nobody finds them. They have a logo from one designer, a site built by another, and someone else running social. Three vendors, three invoices, zero system. Nobody is accountable for the complete result.",
-      "consequence": "The customer arrives by referral or doesn't arrive. The site exists but doesn't sell. Social gets posted but produces nothing measurable. That isn't bad luck. It's a lack of architecture.",
-      "positioning": "Noctra builds the complete system that covers your brand, site, visibility in search engines and artificial intelligence, and also measures it month by month. A single team, accountable for the result. No excuses between vendors."
+      "headline": "You don't hire three vendors to build one system.\nYou hire one.",
+      "problem": "Most businesses in Mexico operate well — but nobody finds them. One designer for the logo, another for the website, someone else for social. Three invoices, zero accountability for the result.",
+      "consequence": "That's not bad luck. That's a lack of architecture.",
+      "positioning": "Noctra builds the complete system — brand, website, visibility across search engines and AI — and measures it every month. One team. Responsible for the outcome. No excuses between vendors."
     },
     "ecosystem": {
       "kicker": "01 / ECOSYSTEM",
-      "title": "We don't just build your presence. We give you the tools to grow.",
+      "title": "The software we use to grow your business is also yours.",
       "subtitle": "Depending on your plan, you get access to software built by Noctra, powered by AI. You decide whether you run it or we manage it for you.",
       "ai_costs": "AI costs go directly to the provider (OpenAI, Google, Anthropic). Noctra configures everything and guides you to keep them efficient — no intermediaries, no markups.",
       "ownership": {
@@ -455,6 +455,7 @@
     },
     "solutions": {
       "label": "02 / FOR WHOM",
+      "intro": "Built for businesses that are already good — and want the market to know it.",
       "title": "For businesses that already sell.",
       "subtitle": "Common pains when digital presence doesn't accompany growth.",
       "items": [
@@ -486,8 +487,8 @@
     },
     "pricingAnchor": {
       "label": "03 / INVESTMENT",
-      "headline": "Clear pricing. No surprises.",
-      "subheadline": "We know budget matters. That's why our prices are public, fixed, and without fine print.",
+      "headline": "You knew from the start what you were going to invest.",
+      "subheadline": "No fine print. No surprises. No calls to get a quote.",
       "support_line": "Not sure which one you need? Start with a free diagnosis.",
       "payment_indicator_stripe": "Card via Stripe",
       "payment_indicator_transfer": "Bank transfer",
@@ -910,7 +911,7 @@
       "button_secondary": "See Our Work"
     },
     "studio_label": "Noctra Studio",
-    "brand_tagline": "Guidance and structure for the modern web.",
+    "brand_tagline": "One system. One team. Measurable results.",
     "sections": {
       "studio": "Studio",
       "products": "Products",
@@ -3010,8 +3011,8 @@
   },
   "HomeFinalCta": {
     "label": "NEXT STEP",
-    "title": "Start with a diagnostic.",
-    "subtitle": "We review where you're losing clarity, conversion, and follow-up.",
+    "title": "Before spending more, understand what's broken.",
+    "subtitle": "The diagnosis is free. The clarity is immediate.",
     "cta": "Diagnose my presence →"
   },
   "ServicesPage": {
@@ -3628,8 +3629,8 @@
   },
   "WorkPage": {
     "badge": "Real projects",
-    "title": "We have seen your problem before.",
-    "subtitle": "Dyma Group and Woodax arrived with the same chaos. This is what we built.",
+    "title": "Real clients. Real problems. No made-up case studies.",
+    "subtitle": "Dyma Group and Woodax arrived with broken presence and no system. This is what exists today.",
     "sections": {
       "in_progress": {
         "title": "Real problems we are solving",
@@ -3809,7 +3810,7 @@
       }
     },
     "cta": {
-      "title": "Want to know what to improve first?",
+      "title": "Don't know where to start? That's exactly the starting point.",
       "subtitle": "We review your current presence and show what is holding back clarity, trust, or conversion.",
       "button": "Diagnose my presence →"
     }
@@ -5946,7 +5947,7 @@
             "1 lead-capture landing page",
             "Reports at month 1 and month 3"
           ],
-          "promise": "In 90 days you have active, measurable digital presence and at least 3 documented qualified leads.",
+          "promise": "In 90 days: active presence, measurable results, and at least 3 qualified leads documented. If not met, we keep going at no additional cost.",
           "featured": true
         },
         {
