@@ -384,14 +384,14 @@
         },
         {
           "id": "noctra-ops",
-          "status": "july_2026",
-          "badge": "JULY 2026",
+          "status": "august_2026",
+          "badge": "AUGUST 2026",
           "icon": "layers",
           "name": "Noctra Ops",
           "category": "Operations",
           "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. The complete commercial flow, unified.",
           "plan_availability": "Included in Noctra System",
-          "internal_note": "In development. Available July 2026."
+          "internal_note": "In development. Available August 2026."
         },
         {
           "id": "noctra-social",
@@ -5863,7 +5863,7 @@
             "included": [
               "Everything in Presence",
               "Noctra Radar — 6 months included",
-              "Noctra Ops — when available (July 2026)",
+              "Noctra Ops — when available (August 2026)",
               "Noctra Social — when available"
             ],
             "excluded": [],
@@ -5882,10 +5882,10 @@
         "option_b_badge": "Add-on: from $1,800 MXN + VAT / month"
       },
       "ops": {
-        "status": "JULY 2026 · SYSTEM ONLY",
+        "status": "AUGUST 2026 · SYSTEM ONLY",
         "name": "Noctra Ops",
         "description": "Client diagnosis, proposals, contracts, and digital signatures in one place. Noctra's complete commercial flow, unified. Your client goes from prospect to signed without leaving one flow.",
-        "internal_note": "Tool included in Noctra System. In development — available July 2026."
+        "internal_note": "Tool included in Noctra System. In development — available August 2026."
       },
       "social": {
         "status": "COMING SOON · PRESENCE AND SYSTEM",

@@ -168,7 +168,7 @@ const ES: AboutCopy = {
   visionLabel: "HACIA DÓNDE VAMOS",
   visionTitle: "Más productos significa más continuidad para tu negocio.",
   visionParagraphs: [
-    "Noctra Ops — el sistema unificado de diagnóstico, propuestas y contratos — llega en Julio 2026. Noctra Social, gestión de contenido con IA, está en desarrollo. Cada producto reduce la dependencia de tu negocio en esfuerzo manual.",
+    "Noctra Ops — el sistema unificado de diagnóstico, propuestas y contratos — llega en Agosto 2026. Noctra Social, gestión de contenido con IA, está en desarrollo. Cada producto reduce la dependencia de tu negocio en esfuerzo manual.",
     "Queremos que sepas qué mejorar, cuándo actuar y cómo sostener tu presencia sin volver a empezar.",
     "No sumamos herramientas por acumular: construimos continuidad.",
   ],
@@ -288,7 +288,7 @@ const EN: AboutCopy = {
   visionLabel: "WHERE WE ARE GOING",
   visionTitle: "More products means more continuity for your business.",
   visionParagraphs: [
-    "Noctra Ops — the unified system for diagnosis, proposals, and contracts — arrives in July 2026. Noctra Social, AI-powered content management, is in development. Each product reduces your business's dependency on manual effort.",
+    "Noctra Ops — the unified system for diagnosis, proposals, and contracts — arrives in August 2026. Noctra Social, AI-powered content management, is in development. Each product reduces your business's dependency on manual effort.",
     "We want you to know what to improve, when to act, and how to sustain your presence without starting over.",
     "We are not stacking tools. We are building continuity.",
   ],

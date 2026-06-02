@@ -11,7 +11,7 @@ import {
 const viewport = { once: true, margin: "-10%" } as const;
 const cardViewport = { once: true, margin: "-10%" } as const;
 
-type ProductStatus = "active" | "coming_soon" | "july_2026";
+type ProductStatus = "active" | "coming_soon" | "august_2026";
 
 type EcosystemProduct = {
   id: string;
