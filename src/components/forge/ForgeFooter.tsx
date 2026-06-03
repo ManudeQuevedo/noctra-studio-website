@@ -5,6 +5,7 @@ import { CrmHomeLink } from "@/components/ui/crm-home-link";
 import { ArrowRight, Instagram } from "lucide-react";
 import { FaXTwitter } from "react-icons/fa6";
 import NextImage from "next/image";
+import { SHOW_SOCIAL_LINKS } from "@/lib/feature-flags";
 
 export function ForgeFooter() {
   const year = new Date().getFullYear();
@@ -153,38 +154,40 @@ export function ForgeFooter() {
             </div>
 
             {/* Right: Social Media */}
-            <div className="flex items-center gap-3">
-              <a
-                href="https://www.linkedin.com/company/noctra-studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="LinkedIn"
-                className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300 group">
-                <NextImage
-                  src="/icons/linkedin-logo.png"
-                  alt=""
-                  width={20}
-                  height={20}
-                  className="h-5 w-5 object-contain brightness-0 invert opacity-90 group-hover:opacity-100"
-                />
-              </a>
-              <a
-                href="https://instagram.com/noctra_studio"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="Instagram"
-                className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300 group">
-                <Instagram className="w-5 h-5 transition-transform group-hover:scale-110" />
-              </a>
-              <a
-                href="https://x.com/NoctraStudio"
-                target="_blank"
-                rel="noopener noreferrer"
-                aria-label="X (Twitter)"
-                className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300 group">
-                <FaXTwitter className="w-5 h-5 transition-transform group-hover:scale-110" />
-              </a>
-            </div>
+            {SHOW_SOCIAL_LINKS && (
+              <div className="flex items-center gap-3">
+                <a
+                  href="https://www.linkedin.com/company/noctra-studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="LinkedIn"
+                  className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300 group">
+                  <NextImage
+                    src="/icons/linkedin-logo.png"
+                    alt=""
+                    width={20}
+                    height={20}
+                    className="h-5 w-5 object-contain brightness-0 invert opacity-90 group-hover:opacity-100"
+                  />
+                </a>
+                <a
+                  href="https://instagram.com/noctra_studio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="Instagram"
+                  className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300 group">
+                  <Instagram className="w-5 h-5 transition-transform group-hover:scale-110" />
+                </a>
+                <a
+                  href="https://x.com/NoctraStudio"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label="X (Twitter)"
+                  className="w-10 h-10 rounded-xl bg-neutral-900 border border-neutral-800 flex items-center justify-center text-neutral-300 hover:text-white hover:border-neutral-700 hover:bg-neutral-800 transition-all duration-300 group">
+                  <FaXTwitter className="w-5 h-5 transition-transform group-hover:scale-110" />
+                </a>
+              </div>
+            )}
           </div>
 
           {/* Mobile Only Casual Tagline */}
