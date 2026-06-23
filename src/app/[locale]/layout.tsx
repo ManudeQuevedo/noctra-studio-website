@@ -153,7 +153,7 @@ export default async function LocaleLayout({
               </div>
               <FooterWrapper />
               <ScrollToTop />
-              <WhatsAppFloatingButton />
+              {/* <WhatsAppFloatingButton /> */}
               <OrganizationSchema />
               <WebsiteSchema />
               <LocalBusinessSchema />
