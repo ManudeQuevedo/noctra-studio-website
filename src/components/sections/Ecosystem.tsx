@@ -1,31 +1,28 @@
 "use client";
 
 import { LazyMotion, domAnimation, m } from "framer-motion";
-import { Layers, ShieldCheck, Users, Zap } from "lucide-react";
-import { useLocale, useTranslations } from "next-intl";
+import {
+  ArrowRight,
+  BarChart3,
+  FileSignature,
+  Layers,
+  PenLine,
+  ShieldCheck,
+  Users,
+  Zap,
+} from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 import {
   homeSectionContainerClass,
   homeSectionKickerClass,
 } from "@/components/home/homeSectionFrame";
 
 const viewport = { once: true, margin: "-10%" } as const;
-const cardViewport = { once: true, margin: "-10%" } as const;
 
-type ProductStatus = "active" | "coming_soon" | "august_2026";
-
-type EcosystemProduct = {
-  id: string;
-  status: ProductStatus;
-  badge: string;
-  name: string;
-  category?: string;
+type OpsModule = {
+  title: string;
   description: string;
-  plan_availability?: string;
-  managed_line?: string;
-  internal_note?: string;
-  icon?: "layers";
-  cta_app?: "radar";
-  cta_label?: string;
 };
 
 type OwnershipStat = {
@@ -33,16 +30,20 @@ type OwnershipStat = {
   label: string;
 };
 
-const activeBadgeClass =
-  "text-xs px-2 py-0.5 rounded-full bg-green-500/10 text-green-400 border border-green-500/20";
+// Same order as NoctraOps.modules in messages: visibility, content, sales, clients.
+const MODULE_ICONS: readonly (typeof Layers)[] = [
+  BarChart3,
+  PenLine,
+  FileSignature,
+  Users,
+];
 
-const mutedBadgeClass =
-  "text-xs px-2 py-0.5 rounded-full bg-white/5 text-white/30 border border-white/10";
+export const NOCTRA_OPS_ANCHOR = "noctra-ops";
 
 export function Ecosystem() {
   const t = useTranslations("HomePage");
-  const locale = useLocale();
-  const products = t.raw("ecosystem.products") as unknown as EcosystemProduct[];
+  const ops = useTranslations("NoctraOps");
+  const modules = ops.raw("modules") as OpsModule[];
   const ownershipStats = t.raw(
     "ecosystem.ownership_stats",
   ) as unknown as OwnershipStat[];
@@ -50,16 +51,19 @@ export function Ecosystem() {
   return (
     <LazyMotion features={domAnimation}>
       <section
-        id="radar"
+        id={NOCTRA_OPS_ANCHOR}
         className="scroll-mt-28 bg-transparent pt-20 pb-24 md:pt-[120px] md:pb-24">
+        {/* Legacy anchors: old links to /#radar and /#social land here. */}
+        <span id="radar" className="sr-only" aria-hidden />
+        <span id="social" className="sr-only" aria-hidden />
+
         <div className={homeSectionContainerClass}>
           <m.p
-            id="social"
             initial={{ opacity: 0, y: 10 }}
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut" }}
             viewport={viewport}
-            className={`${homeSectionKickerClass} scroll-mt-28 will-change-transform`}>
+            className={`${homeSectionKickerClass} will-change-transform`}>
             {t("ecosystem.kicker")}
           </m.p>
 
@@ -77,101 +81,88 @@ export function Ecosystem() {
             whileInView={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, ease: "easeOut", delay: 0.16 }}
             viewport={viewport}
-            className="mb-12 text-base text-neutral-400 will-change-transform md:mb-16 md:text-lg">
+            className="mb-12 max-w-3xl text-base text-neutral-400 will-change-transform md:mb-16 md:text-lg">
             {t("ecosystem.subtitle")}
           </m.p>
 
-          <div className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
-            {products.map((item, i) => {
-              const isActive = item.status === "active";
-              const badgeClass =
-                item.status === "active" ? activeBadgeClass : mutedBadgeClass;
+          <m.article
+            initial={{ opacity: 0, y: 10 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, ease: "easeOut", delay: 0.1 }}
+            viewport={viewport}
+            className="grid grid-cols-1 gap-8 rounded-2xl border border-white/8 bg-white/3 p-6 will-change-transform md:p-8 lg:grid-cols-[minmax(0,5fr)_minmax(0,7fr)] lg:gap-12">
+            <div className="flex flex-col">
+              <div className="flex items-start justify-between gap-3">
+                <Layers
+                  size={22}
+                  className="shrink-0 text-white/50"
+                  aria-hidden
+                />
+                <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/50">
+                  {ops("badge")}
+                </span>
+              </div>
 
-              return (
-                <m.div
-                  key={item.id}
-                  id={item.id}
-                  initial={{ opacity: 0, y: 10 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{
-                    duration: 0.5,
-                    ease: "easeOut",
-                    delay: i * 0.08,
+              <h3 className="mt-5 text-2xl font-semibold text-white">
+                {ops("name")}
+              </h3>
+              <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-emerald-400/90">
+                {ops("category")}
+              </p>
+              <p className="mt-4 text-sm leading-relaxed text-neutral-400 md:text-[15px]">
+                {ops("description")}
+              </p>
+              <p className="mt-4 text-xs text-white/40">
+                {ops("plan_availability")}
+              </p>
+
+              <div className="mt-6 lg:mt-auto lg:pt-8">
+                <Link
+                  href={{
+                    pathname: "/contact",
+                    query: { intent: "noctra_ops", cta: "home_ecosystem" },
                   }}
-                  viewport={cardViewport}
-                  className={[
-                    "scroll-mt-32 rounded-2xl border border-white/8 bg-white/3 p-6 will-change-transform",
-                    isActive
-                      ? "transition-colors duration-200 hover:border-white/15"
-                      : "",
-                  ]
-                    .filter(Boolean)
-                    .join(" ")}>
-                  {item.icon === "layers" ? (
-                    <div className="flex items-start justify-between gap-3">
-                      <Layers
-                        size={20}
-                        className="shrink-0 text-white/40"
-                        aria-hidden
-                      />
-                      <span className={badgeClass}>{item.badge}</span>
-                    </div>
-                  ) : (
-                    <div className="flex justify-end">
-                      <span className={badgeClass}>{item.badge}</span>
-                    </div>
-                  )}
+                  className="inline-flex min-h-11 items-center gap-2 rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 text-sm font-medium text-emerald-300 transition-colors hover:border-emerald-400/60 hover:bg-emerald-500/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400">
+                  {ops("waitlist_cta")}
+                  <ArrowRight size={16} aria-hidden />
+                </Link>
+                <p className="mt-3 text-xs text-white/30">
+                  {ops("launch_note")}
+                </p>
+              </div>
+            </div>
 
-                  <p className="mt-4 text-lg font-semibold text-white">
-                    {item.name}
-                  </p>
-
-                  {item.category ? (
-                    <p className="mt-1 text-xs font-medium uppercase tracking-[0.15em] text-emerald-400/90">
-                      {item.category}
-                    </p>
-                  ) : null}
-
-                  <p className="mt-3 text-[13px] leading-relaxed text-neutral-400">
-                    {item.description}
-                  </p>
-
-                  {item.plan_availability ? (
-                    <p className="mt-2 text-xs text-white/40">
-                      {item.plan_availability}
-                    </p>
-                  ) : null}
-
-                  {item.internal_note ? (
-                    <p className="mt-1 text-xs italic text-white/30">
-                      {item.internal_note}
-                    </p>
-                  ) : null}
-
-                  {item.managed_line ? (
-                    <p className="mt-1 flex items-center gap-1 text-xs text-white/40">
-                      <Users
-                        size={12}
-                        className="shrink-0 text-white/40"
-                        aria-hidden
-                      />
-                      {item.managed_line}
-                    </p>
-                  ) : null}
-
-                  {item.cta_label && item.cta_app === "radar" ? (
-                    <a
-                      href={`https://radar.noctra.studio/${locale}`}
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      className="mt-4 inline-flex text-[13px] font-medium text-emerald-400/95 underline decoration-emerald-500/30 underline-offset-4 transition-colors hover:text-emerald-300 hover:decoration-emerald-400/60">
-                      {item.cta_label}
-                    </a>
-                  ) : null}
-                </m.div>
-              );
-            })}
-          </div>
+            <div>
+              <p className="mb-4 text-xs font-medium uppercase tracking-[0.15em] text-white/40">
+                {ops("modules_label")}
+              </p>
+              <ul className="grid grid-cols-1 gap-3 sm:grid-cols-2">
+                {modules.map((module, i) => {
+                  const Icon = MODULE_ICONS[i] ?? Layers;
+                  return (
+                    <li
+                      key={module.title}
+                      className="rounded-xl border border-white/6 bg-white/3 p-4">
+                      <div className="flex items-center gap-2">
+                        <Icon
+                          size={16}
+                          className="shrink-0 text-white/60"
+                          strokeWidth={1.75}
+                          aria-hidden
+                        />
+                        <p className="text-sm font-semibold text-white">
+                          {module.title}
+                        </p>
+                      </div>
+                      <p className="mt-2 text-[13px] leading-relaxed text-neutral-400">
+                        {module.description}
+                      </p>
+                    </li>
+                  );
+                })}
+              </ul>
+            </div>
+          </m.article>
 
           <m.div
             initial={{ opacity: 0, y: 8 }}

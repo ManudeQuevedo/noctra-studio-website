@@ -187,7 +187,7 @@ export const QuizResultsTemplate = ({
 
         <div style={{ textAlign: "center" }}>
           <a
-            href="https://calendly.com/noctra-studio/consultation"
+            href="https://calendly.com/noctra-studio/discovery-call"
             style={{
               display: "inline-block",
               backgroundColor: "#000000",

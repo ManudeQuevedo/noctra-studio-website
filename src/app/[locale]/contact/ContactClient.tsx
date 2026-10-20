@@ -180,6 +180,8 @@ function ContactForm() {
   const watchAll = watch();
   const searchParams = useSearchParams();
   const locale = useLocale();
+  const tOps = useTranslations("NoctraOps");
+  const opsWaitlistMessage = tOps("waitlist_message");
   const csrfToken = useRef<string>("");
   const formLoadTime = useRef<number>(0);
   const [securityError, setSecurityError] = useState<{
@@ -276,6 +278,8 @@ function ContactForm() {
 
     if (detailsParts.length > 0) {
       setValue("message", detailsParts.join("\n"));
+    } else if (intentParam === "noctra_ops") {
+      setValue("message", opsWaitlistMessage);
     }
 
     if (tipo === "automatizacion") {
@@ -296,6 +300,7 @@ function ContactForm() {
     intentParam,
     ctaParam,
     locale,
+    opsWaitlistMessage,
     setValue,
   ]);
 

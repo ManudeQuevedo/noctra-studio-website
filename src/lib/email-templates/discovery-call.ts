@@ -19,7 +19,7 @@ export const discoveryTemplate = {
       <table role="presentation" cellpadding="0" cellspacing="0">
         <tr>
           <td style="padding: 24px 0 32px;">
-            <a href="https://calendly.com/noctra-studio/30min"
+            <a href="https://calendly.com/noctra-studio/discovery-call"
                style="display: inline-block; background-color: #ffffff; color: #000000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 14px 32px; border-radius: 0;">
               Agendar Llamada
             </a>
@@ -52,7 +52,7 @@ export const discoveryTemplate = {
       <table role="presentation" cellpadding="0" cellspacing="0">
         <tr>
           <td style="padding: 24px 0 32px;">
-            <a href="https://calendly.com/noctra-studio/30min"
+            <a href="https://calendly.com/noctra-studio/discovery-call"
                style="display: inline-block; background-color: #ffffff; color: #000000; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif; font-size: 12px; font-weight: 700; letter-spacing: 0.15em; text-transform: uppercase; text-decoration: none; padding: 14px 32px; border-radius: 0;">
               Book a Call
             </a>

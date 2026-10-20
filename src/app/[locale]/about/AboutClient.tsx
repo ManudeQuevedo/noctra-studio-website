@@ -155,20 +155,20 @@ const ES: AboutCopy = {
     "SEO desde la estructura.",
   ],
   productsCardLabel: "SOFTWARE",
-  productsTitle: "Noctra Software",
+  productsTitle: "Noctra Ops",
   productsText:
-    "Herramientas propias potenciadas por IA para que tu negocio crezca con o sin nuestra intervención directa.",
+    "Nuestra plataforma propia, en desarrollo: reunirá en un solo lugar las herramientas que hoy operamos para nuestros clientes.",
   productsPoints: [
-    "Radar detecta qué mejorar.",
-    "Social sostiene contenido estratégico.",
-    "Noctra Ops unifica diagnóstico, propuestas y contratos.",
+    "Visibilidad: qué mejorar primero.",
+    "Contenido alineado a tu marca.",
+    "Diagnóstico, propuestas y contratos en un solo flujo.",
   ],
 
   /* 7 */
   visionLabel: "HACIA DÓNDE VAMOS",
-  visionTitle: "Más productos significa más continuidad para tu negocio.",
+  visionTitle: "Menos herramientas sueltas, más continuidad para tu negocio.",
   visionParagraphs: [
-    "Noctra Ops — el sistema unificado de diagnóstico, propuestas y contratos — llega en Agosto 2026. Noctra Social, gestión de contenido con IA, está en desarrollo. Cada producto reduce la dependencia de tu negocio en esfuerzo manual.",
+    "Estamos unificando todas nuestras herramientas en Noctra Ops: visibilidad, contenido y proceso comercial en una sola plataforma. Está en desarrollo y cada pieza que sumamos reduce el trabajo manual de tu negocio.",
     "Queremos que sepas qué mejorar, cuándo actuar y cómo sostener tu presencia sin volver a empezar.",
     "No sumamos herramientas por acumular: construimos continuidad.",
   ],
@@ -275,20 +275,20 @@ const EN: AboutCopy = {
     "SEO from the structure.",
   ],
   productsCardLabel: "SOFTWARE",
-  productsTitle: "Noctra Software",
+  productsTitle: "Noctra Ops",
   productsText:
-    "Proprietary AI-powered tools so your business grows with or without our direct involvement.",
+    "Our own platform, in development: it will bring the tools we run for our clients today into one place.",
   productsPoints: [
-    "Radar detects what to improve.",
-    "Social sustains strategic content.",
-    "Noctra Ops unifies diagnosis, proposals, and contracts.",
+    "Visibility: what to improve first.",
+    "Content aligned with your brand.",
+    "Diagnosis, proposals and contracts in one flow.",
   ],
 
   /* 7 */
   visionLabel: "WHERE WE ARE GOING",
-  visionTitle: "More products means more continuity for your business.",
+  visionTitle: "Fewer scattered tools, more continuity for your business.",
   visionParagraphs: [
-    "Noctra Ops — the unified system for diagnosis, proposals, and contracts — arrives in August 2026. Noctra Social, AI-powered content management, is in development. Each product reduces your business's dependency on manual effort.",
+    "We're unifying all our tools into Noctra Ops: visibility, content and your sales process in a single platform. It's in development, and every piece we add means less manual work for your business.",
     "We want you to know what to improve, when to act, and how to sustain your presence without starting over.",
     "We are not stacking tools. We are building continuity.",
   ],

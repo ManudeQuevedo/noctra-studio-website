@@ -1,6 +1,8 @@
 import { createClient } from "@/utils/supabase/server";
 import DashboardClient from "./DashboardClient";
-import ForgeLanding from "@/components/forge/ForgeLanding";
+import { getLocale } from "next-intl/server";
+import { redirect } from "next/navigation";
+import { getPathname } from "@/i18n/routing";
 import { getRevenueForecast } from "@/app/actions/metrics";
 import { getWorkspace } from "@/lib/workspace";
 
@@ -8,9 +10,11 @@ export default async function ForgeIndexPage() {
   const supabase = await createClient();
   const ctx = await getWorkspace();
 
-  // If no session/user/workspace, show the landing page
+  // Noctra Forge was merged into Noctra Ops (in development). Visitors without
+  // a workspace go to the Noctra Ops section instead of the old Forge landing.
   if (!ctx) {
-    return <ForgeLanding />;
+    const locale = await getLocale();
+    redirect(`${getPathname({ href: "/", locale })}#noctra-ops`);
   }
 
   // Fetch all basic objects to power the dashboard metrics

@@ -356,52 +356,26 @@
       "positioning": "Noctra construye el sistema completo — marca, sitio, visibilidad en buscadores e IA — y lo mide mes a mes. Un solo equipo. Responsable del resultado. Sin excusas entre proveedores."
     },
     "ecosystem": {
-      "kicker": "01 / ECOSISTEMA",
-      "title": "El software que usamos para crecer tu negocio, también es tuyo.",
-      "subtitle": "Dependiendo de tu plan, recibes acceso a software desarrollado por Noctra, potenciado por IA. Tú decides si lo operas tú o lo manejamos nosotros.",
+      "kicker": "01 / NOCTRA OPS",
+      "title": "Una sola plataforma para todo lo que hace crecer tu negocio.",
+      "subtitle": "Mientras la terminamos, todo lo que hacemos por tu negocio lo opera nuestro equipo directamente. Cuando esté lista, tú decides si la usas tú o la manejamos nosotros.",
       "ai_costs": "Los costos de inteligencia artificial son directos al proveedor (OpenAI, Google, Anthropic). Noctra configura todo y te guía para mantenerlos eficientes — sin intermediarios ni markups.",
       "ownership": {
         "headline": "Tus datos y tu sitio, siempre tuyos.",
         "copy": "Si decides trabajar con otro proveedor, te entregamos todos tus datos, el código de tu sitio web y todos tus accesos digitales — dominio, hosting y cuentas. El acceso a las herramientas Noctra está incluido mientras tengas un plan activo."
       },
       "ownership_stats": [
-        { "value": "100%", "label": "de tus datos, siempre exportables" },
-        { "value": "0", "label": "penalización por cancelar" },
-        { "value": "1", "label": "equipo responsable del resultado" }
-      ],
-      "products": [
         {
-          "id": "noctra-radar",
-          "status": "active",
-          "badge": "ACTIVO",
-          "name": "Noctra Radar",
-          "category": "Visibilidad",
-          "description": "Monitorea cómo aparece tu marca en Google, ChatGPT, Gemini y Perplexity. Detecta oportunidades y caídas antes de que afecten tu negocio.",
-          "plan_availability": "Incluido en Noctra Presencia y Noctra Sistema",
-          "managed_line": "Disponible con gestión Noctra",
-          "cta_app": "radar",
-          "cta_label": "Abrir Radar →"
+          "value": "100%",
+          "label": "de tus datos, siempre exportables"
         },
         {
-          "id": "noctra-ops",
-          "status": "august_2026",
-          "badge": "AGOSTO 2026",
-          "icon": "layers",
-          "name": "Noctra Ops",
-          "category": "Operaciones",
-          "description": "Diagnóstico de clientes, propuestas, contratos y firma digital en un solo lugar. Todo el flujo comercial, unificado.",
-          "plan_availability": "Incluido en Noctra Sistema",
-          "internal_note": "En desarrollo. Disponible en Agosto 2026."
+          "value": "0",
+          "label": "penalización por cancelar"
         },
         {
-          "id": "noctra-social",
-          "status": "coming_soon",
-          "badge": "PRÓXIMAMENTE",
-          "name": "Noctra Social",
-          "category": "Contenido",
-          "description": "Generación de contenido para redes sociales con IA, alineado a tu marca y calendario editorial. Listo para publicar.",
-          "plan_availability": "Disponible en planes Presencia y Sistema",
-          "managed_line": "Disponible con gestión Noctra"
+          "value": "1",
+          "label": "equipo responsable del resultado"
         }
       ]
     },
@@ -550,8 +524,8 @@
   "Metadata": {
     "home": {
       "title": "Noctra Studio | Estudio premium + software propio para crecimiento digital",
-      "description": "Noctra Studio combina branding, websites, SEO, GEO y automatizaciones con productos propios como Radar y Social para construir una presencia digital más clara, visible y escalable — para negocios de cualquier tamaño.",
-      "keywords": "estudio digital queretaro, branding y sitios web, SEO para negocios, GEO generative engine optimization, visibilidad en IA, automatizaciones con IA, software propio para marketing, noctra radar, noctra social",
+      "description": "Noctra Studio combina branding, websites, SEO, GEO y automatizaciones para construir una presencia digital más clara, visible y escalable — para negocios de cualquier tamaño. Próximamente: Noctra Ops, nuestra plataforma propia.",
+      "keywords": "estudio digital queretaro, branding y sitios web, SEO para negocios, GEO generative engine optimization, visibilidad en IA, automatizaciones con IA, software propio para marketing, noctra ops",
       "og_title": "Noctra Studio — Estudio y software para crecer con estructura",
       "og_description": "Branding, websites, SEO, automatización y productos propios para que tu negocio gane confianza, visibilidad y crecimiento más ordenado.",
       "og_image_alt": "Noctra Studio estudio digital con mentalidad de ingeniería",
@@ -735,8 +709,6 @@
     "method": "Método",
     "capabilities": "Servicios",
     "deployments": "Proyectos",
-    "radar": "Radar",
-    "social": "Social",
     "initiate": "Agendar Consulta",
     "system_capabilities": "Capacidades",
     "menu_tagline": "Presencia digital que genera clientes.",
@@ -751,13 +723,9 @@
         "eyebrow": "Studio",
         "description": "Implementación en marca, web, SEO y automatización."
       },
-      "radar": {
-        "eyebrow": "Producto principal",
-        "description": "Radar revela bloqueos técnicos y comerciales antes de que crezcan."
-      },
-      "social": {
-        "eyebrow": "Producto secundario",
-        "description": "Social sostiene presencia estratégica sin cargar la operación."
+      "ops": {
+        "eyebrow": "En desarrollo",
+        "description": "Noctra Ops reunirá visibilidad, contenido y ventas en una sola plataforma."
       }
     },
     "tags": {
@@ -765,7 +733,8 @@
       "ai": "Visibilidad",
       "devops": "Sistemas Confiables",
       "headless": "Web Moderna"
-    }
+    },
+    "ops": "Noctra Ops"
   },
   "AboutPage": {
     "hero": {
@@ -902,7 +871,7 @@
       "legal": "Legal",
       "contact": "Contacto"
     },
-    "ops_coming_soon_badge": "Jul 2026",
+    "ops_coming_soon_badge": "En desarrollo",
     "links": {
       "home": "Inicio",
       "blog": "Blog",
@@ -918,12 +887,9 @@
       "branding": "Sistemas de Marca",
       "seo": "Bases de Búsqueda",
       "automations": "Automatizaciones y Sistemas",
-      "radar": "Radar",
-      "social": "Social",
       "ops": "Noctra Ops",
       "method": "Cómo funciona Noctra",
       "how_we_build": "Cómo construimos",
-      "academy": "Academy",
       "guarantee": "Garantía del Proyecto",
       "technology": "Cómo Construimos",
       "consultation": "Iniciar proyecto",
@@ -1083,7 +1049,7 @@
         },
         {
           "title": "Software que Refuerza",
-          "description": "Tus servicios de branding, web y SEO se apoyan en Radar para asegurar que la salud técnica y la autoridad nunca caigan."
+          "description": "Tus servicios de branding, web y SEO tienen seguimiento constante para que la salud técnica y la autoridad de tu sitio no se caigan."
         },
         {
           "title": "Operatividad Real",
@@ -1150,14 +1116,14 @@
     },
     "visibility": {
       "title": "Visibilidad, SEO y GEO",
-      "summary": "Posicionamos tu negocio donde tus clientes buscan — en Google, en IA como ChatGPT y AI Overviews, y en el resultado orgánico que dura. SEO estructural + GEO, respaldado por Noctra Radar.",
+      "summary": "Posicionamos tu negocio donde tus clientes buscan — en Google, en IA como ChatGPT y AI Overviews, y en el resultado orgánico que dura. SEO estructural + GEO.",
       "benefit_short": "Sé Encontrado por la Gente Correcta",
-      "what_it_is": "Sincronía entre SEO técnico, contenido estratégico y GEO (visibilidad en motores generativos como Google AI, ChatGPT y Perplexity), con monitoreo constante a través de Noctra Radar.",
+      "what_it_is": "Sincronía entre SEO técnico, contenido estratégico y GEO (visibilidad en motores generativos como Google AI, ChatGPT y Perplexity), con seguimiento constante.",
       "why_it_matters": "De nada sirve tener el mejor producto si nadie te encuentra. La tracción orgánica es el activo de crecimiento más rentable a largo plazo.",
       "business_benefit": "Generación constante de leads calificados sin depender exclusivamente de pauta pagada.",
       "highlights": [
         "Bases SEO estructurales",
-        "Monitoreo Noctra Radar (24/7)",
+        "Seguimiento de visibilidad en Google e IA",
         "GEO: autoridad en buscadores y motores de IA"
       ],
       "image_label": "Crecimiento de Tracción",
@@ -4036,7 +4002,7 @@
             "Despliegue en ambiente de producción",
             "Sesión de capacitación al equipo (2 horas)",
             "30 días de soporte post-lanzamiento incluido",
-            "Configuración de monitoreo con Noctra Radar"
+            "Configuración de monitoreo y alertas"
           ]
         }
       ],
@@ -4902,8 +4868,8 @@
     },
     "software": {
       "section_label": "00B / SOFTWARE",
-      "headline": "Infraestructura de marca + software propio.",
-      "subheadline": "Las herramientas que desarrollamos están disponibles según tu plan. Entre más crece tu negocio, más herramientas tienes disponibles.",
+      "headline": "Infraestructura de marca + una plataforma propia en camino.",
+      "subheadline": "Estamos unificando nuestras herramientas en Noctra Ops. Tu plan incluye acceso en cuanto esté disponible; mientras tanto, nuestro equipo opera todo por ti.",
       "access_matrix": {
         "title": "¿Qué incluye cada plan?",
         "columns": [
@@ -4916,8 +4882,10 @@
               "Marca configurada",
               "SEO básico activado"
             ],
-            "excluded": ["Sin acceso a productos Noctra"],
-            "note": "Las herramientas están disponibles como add-on mensual."
+            "excluded": [
+              "Sin acceso a Noctra Ops"
+            ],
+            "note": "Los servicios mensuales están disponibles como add-on."
           },
           {
             "tier": "presence",
@@ -4925,11 +4893,10 @@
             "price_hint": "$32,000 MXN",
             "included": [
               "Todo lo de Base",
-              "Noctra Radar — 3 meses incluidos",
-              "Noctra Social — cuando esté disponible"
+              "Acceso a Noctra Ops cuando esté disponible"
             ],
-            "excluded": ["Sin Noctra Ops"],
-            "note": "Después de 3 meses, Radar continúa como add-on mensual."
+            "excluded": [],
+            "note": "Noctra Ops está en desarrollo. Te avisamos antes del lanzamiento."
           },
           {
             "tier": "system",
@@ -4937,40 +4904,20 @@
             "price_hint": "$55,000 MXN",
             "included": [
               "Todo lo de Presencia",
-              "Noctra Radar — 6 meses incluidos",
-              "Noctra Ops — cuando esté disponible (Agosto 2026)",
-              "Noctra Social — cuando esté disponible"
+              "Acceso a Noctra Ops cuando esté disponible"
             ],
             "excluded": [],
             "note": "Gestión incluida los primeros 3 meses. Después como add-on."
           }
         ]
       },
-      "radar": {
-        "status": "ACTIVO · PRESENCIA Y SISTEMA",
-        "name": "Noctra Radar",
-        "description": "Monitorea la visibilidad de tu marca en Google, ChatGPT, Gemini y Perplexity en tiempo real. Detecta cuando tu competencia te supera, identifica keywords de oportunidad y mide cómo te menciona la IA.",
-        "option_a_title": "Lo operas tú",
-        "option_a_description": "Acceso completo al dashboard. Reportes automáticos a tu correo cada semana.",
-        "option_b_title": "Lo manejamos nosotros",
-        "option_b_description": "Nuestro equipo interpreta los datos, implementa mejoras y te entrega un resumen mensual ejecutivo.",
-        "option_b_badge": "Add-on: desde $1,800 MXN + IVA / mes"
-      },
       "ops": {
-        "status": "AGOSTO 2026 · SOLO SISTEMA",
-        "name": "Noctra Ops",
-        "description": "Diagnóstico de clientes, propuestas, contratos y firma digital en un solo lugar. Todo el flujo comercial de Noctra, unificado. Tu cliente pasa de prospecto a firmado sin salir de un solo flujo.",
-        "internal_note": "Herramienta incluida en Noctra Sistema. En desarrollo — disponible en Agosto 2026."
-      },
-      "social": {
-        "status": "PRÓXIMAMENTE · PRESENCIA Y SISTEMA",
-        "name": "Noctra Social",
-        "description": "Generación de contenido para redes sociales potenciado por IA, alineado a la voz de tu marca y tu calendario editorial. Tú apruebas, Noctra publica — o lo publicas tú mismo.",
-        "option_a_title": "Lo operas tú",
-        "option_a_description": "Acceso al generador de contenido. Tú apruebas y publicas cada post.",
-        "option_b_title": "Lo manejamos nosotros",
-        "option_b_description": "Noctra genera, programa y publica por ti cada mes.",
-        "option_b_badge": "Add-on: desde $3,500 MXN + IVA / mes"
+        "status": "INCLUIDO EN PRESENCIA Y SISTEMA",
+        "option_a_title": "La operas tú",
+        "option_a_description": "Acceso completo a la plataforma. Tú revisas, apruebas y decides.",
+        "option_b_title": "La manejamos nosotros",
+        "option_b_description": "Nuestro equipo interpreta los datos, implementa mejoras y te entrega un resumen mensual.",
+        "option_b_badge": "Precio del add-on al lanzamiento"
       },
       "ai_costs": "Los costos de inteligencia artificial son directos al proveedor (OpenAI, Google, Anthropic). Noctra configura todo y te guía para mantener tus costos eficientes y predecibles — sin intermediarios ni markups. Tú pagas al proveedor directamente, al precio que ellos publican.",
       "ownership_quote": "Si decides irte, tus datos y tu sitio se van contigo. El acceso a las herramientas Noctra está incluido mientras tengas un plan activo.",
@@ -5018,7 +4965,7 @@
             "Sitio web de 6–8 páginas con diseño premium",
             "Copy completo orientado a conversión",
             "SEO técnico + estrategia de palabras clave local",
-            "Integración con Noctra Radar (3 meses)",
+            "Acceso a Noctra Ops cuando esté disponible",
             "1 landing page de captación de leads",
             "Reportes al mes 1 y mes 3"
           ],
@@ -5036,7 +4983,7 @@
             "Todo lo de Noctra Presencia",
             "Estrategia de contenido SEO (6 meses)",
             "Automatización de seguimiento de leads",
-            "Noctra Radar 6 meses incluidos",
+            "Acceso a Noctra Ops cuando esté disponible",
             "2 landing pages de captación",
             "Configuración de CRM básico",
             "Taller de 2 horas de uso del sistema",
@@ -5052,7 +4999,7 @@
       "intro": "Noctra como tu socio tecnológico mensual. Sin contrato mínimo — cancela cuando quieras.",
       "addons": [
         {
-          "name": "Noctra Social",
+          "name": "Noctra Contenido",
           "tiers": [
             {
               "tier": "Esencial",
@@ -5220,5 +5167,34 @@
       "label": "Servicios",
       "cta": "Diagnóstico →"
     }
+  },
+  "NoctraOps": {
+    "name": "Noctra Ops",
+    "badge": "EN DESARROLLO",
+    "category": "Plataforma",
+    "description": "Estamos reuniendo todas nuestras herramientas en una sola plataforma: cómo te encuentran tus clientes, tu contenido y tu proceso comercial, en un mismo lugar.",
+    "modules_label": "Lo que va a reunir",
+    "modules": [
+      {
+        "title": "Visibilidad",
+        "description": "Cómo aparece tu marca en Google y en asistentes de IA, y qué conviene mejorar primero."
+      },
+      {
+        "title": "Contenido",
+        "description": "Publicaciones alineadas a tu marca y a tu calendario, listas para revisar y aprobar."
+      },
+      {
+        "title": "Ventas",
+        "description": "Diagnóstico, propuestas, contratos y firma digital en un solo flujo."
+      },
+      {
+        "title": "Clientes",
+        "description": "Prospectos, proyectos y seguimiento en un solo panel, sin hojas de cálculo."
+      }
+    ],
+    "plan_availability": "Acceso incluido en Noctra Presencia y Noctra Sistema cuando esté disponible.",
+    "launch_note": "Aún sin fecha de lanzamiento. Si te unes a la lista, te avisamos antes que a nadie.",
+    "waitlist_cta": "Unirme a la lista de espera",
+    "waitlist_message": "Hola, quiero unirme a la lista de espera de Noctra Ops."
   }
 }

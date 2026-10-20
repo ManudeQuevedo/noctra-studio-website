@@ -39,11 +39,10 @@ export function Footer() {
     {
       title: t("sections.products"),
       items: [
-        { label: t("links.radar"), href: "/#radar" },
-        { label: t("links.social"), href: "/#social" },
         {
           label: t("links.ops"),
-          comingSoonDate: t("ops_coming_soon_badge"),
+          href: "/#noctra-ops",
+          badge: t("ops_coming_soon_badge"),
         },
       ],
     },
@@ -58,7 +57,6 @@ export function Footer() {
       title: t("sections.resources"),
       items: [
         { label: t("links.insights"), href: "/blog" },
-        { label: t("links.academy") },
         { label: t("links.guarantee"), href: "/guarantee" },
       ],
     },

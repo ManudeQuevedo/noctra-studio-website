@@ -2,18 +2,19 @@
 
 import { m } from "framer-motion";
 import {
+  ArrowRight,
   Check,
   Code,
   Database,
   Key,
   Layers,
   Monitor,
-  Radio,
-  Rss,
   Users,
   X,
   Zap,
 } from "lucide-react";
+import { useTranslations } from "next-intl";
+import { Link } from "@/i18n/routing";
 
 export type AccessMatrixColumn = {
   tier: "base" | "presence" | "system";
@@ -40,21 +41,8 @@ export type SoftwareEcosystemMessages = {
     title: string;
     columns: AccessMatrixColumn[];
   };
-  radar: {
-    status: string;
-    name: string;
-    description: string;
-  } & SoftwareProductOptions;
   ops: {
     status: string;
-    name: string;
-    description: string;
-    internal_note: string;
-  };
-  social: {
-    status: string;
-    name: string;
-    description: string;
   } & SoftwareProductOptions;
   ai_costs: string;
   ownership_quote: string;
@@ -133,6 +121,67 @@ function ProductOptionsBlock({
   );
 }
 
+type OpsModule = { title: string; description: string };
+
+function NoctraOpsCard({ data }: { data: SoftwareEcosystemMessages["ops"] }) {
+  const ops = useTranslations("NoctraOps");
+  const modules = ops.raw("modules") as OpsModule[];
+
+  return (
+    <m.article {...fadeIn} id="noctra-ops" className={`scroll-mt-28 ${productCardClass}`}>
+      <div className="flex items-start justify-between gap-3">
+        <Layers
+          className="h-6 w-6 shrink-0 text-white/80"
+          strokeWidth={1.75}
+          aria-hidden
+        />
+        <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/50">
+          {ops("badge")}
+        </span>
+      </div>
+      <p className="mt-3 text-xs tracking-wide text-white/30 uppercase">
+        {data.status}
+      </p>
+      <h3 className="mt-2 text-xl font-bold text-white">{ops("name")}</h3>
+      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/70 md:text-[15px]">
+        {ops("description")}
+      </p>
+
+      <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
+        {modules.map((module) => (
+          <li key={module.title} className={optionShellClass}>
+            <p className="text-sm font-semibold text-white">{module.title}</p>
+            <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
+              {module.description}
+            </p>
+          </li>
+        ))}
+      </ul>
+
+      <ProductOptionsBlock
+        option_a_title={data.option_a_title}
+        option_a_description={data.option_a_description}
+        option_b_title={data.option_b_title}
+        option_b_description={data.option_b_description}
+        option_b_badge={data.option_b_badge}
+      />
+
+      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
+        <p className="text-xs text-white/40">{ops("launch_note")}</p>
+        <Link
+          href={{
+            pathname: "/contact",
+            query: { intent: "noctra_ops", cta: "services_software" },
+          }}
+          className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 text-sm font-medium text-emerald-300 transition-colors hover:border-emerald-400/60 hover:bg-emerald-500/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 sm:self-auto">
+          {ops("waitlist_cta")}
+          <ArrowRight className="h-4 w-4" aria-hidden />
+        </Link>
+      </div>
+    </m.article>
+  );
+}
+
 export function SoftwareEcosystemSection({
   data,
 }: {
@@ -202,76 +251,7 @@ export function SoftwareEcosystemSection({
 
         <SubsectionRule />
 
-        <div className="grid grid-cols-1 gap-4 md:grid-cols-2 xl:grid-cols-3">
-          {/* Noctra Radar */}
-          <m.article {...fadeIn} className={`flex flex-col ${productCardClass}`}>
-            <Radio
-              className="h-6 w-6 shrink-0 text-white/80"
-              strokeWidth={1.75}
-              aria-hidden
-            />
-            <p className="mt-3 text-xs tracking-wide text-green-400/70 uppercase">
-              {data.radar.status}
-            </p>
-            <h3 className="mt-2 text-xl font-bold text-white">
-              {data.radar.name}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-[15px]">
-              {data.radar.description}
-            </p>
-            <ProductOptionsBlock
-              option_a_title={data.radar.option_a_title}
-              option_a_description={data.radar.option_a_description}
-              option_b_title={data.radar.option_b_title}
-              option_b_description={data.radar.option_b_description}
-              option_b_badge={data.radar.option_b_badge}
-            />
-          </m.article>
-
-          {/* Noctra Ops */}
-          <m.article {...fadeIn} className={`flex flex-col ${productCardClass}`}>
-            <Layers
-              className="h-6 w-6 shrink-0 text-white/80"
-              strokeWidth={1.75}
-              aria-hidden
-            />
-            <p className="mt-3 text-xs tracking-wide text-white/30 uppercase">
-              {data.ops.status}
-            </p>
-            <h3 className="mt-2 text-xl font-bold text-white">{data.ops.name}</h3>
-            <p className="mt-4 flex-1 text-sm leading-relaxed text-white/70 md:text-[15px]">
-              {data.ops.description}
-            </p>
-            <p className="mt-3 text-xs italic text-white/30">
-              {data.ops.internal_note}
-            </p>
-          </m.article>
-
-          {/* Noctra Social */}
-          <m.article {...fadeIn} className={`flex flex-col ${productCardClass}`}>
-            <Rss
-              className="h-6 w-6 shrink-0 text-white/80"
-              strokeWidth={1.75}
-              aria-hidden
-            />
-            <p className="mt-3 text-xs tracking-wide text-white/30 uppercase">
-              {data.social.status}
-            </p>
-            <h3 className="mt-2 text-xl font-bold text-white">
-              {data.social.name}
-            </h3>
-            <p className="mt-4 text-sm leading-relaxed text-white/70 md:text-[15px]">
-              {data.social.description}
-            </p>
-            <ProductOptionsBlock
-              option_a_title={data.social.option_a_title}
-              option_a_description={data.social.option_a_description}
-              option_b_title={data.social.option_b_title}
-              option_b_description={data.social.option_b_description}
-              option_b_badge={data.social.option_b_badge}
-            />
-          </m.article>
-        </div>
+        <NoctraOpsCard data={data.ops} />
 
         <div className="mx-auto mt-8 flex max-w-xl items-start justify-center gap-2 border-t border-white/5 pt-8 text-center text-xs text-white/30">
           <Zap

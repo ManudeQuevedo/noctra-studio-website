@@ -114,8 +114,7 @@ export function Header() {
 
   const navItems = [
     { label: t("studio"), href: "/services" },
-    { label: t("radar"), href: "/#radar" },
-    { label: t("social"), href: "/#social" },
+    { label: t("ops"), href: "/#noctra-ops" },
     { label: t("deployments"), href: "/work" },
     { label: t("method"), href: "/about" },
   ];
@@ -126,12 +125,8 @@ export function Header() {
       description: t("model.studio.description"),
     },
     {
-      eyebrow: t("model.radar.eyebrow"),
-      description: t("model.radar.description"),
-    },
-    {
-      eyebrow: t("model.social.eyebrow"),
-      description: t("model.social.description"),
+      eyebrow: t("model.ops.eyebrow"),
+      description: t("model.ops.description"),
     },
   ];
 

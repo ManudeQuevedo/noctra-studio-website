@@ -77,7 +77,7 @@ function DashboardMockup() {
       </div>
 
       <p className="mt-4 text-[11px] text-zinc-500">
-        Actualizado hace 3 minutos · Noctra Radar
+        Actualizado hace 3 minutos
       </p>
     </div>
   );

@@ -80,6 +80,17 @@ const nextConfig: NextConfig = {
         destination: '/:locale/work',
         permanent: true,
       },
+      // Forge migration docs: Forge was merged into Noctra Ops (in development).
+      {
+        source: '/:locale(es|en)/docs/migracion',
+        destination: '/:locale#noctra-ops',
+        permanent: false,
+      },
+      {
+        source: '/docs/migracion',
+        destination: '/es#noctra-ops',
+        permanent: false,
+      },
       // NOTE: Spanish localized paths (/es/talento, /es/garantia, ...) are handled by
       // next-intl `pathnames` in src/i18n/routing.ts (proxy rewrite). Do NOT add
       // redirects to the segment paths here: next-intl redirects those back to the
