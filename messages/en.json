@@ -3879,7 +3879,8 @@
         "custom_system": "Custom system (CRM, automation, portals)",
         "optimization": "Existing site optimization (improve speed/conversion)",
         "discovery_call": "Discovery call (consultation & advice)",
-        "not_sure": "I'm not sure - I need advice"
+        "not_sure": "I'm not sure - I need advice",
+        "noctra_ops": "Noctra Ops waitlist (still in development)"
       },
       "budget_label": "What is your approximate budget?",
       "currency_label": "Currency",

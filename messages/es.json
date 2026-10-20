@@ -3004,7 +3004,8 @@
         "custom_system": "Sistema a medida (CRM, automatización, portales)",
         "optimization": "Optimización de sitio existente (mejorar velocidad/conversión)",
         "discovery_call": "Llamada de descubrimiento (asesoría y dudas)",
-        "not_sure": "No estoy seguro - necesito asesoría"
+        "not_sure": "No estoy seguro - necesito asesoría",
+        "noctra_ops": "Lista de espera de Noctra Ops (aún en desarrollo)"
       },
       "budget_label": "¿Cuál es tu presupuesto aproximado?",
       "currency_label": "Moneda",

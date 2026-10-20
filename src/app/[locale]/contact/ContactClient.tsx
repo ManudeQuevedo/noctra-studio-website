@@ -34,6 +34,8 @@ import { FaXTwitter, FaWhatsapp } from "react-icons/fa6";
 import { cn } from "@/lib/utils";
 import { RouteScopedBackground } from "@/components/ui/RouteScopedBackground";
 
+const OPS_WAITLIST_SERVICE = "noctra_ops";
+
 type FormData = {
   name: string;
   email: string;
@@ -159,6 +161,7 @@ function ContactForm() {
     watch,
     setValue,
     trigger,
+    getValues,
   } = useForm<FormData>({
     mode: "onChange",
     defaultValues: {
@@ -178,6 +181,8 @@ function ContactForm() {
   });
 
   const watchAll = watch();
+  // Noctra Ops waitlist signups don't have a budget yet.
+  const isOpsWaitlist = watchAll.service === OPS_WAITLIST_SERVICE;
   const searchParams = useSearchParams();
   const locale = useLocale();
   const tOps = useTranslations("NoctraOps");
@@ -282,6 +287,10 @@ function ContactForm() {
       setValue("message", opsWaitlistMessage);
     }
 
+    if (intentParam === "noctra_ops") {
+      setValue("service", OPS_WAITLIST_SERVICE);
+    }
+
     if (tipo === "automatizacion") {
       setValue("service", "custom_system");
     }
@@ -372,7 +381,9 @@ function ContactForm() {
     const fieldsToValidate =
       currentStep === 1
         ? ["name", "email", "phone"]
-        : ["service", "budget"];
+        : getValues("service") === OPS_WAITLIST_SERVICE
+          ? ["service"]
+          : ["service", "budget"];
 
     const isStepValid = await trigger(fieldsToValidate as any);
     if (isStepValid) {
@@ -706,6 +717,7 @@ function ContactForm() {
                                     "optimization",
                                     "discovery_call",
                                     "not_sure",
+                                    OPS_WAITLIST_SERVICE,
                                   ].map((service) => (
                                     <button
                                       key={service}
@@ -746,6 +758,7 @@ function ContactForm() {
                                 )}
                               </div>
 
+                              {!isOpsWaitlist && (
                               <div className="space-y-6">
                                 <label
                                   htmlFor={fieldIds.budget}
@@ -755,7 +768,11 @@ function ContactForm() {
                                 <input
                                   id={fieldIds.budget}
                                   type="hidden"
-                                  {...register("budget", { required: true })}
+                                  {...register("budget", {
+                                    validate: (value) =>
+                                      getValues("service") ===
+                                        OPS_WAITLIST_SERVICE || Boolean(value),
+                                  })}
                                 />
                                 <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
                                   {[
@@ -804,6 +821,7 @@ function ContactForm() {
                                   </p>
                                 )}
                               </div>
+                              )}
                             </div>
                           )}
 
