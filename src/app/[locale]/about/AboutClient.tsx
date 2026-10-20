@@ -143,9 +143,9 @@ const ES: AboutCopy = {
   modelLabel: "EL MODELO",
   modelTitle: "Estudio + Producto. Dos capas, un sistema.",
   modelSub:
-    "Combinamos implementación estratégica con productos propios para que lo construido no se quede estático después del lanzamiento.",
+    "Combinamos implementación estratégica con una plataforma propia, Noctra Ops, para que lo construido no se quede estático después del lanzamiento.",
   modelOwnershipNote:
-    "Tus datos, tu sitio y tus accesos son tuyos siempre. El acceso a las herramientas Noctra está incluido mientras tengas un plan activo.",
+    "Tus datos, tu sitio y tus accesos son tuyos siempre. El acceso a Noctra Ops estará incluido mientras tengas un plan activo.",
   studioTitle: "Noctra Studio",
   studioText:
     "Construimos la base estratégica y visible de tu presencia digital.",
@@ -263,9 +263,9 @@ const EN: AboutCopy = {
   modelLabel: "THE MODEL",
   modelTitle: "Studio + Product. Two layers, one system.",
   modelSub:
-    "We combine strategic implementation with proprietary products so what we build does not stay static after launch.",
+    "We combine strategic implementation with our own platform, Noctra Ops, so what we build does not stay static after launch.",
   modelOwnershipNote:
-    "Your data, your website, and your access are always yours. Access to Noctra tools is included while you have an active plan.",
+    "Your data, your website, and your access are always yours. Access to Noctra Ops will be included while you have an active plan.",
   studioTitle: "Noctra Studio",
   studioText:
     "We build the strategic, visible foundation of your digital presence.",

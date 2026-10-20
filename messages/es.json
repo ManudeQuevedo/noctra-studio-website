@@ -362,7 +362,7 @@
       "ai_costs": "Los costos de inteligencia artificial son directos al proveedor (OpenAI, Google, Anthropic). Noctra configura todo y te guía para mantenerlos eficientes — sin intermediarios ni markups.",
       "ownership": {
         "headline": "Tus datos y tu sitio, siempre tuyos.",
-        "copy": "Si decides trabajar con otro proveedor, te entregamos todos tus datos, el código de tu sitio web y todos tus accesos digitales — dominio, hosting y cuentas. El acceso a las herramientas Noctra está incluido mientras tengas un plan activo."
+        "copy": "Si decides trabajar con otro proveedor, te entregamos todos tus datos, el código de tu sitio web y todos tus accesos digitales — dominio, hosting y cuentas. El acceso a Noctra Ops estará incluido mientras tengas un plan activo."
       },
       "ownership_stats": [
         {
@@ -527,10 +527,10 @@
       "description": "Noctra Studio combina branding, websites, SEO, GEO y automatizaciones para construir una presencia digital más clara, visible y escalable — para negocios de cualquier tamaño. Próximamente: Noctra Ops, nuestra plataforma propia.",
       "keywords": "estudio digital queretaro, branding y sitios web, SEO para negocios, GEO generative engine optimization, visibilidad en IA, automatizaciones con IA, software propio para marketing, noctra ops",
       "og_title": "Noctra Studio — Estudio y software para crecer con estructura",
-      "og_description": "Branding, websites, SEO, automatización y productos propios para que tu negocio gane confianza, visibilidad y crecimiento más ordenado.",
+      "og_description": "Branding, websites, SEO, automatización y una plataforma propia en desarrollo para que tu negocio gane confianza, visibilidad y crecimiento más ordenado.",
       "og_image_alt": "Noctra Studio estudio digital con mentalidad de ingeniería",
       "twitter_title": "Noctra Studio | Estudio premium + software propio",
-      "twitter_description": "Branding, websites, SEO, automatización y productos propios para construir una presencia digital más clara y escalable."
+      "twitter_description": "Branding, websites, SEO, automatización y una plataforma propia en desarrollo para construir una presencia digital más clara y escalable."
     },
     "about": {
       "title": "Estudio | Noctra Studio",
@@ -4868,9 +4868,9 @@
       }
     },
     "software": {
-      "section_label": "00B / SOFTWARE",
-      "headline": "Infraestructura de marca + una plataforma propia en camino.",
-      "subheadline": "Estamos unificando nuestras herramientas en Noctra Ops. Tu plan incluye acceso en cuanto esté disponible; mientras tanto, nuestro equipo opera todo por ti.",
+      "section_label": "00B / PLANES",
+      "headline": "Lo que incluye cada plan.",
+      "subheadline": "Cada plan entrega tu sitio y tu marca completos. Presencia y Sistema también incluyen acceso a Noctra Ops, nuestra plataforma en desarrollo.",
       "access_matrix": {
         "title": "¿Qué incluye cada plan?",
         "columns": [
@@ -4883,10 +4883,8 @@
               "Marca configurada",
               "SEO básico activado"
             ],
-            "excluded": [
-              "Sin acceso a Noctra Ops"
-            ],
-            "note": "Los servicios mensuales están disponibles como add-on."
+            "excluded": [],
+            "note": "Los servicios mensuales se contratan por separado."
           },
           {
             "tier": "presence",
@@ -4894,10 +4892,10 @@
             "price_hint": "$32,000 MXN",
             "included": [
               "Todo lo de Base",
-              "Acceso a Noctra Ops cuando esté disponible"
+              "Incluye acceso a Noctra Ops (en desarrollo)"
             ],
             "excluded": [],
-            "note": "Noctra Ops está en desarrollo. Te avisamos antes del lanzamiento."
+            "note": ""
           },
           {
             "tier": "system",
@@ -4905,29 +4903,22 @@
             "price_hint": "$55,000 MXN",
             "included": [
               "Todo lo de Presencia",
-              "Acceso a Noctra Ops cuando esté disponible"
+              "Incluye acceso a Noctra Ops (en desarrollo)"
             ],
             "excluded": [],
-            "note": "Gestión incluida los primeros 3 meses. Después como add-on."
+            "note": "Gestión por nuestro equipo incluida los primeros 3 meses. Después, como servicio mensual."
           }
         ]
       },
-      "ops": {
-        "status": "INCLUIDO EN PRESENCIA Y SISTEMA",
-        "option_a_title": "La operas tú",
-        "option_a_description": "Acceso completo a la plataforma. Tú revisas, apruebas y decides.",
-        "option_b_title": "La manejamos nosotros",
-        "option_b_description": "Nuestro equipo interpreta los datos, implementa mejoras y te entrega un resumen mensual.",
-        "option_b_badge": "Precio del add-on al lanzamiento"
-      },
       "ai_costs": "Los costos de inteligencia artificial son directos al proveedor (OpenAI, Google, Anthropic). Noctra configura todo y te guía para mantener tus costos eficientes y predecibles — sin intermediarios ni markups. Tú pagas al proveedor directamente, al precio que ellos publican.",
-      "ownership_quote": "Si decides irte, tus datos y tu sitio se van contigo. El acceso a las herramientas Noctra está incluido mientras tengas un plan activo.",
+      "ownership_quote": "Si decides irte, tus datos y tu sitio se van contigo. El acceso a Noctra Ops estará incluido mientras tengas un plan activo.",
       "ownership_points": [
         "Todos los accesos — dominio, hosting, cuentas y herramientas digitales",
         "Todos tus datos — leads, métricas históricas y contenido generado",
         "El código de tu sitio web — construido para ti, propiedad tuya"
       ],
-      "ownership_closing": "Sin penalizaciones. Sin retención de datos. Sin letra pequeña."
+      "ownership_closing": "Sin penalizaciones. Sin retención de datos. Sin letra pequeña.",
+      "waitlist_line": "¿Quieres enterarte cuando lance Noctra Ops?"
     },
     "projects": {
       "label": "01 / PROYECTOS",
@@ -4966,7 +4957,7 @@
             "Sitio web de 6–8 páginas con diseño premium",
             "Copy completo orientado a conversión",
             "SEO técnico + estrategia de palabras clave local",
-            "Acceso a Noctra Ops cuando esté disponible",
+            "Incluye acceso a Noctra Ops (en desarrollo)",
             "1 landing page de captación de leads",
             "Reportes al mes 1 y mes 3"
           ],
@@ -4984,7 +4975,7 @@
             "Todo lo de Noctra Presencia",
             "Estrategia de contenido SEO (6 meses)",
             "Automatización de seguimiento de leads",
-            "Acceso a Noctra Ops cuando esté disponible",
+            "Incluye acceso a Noctra Ops (en desarrollo)",
             "2 landing pages de captación",
             "Configuración de CRM básico",
             "Taller de 2 horas de uso del sistema",
@@ -5000,7 +4991,7 @@
       "intro": "Noctra como tu socio tecnológico mensual. Sin contrato mínimo — cancela cuando quieras.",
       "addons": [
         {
-          "name": "Noctra Contenido",
+          "name": "Contenido para redes",
           "tiers": [
             {
               "tier": "Esencial",
@@ -5023,7 +5014,7 @@
           ]
         },
         {
-          "name": "Noctra Visibilidad",
+          "name": "Visibilidad SEO + GEO",
           "tiers": [
             {
               "tier": "Básico",
@@ -5046,7 +5037,7 @@
           ]
         },
         {
-          "name": "Noctra Rendimiento",
+          "name": "Rendimiento y mantenimiento",
           "tiers": [
             {
               "tier": "Básico",
@@ -5069,7 +5060,7 @@
           ]
         },
         {
-          "name": "Noctra Consultor",
+          "name": "Consultoría estratégica",
           "tiers": [
             {
               "tier": "Esencial",

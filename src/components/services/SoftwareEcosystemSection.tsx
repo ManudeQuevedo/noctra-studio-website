@@ -7,9 +7,6 @@ import {
   Code,
   Database,
   Key,
-  Layers,
-  Monitor,
-  Users,
   X,
   Zap,
 } from "lucide-react";
@@ -25,14 +22,6 @@ export type AccessMatrixColumn = {
   note: string;
 };
 
-export type SoftwareProductOptions = {
-  option_a_title: string;
-  option_a_description: string;
-  option_b_title: string;
-  option_b_description: string;
-  option_b_badge: string;
-};
-
 export type SoftwareEcosystemMessages = {
   section_label: string;
   headline: string;
@@ -41,9 +30,7 @@ export type SoftwareEcosystemMessages = {
     title: string;
     columns: AccessMatrixColumn[];
   };
-  ops: {
-    status: string;
-  } & SoftwareProductOptions;
+  waitlist_line: string;
   ai_costs: string;
   ownership_quote: string;
   ownership_points: string[];
@@ -56,14 +43,6 @@ const fadeIn = {
   viewport: { once: true, amount: 0.12 },
   transition: { duration: 0.5 },
 } as const;
-
-const productCardClass =
-  "rounded-2xl border border-white/8 bg-white/3 p-6 md:p-8";
-
-const optionShellClass = "rounded-xl bg-white/5 p-4";
-
-const optionBadgeClass =
-  "mt-2 inline-block rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/40";
 
 function SubsectionRule() {
   return (
@@ -81,113 +60,13 @@ function columnShellClass(tier: AccessMatrixColumn["tier"]) {
   return "rounded-2xl border border-white/20 bg-white/5 p-6";
 }
 
-function ProductOptionsBlock({
-  option_a_title,
-  option_a_description,
-  option_b_title,
-  option_b_description,
-  option_b_badge,
-}: SoftwareProductOptions) {
-  return (
-    <div className="mt-6 grid grid-cols-1 gap-3 md:grid-cols-2 md:gap-4">
-      <div className={optionShellClass}>
-        <div className="flex items-center gap-2">
-          <Monitor
-            className="h-4 w-4 shrink-0 text-white/60"
-            strokeWidth={1.75}
-            aria-hidden
-          />
-          <p className="text-sm font-semibold text-white">{option_a_title}</p>
-        </div>
-        <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
-          {option_a_description}
-        </p>
-      </div>
-      <div className={optionShellClass}>
-        <div className="flex items-center gap-2">
-          <Users
-            className="h-4 w-4 shrink-0 text-white/60"
-            strokeWidth={1.75}
-            aria-hidden
-          />
-          <p className="text-sm font-semibold text-white">{option_b_title}</p>
-        </div>
-        <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
-          {option_b_description}
-        </p>
-        <span className={optionBadgeClass}>{option_b_badge}</span>
-      </div>
-    </div>
-  );
-}
-
-type OpsModule = { title: string; description: string };
-
-function NoctraOpsCard({ data }: { data: SoftwareEcosystemMessages["ops"] }) {
-  const ops = useTranslations("NoctraOps");
-  const modules = ops.raw("modules") as OpsModule[];
-
-  return (
-    <m.article {...fadeIn} id="noctra-ops" className={`scroll-mt-28 ${productCardClass}`}>
-      <div className="flex items-start justify-between gap-3">
-        <Layers
-          className="h-6 w-6 shrink-0 text-white/80"
-          strokeWidth={1.75}
-          aria-hidden
-        />
-        <span className="rounded-full border border-white/10 bg-white/5 px-2 py-0.5 text-xs text-white/50">
-          {ops("badge")}
-        </span>
-      </div>
-      <p className="mt-3 text-xs tracking-wide text-white/30 uppercase">
-        {data.status}
-      </p>
-      <h3 className="mt-2 text-xl font-bold text-white">{ops("name")}</h3>
-      <p className="mt-4 max-w-3xl text-sm leading-relaxed text-white/70 md:text-[15px]">
-        {ops("description")}
-      </p>
-
-      <ul className="mt-6 grid grid-cols-1 gap-3 sm:grid-cols-2 xl:grid-cols-4">
-        {modules.map((module) => (
-          <li key={module.title} className={optionShellClass}>
-            <p className="text-sm font-semibold text-white">{module.title}</p>
-            <p className="mt-2 text-xs leading-relaxed text-white/60 md:text-sm">
-              {module.description}
-            </p>
-          </li>
-        ))}
-      </ul>
-
-      <ProductOptionsBlock
-        option_a_title={data.option_a_title}
-        option_a_description={data.option_a_description}
-        option_b_title={data.option_b_title}
-        option_b_description={data.option_b_description}
-        option_b_badge={data.option_b_badge}
-      />
-
-      <div className="mt-6 flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
-        <p className="text-xs text-white/40">{ops("launch_note")}</p>
-        <Link
-          href={{
-            pathname: "/contact",
-            query: { intent: "noctra_ops", cta: "services_software" },
-          }}
-          className="inline-flex min-h-11 shrink-0 items-center gap-2 self-start rounded-full border border-emerald-500/30 bg-emerald-500/10 px-5 text-sm font-medium text-emerald-300 transition-colors hover:border-emerald-400/60 hover:bg-emerald-500/15 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-emerald-400 sm:self-auto">
-          {ops("waitlist_cta")}
-          <ArrowRight className="h-4 w-4" aria-hidden />
-        </Link>
-      </div>
-    </m.article>
-  );
-}
-
 export function SoftwareEcosystemSection({
   data,
 }: {
   data: SoftwareEcosystemMessages;
 }) {
   const ownershipIcons = [Key, Database, Code] as const;
+  const waitlistCta = useTranslations("NoctraOps")("waitlist_cta");
 
   return (
     <section className="border-t border-white/5 px-6 pt-24 pb-20 md:px-8">
@@ -243,15 +122,25 @@ export function SoftwareEcosystemSection({
                     </li>
                   ))}
                 </ul>
-                <p className="mt-2 text-xs italic text-white/30">{col.note}</p>
+                {col.note ? (
+                  <p className="mt-2 text-xs italic text-white/30">{col.note}</p>
+                ) : null}
               </div>
             ))}
           </div>
+          <p className="mt-6 text-sm text-white/50">
+            {data.waitlist_line}{" "}
+            <Link
+              href={{
+                pathname: "/contact",
+                query: { intent: "noctra_ops", cta: "services_plans" },
+              }}
+              className="inline-flex items-center gap-1 font-medium text-emerald-300 underline decoration-emerald-500/30 underline-offset-4 transition-colors hover:text-emerald-200">
+              {waitlistCta}
+              <ArrowRight className="h-3.5 w-3.5" aria-hidden />
+            </Link>
+          </p>
         </m.div>
-
-        <SubsectionRule />
-
-        <NoctraOpsCard data={data.ops} />
 
         <div className="mx-auto mt-8 flex max-w-xl items-start justify-center gap-2 border-t border-white/5 pt-8 text-center text-xs text-white/30">
           <Zap
