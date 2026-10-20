@@ -171,7 +171,12 @@ export async function POST(req: Request) {
       .select("id")
       .single();
 
-    if (dbError) throw dbError;
+    // Never lose a lead because the database is unavailable (e.g. a paused
+    // Supabase project): log the error and still send both emails.
+    const savedToDb = !dbError && Boolean(submission);
+    if (dbError) {
+      console.error("Contact DB insert failed, sending emails anyway:", dbError);
+    }
 
     // 8. Send Email via Resend (Bilingual Logic)
     try {
@@ -207,7 +212,7 @@ export async function POST(req: Request) {
 
       if (emailResult.error) {
         console.error("Resend delivery error (User):", emailResult.error);
-      } else {
+      } else if (savedToDb && submission) {
         // Only update email_sent status on success
         await supabase
           .from("contact_submissions")
@@ -223,8 +228,9 @@ export async function POST(req: Request) {
         from: `Noctra System <${replyToAddress}>`,
         to: [replyToAddress],
         replyTo: replyToAddress,
-        subject: `New Lead: ${safeName} (${safeIntent})`,
+        subject: `${savedToDb ? "" : "[NOT SAVED] "}New Lead: ${safeName} (${safeIntent})`,
         html: `
+          ${savedToDb ? "" : "<p><strong>Warning:</strong> this lead was NOT saved to the database. Reply from this email.</p>"}
           <h1>New Lead Received</h1>
           <p><strong>Request ID:</strong> ${requestId}</p>
           <p><strong>Name:</strong> ${safeName}</p>
@@ -249,7 +255,7 @@ export async function POST(req: Request) {
     }
 
     return NextResponse.json(
-      { success: true, requestId, submissionId: submission.id },
+      { success: true, requestId, submissionId: submission?.id ?? null },
       { headers: SECURITY_HEADERS }
     );
   } catch (error: any) {
