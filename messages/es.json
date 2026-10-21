@@ -325,8 +325,8 @@
       "titleLine2": "Una presencia que es tuya.",
       "titleLine3": "Para siempre.",
       "subtitle": "Tu marca, tu sitio y tu visibilidad en buscadores e IA — todo medible, todo tuyo.",
-      "product_anchor": "Trabajo real para Dyma Group y Woodax Design.",
-      "social_proof": "Trabajo real para Dyma Group y Woodax Design.",
+      "product_anchor": "Trabajo real para Woodax Design y CNC by Woodax Design.",
+      "social_proof": "Trabajo real para Woodax Design y CNC by Woodax Design.",
       "primary_cta": "Empieza con un diagnóstico gratuito →",
       "visual_label": "EL SISTEMA",
       "visual_title": "Un negocio más claro y vendible.",
@@ -1361,7 +1361,7 @@
         ],
         "ai": [
           {
-            "name": "Dyma Group",
+            "name": "Próximamente",
             "desc": "Sitio corporativo con gestión multi-entidad"
           },
           {
@@ -1385,7 +1385,7 @@
             "desc": "Gestión total de sitio corporativo y SEO"
           },
           {
-            "name": "Dyma Group",
+            "name": "Próximamente",
             "desc": "Mantenimiento evolutivo de sistemas internos"
           }
         ]
@@ -2677,8 +2677,8 @@
         "description": "Despachos y consultorios que necesitan un sitio que genere confianza rápido y apoye consultas o citas."
       },
       {
-        "title": "Dyma Group",
-        "description": "Un grupo industrial multiempresa con una plataforma corporativa más clara y una estructura que soporta varias líneas de negocio."
+        "title": "Grupos corporativos",
+        "description": "Grupos con varias líneas de negocio que necesitan una presencia clara para cada una."
       },
       {
         "title": "PyMEs",
@@ -2721,7 +2721,7 @@
   "WorkPage": {
     "badge": "Proyectos reales",
     "title": "Clientes reales. Problemas reales. Sin casos de estudio inventados.",
-    "subtitle": "Dyma Group y Woodax llegaron con presencia rota y sin sistema. Esto es lo que existe hoy.",
+    "subtitle": "Woodax llegó con dos negocios, dos públicos y sin presencia digital propia. Esto es lo que existe hoy.",
     "sections": {
       "in_progress": {
         "title": "Problemas reales que estamos resolviendo",
@@ -2748,19 +2748,11 @@
         },
         "projects": {
           "woodax": {
-            "challenge": "Prospectos llegan por WhatsApp sin contexto ni calificación.",
-            "system_built": "Plataforma de prospección con galería y cotización guiada.",
-            "expected_outcome": "Solicitudes más claras y con mayor intención de compra.",
-            "system_type": "Plataforma de prospección",
-            "status_line": "En construcción · preparando lanzamiento",
-            "case_study_label": "Ver caso completo"
-          },
-          "dyma": {
-            "challenge": "Varias unidades confundían a prospectos sobre a quién contactar.",
-            "system_built": "Arquitectura web corporativa con mensaje de grupo.",
-            "expected_outcome": "Consultas más claras y dirigidas al equipo correcto.",
-            "system_type": "Arquitectura web corporativa",
-            "status_line": "En diseño · interfaz y arquitectura de contenido en progreso",
+            "challenge": "Dos negocios con públicos distintos, sin sitio, sin correo de marca y sin formulario.",
+            "system_built": "Dos sitios con marca propia sobre una sola base, con formularios que llegan al área correcta.",
+            "expected_outcome": "Cada público llega a su sitio y pide cotización con la información que el negocio necesita.",
+            "system_type": "Dos sitios, una base",
+            "status_line": "En producción desde octubre 2026",
             "case_study_label": "Ver caso completo"
           }
         }
@@ -2809,8 +2801,8 @@
             "name": "Grupos Corporativos",
             "benefit": "Todas las unidades se presentan con claridad y reciben consultas en el lugar correcto.",
             "example": "Grupos industriales, holdings, empresas multi-marca",
-            "status": "Sistema activo",
-            "status_type": "active",
+            "status": "Aceptando proyectos",
+            "status_type": "accepting",
             "icon": "building_2"
           },
           {

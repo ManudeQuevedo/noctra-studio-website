@@ -325,8 +325,8 @@
       "titleLine2": "A presence that's yours.",
       "titleLine3": "Forever.",
       "subtitle": "Brand, website, and visibility across search engines and AI — fully measurable, permanently yours.",
-      "product_anchor": "Real work for Dyma Group, and Woodax Design.",
-      "social_proof": "Real work for Dyma Group and Woodax Design.",
+      "product_anchor": "Real work for Woodax Design and CNC by Woodax Design.",
+      "social_proof": "Real work for Woodax Design and CNC by Woodax Design.",
       "primary_cta": "Start with a free diagnosis →",
       "visual_label": "THE SYSTEM",
       "visual_title": "A system ready to sell.",
@@ -3315,7 +3315,7 @@
         ],
         "ai": [
           {
-            "name": "Dyma Group",
+            "name": "Coming soon",
             "desc": "Corporate site with multi-entity management"
           },
           {
@@ -3339,7 +3339,7 @@
             "desc": "Total management of corporate site and SEO"
           },
           {
-            "name": "Dyma Group",
+            "name": "Coming soon",
             "desc": "Evolutionary maintenance of internal systems"
           }
         ]
@@ -3596,7 +3596,7 @@
   "WorkPage": {
     "badge": "Real projects",
     "title": "Real clients. Real problems. No made-up case studies.",
-    "subtitle": "Dyma Group and Woodax arrived with broken presence and no system. This is what exists today.",
+    "subtitle": "Woodax came to us with two businesses, two audiences and no digital presence of its own. This is what exists today.",
     "sections": {
       "in_progress": {
         "title": "Real problems we are solving",
@@ -3623,19 +3623,11 @@
         },
         "projects": {
           "woodax": {
-            "challenge": "Leads arrive through WhatsApp without context or qualification.",
-            "system_built": "A prospecting platform with gallery and guided quote flow.",
-            "expected_outcome": "Clearer requests with stronger purchase intent.",
-            "system_type": "Prospecting platform",
-            "status_line": "In build · preparing for launch",
-            "case_study_label": "View full case"
-          },
-          "dyma": {
-            "challenge": "Several units confused prospects about who to contact.",
-            "system_built": "Corporate web architecture with group messaging.",
-            "expected_outcome": "Clearer inquiries routed to the right team.",
-            "system_type": "Corporate web architecture",
-            "status_line": "In design · interface and content architecture in progress",
+            "challenge": "Two businesses with different audiences, no website, no branded email and no contact form.",
+            "system_built": "Two branded sites on a single codebase, with forms that reach the right team.",
+            "expected_outcome": "Each audience lands on its own site and requests a quote with the details the business needs.",
+            "system_type": "Two sites, one codebase",
+            "status_line": "Live since October 2026",
             "case_study_label": "View full case"
           }
         }
@@ -3684,8 +3676,8 @@
             "name": "Corporate Groups",
             "benefit": "Every unit is presented clearly and receives inquiries in the right place.",
             "example": "Industrial groups, holdings, multi-brand companies",
-            "status": "Active system",
-            "status_type": "active",
+            "status": "Accepting projects",
+            "status_type": "accepting",
             "icon": "building_2"
           },
           {
