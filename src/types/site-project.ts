@@ -14,6 +14,19 @@ export type PublicProjectMetric = {
 export type PublicProjectGalleryItem = {
   url: string;
   caption: string;
+  /** English caption; falls back to `caption` when missing. */
+  caption_en?: string | null;
+};
+
+/** English versions of the translatable columns (nullable: Spanish is the fallback). */
+export type ProjectEnglishFields = {
+  name_en: string | null;
+  tagline_en: string | null;
+  industry_en: string | null;
+  services_delivered_en: string[] | null;
+  challenge_en: string | null;
+  solution_en: string | null;
+  results_en?: string | null;
 };
 
 export type PublicProjectCard = {

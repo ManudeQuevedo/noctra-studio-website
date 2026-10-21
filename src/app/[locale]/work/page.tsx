@@ -13,8 +13,13 @@ export async function generateMetadata({
   return generatePageMetadata(locale, "work");
 }
 
-export default async function WorkPage() {
-  const projects = await getPublicProjects();
+export default async function WorkPage({
+  params,
+}: {
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
+  const projects = await getPublicProjects(locale);
 
   return <WorkClient projects={projects} />;
 }

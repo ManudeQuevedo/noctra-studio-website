@@ -25,8 +25,8 @@ export async function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
-  const { slug } = await params;
-  const project = await getPublicCaseStudyBySlug(slug);
+  const { locale, slug } = await params;
+  const project = await getPublicCaseStudyBySlug(slug, locale);
 
   if (!project) {
     return {
@@ -42,7 +42,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function CaseStudyPage({ params }: Props) {
   const { locale, slug } = await params;
-  const project = await getPublicCaseStudyBySlug(slug);
+  const project = await getPublicCaseStudyBySlug(slug, locale);
 
   if (!project) {
     notFound();

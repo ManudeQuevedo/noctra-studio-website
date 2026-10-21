@@ -3,9 +3,22 @@ import "server-only";
 import { unstable_cache } from "next/cache";
 import { createPublicSupabaseClient } from "@/lib/site/supabase";
 import type {
+  ProjectEnglishFields,
   PublicCaseStudyProject,
   PublicProjectCard,
 } from "@/types/site-project";
+
+type ProjectCardRow = PublicProjectCard & ProjectEnglishFields;
+type CaseStudyRow = PublicCaseStudyProject & ProjectEnglishFields;
+
+const ENGLISH_CARD_COLUMNS = [
+  "name_en",
+  "tagline_en",
+  "industry_en",
+  "services_delivered_en",
+  "challenge_en",
+  "solution_en",
+];
 
 export const PUBLIC_PROJECTS_TAG = "public-projects";
 
@@ -24,6 +37,7 @@ const PUBLIC_PROJECT_CARD_SELECT = [
   "solution",
   "has_ai_form",
   "form_description",
+  ...ENGLISH_CARD_COLUMNS,
 ].join(", ");
 
 const PUBLIC_CASE_STUDY_SELECT = [
@@ -38,10 +52,12 @@ const PUBLIC_CASE_STUDY_SELECT = [
   "results",
   "metrics",
   "gallery",
+  ...ENGLISH_CARD_COLUMNS,
+  "results_en",
 ].join(", ");
 
 const getPublicProjectsCached = unstable_cache(
-  async (): Promise<PublicProjectCard[]> => {
+  async (): Promise<ProjectCardRow[]> => {
     const supabase = createPublicSupabaseClient();
     /** All projects flagged for the public site (pipeline UI is sanitized in ProjectCard). */
     const { data, error } = await supabase
@@ -54,9 +70,9 @@ const getPublicProjectsCached = unstable_cache(
       throw new Error(error.message);
     }
 
-    return (data ?? []) as unknown as PublicProjectCard[];
+    return (data ?? []) as unknown as ProjectCardRow[];
   },
-  ["public-projects:list", "v5-services-delivered"],
+  ["public-projects:list", "v6-i18n"],
   {
     tags: [PUBLIC_PROJECTS_TAG],
     revalidate: 300,
@@ -87,7 +103,7 @@ const getPublicCaseStudySlugsCached = unstable_cache(
 );
 
 const getPublicCaseStudyBySlugCached = unstable_cache(
-  async (slug: string): Promise<PublicCaseStudyProject | null> => {
+  async (slug: string): Promise<CaseStudyRow | null> => {
     const supabase = createPublicSupabaseClient();
     const { data, error } = await supabase
       .from("projects")
@@ -101,23 +117,88 @@ const getPublicCaseStudyBySlugCached = unstable_cache(
       throw new Error(error.message);
     }
 
-    return (data as unknown as PublicCaseStudyProject | null) ?? null;
+    return (data as unknown as CaseStudyRow | null) ?? null;
   },
-  ["public-projects:case-study", "v2-services"],
+  ["public-projects:case-study", "v3-i18n"],
   {
     tags: [PUBLIC_PROJECTS_TAG],
     revalidate: 300,
   },
 );
 
-export async function getPublicProjects() {
-  return getPublicProjectsCached();
+type Locale = "es" | "en" | (string & {});
+
+function pick<T>(english: T | null | undefined, spanish: T): T {
+  if (english === null || english === undefined) return spanish;
+  if (typeof english === "string" && english.trim() === "") return spanish;
+  if (Array.isArray(english) && english.length === 0) return spanish;
+  return english;
+}
+
+function localizeCard(row: ProjectCardRow, locale: Locale): PublicProjectCard {
+  const {
+    name_en,
+    tagline_en,
+    industry_en,
+    services_delivered_en,
+    challenge_en,
+    solution_en,
+    ...base
+  } = row;
+  if (locale !== "en") return base;
+  return {
+    ...base,
+    name: pick(name_en, base.name),
+    tagline: pick(tagline_en, base.tagline),
+    industry: pick(industry_en, base.industry),
+    services_delivered: pick(services_delivered_en, base.services_delivered),
+    challenge: pick(challenge_en, base.challenge),
+    solution: pick(solution_en, base.solution),
+  };
+}
+
+function localizeCaseStudy(
+  row: CaseStudyRow,
+  locale: Locale,
+): PublicCaseStudyProject {
+  const {
+    name_en,
+    tagline_en,
+    industry_en,
+    services_delivered_en,
+    challenge_en,
+    solution_en,
+    results_en,
+    ...base
+  } = row;
+  if (locale !== "en") return base;
+  return {
+    ...base,
+    name: pick(name_en, base.name),
+    tagline: pick(tagline_en, base.tagline),
+    industry: pick(industry_en, base.industry),
+    services_delivered: pick(services_delivered_en, base.services_delivered),
+    challenge: pick(challenge_en, base.challenge),
+    solution: pick(solution_en, base.solution),
+    results: pick(results_en, base.results),
+    gallery:
+      base.gallery?.map((item) => ({
+        url: item.url,
+        caption: pick(item.caption_en, item.caption),
+      })) ?? null,
+  };
+}
+
+export async function getPublicProjects(locale: Locale) {
+  const rows = await getPublicProjectsCached();
+  return rows.map((row) => localizeCard(row, locale));
 }
 
 export async function getPublicCaseStudySlugs() {
   return getPublicCaseStudySlugsCached();
 }
 
-export async function getPublicCaseStudyBySlug(slug: string) {
-  return getPublicCaseStudyBySlugCached(slug);
+export async function getPublicCaseStudyBySlug(slug: string, locale: Locale) {
+  const row = await getPublicCaseStudyBySlugCached(slug);
+  return row ? localizeCaseStudy(row, locale) : null;
 }
