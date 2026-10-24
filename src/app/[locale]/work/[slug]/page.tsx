@@ -5,6 +5,8 @@ import {
 import { notFound } from "next/navigation";
 import CaseStudyClient from "./CaseStudyClient";
 import { Metadata } from "next";
+import { TestimonialQuote } from "@/components/testimonial-quote";
+import { getTestimonialByCaseStudySlug } from "@/content/testimonials";
 
 type Props = {
   params: Promise<{ locale: string; slug: string }>;
@@ -48,5 +50,21 @@ export default async function CaseStudyPage({ params }: Props) {
     notFound();
   }
 
-  return <CaseStudyClient project={project} locale={locale} />;
+  const testimonial = getTestimonialByCaseStudySlug(slug);
+
+  return (
+    <CaseStudyClient
+      project={project}
+      locale={locale}
+      featureQuote={
+        testimonial ? (
+          <TestimonialQuote
+            testimonial={testimonial}
+            variant="feature"
+            locale={locale}
+          />
+        ) : null
+      }
+    />
+  );
 }

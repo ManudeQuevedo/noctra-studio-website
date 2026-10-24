@@ -273,6 +273,39 @@
   }
 }
 
+/* Same fade + rise as the case study (20px) and the home (10px, 0.6s ease-out). */
+@keyframes testimonial-rise-feature {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes testimonial-rise-inline {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .testimonial-rise-feature {
+    animation: testimonial-rise-feature 0.6s ease-out both;
+  }
+
+  .testimonial-rise-inline {
+    animation: testimonial-rise-inline 0.6s ease-out both;
+  }
+}
+
 /* Forge Page Transitions */
 @keyframes forge-exit {
   from {

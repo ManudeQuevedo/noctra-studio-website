@@ -6105,5 +6105,9 @@
     "launch_note": "No launch date yet. Join the waitlist and you'll be the first to know.",
     "waitlist_cta": "Join the waitlist",
     "waitlist_message": "Hi, I'd like to join the Noctra Ops waitlist."
+  },
+  "testimonial": {
+    "translatedNote": "Translated from the original Spanish",
+    "caseStudyCta": "See the Woodax case study"
   }
 }

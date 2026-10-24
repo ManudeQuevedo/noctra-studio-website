@@ -5180,5 +5180,9 @@
     "launch_note": "Aún sin fecha de lanzamiento. Si te unes a la lista, te avisamos antes que a nadie.",
     "waitlist_cta": "Unirme a la lista de espera",
     "waitlist_message": "Hola, quiero unirme a la lista de espera de Noctra Ops."
+  },
+  "testimonial": {
+    "translatedNote": "Traducción del original en inglés",
+    "caseStudyCta": "Ver el caso de Woodax"
   }
 }

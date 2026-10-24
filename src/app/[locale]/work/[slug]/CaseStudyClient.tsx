@@ -14,12 +14,15 @@ import {
   Wrench,
   BarChart3,
 } from "lucide-react";
+import type { ReactNode } from "react";
 import type { PublicCaseStudyProject } from "@/types/site-project";
 import { formatServicesDeliveredLine } from "@/lib/format-project-services";
+import { getTestimonialByCaseStudySlug } from "@/content/testimonials";
 
 type Props = {
   project: PublicCaseStudyProject;
   locale: string;
+  featureQuote?: ReactNode;
 };
 
 const LABEL = {
@@ -136,7 +139,11 @@ function getDiagnosticAreas(
   return base.slice(0, 4);
 }
 
-export default function CaseStudyClient({ project, locale }: Props) {
+export default function CaseStudyClient({
+  project,
+  locale,
+  featureQuote,
+}: Props) {
   const [lightboxOpen, setLightboxOpen] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const openLightbox = (index: number) => {
@@ -149,6 +156,7 @@ export default function CaseStudyClient({ project, locale }: Props) {
   };
 
   const diagnosticAreas = getDiagnosticAreas(project, locale);
+  const caseStudyTestimonial = getTestimonialByCaseStudySlug(project.slug);
 
   return (
     <main className="min-h-screen bg-[#050505] text-white pt-32 pb-24">
@@ -339,6 +347,8 @@ export default function CaseStudyClient({ project, locale }: Props) {
             </motion.section>
           )}
         </div>
+
+        {caseStudyTestimonial ? featureQuote : null}
 
         {/* ── CTA ── */}
         <motion.div
