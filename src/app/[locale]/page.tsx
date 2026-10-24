@@ -11,6 +11,8 @@ import {
 } from "@/components/seo/JsonLd";
 
 import { BrandNarrativeVisual } from "@/components/home/BrandNarrativeVisual";
+import { TestimonialQuote } from "@/components/testimonial-quote";
+import { getApprovedTestimonials } from "@/content/testimonials";
 
 // Lazy load below-the-fold sections
 const PricingAnchorSection = dynamic(() =>
@@ -36,13 +38,16 @@ export async function generateMetadata({
 /**
  * HomePage
  * Purpose: strategic refactor for hybrid model positioning.
- * Section Order: Hero → Thesis → Ecosystem → For who → Pricing anchor → CTA
+ * Section Order: Hero → Thesis → Ecosystem → For who → Testimonial → Pricing anchor → CTA
  */
 export default async function HomePage({
   params,
 }: {
   params: Promise<{ locale: string }>;
 }) {
+  const { locale } = await params;
+  const testimonials = getApprovedTestimonials();
+
   return (
     <main className="min-h-screen relative overflow-x-hidden">
       <BrandNarrativeVisual className="inset-0 z-0" />
@@ -51,6 +56,14 @@ export default async function HomePage({
         <Thesis />
         <Ecosystem />
         <ForWhoSection />
+        {testimonials.map((testimonial) => (
+          <TestimonialQuote
+            key={testimonial.id}
+            testimonial={testimonial}
+            variant="inline"
+            locale={locale}
+          />
+        ))}
         <PricingAnchorSection />
         <FinalCTASection />
       </div>
