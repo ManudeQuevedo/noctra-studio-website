@@ -5182,7 +5182,9 @@
     "waitlist_message": "Hola, quiero unirme a la lista de espera de Noctra Ops."
   },
   "testimonial": {
+    "label": "Testimonio",
     "translatedNote": "Traducción del original en inglés",
-    "caseStudyCta": "Ver el caso de Woodax"
+    "caseStudyCta": "Ver el caso de Woodax",
+    "woodaxScope": "Sitio web + sitio CNC"
   }
 }

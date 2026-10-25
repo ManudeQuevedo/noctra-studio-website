@@ -6107,7 +6107,9 @@
     "waitlist_message": "Hi, I'd like to join the Noctra Ops waitlist."
   },
   "testimonial": {
+    "label": "Testimonial",
     "translatedNote": "Translated from the original Spanish",
-    "caseStudyCta": "See the Woodax case study"
+    "caseStudyCta": "See the Woodax case study",
+    "woodaxScope": "Website + CNC site"
   }
 }
