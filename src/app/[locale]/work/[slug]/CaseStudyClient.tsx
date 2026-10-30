@@ -19,6 +19,10 @@ import type { PublicCaseStudyProject } from "@/types/site-project";
 import { formatServicesDeliveredLine } from "@/lib/format-project-services";
 import { getTestimonialByCaseStudySlug } from "@/content/testimonials";
 import { getCaseStudyCredits } from "@/content/case-study-credits";
+import {
+  CloverTread,
+  withCloverTread,
+} from "@/components/case-studies/CloverTread";
 
 type Props = {
   project: PublicCaseStudyProject;
@@ -220,7 +224,7 @@ export default function CaseStudyClient({
                 {t("scopeTitle", locale)}
               </h2>
               <p className="text-lg text-neutral-300 leading-relaxed">
-                {credits.intro[lang]}
+                {withCloverTread(credits.intro[lang])}
               </p>
             </div>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
@@ -241,7 +245,9 @@ export default function CaseStudyClient({
                 <h3 className="text-xs font-mono uppercase tracking-widest text-neutral-400">
                   {t("partnerLabel", locale)}
                 </h3>
-                <p className="text-xl font-semibold">{credits.partner.name}</p>
+                <p className="text-3xl">
+                  <CloverTread className="font-bold" />
+                </p>
                 <p className="text-sm text-neutral-400">
                   {credits.partner.role[lang]}
                 </p>
@@ -281,7 +287,7 @@ export default function CaseStudyClient({
                 </h2>
               </div>
               <div className="text-lg md:text-xl text-neutral-300 leading-relaxed whitespace-pre-wrap">
-                {project.challenge}
+                {withCloverTread(project.challenge)}
               </div>
             </motion.section>
           )}
@@ -326,7 +332,7 @@ export default function CaseStudyClient({
                 </h2>
               </div>
               <div className="text-lg md:text-xl text-neutral-300 leading-relaxed whitespace-pre-wrap">
-                {project.solution}
+                {withCloverTread(project.solution)}
               </div>
             </motion.section>
           )}
@@ -385,7 +391,7 @@ export default function CaseStudyClient({
 
               {project.results && (
                 <div className="text-lg md:text-xl text-neutral-300 leading-relaxed whitespace-pre-wrap mb-10">
-                  {project.results}
+                  {withCloverTread(project.results)}
                 </div>
               )}
 
