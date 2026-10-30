@@ -18,6 +18,7 @@ import type { ReactNode } from "react";
 import type { PublicCaseStudyProject } from "@/types/site-project";
 import { formatServicesDeliveredLine } from "@/lib/format-project-services";
 import { getTestimonialByCaseStudySlug } from "@/content/testimonials";
+import { getCaseStudyCredits } from "@/content/case-study-credits";
 
 type Props = {
   project: PublicCaseStudyProject;
@@ -27,6 +28,11 @@ type Props = {
 
 const LABEL = {
   backToWork: { es: "Volver a casos", en: "Back to cases" },
+  scopeTitle: {
+    es: "Alcance y colaboración",
+    en: "Scope & collaboration",
+  },
+  partnerLabel: { es: "En colaboración con", en: "In collaboration with" },
   delivered: { es: "Sistema implementado", en: "System delivered" },
   context: { es: "01 · Contexto y Problema", en: "01 · Context & Problem" },
   diagnosis: { es: "02 · Diagnóstico", en: "02 · Diagnosis" },
@@ -157,6 +163,8 @@ export default function CaseStudyClient({
 
   const diagnosticAreas = getDiagnosticAreas(project, locale);
   const caseStudyTestimonial = getTestimonialByCaseStudySlug(project.slug);
+  const credits = getCaseStudyCredits(project.slug);
+  const lang = locale === "en" ? "en" : "es";
 
   return (
     <main className="min-h-screen bg-[#050505] text-white pt-32 pb-24">
@@ -199,6 +207,64 @@ export default function CaseStudyClient({
             ) : null}
           </div>
         </motion.div>
+
+        {/* ── ALCANCE Y COLABORACIÓN ── */}
+        {credits && (
+          <motion.section
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            className="mb-24 p-8 md:p-10 rounded-3xl border border-white/10 bg-neutral-900/40 space-y-8">
+            <div className="space-y-3">
+              <h2 className="text-sm font-mono uppercase tracking-widest text-neutral-300">
+                {t("scopeTitle", locale)}
+              </h2>
+              <p className="text-lg text-neutral-300 leading-relaxed">
+                {credits.intro[lang]}
+              </p>
+            </div>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+              <div className="p-6 rounded-2xl border border-emerald-500/20 bg-emerald-500/5 space-y-4">
+                <h3 className="text-xs font-mono uppercase tracking-widest text-emerald-400">
+                  {credits.scope.label[lang]}
+                </h3>
+                <ul className="space-y-2 text-neutral-200">
+                  {credits.scope.items.map((item) => (
+                    <li key={item.en} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 mt-1 shrink-0 text-emerald-400" />
+                      {item[lang]}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              <div className="p-6 rounded-2xl border border-white/10 bg-white/5 space-y-4">
+                <h3 className="text-xs font-mono uppercase tracking-widest text-neutral-400">
+                  {t("partnerLabel", locale)}
+                </h3>
+                <p className="text-xl font-semibold">{credits.partner.name}</p>
+                <p className="text-sm text-neutral-400">
+                  {credits.partner.role[lang]}
+                </p>
+                <ul className="space-y-2 text-neutral-200">
+                  {credits.partner.items.map((item) => (
+                    <li key={item.en} className="flex items-start gap-2">
+                      <CheckCircle2 className="w-4 h-4 mt-1 shrink-0 text-neutral-400" />
+                      {item[lang]}
+                    </li>
+                  ))}
+                </ul>
+                <a
+                  href={credits.partner.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 text-sm font-mono text-white underline underline-offset-4 decoration-white/30 hover:decoration-white transition-colors">
+                  {credits.partner.urlLabel}
+                  <ArrowRight className="w-4 h-4 -rotate-45" />
+                </a>
+              </div>
+            </div>
+          </motion.section>
+        )}
 
         <div className="space-y-24">
           {/* ── 01 · CONTEXTO Y PROBLEMA ── */}
