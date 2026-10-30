@@ -1,4 +1,7 @@
-import type { PublicCaseStudyProject } from "@/types/site-project";
+import type {
+  PublicCaseStudyProject,
+  PublicProjectCard,
+} from "@/types/site-project";
 
 type LocalizedCaseStudy = Record<"es" | "en", PublicCaseStudyProject>;
 
@@ -54,6 +57,29 @@ export function getDraftCaseStudy(
   const entry = drafts[slug];
   if (!entry) return null;
   return locale === "en" ? entry.en : entry.es;
+}
+
+export function getDraftProjectCards(locale: string): PublicProjectCard[] {
+  if (process.env.VERCEL_ENV !== "preview") return [];
+  return Object.values(drafts).map((entry) => {
+    const c = locale === "en" ? entry.en : entry.es;
+    return {
+      id: c.id,
+      slug: c.slug,
+      name: c.name,
+      tagline: c.tagline,
+      industry: c.industry,
+      services_delivered: c.services_delivered,
+      status: "completed",
+      launch_date: null,
+      published_to_site: true,
+      case_study_enabled: true,
+      challenge: c.challenge,
+      solution: c.solution,
+      has_ai_form: false,
+      form_description: null,
+    };
+  });
 }
 
 export function getDraftCaseStudySlugs(): string[] {

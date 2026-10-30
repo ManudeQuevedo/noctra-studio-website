@@ -5,6 +5,7 @@ import { createPublicSupabaseClient } from "@/lib/site/supabase";
 import {
   getDraftCaseStudy,
   getDraftCaseStudySlugs,
+  getDraftProjectCards,
 } from "@/content/draft-case-studies";
 import type {
   ProjectEnglishFields,
@@ -195,7 +196,11 @@ function localizeCaseStudy(
 
 export async function getPublicProjects(locale: Locale) {
   const rows = await getPublicProjectsCached();
-  return rows.map((row) => localizeCard(row, locale));
+  const cards = rows.map((row) => localizeCard(row, locale));
+  const drafts = getDraftProjectCards(locale).filter(
+    (draft) => !cards.some((card) => card.slug === draft.slug),
+  );
+  return [...cards, ...drafts];
 }
 
 export async function getPublicCaseStudySlugs() {
