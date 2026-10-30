@@ -2,6 +2,10 @@ import "server-only";
 
 import { unstable_cache } from "next/cache";
 import { createPublicSupabaseClient } from "@/lib/site/supabase";
+import {
+  getDraftCaseStudy,
+  getDraftCaseStudySlugs,
+} from "@/content/draft-case-studies";
 import type {
   ProjectEnglishFields,
   PublicCaseStudyProject,
@@ -195,10 +199,13 @@ export async function getPublicProjects(locale: Locale) {
 }
 
 export async function getPublicCaseStudySlugs() {
-  return getPublicCaseStudySlugsCached();
+  const slugs = await getPublicCaseStudySlugsCached();
+  const drafts = getDraftCaseStudySlugs().filter((s) => !slugs.includes(s));
+  return [...slugs, ...drafts];
 }
 
 export async function getPublicCaseStudyBySlug(slug: string, locale: Locale) {
   const row = await getPublicCaseStudyBySlugCached(slug);
-  return row ? localizeCaseStudy(row, locale) : null;
+  if (row) return localizeCaseStudy(row, locale);
+  return getDraftCaseStudy(slug, locale);
 }
