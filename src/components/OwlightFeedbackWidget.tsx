@@ -1,7 +1,6 @@
 "use client";
 
 import { useEffect } from "react";
-import { useIntro } from "@/context/IntroContext";
 
 type OwlightFeedbackWidgetProps = {
   locale: string;
@@ -541,19 +540,12 @@ function syncOwlightWidget(locale: string) {
 }
 
 export function OwlightFeedbackWidget({ locale }: OwlightFeedbackWidgetProps) {
-  const { initialized, isIntroComplete } = useIntro();
-
   useEffect(() => {
     let retryTimer: number | undefined;
     let shadowObserver: MutationObserver | undefined;
-    const shouldHideUntilIntroCompletes = !initialized || !isIntroComplete;
 
     const syncPosition = () => {
-      setOwlightIntroGate(shouldHideUntilIntroCompletes);
-
-      if (shouldHideUntilIntroCompletes) {
-        return;
-      }
+      setOwlightIntroGate(false);
 
       if (!syncOwlightWidget(locale)) {
         retryTimer = window.setTimeout(syncPosition, 250);
@@ -586,7 +578,7 @@ export function OwlightFeedbackWidget({ locale }: OwlightFeedbackWidgetProps) {
         window.clearTimeout(retryTimer);
       }
     };
-  }, [initialized, isIntroComplete, locale]);
+  }, [locale]);
 
   return null;
 }

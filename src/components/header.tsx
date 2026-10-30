@@ -18,7 +18,6 @@ import { SHOW_SOCIAL_LINKS } from "@/lib/feature-flags";
 import { Instagram } from "lucide-react";
 import NextImage from "next/image";
 import { usePathname as useNextPathname } from "next/navigation";
-import { useIntro } from "@/context/IntroContext";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { useMediaQuery } from "@/hooks/use-media-query";
 
@@ -34,7 +33,6 @@ const XIcon = ({ className }: { className?: string }) => (
 );
 
 export function Header() {
-  const { isIntroComplete, initialized } = useIntro();
   const pathname = usePathname();
   const nextPathname = useNextPathname();
   const t = useTranslations("Navigation");
@@ -54,13 +52,6 @@ export function Header() {
     nextPathname?.includes("/studio") ||
     nextPathname?.includes("/centro-comando");
   const isDashboardPage = nextPathname?.includes("/dashboard");
-
-  // Prevent flash of navbar on homepage before intro check
-  const isHomePage =
-    pathname === "/" ||
-    (pathname as string) === "/en" ||
-    (pathname as string) === "/es";
-  const shouldHide = isHomePage && !initialized;
 
   // Keep the CTA present on key pages while avoiding redundancy on contact/careers.
   const showDiagnosticButton = !isContactPage && !isCareersPage;
@@ -131,7 +122,6 @@ export function Header() {
   ];
 
   if (isForgePage || isStudioPage || isDashboardPage) return null;
-  if (shouldHide) return null;
 
   // --- DESKTOP VARIANTS (Full Width - Footer Match) ---
   const desktopVariants: Variants = {
@@ -178,9 +168,6 @@ export function Header() {
       },
     },
   };
-
-  // Intro Visibility Control
-  const showNavbar = isIntroComplete;
 
   return (
     <LazyMotion features={domAnimation}>
@@ -252,12 +239,8 @@ export function Header() {
       <m.header
         data-fixed-header
         className="fixed z-50 top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{
-          y: showNavbar ? 0 : -20,
-          opacity: showNavbar ? 1 : 0,
-        }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
+        initial={false}
+        animate={{ y: 0, opacity: 1 }}>
         {/* 
             MAIN CONTAINER 
             - CSS controls Width & Position (max-w-[1280px], centered).

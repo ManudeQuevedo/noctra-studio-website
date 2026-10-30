@@ -1,0 +1,78 @@
+/* "Lights on" entrance: pure CSS so it works with JS disabled and keeps the
+   hero content in the first server response (no opacity:0 on content). */
+.lightsOn {
+  position: relative;
+  isolation: isolate;
+}
+
+/* Darkness layer: flickers like a fluorescent lamp, gone in 1s. */
+.lightsOn::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 50;
+  background: #000;
+  pointer-events: none;
+  animation: flicker 1s steps(1, end) forwards;
+}
+
+/* Lamp glow from the top, appears as the light turns on and stays subtle. */
+.lightsOn::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  background: radial-gradient(
+    60% 50% at 50% 0%,
+    rgb(255 255 255 / 0.12),
+    transparent 70%
+  );
+  opacity: 0;
+  animation: glow 0.6s 0.6s ease-out forwards;
+}
+
+@keyframes flicker {
+  0% {
+    opacity: 1;
+  }
+  15% {
+    opacity: 0.35;
+  }
+  20% {
+    opacity: 0.95;
+  }
+  32% {
+    opacity: 0.15;
+  }
+  36% {
+    opacity: 0.8;
+  }
+  50% {
+    opacity: 0.05;
+  }
+  58% {
+    opacity: 0.4;
+  }
+  70%,
+  100% {
+    opacity: 0;
+    visibility: hidden;
+  }
+}
+
+@keyframes glow {
+  to {
+    opacity: 1;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lightsOn::before {
+    display: none;
+  }
+  .lightsOn::after {
+    animation: none;
+    opacity: 1;
+  }
+}

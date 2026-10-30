@@ -44,8 +44,6 @@ import { VercelScripts } from "@/components/VercelScripts";
 import { OwlightFeedbackWidget } from "@/components/OwlightFeedbackWidget";
 import { SmoothScroll } from "@/components/SmoothScroll";
 import Script from "next/script";
-import { IntroProvider } from "@/context/IntroContext";
-import { IntroLoader } from "@/components/ui/IntroLoader";
 import { QuizProvider } from "@/components/quiz/QuizContext";
 
 // Satoshi - Brand primary font
@@ -143,27 +141,24 @@ export default async function LocaleLayout({
           forcedTheme="dark"
           enableSystem={false}
           disableTransitionOnChange>
-          <IntroProvider>
-            <QuizProvider>
-              <IntroLoader />
-              <BackgroundManager />
-              <Header />
-              <div id="main-content" tabIndex={-1}>
-                {children}
-              </div>
-              <FooterWrapper />
-              <ScrollToTop />
-              {/* <WhatsAppFloatingButton /> */}
-              <OrganizationSchema />
-              <WebsiteSchema />
-              <LocalBusinessSchema />
-              <CookieBanner />
-              <CookieSettingsButton />
-              <QuizModal />
-              <VercelScripts />
-              <OwlightFeedbackWidget locale={locale} />
-            </QuizProvider>
-          </IntroProvider>
+          <QuizProvider>
+            <BackgroundManager />
+            <Header />
+            <div id="main-content" tabIndex={-1}>
+              {children}
+            </div>
+            <FooterWrapper />
+            <ScrollToTop />
+            {/* <WhatsAppFloatingButton /> */}
+            <OrganizationSchema />
+            <WebsiteSchema />
+            <LocalBusinessSchema />
+            <CookieBanner />
+            <CookieSettingsButton />
+            <QuizModal />
+            <VercelScripts />
+            <OwlightFeedbackWidget locale={locale} />
+          </QuizProvider>
         </ThemeProvider>
       </NextIntlClientProvider>
     </>
