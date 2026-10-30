@@ -13,7 +13,6 @@ import {
 } from "framer-motion";
 import { Link, usePathname } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
-import { useIntro } from "@/context/IntroContext";
 import { cn } from "@/lib/utils";
 import { BrandLogo } from "@/components/ui/BrandLogo";
 import { useMediaQuery } from "@/hooks/use-media-query";
@@ -21,7 +20,6 @@ import { CrmHomeLink } from "@/components/ui/crm-home-link";
 import { ArrowLeft, ExternalLink } from "lucide-react";
 
 export function ForgeNavbar() {
-  const { isIntroComplete, initialized } = useIntro();
   const pathname = usePathname();
   const t = useTranslations("forge.navbar");
 
@@ -39,18 +37,6 @@ export function ForgeNavbar() {
     setMounted(true);
   }, []);
 
-  // Prevent flash before intro check
-  const isHomePage =
-    pathname === "/" ||
-    (pathname as string) === "/en" ||
-    (pathname as string) === "/es";
-
-  // If we are on /forge landing, we might want to match the "waiting for intro" behavior
-  const shouldHide = !initialized;
-
-  // Intro Visibility Control
-  const showNavbar = isIntroComplete;
-
   // Close menu on route change
   React.useEffect(() => {
     setIsOpen(false);
@@ -64,7 +50,7 @@ export function ForgeNavbar() {
     }
   });
 
-  if (!mounted || shouldHide) return null;
+  if (!mounted) return null;
 
   // --- DESKTOP VARIANTS (STRICT PARITY WITH Header.tsx) ---
   const desktopVariants: Variants = {
@@ -178,12 +164,8 @@ export function ForgeNavbar() {
       <m.header
         data-fixed-header
         className="fixed z-[50] top-0 left-0 right-0 w-full pointer-events-none hidden md:block"
-        initial={{ y: -20, opacity: 0 }}
-        animate={{
-          y: showNavbar ? 0 : -20,
-          opacity: showNavbar ? 1 : 0,
-        }}
-        transition={{ duration: 0.8, ease: "easeOut", delay: 0.5 }}>
+        initial={false}
+        animate={{ y: 0, opacity: 1 }}>
         <m.div
           ref={headerRef}
           initial="closed"
