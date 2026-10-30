@@ -3,8 +3,10 @@
 Contenido listo para cargar en la tabla `projects` (Forge → proyecto → campos públicos).
 Los case studies del sitio salen de Supabase, no de archivos: `/work/[slug]` lee `challenge`, `solution`, `results`, `metrics`, `gallery` y sus versiones `_en`.
 
-Todo lo marcado con `[[...]]` es un dato que no tengo y no voy a inventar. Llénalo o bórralo.
+Lo marcado con `[[...]]` es un dato que no tengo y no voy a inventar. Llénalo o bórralo.
 Si no hay métricas reales, deja `metrics` vacío: la sección de resultados funciona solo con texto.
+
+> Regla para este cliente: es una firma regulada. En el case study **no prometas ni menciones rendimientos**, y no afirmes por tu cuenta el registro CNBV ni la certificación AMIB. Describe lo que el sitio comunica, no lo certifiques tú.
 
 ## Campos de la tarjeta
 
@@ -12,53 +14,63 @@ Si no hay métricas reales, deja `metrics` vacío: la sección de resultados fun
 | --- | --- |
 | `slug` | `bridge-capital` |
 | `name` | Bridge Capital |
-| `industry` (ES) | [[ej. Servicios financieros / Capital privado]] |
-| `industry_en` | [[e.g. Financial services / Private capital]] |
+| `industry` (ES) | Asesoría de inversiones |
+| `industry_en` | Investment advisory |
 | `services_delivered` | `{"Web Design", "Web Development"}` |
 | `services_delivered_en` | `{"Web Design", "Web Development"}` |
 | `case_study_enabled` | `true` |
 | `published_to_site` | `true` |
 
+URL: https://bridgecapital.mx/
+
 ## Tagline
 
-- **ES:** Un sitio que se siente tan sólido como el capital que respalda.
-- **EN:** A website as solid as the capital behind it.
+- **ES:** Un sitio que transmite la disciplina y la solidez de una firma de inversión.
+- **EN:** A website that conveys the discipline and solidity of an investment firm.
 
 ## Contexto y problema (`challenge`)
 
 **ES**
 
-Bridge Capital necesitaba una presencia digital a la altura de una firma que maneja decisiones de dinero. En ese sector, el sitio web es la primera prueba de seriedad: si se ve improvisado, la confianza se pierde antes de la primera conversación.
+Bridge Capital es una firma independiente de asesoría de inversiones en Ciudad de México. Su propuesta es clara y poco común: invertir en empresas sólidas, con directivos transparentes, fundamentales sanos y valuaciones con margen de seguridad. Disciplina de largo plazo, no ganancias rápidas.
 
-La marca ya tenía identidad y voz propias, trabajadas por Mariel de Clover & Tread, que también lleva la estrategia de redes sociales. Faltaba el eslabón técnico: un sitio que tradujera esa identidad a una experiencia web clara, rápida y que convirtiera visitas en conversaciones reales.
+El reto era que el sitio tuviera esa misma disciplina. En asesoría financiera, la gente decide si confía en ti antes de hablar contigo, y lo decide mirando tu sitio. Necesitaba explicar un método de inversión sin tecnicismos, dejar visible su respaldo regulatorio y facilitar que un prospecto diera el siguiente paso.
+
+La identidad de marca y las redes sociales las desarrolló Mariel de Clover & Tread. Faltaba llevar esa identidad a una experiencia web seria, rápida y fácil de navegar.
 
 **EN**
 
-Bridge Capital needed a digital presence worthy of a firm that handles money decisions. In this sector, the website is the first proof of seriousness: if it looks improvised, trust is lost before the first conversation.
+Bridge Capital is an independent investment advisory firm in Mexico City. Its proposition is clear and uncommon: invest in solid companies with transparent leadership, healthy fundamentals and valuations with a margin of safety. Long-term discipline, not quick gains.
 
-The brand already had its own identity and voice, crafted by Mariel at Clover & Tread, who also runs its social media strategy. What was missing was the technical link: a site that translates that identity into a clear, fast web experience that turns visits into real conversations.
+The challenge was making the website show that same discipline. In financial advisory, people decide whether to trust you before they talk to you, and they decide by looking at your site. It had to explain an investment method without jargon, keep its regulatory backing visible, and make it easy for a prospect to take the next step.
+
+Brand identity and social media were developed by Mariel at Clover & Tread. What remained was carrying that identity into a serious, fast, easy-to-navigate web experience.
 
 ## Sistema aplicado (`solution`)
 
-> El panel de diagnóstico se genera por palabras clave de este texto. Las que ya están incluidas disparan estos tags: "credibilidad", "conversión", "prospectos", "móvil", "contenido".
+> El panel de diagnóstico se genera por palabras clave de este texto. Las incluidas aquí disparan: "credibilidad", "conversión", "prospectos", "móvil" y "contenido".
 
 **ES**
 
-Mi alcance fue el diseño y desarrollo web del sitio. El branding y las redes sociales son trabajo de Mariel (Clover & Tread); mi trabajo fue respetar esa identidad y llevarla al navegador sin que se rompiera.
+Mi alcance fue el diseño y desarrollo web. El branding y las redes sociales son trabajo de Mariel (Clover & Tread); mi trabajo fue respetar esa identidad y llevarla al navegador sin que se rompiera.
 
-- **Diseño web:** estructura de páginas y jerarquía de contenido pensadas para construir credibilidad y confianza desde el primer scroll, usando la paleta y tipografía definidas en el branding.
-- **Desarrollo:** sitio en Next.js, TypeScript y TailwindCSS, optimizado para velocidad y SEO, con una experiencia móvil de primera, no adaptada a última hora.
-- **Conversión:** un camino claro para que un prospecto pase de leer a contactar, con formulario y llamadas a la acción en los puntos de decisión.
-- **Contenido:** estructura lista para crecer, de modo que actualizar secciones no dependa de rehacer el diseño. [[Confirma si usaste CMS/Supabase/Sanity y dilo aquí]]
+- **Método en primer plano:** los cuatro pilares de inversión (Negocio, Liderazgo, Fundamentales y Mercado) se diseñaron como una estructura visual simple, para que alguien sin formación financiera entienda cómo piensa la firma en segundos.
+- **Credibilidad primero:** el respaldo regulatorio de la firma y la certificación de sus asesores tienen un lugar visible en la jerarquía de la página, porque en este sector son el argumento de confianza principal.
+- **Diseño sobrio:** composición limpia, tipografía legible y mucho espacio en blanco. Nada que se sienta promocional ni urgente, porque el cliente ideal valora seguridad por encima de ruido.
+- **Desarrollo:** sitio en Next.js, TypeScript y TailwindCSS, optimizado para velocidad y SEO, con experiencia móvil de primera.
+- **Conversión de prospectos:** un camino claro desde entender el método hasta contactar a la firma, con la ubicación en Insurgentes Sur y los datos de contacto fáciles de encontrar.
+- **Contenido:** estructura pensada para que la firma pueda crecer sus secciones sin rediseñar. [[Confirma si usaste CMS/Supabase/Sanity y dilo aquí]]
 
 **EN**
 
-My scope was the web design and development of the site. Branding and social media are Mariel's work (Clover & Tread); my job was to respect that identity and carry it into the browser without breaking it.
+My scope was web design and development. Branding and social media are Mariel's work (Clover & Tread); my job was to respect that identity and carry it into the browser without breaking it.
 
-- **Web design:** page structure and content hierarchy built to establish credibility and trust from the first scroll, using the palette and typography defined in the branding.
-- **Development:** built with Next.js, TypeScript and TailwindCSS, optimized for speed and SEO, with a first-class mobile experience, not an afterthought.
-- **Conversion:** a clear path from reading to reaching out, with a form and calls to action at decision points.
-- **Content:** a structure ready to grow, so updating sections doesn't mean redesigning. [[Confirm whether you used a CMS/Supabase/Sanity and say so here]]
+- **Method up front:** the four investment pillars (Business, Leadership, Fundamentals and Market) were designed as a simple visual structure, so someone with no financial background understands how the firm thinks in seconds.
+- **Credibility first:** the firm's regulatory backing and its advisors' certification have a visible place in the page hierarchy, because in this sector they are the main trust argument.
+- **Restrained design:** clean composition, readable typography and generous white space. Nothing promotional or urgent, because the ideal client values safety over noise.
+- **Development:** built with Next.js, TypeScript and TailwindCSS, optimized for speed and SEO, with a first-class mobile experience.
+- **Lead conversion:** a clear path from understanding the method to contacting the firm, with the Insurgentes Sur location and contact details easy to find.
+- **Content:** a structure that lets the firm grow its sections without a redesign. [[Confirm whether you used a CMS/Supabase/Sanity and say so here]]
 
 ## Resultados (`results`)
 
@@ -66,8 +78,8 @@ Sin números reales, no pongo números. Dos opciones:
 
 **Opción A, sin métricas (honesta y suficiente)**
 
-- **ES:** El sitio está en producción y funciona como la pieza central del ecosistema digital de Bridge Capital: el lugar al que apuntan las redes de Clover & Tread y donde un prospecto puede pasar de curiosidad a contacto.
-- **EN:** The site is live and works as the centerpiece of Bridge Capital's digital ecosystem: the place Clover & Tread's social channels point to, and where a prospect can go from curiosity to contact.
+- **ES:** El sitio está en producción en bridgecapital.mx y funciona como la pieza central de la presencia digital de Bridge Capital: el lugar al que apuntan sus canales y donde un prospecto entiende el método de la firma y puede dar el siguiente paso.
+- **EN:** The site is live at bridgecapital.mx and serves as the centerpiece of Bridge Capital's digital presence: the place its channels point to, where a prospect understands the firm's method and can take the next step.
 
 **Opción B, con métricas reales** (solo si las tienes, de Vercel Analytics / Lighthouse / Search Console)
 
@@ -75,32 +87,33 @@ Sin números reales, no pongo números. Dos opciones:
 [
   { "label": "Lighthouse Performance", "value": "[[ej. 95+]]" },
   { "label": "Tiempo de carga (LCP)", "value": "[[ej. 1.4s]]" },
-  { "label": "Consultas por formulario", "value": "[[N]]", "delta": "[[periodo]]" },
+  { "label": "Contactos por formulario", "value": "[[N]]", "delta": "[[periodo]]" },
   { "label": "Lanzamiento", "value": "[[mes/año]]" }
 ]
 ```
 
-## Créditos (para el pie del case study o la galería)
+## Créditos
 
 - Diseño y desarrollo web: Noctra Studio
 - Branding y redes sociales: Mariel, [Clover & Tread](https://www.instagram.com/cloverandtread/)
 
-> La página del case study no tiene campo de créditos. Opciones: dejarlo dentro de `solution` (ya está en el primer párrafo) o agregar un bloque de créditos en `CaseStudyClient.tsx`. Si quieres lo segundo, es un cambio chico.
+> La página del case study no tiene campo de créditos. El crédito va dentro de `solution` y `challenge`. Si quieres un bloque aparte en la página, es un cambio chico en `CaseStudyClient.tsx`.
 
 ## Galería (`gallery`, captions ES/EN)
 
 Sube 4 a 6 capturas. Sugeridas:
 
 1. Home, hero completo. / Home, full hero.
-2. Versión móvil de la home. / Mobile home.
-3. Sección de servicios. / Services section.
-4. Formulario de contacto. / Contact form.
+2. Sección de los 4 pilares. / The four pillars section.
+3. Sección de credibilidad y respaldo regulatorio. / Credibility and regulatory section.
+4. Versión móvil. / Mobile view.
+5. Contacto y ubicación. / Contact and location.
 
 ## Pendientes antes de publicar
 
-- [ ] Qué hace exactamente Bridge Capital (ajustar industria y el primer párrafo).
-- [ ] URL del sitio en producción y fecha de lanzamiento.
+- [ ] Que Bridge Capital apruebe que se publique el case study (es cliente regulado, mejor tener el visto bueno por escrito).
+- [ ] Fecha de lanzamiento y stack de contenido (CMS o no).
 - [ ] Métricas reales, o quedarse con la Opción A.
 - [ ] Capturas.
-- [ ] Avisarle a Mariel y confirmar cómo quiere que aparezca su crédito (nombre, handle, link).
+- [ ] Avisarle a Mariel y confirmar cómo quiere aparecer su crédito (nombre, handle, link).
 - [ ] Testimonio del cliente, si lo hay (va en `src/content/testimonials.ts` con `caseStudySlug: "bridge-capital"`).
