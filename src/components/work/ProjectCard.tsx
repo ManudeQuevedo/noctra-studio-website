@@ -20,19 +20,9 @@ function ProjectMockup({ project }: { project: PublicProjectCard }) {
   let imgPath = "/images/work/woodax-preview.jpg";
   const slug = project.slug.toLowerCase();
 
-  // No screenshot yet: neutral placeholder instead of another client's image.
   if (slug.includes("bridge")) {
-    return (
-      <div className="relative aspect-video bg-neutral-900 rounded-2xl overflow-hidden mb-8 flex items-center justify-center border border-white/5">
-        <div className="absolute inset-0 bg-linear-to-br from-neutral-800/60 via-neutral-900 to-black" />
-        <span className="relative text-xl font-semibold tracking-tight text-white/70">
-          {project.name}
-        </span>
-      </div>
-    );
-  }
-
-  if (slug.includes("woodax")) {
+    imgPath = "/images/work/bridge-capital-preview.jpg";
+  } else if (slug.includes("woodax")) {
     imgPath = "/images/work/woodax-preview.jpg";
   } else if (slug.includes("valtru")) {
     imgPath = "/images/work/valtru-preview.jpg";

@@ -27,7 +27,12 @@ const drafts: Record<string, LocalizedCaseStudy> = {
       results:
         "El sitio está en producción en bridgecapital.mx y funciona como la pieza central de la presencia digital de Bridge Capital: el lugar al que apuntan sus canales y donde un prospecto entiende el método de la firma y puede dar el siguiente paso.",
       metrics: null,
-      gallery: null,
+      gallery: [
+        {
+          url: "/images/work/bridge-capital-preview.jpg",
+          caption: "Home: propuesta de valor y respaldo regulatorio",
+        },
+      ],
     },
     en: {
       id: "draft-bridge-capital",
@@ -44,7 +49,12 @@ const drafts: Record<string, LocalizedCaseStudy> = {
       results:
         "The site is live at bridgecapital.mx and serves as the centerpiece of Bridge Capital's digital presence: the place its channels point to, where a prospect understands the firm's method and can take the next step.",
       metrics: null,
-      gallery: null,
+      gallery: [
+        {
+          url: "/images/work/bridge-capital-preview.jpg",
+          caption: "Home: value proposition and regulatory backing",
+        },
+      ],
     },
   },
 };
