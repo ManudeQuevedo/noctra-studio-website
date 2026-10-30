@@ -17,6 +17,16 @@ export default function RootLayout({ children }: { children: ReactNode }) {
               "#owlight-feedback-widget-host{display:none!important;visibility:hidden!important;}",
           }}
         />
+        {/* Without JS, framer-motion's SSR initial state (opacity:0) would leave
+            content invisible. Ignored entirely when JS is enabled. */}
+        <noscript>
+          <style
+            dangerouslySetInnerHTML={{
+              __html:
+                '#main-content [style*="opacity:0"],#main-content [style*="opacity: 0"]{opacity:1!important;transform:none!important;filter:none!important}',
+            }}
+          />
+        </noscript>
       </head>
       <body
         suppressHydrationWarning
